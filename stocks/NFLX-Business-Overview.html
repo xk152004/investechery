@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business Overview — Netflix, Inc. (NFLX)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px;}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;color:var(--ink);}
+h1{font-size:38px;margin:6px 0 10px;}
+h2{font-size:27px;margin:52px 0 12px;padding-top:18px;border-top:1px solid var(--line);}
+h3{font-size:21px;margin:30px 0 8px;}
+p{margin:0 0 16px;}
+a{color:var(--terracotta);}
+.kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);font-weight:700;}
+.srcline{font-size:15px;color:var(--muted);margin:0 0 8px;}
+.restate{font-family:Georgia,'Times New Roman',serif;font-size:23px;line-height:1.5;
+  border-left:5px solid var(--terracotta);padding:6px 0 6px 20px;margin:30px 0 34px;color:var(--ink);}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px;}
+.engine .lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;font-weight:700;}
+.engine .unit{font-family:Georgia,serif;font-size:31px;font-weight:700;margin:6px 0 10px;color:#fff;}
+.engine p{margin:0;font-size:17px;line-height:1.55;opacity:.93;}
+.engine .nums{display:flex;flex-wrap:wrap;gap:26px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(250,246,239,.22);}
+.engine .nums div{min-width:120px}
+.engine .nums b{display:block;font-family:Georgia,serif;font-size:24px;color:#E8A288;font-variant-numeric:tabular-nums;}
+.engine .nums span{font-size:13px;opacity:.75;}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 12px;}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px;}
+.kpi .v{font-family:Georgia,serif;font-size:27px;font-weight:700;color:var(--terracotta);font-variant-numeric:tabular-nums;line-height:1.15;}
+.kpi .k{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35;}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0;}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:15px 18px;margin:12px 0;}
+.lever.s{border-left-color:var(--good)} .lever.m{border-left-color:var(--gold)} .lever.c{border-left-color:var(--blue)}
+.lever .t{font-weight:700;font-size:18px;}
+.lever .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-left:10px;color:var(--terracotta);}
+.lever.s .tag{color:var(--good)} .lever.m .tag{color:var(--gold)} .lever.c .tag{color:var(--blue)}
+.lever p{margin:6px 0 0;font-size:17px;}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.5;font-style:italic;}
+.pull cite{display:block;font-style:normal;font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-size:14px;color:var(--muted);margin-top:10px;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+.two h4{margin:0 0 10px;font-family:Georgia,serif;font-size:18px;}
+.two ul{margin:0;padding-left:20px;} .two li{margin-bottom:9px;font-size:16.5px;line-height:1.45;}
+.tw{overflow-x:auto;margin:20px 0;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;min-width:520px;background:#fff;font-size:16px;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;line-height:1.4;}
+th{background:#F2ECE1;font-weight:700;font-size:14px;letter-spacing:.02em;}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;}
+caption{caption-side:top;text-align:left;font-size:14px;color:var(--muted);padding-bottom:8px;}
+.fig{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 18px 10px;margin:24px 0;}
+.fig h4{margin:0 0 2px;font-family:Georgia,serif;font-size:19px;}
+.fig .sub{font-size:14px;color:var(--muted);margin:0 0 10px;}
+.note{font-size:14px;color:var(--muted);line-height:1.45;margin:8px 0 18px;}
+ul.plain{padding-left:20px;} ul.plain li{margin-bottom:11px;}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);line-height:1.5;}
+@media(max-width:680px){body{font-size:18px}h1{font-size:31px}h2{font-size:23px}.kpis{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.wrap{padding:28px 16px 60px}}
+</style></head><body><div class="wrap">
+<div class="kicker">Business Overview</div>
+<h1>Netflix, Inc. <span style="color:var(--muted);font-weight:400">(NASDAQ: NFLX)</span></h1>
+<p class="srcline">9 September 2026 &middot; Built from Netflix SEC filings FY2016–FY2025, the Q2 2026 Form 10-Q and shareholder letters through 16 July 2026, and the December 2025 – January 2026 merger 8-Ks, supplemented by Nielsen, Ofcom, IAB, eMarketer, the 2026 WGA and SAG-AFTRA agreements, and the filings of Disney, Warner Bros. Discovery, Paramount, Comcast, Alphabet, Amazon and Roku. <strong>Not a valuation and not a recommendation.</strong></p>
+
+<div class="restate">Netflix is a fixed-cost content library rented by the month. It pays for a title once, capitalises the cost, amortises it over ten years or less, and spreads that fixed charge across every paying member on earth who can watch it — which is why it spends less on content than Amazon, Disney, NBCUniversal or YouTube and earns roughly seventy per cent of the streaming profit the industry discloses.</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">One paying membership-month</div>
+  <p>In FY2025 that unit brought in about <strong>$11.59</strong> of revenue, carried <strong>$4.21</strong> of content amortisation that was fixed before the member ever arrived, and left about <strong>$3.42</strong> of operating profit. The next member costs almost nothing to serve, so every price increase and every new subscriber falls against a cost base that does not move. Netflix stopped publishing the number of units during 2025.</p>
+  <div class="nums">
+    <div><b>$11.59</b><span>revenue per member-month</span></div>
+    <div><b>$5.97</b><span>cost of revenues</span></div>
+    <div><b>$3.42</b><span>operating profit</span></div>
+    <div><b>$4.38</b><span>cash content spend</span></div>
+  </div>
+</div>
+<p class="note">Per-unit figures derived by dividing FY2025 income statement lines by twelve months and the 325m year-end membership base (Q4 2025 shareholder letter). Illustrative: the average base during the year was smaller, so true per-member revenue and profit were somewhat higher. Netflix no longer publishes the denominator.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">$45.2bn</div><div class="k">FY2025 revenue, +16% (+17% constant currency)</div></div>
+  <div class="kpi"><div class="v">29.5%</div><div class="k">FY2025 operating margin; 31.5% guided for 2026</div></div>
+  <div class="kpi"><div class="v">$2.53</div><div class="k">FY2025 diluted EPS, split-adjusted</div></div>
+  <div class="kpi"><div class="v">$5.2bn</div><div class="k">Net debt at 30 June 2026, vs $4.2bn quarterly operating income</div></div>
+  <div class="kpi"><div class="v">Peak margin,<br>slowing growth</div><div class="k">Record margin and cash; revenue growth 17.6% → 11.7% guided in three quarters</div></div>
+  <div class="kpi"><div class="v">15% / 13%</div><div class="k">H1 2026 revenue growth, reported vs constant currency — all organic</div></div>
+</div>
+
+<h2>1. What the company does</h2>
+<p>The problem Netflix solves is choice under a fixed budget of attention. A household wants a large, constantly refreshed supply of professionally produced video on any screen, with no contract, no installation and no schedule. Netflix sells that as a monthly subscription across more than a hundred countries, at prices ranging from the US dollar equivalent of $1 to $37 a month depending on market and plan (FY2025 10-K). It describes its own strategy as growing “globally within the parameters of our operating margin target”.</p>
+<p>The unit of economics is one paying membership-month, and everything else resolves into it — pricing, content amortisation, advertising, the extra-member fee. Revenue is collected in advance, which is why deferred revenue sits at $1.8bn and why working capital funds the business rather than consuming it. Against $11.59 of revenue per unit, cost of revenues takes $5.97 (of which content amortisation alone is $4.21, the rest being delivery, payment processing, studio operations and, in FY2025, a $619m Brazilian non-income tax charge), marketing $0.85, technology $0.87 and administration $0.48.</p>
+<p>The number missing from that trace is the cash. Netflix paid out <strong>$17.1bn</strong> for content in FY2025 while charging <strong>$16.4bn</strong> to the income statement — roughly $4.38 of cash against $4.21 of expense per member-month. Today the gap is small. Management guides it wider in 2026, at a cash-spend-to-amortisation ratio of about 1.1x, which is the mechanism that separates reported margin from cash generation and the reason free cash flow is the honest number.</p>
+
+<h3>Three revenue sources of very different size</h3>
+<p>Membership fees are the business. Advertising, launched in late 2022, produced over $1.5bn in 2025 — more than 2.5x 2024 — and is guided to roughly $3bn in 2026, about 6% of revenue. Extra-member sub accounts at $2 to $9 a month monetise the household sharing Netflix began enforcing against in 2023; they are deliberately excluded from the paid-membership count, which is one reason the historic membership series understates paying relationships from 2022 onward.</p>
+<p>Games, live events and video podcasts are not revenue lines at all. Netflix discloses no games revenue, no games spend and no live-rights commitments, and management states that live programming will be “just over 5% of our content spend but only ~1% of view hours” in 2026. They exist to lift retention and acquisition on the subscription unit — live events “accounted for six of the top 10 new member sign-up days over the last five years,” which is the case for them in the company's own words.</p>
+<p>The one line Netflix has fully exited is DVD-by-mail, which stopped shipping on 29 September 2023. Its economics were the inverse of streaming: a 58% contribution margin in its final reported year on a base that shrank annually, because every incremental disc carried real postage and handling. Netflix gave up a high-margin business precisely because its costs were variable and its unit count was falling.</p>
+
+<h2>2. Industry structure, competitive position and moat</h2>
+<p>Streaming sells three things through one profit and loss account: subscription access to a library, attention resold to advertisers, and wholesale rights licensed to others. Value is created at four stages of the chain — production, studio and rights ownership, the consumer platform, and the device or operating system — and captured at two. Competitors' own June 2026 numbers show where: Warner Bros. Discovery's Studios segment earned $96m of adjusted EBITDA on $2,328m of revenue, a 4.1% margin; Paramount's Studios earned $36m on $1,314m, 2.7%. Roku's platform business, which owns no content whatsoever, earned a 53.0% gross margin.</p>
+
+<div class="tw"><table>
+<caption>Streaming operating profit, quarter ended June 2026 — the five platforms that disclose it</caption>
+<tr><th>Platform</th><th class="n">Revenue</th><th class="n">Profit</th><th class="n">Margin</th><th>Basis</th></tr>
+<tr><td><strong>Netflix</strong></td><td class="n">$12,560m</td><td class="n"><strong>$4,193m</strong></td><td class="n"><strong>33.4%</strong></td><td>Operating income (whole company)</td></tr>
+<tr><td>Disney Entertainment SVOD</td><td class="n">$5,532m</td><td class="n">$712m</td><td class="n">12.9%</td><td>Operating income</td></tr>
+<tr><td>WBD Streaming</td><td class="n">$3,079m</td><td class="n">$512m</td><td class="n">16.6%</td><td>Adjusted EBITDA</td></tr>
+<tr><td>Paramount direct-to-consumer</td><td class="n">$2,474m</td><td class="n">$366m</td><td class="n">14.8%</td><td>Adjusted EBITDA</td></tr>
+<tr><td>Comcast Peacock</td><td class="n">$1,900m</td><td class="n">$189m</td><td class="n">~9.9%</td><td>Adjusted EBITDA — first profitable quarter</td></tr>
+<tr><td colspan="5" style="background:#F7F2E9"><strong>Netflix share of the ~$6.0bn disclosed pool: roughly 70%.</strong> Amazon and YouTube earn undisclosed amounts on top. The comparison flatters Netflix slightly, since three of the four rivals report EBITDA rather than operating income.</td></tr>
+</table></div>
+<p class="note">Sources: each company's Q2 2026 earnings release or shareholder letter, July–August 2026.</p>
+
+<h3>What actually protects Netflix</h3>
+<p>Not the library, and the last twelve months proved it. Warner Bros. Discovery owns HBO, DC and Harry Potter, could not clear a 16.6% streaming EBITDA margin, and was auctioned and sold. Not technology either, which Amazon, Roku and Samsung all sell as a commodity. What protects Netflix is the amortisation base — one global content pool spread across the largest paying audience in subscription video, with more than a third of all viewing coming from non-English titles. A title paid for once is monetised in every market at once.</p>
+
+<div class="tw"><table>
+<caption>Annual content spend against streaming profit — the whole competitive case, as arithmetic</caption>
+<tr><th>Player</th><th class="n">Content spend</th><th>Basis</th></tr>
+<tr><td><strong>Netflix</strong></td><td class="n"><strong>$17.1bn</strong></td><td>FY2025 cash content spend; guided ~+10% in 2026</td></tr>
+<tr><td>Comcast NBCUniversal</td><td class="n">$37bn</td><td>2025 total content spend (industry tally)</td></tr>
+<tr><td>YouTube</td><td class="n">$32bn</td><td>2025, largely creator revenue share (industry tally)</td></tr>
+<tr><td>Disney</td><td class="n">~$24bn</td><td>FY2026 plan, roughly half sport</td></tr>
+<tr><td>Amazon</td><td class="n">$22.4bn</td><td>2025 video and music content costs, per 10-K</td></tr>
+</table></div>
+<p>Netflix spends less than any of them and earns more on the streaming line than all of them combined. Two barriers genuinely bind for a new entrant: the absolute cash outlay, which cannot be assembled at subscale, and distribution gatekeeping — Roku alone reaches more than half of US broadband households, and Fox agreed in June 2026 to buy it for about $22bn, a content owner paying to own the toll booth. Brand and back-catalogue do not bind, as WBD demonstrated. Scale is even contractually penalised: the WGA's 2026 agreement prices a three-year one-hour residual at <strong>$89,370</strong> for Netflix, Amazon and Disney+ against <strong>$36,478</strong> for HBO Max and Peacock.</p>
+
+<h3>Testing the company's account of itself</h3>
+<div class="tw"><table>
+<tr><th>Netflix's claim</th><th>Verdict</th><th>Basis</th></tr>
+<tr><td>It is the most-watched streaming service</td><td><strong style="color:var(--terracotta)">Contradicted</strong> on the broad definition</td><td>Nielsen's June 2026 Gauge puts YouTube at 13.8% of US TV time against Netflix at 7.9%. Netflix leads paid subscription streaming (Prime Video 4.2%, Roku Channel 3.0%, Peacock 2.3%) but is not the largest distributor of streamed television.</td></tr>
+<tr><td>It holds a small share of viewing and has room to grow</td><td><strong style="color:var(--good)">Supported</strong></td><td>Nielsen puts total streaming at 48.5% of US TV time in June 2026, with linear still at 39.3% combined. Netflix's framing of sub-10% share in major markets is corroborated. The caveat: the headroom has mostly been taken by YouTube, not surrendered by linear.</td></tr>
+<tr><td>Scale gives it a content-cost advantage per subscriber</td><td><strong style="color:var(--gold)">Partially supported</strong></td><td>Supported by the spend-versus-profit comparison above. Undercut by the WGA residual structure, which charges the largest platforms more for identical work, and by the fact that per-subscriber cost can no longer be computed at all because the subscriber count is no longer published.</td></tr>
+<tr><td>Streaming advertising is a large untapped opportunity</td><td><strong style="color:var(--gold)">Partially supported</strong></td><td>The pool is real: US CTV upfront spend of $17.73bn in 2026 exceeded primetime linear for the first time (eMarketer, May 2026) and US digital video ad spend passed $80bn (IAB, May 2026). But it is not untapped — Amazon booked $19,809m of advertising in the June 2026 quarter alone — and unit pricing is falling: Disney's streaming ad revenue grew 3% on 8% more impressions and 4% lower rates.</td></tr>
+</table></div>
+<p>The industry rewards two kinds of company: the single platform with global scale and one amortisation base, and the toll collector that never buys a script. Netflix is unambiguously the first. It is not the second — it owns no operating system, no device layer and no advertising infrastructure at the scale Amazon and Alphabet operate, and the largest single consumer of American television time is a platform that pays for content out of a revenue share rather than a balance sheet.</p>
+
+<h2>3. The growth engine</h2>
+<p>Revenue grew 16% in FY2025 to $45.2bn and 15% in the first half of 2026. Management attributes it, in the same order each period, to “growth in memberships, price increases, and increased advertising revenue, partially offset by unfavorable changes in foreign exchange rates”. Netflix publishes no quantified split among those three — and since it also discontinued memberships and average revenue per membership, the volume-versus-price decomposition can no longer be reconstructed from the filings at all. That is the single largest analytical gap in this business today.</p>
+
+<div class="fig">
+<h4>The unit, and the moment it went dark</h4>
+<p class="sub">Global average revenue per paying membership ($/month, left) and year-end paid memberships (millions, right). The 2025 points are derived: Netflix discontinued both metrics during the year.</p>
+<svg viewBox="0 0 860 360" width="100%" role="img" aria-label="Average revenue per membership and paid memberships, 2016 to 2025">
+<line x1="58" y1="308.0" x2="802" y2="308.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="312.0" text-anchor="end" font-size="11" fill="#6E675C">$8</text>
+<line x1="58" y1="253.2" x2="802" y2="253.2" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="257.2" text-anchor="end" font-size="11" fill="#6E675C">$9</text>
+<line x1="58" y1="198.4" x2="802" y2="198.4" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="202.4" text-anchor="end" font-size="11" fill="#6E675C">$10</text>
+<line x1="58" y1="143.6" x2="802" y2="143.6" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="147.6" text-anchor="end" font-size="11" fill="#6E675C">$11</text>
+<line x1="58" y1="88.8" x2="802" y2="88.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="92.8" text-anchor="end" font-size="11" fill="#6E675C">$12</text>
+<line x1="58" y1="34.0" x2="802" y2="34.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="38.0" text-anchor="end" font-size="11" fill="#6E675C">$13</text>
+<text x="810" y="312.0" text-anchor="start" font-size="11" fill="#3C6E8F">0m</text>
+<text x="810" y="233.7" text-anchor="start" font-size="11" fill="#3C6E8F">100m</text>
+<text x="810" y="155.4" text-anchor="start" font-size="11" fill="#3C6E8F">200m</text>
+<text x="810" y="77.1" text-anchor="start" font-size="11" fill="#3C6E8F">300m</text>
+<text x="58.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’16</text>
+<text x="140.7" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’17</text>
+<text x="223.3" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’18</text>
+<text x="306.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’19</text>
+<text x="388.7" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’20</text>
+<text x="471.3" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’21</text>
+<text x="554.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’22</text>
+<text x="636.7" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’23</text>
+<text x="719.3" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’24</text>
+<text x="802.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’25</text>
+<polyline points="58.0,238.2 140.7,221.4 223.3,198.9 306.0,177.2 388.7,148.5 471.3,134.4 554.0,127.4 636.7,104.2 719.3,71.9 802.0,53.6" fill="none" stroke="#3C6E8F" stroke-width="2.2"/>
+<circle cx="58.0" cy="238.2" r="3" fill="#3C6E8F"/>
+<circle cx="140.7" cy="221.4" r="3" fill="#3C6E8F"/>
+<circle cx="223.3" cy="198.9" r="3" fill="#3C6E8F"/>
+<circle cx="306.0" cy="177.2" r="3" fill="#3C6E8F"/>
+<circle cx="388.7" cy="148.5" r="3" fill="#3C6E8F"/>
+<circle cx="471.3" cy="134.4" r="3" fill="#3C6E8F"/>
+<circle cx="554.0" cy="127.4" r="3" fill="#3C6E8F"/>
+<circle cx="636.7" cy="104.2" r="3" fill="#3C6E8F"/>
+<circle cx="719.3" cy="71.9" r="3" fill="#3C6E8F"/>
+<circle cx="802.0" cy="53.6" r="3" fill="#3C6E8F"/>
+<polyline points="58.0,274.6 140.7,229.6 223.3,181.4 306.0,153.5 388.7,148.5 471.3,106.9 554.0,102.0 636.7,108.5 719.3,105.2" fill="none" stroke="#C75B39" stroke-width="2.6"/>
+<line x1="719.3" y1="105.2" x2="802.0" y2="111.3" stroke="#C75B39" stroke-width="2.6" stroke-dasharray="5 4"/>
+<circle cx="58.0" cy="274.6" r="3.4" fill="#C75B39"/>
+<circle cx="140.7" cy="229.6" r="3.4" fill="#C75B39"/>
+<circle cx="223.3" cy="181.4" r="3.4" fill="#C75B39"/>
+<circle cx="306.0" cy="153.5" r="3.4" fill="#C75B39"/>
+<circle cx="388.7" cy="148.5" r="3.4" fill="#C75B39"/>
+<circle cx="471.3" cy="106.9" r="3.4" fill="#C75B39"/>
+<circle cx="554.0" cy="102.0" r="3.4" fill="#C75B39"/>
+<circle cx="636.7" cy="108.5" r="3.4" fill="#C75B39"/>
+<circle cx="719.3" cy="105.2" r="3.4" fill="#C75B39"/>
+<circle cx="802.0" cy="111.3" r="3.4" fill="none" stroke="#C75B39" stroke-width="2"/>
+<line x1="760.7" y1="34" x2="760.7" y2="308" stroke="#6E675C" stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>
+<text x="754.7" y="22" text-anchor="end" font-size="11" fill="#6E675C">reported</text>
+<text x="766.7" y="22" text-anchor="start" font-size="11" fill="#6E675C">discontinued</text>
+<text x="64.0" y="292.6" text-anchor="start" font-size="12" font-weight="700" fill="#C75B39">Revenue per member-month</text>
+<text x="219.3" y="222.9" text-anchor="start" font-size="12" font-weight="700" fill="#3C6E8F">Paid memberships</text>
+<text x="802.0" y="97.3" text-anchor="end" font-size="11" fill="#6E675C">derived</text>
+</svg><p class="note">Sources: FY2017–FY2024 10-K MD&amp;A for ARM and paid memberships; Q4 2025 shareholder letter for the “over 325M paid memberships” milestone crossed in Q4 2025; 2025 ARM derived from FY2025 revenue and the year-end base.</p>
+</div>
+
+<p>What can still be decomposed is currency, and it matters more than it looks. Fifty-six per cent of FY2025 revenue was denominated in currencies other than the US dollar against only 31% of operating expenses — a structural mismatch that swings reported growth on rates. In FY2025 currency was a $271m headwind; in the first half of 2026 it flipped to a $715m tailwind, which is the entire difference between 15% reported growth and 13% constant currency.</p>
+
+<div class="tw"><table>
+<caption>Reported growth against constant currency, by region</caption>
+<tr><th>Region</th><th class="n">FY2025 reported</th><th class="n">FY2025 const. ccy</th><th class="n">H1 2026 reported</th><th class="n">H1 2026 const. ccy</th></tr>
+<tr><td>UCAN</td><td class="n">15%</td><td class="n">15%</td><td class="n">12%</td><td class="n">12%</td></tr>
+<tr><td>EMEA</td><td class="n">17%</td><td class="n">16%</td><td class="n">16%</td><td class="n">11%</td></tr>
+<tr><td>LATAM</td><td class="n">11%</td><td class="n">23%</td><td class="n">20%</td><td class="n">17%</td></tr>
+<tr><td>APAC</td><td class="n">21%</td><td class="n">22%</td><td class="n">18%</td><td class="n">18%</td></tr>
+<tr><td><strong>Total</strong></td><td class="n"><strong>16%</strong></td><td class="n"><strong>17%</strong></td><td class="n"><strong>15%</strong></td><td class="n"><strong>13%</strong></td></tr>
+</table></div>
+<p class="note">Sources: FY2025 10-K and Q2 2026 10-Q MD&amp;A. Constant currency excludes rate movements and hedging gains and losses realised in revenue. LATAM's FY2025 divergence — 11% reported against 23% constant currency — is the Argentine peso.</p>
+
+<p><strong>Reported versus organic is unusually simple here: all of the growth above is organic.</strong> Netflix bought nothing in FY2023 or FY2024, spent $17m in FY2025 and $587m in March 2026 on InterPositive, a generative-AI production toolmaker. The reported-versus-underlying distinction that <em>does</em> matter sits in earnings: first-half 2026 net income of $8.68bn and diluted EPS of $2.03 include a <strong>$2.8bn pre-tax termination fee</strong> received when Warner Bros. Discovery walked to Paramount Skydance, booked below the operating line in the first quarter.</p>
+
+<h3>The levers, ranked</h3>
+<div class="lever s"><div class="t">1. Price <span class="tag">Structural</span></div><p>The most reliable lever and the one with the clearest evidence. US increases in January 2025 and again in March 2026, plus Mexico and Spain in the first half of 2026, with management reporting “the impact consistent with prior price changes and our expectations.” Every major US service raised price by 8% to 18% in the twelve months to September 2026 — the pricing environment is industry-wide rather than Netflix-specific, which makes it more durable, not less.</p></div>
+<div class="lever s"><div class="t">2. Membership growth outside UCAN <span class="tag">Structural, decaying</span></div><p>EMEA, LATAM and APAC together grew 16% in FY2025 against UCAN's 15%, each passing a quarterly revenue milestone in Q2 2026. But UK household SVOD penetration reached only 70% in 2026, up two points in four years (Ofcom, <em>Media Nations 2026</em>) — that is what saturation looks like in a mature market. Unit growth increasingly has to come from lower-ARPU geographies.</p></div>
+<div class="lever m"><div class="t">3. Advertising <span class="tag">Management-driven</span></div><p>Revenue rose more than 2.5x in 2025 to over $1.5bn and is guided to roughly double again to about $3bn in 2026, on an ad tier Netflix says reaches more than 250m monthly active users. The mechanism is real — the ad tier converts price-sensitive demand into paid units and monetises them twice. The constraint is price: connected-TV inventory is being flooded by every platform at once, and Disney's most recent print shows rates falling 4% while impressions rise 8%.</p></div>
+<div class="lever m"><div class="t">4. Extra-member accounts and plan mix <span class="tag">Management-driven</span></div><p>Priced at $2 to $9 a month and excluded from the membership count, these convert previously unpaid household sharing into revenue without acquiring a new customer. Netflix has never quantified the effect and no competitor does either — though HBO Max and Disney+ both copied the mechanic.</p></div>
+<div class="lever c"><div class="t">5. Foreign exchange <span class="tag">Cyclical</span></div><p>Currently a tailwind worth about two percentage points of reported first-half 2026 growth. It reverses.</p></div>
+
+<h2>4. Margin, cash and capital allocation</h2>
+<p>The margin mechanism is that content cost is fixed and the audience is not. A title's cost is capitalised and amortised over the shorter of its availability window, its estimated period of use, or ten years, on an accelerated basis, with over 90% of any asset expected to be amortised within four years. Once that schedule is set it does not move with subscriber count — so every additional member-month, every price increase and every advertising dollar falls against a charge already fixed. Operating margin went from 20.6% in FY2023 to 26.7% in FY2024 to 29.5% in FY2025, with 31.5% guided for 2026.</p>
+
+<div class="pull">“Given, in particular, that our content costs are largely fixed in nature, we may not be able to adjust our expenditures or increase our revenues… commensurate with the lowered growth rate such that our margins, liquidity and results of operations may be adversely impacted.”
+<cite>Netflix FY2025 Form 10-K, Item 1A. The same mechanism that expands margin on the way up compresses it on the way down — and the company says so first.</cite></div>
+
+<div class="fig">
+<h4>From cash furnace to cash machine</h4>
+<p class="sub">Operating margin (%, left) and free cash flow ($bn, right), FY2016 to FY2025 with 2026 guidance dashed.</p>
+<svg viewBox="0 0 860 360" width="100%" role="img" aria-label="Operating margin and free cash flow, 2016 to 2026 guidance">
+<line x1="58" y1="308.0" x2="798" y2="308.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="312.0" text-anchor="end" font-size="11" fill="#6E675C">0%</text>
+<line x1="58" y1="253.2" x2="798" y2="253.2" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="257.2" text-anchor="end" font-size="11" fill="#6E675C">7%</text>
+<line x1="58" y1="198.4" x2="798" y2="198.4" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="202.4" text-anchor="end" font-size="11" fill="#6E675C">14%</text>
+<line x1="58" y1="143.6" x2="798" y2="143.6" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="147.6" text-anchor="end" font-size="11" fill="#6E675C">21%</text>
+<line x1="58" y1="88.8" x2="798" y2="88.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="92.8" text-anchor="end" font-size="11" fill="#6E675C">28%</text>
+<line x1="58" y1="34.0" x2="798" y2="34.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="38.0" text-anchor="end" font-size="11" fill="#6E675C">35%</text>
+<text x="806" y="312.0" text-anchor="start" font-size="11" fill="#3C6E8F">$-4b</text>
+<text x="806" y="251.1" text-anchor="start" font-size="11" fill="#3C6E8F">$0b</text>
+<text x="806" y="159.8" text-anchor="start" font-size="11" fill="#3C6E8F">$6b</text>
+<text x="806" y="68.4" text-anchor="start" font-size="11" fill="#3C6E8F">$12b</text>
+<line x1="58" y1="247.1" x2="798" y2="247.1" stroke="#3C6E8F" stroke-width="1" stroke-dasharray="2 4" opacity="0.55"/>
+<text x="58.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’16</text>
+<text x="132.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’17</text>
+<text x="206.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’18</text>
+<text x="280.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’19</text>
+<text x="354.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’20</text>
+<text x="428.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’21</text>
+<text x="502.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’22</text>
+<text x="576.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’23</text>
+<text x="650.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’24</text>
+<text x="724.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">’25</text>
+<text x="798.0" y="328" text-anchor="middle" font-size="11" fill="#6E675C">2026E</text>
+<polyline points="58.0,272.4 132.0,277.9 206.0,293.1 280.0,296.9 354.0,217.9 428.0,249.5 502.0,222.5 576.0,141.6 650.0,141.8 724.0,103.1" fill="none" stroke="#3C6E8F" stroke-width="2.2"/>
+<line x1="724.0" y1="103.1" x2="798.0" y2="56.8" stroke="#3C6E8F" stroke-width="2.2" stroke-dasharray="5 4"/>
+<circle cx="58.0" cy="272.4" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="132.0" cy="277.9" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="206.0" cy="293.1" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="280.0" cy="296.9" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="354.0" cy="217.9" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="428.0" cy="249.5" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="502.0" cy="222.5" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="576.0" cy="141.6" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="650.0" cy="141.8" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="724.0" cy="103.1" r="3" fill="#3C6E8F" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="798.0" cy="56.8" r="3" fill="none" stroke="#3C6E8F" stroke-width="2"/>
+<polyline points="58.0,276.7 132.0,253.2 206.0,229.7 280.0,206.2 354.0,167.1 428.0,143.6 502.0,167.1 576.0,146.7 650.0,99.0 724.0,77.1" fill="none" stroke="#C75B39" stroke-width="2.6"/>
+<line x1="724.0" y1="77.1" x2="798.0" y2="61.4" stroke="#C75B39" stroke-width="2.6" stroke-dasharray="5 4"/>
+<circle cx="58.0" cy="276.7" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="132.0" cy="253.2" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="206.0" cy="229.7" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="280.0" cy="206.2" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="354.0" cy="167.1" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="428.0" cy="143.6" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="502.0" cy="167.1" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="576.0" cy="146.7" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="650.0" cy="99.0" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="724.0" cy="77.1" r="3.4" fill="#C75B39" stroke="#C75B39" stroke-width="2"/>
+<circle cx="798.0" cy="61.4" r="3.4" fill="none" stroke="#C75B39" stroke-width="2"/>
+<text x="64.0" y="266.7" text-anchor="start" font-size="12" font-weight="700" fill="#C75B39">Operating margin</text>
+<text x="354.0" y="203.9" text-anchor="middle" font-size="12" font-weight="700" fill="#3C6E8F">Free cash flow</text>
+<text x="798.0" y="47.4" text-anchor="end" font-size="11" fill="#6E675C">guidance</text>
+</svg><p class="note">Sources: FY2020, FY2022, FY2024 and FY2025 10-Ks; Q4 2025 and Q2 2026 shareholder letters. The FY2026 free cash flow guide of ~$12.5bn includes roughly $1.5bn of after-tax Warner Bros. termination fee; the underlying guide is ~$11bn. The free cash flow definition changed in FY2020.</p>
+</div>
+
+<div class="tw"><table>
+<caption>The financial spine — years chosen to show the shape of the change, not every year available</caption>
+<tr><th></th><th class="n">FY2019</th><th class="n">FY2022</th><th class="n">FY2024</th><th class="n">FY2025</th></tr>
+<tr><td>Revenue ($m)</td><td class="n">20,156</td><td class="n">31,616</td><td class="n">39,001</td><td class="n">45,183</td></tr>
+<tr><td>Operating margin</td><td class="n">13%</td><td class="n">18%</td><td class="n">26.7%</td><td class="n">29.5%</td></tr>
+<tr><td>Diluted EPS (split-adjusted)</td><td class="n">$0.41</td><td class="n">$1.00</td><td class="n">$1.98</td><td class="n">$2.53</td></tr>
+<tr><td>Cash content spend ($m)</td><td class="n">13,917</td><td class="n">16,839</td><td class="n">16,224</td><td class="n">17,097</td></tr>
+<tr><td>Free cash flow ($m)</td><td class="n">(3,274)</td><td class="n">1,619</td><td class="n">6,922</td><td class="n">9,461</td></tr>
+<tr><td>Diluted shares (m)</td><td class="n">4,518</td><td class="n">4,513</td><td class="n">4,393</td><td class="n">4,344</td></tr>
+</table></div>
+<p class="note"><strong>Comparability warnings.</strong> (i) A ten-for-one forward stock split took effect on 14 November 2025; all per-share and share-count figures are restated to that basis. (ii) The free cash flow definition changed in FY2020, and the FY2024 and FY2025 figures are company-reported non-GAAP from the shareholder letters, because the 10-K stopped reconciling the measure after FY2023. (iii) FY2019 predates both the DVD wind-down and the advertising tier. (iv) Membership and average-revenue metrics were discontinued during 2025, so no unit row can be carried across this table.</p>
+
+<p>Cash conversion is now better than earnings, which was untrue for most of the company's history. FY2019 burned $3.3bn of free cash flow; FY2025 generated $9.5bn. The turn came from two places: content cash spend flattened — up only 1.5% in total across the six years from FY2019 to FY2025 while revenue more than doubled — and from FY2023 the amortisation charge began running ahead of cash payments, converting a working-capital drain into a source. Capital intensity outside content is trivial: property and equipment purchases were $688m in FY2025, 1.5% of revenue.</p>
+
+<h3>Where the cash went, FY2023–FY2025</h3>
+<div class="tw"><table>
+<tr><th>Use</th><th class="n">Three-year total</th><th>What it says</th></tr>
+<tr><td>Content (cash payments)</td><td class="n">$45.9bn</td><td>Treated as capital expenditure in all but name, and first in the queue every year</td></tr>
+<tr><td>Share repurchases</td><td class="n">$21.4bn</td><td>Rising annually to $9.1bn in FY2025, then $6.0bn in H1 2026 including a record $4.7bn quarter</td></tr>
+<tr><td>Property and equipment</td><td class="n">$1.5bn</td><td>1.5% of revenue — this is not a capital-intensive business outside the library</td></tr>
+<tr><td>Net debt repayment</td><td class="n">$0.4bn</td><td>$1.8bn repaid in FY2025 with no new issuance; the balance sheet is being run down, not levered up</td></tr>
+<tr><td>Acquisitions</td><td class="n">$17m</td><td>Nothing in FY2023 or FY2024; $587m for InterPositive in March 2026</td></tr>
+<tr><td>Dividends</td><td class="n">nil</td><td>“We have never declared or paid any cash dividends… and we do not currently anticipate paying any”</td></tr>
+</table></div>
+<p>That ranking describes a management team that treats content as capital expenditure and the equity as residual claimant on whatever is left. The buyback is not a token: diluted share count fell from 4,495m in FY2023 to 4,261m in Q2 2026, and the pace accelerated to a 2.0% year-on-year reduction in that quarter, executed at declining average prices from $97.47 in April to $79.08 in June. The Board authorised a further $25bn in April 2026 on top of $6.8bn remaining, leaving $27.1bn of capacity against net debt of only $5.2bn.</p>
+
+<h3>The Warner Bros. Discovery transaction — which post-dates the annual report</h3>
+<p>On 4 December 2025 Netflix signed a merger agreement to acquire WBD's streaming and studios businesses — HBO, HBO Max and the film and television studios — for $27.75 per share, an equity value of about $72.0bn and an enterprise value of about $82.7bn, with WBD's linear networks to be spun off first. It amended the deal to all cash on 19 January 2026 and assembled <strong>$67.2bn</strong> of committed facilities: a $42.2bn bridge, a $20bn delayed-draw term loan and a $5bn revolver. Receipt of financing was not a condition to closing, and Netflix accepted a $5.8bn reverse termination fee if antitrust approval failed.</p>
+<p>On 27 February 2026 WBD terminated to accept a superior all-cash offer of $31.00 per share from Paramount Skydance and paid Netflix a <strong>$2.8bn termination fee</strong>. Netflix declined to raise. The consequences are specific and all sit outside the operating line: the fee was booked in interest and other income in Q1 2026; about $85m of financing costs were written off through interest expense; transaction costs sit inside a $107m first-half increase in third-party general and administrative expense; and not a dollar of the $67.2bn was ever drawn.</p>
+<div class="pull">“Warner Bros. would have been a nice accelerant for our strategy, but only at the right price. We have multiple ways to achieve our goals — including producing, licensing, and partnering.”
+<cite>Netflix Q1 2026 shareholder letter, 16 April 2026. The company assembled the largest financing package in its history, then walked away from it and collected $2.8bn. Read as capital-allocation behaviour rather than narrative, that is the most informative single episode in the file.</cite></div>
+<p><strong>The practical reading for 2026 numbers: the first half is not clean and the second quarter is.</strong> Operating income and operating margin are unaffected in both periods, but H1 net income of $8.68bn and the raised full-year free cash flow guidance of ~$12.5bn both contain the fee — management stated the guide rose from about $11bn “due primarily to the after-tax impact of the Warner Bros.-related termination fee.”</p>
+
+<h2>5. Cyclicality, constraints and position in the cycle</h2>
+<p>Netflix is among the least cyclical businesses in media, and the reason is the contract rather than the content. Revenue is a monthly recurring fee collected in advance, cancellable at will but rarely cancelled, and it grew through both the 2020 shutdown and the 2022 consumer squeeze. The genuinely cyclical exposure is advertising, roughly 6% of 2026 revenue, which Netflix itself lists as subject to “seasonal, cyclical or other shifts in advertising spend, including the impact of macroeconomic conditions.”</p>
+
+<div class="tw"><table>
+<caption>Geographic exposure, FY2025 revenue — diversified, but dollar-sensitive</caption>
+<tr><th>Region</th><th class="n">Revenue</th><th class="n">Share</th><th class="n">Reported growth</th><th class="n">Const. ccy growth</th></tr>
+<tr><td>UCAN (US &amp; Canada)</td><td class="n">$19,957m</td><td class="n">44.2%</td><td class="n">15%</td><td class="n">15%</td></tr>
+<tr><td>EMEA</td><td class="n">$14,515m</td><td class="n">32.1%</td><td class="n">17%</td><td class="n">16%</td></tr>
+<tr><td>LATAM</td><td class="n">$5,358m</td><td class="n">11.9%</td><td class="n">11%</td><td class="n">23%</td></tr>
+<tr><td>APAC</td><td class="n">$5,354m</td><td class="n">11.8%</td><td class="n">21%</td><td class="n">22%</td></tr>
+</table></div>
+<p class="note">56% of FY2025 revenue was in non-US-dollar currencies against 31% of operating expenses — the mismatch behind the reported-versus-constant-currency gaps above.</p>
+
+<h3>Where the business sits right now</h3>
+<p><strong>On margin, at a record and still climbing.</strong> FY2025's 29.5% is the highest in company history, against 13% in FY2019 and a 2022 trough of 18%; 31.5% is guided for 2026. <strong>On cash, also at a record:</strong> $9.5bn of free cash flow against a worst year of negative $3.3bn in FY2019. <strong>On growth, past the peak and decelerating clearly</strong> — 17.6% year-on-year in Q4 2025, 16.2% in Q1 2026, 13.4% in Q2 2026 and 11.7% guided for Q3 2026, with constant-currency Q3 growth of 11%. Record profitability and decelerating growth are arriving together, which is the ordinary shape of a business converting from expansion to harvest.</p>
+
+<div class="two">
+  <div class="card"><h4 style="color:var(--good)">Durable — likely to survive ten years</h4><ul>
+    <li>A single global content pool amortised across the whole paying base; content spend guided up ~10% in 2026 against 13–14% revenue growth</li>
+    <li>Demonstrated pricing power across consecutive increases in the US, Mexico and Spain with no reported demand break</li>
+    <li>Roughly 70% of the streaming operating profit the industry discloses, on lower content spend than four larger rivals</li>
+    <li>Guild wage escalators fixed near 3% a year to 2030 under the 2026 WGA and SAG-AFTRA agreements</li>
+    <li>Balance-sheet freedom: $5.2bn net debt against $4.2bn of quarterly operating income, and no dividend</li>
+  </ul></div>
+  <div class="card"><h4 style="color:var(--terracotta)">Borrowed — currently helping</h4><ul>
+    <li>A foreign-exchange tailwind worth about two points of H1 2026 reported growth, against a $271m headwind in FY2025</li>
+    <li>The $2.8bn Warner Bros. termination fee, which raised 2026 free cash flow guidance from ~$11bn to ~$12.5bn</li>
+    <li>Advertising doubling off a small base into a market where connected-TV unit pricing is falling</li>
+    <li>Content amortisation growth held to ~10% while cash spend runs at ~1.1x the charge</li>
+    <li>Generative AI production savings being reinvested rather than banked — real, but not yet visible in the cost line</li>
+  </ul></div>
+</div>
+<p class="note">Two conditions cut the other way and are also temporary: Brazilian non-income tax assessments cost $619m of FY2025 operating expense and $729m of H1 2026 cash, which management says it does not expect to recur materially.</p>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tw"><table>
+<tr><th>Indicator</th><th>Where it appears</th></tr>
+<tr><td>Reported against constant-currency revenue growth, by region</td><td>Quarterly shareholder letter and 10-Q MD&amp;A</td></tr>
+<tr><td>Operating margin against the 31.5% 2026 target, on reported and 1 January FX bases</td><td>Quarterly shareholder letter, non-GAAP FX-neutral margin table</td></tr>
+<tr><td>Cash content spend ÷ content amortisation (guided ~1.1x for 2026)</td><td>10-Q cash flow statement; ratio commentary in the shareholder letter</td></tr>
+<tr><td>Advertising revenue against the ~$3bn 2026 target</td><td>Shareholder letter commentary only — there is no reported line</td></tr>
+<tr><td>Content obligations and the off-balance-sheet portion within them</td><td>10-Q and 10-K commitments note</td></tr>
+<tr><td>Buyback pace and remaining authorisation</td><td>10-Q Item 2 and the equity note</td></tr>
+<tr><td>US share of television time, Netflix against YouTube</td><td>Nielsen The Gauge, monthly — note the methodology recalibration from the 2026-27 season</td></tr>
+<tr><td>Connected-TV advertising rates against impressions</td><td>Disney and Paramount quarterly disclosures, which break out the rate/volume split Netflix does not</td></tr>
+<tr><td>Paramount–WBD antitrust trial, listed for 2 March 2027</td><td>Court docket and the parties' filings</td></tr>
+</table></div>
+
+<h2>6. Risks, unknowns and questions for deeper work</h2>
+<p>These are the risks cyclicality does not capture, ordered by how much they compound.</p>
+<ul class="plain">
+<li><strong>Disclosure has been withdrawn faster than the business has simplified.</strong> Memberships and average revenue per membership went in 2025; the semi-annual view-hours report moves to annual from 2027. An investor can no longer separate volume from price, cannot compute content cost per subscriber, and cannot verify churn. The consequence is not that the business is worse — it is that the tools to detect deterioration early have been removed, so a slowdown will show up only in the revenue line, after the fact.</li>
+<li><strong>Content amortisation is an estimate management sets, and it is the auditor's critical audit matter.</strong> Netflix amortises “based upon various factors including historical and estimated viewing patterns,” and its own risk factor warns that if actual patterns differ, “it could result in greater in-period expenses, which could cause us to miss our earnings guidance.” No content impairment has ever been recognised. With $32.8bn of content assets against $13.3bn of annual operating income, a modest change in the curve is the difference between margin expansion and contraction — and nothing outside the company can test the estimate.</li>
+<li><strong>The advertising build is a price bet, not a volume bet.</strong> The volume opportunity is real — US CTV upfront spend passed primetime linear for the first time in 2026. But every platform is adding inventory simultaneously, and the only company that breaks out rate against volume, Disney, reported streaming ad revenue up 3% on impressions up 8% and rates down 4%. If the ~$3bn 2026 target is met on volume while rates fall, incremental margin on that revenue is materially worse than on subscription — and Netflix does not disclose enough to tell.</li>
+<li><strong>Live sport is the one content category that cannot be smoothed.</strong> Sports rights are expensed largely as aired rather than amortised over ten years. Netflix has been adding them — an expanded NFL agreement through 2029-30, WWE Raw, MLB events, the World Baseball Classic. Comcast's Media segment operating expense rose 29.1% year on year in the June 2026 quarter on NBA and World Cup costs, which is what one heavy sports slate does to a P&amp;L. At just over 5% of content spend the exposure is currently small; the risk is that competitive escalation makes it not small.</li>
+<li><strong>Fixed content cost plus fixed obligations is the compounding failure mode.</strong> $25.1bn of content obligations, $11.9bn due within twelve months, with payment terms explicitly not tied to membership. Netflix says it “may be unable to react to any reduction in our cash flows from operations… by reducing our streaming content obligations in the near-term.” Alone this is survivable on $9.1bn of liquidity and $5.2bn of net debt. Combined with a growth stall and an advertising shortfall, it is the mechanism by which margin expansion reverses quickly.</li>
+<li><strong>Regulatory cost is national, rising in Europe and reversing in North America.</strong> The EU's revised Audiovisual Media Services Directive requires European works to be at least 30% of on-demand catalogues and lets member states levy providers targeting their territory. France's 2026 rule ring-fencing 20% of the SMAD contribution to animation, documentary and live performance is under challenge in court by Netflix, Amazon and Disney individually. Canada moved the other way, the government stating in July 2026 an intention to eliminate the base contribution requirement. These are direct margin items in specific markets, not headline risk.</li>
+<li><strong>Concentration and uninsured exposures.</strong> Netflix runs “the vast majority of our computing on AWS” and states it “cannot easily switch”. It also states plainly that it carries no insurance against service disruption or data breach. Device partner agreements run one to three years. None is likely; each is unhedged.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<p>Each of these is a gap in the record rather than a failure of research, and each would need resolving before a thesis could be underwritten.</p>
+<ul class="plain">
+<li>The split of revenue growth among memberships, price and advertising — never quantified in any filing, and now unrecoverable because the denominators have been discontinued.</li>
+<li>Advertising revenue as a reported figure. It exists only in shareholder-letter commentary; the 10-K states revenue other than membership fees “was not a material component,” which sits awkwardly against a ~$3bn 2026 target on ~$51bn of revenue.</li>
+<li>Churn, at any level of aggregation, in any year. Netflix has never disclosed it.</li>
+<li>Games and live-programming economics: no revenue, no spend, no commitments, no user metrics. The NFL and MLB agreements carry no disclosed dollar values.</li>
+<li>Maintenance against growth capital expenditure, and any split of content spend between library maintenance and new-title investment.</li>
+<li>The tax effect of the $2.8bn termination fee, which is not disclosed, so underlying H1 2026 earnings cannot be computed precisely.</li>
+<li>Per-tier US prices before and after the March 2026 increase; Netflix discloses only a global range of $1 to $37.</li>
+<li>Whether the second-half 2026 margin implied by guidance — roughly 30.3% against 32.8% delivered in the first half — is entirely the content-amortisation phasing management describes, or contains something else.</li>
+</ul>
+
+<h2>7. Investor takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is:</strong> a fixed-cost content library rented by the month to the largest paying audience in subscription video, where the marginal viewer costs nothing to serve and a title costs the same whether ten million or three hundred million people watch it.</li>
+<li><strong>The core economic engine:</strong> one paying membership-month generating roughly $11.59 of revenue and $3.42 of operating profit in FY2025, against $4.21 of content amortisation fixed before the member arrived.</li>
+<li><strong>The main growth lever:</strong> price, reinforced by advertising. Household penetration is saturating in mature markets, and every major service raised price by 8% to 18% in the year to September 2026 without a demand break.</li>
+<li><strong>What could break the story:</strong> a growth stall against obligations that cannot be reduced — $25.1bn of content commitments with payment terms unlinked to membership — or an advertising build that delivers volume into falling rates.</li>
+<li><strong>What to monitor:</strong> constant-currency revenue growth against the decelerating trend, the cash-content-to-amortisation ratio, and whether advertising revenue ever becomes a reported line rather than a commentary figure.</li>
+</ul>
+
+<footer>
+<p><strong>Company sources (research folder).</strong> Netflix Forms 10-K for FY2016, FY2020, FY2022, FY2024 and FY2025 (filed 23 January 2026); Form 10-Q for the quarter ended 30 June 2026 (filed 17 July 2026); shareholder letters of 20 January 2026 (Q4 2025), 16 April 2026 (Q1 2026) and 16 July 2026 (Q2 2026); Forms 8-K of 5 December 2025, 22 December 2025 and 20 January 2026 relating to the Warner Bros. Discovery merger agreement, its amendment and restatement, and the associated financing.</p>
+<p><strong>Independent sources.</strong> Nielsen, <em>The Gauge</em>, May and June 2026 and the Q2 2026 Ad-Supported Gauge; Ofcom, <em>Media Nations 2026</em> (29 July 2026); IAB, <em>2026 Digital Video Ad Spend &amp; Strategy Report</em> (5 May 2026); eMarketer digital video forecast (4 May 2026); the WGA 2026 Minimum Basic Agreement and the SAG-AFTRA 2026 TV/Theatrical Contracts; European Audiovisual Observatory on Directive 2018/1808; and the June-2026-quarter earnings releases of The Walt Disney Company, Warner Bros. Discovery, Paramount Skydance, Comcast, Alphabet, Amazon and Roku.</p>
+<p><strong>Post-dating the FY2025 annual report.</strong> Netflix's merger agreement with Warner Bros. Discovery was terminated by WBD on 27 February 2026 in favour of Paramount Skydance at $31.00 per share; Netflix received a $2.8bn termination fee. That transaction is signed and shareholder-approved but enjoined in the US pending an antitrust trial listed for 2 March 2027, so the eventual structure of Netflix's largest scripted-content competitor is unresolved as at the date of this overview.</p>
+<p style="margin-top:18px"><em>This document is an investor-grade business overview. It contains no valuation, no price target and no recommendation. Figures marked as derived are calculations, not company disclosures.</em></p>
+</footer>
+</div></body></html>
