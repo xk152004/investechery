@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Taiwan Semiconductor Manufacturing Company</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font:19px/1.58 Calibri,'Segoe UI',Arial,sans-serif;
+  font-variant-numeric:tabular-nums;}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;margin:0}
+h1{font-size:38px;letter-spacing:-.01em;margin:6px 0 14px}
+h2{font-size:27px;margin:52px 0 14px;padding-top:20px;border-top:1px solid var(--line)}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;line-height:1.5;margin:0 0 6px;max-width:760px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.45;
+  border-left:5px solid var(--terracotta);padding:6px 0 6px 20px;margin:30px 0 34px;color:var(--ink)}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:26px 0 30px}
+.engine .u{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C9BFAE;font-weight:700;margin-bottom:8px}
+.engine .h{font-family:Georgia,serif;font-size:27px;line-height:1.25;margin-bottom:12px}
+.engine p{margin:0;color:#E7DFD2;font-size:17px;line-height:1.55}
+.engine b{color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px}
+.kpi .k{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px}
+.kpi .v{font-family:Georgia,serif;font-size:27px;color:var(--terracotta);line-height:1.1;margin-bottom:6px}
+.kpi .s{font-size:13.5px;color:var(--muted);line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:16px 20px;margin:12px 0}
+.lever.g{border-left-color:var(--good)} .lever.a{border-left-color:var(--gold)} .lever.c{border-left-color:var(--blue)}
+.lever .t{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--terracotta);margin-bottom:5px}
+.lever.g .t{color:var(--good)} .lever.a .t{color:var(--gold)} .lever.c .t{color:var(--blue)}
+.lever .n{font-weight:700;font-size:19px;margin-bottom:5px}
+.lever p{margin:0;font-size:17px;line-height:1.55}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0}
+.pull q{font-family:Georgia,serif;font-size:21px;line-height:1.45;display:block;quotes:none}
+.pull q:before{content:'\201C'} .pull q:after{content:'\201D'}
+.pull .a{font-size:14px;color:var(--muted);margin-top:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px}
+.two ul{margin:0;padding-left:19px} .two li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+.two .d h4{color:var(--good)} .two .b h4{color:var(--gold)}
+.tw{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;background:#fff;font-size:16px}
+caption{text-align:left;font-size:13.5px;color:var(--muted);padding:0 0 9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#F2ECE1;font-weight:700;font-size:14.5px}
+td.n,th.n{text-align:right}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 8px;margin:22px 0}
+.chart .ct{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:0 4px 2px}
+.chart .cs{font-size:14px;color:var(--muted);margin:0 4px 12px}
+svg{width:100%;height:auto;display:block}
+.grid{stroke:var(--line);stroke-width:1}
+.ax{font:12px Calibri,'Segoe UI',Arial,sans-serif;fill:var(--muted)}
+.lbl{font:13px Calibri,'Segoe UI',Arial,sans-serif;font-weight:700}
+.lbl.t{fill:var(--terracotta)} .lbl.b{fill:var(--blue)}
+.note{font-size:14.5px;color:var(--muted);line-height:1.5;margin:10px 0 0}
+.foot{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);line-height:1.6}
+.foot h3{font-size:17px;margin:0 0 10px;color:var(--ink)}
+ul.body{padding-left:20px} ul.body li{margin-bottom:11px}
+@media (max-width:720px){
+  body{font-size:17.5px}
+  .wrap{padding:30px 16px 60px}
+  h1{font-size:30px} h2{font-size:23px} .restate{font-size:20px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  .engine .h{font-size:22px}
+}
+@media (max-width:460px){ .kpis{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Taiwan Semiconductor Manufacturing Company <span style="color:var(--muted);font-weight:400">(TSM / 2330.TW)</span></h1>
+<p class="srcline">6 September 2026. Built from ten Form 20-F annual reports (FY2016&ndash;FY2025, latest filed 16 April 2026) and 434 Form 6-K filings held in the research folder, supplemented by TSMC&rsquo;s Q1 and Q2 2026 primary investor disclosures and by independent industry sources &mdash; TrendForce, Counterpoint, SIA, WSTS, SEMI, IDC &mdash; and competitors&rsquo; own reporting. <b>This is not a valuation and not a recommendation.</b></p>
+
+<div class="restate">TSMC is a toll on the leading edge of transistor manufacturing, collected one 12-inch wafer at a time, from customers who have no qualified alternative at 2nm.</div>
+
+<div class="engine">
+  <div class="u">The economic engine</div>
+  <div class="h">One 12-inch-equivalent wafer</div>
+  <p>In FY2025 TSMC shipped <b>15,022 thousand</b> of them and earned <b>NT$253.6 thousand of revenue</b> and <b>NT$151.9 thousand of gross profit</b> on each &mdash; roughly US$8,085 and US$4,842. Nine years earlier the same wafer earned NT$98.7 thousand. Volume rose 1.56&times; over the decade; the price of the wafer rose 2.57&times;. <b>TSMC does not sell more wafers so much as sell more expensive ones.</b></p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Revenue per wafer</div><div class="v">NT$253.6k</div><div class="s">FY2025, 12-inch equivalent. Inferred from reported revenue &divide; shipments.</div></div>
+  <div class="kpi"><div class="k">Gross profit per wafer</div><div class="v">NT$151.9k</div><div class="s">FY2025. A 59.9% gross margin on a largely fixed cost base.</div></div>
+  <div class="kpi"><div class="k">FY2025 net income</div><div class="v">NT$1,697.6bn</div><div class="s">US$54.1bn, up 46.5% year over year. Revenue NT$3,809.1bn.</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">Net cash</div><div class="s">NT$3,068.6bn cash and securities against NT$1,033.0bn long-term debt.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Above prior peak</div><div class="s">Q2 2026 gross margin 67.7%, versus a FY2022 peak of 59.6% and a FY2019 trough of 46.0%.</div></div>
+  <div class="kpi"><div class="k">Organic growth</div><div class="v">100%</div><div class="s">FY2025 revenue +31.6%, none of it acquired. No material M&amp;A in ten years.</div></div>
+</div>
+
+<h2>1 &middot; Executive snapshot</h2>
+<div class="tw"><table>
+<caption>Orientation</caption>
+<tbody>
+<tr><th style="width:26%">What the business is</th><td>The world&rsquo;s largest dedicated semiconductor foundry. It manufactures integrated circuits designed by other companies and sells no chips of its own design.</td></tr>
+<tr><th>How it makes money</th><td>Customers pay per wafer processed. Wafer fabrication was 86% of FY2025 net revenue; the rest is packaging and testing, mask making, design services and royalties.</td></tr>
+<tr><th>Unit of economics</th><td>One 12-inch-equivalent wafer, earning NT$253.6 thousand of revenue and NT$151.9 thousand of gross profit in FY2025.</td></tr>
+<tr><th>What protects it</th><td>Yield at the leading edge, accumulated through volume competitors do not have; customer trust from never competing with customers; a Taiwan cluster whose engineers move between fabs.</td></tr>
+<tr><th>Earnings drivers</th><td>AI accelerator demand (HPC was 66% of Q2 2026 revenue); migration to 3nm and 2nm, which raises revenue per wafer; utilisation against a largely fixed cost base.</td></tr>
+<tr><th>What to watch</th><td>Gross margin against the &ldquo;56% and higher through the cycle&rdquo; statement; capital intensity as FY2026 capex steps to US$60&ndash;64bn; top-two customer concentration at 36% of revenue.</td></tr>
+<tr><th>Cycle exposure</th><td>High, and currently unusual: the leading edge sits at a supply-constrained peak while smartphone units are in a record contraction.</td></tr>
+</tbody></table></div>
+
+<h2>2 &middot; What the company does</h2>
+<p>Designing a chip and manufacturing one are different businesses requiring different assets. A designer needs a few hundred engineers and software licences. A manufacturer needs a factory costing tens of billions of dollars, a decade of process research, and enough volume across many customers to keep that factory full. TSMC exists because those two activities separated. It builds the factory and sells access to it, so Apple, Nvidia, AMD, Qualcomm and Broadcom never have to.</p>
+<p>A wafer is a polished silicon disc roughly 300mm across. TSMC receives the customer&rsquo;s design, translates it into photomasks, and runs the wafer through several hundred process steps that build transistors and their wiring layer by layer. A single wafer takes roughly three months to cross a leading-edge fab and emerges carrying anywhere from a few dozen to several thousand identical chips. <b>The customer is billed for the wafer, not for the working chips on it</b> &mdash; which is why yield is the customer&rsquo;s problem as much as TSMC&rsquo;s, and why a foundry with better yield can charge more per wafer and still be cheaper per working chip.</p>
+<p>Tracing one wafer to cash: the customer commits capacity months ahead, sometimes with prepayments &mdash; NT$189.9bn of temporary receipts sat on the FY2025 balance sheet. The wafer is processed, tested, often packaged, then billed and collected in an average of 29 days (Q2 2026). Cash arrives quickly. What arrived years earlier was the capital: the equipment that processed the wafer is depreciated over five years, a life unchanged in every filing across the decade.</p>
+<p>Price per wafer is set almost entirely by which node runs it. FY2025 wafer revenue split 24% at 3nm, 36% at 5nm, 14% at 7nm, 7% at 16nm and 7% at 28nm &mdash; everything at 7nm and below reaching 74% of wafer revenue, up from 58% in FY2023. By Q2 2026 that aggregate was 77%, with 2nm broken out for the first time at 3%.</p>
+<p>Packaging has changed character. It was a low-value back-end step, reclassified out of wafer revenue in 2017 (which is why the wafer share of revenue appears to fall from ~96% to ~89% that year without anything real happening). Advanced packaging &mdash; CoWoS, SoIC, InFO &mdash; is now a bottleneck rather than a commodity, taking 10&ndash;20% of the 2026 capital budget alongside testing and mask making. TSMC discloses neither its capacity nor its revenue contribution <b>(unknown)</b>.</p>
+
+<div class="chart">
+  <p class="ct">Revenue per 12-inch-equivalent wafer</p>
+  <p class="cs">NT$ thousand, FY2016&ndash;FY2025. Inferred from net revenue and wafer shipments as reported in each year&rsquo;s Form 20-F. Flat for six years, then the mix shift.</p>
+  <svg viewBox="0 0 900 330" role="img" aria-label="Revenue per 12-inch equivalent wafer, FY2016 to FY2025">
+<title>Revenue per 12-inch equivalent wafer, NT$ thousand</title>
+<line x1="68" y1="259.5" x2="832" y2="259.5" class="grid"/><text x="60" y="263.5" class="ax" text-anchor="end">100</text><line x1="68" y1="193.2" x2="832" y2="193.2" class="grid"/><text x="60" y="197.2" class="ax" text-anchor="end">150</text><line x1="68" y1="126.8" x2="832" y2="126.8" class="grid"/><text x="60" y="130.8" class="ax" text-anchor="end">200</text><line x1="68" y1="60.5" x2="832" y2="60.5" class="grid"/><text x="60" y="64.5" class="ax" text-anchor="end">250</text>
+<polyline points="68.0,261.2 152.9,268.1 237.8,264.9 322.7,251.1 407.6,248.9 492.4,243.6 577.3,195.3 662.2,153.2 747.1,94.7 832.0,55.8" fill="none" stroke="var(--terracotta)" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="68.0" cy="261.2" r="3.5" fill="var(--terracotta)"/><circle cx="152.9" cy="268.1" r="3.5" fill="var(--terracotta)"/><circle cx="237.8" cy="264.9" r="3.5" fill="var(--terracotta)"/><circle cx="322.7" cy="251.1" r="3.5" fill="var(--terracotta)"/><circle cx="407.6" cy="248.9" r="3.5" fill="var(--terracotta)"/><circle cx="492.4" cy="243.6" r="3.5" fill="var(--terracotta)"/><circle cx="577.3" cy="195.3" r="3.5" fill="var(--terracotta)"/><circle cx="662.2" cy="153.2" r="3.5" fill="var(--terracotta)"/><circle cx="747.1" cy="94.7" r="3.5" fill="var(--terracotta)"/><circle cx="832.0" cy="55.8" r="3.5" fill="var(--terracotta)"/>
+<text x="68.0" y="248.2" class="lbl t" text-anchor="start">98.7</text>
+<text x="832.0" y="42.8" class="lbl t" text-anchor="end">253.6</text>
+<text x="68.0" y="306" class="ax" text-anchor="middle">2016</text><text x="152.9" y="306" class="ax" text-anchor="middle">2017</text><text x="237.8" y="306" class="ax" text-anchor="middle">2018</text><text x="322.7" y="306" class="ax" text-anchor="middle">2019</text><text x="407.6" y="306" class="ax" text-anchor="middle">2020</text><text x="492.4" y="306" class="ax" text-anchor="middle">2021</text><text x="577.3" y="306" class="ax" text-anchor="middle">2022</text><text x="662.2" y="306" class="ax" text-anchor="middle">2023</text><text x="747.1" y="306" class="ax" text-anchor="middle">2024</text><text x="832.0" y="306" class="ax" text-anchor="middle">2025</text>
+</svg>
+</div>
+
+<h2>3 &middot; Industry, competitive position and moat</h2>
+<p>The foundry industry exists because the cost of a leading-edge fab rose faster than any single designer&rsquo;s volume. Independent Business Strategies estimated a 50,000-wafer-per-month 2nm fab at roughly US$28bn against about US$20bn at 3nm (a dated 2023 figure; no more recent independent estimate was found). SEMI projects US$133bn of 300mm fab equipment spending in 2026, rising to US$151bn in 2027. At that scale only a manufacturer aggregating demand from hundreds of designers keeps a fab full &mdash; and only a full fab earns a return.</p>
+<p>The industry is extraordinarily concentrated and became more so through 2025. TrendForce puts full-year 2025 top-ten foundry revenue at US$169.5bn, with TSMC at US$122.5bn and <b>69.9% share</b>, Samsung Foundry second at 7.2% on revenue that <i>fell</i> 3.9%, and SMIC third at 5.3%. Counterpoint reads TSMC at 73% in Q2 2026, and above 86% of foundry share at 5nm and below &mdash; though that figure is anchored on smartphone SoCs, and a clean all-segment leading-edge split by vendor could not be sourced <b>(unknown)</b>.</p>
+
+<h3>Where the profit pool sits</h3>
+<p>Ranking the value chain by most recent reported operating margin makes the structure legible. The instructive comparison is not TSMC against Nvidia &mdash; it is TSMC against the other foundries, running the same business model in the same quarter.</p>
+<div class="tw"><table>
+<caption>Operating margin by layer, most recent reported quarter</caption>
+<thead><tr><th>Layer</th><th class="n">Operating margin</th><th>Company and period</th></tr></thead>
+<tbody>
+<tr><td>Fabless &mdash; AI accelerator</td><td class="n">66.2%</td><td>Nvidia, quarter reported 27 Aug 2026</td></tr>
+<tr><td><b>Foundry &mdash; leading edge</b></td><td class="n"><b>60.3%</b></td><td><b>TSMC, Q2 2026</b></td></tr>
+<tr><td>Equipment</td><td class="n">33.7%</td><td>Applied Materials, Q3 FY2026</td></tr>
+<tr><td>Foundry &mdash; specialty</td><td class="n">21.8%</td><td>UMC, Q2 2026</td></tr>
+<tr><td>Assembly and test</td><td class="n">10.5%</td><td>Amkor, Q2 2026</td></tr>
+<tr><td>Foundry &mdash; mature</td><td class="n">9.7%</td><td>GlobalFoundries, Q2 2026</td></tr>
+<tr><td>Foundry &mdash; challenger</td><td class="n">&minus;36.2%</td><td>Intel Foundry, Q2 2026 (US$2.1bn loss)</td></tr>
+</tbody></table></div>
+<p class="note">ASML is omitted from this column because it guides on gross margin: 54.0% in Q2 2026 against 54&ndash;56% full-year guidance. TSMC&rsquo;s 60.3% against GlobalFoundries&rsquo; 9.7% is not a foundry rent &mdash; it is a leading-edge scarcity rent that one foundry currently collects.</p>
+
+<h3>Which barriers actually bind</h3>
+<p>Several barriers are merely expensive, and money solves them. Japan funded Rapidus with JPY 267.6bn from the state and 32 private companies toward 2nm production in 2027; the United States took a 9.9% equity stake in Intel for US$8.9bn. EUV tool access is binding but purchasable &mdash; ASML is raising Low-NA capacity 30% for 2027 and shipping roughly 65 units in 2026. The exception is China, where EUV is unavailable at any price, which is why SMIC remains capped at 7nm with a reported sub-20% yield on a 5nm-class pilot line.</p>
+<p>Two barriers money does not solve. <b>The first is yield learning.</b> Samsung&rsquo;s 2nm yield was reported by Korean media at roughly 55% against TSMC&rsquo;s 80&ndash;90% (April 2026), below the level analysts put at the threshold of profitability; TrendForce reported 55&ndash;60% in November 2025, and a February 2026 trade claim of 70% remains unconfirmed. Samsung has spent at scale for a decade and its foundry share still fell in 2025. Yield is accumulated defect-and-process learning against real production volume &mdash; and volume is exactly what a challenger cannot get until its yield is good. <b>The second is customer qualification.</b> Intel has 18A in production, a sovereign shareholder, and High-NA EUV before anyone else &mdash; and as of January 2026 had two prospective 14A customers and zero committed, with decisions running into 2027 and volume production not before 2028. A design win is a two-to-four-year commitment made against a yield history the challenger does not yet have.</p>
+
+<h3>TSMC&rsquo;s specific position</h3>
+<p>What would be hardest to reproduce is not any single asset but the compounding loop between them. FY2025 R&amp;D of NT$246.4bn was funded out of NT$2,275.0bn of operating cash flow, so process development is self-financing rather than a call on the balance sheet. That research produces the node that wins the design, the design brings the volume, the volume produces the yield data, and the yield funds the next node. <b>A challenger must enter this loop at its weakest point and fund the gap from elsewhere</b> &mdash; which is precisely what Intel Foundry&rsquo;s US$2.1bn quarterly operating loss represents.</p>
+
+<div class="pull">
+  <q>An important aspect of our business operation is an ecosystem of interconnected semiconductor fabs, employees and suppliers&hellip; we are able to temporarily reassign thousands of our engineers and other relevant personnel from one manufacturing site to another.</q>
+  <div class="a">FY2025 Form 20-F. TSMC flags this same flexibility as at risk in its overseas fabs &mdash; a fab in Arizona or Dresden cannot borrow engineers from Hsinchu.</div>
+</div>
+
+<p>A third asset emerged more recently: advanced packaging is now a second chokepoint alongside the transistor. TrendForce puts TSMC CoWoS capacity at 120,000&ndash;140,000 wafers per month in 2026 plus 50,000&ndash;60,000 from OSAT partners, with the supply&ndash;demand gap narrowing from roughly 20% to 10% by end-2026 and capacity rising a further 60% in 2027. CoWoS wafer ASPs are reported approaching 7nm levels. Controlling both the transistor and the package is materially stronger than controlling either alone.</p>
+<p><b>What could weaken it,</b> in order of speed. Samsung&rsquo;s 2nm yield could be independently confirmed above the profitability threshold, giving customers a second source &mdash; Tesla has already committed US$16.5bn to Samsung&rsquo;s Taylor, Texas fab. Intel could convert a 14A prospect into a signed commitment; a preliminary, unsigned Apple&ndash;Intel arrangement for entry-level M-series parts was reported in May 2026. And TSMC&rsquo;s own overseas expansion mechanically weakens the cluster advantage it depends on.</p>
+<p>The outside evidence answers what kind of company wins here, and it is not the best-capitalised one. Samsung has memory profits, Intel a sovereign shareholder, Rapidus has Tokyo; none has converted capital into leading-edge share. What separates the winner is yield at volume and the customer trust that yield history buys. TSMC is that kind of company &mdash; <b>which is also the warning, because the position is defended by an operating record rather than by a legal or physical barrier.</b></p>
+
+<h2>4 &middot; Growth engine</h2>
+<p>All of TSMC&rsquo;s growth over the past decade is organic. A review of all ten annual reports found no material acquisition in FY2016&ndash;FY2025. Goodwill has been effectively frozen for nine years &mdash; NT$6,105m in 2015, NT$5,791.8m of cost basis at end-2024 &mdash; and the only movement is attributed to exchange rates. JASM in Japan (2021) and ESMC in Germany (2023) were <i>established</i>, not acquired: TSMC is the controlling founder and Sony, DENSO, Bosch, Infineon and NXP bought minority stakes <i>into</i> TSMC&rsquo;s vehicles. That is inbound minority capital, not outbound M&amp;A. <b>Reported growth and organic growth are the same number.</b></p>
+<div class="tw"><table>
+<caption>Growth decomposition, FY2016 &rarr; FY2025</caption>
+<thead><tr><th>Component</th><th class="n">FY2016</th><th class="n">FY2025</th><th class="n">Multiple</th><th class="n">Share of growth</th></tr></thead>
+<tbody>
+<tr><td>Net revenue (NT$bn)</td><td class="n">947.9</td><td class="n">3,809.1</td><td class="n">4.02&times;</td><td class="n">100%</td></tr>
+<tr><td>Wafers shipped (thousand 12-inch eq.)</td><td class="n">9,606</td><td class="n">15,022</td><td class="n">1.56&times;</td><td class="n">32%</td></tr>
+<tr><td>Revenue per wafer (NT$ thousand)</td><td class="n">98.7</td><td class="n">253.6</td><td class="n">2.57&times;</td><td class="n">68%</td></tr>
+<tr><td>Revenue from acquisitions</td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="n">none</td><td class="n">0%</td></tr>
+</tbody></table></div>
+<p class="note">Revenue per wafer and the growth shares are inferred from reported revenue and shipments; shares are computed on a logarithmic basis. Packaging and testing revenue was reclassified out of wafer revenue in 2017, so FY2016 sits on a marginally different basis; direction and magnitude are unaffected. TSMC has never disclosed an absolute selling price per wafer <b>(unknown)</b>. The FY2022&ndash;FY2024 stretch makes the point starkly: shipments fell 15% while revenue rose 28%.</p>
+
+<h3>Drivers, ranked</h3>
+<div class="lever c"><div class="t">Cyclical in magnitude, structural in direction</div><div class="n">1 &middot; AI and high-performance computing demand</div><p>HPC contributed NT$716.0bn of FY2025&rsquo;s revenue increase, up 48% year over year, taking it to 58% of revenue from 43% in FY2023; by Q2 2026 it was 66% and grew 20% sequentially. An AI accelerator is a very large die on a leading-edge node inside an expensive package, so each unit consumes far more of a wafer than a phone processor. The demand behind it is guided hyperscaler capital expenditure of roughly US$660&ndash;690bn in 2026 &mdash; a budget decision by five buyers, not a structural constant.</p></div>
+<div class="lever g"><div class="t">Structural</div><div class="n">2 &middot; Node migration</div><p>Each transition raises the price of a wafer because the customer is buying transistor density, not silicon. Advanced technologies at 7nm and below went from 58% of wafer revenue in FY2023 to 74% in FY2025 and 77% in Q2 2026. This operates whether or not AI demand persists, so long as TSMC keeps process leadership &mdash; it is why revenue per wafer rose <i>through</i> the FY2023 downturn.</p></div>
+<div class="lever"><div class="t">Temporary, becoming structural</div><div class="n">3 &middot; Advanced packaging scarcity</div><p>CoWoS capacity is short of demand by roughly 20%, narrowing to 10% by end-2026, and packaging wafer ASPs are reported near 7nm levels. Scarcity rent decays as capacity arrives &mdash; 60% more in 2027 &mdash; but the capability itself is becoming a permanent part of the moat.</p></div>
+<div class="lever c"><div class="t">Cyclical</div><div class="n">4 &middot; Mature-node repricing</div><p>Running opposite to expectation. Rather than Chinese capacity deflating trailing-edge prices, TrendForce documents mature-node price increases of 5&ndash;15% between Q1 and Q2 2026 and a further 5&ndash;10% into Q3, driven by TSMC and Samsung cutting 8-inch and 12-inch mature capacity while AI power-management demand rises. A favourable turn in the segment that had been the drag.</p></div>
+<div class="lever a"><div class="t">Management-driven</div><div class="n">5 &middot; Geographic expansion</div><p>Arizona, Kumamoto and Dresden add capacity that customers and governments want, at a structurally higher cost. This driver adds revenue and subtracts margin &mdash; quantified in section 5.</p></div>
+<p>TSMC guided full-year 2026 revenue growth to &ldquo;slightly above 40% year over year in US dollar terms&rdquo; on the Q2 2026 call, raised from above 30% three months earlier. Monthly revenue supports it: July 2026 net revenue of NT$467.6bn was up 44.7% year over year, the fastest print in the series.</p>
+
+<h2>5 &middot; Margin, cash and capital allocation</h2>
+<p>The margin structure follows from owning the factories. In TSMC&rsquo;s own words, &ldquo;because we own most of our manufacturing capacities, a significant portion of our operating costs is fixed. In general, these costs do not decline when customer demand or our capacity utilisation rates drop.&rdquo; Depreciation and amortisation of NT$688.1bn in FY2025 was 18% of revenue and is largely insensitive to volume. <b>Operating leverage therefore runs hard in both directions:</b> gross margin was 46.0% in FY2019 and 67.7% in Q2 2026 on a cost base that changes far more slowly than revenue.</p>
+<p>Management attributes the FY2025 improvement to 59.9% from 56.1% to &ldquo;higher capacity utilisation and cost improvement, partially offset by unfavourable foreign exchange rate.&rdquo; Currency is first-order, not a footnote: TSMC quantifies that <b>every 1% depreciation of the US dollar against the New Taiwan dollar costs approximately 0.3 percentage points of operating margin</b>, because substantially all sales are in US dollars while a large part of the cost base is not.</p>
+<p>Operating expenses fell from 11.8% of revenue in FY2023 to 9.1% in FY2025, but this is denominator arithmetic rather than restraint. R&amp;D rose 20.7% in FY2025 to NT$246.4bn, directed at 10-, 14- and 16-angstrom research; it simply grew more slowly than a 31.6% revenue increase.</p>
+
+<div class="chart">
+  <p class="ct">Gross margin and HPC share of net revenue</p>
+  <p class="cs">Percent, FY2016&ndash;FY2025. Platform reporting began with the FY2019 filing, restated back to 2017; 2016 does not exist on this basis. The two lines converge because the same driver moves both.</p>
+  <svg viewBox="0 0 900 330" role="img" aria-label="Gross margin and HPC share of revenue, FY2016 to FY2025">
+<title>Gross margin and HPC share of net revenue, percent</title>
+<line x1="68" y1="235.6" x2="832" y2="235.6" class="grid"/><text x="60" y="239.6" class="ax" text-anchor="end">30%</text><line x1="68" y1="185.2" x2="832" y2="185.2" class="grid"/><text x="60" y="189.2" class="ax" text-anchor="end">40%</text><line x1="68" y1="134.8" x2="832" y2="134.8" class="grid"/><text x="60" y="138.8" class="ax" text-anchor="end">50%</text><line x1="68" y1="84.4" x2="832" y2="84.4" class="grid"/><text x="60" y="88.4" class="ax" text-anchor="end">60%</text><line x1="68" y1="34.0" x2="832" y2="34.0" class="grid"/><text x="60" y="38.0" class="ax" text-anchor="end">70%</text>
+<polyline points="68.0,134.3 152.9,131.8 237.8,143.4 322.7,155.0 407.6,119.2 492.4,126.7 577.3,86.4 662.2,112.6 747.1,104.1 832.0,84.9" fill="none" stroke="var(--terracotta)" stroke-width="2.6" stroke-linejoin="round"/>
+<polyline points="152.9,250.7 237.8,220.5 322.7,235.6 407.6,220.5 492.4,200.3 577.3,180.2 662.2,170.1 747.1,129.8 832.0,94.5" fill="none" stroke="var(--blue)" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="0"/>
+<circle cx="68.0" cy="134.3" r="3.2" fill="var(--terracotta)"/><circle cx="152.9" cy="131.8" r="3.2" fill="var(--terracotta)"/><circle cx="237.8" cy="143.4" r="3.2" fill="var(--terracotta)"/><circle cx="322.7" cy="155.0" r="3.2" fill="var(--terracotta)"/><circle cx="407.6" cy="119.2" r="3.2" fill="var(--terracotta)"/><circle cx="492.4" cy="126.7" r="3.2" fill="var(--terracotta)"/><circle cx="577.3" cy="86.4" r="3.2" fill="var(--terracotta)"/><circle cx="662.2" cy="112.6" r="3.2" fill="var(--terracotta)"/><circle cx="747.1" cy="104.1" r="3.2" fill="var(--terracotta)"/><circle cx="832.0" cy="84.9" r="3.2" fill="var(--terracotta)"/>
+<circle cx="152.9" cy="250.7" r="3.2" fill="var(--blue)"/><circle cx="237.8" cy="220.5" r="3.2" fill="var(--blue)"/><circle cx="322.7" cy="235.6" r="3.2" fill="var(--blue)"/><circle cx="407.6" cy="220.5" r="3.2" fill="var(--blue)"/><circle cx="492.4" cy="200.3" r="3.2" fill="var(--blue)"/><circle cx="577.3" cy="180.2" r="3.2" fill="var(--blue)"/><circle cx="662.2" cy="170.1" r="3.2" fill="var(--blue)"/><circle cx="747.1" cy="129.8" r="3.2" fill="var(--blue)"/><circle cx="832.0" cy="94.5" r="3.2" fill="var(--blue)"/>
+<text x="68.0" y="121.3" class="lbl t" text-anchor="start">Gross margin 50.1%</text>
+<text x="832.0" y="71.9" class="lbl t" text-anchor="end">59.9%</text>
+<text x="152.9" y="270.7" class="lbl b" text-anchor="start">HPC share 27%</text>
+<text x="832.0" y="115.5" class="lbl b" text-anchor="end">58%</text>
+<text x="68.0" y="306" class="ax" text-anchor="middle">2016</text><text x="152.9" y="306" class="ax" text-anchor="middle">2017</text><text x="237.8" y="306" class="ax" text-anchor="middle">2018</text><text x="322.7" y="306" class="ax" text-anchor="middle">2019</text><text x="407.6" y="306" class="ax" text-anchor="middle">2020</text><text x="492.4" y="306" class="ax" text-anchor="middle">2021</text><text x="577.3" y="306" class="ax" text-anchor="middle">2022</text><text x="662.2" y="306" class="ax" text-anchor="middle">2023</text><text x="747.1" y="306" class="ax" text-anchor="middle">2024</text><text x="832.0" y="306" class="ax" text-anchor="middle">2025</text>
+</svg>
+</div>
+
+<div class="tw"><table>
+<caption>The financial spine &mdash; years chosen to show the shape of the change</caption>
+<thead><tr><th></th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2023</th><th class="n">FY2025</th></tr></thead>
+<tbody>
+<tr><td>Net revenue (NT$bn)</td><td class="n">947.9</td><td class="n">1,339.3</td><td class="n">2,161.7</td><td class="n">3,809.1</td></tr>
+<tr><td>Wafers shipped (thousand 12-inch eq.)</td><td class="n">9,606</td><td class="n">12,398</td><td class="n">12,002</td><td class="n">15,022</td></tr>
+<tr><td>Revenue per wafer (NT$ thousand, inferred)</td><td class="n">98.7</td><td class="n">108.0</td><td class="n">180.1</td><td class="n">253.6</td></tr>
+<tr><td>Gross margin</td><td class="n">50.1%</td><td class="n">53.1%</td><td class="n">54.4%</td><td class="n">59.9%</td></tr>
+<tr><td>Capital expenditure (NT$bn)</td><td class="n">328.0</td><td class="n">507.2</td><td class="n">949.8</td><td class="n">1,272.4</td></tr>
+<tr><td>Capex as % of net revenue</td><td class="n">34.6%</td><td class="n">37.9%</td><td class="n">43.9%</td><td class="n">33.4%</td></tr>
+</tbody></table></div>
+<p class="note"><b>Comparability:</b> packaging and testing revenue was reclassified out of wafer revenue in 2017, so FY2016 revenue per wafer sits on a marginally different basis. TSMC redefined &ldquo;advanced technologies&rdquo; twice over this period (28nm-and-below through FY2018, 16nm-and-below in FY2019&ndash;FY2020, 7nm-and-below thereafter), so that ratio is not continuous and is excluded here. IFRS 16 was adopted in 2019. Headline revenue, gross profit, operating income and net income cross-check cleanly across filings with no restatement.</p>
+<p>The table shows a business that got more capital-hungry through the 5nm and 3nm build-out and is now, briefly, growing faster than its capital budget. That reversal is unlikely to persist: TSMC raised its FY2026 capital budget to <b>US$60&ndash;64bn</b> on the Q2 2026 call, from the US$52&ndash;56bn stated in the FY2025 20-F. Against guided revenue growth slightly above 40%, capital intensity rises again in 2026 &mdash; and the depreciation from that spending arrives over the following five years.</p>
+<p><b>Cash conversion is unusually clean</b> for a capital-intensive manufacturer. FY2025 operating cash flow of NT$2,275.0bn against net income of NT$1,697.6bn reflects the large non-cash depreciation charge; capex of NT$1,272.4bn leaves roughly NT$1,002.6bn of free cash flow (inferred). Working capital is not a drag: receivables ran at 29 days and inventory at 87 days in Q2 2026, and customers advance cash. The balance sheet carries net cash &mdash; NT$3,068.6bn of cash and securities at end-FY2025 against NT$1,033.0bn of long-term debt, rising to about US$110bn by Q2 2026.</p>
+
+<div class="tw"><table>
+<caption>Where the cash went, FY2023&ndash;FY2025 cumulative</caption>
+<thead><tr><th>Use of cash</th><th class="n">NT$bn</th><th class="n">Share</th><th>Direction</th></tr></thead>
+<tbody>
+<tr><td>Capital expenditure</td><td class="n">3,178.2</td><td class="n">74%</td><td>Rising &mdash; FY2026 guided to US$60&ndash;64bn</td></tr>
+<tr><td>Cash dividends paid</td><td class="n">1,121.6</td><td class="n">26%</td><td>Rising &mdash; NT$4.50 to NT$7.00 per quarter over six quarters</td></tr>
+<tr><td>Share repurchases</td><td class="n">3.1</td><td class="n">0.1%</td><td>One purchase in 2024; shares cancelled</td></tr>
+<tr><td>Government grants received</td><td class="n">(199.0)</td><td class="n">&mdash;</td><td>An offset, not a use &mdash; NT$76.3bn in FY2025 alone</td></tr>
+</tbody></table></div>
+<p>The ranking tells you how management thinks, and two constraints shape it. Allocation is overwhelmingly reinvestment, and the dividend has become a genuine second claim &mdash; up 55.6% over six quarters, reaching NT$181.5bn for Q1 2026. Buybacks are effectively unavailable: the ROC Company Act restricts repurchases and the CHIPS Act funding agreement adds a five-year restriction. <b>Government grants are material and easy to overlook</b> &mdash; NT$76.3bn received in FY2025 from the United States, Germany, Japan and China, roughly 6% of that year&rsquo;s capital expenditure.</p>
+<p><b>Post-dating the reported figures:</b> the FY2026 capital budget was raised to US$60&ndash;64bn (70&ndash;80% to advanced process, 10&ndash;20% to packaging, testing and masks); in August 2026 TSMC signed a binding agreement with Sony to establish an advanced image-sensor venture in Kumamoto with production from 2029, Sony contributing roughly JPY 465bn and consolidating it, TSMC roughly JPY 282bn phased by demand; and TSMC Arizona&rsquo;s board resolved a capital increase of up to US$20bn from the parent in May 2026. None of these appear in the FY2025 figures.</p>
+
+<h2>6 &middot; Cyclicality, constraints and what to monitor</h2>
+<p><b>TSMC is at, or above, its own prior cyclical peak on every dimension that matters.</b> Gross margin of 67.7% in Q2 2026 exceeds the previous decade peak of 59.6% in FY2022 and sits 21.7 points above the FY2019 trough of 46.0%. Revenue per wafer is an all-time high at 2.57 times the FY2016 level. Wafer shipments of 15,022 thousand in FY2025 only marginally approached the FY2022 record of 15,253 thousand &mdash; volume is near, not above, prior peak. A record margin at a peak and a record margin at a trough are opposite facts, and this is unambiguously the former.</p>
+<p>What makes 2026 unusual is that there is no single semiconductor cycle. Three run in different directions at once, and TSMC touches all three.</p>
+<div class="card">
+<p><b>Leading edge &mdash; supply-constrained peak.</b> TSMC&rsquo;s 5nm-and-below capacity is reported fully utilised through end-2026 with price increases taken across those nodes. Packaging is tighter still; TSMC&rsquo;s CEO said on the Q2 2026 call that packaging capacity is limiting customers&rsquo; growth.</p>
+<p><b>Mature nodes &mdash; mid-recovery, not peak.</b> Eight-inch utilisation across the top ten foundries reached 88% heading toward 90%, with three rounds of price increases documented. UMC ran at 85% in Q2 2026. Automotive and industrial demand, weak for two years, has turned: STMicroelectronics reported automotive up 16% and industrial up 34% year over year in Q2 2026.</p>
+<p style="margin-bottom:0"><b>Smartphones &mdash; record unit contraction.</b> IDC forecasts 2026 shipments just above 1 billion units, down 16.7%, the steepest annual decline on record &mdash; caused not by demand but by NAND and DRAM costs up more than 300% year over year, with the sub-US$100 segment being eliminated. Market value still rises 6.3% on a US$581 average selling price. For TSMC this is a units-down, mix-up market: bad for mature-node volume, closer to neutral for leading-edge SoC wafers. It is also an unexpected transmission channel, in which the AI boom damages TSMC&rsquo;s second-largest end market through a segment TSMC does not serve.</p>
+</div>
+
+<div class="tw"><table>
+<caption>End-market exposure, % of net revenue</caption>
+<thead><tr><th>Platform</th><th class="n">FY2017</th><th class="n">FY2023</th><th class="n">FY2025</th><th class="n">Q2 2026</th></tr></thead>
+<tbody>
+<tr><td>High Performance Computing</td><td class="n">27%</td><td class="n">43%</td><td class="n">58%</td><td class="n">66%</td></tr>
+<tr><td>Smartphone</td><td class="n">52%</td><td class="n">38%</td><td class="n">29%</td><td class="n">22%</td></tr>
+<tr><td>Internet of Things</td><td class="n">5%</td><td class="n">8%</td><td class="n">5%</td><td class="n">5%</td></tr>
+<tr><td>Automotive</td><td class="n">5%</td><td class="n">6%</td><td class="n">5%</td><td class="n">4%</td></tr>
+<tr><td>Digital Consumer Electronics</td><td class="n">6%</td><td class="n">2%</td><td class="n">1%</td><td class="n">1%</td></tr>
+<tr><td>Other</td><td class="n">5%</td><td class="n">3%</td><td class="n">2%</td><td class="n">2%</td></tr>
+</tbody></table></div>
+<p class="note">In nine years HPC and Smartphone have exactly swapped places. Geographic concentration moved the same way: North American customers were 68% of revenue in FY2023 and 78% in Q2 2026.</p>
+
+<h3>The downside mechanism</h3>
+<p>A downturn arrives through fixed costs meeting a five-year depreciation schedule. TSMC will spend US$60&ndash;64bn in 2026, most of it on equipment depreciated over five years. That charge lands regardless of utilisation. If accelerator orders pause &mdash; and the demand behind them is the capital budget of roughly five buyers, not a diversified end market &mdash; revenue falls against a cost base that had just stepped up. <b>FY2019 is the template:</b> revenue grew 3.6% while gross margin fell 2.3 points and operating margin fell 2.4 points, because the fixed base had been built for a volume that did not arrive.</p>
+<p>Two near-term headwinds are already disclosed and are not cyclical. TSMC guides overseas-fab dilution of &ldquo;2% to 3% in the early stages&rdquo; widening &ldquo;to 3% to 4% in the latter stages,&rdquo; plus roughly 3&ndash;4 points of dilution in the second half of 2026 from the steep N2 ramp. Against a stated long-term expectation of &ldquo;56% and higher through the cycle,&rdquo; the Q2 2026 result of 67.7% carries about eleven points of cushion &mdash; some of which management has already said it intends to spend.</p>
+<p>Physical constraints are real but so far modest: a Q1 2025 earthquake cost NT$5.3bn net of insurance, following NT$3bn in Q2 2024. Utility costs are flagged qualitatively with no quantified impact <b>(unknown)</b>. TSMC no longer discloses capacity utilisation; the last published figure was 94% in the FY2020 20-F, and that disclosure was withdrawn rather than merely absent.</p>
+
+<div class="two">
+  <div class="card d"><h4>Durable &mdash; survives ten years</h4><ul>
+    <li>Leading-edge yield learning compounded from volume no competitor has</li>
+    <li>Customer trust from never competing with customers</li>
+    <li>Taiwan cluster density and cross-fab engineer redeployment</li>
+    <li>Self-funding R&amp;D: NT$246.4bn out of NT$2,275.0bn operating cash flow</li>
+    <li>Combined transistor and advanced-packaging capability</li>
+  </ul></div>
+  <div class="card b"><h4>Borrowed &mdash; currently helping</h4><ul>
+    <li>AI capex from roughly five hyperscalers, guided at US$660&ndash;690bn in 2026</li>
+    <li>CoWoS scarcity rent, with the gap closing from 20% to 10% by end-2026</li>
+    <li>Mature-node price increases driven by industry capacity cuts</li>
+    <li>Government grants of NT$76.3bn in FY2025, roughly 6% of capex</li>
+    <li>The absence of a qualified second source at 2nm</li>
+  </ul></div>
+</div>
+
+<div class="tw"><table>
+<caption>Leading indicators and where they are published</caption>
+<thead><tr><th>What to watch</th><th>Where it is published</th></tr></thead>
+<tbody>
+<tr><td>Monthly net revenue and its year-over-year rate</td><td>TSMC Form 6-K, around the 10th of each month</td></tr>
+<tr><td>Gross margin against the &ldquo;56% and higher&rdquo; through-cycle statement</td><td>TSMC quarterly earnings release and call</td></tr>
+<tr><td>2nm share of wafer revenue (3% in Q2 2026)</td><td>TSMC quarterly earnings release</td></tr>
+<tr><td>Capital budget revisions and the packaging allocation</td><td>TSMC quarterly earnings call</td></tr>
+<tr><td>Top-two customer concentration (36% in FY2025)</td><td>TSMC Form 20-F, Item 3 and financial statement notes</td></tr>
+<tr><td>Hyperscaler capital expenditure guidance</td><td>Amazon, Alphabet, Microsoft, Meta, Oracle quarterly reporting</td></tr>
+<tr><td>EUV unit shipments, bookings and China share</td><td>ASML quarterly results and earnings call</td></tr>
+<tr><td>Samsung 2nm yield; Intel 14A customer commitments</td><td>Company disclosures; Korean and trade press</td></tr>
+<tr><td>CoWoS supply&ndash;demand gap and mature-node pricing</td><td>TrendForce press releases</td></tr>
+<tr><td>Taiwan&rsquo;s N-1 overseas technology rule</td><td>Taiwan Ministry of Economic Affairs</td></tr>
+<tr><td>Section 232 Phase 2 semiconductor tariffs</td><td>US Federal Register and Commerce Department</td></tr>
+</tbody></table></div>
+
+<h2>7 &middot; Risks, unknowns and questions for deeper work</h2>
+<p>Cyclicality is covered above. What follows is what cyclicality does not capture, ordered by how badly each would compound with the others.</p>
+<ul class="body">
+<li><b>Customer concentration is tightening at the point of maximum operating leverage.</b> The ten largest customers were 78% of FY2025 revenue, up from 70% two years earlier; the largest was 19% and the second 17%, so two customers are 36% of the company. HPC reached 66% of revenue in Q2 2026. TSMC names the mechanism itself: system companies designing their own semiconductors mean &ldquo;shifting business models could lead to significant variations in our sales if the growth of their products and services, particularly in the AI sector, is volatile or not sustainable.&rdquo; A single hyperscaler moving an accelerator programme in-house, or pausing one, removes wafer volume the fixed cost base cannot follow.</li>
+<li><b>Geographic concentration cannot be diversified away on any relevant timescale.</b> Nine of sixteen fabs plus headquarters and process R&amp;D sit in three Taiwanese science parks. The mitigation &mdash; Arizona, Kumamoto, Dresden &mdash; takes a decade and arrives at a worse cost structure, and Taiwan&rsquo;s own policy may cap what technology can leave.</li>
+<li><b>Export-control liability is structural, not procedural.</b> TSMC states its position in the supply chain &ldquo;inherently limits our visibility into the downstream use or user of final products,&rdquo; and disclosed that in October 2024 it notified US and Taiwan authorities that a customer chip it manufactured &ldquo;might have been diverted to a restricted entity.&rdquo; A foundry cannot verify end use it never sees, so this exposure recurs with every customer rather than resolving once.</li>
+<li><b>Overseas margin dilution is permanent rather than transitional.</b> Management guides 2&ndash;3 points early, widening to 3&ndash;4 later. The widening is the tell: as Arizona scales from one fab to three, Japan from one to two, and Dresden comes online, the higher-cost base grows as a share of the whole. This is not a ramp cost that amortises away.</li>
+<li><b>Government support carries conditions that constrain capital allocation.</b> Against NT$76.3bn of FY2025 grants, up to US$6.6bn of CHIPS direct funding, up to US$5bn of US loans and up to EUR5bn of German state aid, TSMC guarantees TSMC Arizona&rsquo;s obligations to the Commerce Department, accepted a five-year buyback restriction, and flags &ldquo;non-receipt, delay and potential clawbacks&rdquo; in its own risk factors. The subsidy is real; so is the loss of freedom.</li>
+<li><b>Antitrust and political scrutiny scale with success.</b> TSMC writes that &ldquo;with our success in the foundry business and the increasing criticism on the concentration of the semiconductor industry and sometimes directly on us, we are subject to heightened risks of antitrust investigations.&rdquo; At 70%-plus of foundry revenue this is slow-moving but one-directional.</li>
+<li><b>A live ITC patent action could reach exclusion orders.</b> Longitude Licensing and Marlin Semiconductor filed complaints in February 2025 alleging that TSMC and its customers infringe five US patents; the ITC instituted an investigation on 21 March 2025 and the parallel Texas case is stayed. TSMC states the outcome cannot be determined and no reliable estimate of liability can be made. The ITC&rsquo;s remedy is import exclusion, which reaches customers rather than only damages.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<ul class="body">
+<li>TSMC has never disclosed an absolute selling price or revenue per wafer &mdash; every such figure here is inferred from reported revenue and shipments.</li>
+<li>Capacity utilisation is no longer disclosed; the last figure was 94% in the FY2020 20-F.</li>
+<li>No CoWoS or advanced-packaging capacity, revenue contribution, or dedicated capital allocation is disclosed. Everything on packaging capacity above comes from TrendForce, not from TSMC.</li>
+<li>Total committed investment in Arizona and JASM does not appear in the FY2025 20-F; the widely cited US$165bn and US$265bn Arizona figures could not be traced to a TSMC filing.</li>
+<li>The operative state of Taiwan&rsquo;s N-1 overseas technology rule could not be established &mdash; three sources conflict, none newer than April 2025. It determines whether an overseas fab can ever run the leading node.</li>
+<li>A16 timing is contradictory: TSMC said volume production was on track for the second half of 2026 on its Q4 2025 call, while trade press from the April 2026 symposium put the ramp in 2027. TSMC addressed A16 on neither the Q1 nor Q2 2026 call.</li>
+<li>Samsung Foundry&rsquo;s standalone profitability is not disclosed by Samsung, and no all-segment leading-edge share split by vendor could be sourced.</li>
+<li>The research folder contains no quarterly earnings release after Q1 2020; all Q1 and Q2 2026 figures here come from TSMC&rsquo;s investor relations site rather than the archive.</li>
+</ul>
+<p><b>Three questions before forming a thesis.</b> How much of HPC revenue is training capacity built ahead of monetised demand &mdash; answerable only from the hyperscalers&rsquo; own disclosures. What gross margin looks like at trough utilisation with FY2026 capex fully in the depreciation base &mdash; a question the 56%-and-higher statement answers only in management&rsquo;s words. And whether the Taiwan concentration is priced as a risk or as a certainty.</p>
+
+<h2>8 &middot; Investor takeaways</h2>
+<ul class="body">
+<li><b>What this business really is:</b> a toll on the leading edge of transistor manufacturing, collected one wafer at a time, from customers who have no qualified alternative at 2nm.</li>
+<li><b>The economic engine:</b> revenue per wafer, not wafers. Volume grew 1.56&times; over the decade while price and mix grew 2.57&times; &mdash; and that mix runs through a largely fixed cost base.</li>
+<li><b>The main growth lever:</b> AI and high-performance computing, now 66% of quarterly revenue, resting on the capital budgets of roughly five buyers.</li>
+<li><b>What could break the story:</b> not a competitor arriving, but the same fixed-cost leverage running backwards &mdash; US$60&ndash;64bn of capex depreciated over five years, meeting a pause in accelerator orders. Concentration in two customers and one island compounds it.</li>
+<li><b>What to monitor:</b> gross margin against the 56%-and-higher through-cycle statement, the 2nm share of wafer revenue, and hyperscaler capital expenditure guidance &mdash; the last of which moves first.</li>
+</ul>
+
+<div class="foot">
+<h3>Sources</h3>
+<p><b>Research folder (source of truth for the company):</b> TSMC Form 20-F annual reports FY2016 through FY2025 (the latest filed 16 April 2026), and 434 Form 6-K filings including monthly revenue releases through July 2026, board resolutions, and dividend declarations. Note that the folder contains no quarterly earnings press release after Q1 2020.</p>
+<p><b>TSMC primary disclosures beyond the folder:</b> Q1 2026 and Q2 2026 earnings releases, management reports and earnings call transcripts (investor.tsmc.com), and the Q4 2025 earnings call transcript.</p>
+<p><b>Independent industry sources:</b> TrendForce (foundry share, mature-node pricing, CoWoS capacity, Samsung yield); Counterpoint Research (quarterly foundry share, advanced-node penetration); SIA and WSTS (industry revenue); SEMI (fab equipment spending); IDC (smartphone shipments); IBS via Tom&rsquo;s Hardware (fab cost).</p>
+<p><b>Competitors&rsquo; and suppliers&rsquo; own reporting:</b> Nvidia, Intel, Samsung Electronics, SMIC, GlobalFoundries, UMC, ASML, Applied Materials, Amkor, STMicroelectronics, Rapidus. Policy sources: US Bureau of Industry and Security, NIST CHIPS Program Office.</p>
+<p style="margin-top:16px"><b>Post-dating the reported figures:</b> the FY2026 capital budget raised to US$60&ndash;64bn (16 July 2026); the binding Sony image-sensor joint venture agreement (11 August 2026); and the TSMC Arizona capital increase of up to US$20bn (12 May 2026). None is reflected in the FY2025 financial statements.</p>
+<p style="margin-top:16px;font-style:italic">Figures marked inferred are computed from two or more reported figures and are not themselves disclosed. Figures marked unknown could not be established from any source in scope. This document is not a valuation and not a recommendation.</p>
+</div>
+
+</div>
+</body>
+</html>

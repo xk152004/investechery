@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview: PDD Holdings (Nasdaq: PDD)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font:19px/1.58 Calibri,'Segoe UI',Arial,sans-serif;}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;margin:0}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:8px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.45;border-left:5px solid var(--terracotta);
+  padding:4px 0 4px 22px;margin:30px 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:30px 0 34px}
+.engine .lbl{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#B8AE9E;font-weight:700;margin-bottom:8px}
+.engine .unit{font-family:Georgia,serif;font-size:30px;line-height:1.2;margin-bottom:10px}
+.engine p{margin:0;font-size:17.5px;color:#EDE6DA}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 40px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px}
+.kpi .k{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.kpi .v{font-family:Georgia,serif;font-size:26px;color:var(--terracotta);line-height:1.15;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.kpi .s{font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.35}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:15px 18px;margin:11px 0}
+.lever.structural{border-left-color:var(--good)} .lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)} .lever.mgmt .tag{color:var(--gold)} .lever.cyclical .tag{color:var(--blue)}
+.lever .nm{font-weight:700;margin:3px 0 4px;font-size:19px}
+.lever p{margin:0;font-size:17px}
+.quote{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0}
+.quote blockquote{margin:0;font-family:Georgia,serif;font-size:21px;line-height:1.42}
+.quote cite{display:block;margin-top:10px;font-style:normal;font-size:14px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.two h4{margin:0 0 10px;font-family:Georgia,serif;font-size:18px}
+.two ul{margin:0;padding-left:18px} .two li{margin-bottom:9px;font-size:16.5px;line-height:1.42}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#F2EDE3;font-weight:700;font-size:14.5px;letter-spacing:.02em}
+td.n,th.n{text-align:right;white-space:nowrap}
+caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:13.5px;padding-top:9px;line-height:1.45}
+figure{margin:26px 0}
+figcaption{color:var(--muted);font-size:13.5px;margin-top:8px;line-height:1.45}
+svg{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+.chartttl{font-family:Georgia,serif;font-weight:700;font-size:18px;margin-bottom:8px}
+.foot{border-top:1px solid var(--line);margin-top:52px;padding-top:22px;color:var(--muted);font-size:14.5px}
+.foot h3{font-size:16px;margin:0 0 10px;color:var(--ink)}
+.foot ul{padding-left:18px;margin:0 0 14px} .foot li{margin-bottom:5px}
+.unk{color:var(--muted);font-style:italic}
+@media (max-width:680px){
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  h1{font-size:31px} h2{font-size:23px} body{font-size:17.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>PDD Holdings Inc. <span style="color:var(--muted);font-weight:400">(Nasdaq: PDD)</span></h1>
+<p class="srcline">7 September 2026 &middot; Built from PDD's Forms 20-F for FY2018&ndash;FY2025 (the FY2025 report filed 29 April 2026) and Form 6-K earnings releases through the quarter ended 30 June 2026, with independent industry, regulatory and competitor sources cited in place. <strong>This is not a valuation and not a recommendation.</strong></p>
+
+<div class="restate">PDD is a toll on Chinese manufacturing overcapacity. It sells 16.8&nbsp;million small producers access to consumer demand, owns none of the goods and none of the infrastructure, and keeps roughly a fifth of the revenue it books as operating profit.</div>
+
+<div class="engine">
+  <div class="lbl">The unit of economics</div>
+  <div class="unit">One active merchant.</div>
+  <p>PDD's own filings disclose exactly two operating metrics, and both are per-merchant. In FY2025 there were 16.8&nbsp;million active merchants, each paying PDD <strong>RMB25,705</strong> a year &mdash; RMB12,742 of it transaction-service fees, the rest advertising &mdash; and leaving behind roughly <strong>RMB5,542 of operating profit</strong>. There is no disclosed GMV, no user count, and no geographic split with which to check any of it.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Revenue per merchant</div><div class="v">RMB25,705</div><div class="s">FY2025, +3.1% YoY</div></div>
+  <div class="kpi"><div class="k">Operating profit per merchant</div><div class="v">RMB5,542</div><div class="s">FY2025, &minus;19% YoY (calculated)</div></div>
+  <div class="kpi"><div class="k">Net income</div><div class="v">RMB97.8bn</div><div class="s">FY2025, &minus;13% YoY</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">Zero debt</div><div class="s">RMB422.3bn cash and short-term investments at YE2025</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">+8%</div><div class="s">Revenue growth, Q2&nbsp;2026 &mdash; the lowest of its public life, against a +59% peak in FY2024</div></div>
+  <div class="kpi"><div class="k">Organic vs reported</div><div class="v">Identical</div><div class="s">+9.7% FY2025. No acquisitions in eight years</div></div>
+</div>
+
+<h2>What the company does</h2>
+<p>China manufactures far more consumer goods than its consumers absorb, and the surplus sits with small, unbranded producers who have no route to buyers and no budget for conventional distribution. PDD builds the demand side &mdash; a consumer app organised around low prices and gamified discovery rather than search &mdash; and sells access to it. Two platforms run on that logic: Pinduoduo in China since 2015, and Temu, launched in Boston in September 2022 and now serving markets including the United States, Japan, Germany, the United Kingdom, France, Canada and Italy.</p>
+
+<p>Follow one merchant through a year. It opens an account and posts a consumer-protection deposit; merchant deposits totalled RMB17.7bn at the end of FY2025. To be seen at all it prepays into an advertising balance and bids for placement, which PDD recognises as revenue when a consumer views or clicks &mdash; holding the cash in the meantime. When a sale completes, PDD charges a fee for the transaction and fulfilment services it arranged. Critically, PDD states it does not control the products at any point, so it books revenue <em>net</em>, as an agent. Consumer money lands with PDD first and is released to the merchant later: payable to merchants was RMB107.4bn at 31 December 2025.</p>
+
+<p>That float is not incidental &mdash; it is the working-capital model. RMB125.1bn of merchant payables and deposits funds the cycle at no cost and grows with volume, which is why operating cash flow was 1.09&times; net income in FY2025 and again in FY2024.</p>
+
+<p>PDD tried owning goods once. A first-party merchandise line reached RMB7,246.1m of revenue in 2021, collapsed to RMB209.2m in 2022, and was eliminated as a reported line from the FY2023 annual report. First-party sales carry inventory, working capital and a gross margin in the low twenties; the marketplace fee stream carries none of the three.</p>
+
+<div class="quote">
+  <blockquote>&ldquo;As substantially all of the Group's long-lived assets are located in the PRC, and substantially all of the Group's revenues are derived from within the PRC, no geographical segments are presented.&rdquo;</blockquote>
+  <cite>PDD Holdings, FY2025 Form 20-F, Note 2(w). The characterisation rests on merchants being Chinese, not consumers. It is how a business selling into seven-plus countries reports no international revenue at all.</cite>
+</div>
+
+<h2>Industry, competitive position and moat</h2>
+<p>Chinese e-commerce marketplaces sell attention, not merchandise. The profit pool sits in the advertising and commission layer, which is close to costless once traffic exists, and it is thin everywhere else &mdash; logistics is a utility, payment a toll, and merchants absorb the price competition. The structure is a contest for the top of the funnel; everything downstream is a cost centre somebody has to carry.</p>
+
+<p>The domestic market has stopped growing as a category. China's online retail of physical goods reached RMB13,092.3bn in 2025, up 5.2%, against total retail of RMB50,120.2bn &mdash; penetration of 26.1%. In the first half of 2026 total retail grew 1.3% and online physical goods 4.8%, leaving penetration at roughly 25.8% (National Bureau of Statistics). CNNIC counts 937 million online shoppers to December 2025, 83.2% of all Chinese internet users. There are no new buyers left to add, which makes share a zero-sum contest.</p>
+
+<h3>The industry's central metric is no longer disclosed by anyone</h3>
+<p>Take rate &mdash; monetisation revenue over gross merchandise value &mdash; is how these businesses are conventionally judged, and it can no longer be computed for any major Chinese platform. Alibaba defines the metric in its FY2026 Form 20-F but publishes no GMV. JD publishes none. PDD last disclosed GMV for FY2020 (RMB1,667.6bn); the FY2021 20-F was the last to report GMV, annual active buyers (868.7 million) and monthly active users (733.4 million). <span class="unk">Every take-rate figure in circulation for PDD rests on an estimated denominator and belongs in no investment case.</span> That the whole industry withdrew the disclosure as competition intensified is itself the finding.</p>
+
+<h3>Which barriers actually bind</h3>
+<p>Two pieces of outside evidence show marketplace position in China is weaker than it looks. First, merchant multi-homing. In April 2021 SAMR fined Alibaba RMB18.228bn &mdash; 4% of its 2019 China turnover &mdash; for requiring merchants not to open stores on rival platforms. The conduct only makes sense if merchants would otherwise list everywhere, and the remedy made multi-homing permanent; the Anti-Unfair Competition Law amended with effect from 15 October 2025 goes further, barring platforms from forcing merchants to sell below cost. A platform cannot durably raise its take on merchants who can list elsewhere for free.</p>
+
+<p>Second, Douyin. A white paper issued jointly by SAMR's Development Research Centre and the Chinese Academy of Social Sciences on 17 March 2026 puts 2025 livestream e-commerce GMV above RMB5 trillion &mdash; close to a third of national online retail &mdash; and credits content commerce with roughly 80% of the industry's incremental growth. ByteDance built that from nothing in under six years. No incumbent's merchant base, logistics network or payment rails slowed it, because entry happened one layer upstream, where consumer attention is created. Marketplace scale did not defend against an attack on the demand side &mdash; and PDD's own position was built the same way.</p>
+
+<h3>What competitors' economics show</h3>
+<p>Through the 2025&ndash;26 instant-commerce subsidy war, the asset-heavy operators destroyed most of their profitability while PDD kept the large majority of its own. The causal reading matters: PDD outperformed because it had no delivery network to defend and therefore no obligation to enter the war, not because it repelled an attack. Fixed assets were the liability &mdash; they compelled a defence of delivery while supplying no pricing power when a content platform came for the demand side.</p>
+
+<div class="scroll">
+<table>
+<caption>Sources: PDD FY2025 20-F and Q2 2026 6-K; Alibaba FY2026 results (year to 31 March 2026) and June-quarter 2026 6-K; JD.com FY2025 and Q2 2026 results; Meituan FY2025 annual results (press-reported). Segment definitions differ between companies and Alibaba restated its segments during FY2026, so the comparison is directional on margin level, not like-for-like.</caption>
+<thead><tr><th>Most recent full year</th><th class="n">Operating margin</th><th>What happened</th></tr></thead>
+<tbody>
+<tr><td><strong>PDD Holdings</strong> FY2025</td><td class="n">21.6%</td><td>Down from 27.5%; 24.7% in the June 2026 quarter. Did not enter the subsidy war</td></tr>
+<tr><td><strong>Alibaba</strong> FY2026</td><td class="n">&mdash;</td><td>China e-commerce adjusted EBITA RMB107,509m, &minus;44% YoY; group free cash flow negative RMB46,609m</td></tr>
+<tr><td><strong>JD.com</strong> FY2025</td><td class="n">0.2%</td><td>Down from 3.3%. New Businesses lost RMB46.6bn, despite owning China's deepest fulfilment network</td></tr>
+<tr><td><strong>Meituan</strong> FY2025</td><td class="n">negative</td><td>Net loss of RMB23.4bn (press-reported from the annual results announcement)</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>The cross-border set now has a filed comparable</h3>
+<p>Temu's competitive field looks worse than the domestic one, and Shein's Hong Kong listing on 1 September 2026 finally put audited numbers on the China-direct model. Shein disclosed 2025 revenue of $41.8bn, up 8%, with net income of $2.064bn against $3.365bn in 2024 &mdash; then a net loss of $99m in the first quarter of 2026 with US revenue down 14.3%. A China-direct operator went from an 8.7% net margin to a loss in four quarters <em>while revenue was still growing</em>. Alibaba's AliExpress reached operating profit for the first time in the June 2026 quarter, explicitly on logistics optimisation and a rising share of local supply &mdash; but did so with international e-commerce revenue down 1%. Amazon has expanded Haul to more than six million items under $10 and discloses none of its economics; the point that matters is that Haul is funded by a North American segment earning roughly 8% operating margins, and Temu's equivalent is not.</p>
+
+<p>Essentially no one earns a durable profit in cross-border discount commerce at scale. Where profit has appeared, it arrived alongside growth stopping.</p>
+
+<h3>What kind of company wins here &mdash; and whether PDD is one</h3>
+<p>What has actually produced durable profit in Chinese e-commerce is control of a cheap demand funnel combined with the absence of fixed obligations that force a defensive response. PDD has both, and its FY2025 margins against Alibaba's, JD's and Meituan's are the proof. But that is a superior cost structure, not a moat &mdash; it is precisely what Douyin also had, and used to take a third of the market from incumbents who in 2019 looked far better entrenched than PDD looks today. Merchant multi-homing is now legally protected, capping what PDD can extract; and with GMV disclosure withdrawn industry-wide, whether PDD's monetisation rate is rising, flat or being competed down cannot be answered from any primary source. High current returns on a genuinely better cost structure, with contestable and unverifiable durability, is the honest description.</p>
+
+<h2>Growth engine</h2>
+<p>PDD has completed no material acquisitions in eight years as a public company &mdash; no cash-flow line for acquisitions appears in any 20-F from FY2018 to FY2025. Reported growth is organic growth in full, which removes the usual decomposition problem and creates a different one: with a single reported segment and no geographic split, growth cannot be separated between Pinduoduo and Temu, or between China and everywhere else, by anyone working from the filings.</p>
+
+<div class="scroll">
+<table>
+<caption>Sources: PDD FY2025 Form 20-F; Q1 2026 and Q2 2026 6-K earnings releases. Per-merchant revenue and the growth contributions are calculated from disclosed figures. PDD does not disclose which platform or geography any revenue line belongs to.</caption>
+<thead><tr><th>Decomposition of growth</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">Q1 2026</th><th class="n">Q2 2026</th></tr></thead>
+<tbody>
+<tr><td>Total revenue growth, reported</td><td class="n">+59.0%</td><td class="n">+9.7%</td><td class="n">+11%</td><td class="n">+8%</td></tr>
+<tr><td>&nbsp;&nbsp;of which acquired</td><td class="n">none</td><td class="n">none</td><td class="n">none</td><td class="n">none</td></tr>
+<tr><td><strong>Organic growth</strong></td><td class="n"><strong>+59.0%</strong></td><td class="n"><strong>+9.7%</strong></td><td class="n"><strong>+11%</strong></td><td class="n"><strong>+8%</strong></td></tr>
+<tr><td>Online marketing services</td><td class="n">+28.9%</td><td class="n">+10.0%</td><td class="n">+2.5%</td><td class="n">+3.4%</td></tr>
+<tr><td>Transaction services</td><td class="n">+108.2%</td><td class="n">+9.3%</td><td class="n">+20%</td><td class="n">+13%</td></tr>
+<tr><td>Active merchants (volume)</td><td class="n">+11.3%</td><td class="n">+6.3%</td><td class="n">n/d</td><td class="n">n/d</td></tr>
+<tr><td>Revenue per merchant (price/mix)</td><td class="n">+42.9%</td><td class="n">+3.1%</td><td class="n">n/d</td><td class="n">n/d</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Two facts sit in that table. Roughly two-thirds of FY2025 growth came from adding merchants and one-third from earning more per merchant &mdash; volume-led growth, the weaker of the two mixes, because adding merchants extends reach into an ever longer tail while monetising the existing base is what evidences pricing power. And the two revenue lines have separated sharply in 2026: advertising, the older and higher-margin monetisation of the Chinese marketplace, has effectively stopped growing, while the transaction fee stream carries what growth there is.</p>
+
+<div class="lever structural">
+  <div class="tag">Structural</div><div class="nm">1. Merchant count</div>
+  <p>Two-thirds of FY2025 growth, at 16.8 million merchants rising 6.3%. It works while Chinese overcapacity keeps producing sellers with nowhere else to go &mdash; producer prices fell 2.6% across 2025, so that supply is not scarce.</p>
+</div>
+<div class="lever mgmt">
+  <div class="tag">Management-driven</div><div class="nm">2. Transaction-services attach rate</div>
+  <p>Revenue per merchant from transaction services doubled between FY2023 and FY2024 (RMB6,627 to RMB12,399), then rose 2.8% in FY2025. The step change is complete; what remains is incremental.</p>
+</div>
+<div class="lever structural">
+  <div class="tag">Structural, regulatorily constrained</div><div class="nm">3. International expansion</div>
+  <p>Temu is the growth engine PDD will not quantify. The addressable expansion is real, but every major destination market has moved against low-value parcel imports in the last sixteen months.</p>
+</div>
+<div class="lever cyclical">
+  <div class="tag">Cyclical &mdash; currently negative in real terms</div><div class="nm">4. Advertising monetisation of the Chinese base</div>
+  <p>Growth of 2.5% and 3.4% in the 2026 quarters, against Chinese consumer-goods CPI of +0.2% year-on-year in July 2026. The domestic monetisation engine is barely growing at all.</p>
+</div>
+<div class="lever cyclical">
+  <div class="tag">Temporary, non-operating</div><div class="nm">5. Interest on the cash balance</div>
+  <p>Net interest and investment income has more than doubled since FY2023 as the cash pile compounded. It is not growth in the business at all.</p>
+</div>
+
+<h2>Margin, cash and capital allocation</h2>
+<p>Gross margin fell from 63.0% in FY2023 to 60.9% in FY2024 to 56.3% in FY2025, because cost of revenues grew 23% while revenue grew 10%. PDD attributes the increase to fulfilment fees, bandwidth and server costs, and payment processing. That composition <em>is</em> the mechanism: fulfilment and payment scale with orders rather than with advertising revenue, so as transaction services grew from 38% to 50% of the mix, the business mechanically became less profitable per unit of revenue. The decline is not a pricing failure &mdash; it is the arithmetic of a mix shift.</p>
+
+<figure>
+  <div class="chartttl">Marketing intensity collapsed; gross margin has been giving way since</div>
+  <svg viewBox="0 0 820 320" role="img" aria-label="Line chart of sales and marketing as a percentage of revenue against gross margin, FY2018 to FY2025">
+    <g stroke="#E5DDD0" stroke-width="1">
+      <line x1="60" y1="260" x2="790" y2="260"/><line x1="60" y1="207.7" x2="790" y2="207.7"/>
+      <line x1="60" y1="155.5" x2="790" y2="155.5"/><line x1="60" y1="103.2" x2="790" y2="103.2"/>
+      <line x1="60" y1="51" x2="790" y2="51"/>
+    </g>
+    <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="end">
+      <text x="52" y="264">0%</text><text x="52" y="211.7">25%</text><text x="52" y="159.5">50%</text>
+      <text x="52" y="107.2">75%</text><text x="52" y="55">100%</text>
+    </g>
+    <polyline fill="none" stroke="#C75B39" stroke-width="2.5" stroke-linejoin="round"
+      points="60,45.7 162.9,71.4 265.7,115.3 368.6,160.3 471.4,173 574.3,190.6 677.1,200.8 780,199.4"/>
+    <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6 4"
+      points="60,97.1 162.9,94.8 265.7,118.6 368.6,121.6 471.4,101.3 574.3,128.3 677.1,132.6 780,142.3"/>
+    <g fill="#C75B39">
+      <circle cx="60" cy="45.7" r="3.2"/><circle cx="677.1" cy="200.8" r="3.2"/><circle cx="780" cy="199.4" r="3.2"/>
+    </g>
+    <g fill="#3C6E8F">
+      <circle cx="162.9" cy="94.8" r="3.2"/><circle cx="780" cy="142.3" r="3.2"/>
+    </g>
+    <text x="60" y="34" fill="#C75B39" font-size="13" font-weight="700" text-anchor="start" font-family="Calibri,Arial,sans-serif">Sales &amp; marketing, % of revenue &mdash; 102.5%</text>
+    <text x="780" y="216" fill="#C75B39" font-size="13" font-weight="700" text-anchor="end" font-family="Calibri,Arial,sans-serif">29.0%</text>
+    <text x="200" y="86" fill="#3C6E8F" font-size="13" font-weight="700" text-anchor="start" font-family="Calibri,Arial,sans-serif">Gross margin &mdash; 79.0%</text>
+    <text x="780" y="133" fill="#3C6E8F" font-size="13" font-weight="700" text-anchor="end" font-family="Calibri,Arial,sans-serif">56.3%</text>
+    <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="middle">
+      <text x="60" y="282">FY18</text><text x="162.9" y="282">FY19</text><text x="265.7" y="282">FY20</text>
+      <text x="368.6" y="282">FY21</text><text x="471.4" y="282">FY22</text><text x="574.3" y="282">FY23</text>
+      <text x="677.1" y="282">FY24</text><text x="780" y="282">FY25</text>
+    </g>
+  </svg>
+  <figcaption>Source: PDD Forms 20-F, FY2018&ndash;FY2025. The FY2022 gross-margin spike to 75.9% is the first-party merchandise line collapsing out of the mix, not an improvement in the marketplace. Sales and marketing rose again in FY2025 on an increase of RMB12,956.7m in advertising, promotion and coupon expense.</figcaption>
+</figure>
+
+<figure>
+  <div class="chartttl">The revenue mix has flipped from advertising to transaction fees</div>
+  <svg viewBox="0 0 820 320" role="img" aria-label="Line chart of online marketing services and transaction services as a percentage of total revenue, FY2018 to FY2025">
+    <g stroke="#E5DDD0" stroke-width="1">
+      <line x1="60" y1="260" x2="790" y2="260"/><line x1="60" y1="202.5" x2="790" y2="202.5"/>
+      <line x1="60" y1="145" x2="790" y2="145"/><line x1="60" y1="87.5" x2="790" y2="87.5"/>
+      <line x1="60" y1="30" x2="790" y2="30"/>
+    </g>
+    <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="end">
+      <text x="52" y="264">0%</text><text x="52" y="206.5">25%</text><text x="52" y="149">50%</text>
+      <text x="52" y="91.5">75%</text><text x="52" y="34">100%</text>
+    </g>
+    <polyline fill="none" stroke="#C75B39" stroke-width="2.5" stroke-linejoin="round"
+      points="60,58.1 162.9,55.3 265.7,74.6 368.6,82.4 471.4,79 574.3,117.4 677.1,144.3 780,144.1"/>
+    <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6 4"
+      points="60,231.9 162.9,234.7 265.7,237.7 368.6,225.3 471.4,211.2 574.3,172.6 677.1,145.7 780,145.9"/>
+    <g fill="#C75B39"><circle cx="60" cy="58.1" r="3.2"/><circle cx="780" cy="144.1" r="3.2"/></g>
+    <g fill="#3C6E8F"><circle cx="60" cy="231.9" r="3.2"/><circle cx="780" cy="145.9" r="3.2"/></g>
+    <text x="60" y="48" fill="#C75B39" font-size="13" font-weight="700" text-anchor="start" font-family="Calibri,Arial,sans-serif">Online marketing services &mdash; 87.8%</text>
+    <text x="780" y="132" fill="#C75B39" font-size="13" font-weight="700" text-anchor="end" font-family="Calibri,Arial,sans-serif">50.4%</text>
+    <text x="60" y="248" fill="#3C6E8F" font-size="13" font-weight="700" text-anchor="start" font-family="Calibri,Arial,sans-serif">Transaction services &mdash; 12.2%</text>
+    <text x="780" y="163" fill="#3C6E8F" font-size="13" font-weight="700" text-anchor="end" font-family="Calibri,Arial,sans-serif">49.6%</text>
+    <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="middle">
+      <text x="60" y="282">FY18</text><text x="162.9" y="282">FY19</text><text x="265.7" y="282">FY20</text>
+      <text x="368.6" y="282">FY21</text><text x="471.4" y="282">FY22</text><text x="574.3" y="282">FY23</text>
+      <text x="677.1" y="282">FY24</text><text x="780" y="282">FY25</text>
+    </g>
+  </svg>
+  <figcaption>Source: PDD Forms 20-F, FY2018&ndash;FY2025, as originally reported each year. The two series do not sum to 100% in FY2020&ndash;FY2022 because a first-party merchandise sales line occupied the residual (9.7%, 7.7% and 0.2% respectively) before being folded into online marketing services from the FY2023 report. Total revenue is unaffected by that reclassification.</figcaption>
+</figure>
+
+<div class="scroll">
+<table>
+<caption>Source: PDD Forms 20-F for FY2019, FY2021, FY2024 and FY2025. Years chosen to show the shape of the change, not every year available. Two comparability breaks: the first-party merchandise line existed FY2020&ndash;FY2022 and was folded into online marketing services from the FY2023 report, restating the FY2021 split; and active merchants have only been disclosed since FY2023, so the unit metric cannot be extended back across this table.</caption>
+<thead><tr><th>RMB millions unless stated</th><th class="n">FY2019</th><th class="n">FY2021</th><th class="n">FY2024</th><th class="n">FY2025</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td class="n">30,141.9</td><td class="n">93,949.9</td><td class="n">393,836.1</td><td class="n">431,845.7</td></tr>
+<tr><td>Gross margin</td><td class="n">79.0%</td><td class="n">66.2%</td><td class="n">60.9%</td><td class="n">56.3%</td></tr>
+<tr><td>Sales &amp; marketing, % of revenue</td><td class="n">90.2%</td><td class="n">47.7%</td><td class="n">28.3%</td><td class="n">29.0%</td></tr>
+<tr><td>Operating profit / (loss)</td><td class="n">(8,538.2)</td><td class="n">6,896.8</td><td class="n">108,422.9</td><td class="n">93,102.1</td></tr>
+<tr><td>Net cash from operating activities</td><td class="n">14,821.0</td><td class="n">28,783.0</td><td class="n">121,929.3</td><td class="n">106,938.7</td></tr>
+<tr><td>Cash and short-term investments</td><td class="n">41,057.0</td><td class="n">92,943.3</td><td class="n">331,560.0</td><td class="n">422,308.3</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>A fifth of reported profit is not earned in the business</h3>
+<p>Net interest and investment income was RMB25,583.8m in FY2025, equal to <strong>21.4% of pre-tax profit</strong>, up from 15.5% in FY2024 and 14.2% in FY2023. Two other non-operating items moved the same way: a foreign exchange loss of RMB1,966.6m in FY2025 against a RMB587.9m gain in FY2024, and an effective tax rate that rose from 15.3% to 18.2%, worth roughly RMB3.5bn. This resolves what otherwise looks contradictory in 2026: operating profit rose 22% year-on-year in the March quarter and 8% in the June quarter, while net income fell 15% and 12%. <strong>The entire reported earnings decline of the last two quarters sits below the operating line.</strong></p>
+
+<h3>Where the cash has gone</h3>
+<p>Ranked by magnitude across FY2018&ndash;FY2025: first and overwhelmingly, deployment into short-term deposits and investments, which is why cash and short-term investments reached RMB422,308.3m at the end of FY2025, up 27.3% in a single year. Second, debt retirement &mdash; roughly RMB14.2bn of convertible notes repurchased or repaid, the last maturing on 1 December 2025 and leaving zero convertible debt outstanding. Third, capital expenditure, cumulatively about RMB6.7bn over eight years and just 0.27% of FY2025 revenue. Then nothing: no acquisitions, no dividend in any year, no share repurchase in any year. Diluted share count rose 1.5% between FY2023 and FY2025, so equity compensation is not materially diluting shareholders &mdash; but nor is anything being returned to them.</p>
+
+<p>The ranking describes a management team that treats retained cash as optionality and has not said what the option is for. Roughly RMB422bn sits in deposits earning a return management neither generates nor controls, in a company that spends 0.27% of revenue on fixed assets. RMB125,917.4m of net assets in the Chinese subsidiaries and VIE were restricted from distribution at 31 December 2025, so part of the balance is not freely available to the Cayman holding company in any case. No announced transaction post-dates the FY2025 figures.</p>
+
+<h2>Cyclicality, constraints and what to monitor</h2>
+<p>PDD sells discretionary goods into a weak consumer economy, but its exposure is not the ordinary cyclical kind. Trading down helps a discount platform: Chinese producer prices down 2.6% across 2025 and export prices down roughly 4% year-on-year supply cheap goods, while soft demand pushes buyers to the cheapest venue. The cycle PDD is genuinely exposed to is competitive and regulatory.</p>
+
+<p>Against its own history it is off peak on everything and at a trough on growth. Revenue growth of 8% in the June 2026 quarter is the lowest of its public life against a 59% peak in FY2024. Gross margin of 56.3% compares with 63.0% in FY2023. Operating margin of 21.6% compares with 27.5% in FY2024, though the June quarter recovered to 24.7%. Net income has fallen year-on-year for three consecutive quarters &mdash; down 11%, 15% and 12%. The qualifier that matters: a 21.6% operating margin remains comfortably the highest in Chinese e-commerce. PDD's trough margin exceeds its competitors' peaks.</p>
+
+<h3>The constraint that has actually changed</h3>
+<p>The regime that made China-direct parcel commerce cheap has been dismantled in four jurisdictions within sixteen months. In the United States, Executive Order 14256 suspended the $800 de minimis exemption for China and Hong Kong from 2 May 2025, and Executive Order 14324 eliminated it for all countries from 29 August 2025. The Supreme Court then struck down the IEEPA tariff authority six to three in <em>Learning Resources v. Trump</em> on 20 February 2026 &mdash; and the de minimis suspension survived it, continued by Executive Order 14388 and re-based in June 2026 on the independent statutory authority of 19 U.S.C. &sect;1321(b), with outright repeal legislated for 1 July 2027. In the EU, Council Regulation 2026/382 imposes a flat &euro;3-per-item duty on consignments under &euro;150 from 1 July 2026 until 1 July 2028, when full duties apply. France added a &euro;2 per-article levy from March 2026 and Italy a &euro;2 charge from July 2026 that stacks on the EU fee.</p>
+
+<p>The mechanism is what makes this structural rather than a cost increase. <strong>A flat per-item charge is regressive against low average selling prices, which is exactly what the model is built on.</strong> Three euros on a &euro;5 item is a 60% ad-valorem equivalent; on a &euro;20 item it is 15%. The per-shipment cost of customs entry is fixed, so it scales inversely with basket size. The regime penalises precisely the small-basket, single-item, high-frequency order that defines discount cross-border commerce. A second input turned at the same time: IATA cut its 2026 air cargo volume forecast to 0.2% growth and expects yields to rise 6.5% after three consecutive years of decline. Cheap air freight was the other half of the delivered-cost advantage.</p>
+
+<p>The downside runs in sequence, not as a shock. Duty and entry costs close the landed-price gap against domestic discounters; the cheapest items become uneconomic and assortment narrows; gross profit per order falls, making paid customer acquisition unaffordable; advertising spend is cut, and volume follows it down; falling volume forfeits freight consolidation scale just as air yields rise. Third-party estimates are consistent with this having begun &mdash; Sensor Tower data relayed in the press puts Temu's global monthly active users down 11% year-on-year in the June 2026 quarter with downloads down 48%, and shows advertising cuts of 74% to 95% on several platforms &mdash; <span class="unk">but these are estimates, not disclosure, and PDD publishes nothing that would confirm or refute them.</span></p>
+
+<div class="two">
+  <div class="col">
+    <h4>Durable &mdash; likely intact in ten years</h4>
+    <ul>
+      <li>Asset-light structure: capex 0.27% of revenue, no logistics network to defend</li>
+      <li>Zero debt and RMB422.3bn of cash and short-term investments</li>
+      <li>RMB125.1bn of merchant float funding working capital at no cost</li>
+      <li>China's manufacturing overcapacity and falling producer prices supplying cheap goods</li>
+      <li>16.8 million active merchants and the discovery-led demand funnel</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h4>Borrowed &mdash; currently helping, will not persist</h4>
+    <ul>
+      <li>Interest and investment income at 21.4% of pre-tax profit, dependent on rates and on the cash pile compounding</li>
+      <li>The residual price gap on cross-border goods, being legislated away through 2027 and 2028</li>
+      <li>The absence of a subsidy war in the core marketplace, while rivals' capital is committed to instant commerce</li>
+      <li>Zero capital returns, which flatters the balance sheet while deferring the allocation question</li>
+      <li>An effective tax rate already normalising upward, from 15.3% to 18.2%</li>
+    </ul>
+  </div>
+</div>
+
+<div class="scroll">
+<table>
+<caption>PDD discloses no end-market, category or geographic exposure of any kind, so this monitoring list stands in place of the exposure table an ordinary overview would carry. That absence is itself the first item worth monitoring.</caption>
+<thead><tr><th>Indicator</th><th>Why it matters</th><th>Where published</th></tr></thead>
+<tbody>
+<tr><td>Online marketing services growth</td><td>The domestic monetisation engine; 2.5% and 3.4% in the 2026 quarters</td><td>PDD quarterly 6-K earnings release</td></tr>
+<tr><td>Active merchants and revenue per merchant</td><td>The only disclosed unit economics; separates volume from monetisation</td><td>Annual 20-F only, not quarterly</td></tr>
+<tr><td>Gross margin</td><td>Tracks the mix shift into lower-margin transaction services</td><td>PDD quarterly 6-K</td></tr>
+<tr><td>VIE share of consolidated revenue</td><td>The only proxy for the domestic versus international split</td><td>Annual 20-F</td></tr>
+<tr><td>EU and US low-value parcel rules</td><td>Determines whether the duty burden rises again in 2027 and 2028</td><td>Federal Register; EU Official Journal</td></tr>
+<tr><td>SAMR enforcement actions</td><td>Chinese platform penalties and operating restrictions</td><td>SAMR announcements; Xinhua</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Risks, unknowns and open questions</h2>
+<p>Cyclicality and the duty regime are covered above. What follows is what those do not capture, weighted toward risks that compound.</p>
+
+<div class="card">
+  <p><strong>Disclosure opacity compounds every other risk.</strong> No GMV, no user numbers, no geographic split, no platform split, no forward guidance. An investor cannot determine whether Pinduoduo's domestic business is growing or shrinking, what Temu earns or loses, or whether the monetisation rate is being competed down. The consequence is not merely uncertainty: no adverse development in either business can be detected from the filings until it reaches the consolidated line, by which point it is already large.</p>
+  <p><strong>Chinese enforcement is escalating and PDD drew the largest share.</strong> On 17 April 2026 SAMR fined seven platform operators approximately RMB3.597bn in the &ldquo;ghost takeaway&rdquo; cases. Pinduoduo's operator, Shanghai Xunmeng, was fined RMB1.52bn &mdash; 42% of the total &mdash; for onboarding thousands of food merchants without valid permits and authorising undisclosed order transfers, and received a nine-month suspension on onboarding new cake vendors. The regulator also found obstruction, including submission of false materials. What matters is not the fine, 1.6% of FY2025 net income, but the precedent: a merchant-vetting standard applied across 16.8 million merchants converts PDD's core scale advantage into a proportionate compliance liability.</p>
+  <p><strong>Localising Temu compresses the take without restoring the price gap.</strong> Under the fully-managed model Temu sets the retail price and captures the full spread. Under local fulfilment the merchant holds inventory and sets price, and Temu earns a commission. Revenue per order falls, and because the local merchant's cost base already carries duty, the price advantage does not come back &mdash; only the location of the cost in the P&amp;L changes. The AliExpress precedent, profitability arriving alongside revenue going negative, is the closest available read on where that path leads.</p>
+  <p><strong>Regulatory actions are stacking across jurisdictions simultaneously.</strong> The European Commission fined Temu &euro;200m on 28 May 2026 under the Digital Services Act after finding its systemic risk assessment inadequate, with periodic penalty payments available if the remedy falls short. Vietnam and Uzbekistan have suspended Temu. Five US state attorneys general have brought consumer-protection suits and a consolidated securities class action is pending in the Eastern District of New York. Each is survivable alone; together they impose a compliance cost that scales with the long-tail merchant base &mdash; the exact asset the model was built on.</p>
+  <p><strong>The holding company owns contracts, not the Chinese business.</strong> PDD is a Cayman company whose Chinese licensed operations are consolidated through variable-interest-entity agreements rather than equity, and the VIE's share of consolidated revenue has fallen from 45.7% to 22.5% to 13.1% across FY2023&ndash;FY2025. The FY2025 auditor changed from Ernst &amp; Young Hua Ming in Shanghai, which had served since 2018, to Ernst &amp; Young Hong Kong &mdash; a change the filing does not explain.</p>
+</div>
+
+<h3>What the sources could not answer</h3>
+<div class="card">
+<ul style="margin:0;padding-left:20px">
+<li>Temu's revenue, GMV, operating margin and cash consumption. Nothing is disclosed; every figure in circulation is a third-party estimate.</li>
+<li>The split of group revenue between China and international, and between Pinduoduo and Temu. The VIE revenue share is a proxy of unknown reliability.</li>
+<li>PDD's take rate, and whether it is rising or falling. Not computable for PDD or for any listed Chinese competitor.</li>
+<li>The share of Temu volume now fulfilled locally rather than shipped from China, by market.</li>
+<li>Whether the merchant support and ecosystem investment management repeatedly cites is quantified anywhere. No amount appears in the 20-F or in any earnings release; figures attributed to the earnings calls are press-reported only.</li>
+<li>The maintenance-versus-growth split of capital expenditure, and what management intends to do with RMB422bn of cash.</li>
+</ul>
+</div>
+
+<h2>Investor takeaways</h2>
+<div class="card">
+<p><strong>What this business really is.</strong> A toll on Chinese manufacturing overcapacity. PDD sells 16.8 million small producers access to consumer demand, owns none of the goods and none of the infrastructure, and keeps roughly a fifth of the revenue it books as operating profit.</p>
+<p><strong>The core economic engine.</strong> An absence of fixed costs. Capex is 0.27% of revenue, debt is zero, and RMB125bn of merchant float funds the working capital &mdash; which is why PDD earned a 21.6% operating margin in the year its asset-heavy rivals earned close to nothing.</p>
+<p><strong>The main growth lever.</strong> Merchant count, two-thirds of FY2025 growth, with the transaction-services fee stream carrying the rest. Advertising monetisation of the Chinese base has stalled at 2.5&ndash;3.4% growth.</p>
+<p><strong>What could break the story.</strong> That the cost advantage is not a moat. Douyin built a third of Chinese online retail from nothing in under six years, merchant multi-homing is now legally protected, and the cross-border duty arbitrage is being legislated away through 2027 and 2028.</p>
+<p><strong>What to monitor.</strong> The online marketing revenue line and gross margin quarterly; active merchants and the VIE revenue share annually; and the share of pre-tax profit coming from interest rather than operations, now 21.4%.</p>
+</div>
+
+<div class="foot">
+<h3>Sources</h3>
+<ul>
+<li><strong>Company filings (source of truth):</strong> PDD Holdings Forms 20-F for FY2018 through FY2025, the latter filed 29 April 2026; Form 6-K earnings releases for Q4/FY2024 through Q2 2026 (SEC EDGAR, CIK 0001737806).</li>
+<li><strong>Industry and official:</strong> China National Bureau of Statistics (2025 full-year and H1 2026 retail data; July 2026 CPI); CNNIC 57th Statistical Report; SAMR Development Research Centre and CASS livestream e-commerce white paper, 17 March 2026; SAMR penalty announcements of 17 April 2026 (Xinhua); US Federal Register and Executive Orders 14256, 14324 and 14388; <em>Learning Resources v. Trump</em> (US Supreme Court, 20 February 2026); Council Regulation (EU) 2026/382 and DG TAXUD guidance; French Customs; European Commission DSA decision of 28 May 2026; IATA air cargo market forecast.</li>
+<li><strong>Competitor filings:</strong> Alibaba FY2026 results and June-quarter 2026 6-K; JD.com FY2025 and Q2 2026 results; Shein Hong Kong listing prospectus and subsequent disclosures; Amazon Q2 2026 results.</li>
+<li><strong>Labelled estimates, used only where marked:</strong> Sensor Tower app data relayed via press for Temu user and advertising trends; Meituan FY2025 loss figure as reported from its annual results announcement.</li>
+</ul>
+<p style="margin-bottom:0">Nothing post-dates 7 September 2026. PDD's most recent reported period is the quarter ended 30 June 2026; its most recent annual report covers FY2025. No transaction has been announced that post-dates those figures. <strong>This document is a business overview, not a valuation and not a recommendation.</strong></p>
+</div>
+
+</div>
+</body>
+</html>

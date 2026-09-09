@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Tower Semiconductor (TSEM)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;margin:0}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:18px 0 34px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;border-left:5px solid var(--terracotta);padding:6px 0 6px 22px;margin:0 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#B8AE9E;font-weight:700;margin-bottom:8px}
+.engine .unit{font-family:Georgia,serif;font-size:27px;line-height:1.3;margin-bottom:10px}
+.engine p{margin:0;font-size:17px;color:#E8E0D2;line-height:1.55}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.kpi .v{font-family:Georgia,serif;font-size:28px;color:var(--terracotta);font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi .v.sm{font-size:20px;line-height:1.25}
+.kpi .n{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin:22px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:16px 20px;margin:12px 0}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)} .lever.mgmt .tag{color:var(--gold)} .lever.cyclical .tag{color:var(--blue)}
+.lever .name{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:4px 0 6px}
+.lever p{margin:0;font-size:17px;line-height:1.55}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;font-family:Georgia,serif;font-size:20px;line-height:1.5}
+.pull .attr{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;color:var(--muted);margin-top:10px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.two .card{margin:0}
+.two h4{margin:0 0 10px;font-family:Georgia,serif;font-size:18px}
+.two ul{margin:0;padding-left:20px}
+.two li{margin-bottom:9px;font-size:16px;line-height:1.5}
+.tw{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:16px;background:#fff;min-width:560px}
+th{background:var(--ink);color:var(--cream);text-align:left;padding:10px 12px;font-weight:700;font-size:14px;letter-spacing:.04em}
+td{border-bottom:1px solid var(--line);padding:10px 12px;vertical-align:top;font-variant-numeric:tabular-nums}
+td.r,th.r{text-align:right}
+tr:nth-child(even) td{background:#FCFAF6}
+.cap{font-size:14px;color:var(--muted);margin:8px 0 0;line-height:1.5}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 14px 8px;margin:22px 0}
+.chart svg{display:block;width:100%;height:auto}
+ul.plain{padding-left:20px}
+ul.plain li{margin-bottom:10px}
+.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;font-size:15px;color:var(--muted)}
+.foot h3{font-size:17px;margin:0 0 10px;color:var(--ink)}
+.foot p{margin:0 0 10px}
+.na{color:var(--muted);font-style:italic}
+@media (max-width:700px){
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  h1{font-size:30px} h2{font-size:23px} body{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Tower Semiconductor Ltd. <span style="color:var(--muted);font-size:24px">Nasdaq / TASE: TSEM</span></h1>
+<div class="srcline">
+7 September 2026 · Built from Tower's Forms 20-F for fiscal 2016–2025 (most recent filed 30 April 2026), the 6-K filings carrying the FY2025 annual and Q2/H1 2026 interim accounts, and company releases and earnings-call remarks through August 2026 · Industry structure and competitor economics from SEMI, TrendForce and the reported filings of UMC, GlobalFoundries, X-FAB, Hua Hong, VIS, SMIC and SkyWater · <strong>Not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Tower is a contract manufacturer of qualified analog process platforms. It owns no chip designs; it sells processed silicon wafers, priced per wafer, to the companies that do — and earns the spread between that price and the largely fixed cost of running six fabs.
+</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One processed wafer, run through a fixed-cost fab.</div>
+  <p>Depreciation alone was 19.1% of revenue in the first half of 2026. Almost a fifth of the cost base does not move with volume, so every point of utilization or mix falls almost straight through: $143.5m of extra revenue in H1 2026 produced $95.5m of extra gross profit — a 67% incremental gross margin. The same arithmetic runs in reverse, which is why gross margin has ranged from 18.4% to 30.0% over the decade reviewed on revenue that moved barely 25%.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Price per unit</div><div class="v sm na">Not disclosed</div><div class="n">Tower prices per wafer but has published neither wafer volumes nor ASP since the FY2016 20-F. Per-unit economics cannot be rebuilt from the filings.</div></div>
+  <div class="kpi"><div class="k">Unit profit</div><div class="v">30.0%</div><div class="n">Q2 2026 gross margin — the highest in the period reviewed, above the FY2022 cycle peak of 27.8%.</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">$0.79</div><div class="n">Q2 2026 diluted EPS; net profit attributable $90.8m on $460.1m of revenue.</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">$1.34bn</div><div class="n">Net cash at 30 June 2026 — $1,481.4m cash and deposits against $141.7m of total debt.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v sm">Margin ahead of volume</div><div class="n">FY2025 revenue was still 6.6% below the FY2022 peak; Q2 2026 gross margin is already above it.</div></div>
+  <div class="kpi"><div class="k">Reported vs organic</div><div class="v">+19.6%</div><div class="n">H1 2026 revenue growth. No acquisitions in the period, so reported growth is organic — but mix-led, not volume-led.</div></div>
+</div>
+
+<h2>1 · What orients the reader</h2>
+<div class="tw"><table>
+<tr><th>Item</th><th>Summary</th></tr>
+<tr><td><strong>What it is</strong></td><td>A pure-play specialty semiconductor foundry — 200mm and 300mm capacity at 0.35µm to 65nm, sold as qualified process platforms rather than as node shrink.</td></tr>
+<tr><td><strong>Unit of economics</strong></td><td>One processed wafer. Priced per wafer; volumes and ASP undisclosed since FY2016.</td></tr>
+<tr><td><strong>What protects it</strong></td><td>Analog device behaviour is a property of the specific process that made it, so a qualified design cannot move without re-qualification. Reinforced by scarce 200mm tooling and a four-country footprint.</td></tr>
+<tr><td><strong>What drives earnings</strong></td><td>Utilization against fixed cost; mix shift into silicon photonics; and the ramp of new capacity, which adds fixed cost before revenue.</td></tr>
+<tr><td><strong>What to watch</strong></td><td>Gross margin against the 45% company target; the silicon photonics run-rate; the customers' advances line on the balance sheet.</td></tr>
+<tr><td><strong>Cycle exposure</strong></td><td>High. Revenue fell 15.2% from the FY2022 peak to FY2023; gross margin has spanned 18.4%–30.0%.</td></tr>
+</table></div>
+
+<h2>2 · What the company does</h2>
+
+<p>A company designing an analog or radio-frequency chip has a problem a digital designer does not. Digital performance improves with transistor density, so a digital design can be ported to whichever foundry offers the smallest node. Analog performance depends on the physical behaviour of the devices themselves — noise, breakdown voltage, isolation, matching — and that behaviour is a property of the specific process that made them. The designer needs a manufacturer that has built, characterised and qualified a process with those exact properties, and needs it to stay available for a decade. Tower sells that.</p>
+
+<p>It is a pure-play foundry, manufacturing to customer designs with no products of its own. Its nodes — 0.35, 0.18, 0.16 and 0.13 micron on 200mm, 65 nanometer on 300mm — are two decades behind the leading edge, deliberately. What it sells is not smallness but a library of specialty platforms: silicon photonics, silicon-germanium BiCMOS, RF silicon-on-insulator, BCD and high-voltage power to 700V, CMOS image sensors, MEMS and silicon backplanes for micro-displays.</p>
+
+<h3>Tracing one unit</h3>
+
+<p>A fabless company or IDM designs against Tower's process design kit — the device models and layout rules specific to that platform <em>in that fab</em>. Photomasks are made. A raw wafer passes through several hundred sequential steps in one of six fabs, is probed to identify working dice, and ships. The customer almost always handles dicing, packaging and test elsewhere. Tower's revenue ends at the wafer; everything added after it belongs to somebody else.</p>
+
+<p>Two features of that path govern the economics. The cycle from first customer contact to first shipment runs 9–24 months for a new customer and can exceed two years for a new technology, against 6–12 months for an existing one. And purchase orders arrive only two to six months before shipment. Tower has visibility on the customer, not on the quarter.</p>
+
+<div class="pull">
+"Customers that use our specialty process technologies cannot easily transfer designs to another foundry because the analog characteristics of the design are dependent upon the specific process technology used. The specialty process design infrastructure is complex and includes design kits and device models that are specific to the foundry in which the process is implemented."
+<div class="attr">Tower Semiconductor, Form 20-F for FY2025, filed 30 April 2026</div>
+</div>
+
+<h3>Who pays</h3>
+
+<p>Customers are fabless analog and mixed-signal companies, IDMs using Tower as a second source, and — a category the FY2025 20-F names for the first time — "module integrators for AI and data centers." Concentration has collapsed over the decade. In FY2016 four customers each contributed 5%–35% of revenue. In FY2025 the largest single account, Nuvoton Technology Corporation Japan, was 11%; seven more contributed 4%–7% each, 39% together; and 50% came from many smaller accounts. The geography moved with it: the United States 49% and Japan 36% in FY2016, against the United States 42%, Asia excluding Japan 39%, Japan 13% and Europe 6% in FY2025.</p>
+
+<h3>What changed at the edges</h3>
+
+<p>Tower runs six fabs: Fab 2 (Migdal Haemek, Israel), Fab 3 (Newport Beach, California), Fab 5 (Tonami) and Fab 7 (Uozu) in Japan through the 51%-owned TPSCo, Fab 9 (San Antonio, Texas), and Fab 10 in Agrate, Italy, where it uses one third of a 300mm cleanroom built and operated by STMicroelectronics. Five are 200mm; Fab 7 and Fab 10 are 300mm at 65nm.</p>
+
+<p>Two changes at the edges explain more than any strategy statement. Fab 10 completed qualification in 2024 and began volume production in the fourth quarter, so FY2025 was its first full year. In the same window Tower "discontinued the lower-margin legacy 150mm process flows, ceased operations in Fab 1, and consolidated certain flows into Fab 2." One 150mm fab of legacy low-margin work out; one third of a 300mm cleanroom in. A third change is scheduled: from 1 April 2027, under a March 2026 agreement, Tower takes full ownership of the 300mm Fab 7 while Nuvoton takes the 200mm Fab 5, with mutual long-term supply agreements and a $25m payment to Tower. Tower is trading a share of a 200mm fab for sole control of a 300mm one — and converting its largest customer relationship into a supply contract.</p>
+
+<h2>3 · Industry, competitive position and moat</h2>
+
+<p>Specialty foundry exists because the reason to outsource differs at mature nodes. At the leading edge the product is the node: you outsource because you cannot afford a $20bn fab. At mature nodes the product is a qualified <em>process</em>: you outsource because building and characterising a 700V platform, or a photonics platform with integrated modulators and photodiodes, takes years of process engineering unrelated to lithography scaling.</p>
+
+<h3>Where the profit sits — and it is not with the foundry</h3>
+
+<div class="tw"><table>
+<tr><th>Stage of the chain</th><th>Company, FY2025 reported</th><th class="r">Gross margin</th><th class="r">Operating margin</th></tr>
+<tr><td>Analog design + own fabs</td><td>Texas Instruments</td><td class="r">57.0%</td><td class="r">34.1%</td></tr>
+<tr><td>Mature-node foundry</td><td>UMC</td><td class="r">29.0%</td><td class="r">18.5%</td></tr>
+<tr><td>Specialty/power foundry</td><td>Vanguard (VIS, FY2024)</td><td class="r">27.1%</td><td class="r">16.0%</td></tr>
+<tr><td>Specialty foundry</td><td>GlobalFoundries</td><td class="r">24.9%</td><td class="r">11.7%</td></tr>
+<tr><td>Specialty foundry</td><td><strong>Tower Semiconductor</strong></td><td class="r"><strong>23.2%</strong></td><td class="r"><strong>12.4%</strong></td></tr>
+<tr><td>Specialty foundry</td><td>X-FAB</td><td class="r">21.2%</td><td class="r">8.8%</td></tr>
+<tr><td>Chinese specialty foundry</td><td>Hua Hong</td><td class="r">11.8%</td><td class="r">net loss</td></tr>
+<tr><td>Assembly and test</td><td>ASE Technology</td><td class="r">17.7%</td><td class="r">7.9%</td></tr>
+<tr><td>Assembly and test</td><td>Amkor</td><td class="r">14.0%</td><td class="r">7.0%</td></tr>
+</table></div>
+<p class="cap">Company results releases, January–February 2026; VIS FY2024 annual report; Tower FY2025 20-F. GlobalFoundries figures are GAAP. Percentages as reported by each company.</p>
+
+<p>The specialty foundry captures a manufacturing margin roughly in line with packaging, and less than half the margin earned by the people who own the circuit design. This is the most important structural fact about Tower's industry. A foundry does not own the end product, cannot price against the value the chip creates in a phone or a switch, and prices instead against the cost of capacity — its own and everyone else's. Differentiation here is not a route to designer-like margins. It is a route to being paid a manufacturing margin reliably rather than cyclically.</p>
+
+<h3>What "market share" means here</h3>
+
+<p>On the standard measure Tower is small: in Q1 2026 the global foundry market was $47.95bn, of which TSMC took 72%, Samsung 6.5%, SMIC 5.1%, UMC 3.9%, GlobalFoundries 3.3% and Hua Hong 2.5%. Tower ranked seventh at $414m, or 0.8% (TrendForce, 12 June 2026). That number should be read carefully, because it is not a share of a market Tower competes in — TSMC's 72% is overwhelmingly leading-edge AI and HPC logic that Tower never bids for. The relevant market is segmented by process platform and by qualification relationship. A customer choosing a 1.6Tb/s photonics platform is choosing among a handful of suppliers who have it qualified. Tower names its own competitors as GlobalFoundries (chiefly in RF), Vanguard, DongBu, X-FAB and Hua Hong, with TSMC, UMC and SMIC in certain areas — a defensible list.</p>
+
+<h3>Which barriers actually bind</h3>
+
+<p>Capital is not the binding barrier. A new 200mm fab costs roughly $450m to $1.3bn depending on process, against over $20bn for leading edge (SurplusGlobal, via Semiconductor Engineering); SMIC alone spent $8.1bn of capex in FY2025 and guided to roughly the same for 2026. Money can build mature-node capacity, and in China it is doing so. Two barriers do bind. <strong>Equipment:</strong> fewer than 250 used 200mm core tools are available worldwide against an estimated need of 1,500–3,000, and buyers pay close to new-tool prices for used ones. <strong>Qualification:</strong> the switching cost quoted above, corroborated by Tower's own two-year sales cycles and by a customer book that stayed intact while its largest account fell from 35% to 11% of revenue.</p>
+
+<p>What that stickiness has <em>not</em> bought is pricing power. Gross margin averaged roughly 23% across FY2016–FY2025 with no upward trend. The switching cost defends the relationship; it does not lift the price.</p>
+
+<div class="tw"><table>
+<tr><th>Company claim</th><th>Outside verdict</th><th>Basis</th></tr>
+<tr><td>Specialty designs cannot easily move between foundries</td><td><strong>Supported</strong></td><td>Consistent with the industry's qualification structure and with Tower's own long cycles and stable, deconcentrating book.</td></tr>
+<tr><td>Specialty capacity is a limited field</td><td><strong>Supported</strong></td><td>200mm core-tool scarcity independently documented — under 250 tools available against 1,500–3,000 needed.</td></tr>
+<tr><td>Differentiation lets it compete with larger foundries</td><td><strong>Partially</strong></td><td>FY2025 gross margin of 23.2% sits below UMC (29.0%) and GlobalFoundries (24.9%). Q2 2026 at 30.0% is the first period differentiation clearly shows in margin.</td></tr>
+<tr><td>Specialty wafers hold price better through the cycle</td><td><strong>Contradicted in part</strong></td><td>X-FAB — the purest comparable, 94% automotive/industrial/medical — saw FY2025 operating margin fall despite 7% revenue growth.</td></tr>
+<tr><td>Chinese mature-node capacity is the pricing threat</td><td><strong>Unresolved</strong></td><td>Signals reversed within a year: UMC pressed suppliers for cuts in Oct 2025; by Mar–Apr 2026 SMIC, Hua Hong, Nexchip and UMC were raising mature-node prices 4–20% as 8-inch supply tightened (TrendForce).</td></tr>
+</table></div>
+
+<h3>What kind of company wins here</h3>
+
+<p>The one whose revenue cannot be treated as a fungible mature wafer. Hua Hong ran above 100% of rated capacity in FY2025 and still earned an 11.8% gross margin and a net loss — near-full utilization of commodity-adjacent capacity confers no pricing power. UMC, the world's fourth-largest foundry, watched gross margin fall from 45.1% in 2022 to 27.7% in H1 2025 as its 22/28nm book met Chinese capacity on price. Scale did not protect it.</p>
+
+<p>Tower is the right <em>kind</em> of company by construction: no commodity digital book to defend, and 300mm capacity in 65nm BCD and RF SOI rather than a node anyone competes on. Whether it is a good version of that kind has, until very recently, been open — because for nine years the differentiated platform book produced no margin expansion at all. Silicon photonics is the first evidence that a platform position can translate into price.</p>
+
+<h2>4 · Growth engine</h2>
+
+<p>No material acquisitions occurred in the period reviewed, so reported growth <em>is</em> organic growth. What complicates comparison is capacity moving in and out of the group — and the filings decompose the two most recent periods differently, which is the most useful thing in them.</p>
+
+<div class="tw"><table>
+<tr><th>Period</th><th class="r">Revenue growth</th><th>What the filing attributes it to</th><th>Character</th></tr>
+<tr><td><strong>FY2025</strong></td><td class="r">+$130.0m<br>+9.0%</td><td>"mostly due to higher wafers shipments, including revenue and shipments from the 300mm facility in Agrate, Italy, which commenced volume production… in the fourth quarter of 2024" — partly offset by Fab 1's 150mm output leaving the group in Q1 2025.</td><td><strong>Volume</strong>, materially the annualisation of newly consolidated capacity. Gross margin fell 23.6% → 23.2%.</td></tr>
+<tr><td><strong>H1 2026</strong></td><td class="r">+$143.5m<br>+19.6%</td><td>"mostly due to a higher average selling price associated with a different product mix shipped… (especially more SiPho related products shipped), as well as a higher quantity of products shipped from our fabs."</td><td><strong>Price and mix</strong>, volume second. Gross margin rose 21.0% → 28.5% — a 7.5-point swing.</td></tr>
+<tr><td><strong>From FY2027</strong></td><td class="r"><span class="na">not quantified</span></td><td>TPSCo restructuring (targeted 1 April 2027): Fab 5's output leaves the group and Nuvoton — 11% of FY2025 revenue — becomes a supply-agreement counterparty rather than a consolidated customer.</td><td>Pro-forma revenue and margin effect <strong>not disclosed</strong>.</td></tr>
+</table></div>
+<p class="cap">Sources: FY2025 Form 20-F; 6-K of 17 August 2026. Tower does not quantify the Agrate contribution to FY2025, nor the price/mix versus volume split within H1 2026 — both are NOT DISCLOSED, so the character column reads the direction management states, not a decomposition it provides.</p>
+
+<p>That is the decomposition that matters: FY2025 was capacity growth at unchanged economics; H1 2026 was mix growth. The business changed engines between the two periods.</p>
+
+<div class="lever structural">
+  <div class="tag">Structural</div>
+  <div class="name">Silicon photonics for AI optical interconnect</div>
+  <p>The annualised run-rate went from $180m in Q2 2025 to $680m in Q2 2026, with management targeting more than $1bn annualised by Q4 2026. In May 2026 Tower disclosed $1.3bn of <em>signed</em> customer contracts for 2027 photonics revenue, $290m of prepayments received for capacity reservation, and more than 50 active photonics customers. It runs a 200mm and a 300mm platform in high-volume production across 400Gb/s–1.6Tb/s, is ramping 1.6Tb/s, and is developing 3.2Tb/s and co-packaged optics.</p>
+</div>
+<div class="lever mgmt">
+  <div class="tag">Management-driven</div>
+  <div class="name">Capacity additions converting backlog into shipments</div>
+  <p>The $920m programme across Fabs 2, 3, 7 and 9 targets December 2026 photonics wafer-start capacity more than five times the Q4 2025 shipment level; roughly half was paid by Q2 2026. Growth here is a function of installation and qualification schedules, not of demand.</p>
+</div>
+<div class="lever mgmt">
+  <div class="tag">Management-driven</div>
+  <div class="name">Mix shift away from legacy</div>
+  <p>Closing Fab 1's 150mm flows removed revenue and raised the average margin of what remained. Tower has been trading volume for margin at the low end.</p>
+</div>
+<div class="lever cyclical">
+  <div class="tag">Cyclical</div>
+  <div class="name">RF infrastructure, power management, image sensors</div>
+  <p>On the Q1 2026 call management cited year-on-year growth of 12% in RF SOI, 10% in power management, 24% in SiGe and 9% in CMOS imagers — recovery-rate growth off a corrected base, not step changes.</p>
+</div>
+<div class="lever cyclical">
+  <div class="tag">Cyclical — negative</div>
+  <div class="name">RF mobile</div>
+  <p>Down 14% year on year in Q2 2026 and now 12% of revenue. Smartphone RF, once a core Tower franchise, is shrinking as a share of the business while infrastructure grows.</p>
+</div>
+
+<p style="margin-top:20px">Management has published three successive frames, and the sequence is informative. In November 2025 the CFO described $2.7bn of annual revenue and roughly $500m of net profit <em>at full loading of existing, already-qualified capacity</em>. In May 2026 a 2028 model of $2.8bn / $750m was set; in July 2026, alongside the Japan announcement, it was raised to $3.6bn / $1.2bn on a 45% gross margin assumption, described as fully spoken for by customers. These are targets, not results — and the first is a different quantity from the other two. The gap between FY2025 and the 2028 frame is entirely a function of capacity that is not yet built.</p>
+
+<h2>5 · Margin, cash and capital allocation</h2>
+
+<div class="pull">
+"…while during periods in which we operate at high utilization rates we are able to cover our costs, at times when the utilization rate is low, the reduced revenues may not cover all of the costs since a large portion are fixed costs which remain constant… This issue may be further exacerbated with the ramp-up of new capacity, where we incur fixed costs upon the start of operations while gradually ramping up utilization, causing a decrease in our profit margins."
+<div class="attr">Tower Semiconductor, Form 20-F for FY2025 — the mechanism that governs the next two years</div>
+</div>
+
+<p>Tower is mid-way through a $920m equipment programme and has announced roughly $3bn more in Japan. Each tranche of capacity depresses margin before it lifts it — and the depression arrives on a schedule Tower controls while the lift arrives on a schedule its customers control.</p>
+
+<div class="chart">
+<svg viewBox="0 0 900 300" role="img" aria-label="Tower revenue and gross margin, fiscal 2016 to 2025">
+  <line x1="70" y1="250" x2="860" y2="250" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="30" x2="860" y2="30" stroke="#F2EDE3" stroke-width="1"/>
+  <line x1="70" y1="140" x2="860" y2="140" stroke="#F2EDE3" stroke-width="1"/>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" points="70,97.3 154,80.5 239,90.6 323,99.2 408,95.3 492,65.7 577,45.0 661,76.1 746,74.5 830,58.6"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="5 3" points="70,129.6 154,114.1 239,152.9 323,203.4 408,206.0 492,162.0 577,84.4 661,123.2 746,138.7 830,143.9"/>
+  <g fill="#C75B39">
+    <circle cx="70" cy="97.3" r="3.5"/><circle cx="577" cy="45.0" r="3.5"/><circle cx="661" cy="76.1" r="3.5"/><circle cx="830" cy="58.6" r="3.5"/>
+  </g>
+  <g fill="#3C6E8F">
+    <circle cx="408" cy="206.0" r="3.5"/><circle cx="577" cy="84.4" r="3.5"/><circle cx="830" cy="143.9" r="3.5"/>
+  </g>
+  <text x="70" y="86" font-family="Calibri,Arial" font-size="13" fill="#C75B39" text-anchor="start" font-weight="700">Revenue $1,250m</text>
+  <text x="577" y="35" font-family="Calibri,Arial" font-size="13" fill="#C75B39" text-anchor="middle" font-weight="700">peak $1,678m</text>
+  <text x="661" y="92" font-family="Calibri,Arial" font-size="12" fill="#C75B39" text-anchor="middle">$1,423m</text>
+  <text x="830" y="48" font-family="Calibri,Arial" font-size="13" fill="#C75B39" text-anchor="end" font-weight="700">$1,566m</text>
+  <text x="70" y="151" font-family="Calibri,Arial" font-size="13" fill="#3C6E8F" text-anchor="start" font-weight="700">Gross margin 24.3%</text>
+  <text x="408" y="224" font-family="Calibri,Arial" font-size="12" fill="#3C6E8F" text-anchor="middle">trough 18.4%</text>
+  <text x="577" y="105" font-family="Calibri,Arial" font-size="12" fill="#3C6E8F" text-anchor="middle">27.8%</text>
+  <text x="830" y="160" font-family="Calibri,Arial" font-size="13" fill="#3C6E8F" text-anchor="end" font-weight="700">23.2%</text>
+  <g font-family="Calibri,Arial" font-size="12" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="270">FY16</text><text x="154" y="270">FY17</text><text x="239" y="270">FY18</text><text x="323" y="270">FY19</text><text x="408" y="270">FY20</text>
+    <text x="492" y="270">FY21</text><text x="577" y="270">FY22</text><text x="661" y="270">FY23</text><text x="746" y="270">FY24</text><text x="830" y="270">FY25</text>
+  </g>
+  <text x="70" y="292" font-family="Calibri,Arial" font-size="12.5" fill="#6E675C">Ten years, +25% revenue and no margin expansion — until now.</text>
+</svg>
+</div>
+<p class="cap">Revenue and gross profit as reported in Tower's Forms 20-F, FY2016–FY2025; gross margin computed from those figures. Revenue and margin are plotted on separate scales.</p>
+
+<h3>The financial spine</h3>
+<div class="tw"><table>
+<tr><th></th><th class="r">FY2016</th><th class="r">FY2022</th><th class="r">FY2025</th><th class="r">H1 2026</th></tr>
+<tr><td><strong>Revenue ($m)</strong></td><td class="r">1,249.6</td><td class="r">1,677.6</td><td class="r">1,566.1</td><td class="r">873.7</td></tr>
+<tr><td><strong>Gross margin</strong></td><td class="r">24.3%</td><td class="r">27.8%</td><td class="r">23.2%</td><td class="r">28.5%</td></tr>
+<tr><td><strong>Operating margin</strong></td><td class="r">14.0%</td><td class="r">18.6%</td><td class="r">12.4%</td><td class="r">17.7%</td></tr>
+<tr><td><strong>Net profit attributable ($m)</strong></td><td class="r">203.9</td><td class="r">264.6</td><td class="r">220.5</td><td class="r">155.8</td></tr>
+<tr><td><strong>Capex, net ($m)</strong></td><td class="r">210</td><td class="r">214</td><td class="r">436.5</td><td class="r">343.0</td></tr>
+<tr><td><strong>Capex as % of revenue</strong></td><td class="r">16.8%</td><td class="r">12.8%</td><td class="r">27.9%</td><td class="r">39.3%</td></tr>
+</table></div>
+<p class="cap"><strong>Comparability.</strong> FY2016 includes Fab 1 (150mm) and three Japanese fabs including Arai, and FY2016 net profit includes a $50.5m net gain on the San Antonio fab acquisition. Fab 10 entered the consolidated results only from Q4 2024 and Fab 1 ceased operations in Q1 2025, so FY2025 is not like-for-like against FY2016 or FY2022. FY2023 is omitted: its 38.5% operating margin includes a $313.5m net Intel merger-termination fee and a $52.2m restructuring gain. H1 2026 is six months and its capex ratio is not annualised. Percentages computed from disclosed dollar figures.</p>
+
+<div class="chart">
+<svg viewBox="0 0 900 300" role="img" aria-label="Tower quarterly revenue and gross margin, Q1 2025 to Q2 2026">
+  <line x1="70" y1="250" x2="860" y2="250" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="140" x2="860" y2="140" stroke="#F2EDE3" stroke-width="1"/>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" points="70,186.0 222,170.7 374,144.7 526,95.8 678,124.6 830,73.9"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="5 3" points="70,212.3 222,195.0 374,162.0 526,113.3 678,111.7 830,61.4"/>
+  <g fill="#C75B39"><circle cx="70" cy="186.0" r="3.5"/><circle cx="222" cy="170.7" r="3.5"/><circle cx="374" cy="144.7" r="3.5"/><circle cx="526" cy="95.8" r="3.5"/><circle cx="678" cy="124.6" r="3.5"/><circle cx="830" cy="73.9" r="4.5"/></g>
+  <g fill="#3C6E8F"><circle cx="70" cy="212.3" r="3.5"/><circle cx="222" cy="195.0" r="3.5"/><circle cx="374" cy="162.0" r="3.5"/><circle cx="526" cy="113.3" r="3.5"/><circle cx="678" cy="111.7" r="3.5"/><circle cx="830" cy="61.4" r="4.5"/></g>
+  <text x="70" y="176" font-family="Calibri,Arial" font-size="13" fill="#C75B39" text-anchor="start" font-weight="700">Revenue $358m</text>
+  <text x="830" y="99" font-family="Calibri,Arial" font-size="13" fill="#C75B39" text-anchor="end" font-weight="700">$460m</text>
+  <text x="70" y="230" font-family="Calibri,Arial" font-size="13" fill="#3C6E8F" text-anchor="start" font-weight="700">Gross margin 20.4%</text>
+  <text x="830" y="45" font-family="Calibri,Arial" font-size="13" fill="#3C6E8F" text-anchor="end" font-weight="700">30.0%</text>
+  <g font-family="Calibri,Arial" font-size="12" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="270">Q1 25</text><text x="222" y="270">Q2 25</text><text x="374" y="270">Q3 25*</text><text x="526" y="270">Q4 25</text><text x="678" y="270">Q1 26</text><text x="830" y="270">Q2 26</text>
+  </g>
+  <text x="70" y="292" font-family="Calibri,Arial" font-size="12.5" fill="#6E675C">Six quarters: revenue +28%, gross margin +9.6 points. Mix, not volume.</text>
+</svg>
+</div>
+<p class="cap">Tower quarterly and interim results releases. *Q3 2025 revenue and gross margin are derived by subtracting the reported H1 2025 and Q4 2025 figures from the reported FY2025 totals; all other points are as reported.</p>
+
+<h3>Cash conversion — read the footnote</h3>
+
+<p>In FY2025, operating cash flow of $395.5m against $436.5m of net capex produced <strong>negative</strong> free cash flow of $41.1m: the business generated cash and spent more than all of it on capacity. In H1 2026 operating cash flow was $686.9m against $343.0m of capex — apparently transforming the picture. But $282.6m of that operating cash flow was an increase in customers' advances, disclosed as such in a footnote. Excluding it, operating cash flow was $404.4m and free cash flow $61.4m.</p>
+
+<p>Those advances are the photonics capacity prepayments. Deferred revenue and customers' advances, current and long-term combined, went from $27.5m at 31 December 2025 to $321.4m at 30 June 2026. This is customer money, not shareholder money, and it will be <em>credited against future purchases</em> rather than repaid — so it converts into revenue at zero incremental cash margin when the wafers ship. A genuinely favourable funding structure. Not free cash flow.</p>
+
+<h3>Where the cash has gone, ranked</h3>
+<ul class="plain">
+<li><strong>Capital expenditure, by an enormous margin.</strong> Roughly $2.9bn of net capex across FY2016–H1 2026, running <em>above</em> operating cash flow in the most recent full year.</li>
+<li><strong>Debt reduction.</strong> Total debt $161.5m at FY2025 year-end and $141.7m at 30 June 2026, against $1,481.4m of cash and deposits — net cash of $1,339.7m. Essentially no financial leverage.</li>
+<li><strong>Dividends and buybacks: none.</strong> No dividend and no repurchase programme appears in any filing or release reviewed. Shares outstanding were 113.0m at 30 June 2026 against 114.4m diluted, and broadly flat — neither capital returned nor equity issued.</li>
+</ul>
+
+<p>The pattern is unusually consistent: everything earned, plus the accumulated cash, goes to capacity, and nothing is returned. Three non-shareholder sources sit alongside it — $290m and rising of customer prepayments, $1bn of Japanese METI grants against the announced $3bn programme, and $25m from Nuvoton on the TPSCo closing. Management is deliberately structuring the expansion so shareholders fund the smaller share.</p>
+
+<h3>Announced but not in the reported figures</h3>
+
+<p>On 14 July 2026 Tower announced a Japanese expansion of approximately $3bn supported by roughly $1bn of METI grants, net cost about $2bn: converting the Arai facility to 300mm photonics and advanced packaging with production readiness targeted for Q4 2027, and a greenfield 300mm facility adjacent to Fab 7 contributing from 2029, contingent on further approvals. The 2028 model was raised to $3.6bn / $1.2bn the same day. None of this appears in the FY2025 20-F or the H1 2026 accounts, and the second track is explicitly conditional. The TPSCo restructuring, targeted to close 1 April 2027, likewise post-dates every reported figure here.</p>
+
+<p>One item cuts the other way. The 9% effective tax rate in FY2025 rested on a 7.5% preferred Israeli rate applied to eligible Israeli income <em>"through December 31, 2025."</em> H1 2026 was taxed at 12.7%. The low-tax period as previously constituted has ended, and the filing does not state what replaces it.</p>
+
+<h2>6 · Cyclicality, constraints and what to monitor</h2>
+
+<p>Revenue peaked at $1,677.6m in FY2022, fell 15.2% to $1,422.7m in FY2023, and had recovered only to $1,566.1m by FY2025 — still 6.6% below the prior peak three years later. Gross margin traced a wider arc: 27.8% at the FY2022 peak, 18.4% at the FY2020 trough, 23.2% in FY2025.</p>
+
+<p>The current position is unusual and worth stating precisely, because it is the fact most likely to be misread. <strong>On volume, Tower is only now clearing its prior peak</strong> — H1 2026 ran at $873.7m, an annualised pace above FY2022 but achieved with Fab 10 added and Fab 1 removed. <strong>On margin, it has already cleared it</strong> — Q2 2026's 30.0% gross margin is above the FY2022 cycle peak and the highest in the period reviewed. Margin is running ahead of volume, which is the signature of a mix change rather than a cyclical upswing. A record margin at a mid-cycle volume is a different fact from a record margin at a volume peak, and this is the former.</p>
+
+<p>Utilization confirms room remains: on the Q2 2026 call management put Fabs 2, 3 and 9 at 80–85%, Fab 5 at 75%, and Fab 7 well above its 85% target model. Full loading of existing qualified capacity is the $2.7bn revenue frame management described in November 2025, against $1,566.1m delivered in FY2025.</p>
+
+<div class="tw"><table>
+<tr><th>End market</th><th class="r">Q2 2026 revenue</th><th>Direction and mechanism</th></tr>
+<tr><td><strong>RF infrastructure, incl. silicon photonics</strong></td><td class="r">49%</td><td>Up roughly 140% year on year. AI data-centre optical transceiver build-out at 800G and 1.6T — an investment cycle, not an end-consumption cycle.</td></tr>
+<tr><td><strong>Power management</strong></td><td class="r">14%</td><td>Industrial, automotive and consumer power ICs, recovering from the 2023–2025 analog inventory correction.</td></tr>
+<tr><td><strong>RF mobile</strong></td><td class="r">12%</td><td>Down 14% year on year. Smartphone antenna switch and front-end content on RF SOI — a mature franchise losing share of the mix.</td></tr>
+<tr><td><strong>Sensors and display</strong></td><td class="r">12%</td><td>Flat year on year. CMOS image sensors for industrial, medical and automotive; OLED-on-silicon backplanes for headsets.</td></tr>
+<tr><td><strong>Other, incl. analog and discrete</strong></td><td class="r">~13%</td><td>Residual, derived by subtraction. Not separately disclosed.</td></tr>
+</table></div>
+<p class="cap">Tower Q2 2026 earnings call, August 2026. Tower publishes no end-market split in its financial statements and discloses no profitability by end market — these are revenue shares only, not audited segment data.</p>
+
+<h3>The downside mechanism</h3>
+
+<p>The relevant downside is not a general semiconductor recession. It is <em>a pause in AI data-centre optical spending arriving while the capacity built to serve it is being switched on.</em> Photonics went from roughly 12% of a $1.5bn revenue base to a $680m annualised run-rate in four quarters, and 49% of Q2 2026 revenue now sits in the line that contains it. The $920m equipment programme and the $3bn Japan programme are both sized against that demand, and the fixed cost they create arrives on installation, not on shipment. A customer base that deconcentrated impressively at the account level has re-concentrated at the application level.</p>
+
+<p>The industry backdrop gives no clear read on the rest of the business. Mature-node pricing signals reversed within a single year — UMC pressed its own suppliers for a 15% price cut in October 2025 to defend a gross margin that had fallen from 45.1% (2022) to 27.7% (H1 2025); by March–April 2026 SMIC, Hua Hong, Nexchip and UMC were all raising mature-node prices 4–20% as 8-inch supply tightened and TSMC and Samsung retired legacy lines. Whether that tightening is durable or a spike ahead of the next Chinese capacity wave is genuinely unresolved.</p>
+
+<h3>Durable versus borrowed</h3>
+<div class="two">
+  <div class="card">
+    <h4 style="color:var(--good)">Durable — survives a decade</h4>
+    <ul>
+      <li>Qualified specialty platforms and their process design kits, which customers cannot move without re-qualifying</li>
+      <li>An installed 200mm base against a documented core-tool shortage</li>
+      <li>Fabs in four countries — Israel, the US, Japan, Italy — as supply-chain diversification is being priced</li>
+      <li>A deconcentrated customer book: largest account 11%, next seven at 4–7% each</li>
+      <li>$1.34bn net cash, funding expansion without dilution or covenants</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4 style="color:var(--terracotta)">Borrowed — currently helping</h4>
+    <ul>
+      <li>The AI optical build cycle, now 49% of revenue and effectively all of the growth</li>
+      <li>$321.4m of customer prepayments, which fund capex now and convert to revenue at zero incremental cash margin later</li>
+      <li>$1bn of METI grants covering a third of the announced Japan programme</li>
+      <li>The 7.5% preferred Israeli tax rate, which applied through 31 December 2025; H1 2026 was taxed at 12.7%</li>
+      <li>$56.7m of FY2025 financing income on the cash pile — 29% of operating profit, earned on deposits rather than on wafers</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Leading indicators, and where each is published</h3>
+<div class="tw"><table>
+<tr><th>Indicator</th><th>Where it is published</th></tr>
+<tr><td>Gross margin against the 45% company target, quarterly</td><td>Tower results releases and 6-K filings</td></tr>
+<tr><td>Silicon photonics annualised run-rate vs. the $1bn Q4 2026 goal</td><td>Tower earnings calls — it does <em>not</em> appear in the financial statements</td></tr>
+<tr><td>Deferred revenue and customers' advances on the balance sheet</td><td>Tower 6-K interim statements. A stalling balance signals 2027–28 capacity reservations have stopped growing</td></tr>
+<tr><td>Capex against the $920m and $3bn programmes</td><td>Tower cash flow statements and releases</td></tr>
+<tr><td>Mature-node utilization and wafer pricing</td><td>UMC, SMIC and VIS quarterly releases disclose utilization; GlobalFoundries and X-FAB do not. TrendForce publishes the quarterly foundry share and pricing series</td></tr>
+<tr><td>200mm capacity additions</td><td>SEMI World Fab Forecast and 200mm Fab Outlook</td></tr>
+<tr><td>The GlobalFoundries investigation docket</td><td>US International Trade Commission. An exclusion order, unlike a damages award, takes effect as an import ban</td></tr>
+</table></div>
+
+<h2>7 · Risks, unknowns and questions for deeper work</h2>
+
+<p>These are the risks cyclicality does not capture; cycle exposure and the AI-spending downside are covered above.</p>
+
+<div class="lever">
+  <div class="tag">Legal — mechanism is exclusion, not damages</div>
+  <div class="name">An adverse ITC ruling would be an import ban</div>
+  <p>On 26 March 2026 GlobalFoundries filed three infringement actions against Tower — at the US International Trade Commission and in the Western District of Texas — asserting eleven US patents and seeking to block Tower's US import and sale of allegedly infringing products as well as lost-profits damages. Tower "disputes these claims." The mechanism matters: the ITC's remedy is exclusion. An adverse determination would sever US-bound shipments from Tower's Israeli, Japanese and Italian fabs at the point in the ramp when US-billed revenue is 42% of the total and the photonics contracts are being fulfilled. No reserve and no assessment of likely outcome has been disclosed.</p>
+</div>
+<div class="lever">
+  <div class="tag">Counterparty</div>
+  <div class="name">The second Intel relationship has failed — and the first one produced the cash pile</div>
+  <p>Under a September 2023 agreement Intel undertook to build a capacity corridor for Tower's customers at its 300mm New Mexico facility, against up to $300m of Tower investment. "Intel expressed its intention not to perform under the agreement, and the parties are presently in a mediation process." This follows the collapse of Intel's $5.4bn acquisition of Tower in August 2023 for want of Chinese regulatory approval, which produced the $313.5m net termination fee booked in FY2023 operating profit. The consequence is not the mediation outcome but the capacity: 300mm US capacity Tower planned around must now come from elsewhere — and the Japan programme is where it is coming from, at Tower's cost rather than Intel's, and two years later.</p>
+</div>
+<div class="lever">
+  <div class="tag">Operational</div>
+  <div class="name">Regional conflict is already touching the capital programme</div>
+  <p>The FY2025 20-F states that delays in equipment delivery, installation and qualification "may also result from the recent conflicts between the United States and Iran, Israel and Iran, and Israel and Hezbollah that commenced in February 2026, which has prevented vendors from arriving in Israel to install the equipment, which may impact the timely execution of the $920 million SiPho and SiGE capital expenditure plan." That is a stated operational effect on a named programme, not a generic caveat. No financial impact has been quantified and subsequent quarterly filings do not return to it.</p>
+</div>
+<div class="lever">
+  <div class="tag">Property</div>
+  <div class="name">The Newport Beach lease is disputed at a photonics fab</div>
+  <p>Fab 3's landlord has requested a judicial declaration that the company committed a material, non-curable breach of the lease over noise abatement, which Tower disputes; separately a third party asserts collateral or other rights over the site. The lease was extended in 2025 through 2030. Fab 3 is one of Tower's silicon photonics fabs, and a 200mm specialty fab cannot be relocated on a commercial timescale.</p>
+</div>
+<div class="lever">
+  <div class="tag">Accounting reality</div>
+  <div class="name">Prepayments are a claim on future margin, not a cushion</div>
+  <p>The $321.4m of customer advances at 30 June 2026 will be credited against future wafer purchases. When those wafers ship they generate revenue and cost but no incremental cash. The cash benefit is taken now; the margin obligation lands in 2027 and 2028.</p>
+</div>
+<div class="lever">
+  <div class="tag">Compounding</div>
+  <div class="name">The two risks that combine</div>
+  <p>An ITC exclusion order arriving during the capacity ramp would join the worst version of two separate problems: fixed costs from newly installed equipment landing in the income statement while the US route to market — 42% of revenue — is closed. Each is survivable alone. Together they would strand the capital programme.</p>
+</div>
+
+<h3>What the sources could not answer</h3>
+<ul class="plain">
+<li><strong>Wafer volumes and average selling price.</strong> Tower disclosed both in the FY2016 20-F — "a 27% increase in the number of wafers shipped and a 6% increase in the average selling price per wafer" — and has disclosed neither since. The unit economics of a per-wafer pricing business cannot be reconstructed from the filings, and price and volume cannot be separated except where a narrative sentence happens to attribute them.</li>
+<li><strong>Maintenance versus growth capex.</strong> Not split in any year, so what Tower must spend simply to keep six fabs qualified cannot be established.</li>
+<li><strong>Profitability by end market, platform or fab.</strong> Tower reports as a single segment. The margin on a photonics wafer relative to a power management wafer — the central question raised by the H1 2026 mix shift — is nowhere disclosed.</li>
+<li><strong>Fab 10 and the Agrate arrangement.</strong> Committed capital, capacity secured and current ramp status do not appear in any 2025 or 2026 disclosure reviewed, despite Fab 10 being the largest single contributor to FY2025 revenue growth. Total company capex guidance for 2026 is likewise not given.</li>
+<li><strong>The pro-forma effect of the TPSCo restructuring.</strong> Nuvoton was 11% of FY2025 revenue and Fab 5's output leaves the group on closing. Neither the revenue nor the margin effect is quantified.</li>
+<li><strong>Named photonics customers.</strong> None disclosed, consistent with long-standing practice — so concentration inside the 49% RF infrastructure line, and inside the $1.3bn of 2027 contracts, cannot be assessed.</li>
+</ul>
+
+<p><strong>Three questions follow.</strong> What is the gross margin on a photonics wafer, and does the 45% company target imply a mix in which photonics is most of the book? How many customers stand behind the $1.3bn of 2027 contracts, and what happens to the capacity if the largest re-plans? And what does Tower's Israeli tax position look like from 2026 onward, given the preferred rate as described applied only through the end of 2025?</p>
+
+<h2>8 · Investor takeaways</h2>
+<div class="card">
+<ul class="plain" style="margin-bottom:0">
+<li><strong>What this business really is.</strong> A contract manufacturer of qualified analog process platforms — small in the foundry industry at 0.8% of wafer revenue, genuinely differentiated within the few segments it serves, and structurally unable to earn designer-like margins.</li>
+<li><strong>The core economic engine.</strong> Utilization against a fixed cost base of which depreciation alone is 19% of revenue. Incremental gross margin ran 67% in the latest half-year comparison — which is why a mix shift shows up so fast.</li>
+<li><strong>The main growth lever.</strong> Silicon photonics: $180m to $680m annualised in four quarters, with $1.3bn of 2027 revenue under signed contract. It is why gross margin cleared its ten-year peak while revenue has only just cleared FY2022.</li>
+<li><strong>What could break the story.</strong> A pause in AI optical spending landing while $920m of installed equipment and a $3bn Japan programme are switching on — or an ITC exclusion order closing the US, 42% of revenue.</li>
+<li><strong>What to monitor.</strong> Gross margin against the 45% target, the photonics run-rate, and the customers' advances line. The third is the earliest of the three: capacity is reserved before the wafers are made.</li>
+</ul>
+</div>
+
+<div class="foot">
+<h3>Sources</h3>
+<p><strong>Company.</strong> Tower Semiconductor Forms 20-F for fiscal years 2016 through 2025 (FY2025 filed 30 April 2026), SEC CIK 0000928876. Forms 6-K carrying the FY2025 annual financial statements and management's discussion (2 March 2026) and the Q2/H1 2026 unaudited interim statements and management's discussion (17 August 2026). Tower press releases of 13 May 2026 (2027 photonics contracts), 14 July 2026 (Japan expansion and revised 2028 model) and 25 March 2026 (TPSCo restructuring, jointly with Nuvoton). Tower earnings-call remarks, Q3 2025 through Q2 2026.</p>
+<p><strong>Industry and competitors.</strong> TrendForce quarterly foundry revenue and share series and mature-node pricing coverage, October 2025 through June 2026. SEMI 200mm Fab Outlook. SurplusGlobal 200mm equipment data as reported by Semiconductor Engineering. Reported fiscal 2025 results releases of UMC, GlobalFoundries, X-FAB, Hua Hong, SMIC, SkyWater, Texas Instruments, ASE Technology and Amkor; Vanguard International Semiconductor FY2024 annual report.</p>
+<p><strong>Post-dating the reported figures.</strong> The Japan expansion programme (announced 14 July 2026), the raised 2028 target model, and the TPSCo ownership restructuring (targeted to close 1 April 2027) are all announced but not reflected in any financial statement referenced here. The GlobalFoundries litigation filed 26 March 2026 and the Intel New Mexico mediation are both unresolved as of the most recent filing reviewed.</p>
+<p style="margin-top:16px;font-style:italic">This page explains how the business works and where its economics come from. It contains no valuation, no price target and no recommendation.</p>
+</div>
+
+</div>
+</body>
+</html>

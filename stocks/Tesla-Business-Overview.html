@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview: Tesla, Inc. (TSLA)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;margin:0}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-family:Georgia,serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);font-weight:700}
+.sourceline{color:var(--muted);font-size:15px;line-height:1.5;border-bottom:1px solid var(--line);
+  padding-bottom:22px;margin-bottom:32px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;border-left:5px solid var(--terracotta);
+  padding:6px 0 6px 22px;margin:0 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lbl{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#B9AE9C;font-weight:700}
+.engine .unit{font-family:Georgia,serif;font-size:30px;font-weight:700;margin:8px 0 10px;line-height:1.25}
+.engine p{margin:0;font-size:17.5px;color:#EDE5D8}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 40px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px}
+.kpi .k{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi .v{font-family:Georgia,serif;font-size:27px;font-weight:700;color:var(--terracotta);
+  margin:5px 0 3px;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:14px;color:var(--muted);line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 20px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:15px 18px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .nm{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:3px 0 6px}
+.lever p{margin:0;font-size:17px}
+.pull{font-family:Georgia,serif;font-size:20px;line-height:1.5;background:var(--terracotta-soft);
+  border-radius:10px;padding:20px 24px;margin:24px 0}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;
+  color:var(--muted);margin-top:10px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px}
+.two ul{margin:0;padding-left:19px}
+.two li{margin-bottom:8px;font-size:16.5px;line-height:1.45}
+.tw{overflow-x:auto;margin:22px 0}
+table{border-collapse:collapse;width:100%;font-size:16px;background:#fff;
+  font-variant-numeric:tabular-nums;min-width:520px}
+caption{text-align:left;font-size:14px;color:var(--muted);padding-bottom:8px;caption-side:top}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#F4EEE4;font-weight:700;font-size:14.5px}
+td.n,th.n{text-align:right}
+.note{font-size:14.5px;color:var(--muted);line-height:1.5;margin:-8px 0 22px}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 8px;margin:24px 0}
+.chart .ct{font-family:Georgia,serif;font-size:18px;font-weight:700;margin:0 6px 2px}
+.chart .cs{font-size:14.5px;color:var(--muted);margin:0 6px 10px}
+.chart svg{width:100%;height:auto;display:block}
+ul.plain{padding-left:19px}
+ul.plain li{margin-bottom:9px}
+footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;font-size:14.5px;color:var(--muted)}
+@media(max-width:700px){
+  body{font-size:17.5px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Tesla, Inc. &middot; NASDAQ: TSLA</h1>
+<div class="sourceline">
+7 September 2026 &middot; Built from Tesla&rsquo;s 10-K filings FY2016&ndash;FY2025, the FY2026 Q1 and Q2 10-Qs,
+the Q2 2026 earnings release and update deck, and DEF 14A proxies, supplemented by independent industry sources
+(IEA, ACEA, CPCA, EIA, LBNL, NREL, BloombergNEF, Wood Mackenzie, Modo Energy) and competitors&rsquo; own filings.
+<strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Tesla is a vertically integrated manufacturer that sells electric vehicles and grid-scale batteries straight to
+end customers with no dealer in between &mdash; and that is currently spending an automotive company&rsquo;s gross
+profit on an AI company&rsquo;s cost base.
+</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One vehicle delivered &mdash; about $42,300, earning roughly $6,900 of gross profit</div>
+  <p>In Q2 2026 Tesla delivered 480,126 vehicles, of which 7,580 were leased. The remaining 472,546 produced
+  $20,006M of automotive sales revenue at a 16.3% automotive gross margin excluding regulatory credits. After
+  $4,353M of company-wide operating expense, $398M of operating income was left &mdash; about $830 per vehicle
+  across the whole enterprise. The second engine is one GWh of storage deployed: 13.5 GWh in the quarter, at a
+  segment gross margin that ran 29.8% for FY2025.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Price per unit</div><div class="v">$42.3k</div>
+    <div class="s">Per non-lease vehicle, Q2 2026 (computed from 10-Q)</div></div>
+  <div class="kpi"><div class="k">Gross profit per unit</div><div class="v">~$6.9k</div>
+    <div class="s">At 16.3% automotive GM ex-credits, Q2 2026</div></div>
+  <div class="kpi"><div class="k">FY2025 earnings</div><div class="v">$3,794M</div>
+    <div class="s">Net income to common; diluted EPS $1.08</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">Net cash</div>
+    <div class="s">$43.5bn cash &amp; investments vs $9.1bn debt, of which $2M recourse (30 Jun 2026)</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">1.4%</div>
+    <div class="s">Q2 2026 operating margin vs 16.8% peak (FY2022) &mdash; on record volume</div></div>
+  <div class="kpi"><div class="k">Organic vs reported</div><div class="v">Identical</div>
+    <div class="s">+26% revenue in Q2 2026, all organic. No material M&amp;A since 2019</div></div>
+</div>
+
+<h2>1. Executive snapshot</h2>
+<div class="tw">
+<table>
+<tbody>
+<tr><th>What the business is</th><td>A vertically integrated maker of electric vehicles and grid-scale battery
+storage, selling directly to end customers, now shifting a rising share of spending toward autonomy, robotics and AI compute.</td></tr>
+<tr><th>Industry</th><td>Global light-vehicle manufacturing plus utility-scale battery storage. Two reportable
+segments: Automotive, and Energy Generation &amp; Storage (FY2025 10-K, Note 16).</td></tr>
+<tr><th>How it makes money</th><td>Builds vehicles and battery systems at owned factories, sells them direct and
+collects cash at or near delivery; a growing tail of software, connectivity, charging and service revenue is
+recognized over the ownership life.</td></tr>
+<tr><th>The unit</th><td>One vehicle delivered (~$42.3k, ~$6.9k gross profit). Second unit: one GWh of storage
+deployed &mdash; 46.7 GWh in FY2025.</td></tr>
+<tr><th>What protects it</th><td>Scale at eight owned plants; an installed base of ~9.7m vehicles; 82,357
+Supercharger connectors; direct distribution; ~$34.5bn of net cash.</td></tr>
+<tr><th>What drives earnings</th><td>Vehicle volume and ASP; storage GWh and its margin; operating expense growth,
+now led by R&amp;D; and, until 2026, US regulatory credits.</td></tr>
+<tr><th>What to watch</th><td>Energy gross margin after the Q2 2026 vendor-cell charge; whether 2026 capex above
+$20bn is funded from operations; whether robotaxi produces disclosed revenue.</td></tr>
+<tr><th>Cycle exposure</th><td><strong>High.</strong> Operating margin 6.3% (FY2020) &rarr; 16.8% (FY2022) &rarr;
+4.6% (FY2025) &rarr; 1.4% (Q2 2026), on record volume.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>2. What the company does</h2>
+<p>The problem Tesla addresses is physical: a car that runs on electricity must be as convenient as one that runs
+on petrol, and a grid running on solar and wind must deliver power after the sun sets. Both are solved by the same
+component &mdash; a lithium-ion cell assembled into a pack &mdash; and Tesla builds both products in owned
+factories using largely common cell supply, power electronics and software.</p>
+
+<p>Tracing one vehicle from production to cash is unusually short. Tesla builds to an order placed on its own
+website or in one of its own stores. There is no franchised dealer, so there is no wholesale price, no floor-plan
+financing and no channel inventory to discount at quarter end. Cash arrives at or immediately after delivery.
+Global vehicle inventory was <strong>15 days of supply</strong> at the end of Q2 2026 against 24 a year earlier,
+and days sales outstanding were 13 against days payable outstanding of 58. Tesla is paid by its customers well
+before it pays its suppliers, which is why operating cash flow has exceeded net income in every recent year.</p>
+
+<p>Not all of a vehicle&rsquo;s revenue is recognized at delivery. Connectivity, Full Self-Driving access, free
+Supercharging and over-the-air updates are obligations satisfied over the ownership life, and they accumulate:
+<strong>$4.05bn of automotive deferred revenue</strong> at 30 June 2026, $962M of it expected within twelve
+months. This is the mechanism by which a hardware sale becomes a small annuity, and it is the only part of the
+software story visible in the accounts today.</p>
+
+<p>The second unit is one GWh of storage. Tesla deployed 46.7 GWh in FY2025 against 31.4 GWh in FY2024, and the
+energy segment earned a 29.8% gross margin against the automotive segment&rsquo;s 16.2% &mdash; the smaller
+business now carries the better unit economics. Energy revenue is contracted rather than transactional:
+$10.05bn of performance obligations on contracts longer than a year sat unsatisfied at 30 June 2026.</p>
+
+<p>Two product decisions show where management believes the economics are. The Model S and Model X lines at
+Fremont were <strong>decommissioned</strong> during 2026 to make room for first-generation Optimus production
+&mdash; the lowest-volume vehicle lines retired for a product with no disclosed unit target. In the other
+direction, the solar megawatt metric was dropped from the 10-K entirely after FY2023, when solar deployments had
+fallen to 223 MW from 348 MW. The energy segment&rsquo;s margin recovery from &minus;4.6% in FY2021 to 29.8% in
+FY2025 is a Megapack story, not a solar one.</p>
+
+<div class="chart">
+  <div class="ct">The two units, FY2020&ndash;FY2025</div>
+  <div class="cs">Vehicle deliveries have plateaued and turned down; storage deployments have not.
+  FY2021 is not sourced from the filings in scope and is omitted.</div>
+  <svg viewBox="0 0 860 320" role="img" aria-label="Vehicle deliveries and energy storage deployed, FY2020 to FY2025">
+    <line x1="56" y1="280" x2="804" y2="280" stroke="#E5DDD0"/>
+    <line x1="56" y1="216" x2="804" y2="216" stroke="#F0EAE0"/>
+    <line x1="56" y1="152" x2="804" y2="152" stroke="#F0EAE0"/>
+    <line x1="56" y1="88"  x2="804" y2="88"  stroke="#F0EAE0"/>
+    <line x1="56" y1="24"  x2="804" y2="24"  stroke="#F0EAE0"/>
+    <text x="50" y="284" text-anchor="end" font-size="12" fill="#6E675C">0</text>
+    <text x="50" y="156" text-anchor="end" font-size="12" fill="#6E675C">1.0m</text>
+    <text x="50" y="28"  text-anchor="end" font-size="12" fill="#6E675C">2.0m</text>
+    <text x="812" y="284" font-size="12" fill="#6E675C">0</text>
+    <text x="812" y="156" font-size="12" fill="#6E675C">25</text>
+    <text x="812" y="28"  font-size="12" fill="#6E675C">50 GWh</text>
+
+    <polyline fill="none" stroke="#C75B39" stroke-width="2.5"
+      points="56,216 355,112 505,48.5 654,51 804,70"/>
+    <circle cx="56" cy="216" r="4" fill="#C75B39"/>
+    <circle cx="355" cy="112" r="4" fill="#C75B39"/>
+    <circle cx="505" cy="48.5" r="4" fill="#C75B39"/>
+    <circle cx="654" cy="51" r="4" fill="#C75B39"/>
+    <circle cx="804" cy="70" r="4" fill="#C75B39"/>
+    <text x="62" y="206" font-size="12.5" fill="#C75B39" font-weight="700" text-anchor="start">499,647 deliveries</text>
+    <text x="798" y="60" font-size="12.5" fill="#C75B39" font-weight="700" text-anchor="end">~1.64m</text>
+
+    <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="5 3"
+      points="56,264.5 355,247 505,204.5 654,119 804,41"/>
+    <circle cx="56" cy="264.5" r="4" fill="#3C6E8F"/>
+    <circle cx="355" cy="247" r="4" fill="#3C6E8F"/>
+    <circle cx="505" cy="204.5" r="4" fill="#3C6E8F"/>
+    <circle cx="654" cy="119" r="4" fill="#3C6E8F"/>
+    <circle cx="804" cy="41" r="4" fill="#3C6E8F"/>
+    <text x="62" y="280" font-size="12.5" fill="#3C6E8F" font-weight="700" text-anchor="start">3.0 GWh storage</text>
+    <text x="798" y="31" font-size="12.5" fill="#3C6E8F" font-weight="700" text-anchor="end">46.7 GWh</text>
+
+    <text x="56"  y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2020</text>
+    <text x="355" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2022</text>
+    <text x="505" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2023</text>
+    <text x="654" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2024</text>
+    <text x="804" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2025</text>
+  </svg>
+</div>
+
+<h2>3. Industry, competitive position &amp; moat</h2>
+<p>The electric vehicle industry exists because regulation made internal combustion progressively more expensive
+to sell, and because a battery pack fell in price far enough to compete on total cost. Both conditions have
+changed. Global electric car sales passed 20 million units in 2025, a quarter of all new cars, but growth is
+regionally divergent: China reached roughly 55% penetration on a shrinking base, the EU moved from 15.6% to
+<strong>20.7%</strong> battery-electric share in the first half of 2026, and the United States went backwards
+&mdash; BEVs were <strong>6%</strong> of light-duty sales in Q2 2026 against a 12% peak in September 2025
+(IEA <em>Global EV Outlook 2026</em>; ACEA; EIA).</p>
+
+<p>The competitive market is regional rather than global, and that determines what any share figure means.
+Chinese EVs face a 100% Section 301 tariff in the US and countervailing duties of 7.8&ndash;35.3% in the EU, while
+a 25% Section 232 duty has applied to non-USMCA vehicles and parts since April 2025. The result is three separate
+arenas: China, where everyone competes and industry margins fell to 1.8% in December 2025; Europe, where Chinese
+and Western firms compete under duty; and the US, where Chinese firms are effectively excluded.</p>
+
+<p>Tesla&rsquo;s position has weakened where the market is open and held where it is protected. Global BEV share
+fell from about 16.5% in 2024 to <strong>12.0%</strong> in 2025, when BYD delivered 2,256,714 BEVs against
+Tesla&rsquo;s 1,636,129. In Europe, Tesla registered 124,242 units in H1 2026 &mdash; up 75%, but from a collapsed
+2025 base &mdash; and was outsold by BYD&rsquo;s 130,743. In the US, where competitors are shielded from Chinese
+entrants but not from Tesla, it still accounts for roughly half of all EV sales.</p>
+
+<h3>What outside evidence supports</h3>
+<p>Tesla is the only Western manufacturer earning a positive margin on electric vehicles at scale. Ford&rsquo;s
+Model e segment lost <strong>$4.8bn of EBIT on 178,000 units</strong> in FY2025 &mdash; approximately
+&minus;$27,000 per vehicle &mdash; alongside $10.7bn of impairments, and guides to a further $4.0&ndash;4.5bn of
+loss in 2026. GM took $7.6bn of EV-related charges in FY2025 and has never disclosed a positive EV segment EBIT.
+Rivian&rsquo;s automotive gross profit was still negative $36M in Q2 2026. The durable barrier in this industry is
+the capital and cost position needed to absorb losses long enough to reach scale, and Tesla cleared it years ago.</p>
+
+<h3>What outside evidence contradicts</h3>
+<p>Tesla&rsquo;s cost position is not the industry&rsquo;s best. Volume-weighted battery pack prices in 2025 were
+<strong>$84/kWh in China against $121 in North America and $131 in Europe</strong> (BloombergNEF). BYD reported an
+18.85% gross margin in H1 2026 with in-house cells and semiconductors while growing overseas volumes 67.8%. A 44%
+regional cell cost gap is a structural fact a Western factory cannot engineer away.</p>
+
+<p>Two claimed advantages have weakened by Tesla&rsquo;s own action. Roughly 23,000 Supercharger stalls in North
+America have been opened to non-Tesla vehicles, with Ford adopting NACS in early 2024 and Volkswagen and BMW
+following in late 2025. That converts a network built as a reason to buy a Tesla into a toll road that collects
+from everyone &mdash; better revenue, weaker lock-in.</p>
+
+<h3>Storage is a different industry with a different profit pool</h3>
+<p>Global grid storage reached 307 GWh of deployments in 2025, and US utility-scale capacity roughly 52 GW by
+mid-2026. Tesla ranked first among storage integrators for a third year on Wood Mackenzie&rsquo;s measure, though
+Benchmark Mineral Intelligence ranked BYD first on a shipment basis &mdash; the top slot is contested and depends
+on counting shipments or deployments. Chinese integrators held 76% of the global market, and the top three&rsquo;s
+combined share fell from 36% to 30%: this market is fragmenting, not consolidating.</p>
+
+<p>The profit sits in cells, not integration. CATL earned a 23.9% gross margin on storage in H1 2026 and Sungrow
+36.5% in FY2025, while Fluence &mdash; the Western pure-play integrator &mdash; earned 13.1% on $2.3bn of FY2025
+revenue and lost $68M. The warning sign is Sungrow&rsquo;s H1 2026: storage revenue fell 13.2% while shipments
+rose 28% and gross margin fell 7.5 points. Average selling prices dropped roughly a third in a year.</p>
+
+<div class="pull">
+Tesla&rsquo;s own energy gross margin fell from 39.5% in Q1 2026 to 20.4% in Q2 2026, which management attributed
+to warranty charges from a vendor cell issue rather than to price. Whether that is a one-off or the leading edge
+of Sungrow&rsquo;s compression is not resolved by any source available.
+<span class="attr">Derived from Tesla FY2026 Q1 and Q2 10-Qs and the Q2 2026 update deck</span>
+</div>
+
+<p>The kind of company that wins in both industries is one that owns its cell cost curve <em>and</em> converts
+hardware into recurring revenue competitors cannot copy. Tesla is decisively the second kind and only partially
+the first: it has the installed base, the direct channel, the deferred software revenue and the balance sheet, but
+it buys most of its cells at a Western cost premium. That is why it out-earns Ford and GM on electric vehicles and
+does not out-earn BYD.</p>
+
+<h2>4. Growth engine</h2>
+<p>Tesla has made no material acquisition since Maxwell Technologies in 2019, and cash outflow for business
+combinations was zero in both FY2024 and FY2025. <strong>Reported growth and organic growth are the same
+number</strong> &mdash; an unusually clean starting point that makes the mix shift inside the growth rate the
+whole story.</p>
+
+<p>Revenue grew 26% year over year in Q2 2026 to $28,236M, and trailing-twelve-month revenue passed $100bn for
+the first time. That headline conceals four businesses moving in different directions &mdash; and the company
+earned more revenue and <em>less</em> operating profit than a year earlier, with operating margin falling from
+4.1% to 1.4%.</p>
+
+<div class="lever cyclical">
+  <div class="tag">Cyclical</div>
+  <div class="nm">Vehicle volume recovery</div>
+  <p>Deliveries rose 25% to a record 480,126 against a Q2 2025 base depressed by the run-up to the US tax credit
+  expiry. Industry-wide US EV sales fell 20.5% in the same quarter, so Tesla gained share in a shrinking market
+  &mdash; but the comparison base, not the demand level, is doing much of the work.</p>
+</div>
+<div class="lever structural">
+  <div class="tag">Structural</div>
+  <div class="nm">Energy storage deployment</div>
+  <p>GWh deployed rose 41% year over year, and a contracted backlog of $10.05bn gives roughly a year of
+  visibility. This is demand created by solar penetration and load growth, not by subsidy &mdash; the one growth
+  line whose mechanism does not depend on a policy that has already been withdrawn.</p>
+</div>
+<div class="lever mgmt">
+  <div class="tag">Structural &amp; management-driven</div>
+  <div class="nm">Services, software and the installed base</div>
+  <p>Services and other grew 50%. Active FSD subscriptions reached 1.48 million, up 56%, with a North American
+  attach rate above 55% of new deliveries. Every vehicle delivered permanently enlarges the base this revenue is
+  drawn from, which is why the line grows faster than deliveries do.</p>
+</div>
+<div class="lever">
+  <div class="tag">Temporary</div>
+  <div class="nm">Currency and duty relief</div>
+  <p>Foreign exchange added roughly $0.5bn to Q2 2026 revenue, and the company attributed lower cost per vehicle
+  primarily to lower inbound duties. Neither is a repeatable source of growth.</p>
+</div>
+<div class="lever structural" style="border-left-color:#8C6A4F">
+  <div class="tag" style="color:#8C6A4F">Structural &mdash; and negative</div>
+  <div class="nm">Regulatory credits</div>
+  <p>Credit revenue fell from $439M to $146M year over year, and from $1,993M for FY2025 as a whole. This line was
+  worth 16.1% of automotive gross profit in FY2025 and is being removed from the model entirely.</p>
+</div>
+
+<p style="margin-top:22px">Two potential engines are announced but produce no disclosed revenue. Robotaxi operates
+in seven metropolitan areas, Cybercab has entered production at Gigafactory Texas, and Optimus lines are being
+installed. Tesla discloses no robotaxi fleet size, no robotaxi revenue and no Optimus unit target; robotaxi
+revenue sits undifferentiated inside services and other. For scale, Waymo was running more than 500,000 paid rides
+a week across 14 metros from a fleet of roughly 4,000 vehicles as of September 2026 &mdash; and discloses no unit
+economics either. Nobody in this industry publishes cost per mile.</p>
+
+<h2>5. Margin, cash &amp; capital allocation</h2>
+<p>Tesla&rsquo;s margin structure is that of a manufacturer with high fixed costs and no channel. Because the cars
+are sold direct, every dollar of price reduction falls straight through to gross profit with no dealer margin to
+absorb it. Total gross margin fell from 25.6% in FY2022 to 18.0% in FY2025, and automotive gross margin from 28.5%
+to 17.8%.</p>
+
+<p>Two credits do most of the work that is not obvious from the margin line. Regulatory credits were
+<strong>$1,993M</strong> in FY2025 at essentially zero incremental cost, equal to 16.1% of automotive gross
+profit. Separately, Section 45X manufacturing credits reduce cost of revenue directly: $565M in automotive and
+$1,120M in energy in FY2025, together about <strong>9.9% of total gross profit</strong>. The first has largely
+gone; the second phases down from 2030 under tightening foreign-entity content ratios.</p>
+
+<p>Below the gross line the cost structure has changed shape. R&amp;D rose 41% in FY2025 to $6,411M, from 5% of
+revenue to 7%, and in Q2 2026 R&amp;D of $2,371M <strong>exceeded SG&amp;A of $1,982M for the first time</strong>.
+Stock-based compensation was $2,825M in FY2025. That is the direct arithmetic reason operating margin fell to 1.4%
+in a quarter of record deliveries.</p>
+
+<div class="chart">
+  <div class="ct">Margin, FY2020&ndash;Q2 2026</div>
+  <div class="cs">Gross margin has drifted down; operating margin has fallen much further, because operating
+  expense is growing against a gross profit that is not.</div>
+  <svg viewBox="0 0 860 320" role="img" aria-label="Total gross margin and operating margin, FY2020 to Q2 2026">
+    <line x1="56" y1="280" x2="804" y2="280" stroke="#E5DDD0"/>
+    <line x1="56" y1="194.7" x2="804" y2="194.7" stroke="#F0EAE0"/>
+    <line x1="56" y1="109.3" x2="804" y2="109.3" stroke="#F0EAE0"/>
+    <line x1="56" y1="24" x2="804" y2="24" stroke="#F0EAE0"/>
+    <text x="50" y="284" text-anchor="end" font-size="12" fill="#6E675C">0%</text>
+    <text x="50" y="199" text-anchor="end" font-size="12" fill="#6E675C">10%</text>
+    <text x="50" y="113" text-anchor="end" font-size="12" fill="#6E675C">20%</text>
+    <text x="50" y="28"  text-anchor="end" font-size="12" fill="#6E675C">30%</text>
+
+    <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5"
+      points="56,100.8 205.6,61.6 355.2,124.7 504.8,127.3 654.4,126.4 804,136.6"/>
+    <circle cx="56" cy="100.8" r="4" fill="#3C6E8F"/>
+    <circle cx="205.6" cy="61.6" r="4" fill="#3C6E8F"/>
+    <circle cx="355.2" cy="124.7" r="4" fill="#3C6E8F"/>
+    <circle cx="504.8" cy="127.3" r="4" fill="#3C6E8F"/>
+    <circle cx="654.4" cy="126.4" r="4" fill="#3C6E8F"/>
+    <circle cx="804" cy="136.6" r="4" fill="#3C6E8F"/>
+    <text x="62" y="92" font-size="12.5" fill="#3C6E8F" font-weight="700" text-anchor="start">21.0% gross margin</text>
+    <text x="798" y="128" font-size="12.5" fill="#3C6E8F" font-weight="700" text-anchor="end">16.8%</text>
+
+    <polyline fill="none" stroke="#C75B39" stroke-width="2.5"
+      points="56,226.2 205.6,136.6 355.2,201.5 504.8,218.6 654.4,240.7 804,268.1"/>
+    <circle cx="56" cy="226.2" r="4" fill="#C75B39"/>
+    <circle cx="205.6" cy="136.6" r="4" fill="#C75B39"/>
+    <circle cx="355.2" cy="201.5" r="4" fill="#C75B39"/>
+    <circle cx="504.8" cy="218.6" r="4" fill="#C75B39"/>
+    <circle cx="654.4" cy="240.7" r="4" fill="#C75B39"/>
+    <circle cx="804" cy="268.1" r="4" fill="#C75B39"/>
+    <text x="62" y="243" font-size="12.5" fill="#C75B39" font-weight="700" text-anchor="start">6.3% operating margin</text>
+    <text x="798" y="260" font-size="12.5" fill="#C75B39" font-weight="700" text-anchor="end">1.4%</text>
+    <text x="205.6" y="128" font-size="12" fill="#C75B39" text-anchor="middle">peak 16.8%</text>
+
+    <text x="56"  y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2020</text>
+    <text x="205.6" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2022</text>
+    <text x="355.2" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2023</text>
+    <text x="504.8" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2024</text>
+    <text x="654.4" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">FY2025</text>
+    <text x="804" y="302" font-size="12.5" fill="#6E675C" text-anchor="middle">Q2 2026</text>
+  </svg>
+</div>
+
+<p>Cash conversion remains the strongest feature of the model: operating cash flow was $14,747M in FY2025 against
+net income of $3,855M. That relationship is now under pressure. Capital expenditure was $5,789M in Q2 2026 alone
+against $2,394M a year earlier, free cash flow was <strong>negative $1,092M</strong> in the quarter, and
+management guides FY2026 capex to <strong>exceed $20bn</strong> &mdash; more than FY2025 operating cash flow
+&mdash; directed at AI compute and data centres, six new production lines, and an Austin semiconductor fab. The
+balance sheet is built to absorb it: net cash of roughly $34.5bn makes a negative-free-cash-flow investment year
+an option rather than a crisis.</p>
+
+<div class="tw">
+<table>
+<caption>Financial spine &mdash; four periods chosen to show the shape of the change</caption>
+<thead><tr><th>&nbsp;</th><th class="n">FY2020</th><th class="n">FY2022</th><th class="n">FY2025</th><th class="n">Q2 2026</th></tr></thead>
+<tbody>
+<tr><td>Total revenue ($M)</td><td class="n">31,536</td><td class="n">81,462</td><td class="n">94,827</td><td class="n">28,236</td></tr>
+<tr><td>Total gross margin</td><td class="n">21.0%</td><td class="n">25.6%</td><td class="n">18.0%</td><td class="n">16.8%</td></tr>
+<tr><td>Operating margin</td><td class="n">6.3%</td><td class="n">16.8%</td><td class="n">4.6%</td><td class="n">1.4%</td></tr>
+<tr><td>Vehicle deliveries (units)</td><td class="n">499,647</td><td class="n">1,313,851</td><td class="n">~1,640,000</td><td class="n">480,126</td></tr>
+<tr><td>Energy storage deployed (GWh)</td><td class="n">3.0</td><td class="n">6.5</td><td class="n">46.7</td><td class="n">13.5</td></tr>
+<tr><td>Operating cash flow less capex ($M)</td><td class="n">2,786</td><td class="n">7,566</td><td class="n">6,220</td><td class="n">(1,092)</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note"><strong>Comparability.</strong> The FY2022 10-K reclassified regulatory credits out of automotive
+sales into a separate line and re-presented prior years, which changes the reading of automotive gross margin
+before that date. FY2023 net income of $14,997M includes a one-time non-cash tax benefit of $5.93bn from releasing
+the deferred tax valuation allowance and is not comparable to any other year. Delivery disclosure also changed:
+exact counts for FY2020&ndash;FY2023, rounded approximations from FY2024. Q2 2026 is a single quarter, shown for
+run-rate.</p>
+
+<div class="tw">
+<table>
+<caption>Reported versus organic growth &mdash; Q2 2026 vs Q2 2025</caption>
+<thead><tr><th>Revenue line</th><th class="n">Q2 2026 ($M)</th><th class="n">Q2 2025 ($M)</th><th class="n">Change</th><th>Acquired?</th></tr></thead>
+<tbody>
+<tr><td>Automotive sales</td><td class="n">20,006</td><td class="n">15,787</td><td class="n">+26.7%</td><td>None</td></tr>
+<tr><td>Automotive regulatory credits</td><td class="n">146</td><td class="n">439</td><td class="n">&minus;66.7%</td><td>None</td></tr>
+<tr><td>Automotive leasing</td><td class="n">364</td><td class="n">435</td><td class="n">&minus;16.3%</td><td>None</td></tr>
+<tr><td>Energy generation &amp; storage</td><td class="n">3,139</td><td class="n">2,789</td><td class="n">+12.5%</td><td>None</td></tr>
+<tr><td>Services and other</td><td class="n">4,581</td><td class="n">3,046</td><td class="n">+50.4%</td><td>None</td></tr>
+<tr><td><strong>Total revenue</strong></td><td class="n"><strong>28,236</strong></td><td class="n"><strong>22,496</strong></td><td class="n"><strong>+25.5%</strong></td><td><strong>All organic</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Capital allocation</h3>
+<p>Ranked by dollars over FY2016 and FY2018&ndash;FY2025: capital expenditure first and by a wide margin,
+approximately <strong>$50.3bn</strong>. Second was equity <em>raised</em> rather than returned &mdash; about
+$14.8bn, of which $10bn came from two at-the-market offerings in 2020. Third, acquisitions of roughly $2.5bn,
+almost entirely in stock and dominated by SolarCity in 2016. Tesla has <strong>never paid a dividend and never
+repurchased a share</strong>; Item 5 of every 10-K in the archive reports issuer purchases as none.</p>
+
+<p>The behaviour is consistent across a decade: fund growth from operations and, when that is not enough, from
+equity &mdash; never from returning capital. Diluted shares grew from roughly 2,163M split-adjusted in FY2016 to
+3,528M in FY2025, about <strong>+63%</strong>, with stock compensation the continuous source and the 2020 raises
+and SolarCity the discrete ones. Shares outstanding rose from 3,216M to 3,751M during FY2025 alone, driven by the
+CEO awards.</p>
+
+<p>Two items post-date the FY2025 accounts. In April 2026 the Board deemed the reinstatement of the 2018 CEO
+Performance Award a &ldquo;Tornetta Decision Event&rdquo;, forfeiting the 96 million-share 2025 Interim Award on
+which no expense had been recognized; Musk exercised approximately 304.0 million options in Q2 2026, net-settling
+with about 17.5 million shares, with no incremental compensation expense. The 2025 CEO Performance Award of
+roughly 423.7 million performance shares remains outstanding across twelve tranches, with $105.82bn&ndash;$120.37bn
+of compensation cost tied to milestones not currently deemed probable. Separately, on 16 January 2026 Tesla agreed
+to invest approximately $2bn in xAI Series E preferred stock, subject to regulatory approval and not closed as of
+the FY2025 filing.</p>
+
+<h2>6. Cyclicality, constraints &amp; what to monitor</h2>
+<p>Tesla is a high-fixed-cost manufacturer with one dominant product category, sold to consumers, in an industry
+whose demand has been shaped by subsidy. Revenue is concentrated in two jurisdictions that both changed policy
+within eighteen months.</p>
+
+<div class="tw">
+<table>
+<caption>End-market exposure, FY2025 revenue by geography</caption>
+<thead><tr><th>Geography</th><th class="n">FY2025 ($M)</th><th class="n">Share</th><th>Direction in FY2025</th></tr></thead>
+<tbody>
+<tr><td>United States</td><td class="n">47,627</td><td class="n">50.2%</td><td>Flat vs $47,725M; EV credit expired 30 Sep 2025</td></tr>
+<tr><td>China</td><td class="n">20,962</td><td class="n">22.1%</td><td>Flat vs $20,944M; NEV purchase-tax break halved from Jan 2026</td></tr>
+<tr><td>Other international</td><td class="n">26,238</td><td class="n">27.7%</td><td>Down from $29,021M</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The company sits in an unusual place in its own cycle. On volume it is at a record &mdash; 480,126 deliveries
+in Q2 2026, with trailing-twelve-month energy deployments also at a record. On margin it is near a trough: 1.4%
+operating margin in Q2 2026 and 4.6% for FY2025, against 16.8% in FY2022. Record volume with near-trough margin is
+the signature of a business whose price and cost have moved against it while it spends ahead of a product that
+does not yet generate disclosed revenue. Reading the margin without the volume, or the reverse, produces the wrong
+conclusion.</p>
+
+<h3>The regulatory mechanism that funded the margin has been dismantled</h3>
+<p>Three separate demand pillars for US regulatory credits were removed within eight months. The One Big Beautiful
+Bill Act, enacted 4 July 2025, repealed the consumer EV credits, which expired 30 September 2025. Congress set
+CAFE civil penalties to zero in July 2025. The EPA finalised repeal of light- and medium-duty vehicle greenhouse
+gas standards on 12 February 2026, and California&rsquo;s Advanced Clean Cars II waiver was disapproved by
+Congressional Review Act resolution in June 2025. <strong>Credits exist because someone must buy compliance; when
+the obligation to comply is removed, the buyer disappears.</strong> Tesla&rsquo;s credit revenue fell 67% year
+over year in Q2 2026. In parallel, US BEV share fell from 12% in September 2025 to 6% in Q2 2026, and industry EV
+sales fell 27.3% in Q1 2026 and 20.5% in Q2.</p>
+
+<h3>The storage downside is a returns problem, not a demand problem</h3>
+<p>Merchant battery revenue in ERCOT fell from <strong>$192/kW in 2023 to roughly $43/kW</strong> in both 2024 and
+2025, and day-ahead top-block spreads fell around 50% year over year by June 2026. The mechanism is
+self-inflicted: each gigawatt of storage added flattens the daily price curve that justified building it.
+ERCOT&rsquo;s interconnection queue implies 63 GW by 2030 against a central forecast of 36 GW, and the gap is
+attributed to early-stage projects that will not secure financing at current revenues. Nationally, 749 GW of
+storage sits in queues against roughly 52 GW installed, with a historic conversion rate of 13% and a median wait
+above five years (Modo Energy; Lawrence Berkeley National Laboratory, 2026). If Tesla&rsquo;s storage growth
+slows, it will transmit through project returns and interconnection, not through a shortage of demand or cells.</p>
+
+<div class="two">
+  <div class="card">
+    <h4>Durable &mdash; survives a decade</h4>
+    <ul>
+      <li>Eight owned vehicle and battery plants operating at scale</li>
+      <li>Installed base of ~9.7m vehicles feeding service, parts and software revenue</li>
+      <li>Supercharger network of 82,357 connectors, now also a third-party toll road</li>
+      <li>Net cash of ~$34.5bn against $2M of recourse debt</li>
+      <li>Deferred FSD and connectivity revenue of $4.05bn; energy contracts of $10.05bn</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Borrowed &mdash; currently helping</h4>
+    <ul>
+      <li>Regulatory credit revenue &mdash; already collapsing, $146M in Q2 2026 vs $439M</li>
+      <li>Section 45X credits worth $1.69bn in FY2025, ~9.9% of gross profit, phasing down from 2030</li>
+      <li>Lithium and cell input costs priced off a trough that has already ended</li>
+      <li>Lower inbound duties, which Tesla itself named as the Q2 2026 cost tailwind</li>
+      <li>A possible IEEPA tariff refund, explicitly not recognized in the accounts</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tw">
+<table>
+<caption>What to monitor, and where each figure is published</caption>
+<thead><tr><th>Indicator</th><th>Why it matters</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Regulatory credit revenue, quarterly</td><td>Cleanest read on how much of the old model remains</td><td>Tesla 10-Q income statement, separate line</td></tr>
+<tr><td>US BEV share of light-duty sales</td><td>Demand after subsidy withdrawal</td><td>EIA <em>Today in Energy</em>; Cox Automotive quarterly EV report</td></tr>
+<tr><td>Energy gross margin, quarterly</td><td>Whether Q2 2026&rsquo;s 20.4% was the vendor-cell charge or the start of price compression</td><td>Tesla 10-Q, segment note</td></tr>
+<tr><td>Integrator revenue per GWh</td><td>Earliest warning of storage price compression</td><td>Sungrow and CATL semi-annual reports; Fluence 10-K/10-Q</td></tr>
+<tr><td>US storage additions and the queue</td><td>Whether returns, not demand, cap the buildout</td><td>EIA Form 860M; LBNL <em>Queued Up</em>; Modo Energy ERCOT/CAISO reports</td></tr>
+<tr><td>Pack and cell prices; lithium carbonate</td><td>Whether the cheap-input condition persists</td><td>BloombergNEF annual December price survey; SHFE lithium futures</td></tr>
+<tr><td>Capex against operating cash flow</td><td>Whether the AI investment programme is self-funding</td><td>Tesla 10-Q cash flow statement</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7. Risks, unknowns &amp; questions for deeper work</h2>
+<p>These are risks that cyclicality does not capture; the demand and margin cycle is covered above and not
+repeated.</p>
+<ul class="plain">
+<li><strong>The investment programme outruns the cash that funds it.</strong> FY2026 capex is guided above $20bn
+against FY2025 operating cash flow of $14,747M, and Q2 2026 free cash flow was already negative $1,092M. If
+vehicle gross profit stays near current levels while capex runs at guidance, Tesla spends its net cash down over
+several years &mdash; or issues equity into a share count already up 63% since FY2016. Neither is fatal; both
+change the per-share arithmetic of any success in autonomy.</li>
+<li><strong>The AI spending is judged against milestones the company sets itself.</strong> The 2025 CEO
+Performance Award vests against operational milestones including 20 million cumulative deliveries, 10 million FSD
+subscriptions and one million robotaxis in commercial operation &mdash; and Tesla now defines two reported
+operational metrics by reference to that award. Where the compensation plan and the disclosure framework share
+definitions, an investor loses an independent yardstick.</li>
+<li><strong>Storage margin compresses from both ends at once.</strong> Sungrow&rsquo;s storage ASP fell roughly a
+third in a year while volumes rose 28%, and lithium carbonate rose from about $8/kg in May 2025 to above $25/kg by
+May 2026. Falling prices with rising inputs would squeeze the segment that currently carries Tesla&rsquo;s best
+gross margin &mdash; and the Q2 2026 vendor-cell charge shows the segment is not immune to supply accidents
+either.</li>
+<li><strong>Product liability on driver-assistance features scales with the installed base.</strong> A Florida
+jury awarded $129M in compensatory damages, apportioning 33% to Tesla, plus $200M in punitive damages in August
+2025; Tesla has recorded only an immaterial accrual pending post-trial motions. A securities class action filed in
+August 2025 concerns statements about Autopilot, FSD and Robotaxi. With ~9.7 million vehicles delivered and 1.48
+million active FSD subscriptions, an adverse doctrinal outcome applies to a fleet, not to a case.</li>
+<li><strong>Cell cost position is structurally behind, and the offsetting credits are legislated.</strong> North
+American pack prices run 44% above Chinese prices. Section 45X credits worth $1.69bn in FY2025 partly bridge that
+gap; they phase down from 2030 while foreign-entity content ratios tighten from 60% to 85%. If Tesla&rsquo;s US
+cell output fails the new tests, $35/kWh of credit is at stake against a stationary LFP pack BloombergNEF prices
+as low as $50/kWh.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<ul class="plain">
+<li>Robotaxi revenue, fleet size, utilization and cost per mile &mdash; Tesla discloses none, and no operator in
+the industry, Waymo included, publishes unit economics. Any robotaxi model today is built on undisclosed inputs.</li>
+<li>Optimus unit targets, cost, or intended customer. Lines are being installed with no disclosed volume or price.</li>
+<li>Segment operating income. The chief operating decision maker evaluates segments on gross profit only.</li>
+<li>Model-level delivery and price mix in the 10-K, and average selling price as a disclosed figure &mdash; both
+must be computed.</li>
+<li>Installed nameplate capacity by factory, including the Lathrop and Houston Megafactories; the 40 GWh Shanghai
+figure comes from an independent industry body, not from Tesla.</li>
+<li>Independent verification of 4680 cell yield, output rate or cost parity.</li>
+<li>The dollar impact of the US EV tax credit expiry on Tesla specifically, which the company has not quantified.</li>
+<li>FY2017, which falls in a gap between filings in the archive and could not be sourced.</li>
+</ul>
+<p>Before forming a thesis, three questions would need resolving: what fraction of the AI and autonomy capex is
+maintenance-like and what fraction genuinely optional; whether energy gross margin above 25% is a structural
+property of Megapack or a function of a cell-price trough that has ended; and what disclosure will accompany
+robotaxi revenue when it becomes material.</p>
+
+<h2>8. Investor takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is:</strong> a direct-to-consumer manufacturer of electric vehicles and grid
+batteries that collects cash before it pays suppliers, currently spending an automotive company&rsquo;s gross
+profit on an AI company&rsquo;s cost base.</li>
+<li><strong>The core economic engine:</strong> one vehicle delivered at roughly $42,300 carrying about $6,900 of
+gross profit, multiplied by volume &mdash; plus a second, higher-margin engine in one GWh of storage deployed,
+growing faster and contracted rather than transactional.</li>
+<li><strong>The main growth lever:</strong> energy storage volume and the services and software annuity thrown off
+by an installed base of 9.7 million vehicles, since vehicle volume growth now comes with falling prices and
+regulatory credits are being withdrawn.</li>
+<li><strong>What could break the story:</strong> capex above $20bn meeting a gross profit that is no longer
+growing, while storage absorbs the price compression already visible at Sungrow and the autonomy programme
+produces milestones instead of disclosed revenue.</li>
+<li><strong>What to monitor:</strong> quarterly energy gross margin, capex against operating cash flow, and the
+point at which robotaxi revenue is disclosed separately rather than buried in services and other.</li>
+</ul>
+
+<footer>
+<strong>Sources.</strong> Company: Tesla 10-K filings FY2016&ndash;FY2025 (most recent filed 29 January 2026),
+FY2026 Q1 and Q2 10-Qs (23 April and 23 July 2026), Q2 2026 earnings release and update deck (22 July 2026),
+DEF 14A proxies. Industry: IEA <em>Global EV Outlook 2026</em>; ACEA registration data; CPCA; EIA
+<em>Today in Energy</em> and Form 860M; LBNL <em>Queued Up: 2026 Edition</em>; NREL utility-scale storage cost
+projections; BloombergNEF battery price survey (December 2025); Wood Mackenzie BESS integrator shares; Modo Energy
+ERCOT and CAISO buildout reports; Cox Automotive. Competitors: Ford, GM, Rivian, VW, BYD, CATL, Sungrow and
+Fluence reported results.
+<br><br>
+<strong>Post-dating the FY2025 accounts:</strong> the ~$2bn xAI Series E investment agreed 16 January 2026 had not
+closed as of the FY2025 filing; the April 2026 forfeiture of the 96 million-share CEO Interim Award and the
+related option exercises are disclosed in the Q2 2026 10-Q; the February 2026 Supreme Court ruling invalidating
+certain IEEPA tariffs may produce refunds that Tesla has explicitly not recognized.
+<br><br>
+Prepared 7 September 2026. Not a valuation and not a recommendation.
+</footer>
+
+</div>
+</body>
+</html>

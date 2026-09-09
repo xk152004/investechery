@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Sandisk Corporation (SNDK)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px;}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;}
+h1{font-size:38px;margin:0 0 6px;letter-spacing:-.01em}
+h2{font-size:27px;margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700;margin:0 0 10px}
+.ticker{font-size:19px;color:var(--muted);margin:0 0 14px;font-variant-numeric:tabular-nums}
+.srcline{font-size:15px;color:var(--muted);margin:0 0 34px;line-height:1.5}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;border-left:5px solid var(--terracotta);
+  padding:4px 0 4px 20px;margin:0 0 34px;color:var(--ink)}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C9BFAF;font-weight:700;margin:0 0 10px}
+.engine .unit{font-family:Georgia,serif;font-size:27px;margin:0 0 10px;line-height:1.25}
+.engine p{margin:0;font-size:17px;color:#EDE5D8}
+.engine .hi{color:#E8A183;font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 8px}
+.kpi .v{font-family:Georgia,serif;font-size:26px;color:var(--terracotta);font-variant-numeric:tabular-nums;line-height:1.15;margin:0 0 6px}
+.kpi .s{font-size:14px;color:var(--muted);line-height:1.4}
+.caption{font-size:14px;color:var(--muted);margin:8px 0 26px;line-height:1.45}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:0 0 22px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;
+  padding:16px 20px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)} .lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)} .lever.temporary{border-left-color:var(--terracotta)}
+.lever .t{font-weight:700;margin:0 0 4px;font-size:19px}
+.lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin:0 0 8px}
+.structural .tag{color:var(--good)} .mgmt .tag{color:var(--gold)}
+.cyclical .tag{color:var(--blue)} .temporary .tag{color:var(--terracotta)}
+.lever p{margin:0;font-size:17px}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.45}
+.pull .attr{display:block;margin-top:10px;font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-size:14px;color:var(--muted);font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 8px}
+.two .card{margin:0}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 12px}
+.two ul{margin:0;padding-left:20px} .two li{margin:0 0 9px;font-size:17px;line-height:1.45}
+.two .d h4{color:var(--good)} .two .b h4{color:var(--terracotta)}
+.tw{overflow-x:auto;margin:0 0 6px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;min-width:560px}
+caption{text-align:left;font-family:Georgia,serif;font-size:19px;font-weight:700;padding:0 0 10px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#F2EADC;font-weight:700;font-size:14px;letter-spacing:.02em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:nth-child(even) td{background:#FCFAF6}
+tr.tot td{font-weight:700;background:#F7F1E6!important}
+svg{display:block;max-width:100%;height:auto}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 10px 10px;margin:0 0 4px}
+ul.plain{padding-left:20px} ul.plain li{margin:0 0 10px}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);line-height:1.55}
+footer h3{font-size:17px;color:var(--ink);margin:0 0 10px}
+.num{font-variant-numeric:tabular-nums}
+@media(max-width:720px){
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  h1{font-size:30px} h2{font-size:23px} body{font-size:18px} .restate{font-size:20px}
+}
+@media(max-width:460px){ .kpis{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kicker">Business Overview</p>
+<h1>Sandisk Corporation</h1>
+<p class="ticker">NASDAQ: SNDK</p>
+<p class="srcline">7 September 2026. Built from Sandisk's SEC filings — the FY2026 10-K for the year ended 3 July 2026, the FY2025 10-K, the FQ3 FY2026 10-Q, the FY2025 and FY2026 quarterly earnings releases, the June 2025 spin-off prospectus, the February 2025 separation 8-K and the 2025 proxy — supplemented by independent industry research and the filings of named competitors. This is an explanation of how the business works. It is not a valuation and not a recommendation.</p>
+
+<p class="restate">Sandisk is a pure-play NAND flash memory company that does not own a fab. It owns half the output of one, buys that output at cost, and sells it at whatever the market pays for a gigabyte.</p>
+
+<div class="engine">
+  <p class="lab">The economic engine</p>
+  <p class="unit">One gigabyte of NAND.</p>
+  <p>Sandisk buys roughly <span class="hi">half of Flash Ventures' wafer output at cost plus a small markup</span> — a price that does not move when NAND prices move — and sells the finished bits at the market rate. In FY2026 it sold <span class="hi">mid-teens percent more bits</span> and booked <span class="hi">175% more revenue</span>. Cost of revenue rose 12% while revenue rose 175%, so <span class="hi">95 cents of every incremental revenue dollar reached gross profit</span>. The same arithmetic runs in reverse, because half of the venture's fixed costs are owed whether or not the output is taken.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><p class="k">Unit price, FY2026</p><p class="v">+150% / +180%</p><p class="s">Revenue per gigabyte, Datacenter and Edge, against mid-teens percent more bits (FY2026 10-K)</p></div>
+  <div class="kpi"><p class="k">Unit profit</p><p class="v">95¢</p><p class="s">Of each incremental revenue dollar reached gross profit: ΔGP $12,260M on ΔRev $12,893M</p></div>
+  <div class="kpi"><p class="k">Headline earnings</p><p class="v">$11,433M</p><p class="s">FY2026 net income; diluted EPS $73.76, from a $1,641M loss in FY2025</p></div>
+  <div class="kpi"><p class="k">Leverage</p><p class="v">Zero debt</p><p class="s">$4.76bn cash at year-end; $923M of Flash Ventures lease guarantees sit off the balance sheet</p></div>
+  <div class="kpi"><p class="k">Cycle position</p><p class="v">Peak on price</p><p class="s">Gross margin 84.6% most recent quarter vs 7.1% in FY2023 — on flat exabytes</p></div>
+  <div class="kpi"><p class="k">Organic vs reported</p><p class="v">175% = 175%</p><p class="s">No acquisitions in FY2026; reported growth is entirely organic</p></div>
+</div>
+
+<h2>1. What the company does</h2>
+<p>Every phone, laptop, camera and data-centre server needs somewhere to keep data when the power goes off. NAND flash is the cheapest technology that does that at speed, and the buyer's question is nearly always the same: what is the lowest cost per gigabyte at the endurance and latency I need. Sandisk answers that question at three points on the price-performance curve.</p>
+<p>The unit of economics is one gigabyte. Sandisk reports volume in exabytes and price as revenue per gigabyte, but discloses only percentage changes in each and never the absolute figures — the most consequential gap in its filings, and one Section 7 returns to.</p>
+
+<h3>Tracing one gigabyte to cash</h3>
+<p>The gigabyte begins in a fab Sandisk does not own. Flash Ventures — three joint-venture entities in which Sandisk holds 49.9% and Kioxia 50.1% — operates eight facilities in Japan, six at Yokkaichi and two at Kitakami, the second of which began producing during FY2026. Kioxia owns the plant and supplies manufacturing services to the venture at cost; the venture sells wafers to its two parents at cost plus a small markup, and each takes roughly half the output.</p>
+<p>Two features of that arrangement decide almost everything downstream. <strong>The wafer price Sandisk pays is a cost, not a market price</strong>, so it does not rise when NAND prices rise. And <strong>Sandisk owes half of Flash Ventures' fixed costs regardless of how much output it takes</strong>, with wafer orders binding three months forward and non-cancellable. The first is why a rising price falls almost entirely through to gross profit. The second is why a falling one does the same in reverse.</p>
+<p>From the wafer, Sandisk does the rest itself: dicing, test and assembly, principally at a 1.18 million square foot owned plant in Penang, plus its own controller silicon and firmware — the layer that turns raw die into a qualified enterprise drive. It employs roughly 11,100 people across 33 countries and holds about 8,000 granted patents with 3,000 more pending. It sells to computer manufacturers, cloud providers, distributors and retailers; no customer exceeded 10% of revenue in any of the last three years, and the top ten were 44% of FY2026 revenue. Cash returns slowly — receivables 48 days, inventory 178 days, payables 64 days, a cash conversion cycle of 162 days against 136 a year earlier.</p>
+
+<h3>Three end markets, and one shrinking on purpose</h3>
+<div class="tw">
+<table>
+  <caption>Revenue and bits by end market</caption>
+  <thead><tr><th>End market</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">Change</th><th class="n">FY26 bits (exabytes)</th></tr></thead>
+  <tbody>
+    <tr><td>Datacenter — enterprise SSDs for servers and AI workloads</td><td class="n">$960M</td><td class="n">$5,153M</td><td class="n">+437%</td><td class="n">+~120%</td></tr>
+    <tr><td>Edge — client SSDs, embedded storage for PCs, phones, autos, IoT</td><td class="n">$4,127M</td><td class="n">$12,160M</td><td class="n">+195%</td><td class="n">+high single digits</td></tr>
+    <tr><td>Consumer — retail cards, USB drives, portable SSDs</td><td class="n">$2,268M</td><td class="n">$2,935M</td><td class="n">+29%</td><td class="n">−mid-teens</td></tr>
+    <tr class="tot"><td>Total</td><td class="n">$7,355M</td><td class="n">$20,248M</td><td class="n">+175%</td><td class="n">+mid-teens</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="caption">Source: FY2026 10-K. The FY2026 10-K renamed the FY2025 categories "Cloud" and "Client" to "Datacenter" and "Edge"; the prior-year dollars are identical under both labels, so this is a relabelling and not a restatement.</p>
+
+<p>The Consumer line is the informative one. Revenue rose 29% while the bits behind it fell by mid-teens percent, and in the fourth quarter of FY2026 Consumer revenue fell 32% sequentially to $556 million while total revenue rose 51%. Sandisk did not lose that business. Its bit supply is capped at half of Flash Ventures' output, so every gigabyte sold into a retail memory card is a gigabyte not sold into an enterprise drive. When enterprise pricing runs 150% above a year ago the arithmetic makes the reallocation obvious, and the shrinking retail line is the visible fingerprint of a company rationing a fixed resource.</p>
+<p>One further mechanical point sits inside the revenue line. Sandisk reduces gross revenue for sales incentive and price-protection programmes, and that deduction fell to 11% of gross revenue in FY2026 from 19% in each of the two prior years. Price protection compensates channel partners when prices fall between shipment and sale; in a rising market the company barely pays it, so roughly eight points of gross revenue that previously never reached the top line now do.</p>
+
+<h2>2. Industry, competitive position and moat</h2>
+<p>The industry sells storage bits along a short chain — wafer, die, controller and firmware, finished drive, customer — and the profit pool sits overwhelmingly at the first link. When bit prices rise the fab owners capture almost all of the gain; when they fall the same owners absorb almost all of the loss, because the controller and assembly layers earn closer to a take rate. That is why every NAND supplier's margin moved in the same direction in the same quarters, and why better firmware has never broken a producer out of the cycle.</p>
+
+<div class="tw">
+<table>
+  <caption>Six suppliers, second quarter of calendar 2026</caption>
+  <thead><tr><th>Supplier</th><th class="n">NAND revenue</th><th class="n">Revenue share</th><th class="n">Bit share</th></tr></thead>
+  <tbody>
+    <tr><td>Samsung</td><td class="n">$23.06B</td><td class="n">29.3%</td><td class="n">25%</td></tr>
+    <tr><td>SK hynix (incl. Solidigm)</td><td class="n">$14.27B</td><td class="n">—</td><td class="n">22%</td></tr>
+    <tr><td>Micron</td><td class="n">$11.85B</td><td class="n">—</td><td class="n">13%</td></tr>
+    <tr><td>Kioxia</td><td class="n">$10.72B</td><td class="n">13.6%</td><td class="n">14%</td></tr>
+    <tr><td><strong>Sandisk</strong></td><td class="n"><strong>$8.97B</strong></td><td class="n">—</td><td class="n"><strong>11%</strong></td></tr>
+    <tr><td>YMTC</td><td class="n">not ranked</td><td class="n">—</td><td class="n">14%</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="caption">Sources: TrendForce, 18 August 2026 (revenue, revenue share); Counterpoint bit-shipment data via XenoSpectrum, September 2026 (bit share). TrendForce publishes explicit share percentages for only some rows. Sandisk's 50.7% sequential revenue growth was the slowest of the top five, which TrendForce attributes to conservative bit-shipment growth.</p>
+
+<p>Sandisk is the smallest of the major suppliers on both revenue and bits. That is not a criticism of execution — it is the structural fact that organises this section. Its bit supply is half of one venture's output, and that venture's capacity is what it is.</p>
+<p><strong>The barrier that binds is capital and process.</strong> Industry capex ran $21.1 billion in 2025 against a forecast $22.2 billion for 2026, most of it going into process migration and yield rather than new capacity. A new entrant would need a decade and tens of billions, and would arrive behind the incumbents' latest node.</p>
+<p><strong>The barrier that does not bind is anything resembling a switching cost at the bit level.</strong> Bits are fungible; drive qualification takes months, not years. The proof is Yangtze Memory: placed on the US Entity List in December 2022 and cut off from American equipment, it still reached 14% of global bit shipments by mid-2026 — third by volume, fifth by revenue, because its mix is weighted to low-priced consumer product. Capital and sovereign patience were enough to buy in; brand and firmware were not enough to keep it out.</p>
+<p>Sandisk's genuinely scarce asset is the Kioxia relationship. The two have co-invested at Yokkaichi and Kitakami for more than 25 years, have put over $50 billion into Japan between them, and co-develop the BiCS process. In January 2026 they extended all three venture entities to a common expiry of 31 December 2034. A well-funded competitor could buy fabs; it could not buy a 25-year joint process roadmap.</p>
+
+<div class="pull">
+  Alongside the extension, Sandisk agreed to pay Kioxia <strong>$1.2 billion over 2026 to 2029</strong> "in consideration of Kioxia's manufacturing services and the continued availability of supply" through 2034.
+  <span class="attr">FY2026 10-K. A payment for continued availability is the shape of a supply contract, not of symmetric co-ownership — and Sandisk is separately barred from fabricating flash outside the venture or working with third-party fabs while it operates.</span>
+</div>
+
+<p><strong>Where the position is weakest is exactly where management points.</strong> In the fourth quarter of calendar 2025, enterprise SSD revenue ran $3.66 billion at Samsung, $3.26 billion at the SK hynix group and $1.16 billion at Kioxia, against $440 million at Sandisk — last of the five. Micron reported more than $5.0 billion of data-centre SSD revenue in a single quarter in mid-2026, roughly what Sandisk booked in Datacenter across its whole fiscal year. The direction of the claim is right and the growth is real; the implied parity is not there.</p>
+<p><strong>What kind of company wins here?</strong> The last downturn answers plainly. Micron lost $5.8 billion in its fiscal 2023; SK hynix posted its first quarterly operating loss in a decade in the fourth quarter of 2022; Solidigm lost ₩3.3 trillion in 2022 and ₩4 trillion in 2023, ending that year with negative equity; Kioxia's operating loss reached ¥252.7 billion in the year to March 2024. Samsung and SK hynix — the two with diversified memory and logic earnings funding NAND through the trough — gained share throughout. The winner in NAND is not the best firmware house; it is the producer with the lowest unit cost and a balance sheet that survives the years when unit cost sits above price.</p>
+<p>Sandisk is now half of that description. It ended FY2026 with no debt and $4.76 billion of cash, the strongest trough-survival position it has ever held. It is not yet the other half: it is the smallest producer, it does not control its own cost curve, and it pays a fee for access to the one it uses.</p>
+
+<h2>3. Growth engine</h2>
+<p>Sandisk made no acquisitions in FY2026. The only transaction of size was a $1.0 billion passive equity stake in Nanya Technology, which added no revenue. Reported growth and organic growth are therefore the same number — 175% — and the levers below decompose it, most to least impactful.</p>
+
+<div class="lever cyclical"><p class="tag">Cyclical</p><p class="t">NAND price, and almost nothing else</p><p>Revenue per gigabyte rose roughly 150% in Datacenter and 180% in Edge while total bits rose only mid-teens percent. Industry contract prices rose about 60% sequentially in the first quarter of calendar 2026 and 70–75% in the second, against a bit-supply deficit TrendForce puts at 4–5% for the year.</p></div>
+
+<div class="lever structural"><p class="tag">Structural / management-driven</p><p class="t">Datacenter qualification</p><p>Datacenter revenue ran $269M, $440M, $1,467M and $2,977M across FY2026's four quarters. At the start of the year two hyperscalers were in qualification, with a third and a top storage OEM planned for calendar 2026 and engagement underway with five. Qualification takes quarters and is not casually revisited — this is the one lever that would still be pushing if the price stopped.</p></div>
+
+<div class="lever mgmt"><p class="tag">Management-driven</p><p class="t">Reallocating bits out of Consumer</p><p>A fixed bit pool moved toward the highest-priced end market. It flatters revenue growth without adding a gigabyte of supply, and it reverses when the price spread narrows.</p></div>
+
+<div class="lever structural"><p class="tag">Structural, unproven</p><p class="t">Long-term customer agreements</p><p>Sandisk began entering multi-year committed-volume agreements in fiscal 2026 with several Datacenter and Edge customers, at fixed or variable prices and supported by customer financial guarantees including cash deposits, stated as intended to reduce certain elements of industry cyclicality. After year-end it signed two more, with an aggregate transaction price of $31.3 billion. If these hold price and volume through a downturn they change the character of the business more than anything else in this document. Their terms are not disclosed.</p></div>
+
+<div class="lever structural"><p class="tag">Structural, slow</p><p class="t">Bit growth from node transition</p><p>BiCS8 was 15% of bits shipped at the start of FY2026 and was expected to be the majority of bit production by year-end. Denser nodes lower cost per bit and add supply — but they add it across the whole industry at roughly the same time.</p></div>
+
+<div class="lever temporary"><p class="tag">Temporary</p><p class="t">Lower price-protection accruals</p><p>The eight-point reduction in incentive deductions is a consequence of the price environment, not a separate achievement, and unwinds with it.</p></div>
+
+<p>One item sits outside the ranking because it produces no revenue yet. In August 2026 Sandisk and SK hynix published the first technical specification for High Bandwidth Flash through the Open Compute Project, six months after forming the consortium. The idea is to place flash close to the compute die for AI inference, where model sizes have outgrown high-bandwidth memory capacity. No bandwidth figures, capacity figures, sampling date or production date have been disclosed. It is worth watching precisely because it would move Sandisk out of the commodity bit market — and worth discounting until any of those numbers exists.</p>
+
+<h2>4. Margin, cash and capital allocation</h2>
+<p>The most important number in the FY2026 accounts is not the revenue growth. It is that cost of revenue rose 12%, from $5,143 million to $5,776 million, while revenue rose 175%. That is not operational excellence; it is the structure described above working in the company's favour. Wafers are bought at the venture's cost, so the input price is indifferent to the market price of the output, and half the venture's fixed costs are owed regardless of volume, so once covered, incremental revenue meets almost no incremental cost. The corollary is why this section exists: the same 95% applies on the way down.</p>
+
+<div class="chart">
+<svg viewBox="0 0 820 330" role="img" aria-label="Quarterly revenue and Datacenter revenue, six fiscal quarters">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="270" x2="790" y2="270"/><line x1="70" y1="193.3" x2="790" y2="193.3"/>
+    <line x1="70" y1="116.7" x2="790" y2="116.7"/><line x1="70" y1="40" x2="790" y2="40"/>
+  </g>
+  <g font-family="Calibri,Segoe UI,Arial" font-size="12" fill="#6E675C" text-anchor="end">
+    <text x="62" y="274">0</text><text x="62" y="197">3,000</text><text x="62" y="121">6,000</text><text x="62" y="44">9,000</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" points="70,226.7 214,221.4 358,211 502,192.7 646,117.9 790,40.9"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" points="70,265 214,264.6 358,263.1 502,258.8 646,232.5 790,193.9"/>
+  <g fill="#C75B39">
+    <circle cx="70" cy="226.7" r="3.5"/><circle cx="214" cy="221.4" r="3.5"/><circle cx="358" cy="211" r="3.5"/>
+    <circle cx="502" cy="192.7" r="3.5"/><circle cx="646" cy="117.9" r="3.5"/><circle cx="790" cy="40.9" r="4.5"/>
+  </g>
+  <g fill="#3C6E8F">
+    <circle cx="70" cy="265" r="3.5"/><circle cx="214" cy="264.6" r="3.5"/><circle cx="358" cy="263.1" r="3.5"/>
+    <circle cx="502" cy="258.8" r="3.5"/><circle cx="646" cy="232.5" r="3.5"/><circle cx="790" cy="193.9" r="4.5"/>
+  </g>
+  <g font-family="Calibri,Segoe UI,Arial" font-size="13" font-weight="700">
+    <text x="76" y="219" fill="#C75B39" text-anchor="start">Total revenue $1,695M</text>
+    <text x="784" y="32" fill="#C75B39" text-anchor="end">$8,965M</text>
+    <text x="76" y="283" fill="#3C6E8F" text-anchor="start">Datacenter $197M</text>
+    <text x="784" y="186" fill="#3C6E8F" text-anchor="end">$2,977M</text>
+  </g>
+  <g font-family="Calibri,Segoe UI,Arial" font-size="12" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="300">FQ3'25</text><text x="214" y="300">FQ4'25</text><text x="358" y="300">FQ1'26</text>
+    <text x="502" y="300">FQ2'26</text><text x="646" y="300">FQ3'26</text><text x="790" y="300">FQ4'26</text>
+    <text x="430" y="322" font-size="12">Fiscal quarters, $ millions</text>
+  </g>
+</svg>
+</div>
+<p class="caption">Revenue and Datacenter revenue by fiscal quarter. Sources: Sandisk quarterly earnings releases; FQ3 FY2026 10-Q.</p>
+
+<div class="chart">
+<svg viewBox="0 0 820 330" role="img" aria-label="GAAP gross margin by fiscal quarter against the FY2023 trough">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="270" x2="790" y2="270"/><line x1="70" y1="193.3" x2="790" y2="193.3"/>
+    <line x1="70" y1="116.7" x2="790" y2="116.7"/><line x1="70" y1="40" x2="790" y2="40"/>
+  </g>
+  <line x1="70" y1="251.9" x2="790" y2="251.9" stroke="#6E675C" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="784" y="247" font-family="Calibri,Segoe UI,Arial" font-size="12" fill="#6E675C" text-anchor="end">FY2023 full-year gross margin 7.1%</text>
+  <g font-family="Calibri,Segoe UI,Arial" font-size="12" fill="#6E675C" text-anchor="end">
+    <text x="62" y="274">0%</text><text x="62" y="197">30%</text><text x="62" y="121">60%</text><text x="62" y="44">90%</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" points="70,212.5 214,203.1 358,193.8 502,139.9 646,69.6 790,53.8"/>
+  <g fill="#C75B39">
+    <circle cx="70" cy="212.5" r="3.5"/><circle cx="214" cy="203.1" r="3.5"/><circle cx="358" cy="193.8" r="3.5"/>
+    <circle cx="502" cy="139.9" r="3.5"/><circle cx="646" cy="69.6" r="3.5"/><circle cx="790" cy="53.8" r="4.5"/>
+  </g>
+  <g font-family="Calibri,Segoe UI,Arial" font-size="13" font-weight="700" fill="#C75B39">
+    <text x="76" y="234" text-anchor="start">GAAP gross margin 22.5%</text>
+    <text x="784" y="45" text-anchor="end">84.6%</text>
+  </g>
+  <g font-family="Calibri,Segoe UI,Arial" font-size="12" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="300">FQ3'25</text><text x="214" y="300">FQ4'25</text><text x="358" y="300">FQ1'26</text>
+    <text x="502" y="300">FQ2'26</text><text x="646" y="300">FQ3'26</text><text x="790" y="300">FQ4'26</text>
+    <text x="430" y="322" font-size="12">GAAP gross margin, fiscal quarters</text>
+  </g>
+</svg>
+</div>
+<p class="caption">Sources: Sandisk quarterly earnings releases; FQ3 FY2026 10-Q; FY2025 10-K for the FY2023 comparison.</p>
+
+<div class="tw">
+<table>
+  <caption>The financial spine</caption>
+  <thead><tr><th>$ millions</th><th class="n">FY2023</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue</td><td class="n">6,086</td><td class="n">6,663</td><td class="n">7,355</td><td class="n">20,248</td></tr>
+    <tr><td>Gross margin</td><td class="n">7.1%</td><td class="n">16.1%</td><td class="n">30.1%</td><td class="n">71.5%</td></tr>
+    <tr><td>Operating income / (loss)</td><td class="n">(2,035)</td><td class="n">(468)</td><td class="n">(1,377)</td><td class="n">12,389</td></tr>
+    <tr><td>Net income / (loss)</td><td class="n">(2,143)</td><td class="n">(672)</td><td class="n">(1,641)</td><td class="n">11,433</td></tr>
+    <tr><td>Operating cash flow</td><td class="n">(713)</td><td class="n">(309)</td><td class="n">84</td><td class="n">11,671</td></tr>
+    <tr><td>Own-account capital expenditure</td><td class="n">219</td><td class="n">166</td><td class="n">204</td><td class="n">177</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="caption">Sources: FY2025 and FY2026 10-Ks. <strong>Comparability:</strong> FY2023 and FY2024 are carve-out statements prepared while the business was a segment of Western Digital, and standalone statements were not historically prepared; FY2025 is part carve-out and part standalone, the spin-off having occurred on 21 February 2025; FY2026 was a 53-week year. The FY2023 operating loss includes a $671M goodwill impairment and FY2025 a further $1,830M. A trend line drawn straight across these four columns crosses two different reporting entities.</p>
+
+<h3>Why the capital expenditure line is misleading</h3>
+<p>Own-account capex of $177 million is 0.9% of revenue, which is not a plausible figure for a semiconductor manufacturer. It is accurate but incomplete: the fab capital sits inside Flash Ventures, funded by the venture's own cash flow and by sale-and-leaseback equipment financing that Sandisk guarantees half of — ¥149.0 billion, or $923.0 million, at year-end, down from $1,404 million a year earlier.</p>
+<p>The honest measure is the commitments table. Flash Ventures related commitments totalled $6,559 million at the FY2026 year-end, of which $2,627 million falls due in FY2027, within total material cash requirements of $11,760 million. Maximum estimable loss exposure to the venture — notes receivable, equity, lease guarantees, inventory and prepayments together — was $2,897 million. And the venture is not itself profitable: net sales of $2,775 million against a gross loss of $93 million and a net loss of $85 million in FY2026, of which Sandisk's share flowed through as a $160 million equity loss net of dividends.</p>
+<p>The fixed-cost obligation has a visible price in bad years. Charges for reduced utilisation of Sandisk's share of capacity, booked into cost of revenue, ran <strong>$249 million in FY2024, $75 million in FY2025 and $11 million in FY2026</strong>. Read backwards, that series is what the current margin structure looks like when the price is wrong.</p>
+
+<h3>Where the cash went in FY2026, ranked</h3>
+<ul class="plain">
+  <li><strong>Share repurchases, $4,524M</strong> — roughly 3 million shares. A $6.0 billion programme was authorised on 30 April 2026, of which $1.5 billion remained at year-end; a further $14.0 billion was authorised on 5 August 2026, taking total authorisation to $20.0 billion.</li>
+  <li><strong>Debt repayment, $1,900M</strong> — the Term Loan B taken on at separation was settled in full on 4 March 2026 at a $46 million extinguishment loss. Total debt was zero at year-end against $1,849 million a year earlier, with the $1.5 billion revolver undrawn.</li>
+  <li><strong>A $1.0bn equity stake in Nanya Technology</strong>, taken 25 March 2026 — about 139 million shares, roughly 3.9% of Nanya fully diluted, at a 15% discount to the 30-day average with a three-year lock-up, alongside a multi-year DRAM supply agreement. It produced an $808 million mark-to-market gain in FY2026 non-operating income.</li>
+  <li><strong>Taxes on vested employee equity, $630M; own-account capex, $177M; no dividend</strong>, and none intended.</li>
+</ul>
+<p>The ranking describes a team that spent its first profitable year buying back its own equity and buying certainty of supply, rather than buying capacity. Note also what the incentive plan pays for: the FY2026 bonus is weighted 50% to non-GAAP operating income and margin, 25% to adjusted free cash flow and 25% to strategy measures including net debt, consumer net revenue and data-centre market share, while annual performance shares split evenly between revenue and earnings per share. None of those measures is a return on the capital employed inside Flash Ventures.</p>
+
+<h3>Three commitments that post-date the reported figures</h3>
+<p>The accounts close on 3 July 2026. The $14.0 billion buyback authorisation of 5 August 2026 is the first thing that has happened since. The two additional long-term customer agreements, with an aggregate transaction price of $31.3 billion, are the second. The third is the largest: on 27 August 2026 Kioxia and Sandisk jointly committed <strong>more than $31 billion, roughly ¥5 trillion, through 2032</strong> to build out Yokkaichi and Kitakami and drive multi-year bit growth. The split between partners was not disclosed; on the venture's 49.9/50.1 structure roughly half would fall to Sandisk, which is an inference and not a stated figure. Against FY2026 free cash flow of $11.5 billion that is comfortably affordable. Against FY2023's operating cash outflow of $713 million it would not be — and fab commitments are made years before the bits they produce are priced.</p>
+
+<h2>5. Cyclicality, constraints and what to monitor</h2>
+<div class="tw">
+<table>
+  <caption>Six quarters</caption>
+  <thead><tr><th>Fiscal quarter</th><th class="n">Revenue</th><th class="n">Gross margin</th><th class="n">Operating income</th><th class="n">Diluted EPS</th><th class="n">Datacenter</th></tr></thead>
+  <tbody>
+    <tr><td>FQ3 FY2025 (28 Mar 25)</td><td class="n">$1,695M</td><td class="n">22.5%</td><td class="n">$(1,881)M</td><td class="n">$(13.33)</td><td class="n">$197M</td></tr>
+    <tr><td>FQ4 FY2025 (27 Jun 25)</td><td class="n">$1,901M</td><td class="n">26.2%</td><td class="n">$18M</td><td class="n">$(0.16)</td><td class="n">$213M</td></tr>
+    <tr><td>FQ1 FY2026 (3 Oct 25)</td><td class="n">$2,308M</td><td class="n">29.8%</td><td class="n">$176M</td><td class="n">$0.75</td><td class="n">$269M</td></tr>
+    <tr><td>FQ2 FY2026 (2 Jan 26)</td><td class="n">$3,025M</td><td class="n">50.9%</td><td class="n">$1,065M</td><td class="n">$5.15</td><td class="n">$440M</td></tr>
+    <tr><td>FQ3 FY2026 (3 Apr 26)</td><td class="n">$5,950M</td><td class="n">78.4%</td><td class="n">$4,111M</td><td class="n">$23.03</td><td class="n">$1,467M</td></tr>
+    <tr class="tot"><td>FQ4 FY2026 (3 Jul 26)</td><td class="n">$8,965M</td><td class="n">84.6%</td><td class="n">$7,037M</td><td class="n">$43.97</td><td class="n">$2,977M</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="caption">GAAP figures. Sources: quarterly earnings releases; FQ3 FY2026 10-Q. The FQ3 FY2025 operating loss includes an $1,830 million goodwill impairment.</p>
+
+<p><strong>Where the business sits: at or very near a peak on price, and nowhere near one on volume.</strong> Gross margin of 84.6% compares with 22.5% five quarters earlier and 7.1% for the whole of FY2023, and revenue is 5.3 times the FQ3 FY2025 trough. But in the third quarter of FY2026 exabytes sold were flat against the prior year while average selling price per gigabyte rose 248%. This is a price record on flat volume, which is a materially different fact from a record margin on record shipments — the second can be defended by cost absorption, the first cannot be defended by anything except the price holding. Guidance for the first quarter of FY2027 is revenue of $10.3 to $10.8 billion at a gross margin of 83.0% to 84.9%, so price was still rising into the current quarter.</p>
+
+<div class="tw">
+<table>
+  <caption>End-market exposure at the FY2026 year-end</caption>
+  <thead><tr><th>End market</th><th class="n">Share of revenue</th><th>What the demand actually is</th></tr></thead>
+  <tbody>
+    <tr><td>Edge</td><td class="n">60%</td><td>Client SSDs and embedded storage — PCs, phones, autos, industrial. Industry smartphone production is forecast down 15–20% in 2026.</td></tr>
+    <tr><td>Datacenter</td><td class="n">25%</td><td>Enterprise SSDs. Servers are more than 40% of industry NAND bit demand and enterprise SSDs were 48% of bit shipments in Q2 CY2026, heading above 50%.</td></tr>
+    <tr><td>Consumer</td><td class="n">15%</td><td>Retail cards and drives — being deliberately de-prioritised as bits move to higher-priced markets.</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="caption">Sources: FY2026 10-K (revenue shares); TrendForce, 21 July 2026 and Counterpoint via XenoSpectrum, September 2026 (industry demand).</p>
+
+<p><strong>The downside, as a mechanism.</strong> TrendForce's own base case is not a crash but a turn: it expects NAND supply and demand to move back into surplus in the second half of 2027 as Chinese bit output approaches 19% of the global total and consumer demand softens. If that happens, three things move against Sandisk at once. Price per gigabyte falls into a cost base that does not, because half of Flash Ventures' fixed costs are owed whether or not the output is taken. Under-utilisation charges return to the income statement. And inventory bought at peak wafer cost — $2,698 million at year-end, against receivables of $4,708 million and a cash conversion cycle stretched to 162 days — is written down against a falling market. The industry has shown how fast this can begin: in the first quarter of calendar 2025, mid-recovery, top-five NAND revenue fell 24% sequentially on an inventory correction, with average selling prices down 15% in a single quarter.</p>
+
+<div class="two">
+  <div class="card d"><h4>Durable — likely still true in ten years</h4>
+    <ul>
+      <li>The 49.9% Flash Ventures interest, contracted to December 2034</li>
+      <li>Owned assembly and test capacity at Penang</li>
+      <li>Approximately 8,000 patents in controller and firmware design</li>
+      <li>The Sandisk retail brand and its global distribution</li>
+      <li>Zero debt and $4.76 billion of cash entering the next downturn</li>
+    </ul>
+  </div>
+  <div class="card b"><h4>Borrowed — helping right now</h4>
+    <ul>
+      <li>NAND price per gigabyte up 150–180% year on year</li>
+      <li>Price-protection accruals at 11% of gross revenue versus 19%</li>
+      <li>An $808 million mark-to-market gain on the Nanya stake</li>
+      <li>Under-utilisation charges of $11M versus $249M in FY2024</li>
+      <li>Cost of revenue up 12% while revenue rose 175%</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tw">
+<table>
+  <caption>What to monitor, and where it is published</caption>
+  <thead><tr><th>Indicator</th><th>Why it matters</th><th>Where</th></tr></thead>
+  <tbody>
+    <tr><td>NAND contract prices and quarterly supplier revenue share</td><td>The single most predictive series for Sandisk's earnings</td><td>TrendForce press centre, quarterly</td></tr>
+    <tr><td>Kioxia Holdings quarterly results</td><td>The only other NAND-pure producer and Sandisk's manufacturing partner — the cleanest read on Flash Ventures' underlying economics</td><td>kioxia-holdings.com</td></tr>
+    <tr><td>Samsung, SK hynix and Micron capex guidance</td><td>Whether the largest suppliers keep restraining NAND capex or restart a capacity race</td><td>Company earnings calls, quarterly</td></tr>
+    <tr><td>Sandisk's exabyte-versus-price disclosure</td><td>When bits stop growing and price stops rising in the same quarter, the peak has passed</td><td>MD&amp;A in each SNDK 10-Q and 10-K</td></tr>
+    <tr><td>Aggregate transaction price of the long-term agreements; Flash Ventures commitments table</td><td>Committed customer volume against committed venture obligations</td><td>Each SNDK 10-Q and 10-K</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>6. Risks, unknowns and questions for deeper work</h2>
+<p>The price cycle is covered above. What follows is what the cycle does not capture — risks that would compound a downturn rather than simply accompany it.</p>
+<ul class="plain">
+  <li><strong>The fixed-cost obligation converts a demand break into two losses at once.</strong> Wafer orders are binding three months forward and cannot be cancelled. A sudden fall in demand therefore arrives as an under-utilisation charge and an unwanted inventory build in the same quarter, at the moment the price of that inventory is falling.</li>
+  <li><strong>Sandisk cannot manufacture its way out of a dispute.</strong> While the venture operates, Sandisk is barred from fabricating flash itself beyond agreed capacity or from working with third-party fabs, and substantially all its wafers come from Flash Ventures. A serious disagreement with Kioxia would not be a supply-chain problem to work around; it would be existential, and that asymmetry sits behind every negotiation between the two.</li>
+  <li><strong>Kioxia's ownership has just turned over, and a competitor is now inside it.</strong> Bain Capital fully exited by July 2026, realising roughly ¥2.5 trillion; Toshiba has fallen to about 15.1%; SK hynix holds approximately 14% through convertible bonds, with voting rights capped below 15% until 2028. Sandisk's entire wafer supply now depends on a partner whose largest strategic shareholder is a direct competitor in the same product.</li>
+  <li><strong>A capacity commitment made at the top of the price cycle.</strong> The August 2026 Japan buildout commits more than $31 billion through 2032 at the highest NAND prices on record. The risk is timing rather than solvency: the bits that spending produces arrive into whatever price environment exists in 2029 and beyond, not this one.</li>
+  <li><strong>The long-term agreements are unpriced in both directions.</strong> $31.3 billion of aggregate transaction price sits with an undisclosed and probably small number of customers, backed by financial guarantees whose terms are not published. Read one way this is the cyclicality insurance management says it is; read another, it is committed volume at fixed prices — exactly the wrong exposure if the market runs further, and concentrated counterparty risk if it does not.</li>
+  <li><strong>The tax agreement constrains strategic action until February 2027.</strong> For two years after the spin-off, Sandisk cannot freely issue stock, merge or be acquired without indemnifying Western Digital for the loss of the transaction's tax-free treatment.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<p>These are findings, not omissions. Each would need resolving before an investor could hold a view on this business with confidence.</p>
+<ul class="plain">
+  <li><strong>Absolute exabytes shipped and absolute revenue per gigabyte.</strong> Sandisk discloses only percentage changes, in every filing reviewed. Without a level, a percentage cannot be anchored to anything.</li>
+  <li><strong>Cost per gigabyte and its rate of decline.</strong> In a commodity bit business this is the most important number there is, and it appears nowhere in the filings, nor in any independent series located.</li>
+  <li>Any market-share figure disclosed by the company itself — all share data here comes from third parties.</li>
+  <li>The split of revenue between OEM, distributor and retail channels.</li>
+  <li>Any quantification of the Sandisk retail brand — share of the retail flash market, or a margin premium over unbranded product. The claim appears in the filings and could not be tested against any source.</li>
+  <li>The terms of the long-term customer agreements: which customers, what prices, what volumes, what happens if a customer walks, and what the financial guarantees actually secure.</li>
+  <li>Sandisk's share of the more than $31 billion Japan investment, and the resulting annual cash obligation.</li>
+  <li>The numeric leverage covenant on the undrawn revolving credit facility.</li>
+  <li><strong>Management's unscripted view.</strong> The research folder holds no earnings-call transcripts and no investor-day materials, so every management statement here comes from a prepared release or a filing. Analyst pushback and long-term targets are unread.</li>
+  <li>Press reports of revived consolidation talks involving Kioxia and Sandisk's former parent could not be corroborated from any primary source and are excluded.</li>
+</ul>
+
+<h2>7. Investor takeaways</h2>
+<ul class="plain">
+  <li>Sandisk is a leveraged claim on the price of a NAND gigabyte, with a fixed-cost obligation attached. It is not a storage-solutions company that happens to be cyclical.</li>
+  <li>The engine is simple: buy roughly half of one joint venture's wafer output at cost plus a small markup, sell the bits at whatever the market pays. Ninety-five cents of each incremental revenue dollar reached gross profit in FY2026, and the mechanism operates in reverse.</li>
+  <li>The growth lever is price, not volume. Mid-teens percent more bits produced a 175% revenue year, and in the most recent quarter with data, exabytes were flat year on year.</li>
+  <li>What could break the story: a reversion in price per gigabyte into a cost base that does not fall, compounded by more than $31 billion of fab commitment made at the top and by inventory carried at peak wafer cost.</li>
+  <li>What to monitor: quarterly NAND contract prices, the exabyte-versus-price split in Sandisk's own MD&amp;A, and whether the long-term customer agreements hold their volumes when the price turns.</li>
+</ul>
+
+<footer>
+  <h3>Sources</h3>
+  <p><strong>Company filings:</strong> FY2026 Form 10-K (year ended 3 July 2026, filed 17 August 2026); FY2025 Form 10-K (year ended 27 June 2025); Form 10-Q for the quarter ended 3 April 2026; quarterly earnings releases for FQ3 and FQ4 FY2025 and FQ1–FQ4 FY2026; Form 424B4 resale prospectus, 6 June 2025; separation Form 8-K, 24 February 2025; DEF 14A proxy statement, 7 October 2025; Forms 8-K of 25 March 2026, 30 April 2026 and 5 August 2026.</p>
+  <p><strong>Independent and third-party:</strong> TrendForce press releases (13 November 2025; 29 May 2025; 13 March 2026; 21 July 2026; 18 August 2026); Counterpoint bit-shipment data via XenoSpectrum, September 2026; Micron FQ3 FY2026 earnings release and call; SK hynix Q2 2026 results; Kioxia Holdings results and the Kioxia–Sandisk joint release of 27 August 2026; Sandisk–SK hynix High Bandwidth Flash release of 3 August 2026; Nikkei Asia on the Bain Capital exit from Kioxia.</p>
+  <p><strong>Post-dating the reported figures:</strong> the $14.0 billion buyback authorisation of 5 August 2026; two additional long-term customer agreements with an aggregate transaction price of $31.3 billion, entered after the 3 July 2026 balance-sheet date; and the Kioxia–Sandisk commitment of more than $31 billion through 2032 announced on 27 August 2026. None is reflected in the FY2026 financial statements.</p>
+  <p style="margin-top:16px">Not a valuation and not a recommendation.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Spotify Technology S.A. (SPOT)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;margin:0}
+h1{font-size:38px;line-height:1.18;margin:6px 0 14px}
+h2{font-size:27px;line-height:1.25;margin:52px 0 14px}
+h3{font-size:21px;line-height:1.3;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{font-size:15px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;border-left:5px solid var(--terracotta);
+  padding:6px 0 6px 22px;margin:32px 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:34px 0}
+.engine .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C9BFAF;font-weight:700}
+.engine .unit{font-family:Georgia,serif;font-size:29px;margin:8px 0 10px;color:#fff}
+.engine p{margin:0;font-size:18px;color:#EDE5D8;line-height:1.55}
+.engine .big{color:var(--terracotta-soft);font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 8px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi .v{font-family:Georgia,serif;font-size:29px;color:var(--terracotta);margin:6px 0 2px;
+  font-variant-numeric:tabular-nums}
+.kpi .s{font-size:14.5px;color:var(--muted);line-height:1.42}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:14px 18px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)} .lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)} .lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .hd{font-weight:700;margin:3px 0 5px;font-size:19px}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.5}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;
+  color:var(--muted);margin-top:10px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.card h4{margin:0 0 12px;font-family:Georgia,serif;font-size:18px}
+.card ul{margin:0;padding-left:18px} .card li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+.card.dur h4{color:var(--good)} .card.bor h4{color:var(--terracotta)}
+.tw{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;
+  font-variant-numeric:tabular-nums}
+caption{caption-side:top;text-align:left;font-size:14px;color:var(--muted);padding-bottom:8px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+thead th{background:var(--ink);color:var(--cream);font-weight:700;font-size:14.5px;
+  letter-spacing:.03em;border-color:#4a4a4a}
+td.n,th.n{text-align:right}
+tbody tr:nth-child(odd){background:#FCFAF6}
+th[scope=row]{font-weight:700;background:#FCFAF6}
+.note{font-size:14.5px;color:var(--muted);margin:-8px 0 22px;line-height:1.45}
+figure{margin:26px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 10px}
+figcaption{font-size:14.5px;color:var(--muted);padding:8px 6px 0;line-height:1.45}
+svg{display:block;width:100%;height:auto}
+.foot{border-top:1px solid var(--line);margin-top:54px;padding-top:20px;font-size:15px;color:var(--muted)}
+.foot h3{font-size:17px;margin:0 0 10px;color:var(--ink)}
+.foot p{margin:0 0 10px;line-height:1.5}
+@media(max-width:720px){.kpis{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}
+  h1{font-size:30px}h2{font-size:23px}body{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Spotify Technology S.A. <span style="color:var(--muted);font-weight:400">(NYSE: SPOT)</span></h1>
+<div class="srcline">6 September 2026 &nbsp;·&nbsp; Built from Spotify's FY2021–FY2025 Forms 20-F, interim 6-Ks through the quarter ended 30 June 2026, and material-event 6-Ks through 3 September 2026, with industry structure from IFPI, RIAA, MIDiA Research, the UK Competition and Markets Authority, the Copyright Royalty Board, and the reported accounts of Universal, Warner, Sony, Tencent Music and Deezer. &nbsp;·&nbsp; <strong>Not a valuation and not a recommendation.</strong></div>
+
+<div class="restate">Spotify is a rental counter for other people's copyright. It licenses a catalogue it does not own, collects a small fee in advance from 300 million subscriber accounts, pays roughly two-thirds of it straight through to record labels and publishers, and keeps the residual — which it has been widening by raising price faster than the royalty base rises.</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One Premium Subscriber account</div>
+  <p>It generated <span class="big">€4.89 of revenue per month</span> in Q2 2026 and <span class="big">€1.71 of gross profit per month</span>, up from €1.25 in FY2021. The fee is collected monthly <em>in advance</em>; royalties are paid in arrears. Multiply by 300 million accounts and the arithmetic of the whole company follows — including a working-capital float of roughly −€3.6bn that funds growth without capital.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Unit price</div><div class="v">€4.89</div><div class="s">Premium ARPU per month, Q2 2026. €4.63 for FY2025.</div></div>
+  <div class="kpi"><div class="k">Unit gross profit</div><div class="v">€1.71</div><div class="s">Per subscriber per month, Q2 2026. Flat at ~€1.26 from FY2019 to FY2023.</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">€2,198m</div><div class="s">FY2025 operating income, a 12.8% margin. €1,370m in H1 2026.</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">None</div><div class="s">No debt after March 2026, against €9,388m of cash and short-term investments.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak margin</div><div class="s">33.4% gross margin is a record; subscriber growth has slowed four quarters running.</div></div>
+  <div class="kpi"><div class="k">Organic vs reported</div><div class="v">11% / ~14%</div><div class="s">H1 2026 revenue growth reported vs constant currency. Acquisitions: nil.</div></div>
+</div>
+
+<h2>1 · What the company does</h2>
+<p>A listener wants any recording, immediately, on any device, without owning it. Spotify solves that by licensing catalogue rather than owning it — it holds essentially no copyright in the music it streams. Rights from Universal Music Group, Sony Music Entertainment, Warner Music Group and Merlin accounted for approximately 72% of streams of audio content delivered by record labels in FY2025. That single fact defines the business: the product is distribution, discovery and convenience, and the underlying goods belong to somebody else, rented on multi-year agreements that are not automatically renewable.</p>
+
+<p>The unit is one Premium Subscriber account. Spotify counts accounts, not households — every member of a Family Plan (up to six) and a Duo Plan (up to two) is counted separately, as is a subscriber in a 30-day grace period after a failed payment. That is why realised revenue per subscriber, €4.89 a month, sits so far below the $12.99 headline US plan price. Premium cost of revenue ran at 65% of Premium revenue in Q2 2026, leaving €1.71 of gross profit per account per month. Below that line nothing is allocated: Spotify states that operating expenses are "managed on an overall Group basis," so segment operating income is not disclosed and cannot be computed.</p>
+
+<p><strong>The cash timing matters more than the margin.</strong> Subscriptions are paid monthly in advance while royalties accrue and are settled in arrears — accrued fees to rightsholders were €1,971m at 30 June 2026, roughly two months of Premium cost of revenue. Netting operating current assets against operating current liabilities gives about −€3.6bn of working capital. Every new subscriber and every price increase therefore delivers cash before it delivers cost, which is why free cash flow of €2,874m in FY2025 ran ahead of net income and why this business has never needed capital to grow.</p>
+
+<p>There are two reported segments. <strong>Premium</strong> is 89% of revenue and 94% of gross profit. <strong>Ad-Supported</strong> is 11% of revenue and 6% of gross profit, and exists mainly as a funnel — Spotify says the free tier drives "a significant portion of our total gross added Premium Subscribers." The funnel is widening: ad-supported users grew 14% year on year to 494m. It is not converting better. Premium subscribers were 38.6% of total monthly users at both December 2025 and June 2026, against 39.0% a year earlier.</p>
+
+<h3>What was entered, and what was quietly exited</h3>
+<p>Between 2019 and 2022 Spotify bought roughly €0.9bn of podcast assets — Anchor, Gimlet, Parcast, The Ringer, Megaphone — and told investors exclusivity "helps differentiate our Service." Owned content is a fixed cost, and the FY2021 filing warned that the "largely fixed-cost nature of such commitments" could hurt margins if usage disappointed. It did. The reversal appears in the balance sheet rather than in any announcement: capitalised podcast content assets fell from €187m at end-2022 to €28m at end-2025, and content amortisation from €208m in FY2023 to €125m in FY2025. The exclusivity rationale has been deleted from the filing; the current text describes podcast expansion in the past tense and leads with content "that we license from others." The replacement — the Spotify Partner Program, launched January 2025 and now in 19 markets — pays creators from consumption, converting a fixed cost into a variable one. None of the €0.9bn of podcast goodwill has ever been impaired.</p>
+
+<p>Audiobooks went the other way, and for a reason that is not obvious. Findaway was bought for €117m in 2022 and a bundled hours allowance added to Premium; the catalogue is now 500,000 titles across 22 markets. The economics differ from music in that licences are consumption-based — but the material effect is that bundling audiobooks reclassified the US subscription as a "bundle" for statutory publishing-royalty purposes, lowering the mechanical rate Spotify owes. Section 7 puts a number on that and explains why it is not safe.</p>
+
+<h2>2 · Industry structure and where the profit sits</h2>
+<p>Global recorded-music trade revenue reached $31.7bn in 2025, up 6.4% and the eleventh consecutive year of growth, with streaming close to 70% of the total and 837m paid subscription accounts (IFPI Global Music Report 2026). MIDiA Research, on a broader definition, counts 921.6m subscribers at Q4 2025, up 10.1%. The market is growing. The question is who keeps the growth.</p>
+
+<p>The decisive fact about this value chain is not that labels take a large share but that the share ratchets. The UK Competition and Markets Authority measured publishers' and songwriters' share of streaming revenue rising from 8% in 2008 to about 12% in 2012 and 15% by 2021, while record companies' share in 2021 sat "at a broadly similar level to what it was in 2008." The platform absorbs the increase.</p>
+
+<p>The clearest way to see the outcome is to compare the wrong lines on purpose. Universal earned a <strong>22.5% adjusted EBITDA margin</strong> on €12,507m of FY2025 revenue; Warner <strong>21.5%</strong> adjusted OIBDA; Sony's Music segment a <strong>21.1%</strong> operating margin. Spotify's record <strong>gross</strong> margin — before a euro of research, marketing or administration — was 33.4% in Q2 2026. A major label's EBITDA margin is two-thirds of the largest platform's <em>gross</em> margin. Deezer, the only listed pure-play without scale, earned a 25.4% gross margin on €534m and converted it into €8.5m of net profit: the first annual profit in its history, in a year revenue fell 1.4% and subscribers declined.</p>
+
+<div class="pull">
+  "We find low or negative operating margins for the music streaming services whose accounts we have been able to analyse… The issues may be due to licensing negotiation frictions and bargaining power of rightsholders <em>inherent in the market</em>, which will not be overcome by more intense competition."
+  <span class="attr">UK Competition and Markets Authority, <em>Music and Streaming Market Study Final Report</em>, November 2022 — after which the CMA declined to intervene.</span>
+</div>
+
+<p>Four mechanisms hold that structure in place, each independently evidenced. <strong>The input is non-substitutable</strong> — the CMA found "no credible alternative to each major's catalogue," and four counterparties supply ~72% of Spotify's label-delivered streams. <strong>The walk-away option is one-sided</strong>: Universal pulled its entire catalogue from TikTok for three months in 2024, and a peer-reviewed study of 235,741 tracks found no significant impact on aggregate demand for its music (May et al., <em>Marketing Science</em>, 2024); Universal returned with improved terms. No platform has ever run a mainstream music service without a major's catalogue. <strong>Cost of goods does not scale</strong> — royalties are a percentage of revenue with per-user minimums, so thirty times the subscribers means roughly thirty times the royalties. And <strong>the price lever is held by third parties</strong>: US publishing mechanicals are set by three federal judges under a compulsory licence, 15.1% in 2023 stepping to 15.35% by 2027.</p>
+
+<h3>Spotify's position inside it</h3>
+<p>Spotify holds <strong>31.4% of global music subscribers</strong>, against Tencent Music 13.8%, Apple Music 12.6%, YouTube Music 12.4% and Amazon Music 8.5% (MIDiA, Q4 2025). The most useful competitive evidence is in the movement, not the level: since 2020 Apple Music has fallen from 18.4% to 12.6% while YouTube Music has risen from 7.9% to 12.4%. Because catalogue is effectively identical everywhere, something other than content explains a six-point swing away from a company with hardware defaults and, until July 2026, a lower price. Product and discovery is the most plausible explanation — and Spotify is the beneficiary.</p>
+
+<p>Three of Spotify's four largest rivals do not run music as a business that must earn a return: Apple Music is an attach to hardware and has disclosed no subscriber count since 2019, Amazon Music is bundled into Prime, and YouTube Music is sold inside YouTube Premium. In theory that should cap industry pricing. It has not. Apple moved to $10.99 in 2022 and $11.99 in July 2026, explicitly citing "rising licensing costs"; Amazon followed the same ladder; Spotify went $10.99 (July 2023) → $11.99 (July 2024) → <strong>$12.99</strong> (February 2026) and currently carries a $1.00 premium to both. The bundled players are price followers because their royalty base rises with the same rates. The pressure they exert is on distribution, not price.</p>
+
+<p>What a well-funded competitor could not reproduce is not the catalogue, which anyone can license, nor the software. It is the installed base itself — 300m paying accounts and 777m monthly users generating 211bn hours of listening a year, which produces the behavioural data behind recommendation, the volume to negotiate marketplace programmes with rightsholders, and the ability to hold a price premium. Deezer is the control experiment for the same business without it.</p>
+
+<p><strong>What kind of company wins here?</strong> Owning copyright wins; distributing it does not. By that test Spotify is the wrong kind of company and cannot buy its way to the right kind at any plausible price. But it has escaped the fate the CMA described for the category — €2,198m of operating income at a 32% gross margin, the only platform with demonstrated unilateral pricing, ~800bp of gross margin above the only comparable pure-play. It is the best available seat on the wrong side of the table, and the gap between those two statements is the whole question.</p>
+
+<h2>3 · Growth engine</h2>
+<p>Acquisitions are not a factor, and the test is worth stating rather than skipping: cash spent on business combinations across FY2021–FY2025 was €430m in total, with <em>none at all</em> in FY2023 or FY2024 and a single €9m transaction in FY2025 against €17,186m of revenue. <strong>Reported growth and organic growth are the same number.</strong> The decomposition that does matter is currency, and it is large enough to invert the headline.</p>
+
+<div class="tw">
+<table>
+<caption>Growth decomposition — reported, organic and currency. Constant-currency growth is not published by Spotify; figures marked (inf.) are inferred from the euro FX effects it does disclose.</caption>
+<thead><tr><th>Growth decomposition</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">H1 2026</th><th class="n">Q2 2026</th></tr></thead>
+<tbody>
+<tr><th scope="row">Revenue growth, reported</th><td class="n">18%</td><td class="n">10%</td><td class="n">11%</td><td class="n">14%</td></tr>
+<tr><th scope="row">Revenue growth, constant currency</th><td class="n">n/d</td><td class="n">~13% <em>(inf.)</em></td><td class="n">~14% <em>(inf.)</em></td><td class="n">~15% <em>(inf.)</em></td></tr>
+<tr><th scope="row">Growth from acquisitions</th><td class="n">nil</td><td class="n">nil <em>(€9m spend)</em></td><td class="n">nil</td><td class="n">nil</td></tr>
+<tr><th scope="row">Premium subscribers, YoY</th><td class="n">+11%</td><td class="n">+10%</td><td class="n">+9%</td><td class="n">+9%</td></tr>
+<tr><th scope="row">Premium ARPU, YoY</th><td class="n">+7%</td><td class="n">−1%</td><td class="n">+4%</td><td class="n">+7%</td></tr>
+<tr><th scope="row" style="font-weight:400;padding-left:26px">of which price</th><td class="n">+€0.49</td><td class="n">+€0.25</td><td class="n">+€0.45</td><td class="n">+€0.49</td></tr>
+<tr><th scope="row" style="font-weight:400;padding-left:26px">of which product / market mix</th><td class="n">−€0.12</td><td class="n">−€0.14</td><td class="n">−€0.15</td><td class="n">−€0.14</td></tr>
+<tr><th scope="row" style="font-weight:400;padding-left:26px">of which currency</th><td class="n">−€0.07</td><td class="n">−€0.17</td><td class="n">−€0.13</td><td class="n">−€0.02</td></tr>
+</tbody></table>
+</div>
+<p class="note">FY2025 revenue grew 10% as reported but roughly 13% at prior-year rates — a €585m currency drag. Reported ARPU <em>fell</em> 1% in a year price rose €0.25. Anyone reading the headline without the bridge reads the year backwards.</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="hd">1 · Price increases — currently the entire ARPU story</div>
+<p>Three consecutive US cycles: $9.99 → $10.99 (July 2023) → $11.99 (July 2024) → $12.99 (effective February 2026), with parallel moves across dozens of markets. Price contributed +€0.49 of ARPU in Q2 2026, more than the entire +€0.32 net move. The filings never name a repriced market or a price point — that detail comes from the public record, not from disclosure.</p></div>
+
+<div class="lever structural"><div class="tag">Structural, decelerating</div><div class="hd">2 · Subscriber additions</div>
+<p>300m Premium subscribers at 30 June 2026, up 24m year on year. The growth rate has stepped down for four consecutive quarters — 12% → 10% → 9% → 9% — and Q1 2026 added only 3m net against 5m a year earlier. Monthly users grew faster, at 12%, which is the mix problem below.</p></div>
+
+<div class="lever structural"><div class="tag">Structural, adverse</div><div class="hd">3 · Geographic mix — a permanent ARPU drag</div>
+<p>Mix has subtracted €0.12–€0.15 of ARPU in every recent period without exception. Europe is 26% of monthly users and grew 6%; Rest of World is 37% and grew 21%. Growth arrives where realised price is lowest — Tencent Music's monthly ARPPU of RMB 11.9, roughly $1.70, is what deep emerging-market monetisation looks like.</p></div>
+
+<div class="lever cyclical"><div class="tag">Cyclical, reversing</div><div class="hd">4 · Currency</div>
+<p>The euro reporting currency turned a strong constant-currency FY2025 into a modest reported one. Not a business driver — but large enough to make reported ARPU fall while price rose, and no reader should mistake one for the other. By Q2 2026 the drag was down to €30m of revenue.</p></div>
+
+<div class="lever mgmt"><div class="tag">Management-driven, small</div><div class="hd">5 · Non-music revenue</div>
+<p>Audiobooks, the Partner Program and the Spotify Ad Exchange all grow faster than music: US podcast advertising hit $2.9bn in 2025, +17.6% (IAB/PwC), and US audiobook sales $2.43bn, +9% (Audio Publishers Association), against recorded music's +6.4%. But each market is roughly a quarter the size of US recorded music, and Spotify shares both. It discloses no audiobook revenue at all.</p></div>
+
+<div class="lever"><div class="tag">Temporary — currently negative</div><div class="hd">6 · Advertising</div>
+<p>Ad-Supported revenue fell 1% in FY2025 and 2% in H1 2026 while its audience grew 14%. Direct music and podcast ad sales fell €116m on lower fixed CPM rates, offset by only €103m from automated channels. Higher fill at lower realised price is not growth — and the US industry corroborates it: ad-supported music revenue fell 0.6% in 2025 (RIAA).</p></div>
+
+<h2>4 · Margin, cash and capital allocation</h2>
+<p>Subscription music royalties are "based on the greater of a percentage of relevant revenue and a per user amount," with the applicable percentage "generally dependent upon certain targets being met" — subscriber counts, the ratio of free users to subscribers, and churn. Three consequences follow and they explain almost everything. Because the obligation is a percentage of revenue, <strong>gross margin cannot be improved by volume</strong>. Because there is a per-user floor beneath the percentage, <strong>low-price plans and low-ARPU markets are structurally dilutive</strong> — Spotify concedes the floor binds when it says it has "negotiated lower per user amounts for our lower priced subscription plans." And because the percentage steps with targets, scale does buy a slightly better rate, which is the one place size helps on the cost line. Most-favoured-nations clauses run the other way: a concession to one licensor can "cause our payments… to escalate" across the others, so the marginal cost of settling any single negotiation is multiplied.</p>
+
+<p>Against that sit the marketplace programmes, under which artists and labels accept "a discounted royalty rate to streams generated in specified recommendation contexts" in exchange for algorithmic promotion. These are cited as a gross-margin driver in every filing from FY2021 to FY2025 and in every recent quarter — and <strong>are never quantified, in any amount, in any filing</strong>. On the company's own account this is one of the two largest levers behind the margin expansion. It is also the single largest disclosure gap in the business.</p>
+
+<figure>
+<svg viewBox="0 0 860 330" role="img" aria-label="Gross profit per Premium subscriber per month, FY2019 to Q2 2026">
+  <line x1="70" y1="270" x2="820" y2="270" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="70" y1="40" x2="70" y2="270" stroke="#E5DDD0" stroke-width="1.5"/>
+  <!-- gridlines -->
+  <line x1="70" y1="212.5" x2="820" y2="212.5" stroke="#EFE9DE" stroke-width="1"/>
+  <line x1="70" y1="155" x2="820" y2="155" stroke="#EFE9DE" stroke-width="1"/>
+  <line x1="70" y1="97.5" x2="820" y2="97.5" stroke="#EFE9DE" stroke-width="1"/>
+  <text x="60" y="275" text-anchor="end" font-size="13" fill="#6E675C">€1.00</text>
+  <text x="60" y="217" text-anchor="end" font-size="13" fill="#6E675C">€1.20</text>
+  <text x="60" y="160" text-anchor="end" font-size="13" fill="#6E675C">€1.40</text>
+  <text x="60" y="102" text-anchor="end" font-size="13" fill="#6E675C">€1.60</text>
+  <text x="60" y="45" text-anchor="end" font-size="13" fill="#6E675C">€1.80</text>
+  <!-- pts: y = 270 - (v-1.00)*287.5 ; x = 110 + i*100 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+    points="110,189 210,207 310,198 410,189 510,192 610,117 710,109 810,66"/>
+  <g fill="#C75B39">
+    <circle cx="110" cy="189" r="4.5"/><circle cx="210" cy="207" r="4.5"/><circle cx="310" cy="198" r="4.5"/>
+    <circle cx="410" cy="189" r="4.5"/><circle cx="510" cy="192" r="4.5"/><circle cx="610" cy="117" r="4.5"/>
+    <circle cx="710" cy="109" r="4.5"/><circle cx="810" cy="66" r="5.5"/>
+  </g>
+  <text x="110" y="176" text-anchor="start" font-size="13.5" font-weight="700" fill="#C75B39">€1.28</text>
+  <text x="810" y="53" text-anchor="end" font-size="13.5" font-weight="700" fill="#C75B39">€1.71</text>
+  <g font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="110" y="292">FY19</text><text x="210" y="292">FY20</text><text x="310" y="292">FY21</text>
+    <text x="410" y="292">FY22</text><text x="510" y="292">FY23</text><text x="610" y="292">FY24</text>
+    <text x="710" y="292">FY25</text><text x="810" y="292">Q2 26</text>
+  </g>
+  <text x="150" y="240" font-size="14" fill="#6E675C" font-style="italic">flat for five years</text>
+  <text x="700" y="245" font-size="14" fill="#6E675C" font-style="italic" text-anchor="middle">price + cost reset</text>
+</svg>
+<figcaption><strong>The unit metric.</strong> Gross profit per Premium subscriber per month, computed from disclosed Premium ARPU × Premium segment gross margin. Five years of a flat ~€1.26 unit, then a step change from FY2024 — the price increases of 2023–2026 landing on a cost base cut in 2023. Source: FY2021, FY2023 and FY2025 20-Fs; Q2 2026 6-K.</figcaption>
+</figure>
+
+<p>Below the gross line, the 2023 cost reset did the work. Spotify cut about 6% of staff in January 2023, realigned podcast operations in the second quarter, and cut a further 17% in December — €212m of severance plus €123m of real-estate impairment. Average headcount fell from 9,123 in FY2023 to 7,287 in FY2025 while revenue rose 30%, lifting revenue per employee from €1.45m to €2.36m and taking operating expenses from 29% of revenue to 19%. No comparable restructuring has been taken since.</p>
+
+<p><strong>One large distortion has to be stripped out of any recent margin read.</strong> Spotify accrues Swedish and other payroll taxes on the intrinsic value of unvested equity awards and remeasures the accrual to its own share price each quarter. Share-based-compensation social costs were €291m in FY2024 and €125m in FY2025 — a €166m swing booked entirely inside operating expenses with nothing to do with operations. In Q2 2026 the year-on-year credit was €113m, or <strong>45% of the €249m increase in operating income</strong>; for H1 2026, €227m of a €455m increase. Underlying Q2 2026 operating income grew roughly 34%, not the 61% reported. The accrual has drained to €142m and a 10% share move now shifts it by about €20m — so the credit is nearly exhausted, and a share-price recovery puts the cost straight back into opex.</p>
+
+<figure>
+<svg viewBox="0 0 860 330" role="img" aria-label="Premium and Ad-Supported segment gross margin, FY2019 to H1 2026">
+  <line x1="70" y1="280" x2="820" y2="280" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="70" y1="40" x2="70" y2="280" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="70" y1="220" x2="820" y2="220" stroke="#EFE9DE" stroke-width="1"/>
+  <line x1="70" y1="160" x2="820" y2="160" stroke="#EFE9DE" stroke-width="1"/>
+  <line x1="70" y1="100" x2="820" y2="100" stroke="#EFE9DE" stroke-width="1"/>
+  <text x="60" y="285" text-anchor="end" font-size="13" fill="#6E675C">0%</text>
+  <text x="60" y="225" text-anchor="end" font-size="13" fill="#6E675C">10%</text>
+  <text x="60" y="165" text-anchor="end" font-size="13" fill="#6E675C">20%</text>
+  <text x="60" y="105" text-anchor="end" font-size="13" fill="#6E675C">30%</text>
+  <text x="60" y="45" text-anchor="end" font-size="13" fill="#6E675C">40%</text>
+  <!-- y = 280 - pct*6 ; x = 110 + i*100 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+    points="110,118 210,112 310,106 410,112 510,106 610,82 710,76 810,71"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round" stroke-dasharray="0"
+    points="110,208 210,274 310,220 410,268 510,256 610,208 710,172 810,183"/>
+  <g fill="#C75B39"><circle cx="110" cy="118" r="4"/><circle cx="310" cy="106" r="4"/><circle cx="510" cy="106" r="4"/><circle cx="710" cy="76" r="4"/><circle cx="810" cy="71" r="5"/></g>
+  <g fill="#3C6E8F"><circle cx="110" cy="208" r="4"/><circle cx="310" cy="220" r="4"/><circle cx="510" cy="256" r="4"/><circle cx="710" cy="172" r="4"/><circle cx="810" cy="183" r="5"/></g>
+  <text x="110" y="106" text-anchor="start" font-size="13.5" font-weight="700" fill="#C75B39">Premium 27%</text>
+  <text x="810" y="59" text-anchor="end" font-size="13.5" font-weight="700" fill="#C75B39">35%</text>
+  <text x="112" y="197" text-anchor="start" font-size="13.5" font-weight="700" fill="#3C6E8F">Ad-Supported 12%</text>
+  <text x="810" y="203" text-anchor="end" font-size="13.5" font-weight="700" fill="#3C6E8F">16%</text>
+  <g font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="110" y="302">FY19</text><text x="210" y="302">FY20</text><text x="310" y="302">FY21</text>
+    <text x="410" y="302">FY22</text><text x="510" y="302">FY23</text><text x="610" y="302">FY24</text>
+    <text x="710" y="302">FY25</text><text x="810" y="302">H1 26</text>
+  </g>
+</svg>
+<figcaption><strong>Segment gross margin.</strong> Premium climbed steadily on price and marketplace programmes; Ad-Supported is volatile and was rescued largely by cutting podcast cost. <em>Read with care:</em> podcast costs moved from Ad-Supported into Premium in FY2025 without restatement of prior years, and further activities moved on 1 January 2026 <em>with</em> restatement — so the last two points are drawn across two redefinitions. Source: FY2021, FY2023, FY2025 20-Fs; Q2 2026 6-K.</figcaption>
+</figure>
+
+<div class="tw">
+<table>
+<caption>The financial spine. Years chosen to show the shape of the change — the pre-reset business, the loss-making trough, the reset business, and the current run rate.</caption>
+<thead><tr><th>€ millions unless stated</th><th class="n">FY2021</th><th class="n">FY2023</th><th class="n">FY2025</th><th class="n">H1 2026</th></tr></thead>
+<tbody>
+<tr><th scope="row">Revenue</th><td class="n">9,668</td><td class="n">13,247</td><td class="n">17,186</td><td class="n">9,310</td></tr>
+<tr><th scope="row">Gross margin</th><td class="n">27%</td><td class="n">26%</td><td class="n">32%</td><td class="n">33%</td></tr>
+<tr><th scope="row">Operating income / (loss)</th><td class="n">94</td><td class="n">(446)</td><td class="n">2,198</td><td class="n">1,370</td></tr>
+<tr><th scope="row">Free cash flow</th><td class="n">277</td><td class="n">678</td><td class="n">2,874</td><td class="n">1,621</td></tr>
+<tr><th scope="row">Premium subscribers, period end (m)</th><td class="n">180</td><td class="n">236</td><td class="n">290</td><td class="n">300</td></tr>
+<tr><th scope="row">Premium ARPU (€ / month)</th><td class="n">4.29</td><td class="n">4.39</td><td class="n">4.63</td><td class="n">4.82</td></tr>
+</tbody></table>
+</div>
+
+<div class="tw">
+<table>
+<caption>Exposure — by segment and by region. Revenue by region is not disclosed; Spotify reports the United States, Luxembourg and "other countries," and gives regions only as a share of monthly users.</caption>
+<thead><tr><th>Exposure, FY2025</th><th class="n">Share of revenue</th><th class="n">Share of gross profit</th><th>Direction of travel</th></tr></thead>
+<tbody>
+<tr><th scope="row">Premium</th><td class="n">89%</td><td class="n">94%</td><td>Revenue +11%; gross margin 33% → 34%</td></tr>
+<tr><th scope="row">Ad-Supported</th><td class="n">11%</td><td class="n">6%</td><td>Revenue −1% on +12% users; likely loss-making after allocated opex <em>(inferred)</em></td></tr>
+<tr><th scope="row">United States</th><td class="n">38%</td><td>not disclosed</td><td>€6,470m of €17,186m; highest-ARPU market</td></tr>
+<tr><th scope="row" style="font-weight:400">Europe — 26% of users</th><td>—</td><td>—</td><td>Users +6% — the mature, high-ARPU base</td></tr>
+<tr><th scope="row" style="font-weight:400">North America — 16% of users</th><td>—</td><td>—</td><td>Users +3% — effectively saturated</td></tr>
+<tr><th scope="row" style="font-weight:400">Latin America — 21% of users</th><td>—</td><td>—</td><td>Users +10%</td></tr>
+<tr><th scope="row" style="font-weight:400">Rest of World — 37% of users</th><td>—</td><td>—</td><td>Users +21% — the growth, and the ARPU drag</td></tr>
+</tbody></table>
+</div>
+
+<h3>Where the cash has gone</h3>
+<p>Ranked over FY2021–FY2025, the answer is that it mostly did not go anywhere. Cash and short-term investments rose from roughly €3.5bn to €9.5bn. Buybacks totalled €530m across five years — €439m of it in FY2025 alone and nothing at all in FY2023 or FY2024. Employee tax withheld on share releases, economically a buyback, added €538m. Acquisitions were €430m, leases €286m, capex €194m. No dividend has ever been declared. Against €6.3bn of operating cash flow, returns of roughly €1.1bn were themselves largely offset by €1.9bn of option-exercise proceeds coming <em>in</em>, and shares outstanding still rose 7.1%.</p>
+
+<p><strong>That posture changed after the FY2025 20-F was filed, and it is the most consequential recent development.</strong> The US$1.5bn zero-coupon Exchangeable Notes matured on 15 March 2026 and were settled in cash for €1,304m, leaving no debt other than leases against €9,388m of cash and short-term investments. Repurchases ran €547m in H1 2026 against zero in H1 2025. The April 2026 annual meeting approved a fresh five-year authorisation for 10,000,000 shares — an item absent from the 2025 agenda — and on 20 August 2026 the board added a further US$1.5bn, taking cumulative authorisation to US$3.5bn against US$1,253m spent through June. A company that hoarded cash for five years began returning it in the first year after it turned structurally profitable, and accelerated twice within seven months.</p>
+
+<p>Two items post-date the annual report. The Tencent Music stake fell from €2,111m at 31 December 2025 to €1,034m at 30 June 2026 — a €1,077m fair-value loss through other comprehensive income, which is why total equity barely moved despite €1,266m of first-half earnings. And Daniel Ek ceased to be Chief Executive on 31 December 2025, becoming Executive Chairman; Alex Norström and Gustav Söderström became Co-Chief Executives on 1 January 2026. No transaction has been announced and not closed.</p>
+
+<h2>5 · Cyclicality and where the business sits now</h2>
+<p>This is not an economically cyclical business in the ordinary sense. Monthly users rose from 345m to 751m and subscribers from 155m to 290m between 2020 and 2025 without a single down year, through a pandemic, an advertising recession and a rate shock. A €12.99 monthly subscription is small enough and habitual enough that spending pressure shows up as trading down between plans rather than as cancellation — an inference, because Spotify discloses no churn rate in any filing, in any year.</p>
+
+<p>The cycles that do matter are contractual and regulatory. Label licences run "frequently between one and three years," are not automatically renewable, and set the rate on two-thirds of the cost base. US publishing rates reset every five years by statute. Minimum guarantees stood at €2,613m at 31 December 2025 with €1,123m due within a year, plus €202m of new commitments signed after the year end. Those obligations are fixed while subscribers "may cancel their subscriptions at any time," and Spotify says the guarantees are "not always tied to our revenue and/or user growth forecasts." That is the one place a demand shortfall transmits directly and immediately into gross margin.</p>
+
+<p><strong>Position against its own history:</strong> margin at its peak (33.4% consolidated, 34.9% Premium — the highest in any period these filings cover, against a 25–27% band FY2019–FY2023); price at its peak and accelerating (€4.89 ARPU, +7%, against −4% in Q3 2025); volume past its peak growth rate (four consecutive quarters of deceleration, and Q1 2026's +3m the weakest quarter in the series); and profit flattered, with 45% of the Q2 2026 operating-income increase being the share-price-driven social-cost credit.</p>
+
+<h3>The downside, as a mechanism rather than a forecast</h3>
+<p>The Copyright Royalty Board opened the <strong>Phonorecords V</strong> proceeding in December 2025 to set US publishing mechanical rates for 2028–2032. A partial settlement published in the Federal Register on 10 July 2026 covers physical, downloads and ringtones only — <strong>the streaming rate is unsettled</strong>, and objections were filed in August 2026. The historical ratchet is 8% (2008) → ~12% (2012) → 15.35% (2027). A move to 17% would be about 165 basis points of additional cost of revenue, with no offsetting benefit and no ability to negotiate, because this is a compulsory licence — roughly a 5% permanent reduction in gross profit, effective 1 January 2028. The same proceeding is where the "bundle" definition underpinning Spotify's audiobook treatment can be redrafted. The downside is correlated, exogenous and calendared.</p>
+
+<div class="two">
+<div class="card dur"><h4>Durable — likely still true in ten years</h4><ul>
+<li>Prepaid monthly float: roughly −€3.6bn of working capital, funding growth without capital</li>
+<li>Scale over other platforms: 31.4% of global subscribers, 2.3× the next largest</li>
+<li>Near-zero capital intensity: capex 0.35% of revenue; compute rented, not owned</li>
+<li>Balance sheet: no debt after March 2026 against €9.4bn of cash and short-term investments</li>
+<li>Demonstrated price leadership: $12.99 against $11.99 at Apple and Amazon, without share loss</li>
+</ul></div>
+<div class="card bor"><h4>Borrowed — currently helping, not structural</h4><ul>
+<li>Social-cost credit on equity awards: +€113m of Q2 2026 operating income; reverses if the share price recovers</li>
+<li>US audiobook bundle mechanical rate: €473m of accrued exposure unprovided, and the defining clause is in Phonorecords V</li>
+<li>App Store commission on external link-outs: currently zero in the US, but the district court is setting a rate</li>
+<li>Marketplace-programme royalty discounts: granted by rightsholders, never quantified, withdrawable</li>
+<li>Price catch-up: real prices fell over 20% from 2009 to 2021 (CMA) — that repricing is a one-time recovery, not an annuity</li>
+</ul></div>
+</div>
+
+<div class="tw">
+<table>
+<caption>Leading indicators, and where each is published.</caption>
+<thead><tr><th>Indicator</th><th>Where it is published</th></tr></thead>
+<tbody>
+<tr><th scope="row">Premium ARPU and its price / mix / FX bridge</th><td>Quarterly interim 6-K, MD&amp;A — the single most informative disclosure Spotify makes</td></tr>
+<tr><th scope="row">Premium gross margin and the segment cost note</th><td>Quarterly interim 6-K, segment information note</td></tr>
+<tr><th scope="row">Premium subscriber net additions</th><td>Quarterly interim 6-K</td></tr>
+<tr><th scope="row">Accrued MLC bundle exposure</th><td>Quarterly interim 6-K, contingencies note — €358m, €410m, €473m at the last three balance dates</td></tr>
+<tr><th scope="row">US streaming mechanical rate, 2028–2032</th><td>Copyright Royalty Board docket 25-CRB-0013-PR; Federal Register</td></tr>
+<tr><th scope="row">App Store commission on external link-outs</th><td><em>Epic v. Apple</em>, on remand to the Northern District of California</td></tr>
+<tr><th scope="row">Minimum guarantees outstanding</th><td>Annual 20-F, contractual obligations table</td></tr>
+<tr><th scope="row">Major-label share of streams</th><td>Annual 20-F, Item 4.B — note the FY2023 denominator change</td></tr>
+<tr><th scope="row">Social-cost accrual and its 10% share-price sensitivity</th><td>Quarterly interim 6-K, market-risk disclosures</td></tr>
+<tr><th scope="row">Industry volume, price and subscriber growth</th><td>IFPI Global Music Report (March); RIAA year-end (March); MIDiA subscriber shares (quarterly)</td></tr>
+</tbody></table>
+</div>
+
+<h2>6 · Risks and unknowns</h2>
+<p>Cyclicality and the statutory rate cycle are covered above. What follows is what they do not capture, ranked by whether the risks compound.</p>
+
+<div class="lever"><div class="hd">Renewal asymmetry, amplified by most-favoured-nations clauses</div>
+<p>Four counterparties supply ~72% of label-delivered streams under agreements that are not automatically renewable and are terminable on non-payment, material breach, or a change of control. Every 100 basis points of Premium royalty rate is about <strong>€154m of Premium gross profit</strong> at FY2025 volumes <em>(inferred)</em> — so an outcome 300bp worse removes roughly €460m, more than a fifth of FY2025 operating income. MFN provisions mean any concession granted to settle one negotiation ratchets across the others. The FY2025 filing adds a phrase absent from FY2021: rightsholders "could impede our business by withholding content, discounts and bundle approvals, and the rights to launch new service offerings." The product roadmap requires supplier consent.</p></div>
+
+<div class="lever"><div class="hd">The per-user floor collides with emerging-market growth</div>
+<p>Royalties are the greater of a revenue percentage and a per-subscriber amount. As growth migrates to Rest of World — 37% of users, growing 21% — blended ARPU falls while the floor does not, so the <em>effective</em> royalty rate rises above the headline percentage. This is the mechanism by which the fastest-growing markets are revenue-accretive and margin-dilutive at once, and it compounds with any statutory rate increase rather than offsetting it.</p></div>
+
+<div class="lever"><div class="hd">Two margin wins came from courts and regulators, and can be withdrawn by them</div>
+<p>The audiobook bundle reclassification survived only because a federal judge read the Phonorecords IV regulation as unambiguous. The MLC filed an amended complaint on 1 October 2025 and is seeking interlocutory appeal; Spotify's own disclosed exposure for March 2024 to June 2026 has grown €358m → €410m → <strong>€473m</strong>, unprovided, accreting roughly €57m a quarter. Separately, the collapse of Apple's App Store commission on external link-outs — 30% to zero in the US, and to 15% in the EU from October 2026 — is worth more on iOS-acquired subscribers than Spotify's entire gross margin on them, and the US rate is provisional pending the district court's determination of a "reasonable" commission. Neither win was earned by building anything.</p></div>
+
+<div class="lever"><div class="hd">Advertising is structurally deteriorating, not cyclically weak</div>
+<p>Revenue fell 1% in FY2025 and 2% in H1 2026 while the audience grew 14%, as fixed-CPM direct sales gave way to biddable inventory at lower realised prices. At 11% of revenue, 6% of gross profit, and almost certainly loss-making after any reasonable allocation of the €3,298m opex base <em>(inferred)</em>, the segment's value is as the conversion funnel — and conversion is flat.</p></div>
+
+<div class="lever"><div class="hd">Segment reporting has been recut twice in two years</div>
+<p>Podcast costs moved from Ad-Supported to Premium in FY2025 without restatement; further activities moved on 1 January 2026 with restatement. Neither amount is quantified. The FY2025 Ad-Supported improvement from 12% to 18% and Premium from 33% to 34% are therefore not clean comparatives, and a segment margin series across 2024–2026 is a line drawn across two redefinitions.</p></div>
+
+<div class="lever"><div class="hd">Concentrated equity holding, and an untested executive structure</div>
+<p>The Tencent Music holding fell €1,077m in six months through OCI, absorbing most of first-half earnings — book equity is a poor guide to the operating business. Separately, the founders hold 309,932,980 beneficiary certificates, so voting control is unaffected by any buyback; the co-CEO structure took effect on 1 January 2026; director remuneration drew the largest dissenting vote at each of the last two annual meetings; the Chief Accounting Officer changed in May 2026 and a nine-year director resigned on 3 September 2026.</p></div>
+
+<h3>What the sources could not answer</h3>
+<p>Each of these is a finding, not a gap in the research — in most cases Spotify has chosen not to disclose it.</p>
+<ul>
+<li><strong>Churn.</strong> No churn rate appears in any filing, in any year — despite churn being an input to the royalty rate formulas Spotify itself describes. Every retention statement here is inferred from subscriber counts.</li>
+<li><strong>The size of the marketplace programmes.</strong> Named as a leading gross-margin driver every year since FY2021; never quantified.</li>
+<li><strong>The composition of cost of revenue.</strong> Only year-on-year movements are given — absolute royalty expense, payment processing and streaming delivery costs are nowhere disclosed.</li>
+<li><strong>Revenue by region, and subscribers by region.</strong> Revenue is reported only as US / Luxembourg / "other countries"; regions appear only as a share of monthly users.</li>
+<li><strong>Audiobook economics.</strong> No revenue, no cost, no attach rate, four years after entry.</li>
+<li><strong>Which markets were repriced, when, and by how much.</strong> The filings confirm increases only through the ARPU bridge; the price ladder here comes from the public record.</li>
+<li><strong>The free-to-Premium conversion rate</strong>, described as "a significant portion" of gross additions and never measured.</li>
+<li><strong>Segment operating income, assets and capex</strong> — not disclosed, so the standalone economics of advertising cannot be established from the filings.</li>
+<li><strong>Price elasticity above roughly $13.</strong> No rigorous independent study of music-streaming churn response to price was found; the low-elasticity conclusion here is inferred from aggregate industry data through the $10–$12 band and does not extend beyond it.</li>
+<li><strong>Competitor economics.</strong> Apple, Amazon and Alphabet disclose no music subscriber count or segment financials; every competitor share here is a third-party estimate.</li>
+</ul>
+<p>Before forming a thesis, three things would need resolving: the terms on which the current label agreements were last renewed and when each expires; the euro value of the marketplace-programme discount; and a defensible view of the Phonorecords V streaming rate — that single number moves gross margin more than any operating decision management can make.</p>
+
+<h2>7 · Takeaways</h2>
+<div class="lever"><div class="hd">What this business really is</div><p>A rental counter for other people's copyright, with the best distribution position in its industry and no ownership of the thing it sells.</p></div>
+<div class="lever"><div class="hd">The core economic engine</div><p>300m prepaid monthly accounts at €4.89 each, of which €1.71 is kept as gross profit, collected before the royalty is paid — a float that funds growth on capital expenditure of 0.35% of revenue.</p></div>
+<div class="lever"><div class="hd">The main growth lever</div><p>Price. Subscriber growth has slowed for four consecutive quarters while price contributed the entire +€0.32 of the Q2 2026 ARPU move. The durable question is how much headroom remains above $12.99.</p></div>
+<div class="lever"><div class="hd">What could break the story</div><p>A label renewal or a Copyright Royalty Board determination that moves the royalty rate. Roughly €154m of gross profit turns on every 100 basis points, and Spotify negotiates neither number from a position of strength.</p></div>
+<div class="lever"><div class="hd">What to monitor</div><p>The quarterly ARPU price-versus-mix bridge, Premium gross margin excluding the social-cost credit, and the Phonorecords V streaming rate for 2028–2032.</p></div>
+
+<div class="foot">
+<h3>Sources</h3>
+<p><strong>Company.</strong> Spotify Technology S.A. Forms 20-F for FY2021 (filed 3 Feb 2022), FY2022, FY2023, FY2024 and FY2025 (filed 10 Feb 2026); interim reports on Form 6-K for the quarters ended 31 March 2026 and 30 June 2026 (filed 28 April and 4 August 2026) and prior quarters back to Q2 2021; material-event 6-Ks dated 4 Feb 2025 through 3 Sept 2026. All filings from SEC EDGAR.</p>
+<p><strong>Industry and competitors.</strong> IFPI Global Music Report 2026 (public summary; the full report is paywalled). RIAA 2025 Year-End Music Industry Revenue Report. MIDiA Research subscriber market shares, Q4 2025. UK Competition and Markets Authority, <em>Music and Streaming Market Study Final Report</em>, 29 Nov 2022. US Copyright Royalty Board — Phonorecords IV determination (Federal Register, 30 Dec 2022) and Phonorecords V docket 25-CRB-0013-PR (Federal Register, 10 July 2026). <em>Epic v. Apple</em>, 9th Cir. No. 25-2935 (11 Dec 2025) and subsequent remand. European Commission decision of 4 March 2024 on Apple's anti-steering rules. Reported FY2025 accounts of Universal Music Group NV, Warner Music Group, Sony Group (Music segment), Tencent Music Entertainment, NetEase Cloud Music and Deezer. IAB/PwC US digital audio and podcast advertising studies (FY2025). Audio Publishers Association audiobook survey (June 2026). May et al., "The Impact of UMG's Catalogue Withdrawal from TikTok," <em>Marketing Science</em> (2024).</p>
+<p><strong>Post-dating the annual report.</strong> The FY2025 20-F was filed on 10 February 2026. Five things have happened since that change how it reads: the Exchangeable Notes matured and were repaid in cash on 15 March 2026, leaving no debt; segment reporting was recut with restatement effective 1 January 2026; the disclosed MLC exposure grew from €358m to €473m; the share-repurchase authorisation was renewed in April 2026 and increased by US$1.5bn on 20 August 2026; and the Tencent Music holding lost €1,077m of value through other comprehensive income.</p>
+<p style="margin-top:16px"><em>Prepared 6 September 2026. Every figure in this page also appears in the accompanying memo. This is an explanation of how the business works — not a valuation, and not a recommendation.</em></p>
+</div>
+
+</div>
+</body>
+</html>

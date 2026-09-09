@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NVIDIA — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#fbfbfa; --panel:#ffffff; --ink:#1d1d1f; --muted:#6b6b70; --line:#e3e3e0;
+  --bull:#1f7a54; --bull-bg:#eaf6f0; --bull-line:#bfe0ce;
+  --bear:#a33327; --bear-bg:#fbeeec; --bear-line:#efc9c2;
+  --accent:#3a3a3c; --chip:#f1f1ee;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#141416;--panel:#1c1c1f;--ink:#ececed;--muted:#9a9aa0;--line:#2e2e33;
+  --bull:#5cc294;--bull-bg:#12261e;--bull-line:#25503c;
+  --bear:#e3796a;--bear-bg:#2a1815;--bear-line:#59302a;
+  --accent:#d6d6d8;--chip:#26262a;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:238px minmax(0,1fr);gap:44px;max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* ---------- sidebar ---------- */
+nav{position:sticky;top:0;align-self:start;height:100vh;padding:38px 0 40px;overflow-y:auto}
+nav .brand{font-family:var(--serif);font-size:19px;line-height:1.25;margin-bottom:4px}
+nav .brandsub{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+nav a{display:block;padding:7px 12px;margin:1px 0;border-left:2px solid transparent;color:var(--muted);text-decoration:none;font-size:13.5px;border-radius:0 5px 5px 0;transition:.15s}
+nav a:hover{color:var(--ink);background:var(--chip)}
+nav a.on{color:var(--ink);border-left-color:var(--accent);background:var(--chip);font-weight:600}
+nav .navnote{margin-top:26px;padding:12px;border:1px solid var(--line);border-radius:7px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+
+/* ---------- main ---------- */
+main{padding:38px 0 120px;min-width:0}
+h1{font-family:var(--serif);font-size:35px;line-height:1.15;letter-spacing:-.015em;margin:0 0 6px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:28px}
+section{scroll-margin-top:24px;padding-top:14px}
+h2{font-family:var(--serif);font-size:25px;margin:42px 0 4px;letter-spacing:-.01em}
+h2 .num{color:var(--muted);font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.1em;display:block;margin-bottom:5px}
+p{margin:0 0 15px}
+.lede{font-family:var(--serif);font-size:19.5px;line-height:1.5;border-left:3px solid var(--accent);padding-left:16px;margin:18px 0 24px}
+.lede.bearlede{border-left-color:var(--bear)}
+.lede.bulllede{border-left-color:var(--bull)}
+cite{font-style:normal;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+
+/* ---------- header block ---------- */
+.hdr{border:1px solid var(--line);border-radius:9px;background:var(--panel);overflow:hidden;margin-bottom:8px}
+.hdr .row{display:grid;grid-template-columns:150px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.hdr .row:last-child{border-bottom:0}
+.hdr .k{padding:11px 14px;font-family:var(--mono);font-size:11.5px;color:var(--muted);background:var(--chip)}
+.hdr .v{padding:11px 16px;font-size:13.8px;line-height:1.55}
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;background:var(--chip);border:1px solid var(--line);font-size:11.5px;color:var(--muted);font-family:var(--mono)}
+
+/* ---------- toggle ---------- */
+.toggle{display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:0 0 20px;width:fit-content;background:var(--panel)}
+.toggle button{border:0;background:transparent;color:var(--muted);padding:8px 18px;font:inherit;font-size:13.5px;cursor:pointer;transition:.15s}
+.toggle button+button{border-left:1px solid var(--line)}
+.toggle button.on{background:var(--accent);color:var(--bg)}
+.toggle button[data-v="bull"].on{background:var(--bull);color:#fff}
+.toggle button[data-v="bear"].on{background:var(--bear);color:#fff}
+
+/* ---------- pair grid ---------- */
+.pairs{display:flex;flex-direction:column;gap:16px}
+.pair{display:grid;gap:14px;grid-template-columns:1fr 1fr;align-items:start}
+body[data-view="bull"] .pair{grid-template-columns:1fr}
+body[data-view="bull"] .pair .card.bear{display:none}
+body[data-view="bear"] .pair{grid-template-columns:1fr}
+body[data-view="bear"] .pair .card.bull{display:none}
+
+.card{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
+.card.bull{border-color:var(--bull-line)}
+.card.bear{border-color:var(--bear-line)}
+.card>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:11px;align-items:flex-start}
+.card>summary::-webkit-details-marker{display:none}
+.card.bull>summary{background:var(--bull-bg)}
+.card.bear>summary{background:var(--bear-bg)}
+.card .badge{flex:0 0 auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;padding:3px 7px;border-radius:4px;margin-top:2px}
+.card.bull .badge{background:var(--bull);color:#fff}
+.card.bear .badge{background:var(--bear);color:#fff}
+.card .ttl{font-weight:600;font-size:14.6px;line-height:1.42;flex:1}
+.card .chev{flex:0 0 auto;color:var(--muted);font-size:12px;margin-top:4px;transition:.2s}
+.card[open] .chev{transform:rotate(90deg)}
+.card .body{padding:4px 16px 15px}
+.fld{padding:9px 0;border-top:1px solid var(--line)}
+.fld:first-child{border-top:0;padding-top:12px}
+.fld .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+.fld .txt{font-size:14.4px;line-height:1.58}
+.attacks{font-size:12px;color:var(--muted);font-family:var(--mono);padding:9px 16px 0}
+
+/* ---------- signals ---------- */
+.sig{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:13px;margin-top:6px}
+.sigcard{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:14px 15px}
+.sigcard h4{margin:0 0 8px;font-size:14.2px;font-weight:600;line-height:1.35}
+.sigcard .val{font-family:var(--serif);font-size:20px;line-height:1.25;margin-bottom:3px}
+.sigcard .src{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-bottom:10px}
+.sigcard .dir{font-size:13.2px;line-height:1.5;padding-top:9px;border-top:1px solid var(--line);color:var(--ink)}
+.sigcard .trace{display:inline-block;margin-top:9px;font-family:var(--mono);font-size:10.5px;padding:2px 8px;border-radius:4px}
+.trace.b{background:var(--bull-bg);color:var(--bull);border:1px solid var(--bull-line)}
+.trace.r{background:var(--bear-bg);color:var(--bear);border:1px solid var(--bear-line)}
+
+/* ---------- bottom line ---------- */
+.bl{counter-reset:s;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:6px 20px}
+.bl p{counter-increment:s;position:relative;padding:14px 0 14px 34px;margin:0;border-top:1px solid var(--line);font-size:15.4px}
+.bl p:first-child{border-top:0}
+.bl p::before{content:counter(s);position:absolute;left:0;top:15px;font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:50%;width:20px;height:20px;display:grid;place-items:center}
+
+/* ---------- sources ---------- */
+details.src{border:1px solid var(--line);border-radius:9px;background:var(--panel);margin-bottom:9px}
+details.src>summary{cursor:pointer;padding:12px 15px;font-size:14px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details.src>summary::-webkit-details-marker{display:none}
+details.src>summary .n{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+details.src ul{margin:0;padding:2px 18px 14px 34px}
+details.src li{font-size:13.6px;line-height:1.6;margin-bottom:5px;color:var(--muted)}
+details.src li b{color:var(--ink);font-weight:600}
+
+footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+
+@media(max-width:880px){
+  .wrap{grid-template-columns:1fr;gap:0;padding:0 18px}
+  nav{position:static;height:auto;padding:24px 0 0;border-bottom:1px solid var(--line)}
+  nav a{display:inline-block;border-left:0;border-bottom:2px solid transparent;border-radius:5px}
+  nav a.on{border-left:0;border-bottom-color:var(--accent)}
+  nav .navnote{display:none}
+  .pair{grid-template-columns:1fr!important}
+  h1{font-size:28px}
+}
+</style>
+</head>
+<body data-view="both">
+<div class="wrap">
+
+<nav>
+  <div class="brand">NVIDIA Corporation</div>
+  <div class="brandsub">Bull &amp; Bear Memo</div>
+  <a href="#s0" data-t="s0">Header &amp; scope</a>
+  <a href="#s1" data-t="s1">1 · Business in one line</a>
+  <a href="#s2" data-t="s2">2 · Bull case</a>
+  <a href="#s3" data-t="s3">3 · Bear case</a>
+  <a href="#s4" data-t="s4">4 · Signals to monitor</a>
+  <a href="#s5" data-t="s5">5 · Bottom line</a>
+  <a href="#s6" data-t="s6">Sources</a>
+  <div class="navnote">A fast anchor, not a thesis or a valuation. Every figure comes from the filings listed under Sources; nothing is estimated.</div>
+</nav>
+
+<main>
+<h1>NVIDIA Corporation — Bull &amp; Bear Memo</h1>
+<div class="sub">Nasdaq: NVDA · data through Q2 FY2027 (quarter ended 26 July 2026) · prepared 8 September 2026</div>
+
+<section id="s0">
+<div class="hdr">
+  <div class="row"><div class="k">company</div><div class="v">NVIDIA Corporation (Nasdaq: NVDA)</div></div>
+  <div class="row"><div class="k">sources used</div><div class="v">FY2026 Form 10-K (year ended 25 Jan 2026); Form 10-Q for Q2 FY2027 (quarter ended 26 Jul 2026, filed 26 Aug 2026); Form 10-Q for Q1 FY2027. <span class="tag">company filings only</span></div></div>
+  <div class="row"><div class="k">latest period</div><div class="v">Q2 FY2027, quarter ended 26 July 2026</div></div>
+  <div class="row"><div class="k">missing or stale data</div><div class="v">No unit volumes, ASPs or content per rack are disclosed in any filing, so growth cannot be split into price, volume and mix. No software, services or DGX Cloud revenue line. Direct customers are unnamed. The OpenAI indemnity behind the SB Energy guarantee is described but not quantified. Market-platform revenue was recast in Q1 FY2027 and cannot be bridged to the former Gaming/ProViz/Auto taxonomy. Earnings-call transcripts and press-release exhibits are absent from the source folder.</div></div>
+</div>
+</section>
+
+<section id="s1">
+<h2><span class="num">SECTION ONE</span>Business in one line</h2>
+<p>NVIDIA sells rack-scale AI data-centre systems — GPUs, Grace CPUs, NVLink and networking, and the CUDA software stack — architected as one &ldquo;extreme co-designed&rdquo; unit and manufactured entirely by others: TSMC and Samsung make the wafers, SK hynix, Micron and Samsung supply the memory, Hon Hai, Wistron and Fabrinet assemble <cite>[FY2026 10-K]</cite>. The economics are the spread between a very high system price and a bought-in bill of materials, widened by software given away to make the hardware indispensable. Data Center was $89.0bn of $96.2bn of Q2 FY2027 revenue — 92% of the company <cite>[Q2 FY2027 10-Q]</cite>.</p>
+<p><strong>Type: fast grower resting on a cyclical.</strong> Revenue rose 106% year on year last quarter, but the demand behind it is a capital-expenditure budget set by a handful of buyers, not recurring consumption. Remaining performance obligations beyond one year are $3.2bn against a $96bn quarter — there is no backlog to cushion a pause <cite>[Q2 FY2027 10-Q]</cite>. It must be underwritten as a cyclical wearing a fast grower&rsquo;s clothes.</p>
+</section>
+
+<section id="s2">
+<h2><span class="num">SECTIONS TWO &amp; THREE</span>Bull case, and the attack on it</h2>
+<p class="sub" style="margin-bottom:16px">Four load-bearing assumptions, each paired with the bear argument that attacks it. Use the toggle to read one side alone; click any card to open it.</p>
+<div class="toggle" role="group" aria-label="View">
+  <button data-v="both" class="on">Side by side</button>
+  <button data-v="bull">Bull only</button>
+  <button data-v="bear">Bear only</button>
+</div>
+
+<p class="lede bulllede">The simple reason this stock could work is that the world has decided to build a new kind of computer, NVIDIA sells the whole computer rather than a component of it, and at a 75.0% gross margin and 66.2% operating margin it generated $74.4bn of operating cash flow in the last six months alone, while the buildout is still early.</p>
+<p class="lede bearlede" id="s3">The most likely way I lose money is by owning a company that has quietly become the credit support for its own customers, and finding out that the demand I was paying a growth multiple for was partly demand NVIDIA financed.</p>
+
+<div class="pairs" id="pairs"></div>
+
+<p style="margin-top:22px"><strong>Why the market might be missing it:</strong> the reported multiple is calculated on earnings that include $23.7bn of mostly unrealised H1 equity gains, which flatters the &ldquo;E&rdquo; and disguises how much cheaper the stock looks against operating income — while simultaneously hiding that those same marks are correlated with the revenue.</p>
+</section>
+
+<section id="s4">
+<h2><span class="num">SECTION FOUR</span>Signals to monitor</h2>
+<p class="sub" style="margin-bottom:4px">Every signal traces to a named assumption or bear risk. A signal that tracks nothing in the memo is noise.</p>
+<div class="sig" id="sig"></div>
+</section>
+
+<section id="s5">
+<h2><span class="num">SECTION FIVE</span>Bottom line</h2>
+<div class="bl">
+<p>NVIDIA could work because it sells the entire AI computer rather than a part of it, and an annual full-stack cadence keeps resetting the comparison against anyone building a substitute, at margins that fund the next reset.</p>
+<p>For that to hold, the rack must remain the unit of competition, gross margin must survive memory repricing, and demand must broaden to buyers who fund themselves.</p>
+<p>The thesis most likely breaks through the financing loop: $47.9bn of equity stakes in customers, $36bn of AI-cloud capacity NVIDIA has agreed to buy back, $63.1bn of receivables on extended terms and $108.5bn of guarantees mean a customer funding failure hits revenue, earnings and asset values in the same quarter.</p>
+<p>What would change my mind, in either direction, is the relationship between the commitment book and revenue — if commitments and equity additions decelerate while ACIE keeps compounding, the demand is real and independent; if they must keep rising to hold the growth rate, it is not.</p>
+</div>
+</section>
+
+<section id="s6">
+<h2><span class="num">EVIDENCE</span>Sources</h2>
+<details class="src" open><summary>Form 10-Q, Q2 FY2027 — quarter ended 26 Jul 2026, filed 26 Aug 2026 <span class="n">primary</span></summary>
+<ul>
+<li><b>Condensed income statement</b> — revenue $96,221m; gross margin 75.0%; operating income $63,734m (66.2%); net income $59,688m; H1 operating margin 66.0%</li>
+<li><b>Note 5 / Note 6 — investments</b> — non-marketable equity $22,251m → $47,898m, net additions $31,005m in H1; marketable equity $42,783m; cumulative gross unrealised gains $9.1bn</li>
+<li><b>Note 7 — other income</b> — gains from equity securities $23,707m in H1; other income $24,140m</li>
+<li><b>Note 10 — commitments</b> — supply and capacity $279bn (from $119bn), $92bn due in remainder of FY2027; AI-cloud agreements $36bn; equity investment commitments $25bn ($18bn within FY2027); guarantees $108.5bn including $105bn SB Energy / OpenAI</li>
+<li><b>Note 13 — segments &amp; customers</b> — Data Center $89,023m; Hyperscale $48,710m (+102%); ACIE $40,313m (+138%); Edge $7,198m; one direct customer 16% of Q2 revenue; three at 16% / 15% / 13% of H1</li>
+<li><b>MD&amp;A</b> — inventory provisions $985m gross, $177m released, 0.8pt gross-margin drag; receivables $63,059m; operating cash flow $74,421m; buybacks $39.8bn H1; RPO beyond one year $3.2bn</li>
+</ul></details>
+<details class="src"><summary>Form 10-K, FY2026 — year ended 25 Jan 2026 <span class="n">primary</span></summary>
+<ul>
+<li><b>Item 1 — business</b> — extreme co-design; supply chain (TSMC, Samsung, SK hynix, Micron, Hon Hai, Wistron, Fabrinet); $76.7bn cumulative R&amp;D; 7.5m CUDA developers; ~42,000 employees, 31,000 in R&amp;D</li>
+<li><b>Item 1 — competition</b> — Alphabet, Amazon, Microsoft, Alibaba, Baidu and Huawei named as competitors with internal accelerator teams</li>
+<li><b>Item 1A — risk factors</b> — &ldquo;most of our sales are made on a purchase order basis&rdquo;; customers &ldquo;can generally cancel, change, or delay product purchase commitments with little notice and without penalty&rdquo;; one direct customer 22% and another 14% of FY2026 revenue</li>
+<li><b>Financials</b> — revenue $215,938m (+65%); operating income $130,387m; net income $120,067m; operating cash flow $102,718m; capex $6,042m</li>
+</ul></details>
+<details class="src"><summary>Form 10-Q, Q1 FY2027 <span class="n">comparatives</span></summary>
+<ul><li>Prior-quarter values for the signals table: supply commitments $119bn; Data Center $75,246m; Hyperscale $43,050m; ACIE $32,196m; gross margin 74.9%</li></ul>
+</details>
+<details class="src"><summary>Not used <span class="n">excluded</span></summary>
+<ul>
+<li>External market data, sell-side estimates and press commentary — outside the source folder and outside the scope of this memo</li>
+<li>Earnings-call transcripts and press-release exhibits — not present in the source folder, so no management commentary is quoted anywhere above</li>
+<li>The prior Coverage File and Business Overview in the research folder — prior work, used only for orientation, never as evidence</li>
+</ul></details>
+</section>
+
+<footer>Prepared 8 September 2026 from company filings only. Figures are as reported; no estimate, forecast or valuation is expressed. Word-for-word archive copy: <strong>NVIDIA — Bull &amp; Bear Memo.docx</strong>.</footer>
+</main>
+</div>
+
+<script>
+const PAIRS=[
+{
+ id:1,
+ bull:{title:"Assumption 1 — The buying unit stays the rack, not the chip",
+  f:[["What must happen","Customers keep judging alternatives on time-to-useful-output across an entire data centre — interconnect, systems software, libraries, algorithms — rather than on accelerator price-performance."],
+     ["Why this company","It is the only vendor that architects GPU, CPU, NVLink switch, DPU, scale-out networking, software and algorithms together, and it refreshes the whole stack annually, resetting the comparison before a challenger has finished catching the previous generation."],
+     ["Evidence","$76.7bn of cumulative R&amp;D and over 7.5m CUDA developers; 31,000 of ~42,000 employees in R&amp;D, more than half of engineers on software; R&amp;D up 62% year on year in H1 FY2027 to $13.4bn with operating margin still rising to 66.0%. [FY2026 10-K; Q2 FY2027 10-Q]"],
+     ["What to monitor","Whether the annual cadence stays self-funding — R&amp;D growing faster than revenue without margin loss."]]},
+ bear:{title:"Bear 2 — The customers are the competitors, and inference is where they win",
+  f:[["How it could fail","Alphabet, Amazon, Microsoft, Alibaba, Baidu and Huawei are named as competitors in the 10-K and are also the buyers behind the 16%, 15% and 13% concentrations. Rack-scale co-design is worth most in frontier training; inference is repetitive and cost-driven, which is exactly where &ldquo;good enough&rdquo; internal silicon at a fraction of the margin wins."],
+     ["What would confirm failure","Hyperscale growing materially slower than ACIE for several quarters <em>while</em> gross margin concedes — the two together, not either alone."],
+     ["What it does to the economics","It takes the highest-volume half of the workload out of the addressable market at NVIDIA&rsquo;s margin."],
+     ["Permanent or fixable","Permanent. Share and price both reset, and the multiple with them."]]}
+},
+{
+ id:2,
+ bull:{title:"Assumption 2 — Gross margin holds near 75% while memory is the largest and fastest-rising input",
+  f:[["What must happen","NVIDIA passes rising HBM and packaging costs into system prices rather than absorbing them."],
+     ["Why this company","It sells a system whose price is set by delivered performance, not by a component bill, so memory cost is a smaller share of a rack ASP than of a chip ASP."],
+     ["Evidence","Gross margin 75.0% in Q2 FY2027 against 72.4% a year earlier, &ldquo;due to improved mix from Blackwell Ultra,&rdquo; and flat sequentially. [Q2 FY2027 10-Q]"],
+     ["What to monitor","Gross margin falling with no mix explanation; cost of revenue growing faster than revenue."]]},
+ bear:{title:"Bear 4 — Memory repricing hits both margin and inventory",
+  f:[["How it could fail","Supply commitments jumped from $119bn to $279bn in one quarter, &ldquo;primarily memory and manufacturing facilities,&rdquo; with $92bn due in the remainder of FY2027 — pre-bought into a memory market NVIDIA does not control. Meanwhile &ldquo;most of our sales are made on a purchase order basis&rdquo; and customers &ldquo;can generally cancel, change, or delay product purchase commitments with little notice and without penalty.&rdquo; [FY2026 10-K]"],
+     ["What would confirm failure","Inventory provisions rising as a share of revenue. The precedent already exists: provisions including a $4.5bn H20 charge cut H1 FY2026 gross margin by 5.9 points."],
+     ["What it does to the economics","On the Q2 revenue run-rate, each point of gross margin is about $3.8bn of annualised operating income, and the write-down arrives with the demand slowdown, not before it."],
+     ["Permanent or fixable","Fixable, but it lands at the moment of maximum multiple compression."]]}
+},
+{
+ id:3,
+ bull:{title:"Assumption 3 — Demand broadens beyond the top few hyperscalers",
+  f:[["What must happen","AI natives, enterprises and sovereigns grow into a second demand pillar, so a single buyer&rsquo;s capex decision stops being a company-level event."],
+     ["Why this company","CUDA is the default target for new workloads, so a wider buyer base arrives already optimised for its hardware."],
+     ["Evidence","ACIE revenue $40.3bn, up 138% year on year against Hyperscale&rsquo;s 102%; the largest direct customer fell from 22% of FY2026 revenue to 16% in Q2 FY2027. [FY2026 10-K; Q2 FY2027 10-Q]"],
+     ["What to monitor","ACIE growth continuing without a matching rise in NVIDIA-funded commitments behind it."]]},
+ bear:{title:"Bear 3 — The diversification is manufactured, not organic",
+  f:[["How it could fail","The 10-Q states that AI clouds and model makers &ldquo;currently lack the ability to secure long-term infrastructure contracts and investment-grade financing capacity&rdquo; — and NVIDIA&rsquo;s answer was to supply that capacity itself, through the guarantees and the equity book. ACIE growing faster than Hyperscale therefore reads as increasing rather than decreasing risk, because the marginal buyer is less creditworthy than the one being diluted."],
+     ["What would confirm failure","ACIE growth decelerating when NVIDIA&rsquo;s commitment book stops growing."],
+     ["What it does to the economics","The concentration measure improves while the underlying credit quality of the revenue deteriorates."],
+     ["Permanent or fixable","Fixable if these customers reach investment grade; permanent if the buildout outruns their ability to fund it."]]}
+},
+{
+ id:4,
+ bull:{title:"Assumption 4 — The commitment, guarantee and investment book expands the buildout without ever being called",
+  f:[["What must happen","The $279bn of supply commitments, $36bn of AI-cloud purchase commitments and $108.5bn of guarantees stay what the accounting says they are — enabling arrangements, not liabilities."],
+     ["Why this company","It can pre-buy memory and underwrite land, power and shell at a cost of capital no customer can match, converting a physical bottleneck into NVIDIA-shaped capacity."],
+     ["Evidence","The SB Energy guarantee buys exclusivity — the PORTS campus &ldquo;will exclusively host NVIDIA AI infrastructure&rdquo; — and terminates if OpenAI reaches a satisfactory credit rating. [Q2 FY2027 10-Q]"],
+     ["What to monitor","Any guarantee moving from contingent disclosure to recognised liability."]]},
+ bear:{title:"Bear 1 — The commitments are not contingent; they are a demand subsidy",
+  lead:true,
+  f:[["How it could fail","NVIDIA put $31.0bn of net additions into non-marketable equity in H1 FY2027, taking that book from $22.3bn to $47.9bn, with $25bn of further equity commitments outstanding ($18bn due within FY2027) to &ldquo;AI model makers, infrastructure financiers, and other private companies.&rdquo; Under the AI-cloud agreements, &ldquo;if AI clouds do not successfully sell committed capacity to third-party customers, we have agreed to purchase that capacity&rdquo; — $36bn of six-year commitments. Receivables rose to $63.1bn from $38.5bn in six months on &ldquo;extended payment terms on large multi-quarter agreements.&rdquo; [Q2 FY2027 10-Q] Money leaves NVIDIA, buys NVIDIA systems, and returns as revenue and as unrealised gains on the stake."],
+     ["What would confirm failure","Equity net additions and receivables continuing to grow faster than revenue; NVIDIA taking up AI-cloud capacity itself rather than third parties absorbing it."],
+     ["What it does to the economics","Revenue quality falls before revenue does. A funded customer that stops raising capital removes the order, impairs the stake, and strands the receivable in the same quarter."],
+     ["Permanent or fixable","The write-offs are one-time; the discovery that reported growth was partly self-funded permanently lowers the multiple."]]}
+}
+];
+
+const SIG=[
+ {n:"Supply &amp; capacity commitments",v:"$279bn",note:"from $119bn a quarter earlier",s:"Q2 FY2027 10-Q, Note 10",d:"Growing slower than revenue.",t:"Bear 4",c:"r"},
+ {n:"Net additions to non-marketable equity",v:"$31.0bn",note:"H1 FY2027; book $22.3bn &rarr; $47.9bn",s:"Q2 FY2027 10-Q, Note 5",d:"Decelerating — and gains realised, not just marked.",t:"Bear 1",c:"r"},
+ {n:"AI-cloud purchase commitments",v:"$36bn",note:"over six years",s:"Q2 FY2027 10-Q, Note 10",d:"Falling as third-party customers take the capacity.",t:"Bear 1",c:"r"},
+ {n:"Accounts receivable",v:"$63.1bn",note:"vs $38.5bn at 25 Jan 2026",s:"Q2 FY2027 10-Q",d:"Growing slower than revenue.",t:"Bear 1",c:"r"},
+ {n:"Gross margin",v:"75.0%",note:"Q2 FY2027; 74.9% in Q1",s:"Q2 FY2027 10-Q, MD&amp;A",d:"Holding at or above 75% through memory repricing.",t:"Assumption 2",c:"b"},
+ {n:"Inventory provisions, net of releases",v:"$808m",note:"Q2; 0.8pt drag on gross margin",s:"Q2 FY2027 10-Q, MD&amp;A",d:"Falling as a share of revenue.",t:"Bear 4",c:"r"},
+ {n:"Hyperscale vs ACIE",v:"$48.7bn / $40.3bn",note:"+102% vs +138% YoY",s:"Q2 FY2027 10-Q",d:"ACIE leading — without a matching rise in NVIDIA credit support.",t:"Assumption 3 / Bear 3",c:"b"},
+ {n:"Largest direct customer share",v:"16%",note:"Q2 FY2027, from 22% in FY2026",s:"FY2026 10-K; Q2 FY2027 10-Q",d:"Falling, and falling for demand reasons.",t:"Assumption 3",c:"b"}
+];
+
+function fld(l,t){return '<div class="fld"><span class="lbl">'+l+'</span><div class="txt">'+t+'</div></div>';}
+function card(kind,o,attacks){
+  return '<details class="card '+kind+'"'+(o.lead?' open':'')+'>'+
+   '<summary><span class="badge">'+(kind==='bull'?'BULL':'BEAR')+'</span>'+
+   '<span class="ttl">'+o.title+'</span><span class="chev">&#9656;</span></summary>'+
+   (attacks?'<div class="attacks">'+attacks+'</div>':'')+
+   '<div class="body">'+o.f.map(f=>fld(f[0],f[1])).join('')+'</div></details>';
+}
+document.getElementById('pairs').innerHTML=PAIRS.map(p=>
+ '<div class="pair">'+card('bull',p.bull,null)+card('bear',p.bear,'&#8624; attacks Assumption '+p.id)+'</div>').join('');
+
+document.getElementById('sig').innerHTML=SIG.map(s=>
+ '<div class="sigcard"><h4>'+s.n+'</h4><div class="val">'+s.v+'</div><div class="src">'+s.note+' &middot; '+s.s+'</div>'+
+ '<div class="dir">'+s.d+'</div><span class="trace '+s.c+'">tracks '+s.t+'</span></div>').join('');
+
+document.querySelectorAll('.toggle button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.toggle button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); document.body.dataset.view=b.dataset.v;
+}));
+
+const links=[...document.querySelectorAll('nav a')];
+const secs=links.map(a=>document.getElementById(a.dataset.t)).filter(Boolean);
+function spy(){
+  let cur=secs[0];
+  for(const s of secs){ if(s.getBoundingClientRect().top<=140) cur=s; }
+  links.forEach(a=>a.classList.toggle('on',a.dataset.t===cur.id));
+}
+document.addEventListener('scroll',spy,{passive:true}); window.addEventListener('resize',spy); spy();
+</script>
+</body>
+</html>

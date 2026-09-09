@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Snowflake Inc. (SNOW)</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+    font-variant-numeric:tabular-nums;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:44px 24px 80px}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif; font-weight:700; color:var(--ink); margin:0}
+  h1{font-size:38px; line-height:1.18; letter-spacing:-.01em}
+  h2{font-size:27px; line-height:1.25; margin:52px 0 14px}
+  h3{font-size:21px; line-height:1.3; margin:30px 0 10px}
+  p{margin:0 0 16px}
+  a{color:var(--terracotta)}
+
+  .kicker{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); font-weight:700; margin-bottom:12px}
+  .srcline{color:var(--muted); font-size:15px; line-height:1.5; margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+
+  .restate{
+    font-family:Georgia,'Times New Roman',serif; font-size:23px; line-height:1.5;
+    border-left:5px solid var(--terracotta); padding:4px 0 4px 20px; margin:32px 0;
+  }
+
+  .engine{
+    background:var(--ink); color:var(--cream); border-radius:10px;
+    padding:26px 28px; margin:30px 0 34px;
+  }
+  .engine .lab{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#B6AE9F; font-weight:700}
+  .engine .unit{font-family:Georgia,serif; font-size:29px; line-height:1.25; margin:8px 0 12px}
+  .engine p{margin:0; font-size:17px; line-height:1.55; color:#EDE6DA}
+  .engine b{color:#fff}
+
+  .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:26px 0 10px}
+  .kpi{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .kpi .k{font-size:11.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); font-weight:700; line-height:1.4}
+  .kpi .v{font-family:Georgia,serif; font-size:27px; color:var(--terracotta); line-height:1.2; margin:7px 0 4px}
+  .kpi .s{font-size:14px; color:var(--muted); line-height:1.42}
+
+  .card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:22px 0}
+  .lever{background:#fff; border:1px solid var(--line); border-left:5px solid var(--terracotta); border-radius:10px; padding:15px 18px; margin:12px 0}
+  .lever.structural{border-left-color:var(--good)}
+  .lever.mgmt{border-left-color:var(--gold)}
+  .lever.cyclical{border-left-color:var(--blue)}
+  .lever .tag{font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:700; color:var(--terracotta)}
+  .lever.structural .tag{color:var(--good)}
+  .lever.mgmt .tag{color:var(--gold)}
+  .lever.cyclical .tag{color:var(--blue)}
+  .lever .hd{font-weight:700; margin:3px 0 5px; font-size:18px}
+  .lever p{margin:0; font-size:17px; line-height:1.5}
+
+  .quote{
+    background:var(--terracotta-soft); border-radius:10px; padding:22px 24px; margin:26px 0;
+    font-family:Georgia,serif; font-size:20px; line-height:1.5;
+  }
+  .quote .attr{display:block; margin-top:12px; font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:14px; color:var(--muted); font-style:normal}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:22px 0}
+  .two .col{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .two h4{margin:0 0 10px; font-family:Georgia,serif; font-size:18px}
+  .two ul{margin:0; padding-left:18px}
+  .two li{margin-bottom:9px; font-size:16.5px; line-height:1.45}
+  .two .col.dur h4{color:var(--good)}
+  .two .col.bor h4{color:var(--terracotta)}
+
+  .tw{overflow-x:auto; margin:20px 0; border:1px solid var(--line); border-radius:10px; background:#fff}
+  table{border-collapse:collapse; width:100%; font-size:16px; min-width:520px}
+  th,td{padding:10px 14px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.42}
+  th{background:#F4EFE6; font-weight:700; font-size:14px; letter-spacing:.02em}
+  tbody tr:last-child td{border-bottom:none}
+  td.n,th.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+  td.lbl{font-weight:700}
+
+  figure{margin:26px 0}
+  figure svg{width:100%; height:auto; display:block; background:#fff; border:1px solid var(--line); border-radius:10px}
+  figcaption{font-size:14.5px; color:var(--muted); margin-top:9px; line-height:1.45}
+  .cap{font-size:14.5px; color:var(--muted); margin-top:-8px; margin-bottom:20px; line-height:1.45}
+
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:14.5px; color:var(--muted); line-height:1.55}
+  footer b{color:var(--ink)}
+
+  @media (max-width:700px){
+    body{font-size:18px}
+    h1{font-size:30px} h2{font-size:23px}
+    .kpis{grid-template-columns:1fr 1fr}
+    .two{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Business Overview</div>
+  <h1>Snowflake Inc. <span style="color:var(--muted); font-weight:400">(NYSE: SNOW)</span></h1>
+  <div class="srcline">
+    7 September 2026 · Built from Snowflake's FY2021–FY2026 Forms 10-K, Forms 10-Q through Q2 FY2027 (quarter ended 31 July 2026, filed 4 September 2026), the Q2 FY2027 earnings release, the 2026 proxy and Item 5.02 current reports — with industry structure and competitor economics taken from independent sources: competitors' own filings and releases, official vendor pricing and documentation, and named EU legislation.
+    <b>This is not a valuation and not a recommendation.</b> No price, multiple or target appears anywhere on this page.
+  </div>
+
+  <div class="restate">
+    Snowflake is a metered reseller of hyperscaler compute, wrapped in governance and enterprise distribution — a business whose customers pay a year in advance but whose revenue is only earned when they actually choose to run a workload.
+  </div>
+
+  <div class="engine">
+    <div class="lab">The economic engine</div>
+    <div class="unit">One credit of consumed compute</div>
+    <p>List price is <b>$2.00 / $3.00 / $4.00 per credit</b> by edition on AWS US East and West, plus <b>$23.00 per terabyte per month</b> for storage and <b>$0.03–$30.00 per million tokens</b> for AI inference (Snowflake Service Consumption Table, effective 1 September 2026). Compute is billed per second with a 60-second minimum, and a suspended warehouse consumes nothing. Every revenue dollar returns about <b>72 cents of GAAP product gross profit</b>; roughly <b>20 cents of cost goes to AWS, Azure or GCP</b> — third-party cloud infrastructure was <b>71% of cost of product revenue</b> in FY2026. Snowflake publishes the price and has never once disclosed the volume: the word "credit" does not appear as a unit of consumption in any 10-K from FY2021 to FY2026.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">Unit price</div><div class="v">$2–$4</div><div class="s">per credit, by edition, AWS US East/West list (1 Sep 2026)</div></div>
+    <div class="kpi"><div class="k">Unit profit</div><div class="v">~72¢</div><div class="s">GAAP product gross profit per revenue dollar, FY2026 (70.9% in Q2 FY2027)</div></div>
+    <div class="kpi"><div class="k">Headline earnings</div><div class="v">15.3%</div><div class="s">non-GAAP operating margin, Q2 FY2027 — a record. GAAP was −17.0%</div></div>
+    <div class="kpi"><div class="k">Leverage</div><div class="v">Net cash</div><div class="s">$4.33bn liquidity against $2.28bn of 0% convertibles; ~$2.0bn net at 31 Jul 2026</div></div>
+    <div class="kpi"><div class="k">Cycle position</div><div class="v">Trough</div><div class="s">retention 126% vs a 178% peak; gross margin at its low; operating margin at a record</div></div>
+    <div class="kpi"><div class="k">Organic vs reported</div><div class="v">n/d</div><div class="s">reported product revenue +37%; no organic split is disclosed anywhere</div></div>
+  </div>
+
+  <!-- 1 -->
+  <h2>1. The snapshot</h2>
+  <div class="tw">
+  <table>
+    <tbody>
+      <tr><td class="lbl">What the business is</td><td>A cloud data platform sold by consumption. Customers store data and run analytic, AI and transactional workloads on infrastructure Snowflake rents from AWS, Azure and GCP.</td></tr>
+      <tr><td class="lbl">How it makes money</td><td>Capacity contracts of one to four years, billed typically a year in advance, with revenue recognised only as compute, storage and data transfer are consumed.</td></tr>
+      <tr><td class="lbl">What protects it</td><td>829 Forbes Global 2000 customers and 828 above $1M of trailing product revenue; FedRAMP High and DoW Impact Level 4/5; 53 regional deployments; infrastructure pricing negotiated from scale.</td></tr>
+      <tr><td class="lbl">What drives earnings</td><td>Consumption expansion inside the existing base (97% of revenue), landing and graduating large accounts, and operating leverage on stock-based compensation.</td></tr>
+      <tr><td class="lbl">What to watch</td><td>Net revenue retention (126%, flat three quarters), non-GAAP product gross margin (74.7%, falling), and the term of newly signed contracts (3.1 years in FY2026, 2.1 years in Q2 FY2027).</td></tr>
+      <tr><td class="lbl">Cycle exposure</td><td><b>High.</b> Revenue is recognised on discretionary consumption. In the last downturn retention fell from 178% to 125% and has not recovered.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- 2 -->
+  <h2>2. What the company does</h2>
+  <p>Large organisations hold data in systems each sized for its own peak load, unable to query one another. Snowflake sells a platform where storage and compute are separated and scaled independently, so a customer pays for query capacity only while a query runs and can point many workloads at one copy of the data without contention. The FY2026 10-K describes "three independently scalable but logically integrated layers across storage, compute, and cloud services," running "on three major public clouds across 53 regional deployments." Snowflake owns none of that hardware. It rents it.</p>
+
+  <h3>One unit, from consumption to cash</h3>
+  <p>A customer commits to a dollar amount of consumption over one to four years at negotiated prices, and Snowflake "typically bills its customers annually in advance of their consumption." The invoice sits on the balance sheet as deferred revenue. Revenue is recognised only when a workload actually runs. Consumption beyond the commitment, or after expiry, is billed as incremental usage, and unused capacity generally rolls over on the purchase of more capacity. The contract is a prepaid balance, not a subscription: $2.2 billion of FY2026 revenue was recognised out of the deferred revenue balance carried at 31 January 2025.</p>
+
+  <p>The company draws the conclusion itself — "we believe our deferred revenue is not a meaningful indicator of future revenue that will be recognized in any given time period." This is the single most consequential fact about the model. The <b>$9.0 billion of remaining performance obligations</b> at 31 July 2026 is a ceiling on near-term revenue, not a floor: the money is contracted, but Snowflake only earns it if the customer runs the workload.</p>
+
+  <div class="quote">
+    "We generally recognize revenue on consumption… Because our customers have flexibility in the timing of their consumption, <b>we do not have the visibility into the timing of revenue recognition that a typical subscription-based software company has.</b>"
+    <span class="attr">Snowflake FY2026 Form 10-K, risk factors — repeated verbatim in the Q2 FY2027 10-Q</span>
+  </div>
+
+  <h3>What is being entered, and what quietly left</h3>
+  <p>The platform is organised into six product categories — data engineering, analytics, transactions, AI, applications and collaboration. Product revenue is 96% of the total; professional services is the remaining 4% and now barely grows, up 1% year on year against 37% for product. There is no revenue disclosure by product line and one reportable segment, so the mix inside that 96% is invisible.</p>
+  <p>New categories carry different economics. Transactions arrived with Crunchy Data (June 2025, $164.5M cash) and Snowflake Postgres reaching general availability in Q1 FY2027; observability with Observe (February 2026, $595.8M); agentic AI as CoWork and Cortex Code. The Q2 FY2027 10-Q names "new product offerings that are margin compressive" among its gross-margin drivers, and full-year non-GAAP product gross margin guidance was cut 100bp to 74.0% at the Q2 print. Meanwhile cybersecurity stopped being a top-level category between the FY2024 and FY2025 filings, Streamlit — bought for $650.8M in 2022 — disappears entirely from the FY2026 10-K, and the daily-query disclosure that ran from 777 million in FY2021 to about 4.2 billion in FY2024 was discontinued.</p>
+
+  <!-- 3 -->
+  <h2>3. Industry, competitive position and moat</h2>
+  <p>The industry sells the separation of storage from compute, plus governance over what runs against the data. Value is created along a chain — hyperscaler infrastructure, then the data platform, then BI and applications, then systems integrators. On disclosed segment figures the profit sits at the bottom of that chain, not in the middle.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Layer of the chain</th><th class="n">Most recent operating margin</th><th>Source period</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Microsoft Intelligent Cloud</td><td class="n">+41.4%</td><td>FY2026, $137.8bn segment revenue</td></tr>
+      <tr><td class="lbl">AWS</td><td class="n">+39.3%</td><td>Q2 2026 ( +35.4% for FY2025 )</td></tr>
+      <tr><td class="lbl">Google Cloud</td><td class="n">+35.5%</td><td>Q2 2026</td></tr>
+      <tr><td class="lbl">Snowflake</td><td class="n">−30.6%</td><td>FY2026 GAAP (−17.0% in Q2 FY2027)</td></tr>
+      <tr><td class="lbl">Confluent</td><td class="n">−32.6%</td><td>FY2025 GAAP — acquired by IBM, March 2026</td></tr>
+      <tr><td class="lbl">Teradata (the prior generation)</td><td class="n">+12.3%</td><td>FY2025 GAAP, on revenue 39% below its 2014 peak</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">Segment operating margins computed from disclosed segment revenue and operating income. Segment gross margin is not disclosed by any hyperscaler.</p>
+
+  <h3>The supplier is the competitor</h3>
+  <p>Snowflake states the relationship plainly: it offers the platform "on the public clouds provided by AWS, Azure, and GCP, <b>which are also some of our primary competitors</b>," that "a substantial majority of our business is run on the AWS public cloud," and that "our costs and gross margins are significantly influenced by the prices we are able to negotiate with these public cloud providers." Third-party cloud infrastructure rose to 71% of cost of product revenue in FY2026 from 65% in FY2025.</p>
+  <p>The margin history shows this is a negotiated outcome, not a structural one, and that scale is the only lever. Total gross margin ran 46.5% in FY2019 and 56.0% in FY2020; product gross margin reached 74% by FY2024. That twenty-five-point climb was bought with volume. The consequence: Snowflake's gross margin is set annually in a negotiation with three firms that sell the competing product, and its leverage in that negotiation only improves while it keeps buying more.</p>
+
+  <h3>Which barriers bind — and the one Snowflake is dismantling itself</h3>
+  <p>Distribution binds, precisely because it is expensive. Snowflake went from 691 Forbes Global 2000 customers at the end of FY2024 to 829 at 31 July 2026 — about 138 logos in two and a half years, roughly 5% a year against a fixed universe, funded by a −30.6% GAAP operating margin and a sales budget running at 40% of revenue. Certification binds for the same reason: FedRAMP High, DoW Impact Level 4/5 and 53 regional deployments take years and capital. Engine quality does not bind — ClickHouse, an open-source engine, reported $250M of ARR growing more than 200% in May 2026.</p>
+  <p>Storage gravity, long treated as the moat, is being given away by design. Snowflake's own documentation states: "Snowflake does not bill your account for Iceberg table storage costs when the table uses an external volume that you manage. Your cloud storage provider bills you directly." The risk factors draw the competitive conclusion without hedging — adopting open formats means "there is less customer 'lock in' when our products are used in external environments," and "our support of open data formats may also reduce switching costs between us and our competitors." Every major vendor now reads and writes Apache Iceberg; AWS S3 Tables uses it exclusively; Databricks' Unity Catalog is a full Iceberg REST catalog that explicitly federates Snowflake's own Horizon Catalog, with no reverse federation documented. This is shipped product behaviour, not a hypothetical.</p>
+  <p>Contractual stickiness is also shorter than the model implies. RPO was $9.0bn at 31 July 2026 with about 54% converting within twelve months, and the weighted-average term of contracts newly entered into fell from <b>3.1 years in FY2026 to 2.1 years in Q2 FY2027</b>. Snowflake names "shortening committed contract durations" as one of the ways customers optimise. The EU Data Act (Regulation 2023/2854), applicable from 12 September 2025, sets a framework specifically to let customers switch data-processing providers. Real switching friction is operational — pipelines, SQL dialects, governance policy — and it is being reduced from both the product and the regulatory side.</p>
+
+  <h3>Competitors, and what cannot be seen</h3>
+  <p>Snowflake has never named a single non-hyperscaler competitor in six annual filings. Its competition section lists AWS, Azure and GCP and then describes categories, adding "existing observability solution providers" in FY2026 — the year before it bought Observe. The competitive facts that matter most are structurally unobservable: Databricks disclosed a revenue run-rate above $7bn growing more than 80% in August 2026 alongside a $190bn round, but has no S-1 on file and discloses no GAAP revenue, no gross margin and no operating result; no hyperscaler discloses revenue for BigQuery, Redshift or Fabric. Comparing Snowflake's 37% GAAP product revenue growth to Databricks' 80% run-rate growth sets an audited figure against a self-reported one on an undisclosed definition.</p>
+  <p>Against the peers that do disclose, Snowflake's position is specific. Its 67% total gross margin is the lowest of the independent software comparables — Palantir 82%, Datadog 80%, Elastic 76%, MongoDB 72% — because it alone resells compute it does not own. Its 126% net revenue retention is second only to Palantir's 139% among disclosers and is earned on a far larger base than MongoDB (121%) or Elastic (112%). <b>Snowflake is a retention outlier and a gross-margin laggard, and both facts have the same cause.</b></p>
+
+  <div class="card">
+    <h3 style="margin-top:0">What kind of company wins here</h3>
+    <p style="margin-bottom:0">Four things decide it on the evidence: enough scale to negotiate infrastructure cost down; revenue earned from governance and orchestration rather than from bytes stored; an enterprise distribution and certification footprint a better engine cannot shortcut; and the ability to grow through an optimisation cycle on new logos without needing retention to recover. Snowflake satisfies the first, third and fourth. It is failing the second by choice — it bills nothing for customer-managed Iceberg storage — and the catalog layer it would need to hold instead is contested by a competitor that federates its catalog while it does not federate theirs.</p>
+  </div>
+
+  <!-- 4 -->
+  <h2>4. Growth engine</h2>
+  <p>Product revenue grew 29% in FY2026 to $4,472.3M, then reaccelerated for three consecutive quarters — 30%, 34%, 37% — and full-year FY2027 guidance was raised from $5,840M (+31%) to $6,070M (+36%). Snowflake publishes no volume, price or mix decomposition, so the acceleration has to be read from the metrics that are disclosed. They do not explain it.</p>
+
+  <figure>
+    <svg viewBox="0 0 820 320" role="img" aria-label="Net revenue retention and product revenue growth, FY2021 to Q2 FY2027">
+      <text x="14" y="22" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#2B2B2B">Retention never recovered — growth did</text>
+      <g stroke="#E5DDD0" stroke-width="1">
+        <line x1="60" y1="260" x2="780" y2="260"/><line x1="60" y1="199.5" x2="780" y2="199.5"/>
+        <line x1="60" y1="138.9" x2="780" y2="138.9"/><line x1="60" y1="78.4" x2="780" y2="78.4"/>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C" text-anchor="end">
+        <text x="52" y="264">0%</text><text x="52" y="203.5">50%</text><text x="52" y="142.9">100%</text><text x="52" y="82.4">150%</text>
+      </g>
+      <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+        points="60,56.6 180,44.5 300,68.7 420,101.4 540,107.5 660,108.7 780,107.5"/>
+      <polyline fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="0"
+        points="60,114.7 180,131.7 300,175.3 420,214.0 540,223.7 660,224.9 780,215.2"/>
+      <g fill="#C75B39">
+        <circle cx="60" cy="56.6" r="3.4"/><circle cx="180" cy="44.5" r="3.4"/><circle cx="300" cy="68.7" r="3.4"/>
+        <circle cx="420" cy="101.4" r="3.4"/><circle cx="540" cy="107.5" r="3.4"/><circle cx="660" cy="108.7" r="3.4"/><circle cx="780" cy="107.5" r="3.4"/>
+      </g>
+      <g fill="#3C6E8F">
+        <circle cx="60" cy="114.7" r="3.4"/><circle cx="180" cy="131.7" r="3.4"/><circle cx="300" cy="175.3" r="3.4"/>
+        <circle cx="420" cy="214.0" r="3.4"/><circle cx="540" cy="223.7" r="3.4"/><circle cx="660" cy="224.9" r="3.4"/><circle cx="780" cy="215.2" r="3.4"/>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="13" font-weight="700">
+        <text x="68" y="80" fill="#C75B39" text-anchor="start">Net revenue retention · 168%</text>
+        <text x="772" y="98" fill="#C75B39" text-anchor="end">126%</text>
+        <text x="68" y="106" fill="#3C6E8F" text-anchor="start">Product revenue growth · 120%</text>
+        <text x="772" y="207" fill="#3C6E8F" text-anchor="end">37%</text>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C" text-anchor="middle">
+        <text x="60" y="282">FY21</text><text x="180" y="282">FY22</text><text x="300" y="282">FY23</text><text x="420" y="282">FY24</text>
+        <text x="540" y="282">FY25</text><text x="660" y="282">FY26</text><text x="780" y="282">Q2 FY27</text>
+      </g>
+      <text x="14" y="308" font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">Fiscal years ending 31 January. Q2 FY27 growth is year-on-year for the quarter ended 31 July 2026.</text>
+    </svg>
+    <figcaption>The last consumption downturn did not pause the expansion rate — it reset it. Retention went 178 → 158 → 131 → 126 → 125 → 126 and never came back, and the reacceleration to 37% growth arrived with retention still flat. Source: FY2021–FY2026 10-Ks; Q2 FY2027 10-Q.</figcaption>
+  </figure>
+
+  <h3>The acceleration is not explained by the disclosed metrics</h3>
+  <p>The 10-Q gives a single cause: revenue rose "primarily due to increased consumption of our platform by existing customers, as evidenced by our net revenue retention rate of 126%." But retention barely moved across the three quarters of acceleration — 125%, 126%, 126%. Customer-count growth moved the wrong way: customers above $1M of trailing product revenue grew 27% year on year against 29% the quarter before, and net new customer additions grew 32% against 38% and 40% in the two prior quarters. RPO growth decelerated from 42% to 30% and fell $770M in absolute dollars from the January peak. <b>The eight points of acceleration came neither from broader per-customer expansion nor from faster logo capture, and no disclosed series identifies the source.</b></p>
+
+  <h3>Reported growth versus organic growth</h3>
+  <p>Snowflake discloses no split. The word "organic" appears zero times in the FY2026 10-K and in both FY2027 10-Qs, and every acquisition's revenue contribution back to Streamlit in FY2023 is described as "not material." What can be established is the scale of purchase accounting landing in the relevant window.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Period</th><th class="n">Product revenue growth</th><th class="n">Goodwill added</th><th class="n">Change in net intangibles</th><th class="n">Cash paid for acquisitions</th><th>Disclosed organic split</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">FY2025</td><td class="n">+30%</td><td class="n">$80.7M</td><td class="n">−$53.4M</td><td class="n">$30.3M</td><td>None</td></tr>
+      <tr><td class="lbl">FY2026</td><td class="n">+29%</td><td class="n">$137.8M</td><td class="n">−$31.1M</td><td class="n">$178.9M</td><td>None</td></tr>
+      <tr><td class="lbl">H1 FY2027</td><td class="n">+35%</td><td class="n">$444.6M</td><td class="n">$179.6M</td><td class="n">$254.4M</td><td>None</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">The H1 FY2027 goodwill addition is Observe ($342.8M) plus Natoma ($101.8M) — roughly $624M of purchase-price allocation landing in exactly the two quarters of reported acceleration. The Observe pro forma table in the Q2 FY2027 10-Q implies Observe was running near $25M a year before the deal, worth about half a point of FY2027 growth. Acquisitions are a real but small contributor, and cannot be sized more precisely than that from the disclosure. The intangibles column is the change in the net balance, so a negative figure means amortisation exceeded additions in that year. Source: FY2025–FY2026 10-Ks; Q2 FY2027 10-Q.</p>
+
+  <h3>The drivers, ranked</h3>
+  <div class="lever structural">
+    <div class="tag">Structural</div>
+    <div class="hd">1 · Consumption expansion within the existing base</div>
+    <p>Capacity arrangements with existing customers were about 97% of revenue in Q2 FY2027, and retention of 126% alone contributes roughly twenty-six points of growth before a single new logo. This is the engine.</p>
+  </div>
+  <div class="lever mgmt">
+    <div class="tag">Management-driven</div>
+    <div class="hd">2 · Landing and graduating large accounts</div>
+    <p>828 customers above $1M of trailing product revenue account for 68% of product revenue; 156 are above $5M and 65 above $10M. The entire sales budget — 40% of revenue — exists to move accounts up this ladder.</p>
+  </div>
+  <div class="lever">
+    <div class="tag">Claimed structural · unproven</div>
+    <div class="hd">3 · AI workloads</div>
+    <p>The CFO attributes part of the acceleration to "a meaningful step-up in AI revenue," but Snowflake discloses account counts and not revenue: CoCo at 9,100 accounts, CoWork at 5,800. Adoption counts without a revenue figure is the disclosure pattern of a product not yet material enough to disclose.</p>
+  </div>
+  <div class="lever mgmt">
+    <div class="tag">Management-driven</div>
+    <div class="hd">4 · Acquisitions</div>
+    <p>Roughly $624M of goodwill and intangibles added in the half, with no disclosed revenue contribution and no organic split.</p>
+  </div>
+  <div class="lever cyclical">
+    <div class="tag">Structurally flat — not a lever</div>
+    <div class="hd">5 · Geography</div>
+    <p>The United States was 75.2% of FY2026 revenue, and international grew at essentially the same rate as the US in Q1 FY2027 (34.9% against 33.0%). Years of international investment have not shifted the mix.</p>
+  </div>
+
+  <div class="quote">
+    "New software releases or hardware improvements, like better storage compression, cloud infrastructure processor improvements, and compute optimization, may make our platform more efficient, <b>enabling customers to consume fewer compute, storage, and data transfer resources to accomplish the same workloads</b>… To the extent these improvements do not result in an offsetting increase in new workloads, <b>we may experience lower revenue.</b>"
+    <span class="attr">Snowflake FY2026 Form 10-K — the deflation mechanism, stated by the company. Unlike a seat-priced business, Snowflake's revenue falls when its product improves, unless volume fills the gap.</span>
+  </div>
+
+  <!-- 5 -->
+  <h2>5. Margin, cash and capital allocation</h2>
+  <p>GAAP product gross margin was 72% in FY2026 and 70.9% in Q2 FY2027; non-GAAP was 76% and 74.7%. The direction has changed, and the cause is identified in the filings: third-party cloud infrastructure rose to 71% of cost of product revenue in FY2026 from 65%, and $113.6M of the $132.1M year-on-year increase in Q2 FY2027 cost of product revenue was cloud infrastructure "including AI inference and GPUs." At the Q2 print Snowflake cut full-year non-GAAP product gross margin guidance from 75.0% to 74.0% while raising operating margin guidance from 13.5% to 14.5%. <b>AI mix is diluting the gross margin and operating leverage is more than offsetting it — for now.</b></p>
+
+  <figure>
+    <svg viewBox="0 0 820 320" role="img" aria-label="GAAP product gross margin and GAAP operating margin, FY2022 to Q2 FY2027">
+      <text x="14" y="22" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#2B2B2B">Operating margin improved; gross margin did not</text>
+      <g stroke="#E5DDD0" stroke-width="1">
+        <line x1="60" y1="44.4" x2="780" y2="44.4"/><line x1="60" y1="101.9" x2="780" y2="101.9"/>
+        <line x1="60" y1="216.9" x2="780" y2="216.9"/>
+      </g>
+      <line x1="60" y1="159.4" x2="780" y2="159.4" stroke="#9A9080" stroke-width="1.2"/>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C" text-anchor="end">
+        <text x="52" y="48.4">80%</text><text x="52" y="105.9">40%</text><text x="52" y="163.4">0%</text><text x="52" y="220.9">−40%</text>
+      </g>
+      <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+        points="60,58.7 204,55.9 348,53.0 492,57.2 636,55.9 780,57.5"/>
+      <polyline fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"
+        points="60,243.6 204,218.0 348,215.4 492,217.0 636,203.4 780,183.8"/>
+      <g fill="#C75B39">
+        <circle cx="60" cy="58.7" r="3.4"/><circle cx="204" cy="55.9" r="3.4"/><circle cx="348" cy="53.0" r="3.4"/>
+        <circle cx="492" cy="57.2" r="3.4"/><circle cx="636" cy="55.9" r="3.4"/><circle cx="780" cy="57.5" r="3.4"/>
+      </g>
+      <g fill="#3C6E8F">
+        <circle cx="60" cy="243.6" r="3.4"/><circle cx="204" cy="218.0" r="3.4"/><circle cx="348" cy="215.4" r="3.4"/>
+        <circle cx="492" cy="217.0" r="3.4"/><circle cx="636" cy="203.4" r="3.4"/><circle cx="780" cy="183.8" r="3.4"/>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="13" font-weight="700">
+        <text x="66" y="48" fill="#C75B39" text-anchor="start">GAAP product gross margin 70%</text>
+        <text x="774" y="47" fill="#C75B39" text-anchor="end">70.9%</text>
+        <text x="66" y="262" fill="#3C6E8F" text-anchor="start">GAAP operating margin −58.6%</text>
+        <text x="774" y="176" fill="#3C6E8F" text-anchor="end">−17.0%</text>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C" text-anchor="middle">
+        <text x="60" y="282">FY22</text><text x="204" y="282">FY23</text><text x="348" y="282">FY24</text>
+        <text x="492" y="282">FY25</text><text x="636" y="282">FY26</text><text x="780" y="282">Q2 FY27</text>
+      </g>
+      <text x="14" y="308" font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">Gross margin is product only; operating margin is total company, GAAP.</text>
+    </svg>
+    <figcaption>Forty-two points of operating-margin improvement since FY2022 came from operating expense and stock compensation, not from unit economics — gross margin peaked at 74% in FY2024 and has fallen since. Source: FY2022–FY2026 10-Ks; Q2 FY2027 10-Q.</figcaption>
+  </figure>
+
+  <h3>The supplier problem, restated for AI</h3>
+  <p>The Q2 FY2027 10-Q rewrote the AI risk factor, and the rewrite is where the margin mechanism appears: "<i>Frontier proprietary AI model providers have a strong market position and, as a result, enjoy substantial leverage over the prices of their technology… we have accepted and may continue to accept pricing and other terms that deviate from our standard commercial terms… and contribute to margin compression from our AI offerings.</i>" Snowflake names Anthropic and OpenAI as service providers and has committed $390M over three years to a third-party AI provider, $270M of it outstanding at 31 July 2026. The AI growth story and the gross-margin decline are the same fact seen from two ends.</p>
+
+  <h3>Operating leverage is a stock-compensation story</h3>
+  <p>GAAP operating margin improved from −40.1% in FY2025 to −30.6% in FY2026 to −17.0% in Q2 FY2027, and non-GAAP operating margin reached a record 15.3%. The mechanism is narrow: stock-based compensation rose 4.6% year on year in Q2 FY2027 while revenue rose 35%, taking SBC from 38.1% to 29.5% of revenue. <b>It works only while revenue growth outruns SBC dollars.</b> Unrecognised SBC was about $3.8bn at 31 July 2026 over 2.6 years, and new grants keep arriving: $212.0M of RSUs from Observe, $54.4M from Natoma, and a 1,000,000-unit CEO performance award in July 2026 whose grant-date fair value is not disclosed in the 8-K.</p>
+
+  <h3>The financial spine</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th></th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">Q2 FY2027</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Product revenue ($M)</td><td class="n">2,666.8</td><td class="n">3,462.4</td><td class="n">4,472.3</td><td class="n">1,491.9</td></tr>
+      <tr><td class="lbl">Product revenue growth</td><td class="n">+38%</td><td class="n">+30%</td><td class="n">+29%</td><td class="n">+37%</td></tr>
+      <tr><td class="lbl">GAAP product gross margin</td><td class="n">74%</td><td class="n">71%</td><td class="n">72%</td><td class="n">70.9%</td></tr>
+      <tr><td class="lbl">GAAP operating margin</td><td class="n">−39.0%</td><td class="n">−40.1%</td><td class="n">−30.6%</td><td class="n">−17.0%</td></tr>
+      <tr><td class="lbl">Non-GAAP operating margin</td><td class="n">n/d</td><td class="n">n/d</td><td class="n">10%</td><td class="n">15.3%</td></tr>
+      <tr><td class="lbl">Free cash flow ($M / % rev)</td><td class="n">778.9 / 27.8%</td><td class="n">884.1 / 24.4%</td><td class="n">1,120.3 / 23.9%</td><td class="n">83.8 / 5.4%</td></tr>
+      <tr><td class="lbl">Net revenue retention</td><td class="n">131%</td><td class="n">126%</td><td class="n">125%</td><td class="n">126%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap"><b>Three comparability breaks.</b> FY2026 is not clean against FY2025: Snowflake stopped capitalising internal-use software in FY2026 ($29.4M in FY2025 to nil) after it began marketing the platform to public-sector customers with rights to take possession, moving development cost from ASC 350-40 to ASC 985-20 and inflating FY2026 GAAP R&amp;D; FY2026 G&amp;A also carries $108.7M of office-exit impairment with no prior-year analogue. Q2 FY2027 free cash flow margin is seasonally low — Snowflake bills disproportionately in the January quarter, which alone produced $765.1M. Net revenue retention is restated across filings: FY2024 was first reported at 131% and later restated to 133%. Source: FY2024–FY2026 10-Ks; Q2 FY2027 10-Q and earnings release.</p>
+
+  <h3>Cash conversion, and the commitment that fixes the cost base</h3>
+  <p>Free cash flow was $1,120.3M in FY2026 against a $1,435.2M GAAP operating loss — a gap of about $2.5bn bridged by $1,599.5M of non-cash stock compensation, a $755.2M increase in deferred revenue from billing ahead of consumption, and almost no capital expenditure ($101.6M, 2.2% of revenue). Snowflake rents compute rather than owning it, so the capital intensity that would otherwise sit on the balance sheet sits in a purchase commitment instead. One cash cost is worth isolating: $672.9M left the business in FY2026 as payroll taxes on the net share settlement of equity awards, which Snowflake's own definition of free cash flow excludes because it is classified as financing.</p>
+  <p>In April 2026 Snowflake amended a cloud agreement to commit to "<b>a cumulative minimum spend of $6.0 billion over a five-year contract term ending March 31, 2031, with minimum spend for each contract year ranging from $900.0 million to $1.25 billion</b>," and is "required to pay the difference" on any shortfall against the cumulative total or any single year. That replaced the prior arrangement entirely; total non-cancelable commitments across all agreements had been $2.68bn at 31 January 2026. A June 2026 amendment added storage extending to May 2036, and a separate AI commitment adds $390M through November 2028. The mechanism: the largest variable cost in the business now carries an annual floor of $900M–$1.25bn against FY2026 cost of product revenue of $1,260.3M. Consumption weakness would cut revenue while that cost stayed contractually fixed.</p>
+
+  <h3>Where the cash went — and what it says</h3>
+  <p>Ranked, FY2022 through the first half of FY2027: <b>share repurchases $3,697.6M</b>; payroll taxes on net share settlement $2,055.2M; acquisitions in cash $1,101.9M, plus roughly $1,135M in stock and about $500M of post-combination stock compensation; capital expenditure, capitalised software and purchased intangibles together $399.6M; dividends nil. Management spends more managing the share count than on anything else, including acquisitions and the platform itself.</p>
+  <p>It has not worked. Shares outstanding rose from 312.4M at 31 January 2022 to <b>352.5M at 31 July 2026, up 12.8%, despite 25.4 million shares retired for $3.70 billion</b>. The count fell in exactly one year, FY2025, and $399.6M of that year's buying was a block bought at $112.50 from the purchasers of the convertible notes rather than open-market repurchase. Guided non-GAAP diluted shares were raised from 376M to 380M at the Q2 print, with Q3 guided to 382M, and no shares were repurchased at all in Q2 FY2027 with $802.7M of authorisation remaining. The only debt is $2.3bn of zero-coupon convertibles issued in September 2024 at a $157.50 conversion price; the 2027 notes carried a $2,167.2M fair value against $1,150.0M of principal at 31 July 2026 — deep in the money, and classified non-current because Snowflake may settle in shares.</p>
+
+  <!-- 6 -->
+  <h2>6. Cyclicality, constraints and what to monitor</h2>
+  <p>Snowflake reports one segment and no revenue split by end market. What is disclosed points the same way: 75.2% of FY2026 revenue came from the United States, Forbes Global 2000 customers contributed about 41% of H1 FY2027 revenue, and customers above $1M of trailing product revenue are 68% of product revenue. The base is concentrated in large US enterprises, and enterprise data infrastructure spend is discretionary at the margin — a budget line that can be optimised without cancelling anything.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Exposure</th><th class="n">Share</th><th>What it implies</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">United States</td><td class="n">75.2%</td><td>FY2026 revenue by customer location; international grows at the same rate, so mix is not shifting</td></tr>
+      <tr><td class="lbl">EMEA</td><td class="n">16.3%</td><td>Exposed to EU Data Act switching rules and sovereign-cloud fragmentation</td></tr>
+      <tr><td class="lbl">Asia-Pacific &amp; Japan</td><td class="n">5.8%</td><td>No individual country above 10% of revenue in any period</td></tr>
+      <tr><td class="lbl">Customers &gt;$1M TTM product revenue</td><td class="n">68%</td><td>828 accounts; the revenue base is a concentration of large enterprise budgets</td></tr>
+      <tr><td class="lbl">Forbes Global 2000 customers</td><td class="n">~41%</td><td>829 accounts; H1 FY2027 revenue share</td></tr>
+      <tr><td class="lbl">Existing customers under capacity contracts</td><td class="n">97%</td><td>New-logo revenue is a small share of any single quarter</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Where the business sits in its cycle</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Measure</th><th>Prior peak</th><th>Prior trough</th><th>Now (Q2 FY2027)</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Product revenue growth</td><td>120% (FY2021)</td><td>29% (FY2026)</td><td>37% — off the trough, far below peak</td></tr>
+      <tr><td class="lbl">Net revenue retention</td><td>178% (FY2022)</td><td>125% (FY2026)</td><td>126% — still at the trough</td></tr>
+      <tr><td class="lbl">GAAP product gross margin</td><td>74% (FY2024)</td><td>70.9% (Q2 FY2027)</td><td>70.9% — at the trough, falling</td></tr>
+      <tr><td class="lbl">Non-GAAP operating margin</td><td>15.3% (Q2 FY2027)</td><td>deeply negative pre-FY2024</td><td>15.3% — a record</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">The combination is the point: <b>a record operating margin printed at trough retention and trough gross margin.</b> The record comes from operating and stock-compensation leverage, not from improving unit economics. A record margin at a peak and a record margin at a trough are opposite facts.</p>
+
+  <h3>The downside mechanism this business would actually feel</h3>
+  <p>Not a demand shock but a substrate shift. On disclosed figures the AI money is landing at the infrastructure layer rather than the platform layer: Oracle's $638bn of remaining performance obligations is explicitly GPU capacity prepayment by its own description; Amazon states its AI and custom-silicon businesses each exceed a $25bn run-rate; Google Cloud grew 82% in the June 2026 quarter on "enterprise AI Solutions and enterprise AI Infrastructure." None of that flows through a data platform. If enterprise AI settles on GPU infrastructure plus model APIs, with the data platform relegated to a governed retrieval source, Snowflake captures a small share of AI spend while paying model providers for inference on terms it concedes are unfavourable. Its own AI disclosure — account counts, never revenue — is consistent with that reading, though it does not prove it.</p>
+
+  <div class="two">
+    <div class="col dur">
+      <h4>Durable — survives ten years</h4>
+      <ul>
+        <li>829 Forbes Global 2000 customers and 828 above $1M trailing product revenue: a distribution asset built at a negative operating margin</li>
+        <li>FedRAMP High and DoW Impact Level 4/5 across 53 regional deployments</li>
+        <li>97% of revenue from existing customers under capacity contracts, billed a year in advance</li>
+        <li>Infrastructure pricing negotiated from scale — gross margin went 46.5% in FY2019 to 72% in FY2026</li>
+        <li>Governance and catalog surface, to the extent that layer holds against federation</li>
+      </ul>
+    </div>
+    <div class="col bor">
+      <h4>Borrowed — currently helping</h4>
+      <ul>
+        <li>$90.9M of the H1 FY2027 G&amp;A improvement is a lapping office-exit impairment, now essentially exhausted</li>
+        <li>Interest income, down 19% in the first half as the cash balance falls and yields ease</li>
+        <li>Roughly $624M of goodwill and intangibles added in the two quarters of reported acceleration, with no organic split</li>
+        <li>Stock-compensation leverage, which requires revenue growth to keep outrunning SBC dollars</li>
+        <li>Storage economics, which Snowflake now bills at zero on customer-managed Iceberg volumes</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Leading indicators, and where each is published</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Indicator — and what it tests</th><th>Where published</th></tr></thead>
+    <tbody>
+      <tr><td>Net revenue retention — whether expansion is returning or growth is new-logo dependent</td><td>Quarterly earnings release; 10-Q key business metrics</td></tr>
+      <tr><td>Non-GAAP product gross margin — the AI and GPU cost pass-through</td><td>Quarterly earnings release</td></tr>
+      <tr><td>RPO and the percentage expected within twelve months</td><td>10-Q revenue note</td></tr>
+      <tr><td>Weighted-average term of contracts newly entered into</td><td>10-Q management discussion and analysis</td></tr>
+      <tr><td>Third-party cloud infrastructure as a share of cost of product revenue</td><td>10-K segment note (annual only)</td></tr>
+      <tr><td>Shares outstanding and the guided diluted share count</td><td>10-Q cover page; quarterly guidance</td></tr>
+      <tr><td>AWS segment revenue and operating margin — the optimisation-cycle tell</td><td>Amazon Form 8-K, Exhibit 99.1</td></tr>
+      <tr><td>Databricks run-rate releases, and any S-1 filing</td><td>databricks.com newsroom; SEC EDGAR</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- 7 -->
+  <h2>7. Risks, unknowns and open questions</h2>
+  <div class="lever">
+    <div class="tag">Risk · cost structure</div>
+    <div class="hd">The $6.0bn cloud floor converts the largest variable cost into a fixed one</div>
+    <p>Snowflake must spend $900M–$1.25bn a year with one provider through March 2031 or pay the difference. FY2026 cost of product revenue in total was $1,260.3M, so the annual floor is close to the entire cost of goods. Consumption weakness would cut revenue while the cost base stayed contractually fixed, and the operating leverage that produced the record non-GAAP margin would run in reverse with no lag.</p>
+  </div>
+  <div class="lever">
+    <div class="tag">Risk · gross margin</div>
+    <div class="hd">The supplier of the growth product sets its own price</div>
+    <p>Snowflake concedes that frontier model providers "enjoy substantial leverage over the prices of their technology" and that it has accepted terms which "contribute to margin compression from our AI offerings." The faster AI consumption grows, the faster gross margin dilutes — and Snowflake cannot reprice its own credit card fast enough to offset an input it does not negotiate from strength.</p>
+  </div>
+  <div class="lever">
+    <div class="tag">Risk · competitive position</div>
+    <div class="hd">Snowflake is dismantling its own storage lock-in deliberately</div>
+    <p>Its documentation states it bills nothing for Iceberg tables on customer-managed external volumes; its risk factors state this means less lock-in and reduced switching costs. If a customer's data sits in their own bucket in an open format readable by a competing engine, losing that customer no longer requires a migration project — only a procurement decision.</p>
+  </div>
+  <div class="lever">
+    <div class="tag">Risk · per-share economics</div>
+    <div class="hd">Equity dilution is structural, not incidental</div>
+    <p>The share count rose 12.8% since FY2022 against $3.70bn of repurchases; guided diluted shares were raised to 380M at the Q2 print; unrecognised stock compensation is about $3.8bn; and $2.3bn of convertibles sit deep in the money at a $157.50 conversion price. Any per-share thesis has to survive a share count that $3.7bn of buying has failed to hold flat.</p>
+  </div>
+  <div class="lever">
+    <div class="tag">Risk · contingent liability</div>
+    <div class="hd">Litigation from the 2024 customer-credential incident is now in discovery</div>
+    <p>Motions to dismiss the consumer and financial-institution claims in the District of Montana MDL were denied in October 2025 and Snowflake answered in December 2025. A second securities class action filed in February 2026 has a motion to dismiss due in October 2026, and a copyright class action over training data is in discovery. No estimable loss is disclosed for any of them; the only quantified contingency anywhere in the filings is an NLRB matter at zero to $25M.</p>
+  </div>
+  <div class="lever">
+    <div class="tag">Risk · governance</div>
+    <div class="hd">A related-party acquisition closed at material scale</div>
+    <p>Snowflake acquired Observe for $595.8M on 2 February 2026. Jeremy Burton, Observe's chief executive, was a sitting Snowflake director and resigned three days before the close "in connection with" the acquisition; the board used a special committee of independent directors and the audit committee. The point to watch is the outcome rather than the process: the pro forma table implies Observe was running near $25M of annual revenue against $595.8M of consideration, and the deal landed in the first quarter of the reported acceleration.</p>
+  </div>
+
+  <h3>What the sources could not answer</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Unknown</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Volume — credits consumed</td><td>Appears in no filing. The price card is public and the units are not, so growth cannot be decomposed into volume, price and mix by anyone outside the company.</td></tr>
+      <tr><td class="lbl">Revenue by product</td><td>One reportable segment; no split for Cortex, Snowpark, Marketplace, Iceberg, Postgres or Observe. AI is disclosed as account counts only.</td></tr>
+      <tr><td class="lbl">Organic versus acquired growth</td><td>"Organic" appears nowhere in the FY2026 10-K or either FY2027 10-Q; every acquisition's contribution is "not material."</td></tr>
+      <tr><td class="lbl">Storage economics</td><td>Storage as a share of product revenue is undisclosed, as is how much has already migrated to Iceberg volumes Snowflake bills at zero.</td></tr>
+      <tr><td class="lbl">Counterparty of the $6.0bn commitment</td><td>The footnote says "one of the Company's third-party cloud infrastructure agreements" and never names the provider.</td></tr>
+      <tr><td class="lbl">Competitor economics</td><td>Databricks has no S-1; no hyperscaler discloses BigQuery, Redshift or Fabric revenue. Market share is unverifiable in either direction.</td></tr>
+      <tr><td class="lbl">Cost of the CEO award</td><td>The grant-date fair value of the 1,000,000-unit July 2026 performance award is not in the 8-K, so its effect on future SBC cannot be modelled.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>What would need resolving before forming a thesis</h3>
+  <div class="card">
+    <ul style="margin:0; padding-left:20px">
+      <li style="margin-bottom:10px">What produced eight points of growth acceleration when retention was flat, logo growth decelerated and RPO growth halved.</li>
+      <li style="margin-bottom:10px">Whether AI consumption is incremental to core compute or substitutes for it — the distinction decides whether the gross-margin dilution buys growth or merely relocates it.</li>
+      <li style="margin-bottom:10px">Whether non-GAAP operating margin can keep expanding once the office-impairment lapping is exhausted, gross margin is falling and new equity grants are landing.</li>
+      <li>What the $6.0bn commitment does to cash and margin if growth reverts to the FY2026 rate.</li>
+    </ul>
+  </div>
+
+  <!-- 8 -->
+  <h2>8. Investor takeaways</h2>
+  <div class="card">
+    <ul style="margin:0; padding-left:20px">
+      <li style="margin-bottom:12px"><b>What this business really is:</b> a metered reseller of hyperscaler compute, wrapped in governance and enterprise distribution, whose revenue is recognised only when customers choose to run workloads.</li>
+      <li style="margin-bottom:12px"><b>The core economic engine:</b> about 72 cents of gross profit per revenue dollar, roughly 20 cents of cost paid to a supplier that is also a competitor, converted to cash by billing a year ahead of consumption and paying a third of the cost base in stock.</li>
+      <li style="margin-bottom:12px"><b>The main growth lever:</b> consumption expansion inside 828 accounts above $1M, bought with a sales budget at 40% of revenue — not price, which the company cannot raise, and not geography, which has not shifted in years.</li>
+      <li style="margin-bottom:12px"><b>What could break the story:</b> enterprise AI settling on GPU infrastructure rather than the data platform, while a $6.0bn five-year cloud floor and frontier-model pricing leverage fix the cost base in place.</li>
+      <li><b>What to monitor:</b> net revenue retention, non-GAAP product gross margin, and the term of newly signed contracts — the three series that separate expansion from landing, and show whether growth is being bought at a falling margin.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <b>Sources.</b> Company facts: Snowflake Forms 10-K for FY2021–FY2026; Forms 10-Q through Q2 FY2027 (quarter ended 31 July 2026, filed 4 September 2026); the Q2 FY2027 earnings release (2 September 2026); the 2020 Form S-1; the DEF 14A filed 18 May 2026; and Item 5.02 current reports of 2 February 2026 and 16 July 2026.
+    Industry and competitor facts: Amazon, Alphabet, Microsoft, Oracle, Teradata, MongoDB, Confluent, Datadog, Elastic and Palantir filings and earnings releases; Databricks and ClickHouse company press releases (unaudited self-reports); official Snowflake, AWS and Google Cloud pricing and product documentation; the Apache Iceberg project; and EU Regulations 2023/2854 and 2024/1689.
+    <br><br>
+    <b>Post-dating note.</b> The Q2 FY2027 10-Q contains no subsequent-events note and no pending acquisition. Raised FY2027 guidance (product revenue $6,070M, +36%; non-GAAP operating margin 14.5%; non-GAAP product gross margin lowered to 74.0%) was issued on 2 September 2026 and post-dates the FY2026 annual filing.
+    <br><br>
+    <b>Not a valuation and not a recommendation.</b> This page explains how the business works and what drives its economics. It contains no price, multiple, target or rating.
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Unity Software Inc. (NYSE: U)</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--cream);color:var(--ink);
+       font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;}
+  h1{font-size:38px;margin:6px 0 10px;}
+  h2{font-size:27px;margin:52px 0 14px;}
+  h3{font-size:21px;margin:30px 0 8px;}
+  p{margin:0 0 15px;}
+  a{color:var(--terracotta);}
+  .kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700;}
+  .srcline{color:var(--muted);font-size:15px;line-height:1.5;border-top:1px solid var(--line);padding-top:14px;margin-top:18px;}
+  .restate{font-family:Georgia,serif;font-size:23px;line-height:1.45;border-left:5px solid var(--terracotta);
+           padding:6px 0 6px 20px;margin:34px 0 30px;}
+  .engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:30px 0 34px;}
+  .engine .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C9BFAE;font-weight:700;}
+  .engine .unit{font-family:Georgia,serif;font-size:27px;margin:8px 0 10px;}
+  .engine p{margin:0;color:#EDE5D8;font-size:17px;line-height:1.55;}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 10px;}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px;}
+  .kpi .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .kpi .v{font-family:Georgia,serif;font-size:26px;color:var(--terracotta);margin:6px 0 4px;
+          font-variant-numeric:tabular-nums;}
+  .kpi .n{font-size:14px;color:var(--muted);line-height:1.4;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0;}
+  .lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+         border-radius:10px;padding:16px 18px;margin:14px 0;}
+  .lever.structural{border-left-color:var(--good);}
+  .lever.mgmt{border-left-color:var(--gold);}
+  .lever.cyclical{border-left-color:var(--blue);}
+  .lever .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--terracotta);}
+  .lever.structural .tag{color:var(--good);}
+  .lever.mgmt .tag{color:var(--gold);}
+  .lever.cyclical .tag{color:var(--blue);}
+  .lever h4{font-family:Georgia,serif;font-size:19px;margin:5px 0 7px;}
+  .lever p{margin:0;font-size:17px;}
+  .quote{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;
+         font-family:Georgia,serif;font-size:20px;line-height:1.45;}
+  .quote .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;
+               color:var(--muted);margin-top:10px;font-style:normal;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0;}
+  .two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px;}
+  .two ul{margin:0;padding-left:18px;}
+  .two li{font-size:16px;margin-bottom:9px;line-height:1.45;}
+  .tablewrap{overflow-x:auto;margin:20px 0 8px;}
+  table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;
+        border:1px solid var(--line);border-radius:10px;}
+  th,td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+  th{background:#F2ECE1;font-weight:700;font-size:14px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;}
+  tr:last-child td{border-bottom:none;}
+  tr.total td{font-weight:700;background:#FBF7F0;}
+  .cap{color:var(--muted);font-size:14px;line-height:1.45;margin:4px 0 26px;}
+  .chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 10px 8px;margin:22px 0 6px;}
+  .chart svg{display:block;width:100%;height:auto;}
+  .foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--muted);font-size:15px;line-height:1.55;}
+  .foot h3{font-size:17px;color:var(--ink);margin:0 0 10px;}
+  .note{font-size:15px;color:var(--muted);}
+  @media (max-width:700px){
+    .kpis{grid-template-columns:1fr 1fr;}
+    .two{grid-template-columns:1fr;}
+    h1{font-size:30px;} h2{font-size:23px;} body{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Business Overview</div>
+  <h1>Unity Software Inc. <span style="color:var(--muted);font-weight:400;">(NYSE: U)</span></h1>
+  <div class="srcline">
+    7 September 2026. Built from Unity's own SEC filings — Forms 10-K for FY2020–FY2025 (FY2025 filed 11 February 2026),
+    Forms 10-Q through Q2 2026 (filed 6 August 2026), the Q2 2026 results release and 2026 current reports — with industry
+    structure, competitor economics and platform-fee data from independent sources named inline. It explains how the business
+    works and what drives its economics. <strong>It is not a valuation and not a recommendation.</strong>
+  </div>
+
+  <div class="restate">
+    Unity is an advertising business attached to a development-tools business: it sells game developers the engine their
+    game is built in, then keeps a slice of every advertising dollar spent to find and monetise that game's players.
+  </div>
+
+  <div class="engine">
+    <div class="lbl">The economic engine</div>
+    <div class="unit">One ad impression served — about $1.47 of retained revenue per thousand</div>
+    <p>
+      Grow Solutions books revenue net: in Unity's own words, "our revenue represents the amount we retain from the
+      transaction we are facilitating through our auction and mediation platform" (FY2025 10-K). Against the company's
+      claim of roughly 68 billion monthly impressions for the twelve months to December 2024, FY2024 Grow revenue of
+      $1,199m implies about $1.47 retained per thousand impressions <em>(inferred — the impressions claim is dated and
+      unaudited)</em>. Two-thirds of revenue and effectively all of the growth come from that unit. The other unit is a
+      developer seat at $2,310 a year, and it is the thing that makes the first unit cheap to source.
+    </p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">Unit revenue</div><div class="v">~$1.47</div>
+      <div class="n">Retained per 1,000 impressions, FY2024 (inferred)</div></div>
+    <div class="kpi"><div class="k">Unit profitability</div><div class="v">83%</div>
+      <div class="n">Adjusted gross margin FY2025; 74% on a GAAP basis</div></div>
+    <div class="kpi"><div class="k">Headline earnings</div><div class="v">$409m</div>
+      <div class="n">Adjusted EBITDA FY2025, against a GAAP net loss of $401m</div></div>
+    <div class="kpi"><div class="k">Leverage</div><div class="v">Net cash</div>
+      <div class="n">$2.36bn cash vs $2.25bn converts at 30 Jun 2026, plus $253m redeemable China interest</div></div>
+    <div class="kpi"><div class="k">Cycle position</div><div class="v">At peak</div>
+      <div class="n">Q2 2026 annualised revenue $2.19bn ≈ the FY2023 peak; margins above it</div></div>
+    <div class="kpi"><div class="k">Organic vs reported</div><div class="v">38% / 24%</div>
+      <div class="n">Q2 2026 strategic revenue growth vs total, the gap being businesses being shut</div></div>
+  </div>
+
+  <h2>1. What this business actually is</h2>
+  <p>
+    Unity sells the answer to three problems a game developer has in sequence. Building a game that runs on phones, PCs,
+    consoles and headsets without writing it several times. Finding players once it is built. Making money from those
+    players. The first is Create Solutions, the second and third are Grow Solutions, and the company's entire strategic
+    argument is that owning both is worth more than owning either.
+  </p>
+  <p>
+    In FY2025 that produced $1,850m of revenue: Grow $1,228m (66%) and Create $621m (34%). Grow is the growth; Create is
+    the reason Grow has an advantage. Every game shipped on the Unity engine is a candidate integration point for the ad
+    SDK, which means Unity can source advertising supply it does not have to buy at the market price — and it sees
+    conversion outcomes inside games it also tooled.
+  </p>
+
+  <h2>2. How one unit moves through the business</h2>
+  <p>
+    <strong>Create.</strong> The Unity Editor plus the runtime that ships inside the finished game, sold per seat. The free
+    Personal tier is available only below $200,000 of revenue or funds raised in the prior twelve months; above that Pro is
+    mandatory at $2,310 per seat per year, and companies above $25m of revenue must be on Enterprise at negotiated pricing
+    (unity.com, September 2026). Revenue is recognised over the contract term because Unity treats the software and its
+    updates as a single, interdependent performance obligation. At 31 December 2025, $494m of contracted revenue on
+    multi-year terms had not yet been recognised, with $225m — 46% — expected within twelve months. That is the most
+    predictable revenue Unity has, and it is a third of the company.
+  </p>
+  <p>
+    <strong>Grow.</strong> An advertiser, usually another game studio, bids to acquire a player. Unity's auction picks the
+    winning bid and serves the impression inside a publisher's app. The publisher earns a payout; Unity keeps the
+    difference and books only that difference as revenue. Cash follows the same shape: $431.5m of publisher payables
+    against $643.6m of receivables at 31 December 2025 — the float is real, but receivables are larger, so growth in Grow
+    consumes working capital rather than releasing it.
+  </p>
+  <p>
+    Unity discloses neither the gross flow of advertiser money nor its take rate, which is why the unit price above has to
+    be inferred. It is the single most important undisclosed number in this business.
+  </p>
+
+  <h3>What has been cut, and why the economics differ</h3>
+  <p>
+    Since the fourth quarter of 2023 Unity has been shrinking to what it calls the Strategic Portfolio — the engine, its
+    consumption services, and monetisation. Professional services were narrowed, independent development of professional
+    artistry tools stopped, the ironSource Ads Network was sunset on 30 April 2026, and the Supersonic game-publishing
+    business was sold to Tripledot on 4 August 2026 for $40m in cash. Every exit removed revenue that carried people,
+    hosting or publishing risk rather than software margin — which is why gross margin rose from 66% in FY2023 to 74% in
+    FY2025 while revenue fell and then flattened.
+  </p>
+
+  <h2>3. The industry, and where Unity sits in it</h2>
+  <p>
+    Engines sell avoided engineering cost to customers who treat them as an expense line. Ad networks sell matching — the
+    ability to predict which player is worth what to which advertiser — and are paid out of marketing budgets. The second
+    industry is where the money is.
+  </p>
+  <p>
+    The largest reliably collected toll in mobile is the app store's: Apple takes 30%, or 15% under its Small Business
+    Program. Google Play moves the other way from 30 June 2026 in the US, EEA and UK, to roughly 20% plus a 5% billing fee
+    on new-install transactions. In-app advertising is untaxed by the store, and on Apple's own commissioned estimate it
+    reached $151bn in 2025 against $149bn of App Store digital-goods billings — advertising is now the larger pool, and it
+    is the pool Unity fishes in.
+  </p>
+  <p>
+    The benchmark for what that pool pays is AppLovin, which reported FY2025 revenue of $5,481m, up 70%, net income of
+    $3,334m and an 82% adjusted EBITDA margin. Unity's adjusted gross margin of 83% is in the same territory. Its adjusted
+    EBITDA margin of 22% is not. <strong>The gap is not unit economics — it is the size of the cost base sitting on top of
+    them</strong>, which is the single most important thing to understand about this company's profitability.
+  </p>
+
+  <h3>Which barriers actually bind</h3>
+  <p>
+    Engine share is genuinely contested. GDC's 2026 survey of more than 2,300 industry professionals puts Unreal at 42% as
+    primary engine, Unity at 30% and Godot at 11%. That survey is self-selected and skews to PC and console production, so
+    it does not measure Unity's mobile position — Unity claims 70% of the top 1,000 mobile games, but the claim is its own
+    and carries a January 2025 footnote. No independent, methodology-stated measurement of mobile engine share was found.
+  </p>
+  <p>
+    Two barriers bind. Mid-project switching cost: an engine choice is locked once production starts, so revenue erosion
+    from a share shift arrives years after the shift. And data scale in ad targeting, where the evidence is unusually
+    clean — when Apple's App Tracking Transparency removed deterministic identifiers, trackable US traffic fell from 73% to
+    18%, average impression prices fell 23%, and trackable impressions began commanding a 51% premium (Skiera et al.,
+    hosted by the FTC). Privacy shocks did not shrink the ad pool; they concentrated it toward whoever held the most
+    first-party conversion signal.
+  </p>
+  <p>
+    Two barriers are weaker than they sound. The asset store and plugin ecosystem are cited as lock-in, yet Godot has
+    reached 11% primary-engine share with neither royalties nor a comparable ecosystem. And the installed base is not
+    self-renewing: the GDC series shows primary-engine share moving materially within a few years.
+  </p>
+  <p>
+    Unity is the only company that owns both a major engine and a large mobile ad network — AppLovin, Moloco, Meta and
+    Google can outbid it for demand, but none owns the authoring layer where games begin. The honest test is whether the
+    pairing shows in the numbers, and so far it shows on one side only: in Q2 2026 strategic Grow revenue grew 63% while
+    strategic Create grew 5%. The ads business is winning on model quality, not on any bundled advantage flowing from the
+    engine. The supply asset is real; the cross-sell is not yet demonstrated.
+  </p>
+  <p class="note">
+    The kind of company that wins in mobile ad matching is the one with the most first-party conversion signal at the
+    lowest supply cost. Unity is structurally that kind of company — it has only recently built the modelling to exploit
+    it, and the evidence that it now can is one year old.
+  </p>
+
+  <h2>4. The growth engine</h2>
+  <p>
+    Unity's reported growth and its underlying growth are two different numbers, and the difference is deliberate. In
+    Q2 2026 total revenue rose 24% while strategic revenue rose 38%; the 14-point gap is the ironSource network being
+    switched off and Supersonic being sold. Both numbers are true. Only one describes the business Unity will still own
+    in 2027.
+  </p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Q2 2026 revenue decomposition</th><th class="n">Q2 2026</th><th class="n">Q2 2025</th><th class="n">Change</th></tr></thead>
+    <tbody>
+      <tr><td>Strategic Grow — the Unity Ads Network</td><td class="n">$329.0m</td><td class="n">$201.3m</td><td class="n">+63%</td></tr>
+      <tr><td>Strategic Create — engine subscriptions</td><td class="n">$157.5m</td><td class="n">$150.6m</td><td class="n">+5%</td></tr>
+      <tr class="total"><td>Total strategic revenue</td><td class="n">$486.4m</td><td class="n">$351.9m</td><td class="n">+38%</td></tr>
+      <tr><td>Non-strategic — ironSource network, Supersonic</td><td class="n">$60.1m</td><td class="n">$89.0m</td><td class="n">(33)%</td></tr>
+      <tr class="total"><td>Total reported revenue</td><td class="n">$546.5m</td><td class="n">$440.9m</td><td class="n">+24%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">
+    Source: Unity Q2 2026 results release, 6 August 2026. The same quarter's 10-Q reports the older Create/Grow Solutions
+    cut, which ties to the same total but is not the same split. Growth today is entirely organic — Unity has made no
+    acquisition since ironSource closed in November 2022, and its only 2026 commitment is $100m of AppsFlyer shares by the
+    end of 2027. The 2022–2023 revenue line was largely bought; the 2026 line is not.
+  </p>
+
+  <div class="lever mgmt">
+    <div class="tag">Management-driven, becoming structural</div>
+    <h4>1 · Unity Vector, the machine-learning ad platform</h4>
+    <p>Rolled out in Q1 2025 and migrated the Unity Ad Network onto it, Vector is the stated cause of essentially all of
+      Unity's growth. Guidance for Q3 2026 puts strategic Grow at $380–385m, up 68–70% year over year. Its durability is
+      the central open question: a model upgrade produces a step change, and step changes lap.</p>
+  </div>
+  <div class="lever">
+    <div class="tag">Temporary — arithmetic</div>
+    <h4>2 · The run-off of exited businesses</h4>
+    <p>Non-strategic revenue is guided to about $20m in Q3 2026, from $89m a year earlier. When it reaches zero, reported
+      and strategic growth converge and the flattering gap disappears — around the turn of 2027.</p>
+  </div>
+  <div class="lever mgmt">
+    <div class="tag">Management-driven</div>
+    <h4>3 · Create subscription repricing</h4>
+    <p>The 2023 Runtime Fee was withdrawn in Q3 2024 and replaced with higher subscription prices, after what Unity itself
+      calls "a high volume of negative customer feedback including a boycott and a slowdown of signing new contracts and
+      renewals". Create's growth since has come from subscription revenue while cloud and hosting revenue declines — price
+      and mix rather than seats.</p>
+  </div>
+  <div class="lever structural">
+    <div class="tag">Structural</div>
+    <h4>4 · Greater China</h4>
+    <p>Greater China revenue rose 29% to $333.6m in FY2025, the only region growing, while the US fell 2% and EMEA fell 7%.
+      Unity holds roughly 78% of Unity China, having sold 20.5% to local investors in 2022 for $197m.</p>
+  </div>
+  <div class="lever cyclical">
+    <div class="tag">Cyclical — a headwind, not a driver</div>
+    <h4>5 · The industry's own volume</h4>
+    <p>Global mobile game in-app-purchase revenue grew 1% in 2025 and downloads 0.8%, while non-game app spending grew 21%
+      (Sensor Tower). Unity is not being carried by its market; it is taking share within a flat one — higher quality
+      growth, and more fragile.</p>
+  </div>
+
+  <h2>5. Margin, cash and what management does with it</h2>
+  <p>
+    Almost none of Unity's cost of revenue varies with an incremental impression, which is why gross margin expands sharply
+    when revenue recovers. But the operating cost base is where this company is actually decided: headcount fell from 7,703
+    at the end of 2022 to 4,412 at the end of 2025, a 43% reduction, and operating expenses fell from $2,286m in FY2023 to
+    $1,851m in FY2025 while gross profit fell only $82m. Unity did not become more profitable by selling more. It became
+    more profitable by employing fewer people.
+  </p>
+
+  <div class="chart">
+    <svg viewBox="0 0 840 300" role="img" aria-label="Unity total revenue by fiscal year, FY2020 to Q2 2026 annualised">
+      <line x1="60" y1="250" x2="800" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+      <line x1="60" y1="30" x2="60" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+      <g font-family="Calibri,Arial" font-size="12" fill="#6E675C">
+        <line x1="60" y1="30" x2="800" y2="30" stroke="#F0EAE0"/><text x="30" y="34">$2.2bn</text>
+        <line x1="60" y1="140" x2="800" y2="140" stroke="#F0EAE0"/><text x="30" y="144">$1.1bn</text>
+        <text x="42" y="254">0</text>
+      </g>
+      <polyline fill="none" stroke="#C75B39" stroke-width="2.5"
+        points="60,172.8 180,138.9 300,110.9 420,31.3 540,68.7 660,65.0 780,31.4"/>
+      <g fill="#C75B39">
+        <circle cx="60" cy="172.8" r="4"/><circle cx="180" cy="138.9" r="4"/><circle cx="300" cy="110.9" r="4"/>
+        <circle cx="420" cy="31.3" r="4"/><circle cx="540" cy="68.7" r="4"/><circle cx="660" cy="65.0" r="4"/>
+        <circle cx="780" cy="31.4" r="5"/>
+      </g>
+      <g font-family="Calibri,Arial" font-size="13" fill="#2B2B2B" font-weight="bold">
+        <text x="60" y="163" text-anchor="start">772</text>
+        <text x="420" y="22" text-anchor="middle">2,187</text>
+        <text x="540" y="60" text-anchor="middle">1,813</text>
+        <text x="780" y="22" text-anchor="end">2,186</text>
+      </g>
+      <g font-family="Calibri,Arial" font-size="13" fill="#6E675C">
+        <text x="60" y="272" text-anchor="start">FY20</text>
+        <text x="180" y="272" text-anchor="middle">FY21</text>
+        <text x="300" y="272" text-anchor="middle">FY22</text>
+        <text x="420" y="272" text-anchor="middle">FY23</text>
+        <text x="540" y="272" text-anchor="middle">FY24</text>
+        <text x="660" y="272" text-anchor="middle">FY25</text>
+        <text x="800" y="272" text-anchor="end">Q2'26 ann.</text>
+      </g>
+      <text x="70" y="292" font-family="Calibri,Arial" font-size="12" fill="#6E675C">Total revenue, $m — the FY2023 peak, the FY2024 trough, and the return</text>
+    </svg>
+  </div>
+  <p class="cap">
+    Sources: FY2020–FY2025 10-Ks; Q2 2026 revenue of $546.5m annualised. FY2022 includes ironSource for under two months
+    and FY2023 for a full year, so the FY2022–FY2023 step is largely acquired rather than grown. Revenue is back at the
+    prior peak on a deliberately smaller portfolio.
+  </p>
+
+  <div class="chart">
+    <svg viewBox="0 0 840 300" role="img" aria-label="Unity GAAP gross margin and adjusted EBITDA margin by year">
+      <line x1="60" y1="250" x2="800" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+      <line x1="60" y1="30" x2="60" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+      <g font-family="Calibri,Arial" font-size="12" fill="#6E675C">
+        <line x1="60" y1="30" x2="800" y2="30" stroke="#F0EAE0"/><text x="34" y="34">100%</text>
+        <line x1="60" y1="140" x2="800" y2="140" stroke="#F0EAE0"/><text x="41" y="144">50%</text>
+        <text x="42" y="254">0</text>
+      </g>
+      <polyline fill="none" stroke="#C75B39" stroke-width="2.5"
+        points="60,79.1 180,80.2 300,100.0 420,103.7 540,88.3 660,86.8 780,74.9"/>
+      <g fill="#C75B39">
+        <circle cx="60" cy="79.1" r="4"/><circle cx="180" cy="80.2" r="4"/><circle cx="300" cy="100.0" r="4"/>
+        <circle cx="420" cy="103.7" r="4"/><circle cx="540" cy="88.3" r="4"/><circle cx="660" cy="86.8" r="4"/>
+        <circle cx="780" cy="74.9" r="5"/>
+      </g>
+      <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="0"
+        points="540,202.7 660,201.4 780,185.5"/>
+      <g fill="#3C6E8F">
+        <circle cx="540" cy="202.7" r="4"/><circle cx="660" cy="201.4" r="4"/><circle cx="780" cy="185.5" r="5"/>
+      </g>
+      <g font-family="Calibri,Arial" font-size="13" font-weight="bold">
+        <text x="60" y="70" fill="#C75B39" text-anchor="start">GAAP gross margin 78%</text>
+        <text x="420" y="118" fill="#C75B39" text-anchor="middle">66%</text>
+        <text x="800" y="66" fill="#C75B39" text-anchor="end">80%</text>
+        <text x="540" y="220" fill="#3C6E8F" text-anchor="start">Adj. EBITDA margin 21%</text>
+        <text x="800" y="177" fill="#3C6E8F" text-anchor="end">29%</text>
+      </g>
+      <g font-family="Calibri,Arial" font-size="13" fill="#6E675C">
+        <text x="60" y="272" text-anchor="start">FY20</text>
+        <text x="180" y="272" text-anchor="middle">FY21</text>
+        <text x="300" y="272" text-anchor="middle">FY22</text>
+        <text x="420" y="272" text-anchor="middle">FY23</text>
+        <text x="540" y="272" text-anchor="middle">FY24</text>
+        <text x="660" y="272" text-anchor="middle">FY25</text>
+        <text x="800" y="272" text-anchor="end">Q2'26</text>
+      </g>
+      <text x="70" y="292" font-family="Calibri,Arial" font-size="12" fill="#6E675C">Margin, % of revenue — the dip is acquired services; the recovery is exits and headcount</text>
+    </svg>
+  </div>
+  <p class="cap">
+    Sources: FY2020–FY2025 10-Ks; Q2 2026 10-Q. The Q2 2026 gross margin is shown for the quarter alone: the six-month
+    figure is distorted by $227m of impairment charges booked in cost of revenue in Q1 2026. Adjusted EBITDA on the current
+    definition is disclosed only from FY2024.
+  </p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Financial spine</th><th class="n">FY2022</th><th class="n">FY2023</th><th class="n">FY2024</th><th class="n">FY2025</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue</td><td class="n">$1,391m</td><td class="n">$2,187m</td><td class="n">$1,813m</td><td class="n">$1,850m</td></tr>
+      <tr><td>GAAP gross margin</td><td class="n">68%</td><td class="n">66%</td><td class="n">73%</td><td class="n">74%</td></tr>
+      <tr><td>Adjusted EBITDA (margin)</td><td class="n">n/d</td><td class="n">n/d</td><td class="n">$390m (21%)</td><td class="n">$409m (22%)</td></tr>
+      <tr><td>Operating cash flow</td><td class="n">$(59)m</td><td class="n">$235m</td><td class="n">$316m</td><td class="n">$423m</td></tr>
+      <tr><td>Capital expenditure</td><td class="n">$57m</td><td class="n">$56m</td><td class="n">$30m</td><td class="n">$19m</td></tr>
+      <tr><td>Shares outstanding, year end</td><td class="n">374m</td><td class="n">385m</td><td class="n">409m</td><td class="n">433m</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">
+    Sources: FY2022–FY2025 10-Ks. Comparability: the portfolio reset began in Q4 2023, and the definition of
+    "non-strategic" was widened again in Q1 2026 to include the ironSource network and Supersonic, with prior periods
+    restated. FY2022 operating cash flow was flattered by roughly $200m of prepaid licence fees received from Weta FX.
+  </p>
+
+  <p>
+    Cash conversion is strong and improving — FY2025 free cash flow of $403.9m alongside a GAAP net loss of $401.5m, and
+    $268.4m in the first half of 2026 against $134.0m a year earlier. Capital expenditure of $19.0m is about 1% of revenue.
+    But the business consumes a great deal of equity: stock compensation of $380.2m in FY2025 is 21% of revenue, and shares
+    outstanding rose 48% from 292.6m at the end of 2021 to 432.9m at the end of 2025. Adjusted EPS of $0.86 is struck on
+    474.8m diluted shares against the 420.9m used for the GAAP loss per share.
+  </p>
+
+  <h3>Where the cash has gone, ranked</h3>
+  <p>
+    Acquisitions dominated, then undoing them. Unity paid roughly $2.92bn in stock for ironSource in November 2022, $1.53bn
+    for Weta Digital's assets in December 2021 and $0.33bn for Parsec — about $4.8bn, nearly all in equity issued at high
+    prices. It then repurchased $1.5bn of its own stock in 2022 and about $0.25bn in 2023 under a $2.5bn authorisation
+    part-funded by a concurrent $1.0bn private placement, leaving $750m unused when the programme lapsed. There is no
+    repurchase programme today and no dividend has ever been paid.
+  </p>
+  <p>
+    The recent behaviour is different in kind: buying back debt at a discount. Unity repurchased $480m face of its 2026
+    notes for $415m in March 2024 and $688m face for $642m in Q1 2025, funded by issuing $690m of zero-coupon 2030 notes.
+    The pattern is a company that bought growth with expensive equity at a market peak, then spent three years slowing the
+    share count and retiring the debt taken on to support it. The Weta assets bought for $1.53bn have since had their
+    remaining useful lives cut from four-to-seven years to one-to-three — an accounting admission that they will not be used
+    as planned.
+  </p>
+  <p class="note">
+    Post-dating the FY2025 accounts: Supersonic sold on 4 August 2026 for $40m; a binding obligation to buy $100m of
+    AppsFlyer shares by the end of 2027; and $558m of zero-coupon notes maturing in November 2026, which Unity intends to
+    settle in cash against $2.36bn on hand.
+  </p>
+
+  <h2>6. Cyclicality, and where the business sits in its own cycle</h2>
+  <p>
+    Unity is exposed to two cycles at once. Grow depends on advertiser budgets, held under revenue-share arrangements with
+    no minimums. Create depends on the number of employed game developers — a population that has been shrinking, with 28%
+    of respondents to GDC's 2026 survey laid off in the preceding two years. Neither exposure is hedged by contract.
+  </p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>End-market exposure — revenue by region</th><th class="n">FY2025</th><th class="n">FY2024</th><th class="n">Change</th></tr></thead>
+    <tbody>
+      <tr><td>EMEA</td><td class="n">$601m</td><td class="n">$644m</td><td class="n">(7)%</td></tr>
+      <tr><td>United States</td><td class="n">$518m</td><td class="n">$530m</td><td class="n">(2)%</td></tr>
+      <tr><td>Asia-Pacific ex-Greater China</td><td class="n">$349m</td><td class="n">$330m</td><td class="n">+6%</td></tr>
+      <tr><td>Greater China</td><td class="n">$334m</td><td class="n">$259m</td><td class="n">+29%</td></tr>
+      <tr><td>Other Americas</td><td class="n">$47m</td><td class="n">$50m</td><td class="n">(6)%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap">Source: FY2025 10-K, revenue disaggregated by customer invoice address.</p>
+
+  <p>
+    Revenue peaked at $2,187m in FY2023, troughed at $1,813m in FY2024, and Q2 2026 annualises to $2,186m — back at the
+    prior peak. Margins are not back at prior levels; they are above them. Adjusted EBITDA margin was 29% in Q2 2026
+    against 21–22% in FY2024 and FY2025, and both gross margin and free cash flow are at records. Unity is at a cyclical
+    and structural high on profitability while its industry's volume backdrop is flat — the configuration in which reported
+    margins are least likely to be a fair guide to the next few years.
+  </p>
+  <p>
+    The industry's downside case would reach Unity through supply, not demand. If engine share drifts — Godot at 11% and
+    free is the live example — fewer new games embed Unity's SDK, the ad network's owned supply footprint erodes with a
+    multi-year lag, and its first-party conversion signal weakens exactly where the ATT evidence says signal is worth most.
+    That is a margin mechanism, not just a volume one, because Grow's economics depend on not having to buy supply at the
+    market price.
+  </p>
+
+  <div class="two">
+    <div class="col">
+      <h4>Durable — likely to survive ten years</h4>
+      <ul>
+        <li>Mid-project engine switching costs, which make revenue erosion slow and visible in advance</li>
+        <li>Owned ad supply inside Unity-built games, sourced without buying it in the open market</li>
+        <li>A capital-light model — capex about 1% of revenue, $2.36bn of cash at 30 June 2026</li>
+        <li>Contracted Create backlog of $494m, 46% of it recognised within twelve months</li>
+        <li>Net-revenue accounting in Grow, which keeps reported margins structurally high</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>Borrowed — currently helping, and may not</h4>
+      <ul>
+        <li>Vector's step-change in ad performance, which laps during 2026</li>
+        <li>The 33% decline in non-strategic revenue, which flatters strategic growth until it reaches zero</li>
+        <li>$107.9m of interest income in FY2025 — 26% of adjusted EBITDA — dependent on rates</li>
+        <li>Margin from a 43% headcount reduction: a one-time saving, not a repeatable one</li>
+        <li>$294m of 2026 impairments, which lower future amortisation without changing cash</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>7. Risks the cycle does not capture</h2>
+
+  <div class="quote">
+    Unity reported a dollar-based net expansion rate in every 10-K from FY2020 to FY2024 — 138%, 140%, 111%, 100%, and
+    finally 96%. It does not appear in the FY2025 10-K at all.
+    <span class="attr">FY2020–FY2025 Forms 10-K. The customers-above-$100,000 metric was dropped in the same filing, and the
+    Q2 2026 press release replaced the Create and Grow revenue lines with strategic and non-strategic ones.</span>
+  </div>
+  <p>
+    That matters because retention is the one thing an outside investor could previously test independently of the revenue
+    line. Without it, a deteriorating expansion rate becomes invisible until it shows up in revenue itself — by which point
+    it is a year old.
+  </p>
+  <p>
+    <strong>The moat and the growth are in different halves of the company.</strong> Create is what makes Unity hard to
+    replace, and it grew 5% in Q2 2026 and 1.2% in FY2025. Grow is where the growth is, and it competes with Meta, Google,
+    Apple and AppLovin on modelling quality, where scale compounds. If Create's seat base stagnates while Godot takes indie
+    share, the ad network's structural supply advantage decays quietly over several years — long after the point at which
+    it could be arrested.
+  </p>
+  <p>
+    <strong>Growth rests on a single model migration with no contractual buffer.</strong> Grow revenue is earned under
+    revenue-share arrangements with no minimums, and customers can move budget between networks within days. Unity's own
+    risk disclosure makes the point: should customers "lose confidence in the value or effectiveness of our Grow Solutions,
+    consumption of these offerings could decline" (FY2025 10-K).
+  </p>
+  <p>
+    <strong>The equity itself is a recurring cost.</strong> Stock compensation of $380m in FY2025 equals 21% of revenue and
+    93% of adjusted EBITDA. The share count has risen 48% since 2021 with no repurchase programme in place, and the August
+    2026 award of 880,000 price-vesting units to the chief executive — vesting on 30-day average prices of $50, $60 and
+    $75 — sets management's incentive on the share price rather than on the operating metrics tracked here.
+  </p>
+  <p>
+    <strong>The Unity China redemption right is a cash claim ahead of shareholders.</strong> Investors who bought 20.5% of
+    Unity China for $197m in 2022 can require Unity to repurchase their interest at a floor of ¥1.9bn, with a redemption
+    date of August 2027; $252.6m of redeemable non-controlling interests sat on the balance sheet at 31 December 2025. It
+    is outside the conventional net-debt calculation and falls due alongside the 2027 convertible notes.
+  </p>
+  <p>
+    <strong>Unity's largest competitors are also its distribution.</strong> Apple and Google set the store rules, own the
+    identifiers that determine targeting quality, and sell competing ad products. Google's October 2025 retirement of
+    Privacy Sandbox removed a symmetric threat on Android — a downside withdrawn, not an upside created — while the
+    permitted US commission on Apple link-outs remains unresolved before the Supreme Court.
+  </p>
+
+  <h3>What the sources could not answer</h3>
+  <div class="card">
+    <p style="margin-bottom:10px;"><strong>Open items, carried forward rather than filled in:</strong></p>
+    <ul style="margin:0;padding-left:20px;">
+      <li>Grow's take rate and the gross advertiser billings behind the net revenue line — never disclosed.</li>
+      <li>Segment profitability. Unity reports one segment, so the split of profit between Create and Grow is unknown.</li>
+      <li>Paid Create seats, and how much of Create's revenue is price rather than seats.</li>
+      <li>Engine share among mobile titles, which no independent source measures with a stated methodology.</li>
+      <li>Management's own account of demand: no transcripts or investor presentations were available, no shareholder
+        letter has been published since 2022, and the Q2 2026 release carries one executive quote and no CFO commentary.</li>
+      <li>Full-year 2026 guidance, which Unity gave in neither the Q1 nor the Q2 release.</li>
+    </ul>
+  </div>
+
+  <h2>8. What to take away</h2>
+  <div class="card">
+    <ul style="margin:0;padding-left:20px;">
+      <li style="margin-bottom:10px;"><strong>What it is.</strong> An advertising business attached to a development-tools
+        business — two-thirds of revenue and effectively all growth come from an ad auction, while the engine supplies the
+        installed base that auction runs inside.</li>
+      <li style="margin-bottom:10px;"><strong>The engine.</strong> Retained revenue per ad impression at enormous volume,
+        on a cost base cut by 43% of its people since 2022. The margin recovery is a cost story, not a pricing one.</li>
+      <li style="margin-bottom:10px;"><strong>The growth lever.</strong> Unity Vector, which lifted strategic Grow revenue
+        63% year over year in Q2 2026 and laps during 2026. The second lever, the run-off of exited businesses, is
+        arithmetic and ends around the turn of 2027.</li>
+      <li style="margin-bottom:10px;"><strong>What breaks it.</strong> The engine. Create grew 5% last quarter, Godot has
+        reached 11% primary-engine share, and a slow loss of engine position would erode the ad network's owned supply
+        years later, when it could no longer be fixed.</li>
+      <li><strong>What to monitor.</strong> Strategic Create growth quarterly, GDC's annual engine-share survey, and the
+        non-strategic revenue line — the first tells you whether the moat is intact, the second whether it is being taken,
+        the third when reported growth stops flattering underlying growth.</li>
+    </ul>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>What to monitor</th><th>Where it is published</th></tr></thead>
+    <tbody>
+      <tr><td>Strategic Create growth (5% in Q2 2026 vs 11–14% guided)</td><td>Unity quarterly results release, investors.unity.com</td></tr>
+      <tr><td>Primary game-engine share: Unity vs Unreal vs Godot</td><td>GDC State of the Game Industry, each January, gdconf.com</td></tr>
+      <tr><td>Mobile game vs non-game in-app spending and downloads</td><td>Sensor Tower State of Mobile, annual, sensortower.com</td></tr>
+      <tr><td>Ad-network spend concentration by rank band</td><td>AppsFlyer Performance Index, semi-annual, appsflyer.com</td></tr>
+      <tr><td>App store commission schedules (Play's US/EEA/UK cut, 30 June 2026)</td><td>developer.apple.com; support.google.com/googleplay</td></tr>
+      <tr><td>Non-strategic revenue reaching zero (~turn of 2027)</td><td>Unity 10-Q and quarterly release</td></tr>
+      <tr><td>Ad-network margin benchmark</td><td>AppLovin 10-K/10-Q, SEC EDGAR CIK 1751008</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="foot">
+    <h3>Sources</h3>
+    <p>
+      <strong>Company (source of truth):</strong> Unity Software Inc. Forms 10-K for FY2020 (filed 5 March 2021) through
+      FY2025 (filed 11 February 2026); Forms 10-Q through Q2 2026 (filed 6 August 2026); Q1 and Q2 2026 results releases
+      (7 May and 6 August 2026); current reports on Form 8-K dated 10 February, 16 July, 27 July and 19 August 2026;
+      unity.com product pricing and company pages, accessed September 2026.
+    </p>
+    <p>
+      <strong>Independent:</strong> GDC, State of the Game Industry 2026 · Sensor Tower, State of Mobile 2026 · AppsFlyer,
+      Performance Index 2025 · IAB/PwC, Internet Advertising Revenue Report FY2025 · Apple developer documentation and the
+      Apple/Analysis Group App Store ecosystem study, June 2026 · Google Play service-fee documentation and the October
+      2025 Privacy Sandbox retirement notice · European Commission DMA decisions · US federal court records in Epic v.
+      Apple · Skiera et al. on the economic impact of App Tracking Transparency, hosted by the FTC · AppLovin Corporation
+      FY2025 results and Form 10-K.
+    </p>
+    <p>
+      <strong>Post-dating the FY2025 accounts:</strong> the ironSource Ads Network sunset (30 April 2026), the sale of
+      Supersonic to Tripledot for $40m (4 August 2026), the binding $100m AppsFlyer share purchase (by end 2027), and the
+      $558m convertible note maturing in November 2026 are all disclosed in 2026 filings and are not reflected in the
+      FY2025 figures shown above.
+    </p>
+    <p style="margin-top:16px;"><em>Prepared 7 September 2026. Not a valuation and not a recommendation.</em></p>
+  </div>
+
+</div>
+</body>
+</html>

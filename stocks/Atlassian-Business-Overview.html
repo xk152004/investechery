@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlassian — Business Overview</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+}
+.wrap{max-width:900px; margin:0 auto; padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif; font-weight:700; margin:0}
+h1{font-size:38px; line-height:1.15; letter-spacing:-.01em}
+h2{font-size:27px; margin:52px 0 14px; line-height:1.2}
+h3{font-size:21px; margin:30px 0 10px; line-height:1.25}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); font-weight:700; margin-bottom:12px}
+.sourceline{font-size:15px; color:var(--muted); margin:14px 0 0; padding-bottom:26px; border-bottom:1px solid var(--line)}
+.restate{
+  font-family:Georgia,serif; font-size:23px; line-height:1.45;
+  border-left:5px solid var(--terracotta); padding:4px 0 4px 20px; margin:30px 0 32px;
+}
+.engine{
+  background:var(--ink); color:var(--cream); border-radius:10px; padding:26px 28px; margin:30px 0 34px;
+}
+.engine .lbl{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#B9AF9F; font-weight:700; margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif; font-size:27px; line-height:1.3; margin:0 0 12px}
+.engine p{margin:0; font-size:17px; color:#E3DACB; line-height:1.55}
+.engine strong{color:#fff}
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 0 40px}
+.kpi{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+.kpi .k{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:7px; line-height:1.35}
+.kpi .v{font-family:Georgia,serif; font-size:29px; color:var(--terracotta); line-height:1.1; font-variant-numeric:tabular-nums}
+.kpi .s{font-size:14px; color:var(--muted); margin-top:6px; line-height:1.4}
+.card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:22px 24px; margin:26px 0}
+.lever{background:#fff; border:1px solid var(--line); border-left:5px solid var(--terracotta); border-radius:10px; padding:16px 20px; margin:14px 0}
+.lever.structural{border-left-color:var(--good)} .lever.structural .tag{color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)} .lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)} .lever.cyclical .tag{color:var(--blue)}
+.lever .tag{font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:700; color:var(--terracotta); margin-bottom:6px}
+.lever .hd{font-weight:700; margin-bottom:5px}
+.lever p{margin:0; font-size:17px; line-height:1.55}
+.pull{
+  background:var(--terracotta-soft); border-radius:10px; padding:22px 26px; margin:26px 0;
+  font-family:Georgia,serif; font-size:20px; line-height:1.5;
+}
+.pull .attr{display:block; font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:14px; color:var(--muted); margin-top:12px; font-style:normal}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0}
+.two .col{background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px 20px}
+.two .col h4{font-family:Georgia,serif; font-size:17px; margin:0 0 12px; font-weight:700}
+.two .col.dur h4{color:var(--good)} .two .col.bor h4{color:var(--terracotta)}
+.two ul{margin:0; padding-left:19px} .two li{font-size:16px; line-height:1.5; margin-bottom:9px}
+.tblwrap{overflow-x:auto; margin:20px 0; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; min-width:520px; background:#fff; font-size:16px}
+th,td{border:1px solid var(--line); padding:9px 12px; text-align:left; font-variant-numeric:tabular-nums}
+th{background:var(--ink); color:var(--cream); font-weight:700; font-size:14px; letter-spacing:.03em}
+td.n,th.n{text-align:right}
+tr.tot td{font-weight:700; background:#FBF8F3}
+.cap{font-size:14px; color:var(--muted); margin:-8px 0 26px; line-height:1.45}
+.chart{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 18px 12px; margin:26px 0 8px}
+.chart svg{display:block; width:100%; height:auto}
+ul.plain{padding-left:20px} ul.plain li{margin-bottom:11px}
+.gap{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 24px; margin:22px 0}
+.gap li{margin-bottom:12px; font-size:17px; line-height:1.55}
+footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--line); font-size:14px; color:var(--muted); line-height:1.6}
+.note{font-size:16px; color:var(--muted); font-style:italic}
+@media (max-width:720px){
+  body{font-size:17px} h1{font-size:29px} h2{font-size:23px} h3{font-size:19px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  .restate{font-size:20px} .engine .unit{font-size:22px}
+}
+@media (max-width:430px){ .kpis{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Atlassian Corporation <span style="color:var(--muted); font-weight:400">(NASDAQ: TEAM)</span></h1>
+<p class="sourceline">
+7 September 2026 · Fiscal year ended 30 June 2026. Built from Atlassian's own filings — FY2026 Form 10-K (filed 14 August 2026), FY2025 10-K, FY2021 and FY2016 Form 20-F, Q3 FY2026 10-Q, quarterly earnings releases through 6 August 2026, and the 2025 proxy — with industry structure drawn from competitors' filings, the Stack Overflow and JetBrains developer surveys, GitHub Octoverse and US Bureau of Labor Statistics data. <strong>This is not a valuation and not a recommendation.</strong>
+</p>
+
+<div class="restate">
+Atlassian sells the system of record for how software and IT teams coordinate work — priced per person, expanded inside customers it already has, and currently in the middle of shutting down 28% of its own revenue on purpose.
+</div>
+
+<div class="engine">
+  <div class="lbl">The unit</div>
+  <p class="unit">One paid seat inside a customer organisation — and Atlassian does not tell you how many it has.</p>
+  <p>The company defines a customer as an organisation with a subscription for two or more seats, but publishes no seat count, no price per seat, and <strong>no net revenue retention rate</strong>. What one unit earns must be triangulated: <strong>$6,572m of revenue across more than 350,000 customers implies roughly $18,800 each</strong> (inferred, and an upper bound). The tighter series is Subscription ARR — <strong>$6,606m at year end, up 23%</strong> — against a customer base that grew about 17%, which is what expansion inside existing accounts looks like.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Revenue per customer</div><div class="v">~$18.8k</div><div class="s">Inferred; $6,572m ÷ &gt;350,000 customers (FY2026 10-K)</div></div>
+  <div class="kpi"><div class="k">Gross margin</div><div class="v">84.8%</div><div class="s">GAAP; 88% non-GAAP. Guided down to 84.5% in FY2027</div></div>
+  <div class="kpi"><div class="k">Operating income</div><div class="v">$10m</div><div class="s">GAAP. $1,996m non-GAAP — the $1,986m bridge is 81% stock comp</div></div>
+  <div class="kpi"><div class="k">Net cash</div><div class="v">$250m</div><div class="s">Down from $1,949m a year earlier. No dividend</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak / trough</div><div class="s">Non-GAAP margin at an all-time peak (30%); FCF margin at a trough (20.1%)</div></div>
+  <div class="kpi"><div class="k">Reported growth</div><div class="v">+26%</div><div class="s">Organic not disclosable — no pro-forma has ever been presented</div></div>
+</div>
+
+<h2>1 · The snapshot</h2>
+<div class="tblwrap">
+<table>
+<tr><th style="width:30%">&nbsp;</th><th>&nbsp;</th></tr>
+<tr><td><strong>What it is</strong></td><td>Team collaboration and work-management software. Jira, Confluence and Jira Service Management generate the majority of revenue.</td></tr>
+<tr><td><strong>How it earns</strong></td><td>Per-seat subscriptions billed monthly to annually in advance. 95% of FY2026 revenue was subscription; over 90% came from accounts that existed a year earlier.</td></tr>
+<tr><td><strong>What protects it</strong></td><td>A marketplace of 6,000+ third-party apps with $6bn of lifetime partner sales, plus workflows embedded deeply enough that revenue recurs almost entirely from the prior year's base.</td></tr>
+<tr><td><strong>What drives it</strong></td><td>Cloud seat expansion, price increases, edition upgrades that bundle the Rovo AI layer — and, in FY2026 only, the wind-down of Data Center.</td></tr>
+<tr><td><strong>What to watch</strong></td><td>Cloud growth once Data Center stops helping; free cash flow margin against the receivables build; stock compensation at 24% of revenue.</td></tr>
+<tr><td><strong>Cycle exposure</strong></td><td>Low in the classic sense. But FY2026 sits on a dated, self-imposed transition that reverses next year.</td></tr>
+</table>
+</div>
+
+<h2>2 · What the company does</h2>
+
+<p>Every organisation that builds software has the same coordination problem: work happens in parallel among people who cannot all be in one conversation, and someone above them needs to know what is happening without interrupting it. Jira holds the tickets and the workflow states. Confluence holds the documents and decisions attached to them. Jira Service Management points the same machinery at IT and internal support. Those three products are "a majority" of revenue (FY2026 10-K) — the company does not say how that majority splits, because it reports as a single operating segment.</p>
+
+<h3>Tracing one seat from sign-up to cash</h3>
+
+<p>A team adopts a free edition or buys one product for a handful of users, at a price the filings describe as one that "typically does not require capital budget approval." Most free users never convert, and Atlassian says so. Those that do buy through the website, which handles "thousands of commercial transactions daily." Small customers pay by card — Atlassian counts card receivables as cash equivalents because they settle within three days. Larger customers are invoiced, increasingly through an intermediary: <strong>over 50% of FY2026 revenue came through channel partners</strong>, against roughly 25% in FY2016.</p>
+
+<p>Cash usually arrives before the service is delivered, which is why $2,662m of deferred revenue sat on the balance sheet. How that cash becomes revenue depends entirely on the deployment, and this is the most consequential accounting fact in the business. <strong>Cloud subscriptions are recognised ratably over the term. Data Center term licences are recognised upfront</strong>, with only support spread over time. The same dollar of customer commitment lands as revenue at very different speeds depending on which product is bought — which is why Section 4 turns on it.</p>
+
+<h3>What is sold, and what is being retired</h3>
+
+<div class="tblwrap">
+<table>
+<tr><th>Deployment ($m)</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">% of FY26</th></tr>
+<tr><td>Cloud</td><td class="n">2,698.9</td><td class="n">3,447.4</td><td class="n">4,410.6</td><td class="n">67%</td></tr>
+<tr><td>Data Center</td><td class="n">1,208.5</td><td class="n">1,467.2</td><td class="n">1,830.9</td><td class="n">28%</td></tr>
+<tr><td>Server</td><td class="n">177.6</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+<tr><td>Marketplace and other</td><td class="n">273.6</td><td class="n">300.7</td><td class="n">330.7</td><td class="n">5%</td></tr>
+<tr class="tot"><td>Total revenue</td><td class="n">4,358.6</td><td class="n">5,215.3</td><td class="n">6,572.3</td><td class="n">100%</td></tr>
+</table>
+</div>
+<p class="cap">Source: FY2026 10-K, Note 13. Percentages inferred from disclosed dollars.</p>
+
+<p>Atlassian has been killing its own product lines for six years, and each retirement forced the installed base to re-contract. Perpetual licences stopped selling in February 2021. Server maintenance ended in February 2024, taking Server revenue from $607.8m in FY2021 — 29% of that year's total — to zero. On 8 September 2025 it announced <strong>Atlassian Ascend</strong>, the end-of-life of Data Center itself: no new customers from March 2026, no expansions from March 2028, maintenance ending March 2029, with an extended period of roughly three more years for some.</p>
+
+<div class="pull">
+"Revenues recognized from our Cloud offerings are also typically lower in the initial year compared to our Data Center offerings… due to the higher fees associated with hosting our Cloud infrastructure, we have seen and expect to continue to see increased expenses and lower margins as customers transition to Cloud."
+<span class="attr">Atlassian FY2026 Form 10-K. The company also states it will offer migration discounts, as it did during the Server transition.</span>
+</div>
+
+<p>One structural change contradicts the model the company was originally admired for. The FY2016 20-F carried a risk factor headed <em>"We do not have a direct salesforce."</em> The FY2026 10-K says it has "strategically grown our sales team to focus on expanding the relationships with our existing customers, particularly large enterprises," and expands its largest customers "primarily through our direct sales force." The low-touch flywheel still feeds the funnel; it no longer closes the large deals.</p>
+
+<h2>3 · Industry, competitive position and moat</h2>
+
+<p>Atlassian is usually described as competing in one market. It competes in four, with materially different economics. <strong>Agile planning</strong> is bought by engineering leadership and expands bottom-up. <strong>Collaboration and knowledge</strong> is the weakest, because it competes against capability Microsoft 365 and Google Workspace give away inside an existing contract. <strong>ITSM</strong> is the strongest: bought by a CIO against a defined budget line, encoding audited process, contracted multi-year. <strong>Source control and DevOps</strong> is the most commoditised, because Git is a free protocol.</p>
+
+<h3>Where the profit actually pools</h3>
+
+<p>The layer holding price is ITSM. ServiceNow booked $12,883m of subscription revenue in calendar 2025 growing 21%, with remaining performance obligations of $28.2bn growing 26.5% — contracted future revenue expanding faster than recognised revenue, which is what pricing power looks like on a balance sheet. That is roughly twice Atlassian's entire revenue. At the other end the source-control layer is thin: GitLab reported $955m for its year to January 2026, and Microsoft last disclosed GitHub at roughly $2bn of run-rate in August 2024 and has not re-disclosed it since — including in its FY2026 Q4 release, which cites over 30 million paid Microsoft 365 Copilot seats and no GitHub figure at all.</p>
+
+<div class="tblwrap">
+<table>
+<tr><th>Most recent fiscal year</th><th class="n">Revenue ($m)</th><th class="n">Growth</th><th class="n">Net retention</th><th class="n">Next-year guide</th></tr>
+<tr><td>ServiceNow (Dec-25, subscription)</td><td class="n">12,883</td><td class="n">+21%</td><td class="n">n/d</td><td class="n">n/d</td></tr>
+<tr><td><strong>Atlassian (Jun-26)</strong></td><td class="n"><strong>6,572</strong></td><td class="n"><strong>+26%</strong></td><td class="n"><strong>not disclosed</strong></td><td class="n"><strong>~+13%</strong></td></tr>
+<tr><td>monday.com (Dec-25)</td><td class="n">1,232</td><td class="n">+27%</td><td class="n">110%</td><td class="n">+18–19%</td></tr>
+<tr><td>GitLab (Jan-26)</td><td class="n">955</td><td class="n">+26%</td><td class="n">118%</td><td class="n">~+15–17%</td></tr>
+<tr><td>Asana (Jan-26)</td><td class="n">791</td><td class="n">+9%</td><td class="n">96%</td><td class="n">+7.5–8.5%</td></tr>
+</table>
+</div>
+<p class="cap">Sources: each company's own fourth-quarter earnings release. Atlassian discloses no net retention or net expansion rate in any period.</p>
+
+<p><strong>Asana's 96% net retention is the most important number in that table</strong>, because it is 96% among customers spending over $100,000 as well — so it is not a small-account churn artefact. Its largest customers are net contracting. monday.com at 110% and GitLab at 118% show this is not yet a category-wide condition. What it establishes is that a seat-priced work-management vendor with a real installed base can shrink inside its own accounts without losing them. That is a specific, testable failure mode rather than a general worry.</p>
+
+<h3>Which barriers actually bind</h3>
+
+<p>The barrier that binds hardest for Atlassian is <strong>the marketplace</strong>: over 6,000 apps from more than 2,000 third-party vendors, with $6bn of lifetime partner sales. That is a commercial constituency with its own revenue staked on Atlassian remaining the platform, and it creates a switching cost the customer pays for itself — an enterprise that has bought and configured a dozen Marketplace apps must re-buy and reconfigure them elsewhere. It is the one advantage here supported by an independent number rather than an assertion.</p>
+
+<p>The barrier most often claimed — <strong>data gravity</strong>, the idea that years of accumulated tickets make leaving impossible — is not supported. Asana has data gravity too, and it is at 96%. Data gravity stops customers leaving; it does not stop them buying fewer seats, and the seat count is where the revenue is.</p>
+
+<p>The barrier working <em>against</em> Atlassian is <strong>bundling</strong>. Microsoft's Productivity and Business Processes segment runs at roughly $140bn a year and has already put Copilot on over 30 million paid seats. A vendor that can attach a capability to an agreement the customer has already signed does not need to win a product comparison. That is the dynamic that has capped standalone collaboration tools — the layer where Atlassian sells Confluence.</p>
+
+<h3>Is Atlassian the kind of company that wins here?</h3>
+
+<p>The evidence says three kinds win, in order: the vendor bundled into an existing enterprise agreement; the vendor owning an audited, compliance-bearing workflow; and the vendor with a third-party economy attached. <strong>Atlassian is decisively the third, is genuinely in the second through Jira Service Management, and is not the first.</strong> It is a standalone vendor competing against a bundle, in a stack whose deepest profit pool belongs to a company twice its size.</p>
+
+<div class="card">
+<h3 style="margin-top:0">A disclosure that went the wrong way</h3>
+<p style="margin-bottom:0">The FY2016 20-F named its competitors: Microsoft, IBM, Hewlett Packard Enterprise, Google, ServiceNow, Salesforce, Zendesk, Slack, GitHub. The FY2021 20-F still named Microsoft (including GitHub), IBM, GitLab, ServiceNow, Salesforce, PagerDuty, Zendesk, Freshworks, BMC, Google, Asana, monday.com and Smartsheet. <strong>The FY2025 and FY2026 10-Ks name no competitor at all</strong> — only categories such as "large technology vendors" and "AI-native companies and emerging startups." The only companies now named in the filing are partners: Microsoft, Zoom, Anthropic, Cursor, OpenAI, Salesforce, Workday, Dropbox. An investor assessing Microsoft displacement risk gets no help from the filings.</p>
+</div>
+
+<h2>4 · Growth engine</h2>
+
+<p>Revenue grew $1,357m, or 26%, in FY2026 — Cloud contributed $963m, Data Center $364m, Marketplace $30m. Growth came almost entirely from customers Atlassian already had: <strong>over 90% of FY2026 revenue was attributable to accounts existing on or before 30 June 2025</strong>, the same formulation used since FY2016. This is an expansion business, not an acquisition business, so its growth rate is a function of what happens inside existing accounts.</p>
+
+<div class="chart">
+<svg viewBox="0 0 820 300" role="img" aria-label="Atlassian revenue growth rate by fiscal year, FY2016 to FY2027 estimate">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="60" y1="250" x2="800" y2="250"/>
+    <line x1="60" y1="30" x2="800" y2="30" stroke-dasharray="3 4"/>
+    <line x1="60" y1="140" x2="800" y2="140" stroke-dasharray="3 4"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">
+    <text x="52" y="34" text-anchor="end">45%</text>
+    <text x="52" y="144" text-anchor="end">22%</text>
+    <text x="52" y="254" text-anchor="end">0%</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" stroke-linejoin="round"
+    points="60,39.8 126,69.1 193,49.6 259,69.1 325,88.7 392,108.2 458,83.8 525,122.9 591,137.6 657,152.2 724,122.9"/>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" stroke-dasharray="5 4" points="724,122.9 790,186.4"/>
+  <g fill="#C75B39">
+    <circle cx="60" cy="39.8" r="3.5"/><circle cx="126" cy="69.1" r="3"/><circle cx="193" cy="49.6" r="3"/>
+    <circle cx="259" cy="69.1" r="3"/><circle cx="325" cy="88.7" r="3"/><circle cx="392" cy="108.2" r="3"/>
+    <circle cx="458" cy="83.8" r="3"/><circle cx="525" cy="122.9" r="3"/><circle cx="591" cy="137.6" r="3"/>
+    <circle cx="657" cy="152.2" r="3"/><circle cx="724" cy="122.9" r="4.5"/>
+  </g>
+  <circle cx="790" cy="186.4" r="4.5" fill="#FAF6EF" stroke="#C75B39" stroke-width="2.5"/>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#C75B39">
+    <text x="60" y="30" text-anchor="start">43%</text>
+    <text x="724" y="112" text-anchor="middle">26%</text>
+    <text x="790" y="205" text-anchor="end">13% guided</text>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="11.5" fill="#6E675C" text-anchor="middle">
+    <text x="60" y="268">FY16</text><text x="193" y="268">FY18</text><text x="325" y="268">FY20</text>
+    <text x="458" y="268">FY22</text><text x="591" y="268">FY24</text><text x="724" y="268">FY26</text>
+    <text x="790" y="268">FY27E</text>
+  </g>
+  <text x="60" y="296" font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">Total revenue growth, year on year</text>
+</svg>
+</div>
+<p class="cap">Sources: FY2016 and FY2021 20-F, FY2025 and FY2026 10-K, 6 August 2026 earnings release. FY2017–FY2020 rates inferred from reported revenue. Revenue itself was unchanged by the 2022 restatement from IFRS to US GAAP, so growth rates are comparable across the break.</p>
+
+<h3>The drivers, ranked</h3>
+
+<div class="lever structural">
+  <div class="tag">Structural</div>
+  <div class="hd">Cloud seat expansion and price increases</div>
+  <p>The FY2026 10-K attributes subscription growth "primarily" to "paid seat expansion from our existing customers and price increases." Cloud grew 28% for the year and accelerated to 31% in Q4. The company never quantifies the price component, names the products repriced, or gives an effective date — so how much of Cloud growth is more seats versus higher prices cannot be established from the filings.</p>
+</div>
+
+<div class="lever">
+  <div class="tag">Temporary</div>
+  <div class="hd">The Data Center wind-down — larger than it looks</div>
+  <p>Data Center grew 25% against guidance of ~12.5% given in August 2025, raised to 21.5% in April 2026. The peak was the March 2026 quarter — the one containing the cutoff after which no new customer could buy it — at <strong>+44%</strong>. Because Data Center term licences are recognised upfront while Cloud is recognised ratably, customers renewing or expanding ahead of a deadline convert into revenue immediately.</p>
+</div>
+
+<div class="lever mgmt">
+  <div class="tag">Management-driven</div>
+  <div class="hd">Edition and Collection upgrades</div>
+  <p>Atlassian repackaged from standalone products into Collections (Teamwork, Service, Strategy, Software, Product) and made Rovo, its AI layer, <strong>available at no additional cost</strong> to standard, premium and enterprise Cloud customers, with "significantly higher pooled Rovo credit allowances" in higher Collections. AI is therefore monetised indirectly through edition mix, not as a separate SKU. Service Collection passed $1bn of ARR growing over 30%.</p>
+</div>
+
+<div class="lever mgmt">
+  <div class="tag">Management-driven</div>
+  <div class="hd">The enterprise motion — and what it costs</div>
+  <p>Over 85% of the Fortune 500 are customers, against 291 of them in FY2016. Remaining performance obligations reached $4,817m, <strong>up 44% against 26% revenue growth</strong>, with the share due within twelve months falling from 74% to 65% — contracts are getting longer and larger. Marketing and sales spend went from 20% of revenue to 24% over two years to get there.</p>
+</div>
+
+<div class="lever cyclical">
+  <div class="tag">Undisclosed</div>
+  <div class="hd">Acquisitions — material to cash, invisible in revenue</div>
+  <p>$1,229m spent in FY2026: The Browser Company for $488m in October 2025, DX for $720m in November 2025, and two undisclosed deals. The revenue contribution is stated as "not material," and no pro-forma has ever been presented.</p>
+</div>
+
+<h3>Reported growth versus organic growth</h3>
+
+<p><strong>It cannot be decomposed, and that is a finding rather than an omission.</strong> Atlassian has never presented pro-forma results for any acquisition. For FY2026 it states the acquired results "were not material" and that pro-forma statements "have not been presented… because the effect of the acquisitions individually and in the aggregate would not be material." The same language covered Loom in FY2024 ($886m) and Mindville and Chartio in FY2021.</p>
+
+<p>The claim is plausible but unverifiable. DX brought $25.5m of assumed deferred revenue against a $720m price, consistent with buying capability rather than revenue. Against that, <strong>$2.09bn went out on acquisitions across FY2024–FY2026</strong> — 93% of FY2026 free cash flow in that year alone — and the DX intangible valuation was significant enough to be flagged as a Critical Audit Matter. A transaction large enough to be a Critical Audit Matter is nonetheless declared immaterial to revenue. The 26% headline is most likely close to organic; an investor cannot confirm it.</p>
+
+<div class="chart">
+<svg viewBox="0 0 820 300" role="img" aria-label="Cloud versus Data Center revenue, FY2021 to FY2027 estimate">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="250" x2="800" y2="250"/>
+    <line x1="70" y1="30" x2="800" y2="30" stroke-dasharray="3 4"/>
+    <line x1="70" y1="140" x2="800" y2="140" stroke-dasharray="3 4"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">
+    <text x="62" y="34" text-anchor="end">$5.6bn</text>
+    <text x="62" y="144" text-anchor="end">$2.8bn</text>
+    <text x="62" y="254" text-anchor="end">0</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" stroke-linejoin="round"
+    points="70,212.0 190,190.5 310,168.1 430,144.0 550,114.6 670,76.7"/>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5" stroke-dasharray="5 4" points="670,76.7 790,32.6"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-linejoin="round"
+    points="70,236.8 190,228.0 310,217.8 430,202.5 550,192.4 670,178.1"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="5 4" points="670,178.1 790,190.3"/>
+  <g fill="#C75B39"><circle cx="70" cy="212" r="3"/><circle cx="190" cy="190.5" r="3"/><circle cx="310" cy="168.1" r="3"/><circle cx="430" cy="144" r="3"/><circle cx="550" cy="114.6" r="3"/><circle cx="670" cy="76.7" r="4"/></g>
+  <g fill="#3C6E8F"><circle cx="70" cy="236.8" r="3"/><circle cx="190" cy="228" r="3"/><circle cx="310" cy="217.8" r="3"/><circle cx="430" cy="202.5" r="3"/><circle cx="550" cy="192.4" r="3"/><circle cx="670" cy="178.1" r="4"/></g>
+  <circle cx="790" cy="32.6" r="4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2.5"/>
+  <circle cx="790" cy="190.3" r="4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2.5"/>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" font-weight="700">
+    <text x="70" y="205" fill="#C75B39" text-anchor="start">Cloud</text>
+    <text x="790" y="52" fill="#C75B39" text-anchor="end">+25.5% guided</text>
+    <text x="70" y="230" fill="#3C6E8F" text-anchor="start">Data Center</text>
+    <text x="790" y="210" fill="#3C6E8F" text-anchor="end">−17% guided</text>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="11.5" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="268">FY21</text><text x="190" y="268">FY22</text><text x="310" y="268">FY23</text>
+    <text x="430" y="268">FY24</text><text x="550" y="268">FY25</text><text x="670" y="268">FY26</text><text x="790" y="268">FY27E</text>
+  </g>
+  <text x="70" y="296" font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">Revenue by deployment. FY2027E applies the company's own guided growth rates.</text>
+</svg>
+</div>
+<p class="cap">Sources: FY2022 Q4 release, FY2025 and FY2026 10-K, 6 August 2026 earnings release.</p>
+
+<p>For FY2027 Atlassian guides <strong>total revenue growth of ~13.0%, Cloud growth of 25.5%, Data Center declining ~17.0%</strong>, and Subscription ARR growth of ~18.0%. The headline rate halves. The Cloud rate barely moves. The difference between those two facts is the entire Data Center effect — made explicit by the company itself, which describes FY2027 as carrying "the mechanical drag on total revenue growth… as we lap the greater upfront term license revenue recognized in fiscal year 2026." An investor should read FY2026's 26% and FY2027's 13% as the same underlying business at two points in a transition, not as a deterioration.</p>
+
+<h2>5 · Margin, cash and capital allocation</h2>
+
+<p>Gross margin was 84.8% GAAP and 88% non-GAAP, up from 82.8% and 85%. Software delivered over the internet costs almost nothing to reproduce, so the interesting question is direction — and the direction is downward by design. Cost of revenue now explicitly includes "third-party hosting fees, including expenses related to our Cloud infrastructure and <strong>AI inference incurred through our customer's usage of our AI tools</strong>," and third-party hosting fees rose $87m in FY2026. Management guides gross margin down to ~84.5% GAAP and states that providing AI at no or low cost "may further increase our hosting costs without corresponding revenue increases."</p>
+
+<h3>Where the money goes</h3>
+
+<p>R&amp;D is the largest expense line in every year of the company's public life — 50% of revenue in FY2026, 51% in FY2025, against 45–46% through FY2021. Over half of employees work in it. G&amp;A has fallen steadily, 18.7% of revenue in FY2016 to 11%. The line that moved against the model is marketing and sales: <strong>20% of revenue in FY2024, 22% in FY2025, 24% in FY2026</strong>, growing 36% in a year when revenue grew 26%. The filing still describes a "frictionless flywheel with an emphasis on self-service." That remains true of how customers arrive; it is decreasingly true of what it costs to keep them growing.</p>
+
+<h3>The gap between the two profit numbers</h3>
+
+<p>Atlassian reported GAAP operating income of $10.4m and non-GAAP operating income of $1,996.5m. <strong>Of that $1,986m bridge, $1,605m — 81% — is stock-based compensation</strong>, with restructuring ($280m) and intangible amortisation ($101m) making up the rest. SBC was 24.4% of revenue, of which R&amp;D alone accounted for $1,144m. On a GAAP basis the company lost $53.8m; on a non-GAAP basis it earned $5.85 per diluted share. Which of those an investor treats as real determines nearly everything else — and the answer turns on whether shares issued to pay employees are recovered by the buyback, which is a capital allocation question.</p>
+
+<h3>Cash conversion is deteriorating</h3>
+
+<div class="tblwrap">
+<table>
+<tr><th>($m unless stated)</th><th class="n">FY2021</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th></tr>
+<tr><td>Total revenue</td><td class="n">2,089.1</td><td class="n">4,358.6</td><td class="n">5,215.3</td><td class="n">6,572.3</td></tr>
+<tr><td>Gross margin (GAAP)</td><td class="n">84.1%</td><td class="n">81.6%</td><td class="n">82.8%</td><td class="n">84.8%</td></tr>
+<tr><td>Operating margin (non-GAAP)</td><td class="n">n/d</td><td class="n">23%</td><td class="n">25%</td><td class="n">30%</td></tr>
+<tr><td>Stock comp. (% of revenue)</td><td class="n">16.3%</td><td class="n">24.8%</td><td class="n">26.1%</td><td class="n">24.4%</td></tr>
+<tr><td>Free cash flow</td><td class="n">758.4</td><td class="n">1,415.6</td><td class="n">1,415.5</td><td class="n">1,319.1</td></tr>
+<tr class="tot"><td>FCF margin</td><td class="n">36.3%</td><td class="n">32.5%</td><td class="n">27.1%</td><td class="n">20.1%</td></tr>
+</table>
+</div>
+<p class="cap"><strong>Comparability caveat:</strong> Atlassian re-domiciled from the UK to Delaware on 30 September 2022 and moved from IFRS to US GAAP with the FY2023 filings. FY2021 above is the restated US GAAP series; as originally reported under IFRS the same year showed operating income of $101.6m against $141.4m restated and a net loss of $696.3m against $579.0m. Non-GAAP operating margin was not compiled on a comparable basis before FY2023. Sources: FY2023, FY2025 and FY2026 10-K.</p>
+
+<p><strong>Free cash flow fell in absolute dollars in FY2026</strong> — $1,415.5m to $1,319.1m — while revenue rose $1.36bn. FCF margin has declined every year since FY2021, 36.3% to 20.1%. The cause is not stock compensation, which is non-cash and rising; it is working capital. Accounts receivable consumed $484.5m of cash against $150.0m the prior year, and the balance rose 63% against 26% revenue growth. Deferred revenue, which used to fund the business, contributed only $153.3m against $552.3m in FY2024. Contract assets went from $3.3m to $53.5m.</p>
+
+<p>These three movements have one explanation. As revenue shifts from cards settling in three days and small annual-in-advance subscriptions toward invoiced enterprise and channel contracts on longer schedules, <strong>the float that made this business self-funding drains away</strong>. RPO growing 44% while deferred revenue grows 7.3% says the same thing from the other side: the commitments are real and growing, but increasingly unbilled. It is a mix effect, not a demand deterioration — and it is why FY2026 free cash flow sat $677m <em>below</em> non-GAAP operating income when in FY2025 it sat $128m above it (inferred).</p>
+
+<h3>What management did with the cash</h3>
+
+<div class="tblwrap">
+<table>
+<tr><th>Use of cash, FY2024–FY2026 cumulative</th><th class="n">$m</th><th>What it says</th></tr>
+<tr><td>Share repurchases</td><td class="n">2,975</td><td>The largest single use, and it accelerated sharply in FY2026</td></tr>
+<tr><td>Acquisitions</td><td class="n">2,091</td><td>Capability purchases; revenue contribution never disclosed</td></tr>
+<tr><td>Capital expenditure</td><td class="n">112</td><td>0.5% of FY2026 revenue — this business consumes no fixed capital</td></tr>
+<tr><td>Strategic investments</td><td class="n">51</td><td>Minor</td></tr>
+<tr class="tot"><td>Dividends</td><td class="n">0</td><td>None declared, none expected</td></tr>
+</table>
+</div>
+<p class="cap">Source: FY2025 and FY2026 10-K cash flow statements.</p>
+
+<p>FY2026 was aggressive on both fronts: $1,800m repurchasing 19.1 million shares at an average of $94.31, having paid $196.02 the year before, plus $1,229m on acquisitions — <strong>$3.03bn against $1.32bn of free cash flow</strong>. Net cash fell from $1,949m to $250m. Goodwill and intangibles reached $2,735m, 2.58× shareholders' equity (inferred), with no impairment taken.</p>
+
+<div class="card">
+<h3 style="margin-top:0">The buyback arithmetic, done carefully</h3>
+<p>Shares outstanding fell 9.6 million, or 3.64%, to 253.4 million — the first material shrink in the company's history. But the buyback retired 19.1 million shares, meaning roughly <strong>9.5 million were issued, equal to 3.62% of the opening count against 2.47% the prior year</strong> (inferred). Gross dilution accelerated; it was simply outrun.</p>
+<p style="margin-bottom:0">And it was outrun at $94.31 a share. The same 19.1 million shares at FY2025's average price would have cost $3.74bn (inferred) — nearly three times free cash flow. <strong>The ability of this buyback to absorb stock compensation is a direct function of the share price</strong>, which is not a mechanism to treat as durable. Separately, the FY2026 acquisitions carried $345.9m of retention consideration on top of the $1.21bn of purchase price (inferred sum), expensed through compensation rather than capitalised — part of why gross issuance stepped up.</p>
+</div>
+
+<p class="note">The FY2026 10-K contains no subsequent-events note and discloses no pending transaction as of 14 August 2026, so nothing above post-dates the reported figures.</p>
+
+<h2>6 · Cyclicality, constraints and what to monitor</h2>
+
+<p>Atlassian is not cyclical the way an industrial is. Revenue recurs, no customer exceeds 5% of the total, and geography spreads across the Americas (48%), EMEA (41%) and Asia Pacific (11%). What it has instead is exposure to one variable: <strong>the number of people its customers employ to do knowledge work</strong>. The risk factor concedes the transmission directly — economic uncertainty "could cause customers to reduce the number of personnel providing development or engineering services," and "we may see declines in expected spending from new customers or renewals and reductions in paid seats from existing customers." The filing frames that as cyclical. Section 7 takes up whether it is only cyclical.</p>
+
+<h3>Where the business sits right now</h3>
+
+<p>On three measures FY2026 sits at three different points in its own history, and reading them together is the point. <strong>Revenue growth of 26%</strong> is mid-cycle, re-accelerated from the FY2025 trough of 20%, against 43% in FY2016 — and guided to 13%, the lowest in the company's public life. <strong>Non-GAAP operating margin of 30%</strong> is an all-time peak, up from 23% two years ago, guided down five points to 25%. <strong>Free cash flow margin of 20.1%</strong> is the trough of the available series, from a 36.3% peak in FY2021.</p>
+
+<p>A peak reported margin sitting on a trough cash margin, with the growth rate about to halve, is an unusual combination. It resolves once composition is understood: the margin peak is flattered by upfront Data Center revenue and by a restructuring whose $285.4m of charges is excluded from the non-GAAP figure, while the cash trough reflects the working-capital drain of the same enterprise mix shift. Neither number is wrong; they measure different halves of a transition.</p>
+
+<p>Management's commentary carries no caution. The August 2026 release mentions no budget scrutiny, no elongated sales cycles, no macro pressure; the CFO describes enterprises "deepening their commitment." Every hedge lives in the risk factors — elongated sales cycles, budget freezes, pricing pressure from larger customers, and the observation that "some customers may also view our offerings as discretionary purchases." The gap between registers is normal, but read the 10-K rather than the release for demand conditions.</p>
+
+<h3>Durable versus borrowed</h3>
+
+<div class="two">
+  <div class="col dur">
+    <h4>Durable — likely still true in ten years</h4>
+    <ul>
+      <li>Over 90% of revenue recurring from the prior year's account base — a formulation unchanged since FY2016</li>
+      <li>A marketplace of 6,000+ apps and $6bn of lifetime partner sales that customers have paid to configure</li>
+      <li>Jira Service Management sitting in the ITSM layer, where audited workflow resists bundling</li>
+      <li>Over 85% of the Fortune 500 as customers, with lengthening contracts (RPO +44%)</li>
+      <li>Mid-80s gross margins from near-zero marginal delivery cost</li>
+    </ul>
+  </div>
+  <div class="col bor">
+    <h4>Borrowed — helping now, will not repeat</h4>
+    <ul>
+      <li>Data Center upfront term-licence revenue, which management itself calls a mechanical drag on FY2027</li>
+      <li>Data Center growth of 25% in FY2026, guided to −17% in FY2027</li>
+      <li>Restructuring-driven opex relief from a workforce cut of roughly 10% — a one-time reset</li>
+      <li>A buyback able to retire 19.1m shares only because the average price was $94.31 against $196.02</li>
+      <li>A discrete Australian deferred-tax valuation-allowance release that cut the FY2026 tax provision by $81.9m</li>
+    </ul>
+  </div>
+</div>
+
+<h3>What to monitor, and where it is published</h3>
+
+<div class="tblwrap">
+<table>
+<tr><th style="width:52%">Indicator</th><th>Where it appears</th></tr>
+<tr><td>Customers with &gt;$10,000 Cloud ARR — the only disclosed unit-economics series, and decelerating (45,842 → 51,978 → 57,334; +13.4% then +10.3%)</td><td>Annual 10-K, Key Business Metrics</td></tr>
+<tr><td>Subscription ARR growth against Cloud revenue growth — a widening gap signals price or duration rather than seats</td><td>Quarterly earnings release</td></tr>
+<tr><td>Cloud revenue growth once Data Center stops contributing, from Q1 FY2027</td><td>Quarterly earnings release</td></tr>
+<tr><td>Free cash flow margin and the accounts-receivable balance against revenue</td><td>10-K and 10-Q cash flow statement and balance sheet</td></tr>
+<tr><td>Marketing and sales as a share of revenue — the low-touch model's health</td><td>10-K and 10-Q operating expense tables</td></tr>
+<tr><td>Shares outstanding and repurchase spend against gross issuance</td><td>10-K stockholders' equity note; quarterly balance sheets</td></tr>
+<tr><td>Peer net retention as a leading read on seat-based demand (Asana, monday.com, GitLab)</td><td>Those companies' quarterly releases</td></tr>
+<tr><td>Software developer employment levels</td><td>US Bureau of Labor Statistics, Occupational Employment and Wage Statistics</td></tr>
+</table>
+</div>
+
+<h2>7 · Risks, unknowns and questions for deeper work</h2>
+
+<p>These are the risks cyclicality does not capture, ranked by how much they compound with each other rather than by likelihood.</p>
+
+<div class="lever">
+  <div class="tag">The central question</div>
+  <div class="hd">The seat model and AI point in opposite directions — and the filings do not engage with it</div>
+  <p>Atlassian charges per person. AI raises output per person: the JetBrains 2025 survey of 24,534 developers found 85% regularly use AI for coding and one in five saves eight or more hours a week. If firms hold output constant and slow hiring, seat counts flatten <em>without a single customer leaving</em> — and net retention drifts toward 100%, which is precisely the pattern Asana already reports at 96%, including among its largest accounts. The FY2026 10-K nowhere addresses whether AI teammates substitute for human ones. Its only relevant sentence — "an increased prevalence of AI may impact the work practices of software teams… and therefore our market opportunity" — names no mechanism and no direction, and is carried over verbatim from FY2025. Management's stated theory runs the other way: AI increases work volume, and Atlassian is the "orchestration layer" for a "blended workforce."</p>
+</div>
+
+<div class="lever cyclical">
+  <div class="tag">Counter-evidence</div>
+  <div class="hd">The thesis is unresolved, not established</div>
+  <p>The Stack Overflow 2025 survey of over 49,000 developers found <strong>69% do not plan to use AI for project planning</strong> and 76% reject it for deployment and monitoring — resistance is highest in exactly the workflow layer Jira occupies. US Bureau of Labor Statistics projections published in August 2026 still show software developer employment rising from 1.72 million to 1.89 million by 2035. Where headcount reductions have been publicly attributed to AI, the confirmed cuts have been in customer support rather than engineering.</p>
+</div>
+
+<div class="lever">
+  <div class="tag">Structural</div>
+  <div class="hd">Platform dependency on companies that also compete, governed by nothing</div>
+  <p>Atlassian's value depends on integrating with third-party applications "including the applications of software providers that compete with us," and the filing states plainly: <strong>"To date, we have not relied on long-term written contracts to govern our relationship with these providers."</strong> It enumerates the failure modes itself — a provider discontinues API access, changes its fees, "establishes more favorable relationships with one or more of our competitors," or "develops or otherwise favors its own competitive offerings over ours." This is the Microsoft risk, and because the 10-K names no competitors it is never stated as such.</p>
+</div>
+
+<div class="lever">
+  <div class="tag">Structural</div>
+  <div class="hd">Over half of revenue reaches Atlassian through parties who owe it nothing</div>
+  <p>Channel partners generated over 50% of FY2026 revenue. Their agreements are non-exclusive, they may sell competing products, and they "may also cease marketing our offerings with limited or no notice and with little or no penalty." Atlassian also carries their credit and conduct risk. A distribution channel that is simultaneously the majority of revenue and terminable without penalty is an exposure that grew quietly — it was roughly 25% of revenue in FY2016.</p>
+</div>
+
+<div class="lever">
+  <div class="tag">Structural</div>
+  <div class="hd">The marketplace that is the moat is also the attack surface</div>
+  <p>Third-party apps execute inside customer tenancies, and the filing concedes they "may not meet the same quality standards that we apply to our own development efforts," that "our ability to mandate security standards and ensure compliance by these third parties may be limited," and that third-party apps "have caused disruptions affecting multiple customers" in the past. Separately, Atlassian discloses it has experienced breaches resulting in unauthorised access to customer data, and has been "a target of security threats, including from state actors." A serious Marketplace-originated breach would damage the ecosystem and the product at once.</p>
+</div>
+
+<div class="lever mgmt">
+  <div class="tag">Governance</div>
+  <div class="hd">Concentrated control, and a leadership team that has almost entirely turned over</div>
+  <p>Class B shares carry ten votes to Class A's one. At 30 June 2026 Class B holders controlled approximately <strong>86% of voting power</strong>, with the two co-founders holding substantially all of it — 42.59% each per the 2025 proxy. Vanguard, the largest outside holder, controls 1.42% of the vote. Meanwhile Scott Farquhar stepped down as co-CEO in August 2024, the President left in December 2025, the CTO in March 2026; James Chuong became CFO in March 2026; a new Chief Product and AI Officer arrived in FY2026 and a new Chief Product Officer for Enterprise in August 2026; and roughly 10% of the workforce was eliminated in March 2026. Executing a dated end-of-life of 28% of revenue, an AI repositioning and an enterprise sales build simultaneously is demanding with a settled team.</p>
+</div>
+
+<h3>What the sources could not answer</h3>
+
+<div class="gap">
+<ul class="plain">
+<li><strong>Net revenue retention is not disclosed, in any period.</strong> Neither is a paid seat count, a price per seat, or gross churn. For a per-seat business the absence of a net expansion rate is the most consequential gap in the filings — and it is the exact metric that would test the seat-compression question above.</li>
+<li><strong>Migration progress is unquantified.</strong> No disclosure of how many Data Center customers remain, how much Data Center ARR is still to convert, or what proportion has migrated — only the calendar dates and the 17% FY2027 decline guide.</li>
+<li><strong>AI monetisation is undisclosed, and a metric was dropped.</strong> The FY2025 Q4 release cited 2.3 million AI monthly active users. The FY2026 release does not restate or update it, substituting a narrower figure — one million monthly active users of the MCP server and Teamwork Graph CLI. The two are not comparable. No AI revenue, Rovo seat count or attach rate is given anywhere.</li>
+<li><strong>Price increases are unquantified.</strong> Cited as a growth driver in both FY2025 and FY2026 without magnitude, product or effective date, so the durability of that contribution cannot be assessed.</li>
+<li><strong>Product-level revenue does not exist.</strong> Atlassian reports as a single operating segment and discloses only that Jira, Confluence and Jira Service Management together are "a majority" of revenue. The relative health of the three cannot be observed.</li>
+<li><strong>Gross margin is not disaggregated.</strong> A single cost-of-revenue line means Cloud and Data Center unit economics cannot be separated — which matters when the company states Cloud margins are structurally lower.</li>
+<li><strong>Shareholder letters and call transcripts were not in the archive</strong>, so all management commentary here comes from press-release text. The Q&amp;A, where demand nuance usually surfaces, has not been read.</li>
+</ul>
+</div>
+
+<h2>8 · Investor takeaways</h2>
+
+<ul class="plain">
+<li><strong>What this business really is:</strong> the system of record for how software and IT teams coordinate work, sold per seat, embedded deeply enough that over 90% of each year's revenue comes from last year's accounts.</li>
+<li><strong>The core economic engine:</strong> near-zero marginal delivery cost against per-seat pricing, expanded inside existing customers rather than won from new ones — with half of every revenue dollar funding R&amp;D and a further quarter funding sales.</li>
+<li><strong>The main growth lever:</strong> Cloud seat expansion and edition upgrades. Everything else in FY2026 — the Data Center pull-forward above all — is a transition effect that reverses next year, which is why 26% becomes a guided 13%.</li>
+<li><strong>What could break the story:</strong> a per-seat model meeting a technology that reduces the number of people needed per unit of work. The evidence is genuinely unresolved, the company does not engage with it, and a peer already reports 96% net retention among its largest accounts.</li>
+<li><strong>What to monitor:</strong> Cloud revenue growth once Data Center stops helping, the &gt;$10,000 Cloud ARR customer count, and free cash flow margin against the receivables build — three numbers that together say whether the seats are still expanding.</li>
+</ul>
+
+<footer>
+<p><strong>Built from:</strong> Atlassian FY2026 Form 10-K (filed 14 August 2026, FY ended 30 June 2026); FY2025 10-K; FY2021 and FY2016 Form 20-F; Q3 FY2026 Form 10-Q; quarterly earnings releases through 6 August 2026; 2025 DEF 14A proxy statement; 8-K filings of 11 March 2026 and 18 February 2026.</p>
+<p><strong>Independent industry sources:</strong> ServiceNow Q4 2025 release; Microsoft FY2026 Q4 release; GitLab FY2026 release; monday.com FY2025 release; Asana FY2026 release; Atlassian developer site (Marketplace figures); Stack Overflow Developer Survey 2025; JetBrains State of Developer Ecosystem 2025; GitHub Octoverse 2025; US Bureau of Labor Statistics Occupational Outlook Handbook (updated 27 August 2026).</p>
+<p><strong>Nothing post-dates the filings.</strong> The FY2026 10-K carries no subsequent-events note and disclosed no pending transaction as of 14 August 2026.</p>
+<p style="margin-bottom:0"><em>Prepared 7 September 2026. Figures marked (inferred) are computed from disclosed data and are labelled as such throughout. This document is a business overview for long-term investors — not a valuation, not a recommendation, and it contains no price target or multiple.</em></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Space Exploration Technologies Corp. (SPCX)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px;padding-top:18px;border-top:1px solid var(--line)}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-family:Georgia,serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;line-height:1.5;margin:0 0 30px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.restate{
+  font-family:Georgia,serif;font-size:23px;line-height:1.45;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 22px;margin:0 0 30px;
+}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#B9AE9C;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:29px;font-weight:700;line-height:1.25;margin-bottom:10px}
+.engine p{margin:0;font-size:17px;color:#E8E0D3;line-height:1.55}
+.engine .hl{color:#F0A184;font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700;line-height:1.35}
+.kpi .v{font-family:Georgia,serif;font-size:31px;font-weight:700;color:var(--terracotta);margin:7px 0 3px;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:14px;color:var(--muted);line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 20px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:16px 20px;margin:0 0 14px}
+.lever.s{border-left-color:var(--good)} .lever.m{border-left-color:var(--gold)} .lever.c{border-left-color:var(--blue)}
+.lever .hd{font-weight:700;font-size:18px;margin-bottom:5px}
+.lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--terracotta);display:block;margin-bottom:6px}
+.lever.s .tag{color:var(--good)} .lever.m .tag{color:var(--gold)} .lever.c .tag{color:var(--blue)}
+.lever p{margin:0;font-size:17px}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:24px 0;font-family:Georgia,serif;font-size:20px;line-height:1.45}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;color:var(--muted);margin-top:12px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.two .card{margin:0}
+.two h4{margin:0 0 12px;font-family:Georgia,serif;font-size:18px}
+.two ul{margin:0;padding-left:20px} .two li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+.dur h4{color:var(--good)} .bor h4{color:var(--terracotta)}
+.tw{overflow-x:auto;margin:20px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:16px;background:#fff;min-width:520px}
+caption{caption-side:top;text-align:left;font-size:14px;color:var(--muted);padding-bottom:8px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;line-height:1.4}
+thead th{background:var(--ink);color:var(--cream);font-weight:700;font-size:14px;letter-spacing:.03em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:nth-child(even){background:#FCFAF6}
+tr.tot td{font-weight:700;border-top:2px solid var(--ink)}
+.fn{font-size:14px;color:var(--muted);line-height:1.5;margin:8px 0 22px}
+figure{margin:26px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+.chartttl{font-family:Georgia,serif;font-weight:700;font-size:18px;margin:0 0 4px}
+ul.plain{padding-left:20px} ul.plain li{margin-bottom:10px}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);line-height:1.6}
+footer strong{color:var(--ink)}
+.mark{font-variant-numeric:tabular-nums}
+@media (max-width:700px){
+  body{font-size:17.5px} h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  .engine .unit{font-size:24px} .restate{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Space Exploration Technologies Corp. <span style="color:var(--muted);font-weight:400">(Nasdaq: SPCX)</span></h1>
+<p class="srcline">6 September 2026 · Built from the 424(b)(4) IPO prospectus dated 12 June 2026, the Form 10-Q for the quarter ended 30 June 2026, and the Forms 8-K filed between 15 June and 14 August 2026 — with industry structure, competitor economics and claim verification from independent sources (FCC, FAA, BryceTech, GAO, ITU, competitor filings). <strong>This is not a valuation and not a recommendation.</strong></p>
+
+<div class="restate">This is a satellite broadband company that owns the world's dominant launch business as a cost centre, and has just bought an AI compute business with the proceeds of its own IPO.</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One Starlink subscriber</div>
+  <p><span class="hl">$66 per month</span>, down from $85 a year ago — multiplied by <span class="hl">12.0 million</span> subscribers, up from 6.0 million. That unit sits inside Connectivity, which turned <span class="hl">$4,291m</span> of Q2 2026 revenue into <span class="hl">$2,597m</span> of segment adjusted EBITDA, a 61% margin. It is the only segment that makes money. Space lost $205m at the same line while flying more than half the world's orbital launches.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Starlink ARPU</div><div class="v">$66</div><div class="s">per month, Q2 2026 · was $85 (−22.4% y/y)</div></div>
+  <div class="kpi"><div class="k">Connectivity seg. EBITDA</div><div class="v">$2,597m</div><div class="s">Q2 2026 · 61% of segment revenue</div></div>
+  <div class="kpi"><div class="k">Group net loss</div><div class="v">$(541)m</div><div class="s">Q2 2026 · $(4,817)m for H1 2026</div></div>
+  <div class="kpi"><div class="k">Debt vs cash</div><div class="v">39.5 / 93.5</div><div class="s">$bn debt &amp; leases vs cash, 30 Jun 2026</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Split</div><div class="s">Connectivity at a record; Space past its own peak on volume and margin</div></div>
+  <div class="kpi"><div class="k">Growth: reported vs ex-AI</div><div class="v">92% / 58%</div><div class="s">Q2 2026 y/y revenue, reported vs excluding the AI segment</div></div>
+</div>
+
+<h2>1 · What this business actually is</h2>
+
+<p>Three businesses share one balance sheet. <strong>Space</strong> designs, builds and flies reusable rockets. <strong>Connectivity</strong> operates Starlink — roughly 10,200 satellites delivering broadband, enterprise, government and satellite-to-mobile service in 167 countries. <strong>AI</strong> — Grok, X and a fleet of data centres — arrived by merger in February 2026 and now consumes most of the company's capital.</p>
+
+<p>Before reading any growth rate, understand what the accounting did. The xAI merger was treated as a reorganization of entities under common control, because Elon Musk controlled SpaceX, xAI and X throughout. GAAP therefore restates every historical period as though the combination had always existed. The fiscal 2023 and 2024 figures below already contain X and xAI — including the $3,775m Twitter brand impairment that drove the 2023 loss — even though SpaceX did not own them at the time.</p>
+
+<div class="tw">
+<table>
+  <caption>Segments: revenue and profitability. Sources — 424B4 segment note (FY2025); Q2 2026 10-Q Note 18 (Q2 2026).</caption>
+  <thead><tr><th>Segment</th><th class="n">FY2025 revenue</th><th class="n">FY2025 seg. adj. EBITDA</th><th class="n">Q2 2026 revenue</th><th class="n">Q2 2026 seg. adj. EBITDA</th></tr></thead>
+  <tbody>
+    <tr><td>Space</td><td class="n">4,086</td><td class="n">653</td><td class="n">962</td><td class="n">(205)</td></tr>
+    <tr><td>Connectivity</td><td class="n">11,387</td><td class="n">7,168</td><td class="n">4,291</td><td class="n">2,597</td></tr>
+    <tr><td>AI</td><td class="n">3,201</td><td class="n">(1,237)</td><td class="n">2,561</td><td class="n">1,146</td></tr>
+    <tr class="tot"><td>Total</td><td class="n">18,674</td><td class="n">6,584</td><td class="n">7,814</td><td class="n">3,538</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="fn">$m. Segment adjusted EBITDA is company-defined: segment operating income before depreciation and amortization, stock-based compensation, restructuring and impairment. The three-segment structure was adopted in Q1 2026 with all prior periods recast.</p>
+
+<h3>Trace one subscriber, and one launch</h3>
+
+<p>A Starlink subscriber pays an upfront terminal price and then a monthly fee. The terminal is a separate performance obligation recognized at delivery; the service contract is month-to-month, so each month's revenue equals that month's billing. Customers who pay in advance sit in deferred revenue — $14,286m at 30 June 2026, up from $12,116m at the end of 2025. The subscriber is cash-positive early — the inverse of a leased-equipment model, where the operator capitalises the box, collects nothing upfront and recovers it through a higher monthly fee over years. What the filings never disclose is the terminal's unit cost, its margin, or a churn rate; the only retention evidence given is that since 2023 no enterprise customer above $750,000 of annual revenue has voluntarily left.</p>
+
+<p>A launch is different, and the headline number misleads. Of 165 Falcon launches in 2025, 43 were for customers and 122 were internal — the company launching its own satellites. In Q2 2026 it was 10 customer flights out of 37. Dividing Space revenue by total launches therefore produces a figure that falls as the business scales: roughly $37.1m per launch in 2023, $28.3m in 2024, $24.8m in 2025 (derived). Management confirms the mechanism directly, noting that while total Falcon launches rose from 134 to 165 in 2025, customer launches and average price per launch were relatively flat.</p>
+
+<p>So launch is not principally a revenue line. It is the delivery system for the constellation, and its cost — not its price — is the product. That is why the world's dominant launch provider loses money at the operating line.</p>
+
+<h2>2 · Industry structure and where the profit sits</h2>
+
+<p>In launch, the customer buys transport. In satellite communications, the customer buys a service. The evidence says the profit pool sits with the service operator — and that within the operator, it is consumed by the capital cycle.</p>
+
+<p>Rocket Lab, the only meaningful listed launch comparator, has never earned an operating profit: fiscal 2025 revenue of $601.8m, up 38%, gross margin 34.4%, operating loss $228.8m. Satellite operators report high headline margins — Viasat 33.4% EBITDA in FY2026, SES 45.2% in H1 2026, Eutelsat 51.2% in FY2025-26 — but Eutelsat spent roughly €900m of capex against €1,236m of revenue. High margin, negative free cash flow. That is the industry's real signature, and it is the shape Connectivity takes as its fleet ages. The third stage of the chain, satellite manufacturing, is structurally broken: seven commercial geostationary orders in 2024, the fewest since 1994, and Airbus, Thales and Leonardo agreed in October 2025 to merge their space units.</p>
+
+<div class="pull">
+  Roughly 38% of every orbital launch on Earth in 2025 was SpaceX launching SpaceX hardware — 122 of its 165 flights, out of a global 325.
+  <span class="attr">Derived from BryceTech launch data and the company's own key business metrics. Global launch volume is not an independent demand signal; it is a derivative of four or five constellation capex decisions.</span>
+</div>
+
+<h3>The competitors, from independent evidence</h3>
+
+<p>SpaceX names United Launch Alliance, Arianespace and Northrop Grumman itself. The outside record is unflattering to all of them. ULA's Vulcan flew USSF-87 in February 2026 with a solid-rocket-booster anomaly and has never approached its stated cadence; U.S. Space Force awards price ULA at roughly $214m per NSSL Lane 2 mission against SpaceX's $142.8m. Blue Origin flew New Glenn three times in nineteen months, lost a payload on NG-3, and on 28 May 2026 lost a fuelled vehicle in an explosion at LC-36 — its only pad — traced to a BE-4 main oxygen valve; it has no fiscal 2026 national security missions assigned. Ariane 6 has four successes in sixteen months. China's LandSpace landed a Zhuque-3 booster on its second flight.</p>
+
+<p>The competitor that matters is on the broadband side, and it has a deadline. Amazon's constellation — named in SpaceX's own filing only as "Amazon LEO" — needed 1,616 satellites in orbit by 30 July 2026 and had roughly 369 in June. The FCC granted a limited waiver rather than the two-year extension Amazon sought, and the 30 July 2029 hundred-percent deadline stands, with post-deadline satellites demoted in spectrum processing priority. Amazon must average about 950 satellites a year for three years while New Glenn has no operational pad. The likeliest resolution is that Amazon pays SpaceX to launch a competing constellation — which tells you exactly where the bottleneck in this industry is.</p>
+
+<p>And the legacy operators show what LEO does to incumbents. Viasat's U.S. fixed broadband base is down to roughly 130,000 subscribers at $113 ARPU; HughesNet fell to 681,000, down 20% year on year, and EchoStar has flagged going-concern doubt. LEO did not compress the industry's price. It took the incumbents' customers.</p>
+
+<h3>Testing what the company says about itself</h3>
+
+<div class="tw">
+<table>
+  <caption>Each prospectus claim against independent evidence.</caption>
+  <thead><tr><th>Claim</th><th>Verdict</th><th>Basis</th></tr></thead>
+  <tbody>
+    <tr><td>Over 80% of world mass to orbit each year since 2023</td><td><strong style="color:var(--good)">Supported</strong></td><td>BryceTech Q3 2025: 83% of global upmass, 97% of U.S. upmass. Provider-level full-year series is not public, so directional rather than audited.</td></tr>
+    <tr><td>~75% of active <em>maneuverable</em> satellites are Starlink</td><td><strong style="color:var(--good)">Supported</strong></td><td>10,742 Starlink of 14,124 maneuverable satellites (McDowell, 13 Aug 2026) = 76.1%. But share of <em>all</em> active satellites is 66.0% — the "maneuverable" framing flatters by ~10 points.</td></tr>
+    <tr><td>Falcon 9 cut cost to ~$2,700/kg from $18,500/kg</td><td><strong style="color:var(--gold)">Partially supported</strong></td><td>Traced to NASA (Jones, NTRS 20200001093, 2018): list price ÷ maximum expendable payload, not measured cost; a 2018 figure the filing attributes to 2010. SpaceX's own published rideshare price in Feb 2026 is $7,000/kg marginal.</td></tr>
+    <tr><td>~70 satellites and ~200,000 terminals per week</td><td><strong style="color:var(--gold)">Partly verified</strong></td><td>The satellite rate cross-checks against deployment counts (~55–70/week flown) but covers a five-month window. The terminal rate has no independent confirmation; the nearest primary datapoint is a SpaceX engineering director citing 15,000 kits/day in March 2025.</td></tr>
+    <tr><td>Reusability at industrial scale cannot be replicated</td><td><strong style="color:var(--terracotta)">Partly contradicted</strong></td><td>Blue Origin landed and reflew a booster; LandSpace landed Zhuque-3 on flight two. The technology is replicable; the <em>cadence</em> is not — yet. Cadence is a function of pads and engines, a two-to-four year gap, not a permanent one.</td></tr>
+    <tr><td>Current cost per kilogram to orbit</td><td><strong style="color:var(--muted)">Not disclosed</strong></td><td>Only historical NASA reference points and an aspirational 99% Starship reduction appear anywhere in the filings.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Three constraints genuinely bind in this industry: pads (FAA and Space Force approvals cap SLC-40 at 120 launches a year, LC-39A at 20, SLC-4E at 100 — about 240 approved Falcon slots), engines and tanks, and flight count, since reliability is bought with flights and flights cannot be bought with money. Capital does not bind entry: total global space start-up investment was $10.9bn in 2025. Nor does FAA licensing, frequently cited as a bottleneck, which has not gated any U.S. programme since Part 450 began permitting portfolio licences.</p>
+
+<p>The industry rewards the vertically integrated operator that owns launch, spectrum, manufacturing and several demand tiers at once — because that is the only configuration in which the transport stage's lack of profit does not matter. SpaceX is the only company that is all four. The question the evidence raises is not whether it is the right kind of company for this industry, but whether it is now trying to be that company for a second industry, on the same balance sheet, at the moment the first one's replacement bill comes due.</p>
+
+<h2>3 · Growth, decomposed</h2>
+
+<p>Revenue rose 91.9% in Q2 2026, to $7,814m. That number describes almost nothing about the business that existed a year earlier.</p>
+
+<div class="tw">
+<table>
+  <caption>Q2 2026 versus Q2 2025, $m. Source: Q2 2026 10-Q, Notes 3 and 18; growth shares derived.</caption>
+  <thead><tr><th>Revenue line</th><th class="n">Q2 2025</th><th class="n">Q2 2026</th><th class="n">Change</th><th class="n">Share of growth</th></tr></thead>
+  <tbody>
+    <tr><td>Space</td><td class="n">746</td><td class="n">962</td><td class="n">+216</td><td class="n">6%</td></tr>
+    <tr><td>Connectivity</td><td class="n">2,588</td><td class="n">4,291</td><td class="n">+1,703</td><td class="n">45%</td></tr>
+    <tr><td>AI — advertising (legacy X)</td><td class="n">426</td><td class="n">367</td><td class="n">(59)</td><td class="n">(2%)</td></tr>
+    <tr><td>AI — solutions &amp; infrastructure</td><td class="n">311</td><td class="n">2,194</td><td class="n">+1,883</td><td class="n">50%</td></tr>
+    <tr class="tot"><td>Total reported</td><td class="n">4,071</td><td class="n">7,814</td><td class="n">+3,743</td><td class="n">+91.9%</td></tr>
+    <tr class="tot"><td>Memo: excluding the AI segment</td><td class="n">3,334</td><td class="n">5,253</td><td class="n">+1,919</td><td class="n">+57.6%</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="fn">The AI segment appears in the prior-year comparative only because of common-control reorganization accounting. SpaceX did not own xAI or X in Q2 2025.</p>
+
+<p>Half of the reported growth is a revenue stream that did not exist a year ago, sold largely to one new counterparty. Management attributes $1,600m of the AI increase specifically to having begun selling cloud services; a customer disclosed only as "Customer B" was 19.5% of consolidated Q2 revenue and relates entirely to AI. Meanwhile the legacy advertising line inside that same segment is shrinking. Excluding AI, the space and connectivity businesses grew 57.6% — the more meaningful rate, and still a strong one.</p>
+
+<p>The half-year is the corrective. H1 2026 revenue grew 53.7%, but <em>Space revenue fell 1.9%</em>, because customer launches dropped from 21 to 17. A business flying 77 Falcon missions in six months and booking less launch revenue than the prior year is one whose launch volume has decoupled from its launch revenue.</p>
+
+<h3>The drivers, ranked</h3>
+
+<div class="lever s"><span class="tag">Structural</span><div class="hd">Starlink subscriber additions</div><p>6.0 million to 12.0 million in twelve months, served by capacity already in orbit. The offset is that ARPU fell 22.4% to $66, and the company expects further decline as international mix rises. Each unit is worth less, so the segment must add subscribers faster than price falls. In Q2 2026 it did, by a wide margin.</p></div>
+
+<div class="lever s"><span class="tag">Structural</span><div class="hd">The enterprise, government and mobile tiers</div><p>Enterprise and government revenue inside Connectivity rose from $867m to $1,806m year on year. Aviation, maritime, land mobility, Starshield and satellite-to-mobile through ~30 mobile-network partners monetize the <em>same</em> satellites at higher revenue per unit of capacity. This is the highest-quality growth in the company, because it raises revenue per satellite without raising the satellite count.</p></div>
+
+<div class="lever m"><span class="tag">Management-driven · unproven</span><div class="hd">AI cloud compute</div><p>$311m to $2,194m in a quarter, concentrated in one customer, on contracts the company itself discloses as terminable on 90 days' notice after an initial ramp period. The revenue is real; its durability is a different question, and the filing is the source of the doubt.</p></div>
+
+<div class="lever c"><span class="tag">Cyclical · currently negative</span><div class="hd">Space customer launches</div><p>Down from 21 to 17 in the first half. Q2 Space growth came from mix and a single additional customer launch, not volume. BryceTech's Q2 2026 data shows global spacecraft deployed down 4% and upmass down 2% year on year.</p></div>
+
+<div class="lever"><span class="tag">Temporary in effect, permanent in dilution</span><div class="hd">Acquisitions</div><p>Cursor closed 14 August 2026 for 389.3 million Class A shares at a $60.0bn implied equity value — after the reporting period, with no pro-forma financials filed and no disclosed revenue. Mesh Optical closed 6 July for ~3.8 million shares. EchoStar remains open. None is in any reported figure.</p></div>
+
+<p>There is no financial guidance anywhere in the prospectus or the 10-Q. The company also disclosed at IPO that it will not use wire services to distribute results, publishing instead through its investor site and its own X account. An investor gets the filings, and nothing else.</p>
+
+<h2>4 · Margin, cash and where the capital goes</h2>
+
+<p>Connectivity turned $4,291m of Q2 revenue into $2,597m of segment adjusted EBITDA, a 61% margin, because once a satellite is in orbit and a terminal is in a customer's hands, another month of service costs little beyond ground infrastructure and payment processing. But not every dollar of that revenue is the same dollar.</p>
+
+<h3>Two revenue dollars, and a mix that is still shifting</h3>
+
+<p>Connectivity sells two things and the filings separate them. Products revenue — Starlink Kits, all of it attributable to Connectivity — was $1,093m in FY2023, $1,470m in FY2024 and <strong>$1,510m in FY2025</strong>: up 2.7% in a year when the subscriber base roughly doubled. Q2 2026 was $461m against $403m, up 14% against 101% subscriber growth. Realised revenue per terminal is falling steeply, alongside the company's own statement that it has significantly lowered production costs and scaled output to ~200,000 kits a week. Whether hardware is sold below cost is not disclosed and cannot be established from these documents.</p>
+
+<div class="tw">
+<table>
+  <caption>Hardware's share of Connectivity revenue. Sources: 424B4 Note 3 and segment note; Q2 2026 10-Q Notes 3 and 18. The share is derived — the company does not present this ratio.</caption>
+  <thead><tr><th>&nbsp;</th><th class="n">FY2023</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">Q2 2026</th></tr></thead>
+  <tbody>
+    <tr><td>Products revenue, $m (Starlink Kits)</td><td class="n">1,093</td><td class="n">1,470</td><td class="n">1,510</td><td class="n">461</td></tr>
+    <tr><td>Connectivity segment revenue, $m</td><td class="n">3,869</td><td class="n">7,599</td><td class="n">11,387</td><td class="n">4,291</td></tr>
+    <tr class="tot"><td>Hardware as a share of the segment</td><td class="n">28.2%</td><td class="n">19.3%</td><td class="n">13.3%</td><td class="n">10.7%</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="fn">Q2 2026 is a single quarter set against full years.</p>
+
+<p>The series matters because the two dollars carry different margins. A service dollar is close to pure contribution once the satellite is in orbit and the terminal is in a customer's hands; a hardware dollar is at best thin. As hardware falls from 28% of segment revenue to 11%, <strong>reported Connectivity margin improves on mix alone, before any operating improvement at all</strong> — and most of that tailwind has already been taken. The share cannot fall much further, so within a few years mix stops flattering the margin and the trend has to be carried by the service line on its own.</p>
+
+<p>The same split shapes cash. Because the terminal is paid for at sign-up and many service, enterprise and government contracts are prepaid, growth in the customer base converts directly into deferred revenue. In H1 2026 the movement in deferred revenue supplied <strong>$2,169m of $3,466m of operating cash flow</strong> — 63% of it, against $680m in the prior-year half. Management attributes the increase to upfront payments from Space <em>and</em> Connectivity customers, so launch deposits are in there and this is not a Starlink-only effect. The consequence is directional and testable: a deceleration in customer additions removes a working-capital contribution as well as revenue, so operating cash flow would decelerate faster than revenue does.</p>
+
+<p>Broadband satellites are depreciated over five years, first-generation mobile satellites over three. Flight vehicles are depreciated by <em>flights</em>, not years: Falcon 9 boosters are engineered for up to 40 flights but carry an accounting life capped at 25. The company gives the sensitivity outright — a one-year change in average satellite useful life would have moved fiscal 2025 operating income by roughly $480m, while a five-flight change in average remaining booster flights is immaterial. <strong>The asset that matters is the satellite, not the rocket.</strong></p>
+
+<figure>
+<div class="chartttl">Revenue compounds; free cash flow inverts</div>
+<svg viewBox="0 0 860 330" role="img" aria-label="Revenue rising from 10.4 to 18.7 billion dollars 2023 to 2025 with H1 2026 at 12.5 billion, while free cash flow falls from breakeven to negative 25 billion">
+  <line x1="70" y1="20" x2="70" y2="255" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="255" x2="820" y2="255" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="145" x2="820" y2="145" stroke="#E5DDD0" stroke-width="1" stroke-dasharray="3 4"/>
+  <text x="62" y="149" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial">0</text>
+  <text x="62" y="35" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial">+20</text>
+  <text x="62" y="259" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial">−25</text>
+  <text x="18" y="145" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Arial" transform="rotate(-90 18 145)">US$ bn</text>
+  <!-- x positions: 2023=170, 2024=380, 2025=590, H1'26=780 -->
+  <!-- Revenue: 10.387, 14.015, 18.674, 12.508  -> y = 145 - v*5.5 -->
+  <polyline points="170,88 380,68 590,42 780,76" fill="none" stroke="#C75B39" stroke-width="3"/>
+  <circle cx="170" cy="88" r="4.5" fill="#C75B39"/><circle cx="380" cy="68" r="4.5" fill="#C75B39"/>
+  <circle cx="590" cy="42" r="4.5" fill="#C75B39"/><circle cx="780" cy="76" r="4.5" fill="#C75B39"/>
+  <text x="170" y="78" text-anchor="start" font-size="13" fill="#C75B39" font-weight="700" font-family="Calibri,Arial">Revenue 10.4</text>
+  <text x="590" y="32" text-anchor="middle" font-size="13" fill="#C75B39" font-weight="700" font-family="Calibri,Arial">18.7</text>
+  <text x="780" y="66" text-anchor="end" font-size="13" fill="#C75B39" font-weight="700" font-family="Calibri,Arial">12.5</text>
+  <!-- FCF: 0.105, -5.387, -13.952, -25.010 -->
+  <polyline points="170,144 380,175 590,222 780,283" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+  <circle cx="170" cy="144" r="4.5" fill="#3C6E8F"/><circle cx="380" cy="175" r="4.5" fill="#3C6E8F"/>
+  <circle cx="590" cy="222" r="4.5" fill="#3C6E8F"/><circle cx="780" cy="283" r="4.5" fill="#3C6E8F"/>
+  <text x="176" y="134" text-anchor="start" font-size="13" fill="#3C6E8F" font-weight="700" font-family="Calibri,Arial">Free cash flow 0.1</text>
+  <text x="590" y="240" text-anchor="middle" font-size="13" fill="#3C6E8F" font-weight="700" font-family="Calibri,Arial">−14.0</text>
+  <text x="780" y="303" text-anchor="end" font-size="13" fill="#3C6E8F" font-weight="700" font-family="Calibri,Arial">−25.0</text>
+  <text x="170" y="322" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Calibri,Arial">FY2023</text>
+  <text x="380" y="322" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Calibri,Arial">FY2024</text>
+  <text x="590" y="322" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Calibri,Arial">FY2025</text>
+  <text x="780" y="322" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Calibri,Arial">H1 2026</text>
+</svg>
+<figcaption>Free cash flow is operating cash flow less purchases of property, plant and equipment; it is not a company-reported measure. H1 2026 is a six-month figure and is not annualised. Sources: 424B4 consolidated statements; Q2 2026 10-Q.</figcaption>
+</figure>
+
+<div class="tw">
+<table>
+  <caption>The financial spine, $m.</caption>
+  <thead><tr><th>&nbsp;</th><th class="n">FY2023</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">H1 2026</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue</td><td class="n">10,387</td><td class="n">14,015</td><td class="n">18,674</td><td class="n">12,508</td></tr>
+    <tr><td>Adjusted EBITDA (company-defined)</td><td class="n">3,821</td><td class="n">5,350</td><td class="n">6,584</td><td class="n">4,665</td></tr>
+    <tr><td>Income (loss) from operations</td><td class="n">(3,505)</td><td class="n">466</td><td class="n">(2,589)</td><td class="n">(2,086)</td></tr>
+    <tr><td>Net income (loss)</td><td class="n">(4,628)</td><td class="n">791</td><td class="n">(4,937)</td><td class="n">(4,817)</td></tr>
+    <tr><td>Capital expenditure</td><td class="n">(4,415)</td><td class="n">(11,163)</td><td class="n">(20,737)</td><td class="n">(28,476)</td></tr>
+    <tr class="tot"><td>Free cash flow (derived)</td><td class="n">105</td><td class="n">(5,387)</td><td class="n">(13,952)</td><td class="n">(25,010)</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="fn"><strong>Comparability warnings.</strong> (i) FY2023–25 include xAI and X under common-control reorganization accounting even though SpaceX did not own them; (ii) the FY2023 loss is driven by a $3,775m impairment of the Twitter brand on the rebrand to X; (iii) the segment structure changed in Q1 2026 with prior periods recast; (iv) a five-for-one stock split in May 2026 restates all share data; (v) H1 2026 includes a $1,545m loss on debt extinguishment.</p>
+
+<p>The gap between compounding EBITDA and a $25.0bn half-year cash outflow is entirely capital expenditure, and capital expenditure is almost entirely one segment. Of $28,476m spent in H1 2026, <strong>$23,551m was AI</strong>, against $2,699m for Connectivity and $2,226m for Space. In Q2 alone AI capex was $15,828m — 86% of the company total.</p>
+
+<figure>
+<div class="chartttl">Capital expenditure by segment, H1 2026 vs H1 2025 ($m)</div>
+<svg viewBox="0 0 860 250" role="img" aria-label="AI capital expenditure of 23,551 million dollars in H1 2026 dwarfs Connectivity at 2,699 and Space at 2,226">
+  <line x1="150" y1="20" x2="150" y2="215" stroke="#E5DDD0" stroke-width="1"/>
+  <!-- scale: 24000 -> 660px ; x = 150 + v/24000*660 -->
+  <text x="140" y="47" text-anchor="end" font-size="14" fill="#2B2B2B" font-family="Calibri,Arial" font-weight="700">AI</text>
+  <rect x="150" y="30" width="91" height="15" fill="#3C6E8F" opacity="0.45"/>
+  <rect x="150" y="49" width="648" height="20" fill="#C75B39"/>
+  <text x="248" y="42" font-size="12" fill="#6E675C" font-family="Calibri,Arial">3,316 (H1 2025)</text>
+  <text x="790" y="64" text-anchor="end" font-size="13" fill="#FAF6EF" font-family="Calibri,Arial" font-weight="700">23,551</text>
+
+  <text x="140" y="112" text-anchor="end" font-size="14" fill="#2B2B2B" font-family="Calibri,Arial" font-weight="700">Connectivity</text>
+  <rect x="150" y="95" width="53" height="15" fill="#3C6E8F" opacity="0.45"/>
+  <rect x="150" y="114" width="74" height="20" fill="#C75B39"/>
+  <text x="210" y="107" font-size="12" fill="#6E675C" font-family="Calibri,Arial">1,944</text>
+  <text x="232" y="129" font-size="13" fill="#C75B39" font-family="Calibri,Arial" font-weight="700">2,699</text>
+
+  <text x="140" y="177" text-anchor="end" font-size="14" fill="#2B2B2B" font-family="Calibri,Arial" font-weight="700">Space</text>
+  <rect x="150" y="160" width="47" height="15" fill="#3C6E8F" opacity="0.45"/>
+  <rect x="150" y="179" width="61" height="20" fill="#C75B39"/>
+  <text x="204" y="172" font-size="12" fill="#6E675C" font-family="Calibri,Arial">1,705</text>
+  <text x="219" y="194" font-size="13" fill="#C75B39" font-family="Calibri,Arial" font-weight="700">2,226</text>
+
+  <rect x="150" y="228" width="14" height="10" fill="#C75B39"/><text x="170" y="237" font-size="12" fill="#6E675C" font-family="Calibri,Arial">H1 2026</text>
+  <rect x="250" y="228" width="14" height="10" fill="#3C6E8F" opacity="0.45"/><text x="270" y="237" font-size="12" fill="#6E675C" font-family="Calibri,Arial">H1 2025</text>
+</svg>
+<figcaption>Source: Q2 2026 10-Q, Note 18 supplemental segment information. The core space business now receives roughly one dollar of capital for every five that go to AI.</figcaption>
+</figure>
+
+<p>Connectivity self-funds: its H1 segment adjusted EBITDA of $4,684m exceeds its $2,699m of capex. The satellite business generates surplus cash at its current fleet size and age. That surplus, plus $85,675m of net IPO proceeds and $51,812m of new borrowing, is being routed into AI data centres. Debt refinancing cost a $1,545m extinguishment loss and $1,153m of premium to clear the legacy X and xAI stack; total debt and finance leases stood at $39,512m against $93,522m of cash. There are no dividends and no buybacks.</p>
+
+<p>The ranking says something plain about how management thinks: it has decided the scarce satellite and launch franchise is a funding source for an adjacent bet, and used a public listing to make that bet larger. Whether that is right is a judgement about AI, not about space.</p>
+
+<h3>Three things sit outside every number above</h3>
+<ul class="plain">
+  <li><strong>Cursor</strong> closed 14 August 2026 — after the balance-sheet date — for 389,289,254 Class A shares at a $60.0bn implied equity value, plus ~29.1m assumed restricted units and ~44.4m assumed options. No pro-forma statements were filed; Cursor's revenue and losses are disclosed nowhere.</li>
+  <li><strong>EchoStar spectrum</strong>, ~$19.6bn: about $11.1bn in equity via roughly 261.8 million Class A shares struck at a fixed $42.40 — the company's October 2025 internal valuation, against a $135.00 IPO price — plus up to $8.5bn to retire EchoStar debt. Licences moved to a holding trust on 22 May 2026; final transfer is modelled at 30 November 2027, with a disclosed $827m contingency if it slips a year. <em>(The consideration is not restated at the offer price in the filing; the arithmetic on the fixed share count is inferred.)</em></li>
+  <li><strong>$27,955m of non-cancellable commitments</strong>, $22,244m of it falling due in 2027, for AI infrastructure, third-party cloud capacity and the spectrum transaction — outside the debt schedule entirely.</li>
+</ul>
+
+<h2>5 · Cyclicality, and the constraint that compounds</h2>
+
+<p>A month-to-month broadband subscription is closer to a utility bill than a capital good, so Connectivity is the least cyclical part of the business. Space and AI are the opposite: launch demand derives from constellation capital budgets, AI compute demand from a handful of hyperscaler capex decisions. Cycle exposure is concentrated in the two segments that do not currently make money.</p>
+
+<p>Launch volume is at or near a top. After 25% growth in 2025 to 325 orbital launches, BryceTech's Q2 2026 data shows launches up only 3% year on year with spacecraft down 4% and upmass down 2% — and Bryce's own commentary notes that quarterly totals now track a handful of constellation calendars more than broad appetite for orbit. New reusable capacity is arriving into that deceleration. SpaceX's own customer launches fell from 21 to 17 in the half, Q2 upmass fell from 652 to 485 metric tons, and Space segment adjusted EBITDA went from +$131m to −$556m. On volume and on margin, Space is past its own recent peak. Connectivity is at a record on every metric — but on a young fleet.</p>
+
+<div class="pull">
+  A fleet authorized at 15,000 satellites on a five-year life needs roughly <strong>3,000 replacements a year</strong> — about 58 a week, some 82% of the stated 70-a-week production rate, and on the order of 107 Falcon 9 launches annually simply to hold the constellation flat.
+  <span class="attr">Inferred from the FCC-authorized fleet size, the disclosed five-year broadband satellite life and the stated manufacturing rate. The company publishes no replenishment figure. Roughly 10,200 satellites are currently on orbit; SpaceX's semi-annual FCC constellation report for Dec 2025–May 2026 discloses 260 deorbits, low only because the fleet is young.</span>
+</div>
+
+<p>This reframes Starship. It is discussed as a growth vehicle, and it is one — Falcon 9 and Falcon Heavy are explicitly <em>not</em> capable of deploying the next-generation V3 and V2 Mobile satellites, so the constellation roadmap is structurally gated on it. But its first economic job is refinancing an obligation already on the balance sheet. Twelve flight tests have flown, the twelfth in May 2026; payload delivery is expected in the second half of 2026; orbital propellant transfer has not been demonstrated or attempted, and GAO confirmed as of May 2026 that SpaceX has not yet demonstrated orbital propellant storage and transfer. Space R&amp;D ran at $3,004m in fiscal 2025, expensed rather than capitalized because the vehicle is pre-commercial.</p>
+
+<p><strong>The downside case requires no failure, only arithmetic.</strong> If Starship slips, replenishment of a growing fleet runs on Falcon 9 at a cadence approaching the approved pad limits; a credible reusable competitor makes the $82m NSSL Lane 1 price contestable in a segment with no margin buffer; the U.S. addressable niche keeps shrinking as fibre and fixed wireless build out — rural wireline availability at 100/20 Mbps rose from 67% to 75.3% in two years, and only 10.6 million Americans, 3.1%, now lack it; and LEO mix keeps diluting margins industry-wide. It would show up as Connectivity growth decelerating while replenishment capex compounds — visible in the deorbit-to-launch ratio long before it reaches the subscriber count.</p>
+
+<div class="two">
+  <div class="card dur">
+    <h4>Durable — likely intact in ten years</h4>
+    <ul>
+      <li>Launch cadence and pad infrastructure no competitor can match on a two-to-four year view</li>
+      <li>Vertical integration across launch, satellite manufacture, terminals and ground network</li>
+      <li>Regulatory market access in 167 countries, and the spectrum position once EchoStar closes</li>
+      <li>Enterprise, government and mobile tiers monetizing capacity the consumer business already pays for</li>
+      <li>An installed terminal base and a network effect in inter-satellite mesh capacity</li>
+    </ul>
+  </div>
+  <div class="card bor">
+    <h4>Borrowed — currently helping, not permanent</h4>
+    <ul>
+      <li>A young satellite fleet whose replacement bill has barely begun</li>
+      <li>AI cloud revenue concentrated in one customer, on contracts terminable at 90 days' notice</li>
+      <li>ARPU held up by a subscriber base still weighted to higher-priced developed markets</li>
+      <li>Government revenue at about one-fifth of the total, on appropriations that have already been volatile</li>
+      <li>$93.5bn of IPO and debt proceeds funding a capex programme operating cash flow does not cover</li>
+    </ul>
+  </div>
+</div>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tw">
+<table>
+  <thead><tr><th>Indicator</th><th>Why it matters</th><th>Where it is published</th></tr></thead>
+  <tbody>
+    <tr><td>Deorbits versus replacement launches</td><td>The direct read on the replenishment treadmill; leads any margin effect by quarters</td><td>SpaceX semi-annual constellation report to the FCC (IBFS)</td></tr>
+    <tr><td>Global and provider launch counts, spacecraft, upmass</td><td>Whether launch demand outside self-supply exists at all</td><td>BryceTech quarterly Bryce Briefing; planet4589.org</td></tr>
+    <tr><td>Starlink subscribers <em>and</em> ARPU together</td><td>Neither number means anything alone</td><td>Quarterly 10-Q, key business metrics</td></tr>
+    <tr><td>Amazon's satellite count vs the 30 July 2029 deadline</td><td>Decides whether Amazon becomes SpaceX's largest launch customer or its most damaged competitor</td><td>FCC IBFS filings</td></tr>
+    <tr><td>NSSL mission assignments and prices</td><td>The cleanest public series on launch pricing</td><td>Space Systems Command award announcements</td></tr>
+    <tr><td>Starship flights; orbital propellant transfer demo</td><td>Gates the next-generation constellation and the cost of replenishment</td><td>FAA mishap determinations; GAO annual NASA Assessments</td></tr>
+    <tr><td>Blue Origin's LC-36 return to flight; Rocket Lab's Neutron</td><td>The two events that would make reusable cadence contestable</td><td>Company and FAA announcements; RKLB filings</td></tr>
+    <tr><td>U.S. broadband availability at 100/20 Mbps</td><td>Measures the addressable market shrinking under the consumer business</td><td>FCC biennial Section 706 report</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>6 · Risks the cycle does not capture</h2>
+
+<ul class="plain">
+  <li><strong>Two businesses funded from one balance sheet, one of which does not cover its own capital.</strong> Connectivity generated $4,684m of segment EBITDA against $2,699m of its own capex in H1; AI consumed $23,551m. If AI compute demand disappoints, the loss is not only the AI segment's — it is the satellite capital that was not spent, precisely as the replacement cycle steepens. Management discloses the ability to reallocate capex away from data centres, which is the mitigant and also the admission.</li>
+  <li><strong>Revenue concentration in two undisclosed counterparties.</strong> Customer A was 18.3% of Q2 revenue across all three segments; Customer B was 19.5%, entirely AI. Neither is named. Together, roughly 38% of a quarter. The AI contracts are terminable on 90 days' notice after ramp.</li>
+  <li><strong>Related-party financing at a scale that changes the leverage picture.</strong> Three equipment leases with entities affiliated with Valor Equity Partners — whose founder and chief executive sits on the board — carry aggregate undiscounted payments of roughly $20.2bn, guaranteed by SpaceX and treated as failed sale-leasebacks. Recorded debt rose from $4,507m at December 2025 to $13,329m at June 2026, with $513m of related-party interest expense in the half. AI infrastructure financed by a director's firm: disclosed, but not independently priced.</li>
+  <li><strong>Key-person dependency with no insurance and no ability to remove.</strong> The filing states there is no key-person life insurance on Mr Musk and that he does not devote his full time and attention to the business. Removing him as chief executive or chairman requires a majority of Class B shares voting separately — shares he overwhelmingly holds. Class B carries ten votes and elects 51% of the board. The charter also renounces corporate opportunities and expressly permits him and his affiliates to compete with the company.</li>
+  <li><strong>Compensation tied to outcomes with no financial content.</strong> Of 1,302,072,285 restricted Class B shares held by Mr Musk, one billion vest only on fifteen market-capitalization tranches from $500bn to $7.5tn <em>together with</em> the establishment of a permanent human colony on Mars with at least one million inhabitants; the remaining 302.1 million vest on twelve tranches from $1.065tn to $6.565tn together with completion of non-Earth-based data centres delivering 100 terawatts of compute a year. Neither condition is a business result an investor can underwrite.</li>
+  <li><strong>No insurance on the fleet.</strong> The company carries no satellite or launch vehicle insurance. A failure grounding the Falcon fleet stops customer revenue and — more consequentially — constellation replenishment.</li>
+  <li><strong>Prioritizing its own payloads over paying customers.</strong> The filing discloses that the company may prioritize its own launches over U.S. government contracts or third-party customers, that this may limit Space revenue growth and affect regulatory relationships, and that it could invite litigation. This is the conflict at the centre of being both the dominant launch provider and the largest constellation operator.</li>
+  <li><strong>Litigation arriving with the AI segment.</strong> A $354m accrual sits against a docket including a €120m European Commission fine under the Digital Services Act (under appeal), a $105m patent judgment plus $67m interest (under appeal), multiple Grok deepfake-imagery suits, Dutch GDPR class actions, and a Clean Air Act suit over gas turbines powering a Mississippi data centre. None of this existed in the space business.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<p>These are gaps in the filings, not failures of research — and each would change the analysis.</p>
+<ul class="plain">
+  <li><strong>Starlink churn.</strong> No churn or retention metric for consumer subscribers. For a subscription business, the central missing number.</li>
+  <li><strong>Cost per satellite.</strong> Neither the filings nor any primary independent source establishes it. Competitor benchmarks run from roughly €6m per OneWeb satellite to about $45m for IRIS² and SDA Tranche 3. Without SpaceX's own figure the replenishment bill cannot be sized in dollars.</li>
+  <li><strong>Terminal unit economics, and therefore subscriber payback.</strong> No unit cost, no unit margin, no statement of whether hardware is sold below cost. Combined with the missing churn rate, the payback period on a Starlink subscriber cannot be computed from these filings at all — the central unit-economic question of the business is unanswerable as disclosed.</li>
+  <li><strong>Current cost per kilogram to orbit.</strong> Only 2018-vintage NASA reference points and an aspirational Starship target.</li>
+  <li><strong>The identity of Customer A and Customer B</strong>, and government revenue as a discrete disclosed metric — only that approximately one-fifth of 2025 revenue came from U.S. federal agencies.</li>
+  <li><strong>Cursor's financial results</strong>, and <strong>Artemis HLS contract value or milestones</strong> — the lunar programme appears as two sentences of narrative.</li>
+  <li><strong>Segment-level backlog.</strong> Total backlog of $47,461m is consolidated only, so the durable Connectivity portion cannot be separated from AI infrastructure commitments.</li>
+</ul>
+<p>Three of these rank above the rest before a thesis could be formed: consumer churn, the dollar cost of the replenishment cycle, and whether AI cloud revenue is contracted for years or renewable at ninety days.</p>
+
+<h2>7 · Takeaways</h2>
+<ul class="plain">
+  <li><strong>This is a satellite communications company that owns a launch business and has bought an AI business.</strong> Connectivity is 61% of fiscal 2025 revenue and all of the profit; launch is the delivery mechanism for it, and loses money at 51% global share.</li>
+  <li><strong>The engine is one Starlink subscriber</strong> — $66 a month and falling, times 12.0 million and doubling — producing a 61% segment EBITDA margin before the five-year replacement cycle reaches steady state.</li>
+  <li><strong>The main growth lever is revenue per satellite, not satellites.</strong> Enterprise, government, aviation, maritime and satellite-to-mobile stack revenue onto capacity the consumer business already funds, and that tier is growing faster than consumer.</li>
+  <li><strong>What could break the story is arithmetic, not failure.</strong> A fleet approaching 15,000 satellites on a five-year life needs ~3,000 replacements a year, roughly 82% of stated production capacity — and the vehicle meant to make that cheap has not delivered a payload or demonstrated orbital refuelling.</li>
+  <li><strong>Monitor three things:</strong> the deorbit-to-launch ratio, subscribers and ARPU together, and whether AI capex is funded by Connectivity's cash or by the balance sheet.</li>
+</ul>
+
+<footer>
+  <p><strong>Company sources.</strong> Form 424(b)(4) prospectus, 12 June 2026 (financial statements for FY2023–FY2025 and Q1 2026, segment note, risk factors, related-party disclosures, IPO terms). Form 10-Q for the quarter ended 30 June 2026, filed 4 August 2026. Forms 8-K dated 15, 16, 17, 22, 23 and 26 June, 4 August and 14 August 2026. There is no annual report — the company's first fiscal year as a public issuer is still in progress.</p>
+  <p><strong>Independent sources.</strong> BryceTech quarterly launch and spacecraft data; FCC (Section 706 broadband report, August 2026; NGSO deployment orders; SpaceX semi-annual constellation reports; Auction 113 results); FAA Part 450 licensing records; GAO NASA assessments, May 2026; Jonathan McDowell active-satellite catalogue, 13 August 2026; U.S. Space Systems Command NSSL award announcements; NASA (Jones, NTRS 20200001093); Analysys Mason commercial GEO order data; and the public filings of Rocket Lab, Viasat, SES, Eutelsat, EchoStar and AST SpaceMobile.</p>
+  <p><strong>Post-dating the reported figures.</strong> The Cursor acquisition closed 14 August 2026 and Mesh Optical on 6 July 2026, both after the 30 June balance-sheet date. The EchoStar spectrum acquisition has not completed; final transfer is modelled at 30 November 2027. None of the three appears in any financial figure on this page.</p>
+</footer>
+
+</div>
+</body>
+</html>

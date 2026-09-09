@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Micron Technology (MU)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2}
+h1{font-size:38px;margin:6px 0 14px}
+h2{font-size:27px;margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-family:Georgia,serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;line-height:1.5;margin-bottom:34px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.45;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 20px;margin:0 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lbl{font-family:Georgia,serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:#C9BFAF;font-weight:700;margin-bottom:10px}
+.engine .big{font-family:Georgia,serif;font-size:25px;line-height:1.35;margin:0 0 12px}
+.engine p{margin:0;font-size:17px;color:#E9E1D4;line-height:1.5}
+.engine em{color:#F0BFA9;font-style:normal;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi .v{font-family:Georgia,serif;font-size:27px;color:var(--terracotta);font-weight:700;
+  font-variant-numeric:tabular-nums;margin:6px 0 4px;line-height:1.1}
+.kpi .s{font-size:14px;color:var(--muted);line-height:1.4}
+.kpinote{font-size:14px;color:var(--muted);margin:0 0 8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:14px 18px;margin:12px 0}
+.lever.structural{border-left-color:var(--good)} .lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)} .lever.temp{border-left-color:var(--terracotta)}
+.lever .tag{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700}
+.structural .tag{color:var(--good)} .mgmt .tag{color:var(--gold)}
+.cyclical .tag{color:var(--blue)} .temp .tag{color:var(--terracotta)}
+.lever .lt{font-family:Georgia,serif;font-size:18px;font-weight:700;margin:3px 0 5px}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0}
+.pull q{font-family:Georgia,serif;font-size:21px;line-height:1.4;display:block;quotes:'\201C' '\201D'}
+.pull .attr{font-size:14px;color:var(--muted);margin-top:12px;letter-spacing:.03em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.two h4{font-family:Georgia,serif;font-size:17px;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.two.durable .col:first-child h4{color:var(--good)} .two.durable .col:last-child h4{color:var(--terracotta)}
+.two ul{margin:0;padding-left:18px} .two li{font-size:16px;line-height:1.45;margin-bottom:9px}
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:Georgia,serif;font-size:14px;font-weight:700;background:#F6F1E7;color:var(--ink);
+  white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#FCFAF6}
+.cap{font-size:14px;color:var(--muted);margin:-10px 0 24px;line-height:1.45}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 10px;margin:22px 0}
+.chart h3{margin:0 0 2px;font-size:19px}
+.chart .sub{font-size:14px;color:var(--muted);margin:0 0 10px}
+svg{display:block;width:100%;height:auto}
+.foot{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:14.5px;color:var(--muted);line-height:1.55}
+.foot h3{font-size:16px;color:var(--ink);margin:0 0 10px}
+.foot ul{padding-left:18px;margin:0 0 14px}
+.unk{background:#F6F1E7;border-radius:4px;padding:1px 6px;font-size:14px;color:var(--muted);
+  font-weight:700;letter-spacing:.04em}
+@media (max-width:760px){
+  body{font-size:18px} .wrap{padding:30px 16px 60px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Micron Technology, Inc. <span style="color:var(--muted);font-weight:400">(NASDAQ: MU)</span></h1>
+<p class="srcline">6 September 2026 · Built from Micron's SEC filings — FY2021–FY2025 Forms 10-K and Forms 10-Q through the quarter ended 28 May 2026 — supplemented by independent industry sources for market structure, competitor economics and price history. Fiscal 2026 ended in early September 2026 and had not been reported as at this date. <strong>Not a valuation and not a recommendation.</strong></p>
+
+<div class="restate">Micron is a commodity manufacturer of memory bits — one of three companies that can make both DRAM and NAND at the leading edge — whose earnings are set by an industry price it does not control.</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="big">One gigabit of DRAM or NAND.</div>
+  <p>Micron converts a silicon wafer into bits at a cost per bit that falls with each process node, and sells those bits at a price per bit set by the industry. <em>The spread between the two is the entire business.</em> Because depreciation dominates the cost base — $8.28bn in FY2025 — almost nothing in cost moves with price, so essentially every incremental dollar of price falls to gross profit. In the quarter ended May 2026, $6.4bn of cost of goods sold against $41.5bn of revenue produced an 85% gross margin. The identical structure produced <em>negative 9%</em> in FY2023.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Unit price</div><div class="v">≈ +140%</div><div class="s">DRAM average selling price, 9M FY2026 vs prior year. Absolute $/Gb is never disclosed.</div></div>
+  <div class="kpi"><div class="k">Unit profit</div><div class="v">85%</div><div class="s">Gross margin, quarter ended 28 May 2026. Prior cycle peak: 45% (FY2022).</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">$28.2bn</div><div class="s">Net income in the quarter; $47.3bn over nine months. Diluted EPS $24.67.</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">≈ $24bn net cash</div><div class="s">$30.1bn cash and investments against $5.7bn of total debt; equity $100.7bn.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak</div><div class="s">Margin 40 pts above prior peak, 94 pts above the FY2023 trough — on ordinary bit volume.</div></div>
+  <div class="kpi"><div class="k">Reported vs organic</div><div class="v">+203% <span style="font-size:17px;color:var(--muted)">= organic</span></div><div class="s">Nine-month revenue growth. No acquired revenue; only asset deal was a $1.8bn fab purchase.</div></div>
+</div>
+<p class="kpinote">Sources: FY2025 10-K; FY2026 Q3 10-Q.</p>
+
+<h2>1. What the company does</h2>
+<p>Processors compute faster than they can be fed data. DRAM holds working data close to the processor so it can be read in nanoseconds; NAND stores it durably and cheaply when the power is off. Every computer, phone, car and AI accelerator needs both, no volume-production substitute exists for either, and only three companies manufacture both at the leading edge.</p>
+<p>Micron buys a 300mm silicon wafer and runs it through a fab operating twenty-four hours a day, seven days a week. The wafer yields several hundred dies, each holding a fixed number of bits. The filings state that the primary determinants of manufacturing cost are &ldquo;process line-width, 3D non-volatile layers, NAND cell levels, process complexity … and manufacturing yield&rdquo; — so cost per bit falls with <em>technology transitions</em>, not with volume. That is why the industry re-engineers its process roughly every eighteen months, and why depreciation rather than labour or materials is the dominant cost. Dies are packaged — for High-Bandwidth Memory, stacked twelve high and wired vertically through the silicon — tested, shipped, and collected shortly afterwards.</p>
+<div class="card">
+  <h3 style="margin-top:0">The disclosure gap that organises everything</h3>
+  <p style="margin-bottom:0">Micron never publishes the absolute price or cost of a gigabit, nor the absolute number of bits it ships. It reports only <em>percentage changes</em> in average selling price and bit shipments. An outside investor can therefore measure the direction and magnitude of unit economics with unusual precision — but never their level, and so cannot compute Micron's cost per bit against Samsung's or SK hynix's. That is the number which decides who survives a trough intact. <span class="unk">NOT DISCLOSED</span></p>
+</div>
+<p>DRAM was 76% of revenue in the most recent quarter ($31.3bn), NAND 24% ($9.9bn). The four reporting units are organised by customer type, not by product, and were reorganised in Q4 FY2025 with prior periods restated.</p>
+<div class="tw"><table>
+<thead><tr><th>Unit</th><th>What it serves</th><th class="n">Q3 FY26 revenue</th><th class="n">% of total</th><th class="n">Op. margin</th></tr></thead>
+<tbody>
+<tr><td><strong>CMBU</strong></td><td>Large hyperscale cloud customers, and HBM for all data-centre customers</td><td class="n">$13.8bn</td><td class="n">33%</td><td class="n">78%</td></tr>
+<tr><td><strong>CDBU</strong></td><td>Mid-tier cloud, enterprise and OEM data centre; storage for all data-centre customers</td><td class="n">$11.5bn</td><td class="n">28%</td><td class="n">83%</td></tr>
+<tr><td><strong>MCBU</strong></td><td>Mobile and client</td><td class="n">$11.5bn</td><td class="n">28%</td><td class="n">86%</td></tr>
+<tr><td><strong>AEBU</strong></td><td>Automotive, industrial and consumer embedded</td><td class="n">$4.6bn</td><td class="n">11%</td><td class="n">75%</td></tr>
+</tbody></table></div>
+<p class="cap">Source: FY2026 Q3 10-Q. Business units reorganised in Q4 FY2025; prior-period segment figures retrospectively restated and not comparable to earlier filings as originally reported.</p>
+<p>The line being entered is the data centre; the line being vacated is not a product but a customer set. CMBU grew from 12% of revenue in FY2023 to 36% in FY2025 while MCBU fell from 48% to 32%. The mechanism was deliberate allocation, not new capacity: Micron &ldquo;shifted a portion of our DRAM supply to the data center and hyperscale cloud markets,&rdquo; while MCBU &ldquo;product supply was constrained to meet demand from higher-value segments&rdquo; (FY2025 10-K). Mobile customers received fewer bits because data-centre customers paid more for them — and in FY2025 CMBU earned a 45% operating margin against MCBU's 17%.</p>
+
+<div class="chart">
+<h3>The cycle, in one line</h3>
+<p class="sub">Consolidated gross margin, % of revenue, by fiscal year and by quarter of FY2026</p>
+<svg viewBox="0 0 880 330" role="img" aria-label="Gross margin by period: FY2020 31%, FY2021 38%, FY2022 45%, FY2023 minus 9%, FY2024 22%, FY2025 40%, Q1 FY2026 56%, Q2 FY2026 74%, Q3 FY2026 85%">
+  <g font-family="Calibri, Segoe UI, Arial" font-size="13" fill="#6E675C">
+    <line x1="70" y1="40" x2="850" y2="40" stroke="#E5DDD0"/><text x="62" y="45" text-anchor="end">90%</text>
+    <line x1="70" y1="100" x2="850" y2="100" stroke="#E5DDD0"/><text x="62" y="105" text-anchor="end">60%</text>
+    <line x1="70" y1="160" x2="850" y2="160" stroke="#E5DDD0"/><text x="62" y="165" text-anchor="end">30%</text>
+    <line x1="70" y1="220" x2="850" y2="220" stroke="#9A9182"/><text x="62" y="225" text-anchor="end">0%</text>
+    <line x1="70" y1="260" x2="850" y2="260" stroke="#E5DDD0"/><text x="62" y="265" text-anchor="end">−20%</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+    points="100,158 190,144 280,130 370,238 460,176 550,140 640,108 730,72 820,50"/>
+  <g fill="#C75B39">
+    <circle cx="100" cy="158" r="4.5"/><circle cx="190" cy="144" r="4.5"/><circle cx="280" cy="130" r="4.5"/>
+    <circle cx="370" cy="238" r="5.5"/><circle cx="460" cy="176" r="4.5"/><circle cx="550" cy="140" r="4.5"/>
+    <circle cx="640" cy="108" r="4.5"/><circle cx="730" cy="72" r="4.5"/><circle cx="820" cy="50" r="5.5"/>
+  </g>
+  <g font-family="Georgia, serif" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">
+    <text x="100" y="146">31</text><text x="190" y="132">38</text><text x="280" y="118">45</text>
+    <text x="370" y="258">−9</text><text x="460" y="164">22</text><text x="550" y="128">40</text>
+    <text x="640" y="96">56</text><text x="730" y="60">74</text><text x="820" y="38">85</text>
+  </g>
+  <g font-family="Calibri, Segoe UI, Arial" font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="100" y="300">FY20</text><text x="190" y="300">FY21</text><text x="280" y="300">FY22</text>
+    <text x="370" y="300">FY23</text><text x="460" y="300">FY24</text><text x="550" y="300">FY25</text>
+    <text x="640" y="300">Q1'26</text><text x="730" y="300">Q2'26</text><text x="820" y="300">Q3'26</text>
+  </g>
+  <g font-family="Calibri, Segoe UI, Arial" font-size="13" fill="#6E675C">
+    <text x="330" y="284" text-anchor="middle">trough</text>
+    <line x1="595" y1="275" x2="595" y2="30" stroke="#E5DDD0" stroke-dasharray="4 4"/>
+    <text x="602" y="26">FY2026 quarters →</text>
+  </g>
+</svg>
+<p class="cap" style="margin:8px 0 0">Sources: FY2022, FY2023, FY2025 Forms 10-K; FY2026 Q3 10-Q. Q1 FY2026 gross margin (56%) is derived by subtracting the disclosed Q2 and Q3 figures from the disclosed nine-month totals; all other points are as filed.</p>
+</div>
+
+<h2>2. Industry, competitive position and moat</h2>
+<p>The memory industry sells interchangeable bits built to a common JEDEC standard. A Samsung DDR5 die and a Micron DDR5 die at the same specification do the same job in the same socket. Because the product is fungible, price is set by whichever supplier is willing to sell the marginal bit; and because fixed costs dominate cash costs, every producer keeps its fabs running even when price falls below full cost. That combination is the whole reason memory cycles are as violent as they are.</p>
+<p>DRAM is a three-firm oligopoly with a fourth, state-funded entrant. In the second calendar quarter of 2026, DRAM revenue share was <strong>Samsung 39%, SK hynix 26%, Micron 25%, CXMT 10%</strong> (Counterpoint Research, reported Aug–Sep 2026). NAND is more fragmented: Samsung $23.1bn, SK hynix and Solidigm $14.3bn, Micron $11.9bn, Kioxia $10.7bn, SanDisk $9.0bn in the same quarter, the top five together up 77% sequentially (TrendForce, 18 Aug 2026). In HBM — the highest-value product in the industry — SK hynix held 50%, Samsung 33% and Micron 18%, against 62% / 17% / 21% a year earlier (Counterpoint). <strong>Micron is third in DRAM, third in NAND and third in HBM.</strong></p>
+<p>The barriers that actually bind are capital, lithography and qualification. A leading-edge DRAM fab costs on the order of $10bn — Nanya's new EUV fab is budgeted at roughly $10.7bn, Micron's Hiroshima modernisation at roughly ¥1.5 trillion. EUV lithography is denied to Chinese producers by export control, leaving CXMT on DUV at 193nm, two to three process generations behind and carrying a cost-per-bit disadvantage estimated above 30%. HBM must additionally be qualified by the accelerator vendor, which takes multiple quarters. What does <em>not</em> bind is intellectual property in the exclusionary sense: Micron holds more than 60,000 granted patents, but the industry litigates over them rather than being kept out by them.</p>
+
+<h3>The margin test — the most important evidence here</h3>
+<div class="tw"><table>
+<thead><tr><th>Producer</th><th>Most recent reported quarter</th><th class="n">Operating margin</th></tr></thead>
+<tbody>
+<tr><td><strong>Micron</strong></td><td>Q3 FY2026, ended 28 May 2026</td><td class="n"><strong>80.4%</strong></td></tr>
+<tr><td>SK hynix</td><td>Q2 CY2026</td><td class="n">76%</td></tr>
+<tr><td>Kioxia</td><td>Quarter ended Jun 2026 (adjusted)</td><td class="n">75%</td></tr>
+<tr><td>Samsung, Device Solutions division</td><td>Q2 CY2026</td><td class="n">69.9%</td></tr>
+<tr><td>SanDisk</td><td>FQ3 2026 (GAAP)</td><td class="n">69.1%</td></tr>
+</tbody></table></div>
+<p class="cap">Sources: Micron FY2026 Q3 10-Q; SK hynix, Samsung and SanDisk quarterly releases; Kioxia earnings call as reported, Aug 2026.</p>
+<p>Kioxia's own decomposition settles the mechanism: blended average selling price rose approximately 70% year over year on <em>low-single-digit</em> bit growth. The margin is coming from price, and the price is coming from the industry — not from any one operator's execution. The consequence is that <strong>Micron's current economics are an industry condition, not a company-specific advantage.</strong> They are being earned simultaneously by every producer, including the smallest and least technically advanced, which means they are reproducible by competitors and reversible by the same mechanism that created them. Nothing in the peer data supports treating an 85% gross margin as evidence of a moat.</p>
+<p>Three things <em>are</em> specific to Micron. It is the only leading-edge memory manufacturer headquartered in the United States, which converts industrial policy into cash: up to $6.4bn of CHIPS Act grants, a 35% investment tax credit on qualified US semiconductor investment, and a non-binding New York State term sheet worth up to $5.5bn over twenty-plus years. It shipped the industry's first 1-gamma DRAM node — its first using EUV — in FY2025. And it carries roughly $24bn of net cash, which is the balance sheet a memory company needs to keep investing when prices collapse. Against that, 40% of its property, plant and equipment sits in <strong>Taiwan</strong> and only 18% in the United States, while 65% of FY2025 revenue came from US-headquartered customers. The geography of its assets is far more concentrated than the geography of its politics.</p>
+<p>CXMT went from 4% to 10% of global DRAM revenue in twelve months. It cannot win on economics — it is generations behind and more than 30% more expensive per bit — and it does not need to. With roughly 36% state-linked ownership before its IPO, about $8.6bn raised and a stated target above 600,000 wafer starts per month by 2030, it can add supply on a policy signal rather than a price signal. Oligopoly discipline, which is what made the pricing of the last two years possible, has no mechanism for disciplining a participant indifferent to returns.</p>
+<p>The industry rewards the lowest-cost, highest-share producer with the balance sheet to keep investing through a trough. In the 2018–19 downturn, Samsung and SK hynix gained DRAM share while Micron lost it. Micron now has the balance sheet and has closed much of the technology gap, but remains the third-largest producer in all three of its markets. <em>It is closer to being the kind of company that wins here than at any point in the period examined; it is not yet that company.</em></p>
+
+<h2>3. Growth engine</h2>
+<p>There is no acquired growth to separate out. Micron has purchased no revenue over the period; its only material transaction was the March 2026 acquisition of a wafer fab in Tongluo, Taiwan from Powerchip for $1.8bn in cash, which adds capacity from mid-calendar 2027 and contributed nothing to reported revenue. <strong>Every point of the 203% nine-month revenue increase is organic.</strong> The decomposition that matters is therefore price against volume — and Micron discloses it precisely.</p>
+<div class="tw"><table>
+<thead><tr><th>Period</th><th class="n">DRAM revenue</th><th class="n">of which price</th><th class="n">NAND revenue</th><th class="n">of which price</th></tr></thead>
+<tbody>
+<tr><td>9M FY26 vs 9M FY25</td><td class="n">+211%</td><td class="n">≈ +140 pts</td><td class="n">+183%</td><td class="n">≈ +130 pts</td></tr>
+<tr><td>Q3 FY26 vs Q3 FY25</td><td class="n">+343%</td><td class="n">+low-260% ASP</td><td class="n">+361%</td><td class="n">+mid-310% ASP</td></tr>
+<tr><td>Q3 FY26 vs Q2 FY26</td><td class="n">+67%</td><td class="n">+low-60% ASP</td><td class="n">+99%</td><td class="n">+mid-80% ASP</td></tr>
+<tr><td>FY2025 vs FY2024</td><td class="n">+62%</td><td class="n">+low-40% ASP</td><td class="n">+18%</td><td class="n">volume only</td></tr>
+<tr><td>FY2024 vs FY2023</td><td class="n">+60%</td><td class="n">+low-teens ASP</td><td class="n">+72%</td><td class="n">+low-30% ASP</td></tr>
+</tbody></table></div>
+<p class="cap">Sources: FY2025 10-K and FY2026 Q3 10-Q, MD&amp;A. Micron expresses price and volume changes as ranges; figures are as filed. Bit shipments made up the remainder of each revenue change.</p>
+<p>Roughly <strong>four-fifths</strong> of the nine-month revenue increase came from average selling prices. Bit volume — the variable Micron actually controls — grew about 30% in DRAM and in the low twenties in NAND, rates a memory company would consider unremarkable. FY2024 is the instructive contrast: revenue rose 62% that year on a reversed composition, with DRAM bits up in the mid-40% range against a low-teens price increase. Same company, same fabs, opposite engine.</p>
+
+<div class="lever cyclical"><div class="tag">Cyclical</div><div class="lt">1 · DRAM price per bit</div><p>Roughly 140 of the 211 points of nine-month DRAM revenue growth. Set by industry supply and demand; Micron is a price-taker.</p></div>
+<div class="lever cyclical"><div class="tag">Cyclical</div><div class="lt">2 · NAND price per bit</div><p>Roughly 130 of 183 points. Kioxia's parallel disclosure of a ~70% blended ASP increase on low-single-digit bit growth confirms the same industry mechanism.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="lt">3 · Data-centre mix shift</div><p>CMBU rose from 12% of FY2023 revenue to 36% of FY2025 by reallocating existing DRAM supply to the highest-priced end markets while deliberately constraining mobile bit shipments. This raises revenue per bit without adding a wafer.</p></div>
+<div class="lever structural"><div class="tag">Structural</div><div class="lt">4 · Bit supply growth from node transitions</div><p>About 30% DRAM bit growth over nine months, generated almost entirely by putting more bits on existing wafers through 1-gamma DRAM and G9 NAND. No new fab produces before mid-calendar 2027.</p></div>
+<div class="lever structural"><div class="tag">Structural</div><div class="lt">5 · HBM — the reason the four above are happening</div><p>HBM consumes roughly <strong>three times the wafer area per bit</strong> of standard DDR5 (Micron, Hot Chips 2026, reported Aug 2026), so each bit of HBM demand mechanically removes about three bits of conventional DRAM supply from the market. That is why AI demand tightens PC and phone memory pricing without any change in PC or phone demand. Micron does not disclose HBM revenue separately, so its direct contribution cannot be measured. <span class="unk">NOT DISCLOSED</span></p></div>
+<div class="lever temp"><div class="tag">Temporary → possibly structural</div><div class="lt">6 · Take-or-pay strategic agreements</div><p>Signed from Q3 FY2026 onwards. Little effect on growth so far; the claim is that they change stability. Terms and cash effects are in section 4.</p></div>
+<p style="margin-top:20px"><strong>The honest summary:</strong> this is a price event occurring on a capacity base that has barely grown. Management's contribution has been to aim existing supply at the highest-priced demand — a real skill with a real margin consequence, but not the same thing as having created the growth.</p>
+
+<div class="chart">
+<h3>Where the bits are going</h3>
+<p class="sub">Data centre (CMBU + CDBU) versus mobile and client (MCBU), % of total revenue</p>
+<svg viewBox="0 0 880 300" role="img" aria-label="Data centre share of revenue rose from 26% in FY2023 to 61% in Q3 FY2026, while mobile and client fell from 48% to 28%.">
+  <g font-family="Calibri, Segoe UI, Arial" font-size="13" fill="#6E675C">
+    <line x1="70" y1="40" x2="850" y2="40" stroke="#E5DDD0"/><text x="62" y="45" text-anchor="end">70%</text>
+    <line x1="70" y1="100" x2="850" y2="100" stroke="#E5DDD0"/><text x="62" y="105" text-anchor="end">50%</text>
+    <line x1="70" y1="160" x2="850" y2="160" stroke="#E5DDD0"/><text x="62" y="165" text-anchor="end">30%</text>
+    <line x1="70" y1="220" x2="850" y2="220" stroke="#E5DDD0"/><text x="62" y="225" text-anchor="end">10%</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round" points="140,172 380,127 620,64 810,37"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round" points="140,106 380,124 620,109 810,124"/>
+  <g fill="#C75B39"><circle cx="140" cy="172" r="4.5"/><circle cx="380" cy="127" r="4.5"/><circle cx="620" cy="64" r="4.5"/><circle cx="810" cy="37" r="5.5"/></g>
+  <g fill="#3C6E8F"><circle cx="140" cy="106" r="4.5"/><circle cx="380" cy="124" r="4.5"/><circle cx="620" cy="109" r="4.5"/><circle cx="810" cy="124" r="5.5"/></g>
+  <g font-family="Georgia, serif" font-size="14" font-weight="700">
+    <text x="140" y="192" fill="#C75B39" text-anchor="start">26%</text>
+    <text x="810" y="26" fill="#C75B39" text-anchor="end">61%</text>
+    <text x="140" y="96" fill="#3C6E8F" text-anchor="start">48%</text>
+    <text x="810" y="144" fill="#3C6E8F" text-anchor="end">28%</text>
+  </g>
+  <g font-family="Calibri, Segoe UI, Arial" font-size="14" font-weight="600">
+    <text x="640" y="46" fill="#C75B39" text-anchor="end">Data centre</text>
+    <text x="600" y="100" fill="#3C6E8F" text-anchor="end">Mobile &amp; client</text>
+  </g>
+  <g font-family="Calibri, Segoe UI, Arial" font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="140" y="262">FY2023</text><text x="380" y="262">FY2024</text><text x="620" y="262">FY2025</text><text x="810" y="262">Q3 FY2026</text>
+  </g>
+</svg>
+<p class="cap" style="margin:8px 0 0">Sources: FY2025 10-K and FY2026 Q3 10-Q segment tables. Shares computed from disclosed business-unit revenue over total revenue. Segment definitions were restated in Q4 FY2025 and apply consistently across all four points.</p>
+</div>
+
+<h2>4. Margin, cash and capital allocation</h2>
+<p>Two numbers carry the margin story. In the quarter ended May 2026, cost of goods sold rose 5% sequentially while revenue rose 74%. Depreciation, $8.28bn in FY2025, is the largest single cost and is fixed the moment the fab is built. Operating expenses have become almost invisible against revenue — R&amp;D was 3% of revenue in the latest quarter against 20% in FY2023 — but that is entirely a denominator effect: absolute R&amp;D rose 36% year over year.</p>
+<div class="tw"><table>
+<thead><tr><th>$ millions</th><th class="n">FY2023</th><th class="n">FY2025</th><th class="n">9M FY2026</th><th class="n">Q3 FY2026</th></tr></thead>
+<tbody>
+<tr><td><strong>Revenue</strong></td><td class="n">15,540</td><td class="n">37,378</td><td class="n">78,959</td><td class="n">41,456</td></tr>
+<tr><td><strong>Gross margin</strong></td><td class="n">(9)%</td><td class="n">40%</td><td class="n">77%</td><td class="n">85%</td></tr>
+<tr><td><strong>Operating margin</strong></td><td class="n">(37)%</td><td class="n">26%</td><td class="n">70%</td><td class="n">80%</td></tr>
+<tr><td><strong>Net income (loss)</strong></td><td class="n">(5,833)</td><td class="n">8,539</td><td class="n">47,268</td><td class="n">28,243</td></tr>
+<tr><td><strong>Operating cash flow</strong></td><td class="n">1,559</td><td class="n">17,525</td><td class="n">45,702</td><td class="n">n/d</td></tr>
+<tr><td><strong>Capital expenditure</strong></td><td class="n">7,676</td><td class="n">15,860</td><td class="n">19,600</td><td class="n">n/d</td></tr>
+</tbody></table></div>
+<p class="cap">Sources: FY2023 and FY2025 Forms 10-K; FY2026 Q3 10-Q. <strong>Comparability:</strong> business units were reorganised in Q4 FY2025 with prior periods restated; FY2023 predates HBM at scale, so the product mix behind these lines is not the same business; the 9M and Q3 FY2026 columns are unaudited interim periods, not annual figures; capital expenditure is gross of government incentives ($2.01bn in FY2025, $2.99bn in the nine months to May 2026).</p>
+<p>Cash conversion is close to one-for-one — $45.7bn of nine-month operating cash flow against $47.3bn of net income — despite receivables ballooning from $9.3bn to $31.0bn. The offset came from a $3.3bn increase in payables and accrued expenses, higher tax payables, and higher consideration payable to customers for pricing adjustments. <strong>Inventory tells the sharpest story: $8.57bn at May 2026 against $8.36bn nine months earlier — effectively flat while revenue rose four and a half times.</strong> Micron is selling everything it makes, and that fact, more than any margin figure, defines the current moment.</p>
+<p>Capex was $19.6bn gross in nine months, guided to approximately $27bn for FY2026 net of incentives, against $7.68bn at the FY2023 trough. Micron does not disclose a maintenance-versus-growth split <span class="unk">NOT DISCLOSED</span>, but it discloses the destination, and the <em>timing</em> matters more than the amount: Boise fab one produces its first DRAM in mid-calendar 2027, a second Boise fab in late calendar 2028, the first New York fab supplies from 2030, Singapore HBM packaging from the first half of calendar 2027, Tongluo from mid-calendar 2027. Not one dollar of the current programme produces a saleable bit before mid-2027.</p>
+<div class="tw"><table>
+<thead><tr><th>Use of cash, 9M FY2026</th><th class="n">Amount</th><th>Reading</th></tr></thead>
+<tbody>
+<tr><td>Capital expenditure</td><td class="n">$19.60bn</td><td>Committed at peak margin; first output mid-2027</td></tr>
+<tr><td>Debt repayment</td><td class="n">$9.38bn</td><td>Ten separate notes and term loans prepaid in whole or part</td></tr>
+<tr><td>Share repurchases</td><td class="n">$0.65bn</td><td>2.5m shares; $2.2bn of the $10bn authorisation still unused</td></tr>
+<tr><td>Dividends</td><td class="n">$0.44bn</td><td>Quarterly rate raised from $0.115 to $0.15</td></tr>
+<tr><td>Retained in cash</td><td class="n">+$20.5bn</td><td>Cash and investments rose from $9.6bn to $30.1bn</td></tr>
+</tbody></table></div>
+<p><strong>The ranking is the finding.</strong> In the largest cash-generating period in the company's history, management repaid $9.4bn of debt, took gross borrowings from $14.6bn down to $5.7bn, and let cash build to $30.1bn — while buying back $650m of stock against $47.3bn of earnings. Buybacks are restricted under the CHIPS Act funding agreements, which is part of the explanation, but the pattern is consistent with a management team fortifying the balance sheet for a downturn rather than distributing a windfall. That is the behaviour of people who have run this business through FY2023.</p>
+
+<h3>The strategic customer agreements — announced, and post-dating most of the reported figures</h3>
+<p>From Q3 and Q4 FY2026, Micron began entering multi-year <strong>take-or-pay</strong> agreements with binding volume commitments — a structural departure from the short-term negotiated pricing that had defined the business for decades. Most are fixed-price or carry floor and ceiling bands; the largest have a ceiling for existing products approximating the market price in the second calendar quarter of 2026, and a floor running through the term. Micron expects <strong>$22bn of cash deposits and related financial commitments</strong> from agreements concluded to date, roughly $18bn of it in cash.</p>
+<div class="pull">
+  <q>We expect gross margins from our strategic customer agreements with price bands, even at floor pricing levels, to yield gross margins well above our peak quarterly margins in any past cycle.</q>
+  <div class="attr">Micron Technology, Form 10-Q for the quarter ended 28 May 2026</div>
+</div>
+<p>Two things belong beside that claim. The disclosed remaining performance obligation is only about <strong>$5bn</strong>, because it is measured at minimum volumes at minimum prices and excludes the agreements without price bands — it is a floor on a floor, not a backlog, and roughly one third is expected to convert to revenue within twelve months. And the floor prices, counterparties, contract lengths and cancellation provisions are not disclosed <span class="unk">NOT DISCLOSED</span>. <em>The most consequential claim in Micron's current story is, from the filings, untestable.</em></p>
+
+<h2>5. Cyclicality, constraints and what to monitor</h2>
+<p>The evidence for how bad this gets sits inside the document set itself. Between FY2022 and FY2023 Micron's revenue fell 49%, gross margin went from 45% to negative 9%, and the company lost $5.8bn. It suspended the company-wide bonus, cut executive salaries, reduced wafer starts significantly below peak capacity, and cut capital expenditure from $12.1bn to $7.7bn. Industry-wide, DRAM revenue fell from $25.6bn in Q2 CY2022 to roughly $11.4bn a year later — about 55% in four quarters — with Micron's own DRAM revenue falling 41% in Q4 CY2022 alone (TrendForce). The 2018–19 downturn was milder: industry DRAM revenue fell 18.3% in a quarter, and SK hynix's operating margin went from 66% to 58%. The two most recent downturns differed by a factor of three, which is itself worth holding onto.</p>
+<p><strong>Where the business sits now:</strong> at an unprecedented peak on price and margin, and at an ordinary point on volume. The 85% gross margin is 40 points above the previous cycle peak of 45% in FY2022 and 94 points above the FY2023 trough, while bit shipments grew about 30% in DRAM over nine months. A record margin reached on ordinary volume is a <em>price</em> peak — and price peaks in this industry have never been the durable part.</p>
+<p>Supply is genuinely tight today, and the constraint is mechanical rather than rhetorical: SEMI projects 300mm memory wafer capacity rising only from about 4.1 to 4.2 million wafers per month between 2026 and 2027, even as memory equipment spending rises from $52bn to $57bn, because capital is going into more expensive nodes and HBM packaging rather than raw wafer starts. <strong>But tightness of this kind is capital, not physics.</strong> Samsung has committed roughly $73bn across chips in 2026, SK hynix's first-half capex rose 73% year over year, and Micron's own FY2026 capex is roughly double FY2025's. That is the same synchronised capacity response that ended each of the last two cycles, arriving on the same eighteen-to-twenty-four-month lag — which places it in 2027 and 2028.</p>
+<p>A second temporary item is easy to miss. Singapore tax incentives reduced the FY2025 tax provision by $1.05bn, worth $0.93 of diluted EPS. Singapore's implementation of the Pillar Two 15% minimum tax &ldquo;largely offsets the benefit&rdquo; from FY2026, and the effective rate has already moved from 11.6% to 15.0%.</p>
+
+<div class="two durable">
+  <div class="col"><h4>Durable — likely still true in ten years</h4><ul>
+    <li>One of three leading-edge DRAM producers, with ~25% of industry revenue</li>
+    <li>300mm fab base and process capability, including the first EUV DRAM node (1-gamma)</li>
+    <li>US headquarters: up to $6.4bn CHIPS grants and a 35% investment tax credit</li>
+    <li>~$24bn net cash — the capacity to keep investing through a trough</li>
+    <li>HBM qualification with accelerator vendors and hyperscaler relationships</li>
+  </ul></div>
+  <div class="col"><h4>Borrowed — currently helping</h4><ul>
+    <li>85% gross margin — every peer reported 69–80% operating margins in the same quarter</li>
+    <li>DRAM ASP up ~140% in nine months; ~4/5 of revenue growth is price</li>
+    <li>Flat inventory and 4.5× revenue on a capacity base that has barely grown</li>
+    <li>Take-or-pay floors struck against calendar Q2 2026 prices, the highest ever recorded</li>
+    <li>An effective tax rate already moving from 11.6% to 15.0% on Pillar Two</li>
+  </ul></div>
+</div>
+
+<div class="tw"><table>
+<thead><tr><th>What to monitor</th><th>Where it is published</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td><strong>DRAM and NAND contract and spot prices</strong></td><td>TrendForce, DRAMeXchange — monthly</td><td>The primary driver of everything above</td></tr>
+<tr><td><strong>Micron inventory days; ASP-vs-bit split in MD&amp;A</strong></td><td>Micron Form 10-Q — quarterly</td><td>Inventory building while revenue holds, or ASP turning negative while bits grow, is the first mechanical sign FY2022–23 is repeating</td></tr>
+<tr><td><strong>Memory wafer capacity and equipment spending</strong></td><td>SEMI fab forecasts and quarterly billings</td><td>Where 2027–28 supply becomes visible before it becomes price</td></tr>
+<tr><td><strong>Competitor capex and capacity announcements</strong></td><td>Samsung, SK hynix quarterly releases</td><td>The synchronised response that ended the last two cycles</td></tr>
+<tr><td><strong>HBM share by vendor</strong></td><td>Counterpoint, TrendForce quarterly trackers</td><td>Micron's 18% against SK hynix's 50% decides whether it participates in the high end of the next cycle</td></tr>
+<tr><td><strong>CXMT revenue share and node progress</strong></td><td>Counterpoint DRAM tracker</td><td>The variable with no precedent in prior cycles</td></tr>
+</tbody></table></div>
+
+<h2>6. Risks and unknowns</h2>
+<p>Cyclicality is covered above. What follows is what cyclicality alone does not capture, ordered so that the risks which compound come first.</p>
+<div class="card">
+<p><strong>The take-or-pay agreements may not do what they are described as doing.</strong> Floors are struck against calendar Q2 2026 market prices, the highest in the industry's history. If spot prices fall well below those floors, the customer's economic incentive is to renegotiate, defer or dispute — and Micron's remedy is litigation with its largest customers during a downturn. A contract that binds only while it is out of the money converts margin protection into receivable and deposit-refund risk.</p>
+<p><strong>Customer and end-market concentration compound rather than diversify.</strong> One customer was 17% of FY2025 revenue, the top ten roughly half, and data centre is 61% of the latest quarter. These are not independent exposures: a single hyperscaler pausing capital spending reduces Micron's revenue twice — once through the direct relationship, and again through the industry price that the same order book supports.</p>
+<p><strong>Capacity is being committed at peak prices into a supply response already announced.</strong> $19.6bn spent in nine months, ~$27bn guided for FY2026, and above $45bn indicated for FY2027 (a company statement made at a conference in August 2026 that post-dates every filing here), against fabs whose first output is mid-2027 at the earliest. Capital committed at peak margin arrives as depreciation precisely when price normalises: the cost base steps up permanently while the revenue that justified it does not.</p>
+<p><strong>CXMT does not need to earn a return.</strong> A producer roughly 36% state-linked before its IPO, two to three nodes behind, more than 30% more expensive per bit, that raised about $8.6bn and targets over 600,000 wafer starts per month by 2030, adds supply on a policy signal. Supply discipline has no mechanism for disciplining a participant indifferent to price.</p>
+<p><strong>Asset geography is a live concentration.</strong> Forty per cent of PP&amp;E sits in Taiwan, while the Idaho and New York fabs that would rebalance it do not produce between mid-2027 and 2030. A memory fab cannot be substituted or relocated, so a disruption to Taiwanese operations would remove a large share of output for years rather than quarters.</p>
+<p style="margin-bottom:0"><strong>Government incentives are conditional and constraining.</strong> CHIPS grants of up to $6.4bn and non-US incentives are subject to reduction, termination or clawback if outcomes and compliance requirements are not met, and the CHIPS agreements restrict share repurchases. A shortfall raises net capital cost on projects already committed and irreversible.</p>
+</div>
+<h3>What the sources could not answer</h3>
+<ul>
+<li>Absolute average selling price or cost per gigabit, and absolute bit volumes — so Micron's cost position against Samsung's and SK hynix's cannot be computed.</li>
+<li>HBM revenue, HBM gross margin, and HBM as a share of DRAM bits — never disclosed separately, despite HBM being the stated reason for the entire mix shift.</li>
+<li>The maintenance-versus-growth split of capital expenditure.</li>
+<li>Strategic customer agreement counterparties, floor price levels, contract lengths, volume commitments and cancellation provisions.</li>
+<li>FY2026 fourth-quarter and full-year results — fiscal 2026 ended in early September 2026 and had not been reported as at this date.</li>
+</ul>
+<p>Before forming a thesis, three things would need resolving: the floor-price mechanics of the strategic agreements at least in aggregate; a bottom-up view of industry bit supply growth for calendar 2027 and 2028 built from announced capacity rather than from Micron's characterisation of it; and Micron's cost per bit relative to its two larger competitors — the only number that determines who emerges from the next trough with share intact.</p>
+
+<h2>7. Takeaways</h2>
+<div class="card">
+<ul style="margin:0;padding-left:20px">
+<li style="margin-bottom:12px">Micron is a commodity manufacturer of memory bits — third in scale in each of DRAM, NAND and HBM — whose earnings are set by an industry price it does not control.</li>
+<li style="margin-bottom:12px">The economic engine is operating leverage on a near-fixed cost base: $6.4bn of cost against $41.5bn of revenue produced an 85% gross margin; the identical structure produced −9% in FY2023.</li>
+<li style="margin-bottom:12px">The main growth lever right now is price, not volume — roughly four-fifths of the nine-month revenue increase came from average selling prices, on bit growth of about 30%.</li>
+<li style="margin-bottom:12px">What could break the story is the supply response already announced and funded across the industry, arriving on a 2027–28 lag, compounded by a state-funded entrant that adds capacity irrespective of returns.</li>
+<li style="margin-bottom:0">What to monitor: DRAM contract prices, Micron's inventory and the price-versus-volume split in its own MD&amp;A, industry capacity additions for 2027–28, and any disclosure that makes the take-or-pay floors testable.</li>
+</ul>
+</div>
+
+<div class="foot">
+<h3>Sources</h3>
+<p style="margin-bottom:8px"><strong>Company (source of truth) — Micron SEC filings held in the MU research folder:</strong></p>
+<ul>
+<li>Forms 10-K for fiscal years 2021, 2022, 2023, 2024 and 2025 (FY2025 filed 3 October 2025, year ended 28 August 2025)</li>
+<li>Form 10-Q for the third quarter of fiscal 2026, quarter ended 28 May 2026 (filed 25 June 2026) — the most recent reported figures</li>
+<li>Forms 10-Q for FY2026 Q1 and Q2; Forms 8-K; Forms DEF 14A 2021–2025</li>
+</ul>
+<p style="margin-bottom:8px"><strong>Industry (independent) — for market structure, competitor economics and price history:</strong></p>
+<ul>
+<li>Counterpoint Research — DRAM and HBM revenue share, Q2 CY2026; CXMT share, capacity and cost position (reported August–September 2026)</li>
+<li>TrendForce — NAND brand revenue Q2 CY2026 (18 August 2026); historical DRAM industry revenue for the 2018–19 and 2022–23 downturns</li>
+<li>SEMI — 300mm memory equipment spending and wafer capacity forecasts, 2026–2027</li>
+<li>Quarterly results releases of SK hynix, Samsung Electronics (Device Solutions), Kioxia and SanDisk</li>
+<li>Micron statements at Hot Chips 2026 and the Six Five Summit (August 2026), as reported in trade press — these post-date every filing in the evidence base and are identified as such wherever used</li>
+</ul>
+<p style="margin-bottom:0"><strong>Post-dating the filings:</strong> the strategic customer agreements described in section 4 include agreements executed after 28 May 2026, and management has indicated FY2027 capital expenditure above $45bn at an August 2026 conference. Neither is reflected in any reported financial statement in this evidence base. Micron's fiscal 2026 ended in early September 2026 and had not been reported as at 6 September 2026.</p>
+<p style="margin-top:18px;font-style:italic">This document explains how the business works and what drives its economics. It is not a valuation and not a recommendation.</p>
+</div>
+
+</div>
+</body>
+</html>

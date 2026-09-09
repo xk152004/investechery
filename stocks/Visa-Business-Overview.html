@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visa Inc. — Business Overview</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-size:19px; line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:32px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+.restate{
+  font-family:Georgia,serif;font-size:23px;line-height:1.5;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 22px;margin:0 0 34px;color:#333
+}
+.engine{
+  background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:0 0 30px
+}
+.engine .lbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#B9AE9C;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:30px;line-height:1.25;margin-bottom:12px}
+.engine .unit em{color:#E8A889;font-style:normal}
+.engine p{margin:0;font-size:17px;color:#E4DCCE;line-height:1.55}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.kpi .v{font-family:Georgia,serif;font-size:29px;color:var(--terracotta);font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi .s{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin:22px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:15px 20px;margin:12px 0}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .h{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:3px 0 5px}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.pull{
+  background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.5;color:#5A2A17
+}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;color:#8A5A45;margin-top:10px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.two .card{margin:0}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px}
+.two ul{margin:0;padding-left:20px}
+.two li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+.tblwrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#F1EADD;font-weight:700;font-size:14px;letter-spacing:.03em;color:#4A443A}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+.cap{font-size:14.5px;color:var(--muted);line-height:1.5;margin:-4px 0 26px}
+figure{margin:26px 0}
+figure svg{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+ul.plain{padding-left:20px}
+ul.plain li{margin-bottom:10px}
+.sec{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:54px}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:24px;font-size:15px;color:var(--muted)}
+footer h3{font-size:17px;margin:0 0 10px}
+.nf{color:var(--muted);font-style:italic}
+@media(max-width:680px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  h1{font-size:31px} h2{font-size:23px} body{font-size:17.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Visa Inc. <span style="color:var(--muted);font-weight:400">(NYSE: V)</span></h1>
+<div class="srcline">
+7 September 2026 · Built from Visa's Forms 10-K for FY2016–FY2025, the Form 10-Q for the quarter ended 30 June 2026, and Forms 8-K through July 2026, with industry structure taken from the Federal Reserve, European Commission, UK Payment Systems Regulator, Reserve Bank of Australia, Reserve Bank of India, Banco Central do Brasil, the BIS, and the filings of Mastercard, American Express, PayPal, Adyen and Fiserv. <strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Visa is a toll booth on the movement of money it neither lends nor underwrites — paid by the bank on each side of a transaction it did not fund, on a base of $13.9 trillion a year, at 0.288%.
+</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One processed transaction earns <em>$0.155</em> of net revenue.</div>
+  <p>Visa switched 257,545 million of them in FY2025, up 10%. Carrying one more costs almost nothing: network and processing expense is 2.2% of net revenue. That is the whole business — a fixed cost base against a variable revenue base, which is why the operating margin is 66% before litigation and free cash flow is 54% of revenue.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Price per unit</div><div class="v">$0.155</div><div class="s">Net revenue per processed transaction, FY2025 (inferred)</div></div>
+  <div class="kpi"><div class="k">Take on volume</div><div class="v">0.288%</div><div class="s">Of $13.9tn nominal payments volume (inferred)</div></div>
+  <div class="kpi"><div class="k">Net income FY2025</div><div class="v">$20.1bn</div><div class="s">On $40.0bn net revenue; diluted EPS $10.20</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">$23.9bn</div><div class="s">Total debt vs $35.2bn equity, 30 Jun 2026</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">At peak</div><div class="s">Volume, transactions, cross-border and ex-litigation margin all at or above prior peak</div></div>
+  <div class="kpi"><div class="k">Reported growth</div><div class="v">+14%</div><div class="s">Q3 FY2026 net revenue. Organic not disclosed — <span class="nf">NOT FOUND</span></div></div>
+</div>
+
+<div class="sec">Section 2</div>
+<h2>What the company does</h2>
+<p>The problem Visa solves is trust between strangers who will never meet. A merchant in Lisbon has no way to know whether a card presented by a visitor from Seoul is good for the money, and no practical way to collect if it is not. Visa's answer is a rulebook every participating bank agrees to in advance, a switch that carries the authorisation to the issuing bank and back in under a second, and a settlement guarantee that pays the merchant even where the issuer subsequently fails. What is sold is not technology. It is the certainty that the payment will complete.</p>
+
+<p>The structure that delivers it is the four-party model, and its shape determines everything downstream. The cardholder pays the merchant in full. The merchant's acquiring bank credits the merchant that amount less a merchant discount rate. Out of that rate, the acquirer remits <strong>interchange</strong> to the card-issuing bank and <strong>network fees</strong> to Visa; the issuer separately pays Visa its own network fees out of the interchange it received. Visa is therefore paid by both sides of its own platform, on a transaction it neither funded nor underwrote.</p>
+
+<h3>Follow one transaction</h3>
+<p>A cardholder taps. The acquirer routes the authorisation to VisaNet, which applies the issuer's rules and Visa's own risk scoring and returns an approval. Visa earns a <strong>data processing fee</strong> on that switch, from both banks, recognised in the period the transaction occurs. Separately it earns a <strong>service fee</strong> assessed on the payments volume carried on Visa credentials — billed in arrears, which is why service revenue in any quarter is calculated on the prior quarter's volume. If the issuer sits in a different country from the merchant, the same transaction also generates <strong>international transaction revenue</strong>, covering cross-border processing and the currency conversion inside it. Clearing and settlement follow within days; Visa moves the funds but never owns them.</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th>FY2025 revenue line</th><th class="n">$m</th><th>What it is assessed on</th></tr></thead>
+<tbody>
+<tr><td>Data processing</td><td class="n">19,993</td><td>Per transaction switched — indifferent to ticket size</td></tr>
+<tr><td>Service</td><td class="n">17,539</td><td>Payments volume on Visa credentials, billed a quarter in arrears</td></tr>
+<tr><td>International transaction</td><td class="n">14,166</td><td>Cross-border processing and currency conversion — the highest-yielding line</td></tr>
+<tr><td>Other</td><td class="n">4,053</td><td>Advisory, marketing services, brand and technology licensing</td></tr>
+<tr><td><strong>Gross revenue</strong></td><td class="n"><strong>55,751</strong></td><td></td></tr>
+<tr><td>Client incentives</td><td class="n">(15,751)</td><td>Paid to issuers and merchants to win and keep the credential and the routing</td></tr>
+<tr><td><strong>Net revenue</strong></td><td class="n"><strong>40,000</strong></td><td></td></tr>
+</tbody></table>
+</div>
+<p class="cap">FY2025 Form 10-K. The incentive deduction is not marketing in disguise — it is the price. Visa contracts with large issuers and merchants for multi-year commitments, and the incentive is what it pays to be chosen.</p>
+
+<h3>What has been added to the same transaction</h3>
+<p>The material change to the business model over the last decade is that Visa stopped selling only the switch. <strong>Value-added services</strong> — issuing and acceptance solutions, risk and fraud tooling, advisory and marketing — generated $10.9bn in FY2025, up 24%, and $3.8bn in the June 2026 quarter alone, up 33%. On a last-twelve-months basis that is roughly 30% of net revenue against 22% in FY2023 (inferred). They are sold to the same banks and merchants, on the same transactions, through the same contracts. They require no additional volume to grow, and no regulator anywhere has capped their price.</p>
+
+<p><strong>Visa Direct</strong> points the other way — outward, to transactions that are not card purchases. It moves money to approximately 12 billion endpoints across more than 195 countries, using over 90 domestic payment schemes and more than 60 card and wallet networks, and processed more than 12.5 billion transactions for over 650 partners in FY2025. Its significance is that it puts Visa on rails it does not own, including the account-to-account rails below — converting a substitution threat into a distribution channel. Revenue is not disclosed separately (<span class="nf">NOT FOUND</span>).</p>
+
+<p>One move went the other way. In February 2026 Visa paid $1.5bn cash for <strong>Prisma Medios de Pago and Newpay</strong> in Argentina. Prisma is an acquirer and processor — a position <em>below</em> Visa in the value chain, where, as the next section shows, margins are roughly half the network's.</p>
+
+<div class="sec">Section 3</div>
+<h2>Industry, competitive position and moat</h2>
+<p>The card network industry exists because bilateral trust does not scale. Without a scheme, every issuing bank would have to contract with every acquiring bank in every country, and the number of agreements grows as the square of the participants. A scheme replaces that with one rulebook and one switch. The industry is therefore structurally a two-sided platform, and two-sided platforms consolidate: the value of joining rises with the number already joined, so share, once won, is very hard to move.</p>
+
+<p>The outside evidence says it has not moved. The BIS finds the combined global share of Visa and Mastercard in card transactions <strong>stable at approximately 95% for a decade</strong>, with revenues and margins growing through 2024 despite the proliferation of payment apps. In the UK, the Payment Systems Regulator finds the two carry more than 95% of transactions on UK-issued cards.</p>
+
+<h3>Where the profit pool sits</h3>
+<p>The most useful outside evidence is the Federal Reserve's measurement of the US debit chain, because it is the one jurisdiction where a regulator counts every dollar. In calendar 2023, 100.7bn debit and prepaid transactions moved $4.7 trillion. Issuers received <strong>$34.1bn of interchange, 0.73% of value</strong>. The networks received <strong>$12.9bn of network fees, 0.28% of value</strong>. Of that combined pool the network keeps roughly 27% and the issuer roughly 73% (inferred). The Reserve Bank of Australia reaches the same shape from a different angle: acquirer-side scheme fees averaged 10.5 basis points of transaction value in FY2024/25 and issuer-side fees 3.3 basis points — a total network take of about 13.8 basis points.</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th>Position in the chain</th><th>Company, fiscal year</th><th class="n">Take rate</th><th class="n">Operating margin</th></tr></thead>
+<tbody>
+<tr><td>Network / scheme</td><td>Visa, FY Sep-2025</td><td class="n">0.288% of payments volume</td><td class="n">60.0% <span style="color:var(--muted)">(66.4% ex-litigation)</span></td></tr>
+<tr><td>Network / scheme</td><td>Mastercard, CY2025</td><td class="n">0.309% of GDV</td><td class="n">57.6%</td></tr>
+<tr><td>Acquiring / PSP at scale</td><td>Adyen, CY2025</td><td class="n">0.170% of volume</td><td class="n">53% (EBITDA)</td></tr>
+<tr><td>Merchant acquirer</td><td>Fiserv Merchant, 9M 2025</td><td class="n">n/a (gross)</td><td class="n">35.3% (adjusted)</td></tr>
+<tr><td>Wallet</td><td>PayPal, CY2025</td><td class="n">0.89% of TPV</td><td class="n">18.3%</td></tr>
+<tr><td>Closed loop (issuer + network + acquirer)</td><td>American Express, CY2025</td><td class="n">2.24% discount rate</td><td class="n">15.0% net margin</td></tr>
+</tbody></table>
+</div>
+<p class="cap">Company filings and earnings releases. Visa's ex-litigation margin and Adyen's and Amex's ratios are inferred from disclosed figures. American Express is a contrast, not a comparable: it earns roughly seven times Visa's take rate on the same transaction and converts it to a quarter of the margin, because it also funds the receivable, carries the credit loss and pays for the rewards.</p>
+
+<p>The table forces one conclusion: <strong>position in the chain, not price, determines the margin.</strong> Visa earns 0.29% of the value it carries and keeps 60 cents of every revenue dollar. Amex earns 2.24% and keeps 15. The difference is not pricing power in any conventional sense — it is that the network sold the one thing that requires no capital.</p>
+
+<h3>What actually binds as a barrier</h3>
+<p>Three barriers are usually cited and only one binds. Brand does not — Amex, Discover and JCB all have brands and none has scale. Technology does not — Pix and UPI were both built from nothing by central authorities in under a decade. What binds is the <strong>simultaneity requirement</strong>: an entrant must sign issuers and merchants at the same time, because neither side will join a network the other has not joined. Visa's disclosed reach is approximately 12 billion endpoints against more than 175 million merchant locations in more than 200 countries. No commercial entrant has ever assembled both sides at once. The two that came closest did it by government mandate, which is the point.</p>
+
+<p>The second barrier is less discussed and, so far, more durable. <strong>Every regulator that has intervened has capped the issuer's cut and left the network's alone.</strong> The Durbin Amendment caps US debit interchange and says nothing about network fees. The EU Interchange Fee Regulation caps interchange at 0.2% on debit and 0.3% on credit and puts scheme fees explicitly out of scope. Australia, Brazil and India have each capped or eliminated interchange while leaving network fees unregulated.</p>
+
+<div class="pull">
+US debit network fees have held at 0.28% of transaction value continuously from Regulation II's introduction in 2011 through 2023 — while the per-transaction network fee rose from $0.098 to $0.129.
+<span class="attr">Federal Reserve, 2023 Interchange Fee Revenue, Covered Issuer Costs and Fraud Losses (published December 2025)</span>
+</div>
+
+<p>The European Commission measured the same thing from the other side: acquirers saved roughly €2.7bn in 2017 and issuers lost roughly €3.0bn a year, while the schemes gained approximately €550m a year from higher scheme fees between 2015 and 2017 — recouping about a fifth of the transfer within two years, through the one fee the regulation did not reach.</p>
+
+<p>That asymmetry is now what regulators have noticed, which makes it the thing most likely to change. The PSR's March 2025 final report found average core scheme fees rose <strong>at least 25% in real terms between 2017 and 2023</strong>, costing UK businesses at least £170m a year more, with scheme margins higher than would be expected in competitive markets against comparators earning 12–18%. Its remedies, consulted on again in May 2026, are transparency and regulatory financial reporting — not price. The RBA reached the same conclusion in March 2026, declined to cap for want of evidence, required Scheme Fee Roadmaps by April 2027, and explicitly retained the option to intervene. Both regulators have now built the evidentiary base a cap would require.</p>
+
+<h3>Named competitors — and the one that is not one</h3>
+<div class="tblwrap">
+<table>
+<thead><tr><th>Network</th><th class="n">Payments volume ($bn)</th><th class="n">Transactions (bn)</th><th class="n">Cards (m)</th></tr></thead>
+<tbody>
+<tr><td><strong>Visa</strong></td><td class="n"><strong>13,433</strong></td><td class="n"><strong>311</strong></td><td class="n"><strong>4,805</strong></td></tr>
+<tr><td>Mastercard</td><td class="n">8,014</td><td class="n">204</td><td class="n">3,146</td></tr>
+<tr><td>American Express</td><td class="n">1,750</td><td class="n">12</td><td class="n">147</td></tr>
+<tr><td>JCB</td><td class="n">319</td><td class="n">7</td><td class="n">167</td></tr>
+<tr><td>Diners Club / Discover</td><td class="n">253</td><td class="n">4</td><td class="n">72</td></tr>
+</tbody></table>
+</div>
+<p class="cap">FY2025 10-K competitive chart, calendar 2024. UnionPay is excluded from Visa's chart; on transaction count it is comparable in size to Visa (Nilson, H1 2024: Visa 38.7%, UnionPay 33.2% of global purchase transactions) but the volume is overwhelmingly domestic Chinese switching under a domestic regulated regime, so it does not compete for the same profit pool. Visa is roughly 1.7× Mastercard on volume and 1.5× on transactions (inferred).</p>
+
+<p>Visa and Mastercard behave less as rivals than as a duopoly whose members compete for individual bank portfolios rather than on system-wide price. That distinction explains why interchange caps have never compressed network fees: the competitive contest is for the issuer's credential, and the incentive payment discussed below is the currency of that contest.</p>
+
+<h3>The substitution question, and what the evidence shows</h3>
+<p>The genuine threat to a card network is not a better card network. It is a rail that moves money directly between bank accounts and bypasses the scheme entirely. Three have now scaled far enough to be tested against evidence rather than argued about.</p>
+
+<p><strong>India is the cleanest experiment</strong>, because the government set the merchant discount rate on UPI to zero in January 2020 and left credit card fees uncapped. Between calendar 2019 and 2024 UPI volume compounded at 74% a year. Over exactly the same period, Indian debit card volume fell at <strong>18.9% a year</strong> while credit card volume grew at <strong>16.5%</strong> and credit value at 23.4% a year (RBI Payment Systems Report). Brazil repeats it: Pix carried 79.8bn transactions worth R$35.3tn in 2025, yet Brazilian card value still grew 10.1% — because credit grew 15.2% and debit grew 0.0% (ABECS).</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th>Rail</th><th>Scale reached</th><th class="n">Effect on debit</th><th class="n">Effect on credit</th></tr></thead>
+<tbody>
+<tr><td>UPI (India), CY2019–24</td><td>+74%/yr volume; ~85% of India's digital payments</td><td class="n">−18.9%/yr volume</td><td class="n">+16.5%/yr volume</td></tr>
+<tr><td>Pix (Brazil), 2025</td><td>79.8bn transactions, R$35.3tn</td><td class="n">0.0% value growth</td><td class="n">+15.2% value growth</td></tr>
+<tr><td>FedNow (US), Q2 2026</td><td>5.0m payments, avg $54,957</td><td class="n" colspan="2">~0.03% of US card payments — a business rail, not a checkout rail (inferred)</td></tr>
+<tr><td>Wero / EPI (EU), first year</td><td>43.5m users, €7.5bn cumulative</td><td class="n" colspan="2">P2P only; no point-of-sale volume evidence</td></tr>
+<tr><td>UK open banking, Jul 2025</td><td>~29.9m payments in the month</td><td class="n" colspan="2">Against cards at &gt;95% of UK-issued card transactions</td></tr>
+</tbody></table>
+</div>
+<p class="cap">RBI, Banco Central do Brasil, ABECS, Federal Reserve Financial Services, EPI, Open Banking Limited.</p>
+
+<p>The mechanism is that a bank transfer and a card purchase only look alike at the moment of payment. A card purchase carries a credit line, a rewards accrual, a chargeback right and a merchant-acceptance guarantee. A push payment carries none of these — which is why it wins the low-value, immediate, no-recourse transaction that was cash or debit, and loses the discretionary one. <strong>Visa's exposure is concentrated in exactly the segment that is already the most regulated and the lowest-yielding.</strong></p>
+
+<h3>Does Visa's account of itself survive?</h3>
+<div class="tblwrap">
+<table>
+<thead><tr><th>Company claim</th><th>Outside evidence</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>Its network scale is difficult to reproduce</td><td>BIS: Visa/Mastercard share of card transactions stable at ~95% for a decade despite payment-app proliferation</td><td><strong style="color:var(--good)">Supported</strong></td></tr>
+<tr><td>It faces competition from real-time and A2A rails</td><td>True and material — but RBI and BCB data locate the displacement in debit and cash, not credit</td><td><strong style="color:var(--gold)">Partially supported</strong></td></tr>
+<tr><td>Regulation is a principal risk</td><td>Every regime to date has capped interchange, not network fees; Fed measures US network fees flat at 0.28% of value 2011–2023</td><td><strong style="color:var(--terracotta)">Contradicted to date</strong>; more credible prospectively after PSR/RBA 2025–26</td></tr>
+<tr><td>It competes with processors for the processing of Visa transactions</td><td>Reg II card-not-present routing took effect July 2023; DOJ alleges de facto exclusivity foreclosing ≥45% of US debit volume, motion to dismiss denied in full June 2025</td><td><strong style="color:var(--good)">Supported</strong> — and the most serious of Visa's stated risks</td></tr>
+</tbody></table>
+</div>
+
+<p>What kind of company wins here is therefore specific: <strong>the one that owns the switch and refuses to own the credit.</strong> It earns a fraction of a percent of an enormous base, requires almost no capital to carry more of it, and sits in the one link of the chain regulators have consistently declined to price. Visa is that kind of company — more purely so than any listed comparable — and its margin is the highest in the chain precisely because it has the least to do with the money.</p>
+
+<div class="sec">Section 4</div>
+<h2>Growth engine</h2>
+<p>Visa's growth decomposes cleanly because the company discloses the driver behind each revenue line. In FY2025 net revenue grew 11%. Service revenue rose 9% on payments volume growth of 7% plus pricing and card benefits. Data processing rose 13% on transaction growth of 10% plus pricing. International transaction rose 12% on cross-border volume growth of 13% excluding intra-Europe. Other rose 27% on advisory services plus pricing.</p>
+
+<p>Two things follow. First, in every line the volume driver and the revenue outcome differ by two to three points, and the difference is disclosed as pricing — so Visa takes price annually, in modest increments, as a supplement to the engine rather than the engine itself. Second, <strong>transaction count is growing faster than payments volume (10% against 7%)</strong>, meaning the average ticket is falling as cards displace cash at the low-value end. Because data processing revenue is assessed per transaction, this mix shift quietly moves the base toward the line that is indifferent to the price level.</p>
+
+<figure>
+<svg viewBox="0 0 860 380" role="img" aria-label="Visa nominal payments volume, FY2017 to FY2025, rising from 7.2 to 13.9 trillion dollars">
+  <text x="24" y="30" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#2B2B2B">Nominal payments volume, $ trillion</text>
+  <text x="24" y="50" font-family="Calibri,Arial" font-size="14" fill="#6E675C">Twelve months ended 30 June of each fiscal year</text>
+  <!-- gridlines -->
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="80" y1="300" x2="830" y2="300"/>
+    <line x1="80" y1="240" x2="830" y2="240"/>
+    <line x1="80" y1="180" x2="830" y2="180"/>
+    <line x1="80" y1="120" x2="830" y2="120"/>
+    <line x1="80" y1="80"  x2="830" y2="80"/>
+  </g>
+  <g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="end">
+    <text x="70" y="305">0</text><text x="70" y="245">4</text><text x="70" y="185">8</text><text x="70" y="125">12</text><text x="70" y="85">14.7</text>
+  </g>
+  <!-- data: FY17..FY25 = 7.162 8.063 8.615 8.713 9.971 11.464 12.088 12.988 13.894 ; y = 300 - v*15 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+    points="110,192.6 200,179.1 290,170.8 380,169.3 470,150.4 560,128.0 650,118.7 740,105.2 830,91.6"/>
+  <g fill="#C75B39">
+    <circle cx="110" cy="192.6" r="4.5"/><circle cx="200" cy="179.1" r="4.5"/><circle cx="290" cy="170.8" r="4.5"/>
+    <circle cx="380" cy="169.3" r="4.5"/><circle cx="470" cy="150.4" r="4.5"/><circle cx="560" cy="128.0" r="4.5"/>
+    <circle cx="650" cy="118.7" r="4.5"/><circle cx="740" cy="105.2" r="4.5"/><circle cx="830" cy="91.6" r="4.5"/>
+  </g>
+  <text x="110" y="180" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39" text-anchor="start">$7.2tn</text>
+  <text x="830" y="79" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39" text-anchor="end">$13.9tn</text>
+  <!-- FY2020 marker -->
+  <line x1="380" y1="169.3" x2="380" y2="300" stroke="#3C6E8F" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="386" y="290" font-family="Calibri,Arial" font-size="13" fill="#3C6E8F">FY2020: +1% — volume barely moved</text>
+  <!-- x labels -->
+  <g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="110" y="322">FY17</text><text x="200" y="322">FY18</text><text x="290" y="322">FY19</text>
+    <text x="380" y="322">FY20</text><text x="470" y="322">FY21</text><text x="560" y="322">FY22</text>
+    <text x="650" y="322">FY23</text><text x="740" y="322">FY24</text><text x="830" y="322">FY25</text>
+  </g>
+  <text x="24" y="358" font-family="Calibri,Arial" font-size="13" fill="#6E675C">FY2016 is omitted: Visa Europe was consolidated only from 21 June 2016, so no earlier year is comparable.</text>
+</svg>
+</figure>
+<p class="cap">Source: Visa Forms 10-K, FY2018, FY2020, FY2022 and FY2025. Volume compounded at 8.6% a year over the nine years (inferred) — and grew through the pandemic.</p>
+
+<h3>Reported versus organic</h3>
+<p>One acquisition is material enough to matter and it cannot be separated out. Visa bought Prisma and Newpay in February 2026 for $1.5bn cash and <strong>does not disclose the revenue contribution</strong>. The 14% and 15% growth rates for the June 2026 quarter and nine months are therefore reported, not organic, and the filings do not permit the decomposition. Two indirect readings bound it: the consideration is 3.4% of last-twelve-months net revenue of $44.5bn (inferred), and Visa attributes the revenue increase to volume and transactions while naming acquisitions only as a driver of personnel, network and professional-fee <em>expense</em> — which suggests the effect is larger on the cost line. This stays an open question.</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever structural"><div class="tag">Structural</div><div class="h">Cash displacement</div><p>The largest and slowest driver. Cash was still 52% of euro-area point-of-sale transactions by number in 2024 (ECB SPACE) and cash in circulation is around 9% of GDP in advanced economies (BIS). Every point of that conversion arrives on the existing network at essentially zero incremental cost. It asks nothing of management and it does not stop in a recession.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="h">Value-added services attach</div><p>$10.9bn in FY2025, up 24%, and up 33% in the June 2026 quarter — roughly 30% of last-twelve-months net revenue against 22% in FY2023 (inferred). Sold into the installed base rather than won from competitors, and unregulated. The one growth lever genuinely inside management's control.</p></div>
+<div class="lever cyclical"><div class="tag">Cyclical, with a structural floor</div><div class="h">Cross-border volume</div><p>Up 13% in FY2025 and 14–15% through the June 2026 quarter, on the highest-yielding line in the business. Cross-border ecommerce is the structural half; travel is the cyclical half, and the next section shows what it does in a downturn.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven, incremental</div><div class="h">Annual pricing modifications</div><p>Worth roughly two to three points of growth per revenue line in FY2025. Real and repeatable — and the component most exposed to the scheme-fee scrutiny above.</p></div>
+<div class="lever structural"><div class="tag">Structural</div><div class="h">Geographic mix</div><p>The US fell from 43% of net revenue in FY2023 to 39% in FY2025 — not because US revenue shrank (it grew 6%) but because international grew 15%. Growth is coming from the markets where cash share is highest: the first driver arriving through a different door.</p></div>
+<div class="lever"><div class="tag">Temporary and small</div><div class="h">Acquisitions</div><p>$887m in FY2025 and $705m in the first nine months of FY2026, against $18.3bn of buybacks in FY2025. Prisma at $1.5bn is the largest in years and is still 3.4% of annual revenue. M&amp;A is not how this business grows.</p></div>
+
+<p style="margin-top:22px">What is conspicuously absent is <em>new customers</em>. Visa does not grow by adding merchants or cardholders in any meaningful sense — it already reaches ~12 billion endpoints and 175m+ merchant locations. It grows because the transactions those endpoints already generate keep migrating onto its rails, and because it keeps finding more to sell on each one.</p>
+
+<div class="sec">Section 5</div>
+<h2>Margin, cash and capital allocation</h2>
+<p>The margin arises from a cost base that is almost entirely fixed against a revenue base that is almost entirely variable. Network and processing expense was $894m in FY2025 against $40.0bn of net revenue — 2.2%. Carrying one more transaction across an already-built network costs close to nothing. The largest expense is people ($7.0bn against 34,100 employees), and people are added deliberately, not in proportion to volume.</p>
+
+<p>Reported operating margin fell to 60.0% in FY2025 from 65.7%, and the cause is one line: the litigation provision was <strong>$2,562m against $462m</strong>, reflecting $2.2bn of additional accruals for the interchange multidistrict litigation. Excluding it, FY2025 operating margin was <strong>66.4% — the highest in the ten-year series</strong> (inferred). The underlying margin did not deteriorate; a legal settlement was recognised.</p>
+
+<h3>The one thing that genuinely compresses the margin</h3>
+<figure>
+<svg viewBox="0 0 860 400" role="img" aria-label="Operating margin flat near 65 percent while client incentives rise from 18 to 28 percent of gross revenue, FY2016 to FY2025">
+  <text x="24" y="30" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#2B2B2B">The margin held. The price did not.</text>
+  <text x="24" y="50" font-family="Calibri,Arial" font-size="14" fill="#6E675C">Operating margin vs client incentives as a share of gross revenue, %</text>
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="330" x2="830" y2="330"/><line x1="70" y1="275" x2="830" y2="275"/>
+    <line x1="70" y1="220" x2="830" y2="220"/><line x1="70" y1="165" x2="830" y2="165"/>
+    <line x1="70" y1="110" x2="830" y2="110"/>
+  </g>
+  <g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="end">
+    <text x="60" y="335">0</text><text x="60" y="280">20</text><text x="60" y="225">40</text><text x="60" y="170">60</text><text x="60" y="115">80</text>
+  </g>
+  <!-- y = 330 - v*2.75 ; x: FY16=105 .. FY25=825, step 80 -->
+  <!-- operating margin: 52.3 66.2 62.9 65.3 64.5 65.6 64.2 64.3 65.7 60.0 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+    points="105,186.2 185,148.0 265,157.0 345,150.4 425,152.6 505,149.6 585,153.5 665,153.2 745,149.3 825,165.0"/>
+  <g fill="#C75B39">
+    <circle cx="105" cy="186.2" r="4"/><circle cx="185" cy="148.0" r="4"/><circle cx="265" cy="157.0" r="4"/>
+    <circle cx="345" cy="150.4" r="4"/><circle cx="425" cy="152.6" r="4"/><circle cx="505" cy="149.6" r="4"/>
+    <circle cx="585" cy="153.5" r="4"/><circle cx="665" cy="153.2" r="4"/><circle cx="745" cy="149.3" r="4"/>
+    <circle cx="825" cy="165.0" r="4"/>
+  </g>
+  <!-- FY2025 ex-litigation 66.4 -->
+  <circle cx="825" cy="147.4" r="5" fill="#FAF6EF" stroke="#C75B39" stroke-width="2.5"/>
+  <line x1="825" y1="165.0" x2="825" y2="147.4" stroke="#C75B39" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="818" y="140" font-family="Calibri,Arial" font-size="12.5" fill="#C75B39" text-anchor="end">66.4% ex-litigation</text>
+  <text x="105" y="209" font-family="Georgia,serif" font-size="14.5" font-weight="700" fill="#C75B39" text-anchor="start">Operating margin 52.3%</text>
+  <!-- incentives: 18.4 19.9 21.0 21.2 23.4 25.8 26.0 27.4 27.7 28.3 -->
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round"
+    points="105,279.4 185,275.3 265,272.3 345,271.7 425,265.7 505,259.0 585,258.5 665,254.7 745,253.8 825,252.2"/>
+  <g fill="#3C6E8F">
+    <circle cx="105" cy="279.4" r="4"/><circle cx="185" cy="275.3" r="4"/><circle cx="265" cy="272.3" r="4"/>
+    <circle cx="345" cy="271.7" r="4"/><circle cx="425" cy="265.7" r="4"/><circle cx="505" cy="259.0" r="4"/>
+    <circle cx="585" cy="258.5" r="4"/><circle cx="665" cy="254.7" r="4"/><circle cx="745" cy="253.8" r="4"/>
+    <circle cx="825" cy="252.2" r="4"/>
+  </g>
+  <text x="105" y="298" font-family="Georgia,serif" font-size="14.5" font-weight="700" fill="#3C6E8F" text-anchor="start">Client incentives 18.4%</text>
+  <text x="825" y="244" font-family="Georgia,serif" font-size="14.5" font-weight="700" fill="#3C6E8F" text-anchor="end">28.3%</text>
+  <g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="105" y="352">FY16</text><text x="185" y="352">FY17</text><text x="265" y="352">FY18</text><text x="345" y="352">FY19</text>
+    <text x="425" y="352">FY20</text><text x="505" y="352">FY21</text><text x="585" y="352">FY22</text><text x="665" y="352">FY23</text>
+    <text x="745" y="352">FY24</text><text x="825" y="352">FY25</text>
+  </g>
+  <text x="24" y="382" font-family="Calibri,Arial" font-size="13" fill="#6E675C">FY2016 margin is depressed by the Visa Europe acquisition; its expenses were consolidated for one quarter against a partial revenue year.</text>
+</svg>
+</figure>
+<p class="cap">Computed from the revenue-component and operating-expense tables in Visa's Forms 10-K, FY2016 through FY2025. Ratios inferred from disclosed figures.</p>
+
+<p>Client incentives are the real margin variable and they have moved in one direction for a decade — <strong>18.4% of gross revenue in FY2016, 25.8% in FY2021, 28.3% in FY2025</strong>. Roughly ten points of gross revenue given back over nine years; $15.8bn in FY2025 alone, close to four times the FY2016 figure.</p>
+
+<p>The mechanism is the duopoly. Because Visa and Mastercard compete for individual bank portfolios rather than on system-wide price, the contest for a large issuer's credential is settled with an upfront payment and a volume-linked rebate, and each renewal resets the price. The consequence is that <strong>Visa's gross pricing power and its net pricing power are different things</strong>: it raises posted fees annually and hands a rising share of the proceeds back to keep the routing. That is why the take rate on payments volume has stayed near 0.29% while gross fees rose. Anyone modelling Visa's pricing power from posted rates alone will overstate it.</p>
+
+<h3>The financial spine</h3>
+<div class="tblwrap">
+<table>
+<thead><tr><th>$m unless stated</th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2023</th><th class="n">FY2025</th></tr></thead>
+<tbody>
+<tr><td>Net revenue</td><td class="n">15,082</td><td class="n">21,846</td><td class="n">32,653</td><td class="n">40,000</td></tr>
+<tr><td>Client incentives, % of gross revenue</td><td class="n">18.4%</td><td class="n">23.4%</td><td class="n">27.4%</td><td class="n">28.3%</td></tr>
+<tr><td>Operating income</td><td class="n">7,883</td><td class="n">14,081</td><td class="n">21,000</td><td class="n">23,994</td></tr>
+<tr><td>Operating margin</td><td class="n">52.3%</td><td class="n">64.5%</td><td class="n">64.3%</td><td class="n">60.0%</td></tr>
+<tr><td>Net income</td><td class="n">5,991</td><td class="n">10,866</td><td class="n">17,273</td><td class="n">20,058</td></tr>
+<tr><td>Nominal payments volume ($bn)</td><td class="n">5,651</td><td class="n">8,713</td><td class="n">12,088</td><td class="n">13,894</td></tr>
+</tbody></table>
+</div>
+<p class="cap"><strong>Comparability:</strong> FY2016 consolidated Visa Europe only from 21 June 2016, and its operating expenses only for the September quarter — so the FY2016 margin understates the underlying business by an amount the filing does not quantify, and the FY2016 payments volume figure was later restated on a different basis. FY2025 operating margin is 66.4% excluding the $2,562m litigation provision. Payments volume is for the twelve months ended 30 June of each fiscal year, per Visa's disclosure convention. Margins and incentive ratios inferred.</p>
+
+<h3>Cash conversion and where the cash went</h3>
+<p>FY2025 operating cash flow was $23,059m against net income of $20,058m, with capital expenditure of $1,482m — <strong>3.7% of net revenue</strong>. Free cash flow of $21,577m was 54% of net revenue and 108% of net income (inferred). Visa does not disclose a maintenance-versus-growth split of capex (<span class="nf">NOT FOUND</span>).</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th>Capital deployed, FY2023–FY2025</th><th class="n">$bn</th><th class="n">Share</th></tr></thead>
+<tbody>
+<tr><td>Share repurchases</td><td class="n">47.1</td><td class="n">69%</td></tr>
+<tr><td>Dividends</td><td class="n">12.6</td><td class="n">18%</td></tr>
+<tr><td>Capital expenditure</td><td class="n">3.8</td><td class="n">6%</td></tr>
+<tr><td>Debt repayment</td><td class="n">2.3</td><td class="n">3%</td></tr>
+<tr><td>Acquisitions</td><td class="n">1.8</td><td class="n">3%</td></tr>
+</tbody></table>
+</div>
+<p class="cap">Computed from the FY2025 10-K cash flow statement. More than four-fifths of all capital deployed went back to shareholders.</p>
+
+<p>The behaviour that ranking reveals is a management team that does not believe it has better uses for the money than retiring its own equity — a defensible read of a business needing 3.7% of revenue in capex, and executed consistently: the as-converted diluted share count has fallen from approximately 2,415m in FY2016 to 1,898m of Class A diluted shares in the June 2026 quarter, around 21% (inferred). The dividend was raised to $0.67 a quarter on 28 July 2026.</p>
+
+<p><strong>One thing has changed.</strong> In the first nine months of FY2026 Visa returned $20.3bn against free cash flow of roughly $15.2bn (inferred), funding the difference with $3.0bn of new senior notes, $1.5bn of commercial paper and the release of restricted cash from the litigation escrow. Total debt stood at $23.9bn at 30 June 2026 against $35.2bn of equity. The company is levering modestly to accelerate the buyback — a choice, not a constraint, but a change from a business that historically returned less than it earned.</p>
+
+<h3>The structure that makes the litigation someone else's problem</h3>
+<p>Visa's most distinctive financial feature is not on the income statement. Under the <strong>US retrospective responsibility plan</strong> established at the 2008 IPO, monetary liabilities from the US covered interchange litigation are paid from a dedicated escrow, and the escrow is funded by a downward adjustment to the rate at which Class B common stock converts into Class A. The economic effect: <strong>the pre-IPO US bank owners, not Class A shareholders, absorb the cost of the interchange litigation.</strong> Visa states plainly that the FY2025 adjustments left diluted Class A earnings per share unchanged.</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th>US litigation escrow, nine months to 30 June 2026</th><th class="n">$m</th></tr></thead>
+<tbody>
+<tr><td>Balance at 30 September 2025</td><td class="n">2,990</td></tr>
+<tr><td>Deposits</td><td class="n">875</td></tr>
+<tr><td>Payments to opt-out and injunctive-relief-class merchants, net of interest</td><td class="n">(2,977)</td></tr>
+<tr><td><strong>Balance at 30 June 2026</strong></td><td class="n"><strong>888</strong></td></tr>
+<tr><td>Accrued litigation on the balance sheet, 30 Jun 2026 (from $3,033m)</td><td class="n">1,274</td></tr>
+<tr><td>Interchange at issue in <em>unresolved</em> US covered claims, 11 May 2026</td><td class="n">17,400</td></tr>
+</tbody></table>
+</div>
+<p class="cap">FY2026 Q3 Form 10-Q and Form 8-K dated 12 May 2026. Visa has settled with merchants representing ~95% of the Visa-branded volume of those who opted out of the damages class settlement; the superseding injunctive-relief settlement agreed 10 November 2025 received preliminary approval on 9 June 2026, with final approval sought on 15 July 2026. Visa's auditor designated the opt-out accrual a critical audit matter.</p>
+
+<p>The mechanism means further US damages dilute Class B rather than Class A — but the escrow deposits are cash out of the business, and the pace of those deposits is a real claim on capital that competes with the buyback.</p>
+
+<div class="sec">Section 6</div>
+<h2>Cyclicality, constraints and what to monitor</h2>
+<p>Visa's cyclicality is not what a first reading suggests. Because revenue is a function of consumer spending, the instinct is to treat it as cyclical. Its own filings say otherwise, and the pandemic is the cleanest natural experiment available for any company.</p>
+
+<div class="pull">
+In the twelve months to 30 June 2020, total nominal payments volume was $8,713bn against $8,615bn — growth of 1%, through the sharpest contraction in modern consumer spending. Consumer credit volume fell 4%; consumer debit rose 7%; cash volume fell 8%.
+<span class="attr">Visa FY2020 Form 10-K. Consumers stopped borrowing, kept spending, and abandoned cash faster than consumption.</span>
+</div>
+
+<p>The damage was located entirely in one line. <strong>International transaction revenue fell from $7,804m in FY2019 to $6,299m in FY2020, down 19%</strong>, and total net revenue fell 5%. The operating margin moved from 65.3% to 64.5% — barely at all, because the cost base did not need to change. Recovery took two full years: international transaction revenue was still below FY2019 in FY2021 at $6,530m, even as domestic volumes had normalised.</p>
+
+<p>Mastercard's 2009 disclosure shows the same shape in a credit-led recession: worldwide gross dollar volume fell 3.3% in dollars but rose 1.4% in local currency, credit volume fell 8.8%, debit volume rose 10.3% and processed transactions grew 6.9%. Two different shocks, sixteen years apart, one answer. <strong>Domestic transaction count is close to recession-proof. Cross-border is where the cycle lives — it falls roughly 30% and takes about two years back.</strong></p>
+
+<h3>Where the business sits now</h3>
+<p>At the June 2026 quarter every operating measure is at or above its prior peak. Payments volume, processed transactions and cross-border volume are at records; cross-border is growing 14–15%, above its own long-run trend, on travel and cross-border ecommerce; and the operating margin excluding litigation is at the top of its ten-year range. <strong>This is a peak reading, not a trough reading</strong> — and the distinction matters, because a record margin at a peak and a record margin at a trough are opposite facts.</p>
+
+<p>The downside case is therefore specific rather than general. A travel contraction of the 2020 kind would remove roughly a fifth of international transaction revenue — about $2.8bn of gross revenue on the FY2025 base (inferred by applying the FY2020 decline to the FY2025 line) — against a cost base that would not fall. Domestic volume would be broadly unaffected. Margin would compress by low single digits, not by half. The reflex reading (consumer spending falls, therefore Visa falls proportionally) is not what the evidence shows.</p>
+
+<div class="two">
+  <div class="card">
+    <h4 style="color:var(--good)">Durable — likely intact in ten years</h4>
+    <ul>
+      <li>Two-sided scale: ~12bn endpoints against 175m+ merchant locations, assembled over five decades</li>
+      <li>Per-transaction economics indifferent to the price level, with transaction count growing faster than value</li>
+      <li>Cash displacement: cash still ~52% of euro-area point-of-sale transactions by number</li>
+      <li>A cost base that does not grow with volume — network and processing expense at 2.2% of net revenue</li>
+      <li>The retrospective responsibility plan, insulating Class A holders from US interchange damages</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4 style="color:var(--terracotta)">Borrowed — helping now, may not persist</h4>
+    <ul>
+      <li>Cross-border volume growing 14–15%, above its own long-run trend on travel and cross-border ecommerce</li>
+      <li>Currency volatility — cited as a positive contributor in FY2025 and a negative one in FY2026</li>
+      <li>Value-added services growing 33%, from a base small enough that the rate must decay arithmetically</li>
+      <li>The unregulated status of network fees, now under explicit review by the PSR and the RBA</li>
+      <li>Annual pricing modifications worth 2–3 points of growth per revenue line</li>
+    </ul>
+  </div>
+</div>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tblwrap">
+<table>
+<thead><tr><th>Indicator</th><th>Why it matters</th><th>Where published</th></tr></thead>
+<tbody>
+<tr><td>Client incentives as % of gross revenue</td><td>The best single measure of whether net pricing power is holding; a step change signals a large renewal on worse terms</td><td>Revenue table in every 10-Q and 10-K</td></tr>
+<tr><td>Cross-border volume growth ex intra-Europe</td><td>The highest-yielding line and the one that actually moves in a cycle</td><td>MD&amp;A of every 10-Q and 10-K</td></tr>
+<tr><td>Processed transactions vs payments volume growth</td><td>The widening gap is cash displacement visible in real time; a narrowing gap means the low-value migration is maturing</td><td>Every quarterly filing</td></tr>
+<tr><td>US debit routing share; the DOJ docket</td><td>Determines whether Visa sets the price of US debit switching or has to bid for it</td><td>Fed biennial Interchange Fee Revenue reports; SDNY 1:24-cv-07214</td></tr>
+<tr><td>Scheme-fee regulation, UK and Australia</td><td>Where a cap on Visa's own price, if it comes, will first appear</td><td>PSR consultations and directions from summer 2026; RBA Scheme Fee Roadmaps due April 2027</td></tr>
+<tr><td>US litigation escrow balance and deposits</td><td>The direct cash cost of the interchange litigation; it competes with the buyback</td><td>Disclosed each quarter</td></tr>
+</tbody></table>
+</div>
+
+<div class="sec">Section 7</div>
+<h2>Risks, unknowns and questions for deeper work</h2>
+<p>These are the risks cyclicality does not capture — what would change the business rather than pause it.</p>
+
+<ul class="plain">
+<li><strong>Debit routing is the live structural threat, not interchange.</strong> Regulation II requires issuers to enable at least two unaffiliated networks, and since July 2023 that extends to card-not-present transactions. The DOJ alleges Visa processes more than 60% of US debit transactions, collects over $7bn a year in US debit fees, and preserves that position through agreements foreclosing at least 45% of debit volume; the court denied Visa's motion to dismiss in full on 23 June 2025. If those agreements unwind, merchants route to whichever network is cheaper on a transaction Visa already switches — which converts a fee Visa sets into a fee Visa must bid for. No trial date has been set (<span class="nf">NOT FOUND</span>).</li>
+<li><strong>A scheme-fee cap would be different in kind from every regulation Visa has absorbed.</strong> An interchange cap moves money from issuers to merchants and leaves Visa's line untouched — which is why the Fed measures US network fees flat at 0.28% of value across twelve years of Reg II. A scheme-fee cap would come out of Visa's revenue directly, with nothing to recoup it from.</li>
+<li><strong>Client concentration compounds the routing risk.</strong> One client accounted for 11% of total net revenue in each of FY2023, FY2024 and FY2025, and Visa notes clients generally retain flexibility to issue non-Visa products and may in certain circumstances terminate on relatively short notice without significant early termination fees. A single large renewal can move the incentive ratio, and the counterparty's alternative is a network of comparable capability. The client is not named (<span class="nf">NOT FOUND</span>).</li>
+<li><strong>Credit is protected today because a bank transfer is not a credit line — an argument about product, not about rails.</strong> UPI and Pix are both under a decade old and neither yet offers credit at scale. If credit-on-UPI or an equivalent achieves meaningful merchant adoption, the basis for treating credit as protected weakens considerably. No source settles how far that has progressed.</li>
+<li><strong>Stablecoins and agentic commerce are named by Visa and unquantifiable from any source.</strong> Its FY2025 10-K cites blockchain payments and stablecoins as gaining regulatory clarity, operating 24/7 and capable of supporting cross-border transactions — a description of exactly the highest-yielding line in the business. Marked unknown rather than dismissed, because the mechanism is coherent and the exposed revenue line is the valuable one.</li>
+<li><strong>Two decades of litigation have not stopped, and the disclosed exposure post-dates the annual report.</strong> $17.4bn of interchange at issue in unresolved US covered claims as of 11 May 2026; in Europe, more than 1,200 merchant claims since 2013 with over 950 settled. In February 2026 the UK Competition Appeal Tribunal found interchange was largely <em>not</em> passed on by merchants — a finding Visa is appealing and which, if it stands, affects the quantum of European claims. The retrospective responsibility plan absorbs US covered litigation through Class B dilution; it does not absorb the European exposure, and it does not absorb the cash.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<div class="card">
+<ul style="margin:0;padding-left:20px">
+<li>The revenue contribution of Prisma and Newpay — and therefore organic growth for FY2026.</li>
+<li><strong>Take rate by product.</strong> Visa does not split net revenue between credit, debit and commercial — the single most useful missing number, because the account-to-account evidence says the exposure is concentrated in debit.</li>
+<li><strong>Segment profitability of any kind.</strong> Visa reports as one operating segment, so the margin on value-added services versus the core switch is unknown — for 30% of revenue.</li>
+<li>Visa Direct revenue, disclosed only as transaction counts and partner numbers.</li>
+<li>The maintenance-versus-growth split of capital expenditure.</li>
+<li>The identity of the client representing 11% of net revenue.</li>
+<li>A trial date in <em>United States v. Visa</em>; and whether the Federal Reserve formally withdrew its October 2023 proposal to lower the debit interchange cap.</li>
+</ul>
+</div>
+<p>Three of these would need resolving before an investor could hold a firm view: the debit share of net revenue, which determines how much of the business is genuinely exposed to account-to-account rails rather than merely adjacent to them; the margin on value-added services, which determines whether the fastest-growing 30% of revenue is accretive or dilutive; and the DOJ outcome, which determines whether Visa continues to set the price of US debit switching.</p>
+
+<div class="sec">Section 8</div>
+<h2>Investor takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is:</strong> a toll on the movement of money that its owner neither lends nor underwrites — paid by both sides of its own platform, on a base of $13.9 trillion, at 0.288%.</li>
+<li><strong>The core economic engine:</strong> a fixed cost base against a variable revenue base. Network and processing expense is 2.2% of net revenue, so each additional transaction is close to pure margin — hence 66% operating margin before litigation and free cash flow at 54% of revenue.</li>
+<li><strong>The main growth lever:</strong> selling more onto transactions Visa already carries. Value-added services grew 33% in the June 2026 quarter to roughly 30% of revenue, requiring no new volume and facing no price regulation.</li>
+<li><strong>What could break the story:</strong> not disintermediation — account-to-account rails destroyed debit and cash in India and Brazil while credit accelerated — but the loss of pricing discretion. Debit routing and the DOJ case attack it directly; scheme-fee regulation attacks it prospectively; rising client incentives are already eroding it quietly, from 18% of gross revenue in FY2016 to 28% today.</li>
+<li><strong>What to monitor:</strong> the client incentive ratio each quarter, cross-border volume growth excluding intra-Europe, and the two regulatory files — the SDNY docket and the PSR and RBA scheme-fee reviews.</li>
+</ul>
+
+<footer>
+<h3>Sources</h3>
+<p><strong>Company (source of truth on Visa):</strong> Visa Inc. Forms 10-K for FY2016, FY2018, FY2020, FY2021, FY2022, FY2024 and FY2025 (the last filed 6 November 2025); Form 10-Q for the fiscal third quarter ended 30 June 2026 (filed 29 July 2026); Form 8-K dated 12 May 2026 (Class B exchange offer and covered-litigation disclosure); Form 8-K dated 28 July 2026 (dividend declaration).</p>
+<p><strong>Industry (independent):</strong> Federal Reserve, <em>2023 Interchange Fee Revenue, Covered Issuer Costs and Fraud Losses</em> and the Federal Reserve Payments Study; Federal Reserve Financial Services FedNow volume statistics; European Commission report on the application of Regulation (EU) 2015/751; UK Payment Systems Regulator MR22/1.10 final report (March 2025) and CP26/1 (May 2026); Reserve Bank of Australia <em>Review of Merchant Card Payment Costs and Surcharging — Conclusions Paper</em> (March 2026); Reserve Bank of India Payment Systems Report; Banco Central do Brasil Pix management report and study EE106; ABECS; ECB SPACE 2024; BIS Bulletin No 127 and CPMI statistics; Nilson Report; EPI; Open Banking Limited; and the filings of Mastercard, American Express, PayPal, Adyen, Fiserv and Block.</p>
+<p><strong>Post-dating the last annual report:</strong> the acquisition of Prisma and Newpay (February 2026, $1.5bn cash, contribution not disclosed); preliminary approval of the superseding MDL injunctive-relief settlement (9 June 2026) and the motion for final approval (15 July 2026); $17.4bn of interchange at issue in unresolved US covered claims as of 11 May 2026; and the UK Competition Appeal Tribunal's February 2026 pass-on decision, under appeal.</p>
+<p style="margin-top:18px;color:#8A8378">Prepared 7 September 2026 for internal research use. Not a valuation and not a recommendation. Figures marked <em>inferred</em> are computed from disclosed figures; items marked <span class="nf">NOT FOUND</span> could not be established from any source in scope.</p>
+</footer>
+
+</div>
+</body>
+</html>

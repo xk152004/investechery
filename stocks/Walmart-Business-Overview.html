@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview: Walmart Inc.</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+  font-variant-numeric:tabular-nums}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.22;margin:0}
+h1{font-size:38px;margin:6px 0 14px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:34px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.sourceline{color:var(--muted);font-size:15px;margin:0 0 30px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.restate{font-family:Georgia,'Times New Roman',serif;font-size:23px;line-height:1.5;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 20px;margin:0 0 30px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.68;margin-bottom:9px}
+.engine .unit{font-family:Georgia,serif;font-size:27px;font-weight:700;margin-bottom:9px;line-height:1.25}
+.engine p{margin:0;font-size:17px;opacity:.92;line-height:1.55}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px}
+.kpi .k{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;line-height:1.35}
+.kpi .v{font-family:Georgia,serif;font-size:29px;font-weight:700;color:var(--terracotta);line-height:1.1}
+.kpi .s{font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 20px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:15px 18px;margin:0 0 12px}
+.lever.good{border-left-color:var(--good)} .lever.gold{border-left-color:var(--gold)} .lever.blue{border-left-color:var(--blue)}
+.lever .t{font-weight:700;font-size:17.5px;margin-bottom:4px}
+.lever .tag{font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--terracotta);display:block;margin-bottom:5px}
+.lever.good .tag{color:var(--good)} .lever.gold .tag{color:var(--gold)} .lever.blue .tag{color:var(--blue)}
+.lever p{margin:0;font-size:16.5px;line-height:1.52}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.5}
+.pull .cite{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13.5px;color:var(--muted);margin-top:10px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 20px}
+.two h4{margin:0 0 10px;font-family:Georgia,serif;font-size:18px}
+.two ul{margin:0;padding-left:19px} .two li{margin-bottom:9px;font-size:16px;line-height:1.48}
+.tw{overflow-x:auto;margin:0 0 8px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:560px;background:#fff;font-size:15.5px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;line-height:1.45}
+th{background:#F5EFE5;font-weight:700;font-size:14px;letter-spacing:.02em}
+td.n,th.n{text-align:right;white-space:nowrap}
+caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:13.5px;padding-top:9px;line-height:1.5}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 8px;margin:0 0 10px}
+.cap{color:var(--muted);font-size:13.5px;margin:0 0 30px;line-height:1.5}
+ul.plain{padding-left:19px} ul.plain li{margin-bottom:11px}
+.foot{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;line-height:1.6}
+.note{font-size:15px;color:var(--muted)}
+@media(max-width:700px){
+  body{font-size:17.5px} h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  .restate{font-size:20px} .engine .unit{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Walmart Inc. <span style="color:var(--muted);font-size:26px;font-weight:400">NYSE: WMT</span></h1>
+<p class="sourceline">7 September 2026 · Built from Walmart's 10-Ks for fiscal 2017–2026, the 10-Q for the quarter ended 31 July 2026, the FY2026 Q4 and FY2027 Q2 earnings releases and the 2026 proxy; industry structure from USDA ERS, the US Census Bureau, BLS, IAB/PwC and competitors' own filings. <strong>Not a valuation and not a recommendation.</strong></p>
+
+<p class="restate">Walmart is a fixed-cost density business: it converts local scale into a unit-cost advantage, gives most of that advantage back to the customer as price in order to defend the traffic, and then earns a second time on services attached to the traffic it has bought.</p>
+
+<div class="engine">
+  <div class="lab">The unit of economics</div>
+  <div class="unit">One store, and the transaction inside it</div>
+  <p>A US Walmart store turned <strong>$104.7m</strong> of sales in fiscal 2026 — $691 per square foot — at a 5.2% segment operating margin. A Sam's Club turned $154.8m at 2.6%. The shelf is financed by suppliers: payables of $63.1bn exceed inventory of $58.9bn, and the cash conversion cycle runs about three days. Every store is now also a fulfilment node for a $150bn eCommerce business.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Sales per US store</div><div class="v">$104.7m</div><div class="s">$691 / sq ft · 4,611 stores (inferred)</div></div>
+  <div class="kpi"><div class="k">Operating margin</div><div class="v">4.2%</div><div class="s">from a 24.2% gross margin, FY2026</div></div>
+  <div class="kpi"><div class="k">Net income attributable</div><div class="v">$21.9bn</div><div class="s">$2.73 diluted EPS, FY2026</div></div>
+  <div class="kpi"><div class="k">Net long-term debt, 10 yrs</div><div class="v">Repaid</div><div class="s">$49.9bn issued vs $52.2bn repaid</div></div>
+  <div class="kpi"><div class="k">Position in cycle</div><div class="v">Late</div><div class="s">near-peak gross margin, 6 yrs of decelerating comp</div></div>
+  <div class="kpi"><div class="k">Organic growth, cc</div><div class="v">5.1%</div><div class="s">reported 4.7%; acquisitions $53m</div></div>
+</div>
+
+<h2>1 · What the snapshot says</h2>
+<div class="tw"><table>
+<tbody>
+<tr><th style="width:26%">What the business is</th><td>The world's largest retailer by revenue: 11,000 stores and clubs in 19 countries, $713.2bn of FY2026 revenue, roughly 82% of it from the two US segments.</td></tr>
+<tr><th>How it makes money</th><td>Sells household replenishment goods at deliberately thin merchandise margins to generate traffic, earns on a scale-driven cost advantage, and increasingly monetises that traffic again through advertising, membership fees and marketplace services.</td></tr>
+<tr><th>What protects it</th><td>Local store density matched to a distribution network built for it — 4,611 US stores and 601 clubs served by 192 US distribution facilities. An entrant must build the network before it has the stores to fill it.</td></tr>
+<tr><th>What drives earnings</th><td>US comparable sales, now supplied almost entirely by digitally initiated orders; the mix shift into advertising, membership and marketplace; the operating expense rate against a capital programme that has doubled as a share of revenue.</td></tr>
+<tr><th>What to watch</th><td>The comp residual once the eCommerce contribution is stripped out; operating income growth against net sales growth; capex against depreciation; health-and-wellness sales under drug-price regulation.</td></tr>
+<tr><th>Cycle exposure</th><td>Low on volume, medium on margin. Food demand does not cycle; where food is bought does, and it has historically moved toward this format.</td></tr>
+</tbody>
+<caption>FY2026 10-K unless noted. Fiscal year ends 31 January.</caption>
+</table></div>
+
+<h2>2 · What the company does</h2>
+<p>Walmart solves a recurring, unglamorous problem: a household needs roughly the same basket every week and wants it at the lowest total cost of money and time. The answer is a pricing philosophy the company calls everyday low price — pricing items low every day "so our customers trust that our prices will not change under frequent promotional activity" — funded by everyday low cost, "our commitment to control expenses so our cost savings can be passed along to our customers." The promise is not a discount on any one item. It is the removal of the need to shop around.</p>
+
+<p>Trace one dollar of fiscal 2026 sales. Of every $100 of net sales, $75.80 went to cost of goods, leaving $24.20 of gross profit; $20.90 went to operating expense, leaving $4.20 of operating income; after interest, investment marks and tax, $3.15 reached net income. Sitting outside net sales is $6.75bn of membership and other income — under 1% of the top line, but disproportionately profit because it carries almost no cost of goods.</p>
+
+<p>Three segments carry the business: Walmart US at 68% of net sales and $25.2bn of operating income, Walmart International at 19% and $5.1bn, Sam's Club US at 13% and $2.4bn, against a $2.9bn corporate operating loss.</p>
+
+<h3>The mix inside Walmart US is the story</h3>
+<div class="tw"><table>
+<thead><tr><th>Walmart US net sales by category</th><th class="n">FY2026</th><th class="n">Share</th><th class="n">Share FY2024</th><th class="n">FY26 growth</th></tr></thead>
+<tbody>
+<tr><td>Grocery</td><td class="n">$285.5bn</td><td class="n">59.1%</td><td class="n">59.8%</td><td class="n">+3.4%</td></tr>
+<tr><td>General merchandise</td><td class="n">$115.1bn</td><td class="n">23.8%</td><td class="n">25.8%</td><td class="n">+1.0%</td></tr>
+<tr><td>Health and wellness</td><td class="n">$69.5bn</td><td class="n">14.4%</td><td class="n">12.4%</td><td class="n">+12.0%</td></tr>
+<tr><td>Other</td><td class="n">$12.9bn</td><td class="n">2.7%</td><td class="n">2.0%</td><td class="n">+23.9%</td></tr>
+</tbody>
+<caption>FY2026 10-K, Note 11. Shares and growth rates inferred from filed dollar figures.</caption>
+</table></div>
+<p>Grocery is the traffic engine and the thinnest margin; general merchandise is where the gross margin lives. That trade has been running the wrong way. Health and wellness added roughly 200 basis points of mix in two years while general merchandise dollars grew 0.9% cumulatively over the same period. Walmart is not choosing to sell less general merchandise — the customer is buying less of it, and each point of mix shift costs gross margin.</p>
+
+<p>Sam's Club is a different business wearing the same name, and its economics say so. In fiscal 2026 its gross profit rate of 11.3% was <em>below</em> its operating expense rate of 11.4%. The reported $2,442m of segment operating income exists because $2,525m of membership and other income is added to it. The merchandise operation is approximately break-even before membership fees.</p>
+
+<div class="pull">"As a membership-only club, membership income is a significant component of the segment's operating income."<span class="cite">Walmart FY2026 10-K, Item 1 — the company describing Sam's Club</span></div>
+
+<p>The lines the company is entering are where the incremental margin is: advertising revenue of nearly $6.4bn in fiscal 2026 (+46%), membership fee revenue of $4.4bn (+15.1%), and Walmart US marketplace sales up 52% in the most recent quarter. Each sells something the retailer already owns and has already paid for — first-party purchase data, screen and shelf placement, spare capacity in a truck that was going out anyway — so incremental cost is infrastructure rather than cost of goods. They are why gross margin has risen in each of the last three years despite an adverse merchandise mix.</p>
+
+<p>eCommerce is the delivery mechanism for all of it: $150.4bn of net sales in fiscal 2026, 21.3% of the total against 15.6% two years earlier, growing 23% again in the most recent quarter "primarily driven by store and club-fulfilled delivery." One caveat belongs in the foreground rather than a footnote. In fiscal 2026 Walmart redefined eCommerce net sales to include "certain advertising arrangements, fulfillment services, and data insights," and the comparable-sales definition already folded advertising in from fiscal 2023. <strong>The series is therefore not a like-for-like merchandise channel figure, and no filing quantifies how much of the growth is definitional.</strong></p>
+
+<h2>3 · Industry, competitive position and moat</h2>
+<p>US food and discount retail is a business in which almost nothing separates the competitors at the operating line. Reported operating margins across the format range run from 1.3% at Kroger to 5.2% at Dollar General, on gross margins from 11.1% to 30.7%. The gross margin tells you what format you are looking at; the operating margin tells you almost nothing. Profit is not made on the merchandise spread — it is made on throughput per square foot, on the cost of moving a case from a distribution centre to a shelf, and increasingly on revenue attached to the transaction rather than the goods.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Company</th><th class="n">FY end</th><th class="n">Revenue</th><th class="n">Gross margin</th><th class="n">Operating margin</th><th>What structurally explains it</th></tr></thead>
+<tbody>
+<tr><td><strong>Walmart</strong></td><td class="n">Jan 26</td><td class="n">$713.2bn</td><td class="n">24.2%</td><td class="n">4.2%</td><td>General-merchandise mix subsidises thin grocery margins; membership and advertising layered on existing traffic</td></tr>
+<tr><td>Amazon</td><td class="n">Dec 25</td><td class="n">$716.9bn</td><td class="n">n/d</td><td class="n">11.2%</td><td>Retail merchandise is not the profit source: AWS earned $45.6bn of operating income, advertising billed $68.6bn</td></tr>
+<tr><td>Costco</td><td class="n">Aug 25</td><td class="n">$275.2bn</td><td class="n">11.1%</td><td class="n">1.8%</td><td>Merchandise sold near cost; $5,323m of membership fees exceed the $5,060m of total operating income</td></tr>
+<tr><td>Kroger</td><td class="n">Feb 26</td><td class="n">$147.6bn</td><td class="n">n/d</td><td class="n">1.3%</td><td>Pure grocery, no general-merchandise mix, no membership annuity; $1.5bn of alternative-profit income is most of the operating profit</td></tr>
+<tr><td>Target</td><td class="n">Jan 26</td><td class="n">$104.8bn</td><td class="n">27.9%</td><td class="n">4.9%</td><td>Discretionary and apparel mix lifts gross margin — and is why comps fell 2.6% while grocery-weighted peers grew</td></tr>
+<tr><td>Dollar General</td><td class="n">Jan 26</td><td class="n">$42.7bn</td><td class="n">30.7%</td><td class="n">5.2%</td><td>Small box, low rent, few labour hours per store, ~82% consumables at high private-label penetration</td></tr>
+</tbody>
+<caption>Each company's most recent annual filing or results release. Gross margin is not disclosed comparably by Kroger or Amazon. Walmart notes it includes only part of its distribution-facility costs in cost of sales, so its gross margin "may not be comparable to those of other retailers."</caption>
+</table></div>
+
+<p>The defining structural fact of the last three decades is a format shift. Warehouse clubs and supercenters took US food-at-home sales share from <strong>9.4% in 1997 to 26.4% in 2025</strong>, a 317% increase in real sales, while conventional grocery stores fell from 72.2% to 56.2% (USDA Economic Research Service). No marketing claim produces a 17-point share transfer over 28 years; it is the observable result of a price position customers acted on.</p>
+
+<p>But the market that matters is local, and national statistics flatter everyone in it. USDA ERS measures national four-firm concentration in US food retail at 34% and a national Herfindahl index of 593 — unconcentrated by antitrust thresholds — while the average county sits at 3,737 and the average rural county at 5,584. Between 1990 and 2019 national concentration rose 458% while county concentration rose only 94%. ERS justifies the county proxy on behaviour: shoppers travel four to ten miles to the stores they use. <strong>A national share figure is therefore a poor proxy for pricing power, because pricing power is decided inside a ten-mile radius, one trade area at a time.</strong></p>
+
+<p>What binds an entrant is not capital. It is sequence. A distribution centre is only economic once enough stores are within reach of it, and a store is only economic once a distribution centre can serve it cheaply — so the entrant must build the second before it can profit from the first. The best evidence that this binds comes from the entrant trying hardest: Aldi is adding US stores toward 3,200 by 2028 on a stated $9bn five-year budget, funding three new distribution centres ahead of the stores they will serve, and acquiring roughly 80 Southeastern Grocers locations in 2026 with 200-plus conversions planned by end-2027. A well-funded discounter with a proven European model is <em>buying</em> existing trade areas because it cannot create them fast enough.</p>
+
+<p>Read against the table above, Walmart's claim to a low cost structure holds only in a specific sense. Costco delivers merchandise on an 11.1% gross margin, less than half Walmart's 24.2%, so its cost to serve per dollar of goods is materially lower. Dollar General runs a leaner box per square foot. Walmart is low-cost among mass merchants, not low-cost absolutely. Its genuine distinction is combinatorial: it is the only US operator pairing national grocery scale with a general-merchandise mix, an owned last mile out of stores customers already live near, and a first-party advertising business sized against that traffic. Any one of those a competitor can match. The set is what would be expensive to reproduce.</p>
+
+<p>The fulfilment architecture is where that combination is currently paying, and the counter-evidence is unusually clean. Kroger took a <strong>$2,497m impairment</strong> on its automated eCommerce fulfilment network in fiscal 2025 and now speaks of establishing "a path to eCommerce profitability" on more than $16bn of eCommerce sales. Amazon announced in January 2026 that it is closing its Amazon Go and Amazon Fresh stores, saying it had not "created a truly distinctive customer experience with the right economic model needed for large-scale expansion." Walmart's eCommerce grows out of assets it already owns and has already depreciated. The evidence so far is that automating the flow from distribution centre to store works, and automating the pick from a dedicated shed to a consumer has not.</p>
+
+<h3>Testing the company's account against outside evidence</h3>
+<div class="tw"><table>
+<thead><tr><th style="width:30%">Company claim</th><th style="width:20%">Verdict</th><th>On what basis</th></tr></thead>
+<tbody>
+<tr><td>Everyday low price, enabled by scale</td><td><strong style="color:var(--good)">Supports</strong></td><td>The USDA format-share record is exactly what a 28-year price-position win looks like; FY2026 US comps of 4.3% against Target's −2.6% show the position still binding</td></tr>
+<tr><td>Low cost structure</td><td><strong style="color:var(--gold)">Partially supports</strong></td><td>Low-cost among mass merchants, but Costco serves merchandise on less than half the gross margin and Dollar General runs a leaner box</td></tr>
+<tr><td>Advertising, membership, marketplace as higher-margin growth</td><td><strong style="color:var(--gold)">Partially supports</strong></td><td>Advertising grew 46% against a US commerce-media category growing 18.0% to $63.4bn — real share gain. But $6.4bn is 0.9% of revenue and consolidated gross margin moved only 8bps</td></tr>
+<tr><td>Store-fulfilled eCommerce is the right architecture</td><td><strong style="color:var(--good)">Supports</strong></td><td>Kroger's $2.5bn write-off and Amazon's Fresh/Go closures are the control group; Target fulfils 97.6% of merchandise sales from stores</td></tr>
+<tr><td>Scale confers durable protection</td><td><strong style="color:var(--terracotta)">Partially contradicts</strong></td><td>National CR4 is only 34% and national HHI 593; the binding market is the county, where Aldi is buying trade areas outright. Scale protects the cost base, not the trade area</td></tr>
+</tbody>
+</table></div>
+
+<p><strong>What tends to win here:</strong> operators that already own irreplaceable local density, layer capital-light revenue attached to the transaction on top of it, and fulfil online orders from assets they have already paid for. Walmart is that kind of company. The open question is not whether it is well positioned — it is whether the second layer can grow large enough, fast enough, to change a 4.2% operating margin.</p>
+
+<h2>4 · Growth engine</h2>
+<p>Fiscal 2026 revenue grew 4.7% to $713.2bn, and almost none of it was acquired. Payments for business acquisitions net of cash were $53m against $1,896m the prior year for VIZIO, so reported and organic growth are effectively the same once currency is removed.</p>
+
+<div class="tw"><table>
+<thead><tr><th>FY2026 growth decomposition</th><th class="n">Effect</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Total revenue growth, as reported</td><td class="n">+4.7%</td><td>FY2026 10-K</td></tr>
+<tr><td>Currency translation on net sales</td><td class="n">−$2.8bn ≈ −0.4pp</td><td>FY2026 10-K (pp inferred)</td></tr>
+<tr><td>Acquisitions, net of cash acquired</td><td class="n">$53m — immaterial</td><td>FY2026 10-K</td></tr>
+<tr><td>Sales growth, constant currency</td><td class="n">+5.1%</td><td>2026 proxy, incentive-plan disclosure</td></tr>
+<tr><td><strong>Organic, constant currency</strong></td><td class="n"><strong>≈ +5.1%</strong></td><td>inferred</td></tr>
+</tbody>
+<caption>The reported-versus-organic distinction that matters for Walmart is historical, not current: International net sales fell from $121.4bn in FY2021 to $101.0bn in FY2022 on the Asda, Seiyu and Argentina disposals, with no restatement of prior years, so growth rates spanning that boundary are meaningless.</caption>
+</table></div>
+
+<h3>The comp is now entirely digital</h3>
+<div class="chart"><svg viewBox="0 0 820 340" width="100%" role="img" aria-label="chart" style="display:block">
+<line x1="54" y1="298.0" x2="790" y2="298.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="302.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">0%</text>
+<line x1="54" y1="242.8" x2="790" y2="242.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="246.8" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">2%</text>
+<line x1="54" y1="187.6" x2="790" y2="187.6" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="191.6" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">4%</text>
+<line x1="54" y1="132.4" x2="790" y2="132.4" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="136.4" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">6%</text>
+<line x1="54" y1="77.2" x2="790" y2="77.2" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="81.2" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">8%</text>
+<line x1="54" y1="22.0" x2="790" y2="22.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="26.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">10%</text>
+<text x="54.0" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY21</text>
+<text x="176.7" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY22</text>
+<text x="299.3" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY23</text>
+<text x="422.0" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY24</text>
+<text x="544.7" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY25</text>
+<text x="667.3" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY26</text>
+<text x="790.0" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 FY27</text>
+<polyline points="54.0,57.9 176.7,121.4 299.3,104.8 422.0,146.2 544.7,165.5 667.3,179.3 790.0,206.9" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="54.0" cy="57.9" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="176.7" cy="121.4" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="299.3" cy="104.8" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="422.0" cy="146.2" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="544.7" cy="165.5" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="667.3" cy="179.3" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="790.0" cy="206.9" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<text x="62.0" y="43.9" text-anchor="start" font-size="13" font-weight="700" fill="#C75B39" font-family="Calibri,Segoe UI,Arial">Walmart US comparable sales</text>
+<polyline points="54.0,149.0 176.7,278.7 299.3,278.7 422.0,226.2 544.7,218.0 667.3,179.3 790.0,162.8" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="54.0" cy="149.0" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="176.7" cy="278.7" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="299.3" cy="278.7" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="422.0" cy="226.2" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="544.7" cy="218.0" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="667.3" cy="179.3" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="790.0" cy="162.8" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<text x="782.0" y="148.8" text-anchor="end" font-size="13" font-weight="700" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial">of which: eCommerce contribution</text>
+</svg></div>
+<p class="cap">Walmart US comparable sales and the eCommerce contribution to that comp, FY2021–FY2026 (10-K, calendar basis) and Q2 FY2027 (10-Q, calendar basis). The gap between the two lines is the store-initiated residual.</p>
+
+<p>This is the most important picture in the document. In fiscal 2026 Walmart US comparable sales grew 4.3% and the eCommerce contribution to that comp was 4.3 percentage points — the residual from store-initiated shopping was approximately zero. In the quarter ended 31 July 2026 the calendar comp was 3.3% against an eCommerce contribution of 4.9 points, so the store-initiated residual has turned negative by roughly 1.6 points. On the retail calendar the release reports a 2.6% ex-fuel comp built from transactions up 1.5% and average ticket up 1.1%.</p>
+
+<p>Growth is real and well above the industry, but it now arrives entirely through the digital order. That is not a problem in itself — a store-fulfilled digital order is still a store sale — but the physical trip, which is what the advertising and cross-category businesses monetise, is no longer growing.</p>
+
+<h3>The levers, ranked</h3>
+<div class="lever"><span class="tag">Structural</span><div class="t">eCommerce fulfilled from owned stores</div><p>$150.4bn of net sales in FY2026, up 24.4%, 21.3% of net sales against 15.6% two years earlier, up 23% again last quarter. Fixed assets already carrying the merchandise business absorb the fulfilment cost — exactly the economics Kroger could not reproduce with dedicated sheds.</p></div>
+<div class="lever gold"><span class="tag">Structural · management-driven pace</span><div class="t">Advertising</div><p>Nearly $6.4bn in FY2026, up 46%; up 38% globally last quarter with Walmart Connect ex-VIZIO up 43%. Against a US commerce-media market growing 18.0%, Walmart compounds at more than twice category rate. It sells shelf placement and first-party purchase data generated by transactions that were happening anyway, so incremental margin approaches software levels.</p></div>
+<div class="lever"><span class="tag">Structural</span><div class="t">Marketplace and fulfilment services</div><p>Walmart US marketplace sales grew 52% in the quarter ended 31 July 2026. Third-party sales carry no inventory risk and generate both a take rate and demand for the advertising and fulfilment products sold to the same sellers. Amazon's $191.2bn of third-party seller services revenue is the proof of concept at scale.</p></div>
+<div class="lever"><span class="tag">Structural</span><div class="t">Membership</div><p>Membership fee revenue of $4.4bn in FY2026, up 15.1% globally and 17% last quarter, with Walmart+ growing double digits. Sam's raised annual fees effective 1 May 2026; because fees are deferred and recognised ratably, that benefit phases through FY2027–28. Costco is the benchmark at maturity — its $5,323m of membership fees exceeded its entire operating income. Walmart never discloses member counts, so the runway cannot be sized from the filings.</p></div>
+<div class="lever blue"><span class="tag">Cyclical and structural in combination</span><div class="t">International, led by China</div><p>China net sales grew 23.3% to $24.6bn in FY2026 and 28.2% last quarter, while Mexico and Central America — 40% of segment sales — grew 1.0% in reported dollars. Segment operating margin nonetheless fell from 4.5% to 3.9% on "strategic growth investments in price and delivery capabilities" and a $0.7bn PhonePe share-based compensation charge.</p></div>
+<div class="lever blue"><span class="tag">Temporary — and now reversed</span><div class="t">Health and wellness</div><p>Grew 12.0% in FY2026 to 14.4% of Walmart US net sales, having added ~200bps of mix in two years. It fell 1.8% year on year last quarter "primarily due to the impact from maximum fair price regulation on certain prescription drugs, which went into effect in January 2026." The largest mix contributor of the last two years has become a headwind by regulation.</p></div>
+<div class="lever gold"><span class="tag">Management-driven</span><div class="t">Unit growth returning</div><p>Capital spend on new stores and clubs tripled from $450m in FY2025 to $1,406m in FY2026 — the first meaningful store-growth commitment in a decade — and units rose from 10,616 in FY2024 to 11,000 at the end of July 2026. Because the constraint here is trade-area density, adding units is the only lever that changes the <em>local</em> competitive position.</p></div>
+
+<p style="margin-top:22px">Guidance frames what management expects the mix to do. For fiscal 2027 the company guides constant-currency net sales growth of <strong>4.0%–5.0%</strong> and adjusted operating income growth of <strong>7.0%–8.5%</strong>, raised in August from 3.5%–4.5% and 6.0%–8.0%. The entire proposition sits in that gap: profit is expected to grow roughly twice as fast as sales, and the higher-margin businesses are what is supposed to produce it.</p>
+
+<h2>5 · Margin, cash and capital allocation</h2>
+<p>Fiscal 2026 was a year in which the margin mechanics worked and the operating margin still fell. Gross margin rose 8 basis points to 24.2% on "disciplined inventory management, as well as growth in higher margin businesses globally," partly offset by mix shifts into lower-margin categories and International channel and format mix. The operating expense rate rose 20 basis points to 20.9%. Operating margin therefore fell 13 basis points to 4.2%, and operating income grew 1.6% against net sales growth of 4.7%. <strong>The company's own stated objective — "growing operating income at a faster rate than net sales" — was not met.</strong></p>
+
+<p>Two of the three drivers of the expense increase are charges: approximately $0.9bn of higher self-insured general liability claims in the US, and a $0.7bn non-cash charge on modification of PhonePe share-based compensation "in contemplation of a potential initial public offering." Together those are about 23 basis points of net sales, more than the 20 basis points of deterioration — so the underlying expense base leveraged slightly. The third driver is not a charge and does not lap: "increased depreciation related to our capital investments."</p>
+
+<div class="chart"><svg viewBox="0 0 820 340" width="100%" role="img" aria-label="chart" style="display:block">
+<line x1="54" y1="298.0" x2="790" y2="298.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="302.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">1%</text>
+<line x1="54" y1="242.8" x2="790" y2="242.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="246.8" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">2%</text>
+<line x1="54" y1="187.6" x2="790" y2="187.6" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="191.6" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">3%</text>
+<line x1="54" y1="132.4" x2="790" y2="132.4" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="136.4" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">4%</text>
+<line x1="54" y1="77.2" x2="790" y2="77.2" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="81.2" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">5%</text>
+<line x1="54" y1="22.0" x2="790" y2="22.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="45" y="26.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">6%</text>
+<text x="54.0" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY16</text>
+<text x="127.6" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY17</text>
+<text x="201.2" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY18</text>
+<text x="274.8" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY19</text>
+<text x="348.4" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY20</text>
+<text x="422.0" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY21</text>
+<text x="495.6" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY22</text>
+<text x="569.2" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY23</text>
+<text x="642.8" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY24</text>
+<text x="716.4" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY25</text>
+<text x="790.0" y="320" text-anchor="middle" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">FY26</text>
+<polyline points="54.0,221.8 127.6,232.3 201.2,242.2 274.8,242.2 348.4,240.6 422.0,251.6 495.6,226.8 569.2,200.8 642.8,177.7 716.4,160.6 790.0,146.8" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="54.0" cy="221.8" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="127.6" cy="232.3" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="201.2" cy="242.2" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="274.8" cy="242.2" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="348.4" cy="240.6" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="422.0" cy="251.6" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="495.6" cy="226.8" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="569.2" cy="200.8" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="642.8" cy="177.7" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="716.4" cy="160.6" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<circle cx="790.0" cy="146.8" r="3.4" fill="#FAF6EF" stroke="#C75B39" stroke-width="2"/>
+<text x="209.2" y="270.2" text-anchor="start" font-size="13" font-weight="700" fill="#C75B39" font-family="Calibri,Segoe UI,Arial">Capital expenditure, % of revenue</text>
+<polyline points="54.0,75.0 127.6,92.1 201.2,125.8 274.8,115.8 348.4,134.6 422.0,129.1 495.6,100.9 569.2,167.2 642.8,121.4 716.4,113.1 790.0,120.3" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="54.0" cy="75.0" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="127.6" cy="92.1" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="201.2" cy="125.8" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="274.8" cy="115.8" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="348.4" cy="134.6" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="422.0" cy="129.1" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="495.6" cy="100.9" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="569.2" cy="167.2" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="642.8" cy="121.4" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="716.4" cy="113.1" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<circle cx="790.0" cy="120.3" r="3.4" fill="#FAF6EF" stroke="#3C6E8F" stroke-width="2"/>
+<text x="62.0" y="62.0" text-anchor="start" font-size="13" font-weight="700" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial">Operating margin, % of net sales</text>
+</svg></div>
+<p class="cap">Capital expenditure as a percentage of total revenue, against operating margin as a percentage of net sales, FY2016–FY2026. Both computed from filed dollar figures in the FY2018, FY2021, FY2024 and FY2026 10-Ks.</p>
+
+<p>That chart is the decade in one frame. Operating margin was 5.04% in fiscal 2016 and is 4.22% today — 82 basis points lower on a revenue base 48% larger. Gross margin over the same span is only 37 basis points lower; the gap is operating expense, which rose from 20.3% to 20.9% of net sales. Walmart has defended its gross margin through a decade of price investment and eCommerce build-out. What it has not defended is the cost of the assets required to do it.</p>
+
+<div class="tw"><table>
+<thead><tr><th>The financial spine</th><th class="n">FY2017</th><th class="n">FY2021</th><th class="n">FY2024</th><th class="n">FY2026</th></tr></thead>
+<tbody>
+<tr><td>Total revenue ($bn)</td><td class="n">485.9</td><td class="n">559.2</td><td class="n">648.1</td><td class="n">713.2</td></tr>
+<tr><td>Gross margin (% of net sales)</td><td class="n">24.9</td><td class="n">24.3</td><td class="n">23.7</td><td class="n">24.2</td></tr>
+<tr><td>Operating margin (% of net sales)</td><td class="n">4.7</td><td class="n">4.1</td><td class="n">4.2</td><td class="n">4.2</td></tr>
+<tr><td>Capital expenditure (% of revenue)</td><td class="n">2.2</td><td class="n">1.8</td><td class="n">3.2</td><td class="n">3.7</td></tr>
+<tr><td>Free cash flow ($bn)</td><td class="n">21.1</td><td class="n">25.8</td><td class="n">15.1</td><td class="n">14.9</td></tr>
+<tr><td>eCommerce net sales ($bn)</td><td class="n">n/d</td><td class="n">64.9</td><td class="n">100.1</td><td class="n">150.4</td></tr>
+</tbody>
+<caption>FY2018, FY2021, FY2024 and FY2026 10-Ks; ratios and eCommerce totals inferred. Three comparability breaks: FY2017 figures come from the FY2018 10-K's comparative columns, because the FY2017 10-K incorporates its financial statements by reference to an exhibit outside the filing; FY2021 and FY2022 straddle the Asda, Seiyu and Argentina disposals, which removed ~$20bn of International net sales with no restatement; eCommerce net sales are not disclosed in dollars before FY2020 and the definition was widened in FY2021 and again in FY2026, so that row is not like-for-like.</caption>
+</table></div>
+
+<p>Cash conversion is where the capital programme becomes visible. Operating cash flow reached a record $41.6bn in fiscal 2026, but capital expenditure of $26.6bn left free cash flow of $14.9bn — <strong>below the $18.3bn of fiscal 2018</strong>, in a year when net income was more than double the fiscal 2018 figure. Capex has risen from 1.84% of revenue at its fiscal 2021 trough to 3.74% and now runs at 1.88 times depreciation. Because depreciation trails the spending that creates it by $12.4bn a year, the margin headwind management already names is not yet fully in the profit and loss account.</p>
+
+<p>What the money buys has changed decisively. The share of US capital expenditure going to supply chain, customer-facing initiatives and technology rose from 52.5% in fiscal 2017 to 70.2% in fiscal 2026, while new stores fell from 27.4% to 6.0% of the US total. Return on investment was 15.1% in fiscal 2026 against 15.5% in fiscal 2025, the decline "primarily due to an increase in average invested capital due to higher purchases of property and equipment."</p>
+
+<div class="tw"><table>
+<thead><tr><th>Where the cash went, FY2017–FY2026</th><th class="n">Cumulative</th><th>What it reveals</th></tr></thead>
+<tbody>
+<tr><td>Capital expenditure</td><td class="n">$153.0bn</td><td>Absorbed roughly half of cumulative operating cash flow; the programme is the priority claim on cash</td></tr>
+<tr><td>Share repurchases</td><td class="n">$67.4bn</td><td>Erratic, not programmatic — FY2024's $2.8bn was the decade low, coinciding with peak capex growth and a $3.5bn PhonePe minority purchase. The buyback is the shock absorber</td></tr>
+<tr><td>Dividends paid</td><td class="n">$63.2bn</td><td>Treated as a near-fixed obligation: $1.96 to $2.28 pre-split over eight years, a 1.9% compound rate, before a step change to ~9% growth from FY2025</td></tr>
+<tr><td>Acquisitions, net of cash</td><td class="n">$20.8bn</td><td>Dominated by Flipkart (~$16bn, FY2019); only $53m in FY2026</td></tr>
+<tr><td>Net long-term debt</td><td class="n">−$2.3bn</td><td>$49.9bn issued against $52.2bn repaid. The balance sheet is not used as a growth lever</td></tr>
+</tbody>
+<caption>Sums inferred from filed cash-flow statements, FY2018–FY2026 10-Ks. The decade of investment and shareholder return was funded from roughly $305bn of cumulative operating cash flow plus ~$8bn of divestiture proceeds.</caption>
+</table></div>
+
+<p>One pattern broke in fiscal 2026: dividends of $7,507m plus repurchases of $8,088m totalled $15,595m against free cash flow of $14,923m, so shareholder returns exceeded free cash flow. A new $30.0bn repurchase authorisation was approved in February 2026, replacing a $20.0bn programme with $4.0bn remaining. The company states it "anticipates that a majority of the ongoing share repurchase program will be funded through the Company's free cash flow" — a formulation doing some work on that arithmetic.</p>
+
+<p><strong>No transaction is pending.</strong> Neither the 10-K's subsequent-events note nor the most recent 10-Q discloses an agreed acquisition or divestiture. The only forward corporate-structure item is a possibility rather than an agreement: PhonePe's share-based payment arrangements were modified in contemplation of a potential IPO, and Walmart's ownership fell from ~84% to ~73% on option exercises during fiscal 2026. No terms, size or timing are disclosed.</p>
+
+<p>Two governance facts frame how these decisions get made. Doug McMillon retired as President and CEO effective 31 January 2026 and John Furner, previously chief executive of Walmart US, succeeded him on 1 February 2026 — fiscal 2027 is the first full year under a new chief executive, and roughly 82% of his fiscal 2026 target compensation was tied to sales, operating income and return on investment. Second, Walton family entities beneficially owned <strong>44.11%</strong> of shares outstanding as of 10 April 2026. Capital allocation here answers to a controlling family with a multi-decade horizon, which is consistent with the debt-averse, investment-first pattern the cash flows show.</p>
+
+<h2>6 · Cyclicality, constraints and what to monitor</h2>
+<p>Walmart's end-market is about as non-cyclical as retail gets in units. Grocery is 59.1% of Walmart US net sales and 69.6% of Sam's Club's, and US food-at-home spending was $1.10tn of a $2.51tn total food bill in 2025 (USDA ERS). Households do not stop eating in a recession. What cycles is <em>where</em> the food is bought: food away from home is the majority of the food dollar, and downturns push spending back toward the grocery channel and, within it, toward value formats.</p>
+
+<p>Against its own recent history the business is at an unusual point. Gross margin of 24.2% sits near the top of the FY2021–FY2026 band of 23.5%–24.4%. The operating expense rate of 20.9% is at the <em>worst</em> end of its band of 20.4%–21.0%. Operating margin of 4.2% is mid-range. And Walmart US comparable sales have decelerated for six consecutive years — 8.7%, 6.4%, 7.0%, 5.5%, 4.8%, 4.3% — to 2.6% ex-fuel last quarter, the lowest reading in the series. Near-peak gross margin, worst-in-band expense rate, decelerating volume: a company harvesting mix while underlying traffic growth thins.</p>
+
+<div class="card" style="border-left:5px solid var(--terracotta)">
+<h3 style="margin-top:0">The single largest temporary item</h3>
+<p style="margin-bottom:0">In the quarter ended 31 July 2026 Walmart received approximately <strong>$2.9bn of tariff refunds</strong> through the US Customs and Border Protection process, recorded as a reduction of cost of sales and representing "substantially all of the refunds requested." That is <strong>156 basis points</strong> of quarterly net sales against a reported gross-margin gain of 96 basis points — so underlying gross margin was down roughly 60 basis points once the refund is removed. Management states a significant portion was reinvested "primarily through price investment," continuing through fiscal 2027. The quarter's headline figures — a 25.4% gross margin above any full year in the six-year range, operating income up 28.8% — do not describe the ongoing business.</p>
+</div>
+
+<p>The downside case is best read from what actually happened last time. In the year to 31 January 2010 Walmart US comparable sales were −0.7%, having been +3.2% the year before, and management attributed the decline to deflation and lower fuel prices while noting that customer traffic <em>increased</em>. The mechanism would repeat: in a deflationary or trade-down downturn Walmart gains units and visits while ticket falls, so the comp goes negative even as share rises. The difference today is the cost base absorbing it. In fiscal 2010 capital expenditure was around 2% of revenue; today it is 3.7% and depreciation is still $12.4bn behind it.</p>
+
+<p>Two structural constraints bound the margin. <strong>Trade policy:</strong> less than one third of what Walmart sells in the US is imported, sourced principally from China, Vietnam, Mexico, India and Canada. On a 4.2% operating margin there is little absorptive capacity, and the legal regime is unstable in both directions — the Supreme Court held on 20 February 2026 that the International Emergency Economic Powers Act does not authorise tariffs, nine executive orders were rescinded, and the replacement 10% Section 122 surcharge carried a 150-day statutory cap expiring 24 July 2026, while Section 232 duties remain in force. Walmart's $2.9bn refund is that mechanism running in reverse, and it sizes what is at stake. <strong>Labour:</strong> retail trade average hourly earnings were $26.38 in August 2026, up 3.1% year on year, running slightly ahead of food-at-home inflation of 2.7% — manageable now, but retail wages are about 70% of the all-private average, so the sector carries asymmetric exposure to statutory minimums.</p>
+
+<h3>Durable versus borrowed</h3>
+<div class="two">
+  <div class="card"><h4 style="color:var(--good)">Should still be there in ten years</h4><ul>
+    <li>4,611 US stores and 601 clubs matched to 192 US distribution facilities — a lattice assembled over six decades</li>
+    <li>Supplier-funded working capital: payables of $63.1bn against inventory of $58.9bn, a ~3-day cash cycle</li>
+    <li>Membership fee revenue of $4.4bn, contractual and recognised ratably, with Sam's fees raised in May 2026</li>
+    <li>A general-merchandise mix that permits grocery to be sold thin — the structural advantage Kroger lacks</li>
+    <li>A balance sheet funded from operating cash flow, with long-term debt net repaid across the decade</li>
+  </ul></div>
+  <div class="card"><h4 style="color:var(--terracotta)">Helping right now</h4><ul>
+    <li>$2.9bn of tariff refunds last quarter, worth 156bps of quarterly sales</li>
+    <li>Currency, which flipped from −$2.8bn on FY2026 net sales to +$3.9bn in H1 FY2027</li>
+    <li>A quarterly effective tax rate of 18.5% and net interest of $171m, both on changes in unrecognised tax benefits</li>
+    <li>Health and wellness growth, which added 200bps of mix in two years and has now turned negative on price regulation</li>
+    <li>A depreciation charge still $12.4bn a year below the capital spending that creates it</li>
+  </ul></div>
+</div>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tw"><table>
+<thead><tr><th>Indicator</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>eCommerce contribution to comparable sales, against the total comp, by segment</td><td>Walmart 10-K and 10-Q, Company Performance Metrics</td></tr>
+<tr><td>Operating income growth against net sales growth — the company's own stated test</td><td>Walmart quarterly earnings release</td></tr>
+<tr><td>Advertising and membership fee growth (not disclosed in the 10-K)</td><td>Walmart quarterly earnings release and financial presentation</td></tr>
+<tr><td>Capital expenditure, and capex against depreciation and amortisation</td><td>Walmart 10-K cash-flow statement and capital allocation table</td></tr>
+<tr><td>Food-at-home consumer price index</td><td>US Bureau of Labor Statistics, monthly</td></tr>
+<tr><td>Grocery store and warehouse-club channel sales</td><td>US Census Bureau, Monthly Retail Trade Survey</td></tr>
+<tr><td>Food-at-home sales by outlet format</td><td>USDA Economic Research Service, Retail Trends, annual</td></tr>
+<tr><td>US commerce media advertising revenue</td><td>IAB/PwC Internet Advertising Revenue Report, annual</td></tr>
+</tbody>
+</table></div>
+
+<h2>7 · Risks, unknowns and open questions</h2>
+<p class="note">Cyclicality is covered above. What follows is what cyclicality does not capture, ordered by how much each compounds with the others.</p>
+<ul class="plain">
+<li><strong>Agentic commerce attacks the highest-margin revenue first.</strong> The FY2026 10-K names "emerging agentic platforms" and warns that greater concentration of eCommerce sales "could result in a reduction in the amount of traffic in our stores and clubs, which would, in turn, reduce the opportunities for cross-store or cross-club sales." The mechanism is sharper than the merchandise risk it describes: retail media monetises attention at the moment of choice. If an AI agent makes the choice on price and specification, sponsored placement has no one left to persuade — so the advertising business, growing at 46% and carrying the margin story, is impaired before a single merchandise sale is lost.</li>
+<li><strong>Drug-price regulation has already turned the mix-carrying category negative.</strong> Health and wellness added ~200bps of Walmart US mix in two years and grew 12.0% in FY2026; it fell 1.8% year on year last quarter on maximum fair price regulation effective January 2026. A further reimbursement or formulary change compounds twice — it removes the pharmacy margin and the store trip that a prescription pickup generates, which is the trip the rest of the basket depends on.</li>
+<li><strong>The opioid tail is unaccrued and scheduled.</strong> Approximately $3.3bn was accrued in FY2023 and fully paid by 31 January 2025, but for the remaining matters "the Company has not accrued a liability… nor can the Company reasonably estimate any loss or range of loss." Roughly 230 MDL cases were pending as of 6 March 2026; the Florida Health Sciences Center trial ended in a mistrial on 8 December 2025 with retrial scheduled to begin 27 August 2026, and a DOJ Controlled Substances Act trial is set for November 2027.</li>
+<li><strong>Worker classification sits directly underneath the growth engine.</strong> Store-fulfilled delivery produces the eCommerce comp, and its cost base rests on Spark drivers being independent contractors. Walmart accrued roughly $37m of a $100m FTC and state judgment carrying ten years of programmatic obligations, and continues to face driver-classification investigations and litigation. Reclassification would move a variable delivery cost onto payroll in precisely the channel that now supplies all of the comp growth.</li>
+<li><strong>Depreciation is a scheduled, non-lapping margin headwind.</strong> Capex of $26.6bn runs $12.4bn above D&A of $14.2bn, and depreciation is already named in the FY2025 and FY2026 expense explanations. Unlike the self-insurance and PhonePe charges it does not lap — it accumulates, and it accumulates while the comp decelerates.</li>
+<li><strong>India carries an ownership remedy, not a fine.</strong> FDI show-cause notices to Flipkart give the regulator authority to impose "monetary and/or non-monetary relief, such as share ownership restrictions," with the outcome unpredictable and loss not estimable. The exposure is to the structure of an asset Walmart paid roughly $16bn for.</li>
+<li><strong>Control is concentrated.</strong> Walton family entities held 44.11% of shares at 10 April 2026, with voting power exercised by majority vote of Walton Enterprises' managing members. This has been consistent with a long-horizon, low-leverage capital policy; it also means that policy is not contestable.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<ul class="plain">
+<li><strong>Advertising revenue appears in no 10-K, in any year.</strong> The $6.4bn FY2026 figure and its 46% growth come from the earnings release; the annual report quantifies only advertising <em>costs</em> ($5.4bn), the opposite item. Marketplace, fulfilment services and data-insights revenue are never given in dollars anywhere.</li>
+<li>Member counts for Walmart+ and Sam's Club are not disclosed in any filing, nor is deferred membership revenue separately quantified — the membership annuity cannot be sized or compared with Costco's 81.0m paid members.</li>
+<li>eCommerce profitability is never stated at segment level; the nearest disclosures are qualitative, alongside a risk factor conceding "operating losses incurred for those initiatives."</li>
+<li>No operating sensitivity is disclosed — there is no "each 1% of comparable sales is worth $X of operating income." The only quantified sensitivities cover interest rates, currency swaps and equity investment marks.</li>
+<li>The FY2023 and FY2026 redefinitions folding advertising, fulfilment services and data insights into eCommerce net sales and the comp definition are unquantified. Part of the reported acceleration to 24.4% eCommerce growth is definitional and no filing says how much.</li>
+<li>Company-level US grocery market shares have no independent government source; every published Walmart share figure is a commercial vendor estimate.</li>
+</ul>
+
+<h3>Questions to resolve before forming a thesis</h3>
+<ul class="plain">
+<li>What is the store-initiated comp, separated from digitally initiated orders, and for how long can total comp hold with that residual at or below zero?</li>
+<li>What operating margin does the advertising business actually carry, and at what revenue scale does it move the consolidated 4.2% rate by a full point?</li>
+<li>What is steady-state capital expenditure? Does free cash flow re-expand once the automation programme completes, or is ~3.7% of revenue the new normal for a store base that must now also be a fulfilment network?</li>
+<li>Was the $2.9bn tariff refund a one-time recovery or the first of a series — and how much of it is permanently embedded in price rather than margin?</li>
+</ul>
+
+<h2>8 · Investor takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is:</strong> a fixed-cost density business that converts local scale into a unit-cost advantage and gives most of it back as price to defend the traffic. The merchandise operation earns 4.2%; the durable question is what else can be attached to the traffic.</li>
+<li><strong>The core economic engine:</strong> the store — $104.7m of sales and $691 per square foot in the US, financed by suppliers on a three-day cash cycle — now doing double duty as the fulfilment node for a $150bn eCommerce business built on assets already paid for.</li>
+<li><strong>The main growth lever:</strong> mix, not volume. Advertising +46%, membership fees +15.1%, marketplace +52%, each growing several times faster than the 4.7% top line. Advertising is still 0.9% of revenue, so the shift is directionally right and quantitatively small so far.</li>
+<li><strong>What could break the story:</strong> the store-initiated comp is already at or below zero, capital intensity has doubled as a share of revenue while depreciation trails it by $12.4bn a year, and the highest-margin growth stream depends on shoppers continuing to make the choice themselves.</li>
+<li><strong>What to monitor:</strong> the eCommerce contribution to comp against the total comp, operating income growth against net sales growth, capex as a percentage of revenue, and health-and-wellness sales under maximum fair price regulation.</li>
+</ul>
+
+<div class="foot">
+<strong>Sources.</strong> Walmart Inc. Forms 10-K for fiscal years 2017–2026; Form 10-Q for the quarter ended 31 July 2026; earnings releases and financial presentations for Q4 FY2026 (19 February 2026) and Q2 FY2027 (20 August 2026); DEF 14A proxy statement filed 23 April 2026; Walmart annual report for fiscal 2010. Industry and competitor evidence: USDA Economic Research Service (Retail Trends; Report ERR-314); US Census Bureau (Monthly Retail Trade Survey; Quarterly E-Commerce Report); US Bureau of Labor Statistics (Consumer Price Index; Employment Situation, Table B-3); IAB/PwC Internet Advertising Revenue Report, full-year 2025; and the most recent annual filings or results releases of Costco, Kroger, Target, Amazon and Dollar General; ALDI US corporate disclosures, January 2026.<br><br>
+<strong>Post-dating the filings.</strong> The most recent Walmart filing used here covers the quarter ended 31 July 2026. Nothing in this document reflects events after 20 August 2026. No acquisition or divestiture was pending as of that date; a potential PhonePe initial public offering is contemplated in the FY2026 10-K but no terms, size or timing are disclosed.<br><br>
+This page explains how the business works. It is not a valuation and not a recommendation. Figures marked as inferred are calculations from sourced figures.
+</div>
+
+</div>
+</body>
+</html>
