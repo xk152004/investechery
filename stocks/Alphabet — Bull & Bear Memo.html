@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alphabet Inc. — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#ffffff; --ink:#1c1c1a; --muted:#6b6a66; --line:#e2e0db;
+  --bull:#1d6b4f; --bull-soft:#eaf4ef; --bull-line:#bcdccb;
+  --bear:#a2372c; --bear-soft:#fbeeec; --bear-line:#eec9c3;
+  --accent:#2b2b28; --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#151514; --panel:#1e1e1c; --ink:#eceae5; --muted:#9d9a93; --line:#33322e;
+    --bull:#63c79b; --bull-soft:#16281f; --bull-line:#2d5343;
+    --bear:#e28b7e; --bear-soft:#2a1917; --bear-line:#563430;
+    --accent:#eceae5;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.62 ui-serif,Georgia,"Iowan Old Style","Times New Roman",serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);gap:44px;max-width:1240px;margin:0 auto;padding:0 28px}
+
+/* ---- sidebar ---- */
+aside{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:38px 0 40px}
+.brand{font:600 13px/1.3 ui-sans-serif,system-ui,sans-serif;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.brand-co{font:600 20px/1.25 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.01em;margin-bottom:26px}
+nav a{display:flex;gap:11px;align-items:baseline;padding:8px 12px;margin:2px 0 2px -12px;border-radius:7px;
+  text-decoration:none;color:var(--muted);font:500 14.5px/1.35 ui-sans-serif,system-ui,sans-serif;transition:.14s}
+nav a .num{font:600 11.5px/1 var(--mono);opacity:.65;min-width:12px}
+nav a:hover{color:var(--ink);background:color-mix(in srgb,var(--ink) 5%,transparent)}
+nav a.active{color:var(--ink);background:color-mix(in srgb,var(--ink) 8%,transparent);font-weight:650}
+.sidenote{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);
+  font:400 12.5px/1.55 ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+
+/* ---- main ---- */
+main{padding:38px 0 120px;min-width:0}
+h1{font:650 34px/1.18 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.022em;margin:0 0 8px}
+.sub{color:var(--muted);font:400 15px/1.5 ui-sans-serif,system-ui,sans-serif;margin:0 0 26px;padding-bottom:22px;border-bottom:2px solid var(--ink)}
+h2{font:640 21px/1.3 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.014em;margin:0 0 16px;
+  display:flex;align-items:baseline;gap:11px}
+h2 .hnum{font:600 13px/1 var(--mono);color:var(--muted);padding:5px 8px;border:1px solid var(--line);border-radius:5px}
+section{scroll-margin-top:26px;padding:40px 0}
+section+section{border-top:1px solid var(--line)}
+p{margin:0 0 15px}
+.lede{font-size:17.5px;line-height:1.6;font-style:italic;color:var(--ink);
+  border-left:3px solid var(--accent);padding:2px 0 2px 18px;margin:0 0 22px}
+
+/* ---- header block ---- */
+.hdr{background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:30px}
+.hdr div{display:grid;grid-template-columns:172px minmax(0,1fr);gap:0;border-bottom:1px solid var(--line);
+  font:400 14px/1.55 ui-sans-serif,system-ui,sans-serif}
+.hdr div:last-child{border-bottom:0}
+.hdr dt{padding:11px 16px;font-weight:600;color:var(--muted);background:color-mix(in srgb,var(--ink) 3%,transparent);margin:0}
+.hdr dd{padding:11px 16px;margin:0}
+@media(max-width:640px){.hdr div{grid-template-columns:1fr}.hdr dt{padding-bottom:0}}
+
+/* ---- toggle ---- */
+.toggle{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:3px;gap:2px;margin-bottom:22px}
+.toggle button{border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:6px;
+  padding:8px 15px;font:600 13.5px/1 ui-sans-serif,system-ui,sans-serif;transition:.14s;white-space:nowrap}
+.toggle button:hover{color:var(--ink)}
+.toggle button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.toggle button.b[aria-pressed=true]{background:var(--bull);color:#fff}
+.toggle button.r[aria-pressed=true]{background:var(--bear);color:#fff}
+.mode-note{font:400 13px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--muted);margin:-14px 0 20px}
+
+/* ---- cards ---- */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:11px;margin-bottom:12px;overflow:hidden}
+.card.bull{border-left:3px solid var(--bull)}
+.card.bear{border-left:3px solid var(--bear)}
+.card>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:15px 17px;
+  font:600 16.5px/1.35 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.01em}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary:hover{background:color-mix(in srgb,var(--ink) 3%,transparent)}
+.card-title{flex:1;min-width:0}
+.chev{width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:rotate(45deg);transition:transform .18s;flex:none;margin-right:3px}
+.card[open]>summary .chev{transform:rotate(-135deg)}
+.card-body{padding:2px 17px 8px 17px;border-top:1px solid var(--line)}
+.field{padding:13px 0;border-bottom:1px dashed var(--line)}
+.field:last-child{border-bottom:0}
+.field p{margin:5px 0 0;font-size:15.5px}
+.flabel{font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.attacks{font:600 13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--bear);margin:13px 0 0}
+.tag{font:700 11.5px/1 var(--mono);padding:5px 7px;border-radius:5px;flex:none}
+.bull-tag{background:var(--bull-soft);color:var(--bull);border:1px solid var(--bull-line)}
+.bear-tag{background:var(--bear-soft);color:var(--bear);border:1px solid var(--bear-line)}
+.neutral-tag{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+/* ---- face-off ---- */
+.duel{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);gap:0;align-items:start;margin-bottom:16px}
+.duel-side{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:16px 18px}
+.duel-bull{border-left:3px solid var(--bull)}
+.duel-bear{border-left:3px solid var(--bear);display:flex;flex-direction:column;gap:12px}
+.duel-bear.full{border-left:3px solid var(--bear)}
+.duel-attack+.duel-attack{border-top:1px dashed var(--line);padding-top:12px}
+.duel-vs{display:flex;align-items:center;justify-content:center;align-self:center;min-height:60px}
+.duel-vs span{font:700 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:20px;padding:6px 4px;writing-mode:vertical-rl;background:var(--bg)}
+.duel-head{display:flex;align-items:center;gap:8px;font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.duel h4{font:640 16px/1.32 ui-sans-serif,system-ui,sans-serif;margin:0 0 8px;letter-spacing:-.01em}
+.duel-must{font-size:15px;margin:0 0 10px}
+.duel-ev{font-size:14px;color:var(--muted);margin:0}
+.duel-ev .flabel{display:block;margin-bottom:3px}
+.duel-none{font-size:14.5px;color:var(--muted);font-style:italic;margin:0}
+.duel-solo .duel-side{grid-column:1/-1}
+@media(max-width:820px){
+  .duel{grid-template-columns:1fr;gap:10px}
+  .duel-vs{height:24px}
+  .duel-vs span{writing-mode:horizontal-tb;padding:4px 12px}
+}
+
+/* ---- signals ---- */
+.signals{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.signal{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:15px 16px;display:flex;flex-direction:column;gap:10px}
+.sig-top{display:flex;flex-direction:column;gap:4px}
+.sig-name{font:640 15px/1.32 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.008em}
+.sig-val{font:600 19px/1.2 var(--mono);letter-spacing:-.02em}
+.sig-tracks{display:flex;flex-wrap:wrap;align-items:center;gap:7px;
+  font:400 13.5px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--muted);
+  padding-top:10px;border-top:1px dashed var(--line)}
+.sig-dir{flex:1;min-width:180px}
+.sig-src{font:500 11.5px/1 var(--mono);color:var(--muted);opacity:.8}
+
+/* ---- bottom line ---- */
+ol.bottom{list-style:none;counter-reset:b;margin:0;padding:0}
+ol.bottom li{counter-increment:b;position:relative;padding:0 0 0 44px;margin-bottom:18px;font-size:17px;line-height:1.6}
+ol.bottom li::before{content:counter(b);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;
+  display:grid;place-items:center;background:var(--ink);color:var(--bg);
+  font:700 13px/1 ui-sans-serif,system-ui,sans-serif}
+.bl-cap{font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+
+/* ---- sources ---- */
+details.srcgrp{background:var(--panel);border:1px solid var(--line);border-radius:11px;margin-bottom:10px}
+details.srcgrp>summary{cursor:pointer;list-style:none;padding:13px 16px;
+  font:600 14.5px/1.3 ui-sans-serif,system-ui,sans-serif;display:flex;align-items:center;gap:10px}
+details.srcgrp>summary::-webkit-details-marker{display:none}
+details.srcgrp ul{margin:0;padding:2px 18px 15px 36px;border-top:1px solid var(--line)}
+details.srcgrp li{font-size:14.5px;line-height:1.55;margin:11px 0;color:var(--muted)}
+.excluded{background:color-mix(in srgb,var(--ink) 3%,transparent);border:1px dashed var(--line);border-radius:9px;
+  padding:13px 16px;font:400 13.5px/1.55 ui-sans-serif,system-ui,sans-serif;color:var(--muted);margin-top:16px}
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  aside{position:static;height:auto;padding:26px 0 0}
+  nav{display:flex;flex-wrap:wrap;gap:4px}
+  nav a{margin:0}
+  .sidenote{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside>
+  <div class="brand">Bull &amp; bear memo</div>
+  <div class="brand-co">Alphabet Inc.</div>
+  <nav id="nav">
+    <a href="#s1" data-t="s1"><span class="num">1</span>Business in one line</a>
+    <a href="#s2" data-t="s2"><span class="num">2</span>Bull case</a>
+    <a href="#s3" data-t="s3"><span class="num">3</span>Bear case</a>
+    <a href="#s4" data-t="s4"><span class="num">4</span>Signals to monitor</a>
+    <a href="#s6" data-t="s6"><span class="num">6</span>Bottom line</a>
+    <a href="#s7" data-t="s7"><span class="num">·</span>Sources</a>
+  </nav>
+  <div class="sidenote">A thinking anchor, not a thesis or a recommendation. Latest period Q2 2026. Every figure is traceable to a filing or the earnings call; where a figure does not exist, the memo says so.</div>
+</aside>
+
+<main>
+<h1>Alphabet Inc. — Bull &amp; Bear Memo</h1>
+<p class="sub">Bull &amp; bear thinking anchor — not a thesis, valuation, or recommendation</p>
+
+<dl class="hdr">
+  <div><dt>company</dt><dd>Alphabet Inc. (Nasdaq: GOOGL / GOOG)</dd></div>
+  <div><dt>sources used</dt><dd>FY2025 Form 10-K (filed 2026-02-05); Form 10-Q Q2 2026 (2026-07-23); Form 10-Q Q1 2026 (2026-04-30); Form 10-Q Q3 2025 (2025-10-30); Q2 2026 earnings call transcript (2026-07-22). Prior coverage file used for orientation only, never as evidence.</dd></div>
+  <div><dt>latest period</dt><dd>Q2 2026 — quarter ended June 30, 2026</dd></div>
+  <div><dt>missing or stale data</dt><dd>The Q2 2026 earnings press release exhibit is not in the collection; every Q2 figure here comes from the 10-Q or the call. Alphabet discloses no monetisation-per-query metric, no Cloud revenue or margin excluding TPU system sales, and no breakdown of Cloud backlog by customer. No valuation or market data is used. External challenge not run.</dd></div>
+</dl>
+
+<section id="s1">
+  <h2><span class="hnum">1</span>Business in one line</h2>
+  <p>Alphabet sells access to commercial intent: an auction prices advertiser access to a search query, a video view or an AdMob impression at close to zero incremental cost per unit sold — and Alphabet now spends that cash flow to build, run and sell AI compute. In FY2025 Google Services produced $342.7B of revenue and $139.4B of operating income, a 40.7% margin; Cloud $58.7B and $13.9B; Other Bets $1.5B against a $7.5B loss; and $16.8B of shared AI R&amp;D sat in an unallocated line no segment margin reflects [FY2025 10-K].</p>
+  <p>Type: a stalwart carrying a fast grower through a capital cycle. Services is the stalwart, mid-teens growth at roughly 41% margins; Cloud is the fast grower, now capital-intensive enough to make the whole company behave cyclically — 2026 capex guidance of $195–205B against FY2025 operating cash flow of $164.7B [Q2 2026 call; FY2025 10-K]. That decides the memo: the bear case does not live in Search losing users, it lives in a capital cycle priced as a growth story.</p>
+</section>
+
+<section id="s2">
+  <h2><span class="hnum">2 · 3</span>Bull case, bear case, and the argument between them</h2>
+  <div class="toggle" role="group" aria-label="View mode">
+    <button class="b" data-mode="bull" aria-pressed="false">Bull case</button>
+    <button class="r" data-mode="bear" aria-pressed="false">Bear case</button>
+    <button data-mode="duel" aria-pressed="true">Face-off</button>
+  </div>
+
+  <div data-panel="duel">
+    <p class="mode-note">Each load-bearing bull assumption beside the bear risk that attacks it. An assumption with nothing across from it is the one to re-examine.</p>
+    
+  <div class="duel">
+    <div class="duel-side duel-bull">
+      <div class="duel-head"><span class="tag bull-tag">A1</span> Bull assumption</div>
+      <h4>AI expands Search volume faster than it dilutes the price of a click</h4>
+      <p class="duel-must">Paid-click growth stays well ahead of any decline in cost-per-click, so Search &amp; other keeps compounding double digits past the Q3 2026 lapping period.</p>
+      <p class="duel-ev"><span class="flabel">Evidence</span> Search &amp; other grew 17% to $63.3B in Q2 2026, on paid clicks +13% against cost-per-click +3% [Q2 2026 10-Q]. Management says AI Mode passed one billion MAU and is "driving an incremental increase in Search queries overall" [Q2 2026 call].</p>
+    </div>
+    <div class="duel-vs" aria-hidden="true"><span>vs</span></div>
+    <div class="duel-side duel-bear">
+      
+      <div class="duel-attack">
+        <div class="duel-head"><span class="tag bear-tag">B2</span> The attack on it</div>
+        <h4>The price of a click is deflating while the volume is celebrated</h4>
+        <p class="duel-must">The mix of Search growth has already flipped, and the disclosure shows it. Cost-per-click contributed +7% in FY2025, +5% in Q1 2026 and +3% in Q2 2026, while paid clicks went +6%, +13%, +13% [FY2025 10-K; Q1 2026 10-Q; Q2 2026 10-Q]. AI surfaces generate more clicks of lower average commercial value — growth is now volume-led, and volume is the component with a ceiling.</p>
+        <p class="duel-ev"><span class="flabel">Confirms failure</span> Cost-per-click turning negative for two consecutive quarters while click growth decelerates toward query growth — Search &amp; other falling to single digits without Google losing a user, while management still truthfully reports record query volume.</p>
+      </div>
+      <div class="duel-attack">
+        <div class="duel-head"><span class="tag bear-tag">B4</span> The attack on it</div>
+        <h4>Remedies that hand rivals the input Google's advantage compounds on</h4>
+        <p class="duel-must">The December 2025 final judgment in the DOJ Search case restricts how Google distributes its services and requires it to share certain search data with, and offer syndication to, competitors; both sides appealed in early 2026. Separately, the Eastern District of Virginia ruled in April 2025 that Google's publisher ad tools unlawfully excluded rivals, and the DOJ's remedy proposal is structural [FY2025 10-K].</p>
+        <p class="duel-ev"><span class="flabel">Confirms failure</span> A divestiture order that survives appeal; or the data-sharing and syndication remedies taking effect on schedule.</p>
+      </div>
+    </div>
+  </div>
+  <div class="duel">
+    <div class="duel-side duel-bull">
+      <div class="duel-head"><span class="tag bull-tag">A2</span> Bull assumption</div>
+      <h4>The Cloud backlog is real demand that converts without giving back the margin</h4>
+      <p class="duel-must">Just over half of the $513.9B Cloud backlog converts within 24 months, and the 35.6% operating margin survives the end of scarcity.</p>
+      <p class="duel-ev"><span class="flabel">Evidence</span> Cloud revenue +82% to $24.8B, operating income $8.8B, margin from 20.7% to 35.6% year over year; backlog +$50B sequentially to $513.9B of $519.5B total RPO [Q2 2026 10-Q; call].</p>
+    </div>
+    <div class="duel-vs" aria-hidden="true"><span>vs</span></div>
+    <div class="duel-side duel-bear">
+      
+      <div class="duel-attack">
+        <div class="duel-head"><span class="tag bear-tag">B3</span> The attack on it</div>
+        <h4>Cloud's 35.6% margin may be scarcity rent plus a hardware optical effect</h4>
+        <p class="duel-must">The margin nearly doubled year over year in a quarter management calls supply-constrained, and a constrained seller earns rent. Cloud also now books hardware: inventory jumped from $2.4B to $10.0B in six months as Alphabet built TPU systems for customers' data centres, the vast majority of that revenue expected in 2027 — so the Q2 margin is not yet measured on a meaningful hardware base. Management has separately guided to "modest margin pressure in the near-term" from third-party bridging capacity in Q3 [Q2 2026 10-Q; call].</p>
+        <p class="duel-ev"><span class="flabel">Confirms failure</span> Cloud margin falling into the low 30s or below once bridging capacity and TPU hardware revenue are both in the run rate; or sequential backlog growth stalling.</p>
+      </div>
+    </div>
+  </div>
+  <div class="duel">
+    <div class="duel-side duel-bull">
+      <div class="duel-head"><span class="tag bull-tag">A3</span> Bull assumption</div>
+      <h4>Owning the silicon makes AI usage margin-accretive rather than dilutive</h4>
+      <p class="duel-must">Cost per AI response keeps falling faster than usage grows, so serving more AI queries adds gross profit rather than consuming it.</p>
+      <p class="duel-ev"><span class="flabel">Evidence</span> Management reports Q2 brought AI Mode response cost to its lowest level since launch while adding capability; Alphabet booked its first TPU system revenue, the vast majority expected in 2027 [Q2 2026 call; 10-Q].</p>
+    </div>
+    <div class="duel-vs" aria-hidden="true"><span>vs</span></div>
+    <div class="duel-side duel-bear">
+      
+      <div class="duel-attack">
+        <div class="duel-head"><span class="tag bear-tag">B3</span> The attack on it</div>
+        <h4>Cloud's 35.6% margin may be scarcity rent plus a hardware optical effect</h4>
+        <p class="duel-must">The margin nearly doubled year over year in a quarter management calls supply-constrained, and a constrained seller earns rent. Cloud also now books hardware: inventory jumped from $2.4B to $10.0B in six months as Alphabet built TPU systems for customers' data centres, the vast majority of that revenue expected in 2027 — so the Q2 margin is not yet measured on a meaningful hardware base. Management has separately guided to "modest margin pressure in the near-term" from third-party bridging capacity in Q3 [Q2 2026 10-Q; call].</p>
+        <p class="duel-ev"><span class="flabel">Confirms failure</span> Cloud margin falling into the low 30s or below once bridging capacity and TPU hardware revenue are both in the run rate; or sequential backlog growth stalling.</p>
+      </div>
+    </div>
+  </div>
+  <div class="duel">
+    <div class="duel-side duel-bull">
+      <div class="duel-head"><span class="tag bull-tag">A4</span> Bull assumption</div>
+      <h4>Capex converts into revenue faster than it converts into depreciation</h4>
+      <p class="duel-must">Gross profit growth stays ahead of depreciation growth across a six-year server life [FY2025 10-K].</p>
+      <p class="duel-ev"><span class="flabel">Evidence</span> So far it is winning: H1 2026 depreciation rose 43% to $13.6B while revenue rose 23% to $229.7B and operating cash flow rose to $84.9B from $63.9B [Q2 2026 10-Q].</p>
+    </div>
+    <div class="duel-vs" aria-hidden="true"><span>vs</span></div>
+    <div class="duel-side duel-bear">
+      
+      <div class="duel-attack">
+        <div class="duel-head"><span class="tag bear-tag">B1</span> The attack on it</div>
+        <h4>The spending is contractual; the demand is not</h4>
+        <p class="duel-must">2026 capex was guided up to $195–205B from $180–190B, rising "significantly" again in 2027. Behind it sit $811.0B of purchase commitments and other contractual obligations ($200.7B short-term), plus $43.8B notional of credit derivatives and $7.6B of guarantees backstopping third-party data centres [Q2 2026 10-Q; call]. None of it cancels if AI demand normalises or inference gets cheap faster than the build-out assumes.</p>
+        <p class="duel-ev"><span class="flabel">Confirms failure</span> Cloud revenue decelerating while depreciation accelerates; backlog conversion slipping past 24 months; capex guided higher again without a step-up in backlog.</p>
+      </div>
+    </div>
+  </div>
+    
+  <div class="duel duel-solo">
+    <div class="duel-side duel-bear full">
+      <div class="duel-head"><span class="tag bear-tag">B5</span> Attacks no single assumption — it attacks the financing of the whole plan</div>
+      <h4>The funding regime flipped from returning capital to raising it</h4>
+      <p class="duel-must">Alphabet repurchased $45.4B of stock in FY2025 and $0 in H1 2026. In its place: $30.5B of common stock issued, $19.1B of 6.25% mandatory convertible preferred and $56.2B of gross debt, taking long-term debt from $46.5B to $98.2B in six months [Q2 2026 10-Q; FY2025 10-K].</p>
+      <p class="duel-ev"><span class="flabel">Confirms failure</span> Further equity raised beyond the announced ATM programme, or debt raised at a widening spread.</p>
+    </div>
+  </div>
+  </div>
+
+  <div data-panel="bull" hidden>
+    <p class="lede">The simple reason this stock could work is that AI is making people use Google more, not less — and Alphabet owns the silicon, the models, the surfaces and the auction, so the extra usage lands on its own P&amp;L.</p>
+    <p class="mode-note">Load-bearing means the thesis dies without it. Click any card to open it.</p>
+    
+<details class="card bull" open>
+  <summary><span class="tag bull-tag">A1</span><span class="card-title">AI expands Search volume faster than it dilutes the price of a click</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <div class="field"><span class="flabel">What must happen</span><p>Paid-click growth stays well ahead of any decline in cost-per-click, so Search &amp; other keeps compounding double digits past the Q3 2026 lapping period.</p></div>
+    <div class="field"><span class="flabel">Why this company</span><p>An AI answer on a Google surface still clears through Google's own auction; a rival answering the same query must build a demand side from nothing.</p></div>
+    <div class="field"><span class="flabel">Evidence</span><p>Search &amp; other grew 17% to $63.3B in Q2 2026, on paid clicks +13% against cost-per-click +3% [Q2 2026 10-Q]. Management says AI Mode passed one billion MAU and is "driving an incremental increase in Search queries overall" [Q2 2026 call].</p></div>
+    <div class="field"><span class="flabel">What to monitor</span><p>The clicks/CPC split each quarter. Revenue is the output; the split is the mechanism.</p></div>
+  </div>
+</details>
+
+<details class="card bull">
+  <summary><span class="tag bull-tag">A2</span><span class="card-title">The Cloud backlog is real demand that converts without giving back the margin</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <div class="field"><span class="flabel">What must happen</span><p>Just over half of the $513.9B Cloud backlog converts within 24 months, and the 35.6% operating margin survives the end of scarcity.</p></div>
+    <div class="field"><span class="flabel">Why this company</span><p>Alphabet is the only hyperscaler serving its own frontier models on chips it designed, pricing capacity against an internal cost curve rather than a merchant vendor's margin.</p></div>
+    <div class="field"><span class="flabel">Evidence</span><p>Cloud revenue +82% to $24.8B, operating income $8.8B, margin from 20.7% to 35.6% year over year; backlog +$50B sequentially to $513.9B of $519.5B total RPO [Q2 2026 10-Q; call].</p></div>
+    <div class="field"><span class="flabel">What to monitor</span><p>Cloud operating margin in Q3 and Q4 2026, after the bridging capacity management has flagged.</p></div>
+  </div>
+</details>
+
+<details class="card bull">
+  <summary><span class="tag bull-tag">A3</span><span class="card-title">Owning the silicon makes AI usage margin-accretive rather than dilutive</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <div class="field"><span class="flabel">What must happen</span><p>Cost per AI response keeps falling faster than usage grows, so serving more AI queries adds gross profit rather than consuming it.</p></div>
+    <div class="field"><span class="flabel">Why this company</span><p>Ten years of TPU development makes the inference cost curve Alphabet's own roadmap rather than a supplier's price list — and the same chips are now a merchant product.</p></div>
+    <div class="field"><span class="flabel">Evidence</span><p>Management reports Q2 brought AI Mode response cost to its lowest level since launch while adding capability; Alphabet booked its first TPU system revenue, the vast majority expected in 2027 [Q2 2026 call; 10-Q].</p></div>
+    <div class="field"><span class="flabel">What to monitor</span><p>Cloud margin as TPU hardware revenue scales through 2027 — hardware is structurally lower-margin than consumption services.</p></div>
+  </div>
+</details>
+
+<details class="card bull">
+  <summary><span class="tag bull-tag">A4</span><span class="card-title">Capex converts into revenue faster than it converts into depreciation</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <div class="field"><span class="flabel">What must happen</span><p>Gross profit growth stays ahead of depreciation growth across a six-year server life [FY2025 10-K].</p></div>
+    <div class="field"><span class="flabel">Why this company</span><p>Unlike a merchant capacity builder, Alphabet has captive internal demand: Search, YouTube and Gemini consume the compute whether or not a customer signs.</p></div>
+    <div class="field"><span class="flabel">Evidence</span><p>So far it is winning: H1 2026 depreciation rose 43% to $13.6B while revenue rose 23% to $229.7B and operating cash flow rose to $84.9B from $63.9B [Q2 2026 10-Q].</p></div>
+    <div class="field"><span class="flabel">What to monitor</span><p>Depreciation growth versus Cloud revenue growth. The quarter those cross is the quarter this fails.</p></div>
+  </div>
+</details>
+    <p style="margin-top:22px">Why the market might be missing it: reported earnings currently describe something other than the business. Q2 2026 net income of $112.2B sits on $40.8B of operating income — $99.0B of the gap is unrealised gains on equity securities, mostly SpaceX and one private company [Q2 2026 10-Q]. With that on one side and $5.8B a quarter of unallocated AI R&amp;D on the other, both sides argue from headline numbers that do not describe the operating business, while the driver metrics that do sit disclosed and ignored.</p>
+  </div>
+
+  <div data-panel="bear" hidden>
+    <p class="lede">The most likely way I lose money is that Alphabet commits $400B+ over two years to assets with a six-year life, while the price of a click quietly deflates and the Cloud margin turns out to have been scarcity rent.</p>
+    <p class="mode-note">Ordered by permanence and value destruction, not by the sequence of the bull section.</p>
+    
+<details class="card bear" open>
+  <summary><span class="tag bear-tag">B1</span><span class="card-title">The spending is contractual; the demand is not</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <p class="attacks">Attacks A4 — and the funding behind A2</p>
+    <div class="field"><span class="flabel">How it could fail</span><p>2026 capex was guided up to $195–205B from $180–190B, rising "significantly" again in 2027. Behind it sit $811.0B of purchase commitments and other contractual obligations ($200.7B short-term), plus $43.8B notional of credit derivatives and $7.6B of guarantees backstopping third-party data centres [Q2 2026 10-Q; call]. None of it cancels if AI demand normalises or inference gets cheap faster than the build-out assumes.</p></div>
+    <div class="field"><span class="flabel">What would confirm failure</span><p>Cloud revenue decelerating while depreciation accelerates; backlog conversion slipping past 24 months; capex guided higher again without a step-up in backlog.</p></div>
+    <div class="field"><span class="flabel">What it does to the economics</span><p>Fixed cost lands on the P&amp;L for six years regardless of revenue. H1 2026 operating cash flow of $84.9B against $80.6B of capex left $4.3B, versus $24.3B in H1 2025; Q2 free cash flow was negative $5.9B [Q2 2026 10-Q; call].</p></div>
+    <div class="field"><span class="flabel">Permanent or fixable</span><p>Permanent. Spent capital does not come back, and a six-year life means six years of it.</p></div>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag bear-tag">B2</span><span class="card-title">The price of a click is deflating while the volume is celebrated</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <p class="attacks">Attacks A1 directly</p>
+    <div class="field"><span class="flabel">How it could fail</span><p>The mix of Search growth has already flipped, and the disclosure shows it. Cost-per-click contributed +7% in FY2025, +5% in Q1 2026 and +3% in Q2 2026, while paid clicks went +6%, +13%, +13% [FY2025 10-K; Q1 2026 10-Q; Q2 2026 10-Q]. AI surfaces generate more clicks of lower average commercial value — growth is now volume-led, and volume is the component with a ceiling.</p></div>
+    <div class="field"><span class="flabel">What would confirm failure</span><p>Cost-per-click turning negative for two consecutive quarters while click growth decelerates toward query growth — Search &amp; other falling to single digits without Google losing a user, while management still truthfully reports record query volume.</p></div>
+    <div class="field"><span class="flabel">What it does to the economics</span><p>This is the segment funding capex, Other Bets and the AI R&amp;D. Services earned 41.8% in Q2 2026, below Q1's 45.3% [Q2 2026 10-Q].</p></div>
+    <div class="field"><span class="flabel">Permanent or fixable</span><p>Medium. If it is mix, ad formats catch up. If AI answers structurally satisfy high-value commercial queries without a click, no product fixes it.</p></div>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag bear-tag">B3</span><span class="card-title">Cloud's 35.6% margin may be scarcity rent plus a hardware optical effect</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <p class="attacks">Attacks A2 and A3</p>
+    <div class="field"><span class="flabel">How it could fail</span><p>The margin nearly doubled year over year in a quarter management calls supply-constrained, and a constrained seller earns rent. Cloud also now books hardware: inventory jumped from $2.4B to $10.0B in six months as Alphabet built TPU systems for customers' data centres, the vast majority of that revenue expected in 2027 — so the Q2 margin is not yet measured on a meaningful hardware base. Management has separately guided to "modest margin pressure in the near-term" from third-party bridging capacity in Q3 [Q2 2026 10-Q; call].</p></div>
+    <div class="field"><span class="flabel">What would confirm failure</span><p>Cloud margin falling into the low 30s or below once bridging capacity and TPU hardware revenue are both in the run rate; or sequential backlog growth stalling.</p></div>
+    <div class="field"><span class="flabel">What it does to the economics</span><p>It is also a revenue-quality question: Alphabet holds $131.5B of non-marketable securities and backstops or funds counterparties in the ecosystem it sells to, without sizing that overlap or disclosing Cloud growth ex-TPU.</p></div>
+    <div class="field"><span class="flabel">Permanent or fixable</span><p>Medium. A margin can recover; a de-rating on revenue quality is slower to undo.</p></div>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag bear-tag">B4</span><span class="card-title">Remedies that hand rivals the input Google's advantage compounds on</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <p class="attacks">Attacks A1 at the distribution layer</p>
+    <div class="field"><span class="flabel">How it could fail</span><p>The December 2025 final judgment in the DOJ Search case restricts how Google distributes its services and requires it to share certain search data with, and offer syndication to, competitors; both sides appealed in early 2026. Separately, the Eastern District of Virginia ruled in April 2025 that Google's publisher ad tools unlawfully excluded rivals, and the DOJ's remedy proposal is structural [FY2025 10-K].</p></div>
+    <div class="field"><span class="flabel">What would confirm failure</span><p>A divestiture order that survives appeal; or the data-sharing and syndication remedies taking effect on schedule.</p></div>
+    <div class="field"><span class="flabel">What it does to the economics</span><p>Syndication is the more dangerous, because search quality is a feedback loop: a rival handed query and click data starts the loop rather than spending a decade building it, and it lands while AI is already resetting user habits.</p></div>
+    <div class="field"><span class="flabel">Permanent or fixable</span><p>Permanent if structural. A divestiture removes a profit stream; a data remedy removes part of the moat.</p></div>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag bear-tag">B5</span><span class="card-title">The funding regime flipped from returning capital to raising it</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="card-body">
+    <p class="attacks">Attacks no single assumption — it attacks the financing of the whole plan</p>
+    <div class="field"><span class="flabel">How it could fail</span><p>Alphabet repurchased $45.4B of stock in FY2025 and $0 in H1 2026. In its place: $30.5B of common stock issued, $19.1B of 6.25% mandatory convertible preferred and $56.2B of gross debt, taking long-term debt from $46.5B to $98.2B in six months [Q2 2026 10-Q; FY2025 10-K].</p></div>
+    <div class="field"><span class="flabel">What would confirm failure</span><p>Further equity raised beyond the announced ATM programme, or debt raised at a widening spread.</p></div>
+    <div class="field"><span class="flabel">What it does to the economics</span><p>Share count went from 12,088m to 12,230m and preferred dividends now appear in the EPS bridge, so per-share results absorb both dilution and a coupon. The signal matters more than the arithmetic: the company that used to shrink its share count now grows it.</p></div>
+    <div class="field"><span class="flabel">Permanent or fixable</span><p>Fixable. It reverses the quarter capex stops growing.</p></div>
+  </div>
+</details>
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="hnum">4</span>Signals to monitor</h2>
+  <p class="mode-note" style="margin-top:-4px">Every signal tracks a named assumption or risk. A signal that tracks nothing in the memo is noise and does not belong here.</p>
+  <div class="signals">
+
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Paid clicks vs. cost-per-click, Search &amp; other</div>
+      <div class="sig-val">+13% / +3%</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bull-tag">A1</span><span class="tag bear-tag">B2</span><span class="sig-dir">bearish if CPC ≤ 0% for two quarters while click growth decelerates</span></div>
+    <div class="sig-src">Q2 2026 10-Q</div>
+  </div>
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Google Search &amp; other revenue growth</div>
+      <div class="sig-val">+17% to $63.3B</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bull-tag">A1</span><span class="sig-dir">must hold double digits through the Q3 2026 lapping period</span></div>
+    <div class="sig-src">Q2 2026 10-Q</div>
+  </div>
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Google Cloud operating margin</div>
+      <div class="sig-val">35.6% (20.7% a year earlier)</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bull-tag">A2</span><span class="tag bear-tag">B3</span><span class="sig-dir">bearish below roughly 33% once bridging capacity is in the run rate</span></div>
+    <div class="sig-src">Q2 2026 10-Q</div>
+  </div>
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Google Cloud backlog</div>
+      <div class="sig-val">$513.9B (of $519.5B total RPO)</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bull-tag">A2</span><span class="sig-dir">bearish if sequential growth stalls; &gt;50% due within 24 months</span></div>
+    <div class="sig-src">Q2 2026 10-Q</div>
+  </div>
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Depreciation (six months)</div>
+      <div class="sig-val">$13.6B, from $9.5B</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bull-tag">A4</span><span class="tag bear-tag">B1</span><span class="sig-dir">bearish when its growth rate exceeds Cloud revenue growth</span></div>
+    <div class="sig-src">Q2 2026 10-Q</div>
+  </div>
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Free cash flow</div>
+      <div class="sig-val">H1 2026 $4.3B (H1 2025 $24.3B); Q2 −$5.9B</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bear-tag">B1</span><span class="sig-dir">the direct read on whether the build-out is self-funding</span></div>
+    <div class="sig-src">Q2 2026 10-Q; call</div>
+  </div>
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Inventory</div>
+      <div class="sig-val">$10.0B, from $2.4B</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bull-tag">A3</span><span class="tag bear-tag">B3</span><span class="sig-dir">TPU systems built but not yet recognised; tests the 2027 revenue claim</span></div>
+    <div class="sig-src">Q2 2026 10-Q</div>
+  </div>
+  <div class="signal">
+    <div class="sig-top">
+      <div class="sig-name">Shares outstanding</div>
+      <div class="sig-val">12,230m, from 12,088m</div>
+    </div>
+    <div class="sig-tracks"><span class="tag bear-tag">B5</span><span class="sig-dir">bearish if it keeps rising after capex growth peaks</span></div>
+    <div class="sig-src">Q2 2026 10-Q</div>
+  </div>
+  </div>
+  <div class="excluded">Section 5 — external challenge — is not included. It runs only on request, and is kept separate so that company-sourced evidence never blends with what the company's critics say.</div>
+</section>
+
+<section id="s6">
+  <h2><span class="hnum">6</span>Bottom line</h2>
+  <ol class="bottom">
+    <li><span class="bl-cap">Why it could work</span>The stock could work because AI is expanding rather than cannibalising the core: paid clicks are growing double digits while Alphabet serves them on silicon it designed, on surfaces it already owns.</li>
+    <li><span class="bl-cap">What must go right</span>For that to pay, cost-per-click must stop decaying faster than clicks grow, the $513.9B backlog must convert near a 35% margin once supply is no longer scarce, and gross profit must outrun the depreciation from $195–205B of capex.</li>
+    <li><span class="bl-cap">How it breaks</span>It most likely breaks through arithmetic rather than a competitor: $811.0B of irreversible commitments meeting a Search line whose price component fell from +7% to +3% in four quarters, with a structural ad-tech remedy as the tail risk.</li>
+    <li><span class="bl-cap">What changes my mind</span>What would change my mind, either way, is the clicks/CPC split and the Cloud margin after bridging capacity — two disclosed numbers, reported quarterly, that between them settle whether this capex is deferred earnings or destroyed capital.</li>
+  </ol>
+</section>
+
+<section id="s7">
+  <h2><span class="hnum">·</span>Sources</h2>
+  <details class="srcgrp" open><summary>Company filings — primary evidence</summary><ul><li>FY2025 Form 10-K, filed 2026-02-05 — segment revenue and operating income, FY2025 monetisation metrics, depreciation policy (six-year server life), TAC rate, buybacks, legal proceedings.</li><li>Form 10-Q, Q2 2026, filed 2026-07-23 — Q2 and H1 2026 income statement, segments, balance sheet, cash flow, backlog, purchase commitments and backstops, inventory, share count, accrued fines.</li><li>Form 10-Q, Q1 2026, filed 2026-04-30 — Q1 2026 paid clicks and cost-per-click; Q1 Search &amp; other revenue.</li><li>Form 10-Q, Q3 2025, filed 2025-10-30 — Q3 2025 paid clicks and cost-per-click, for the trend line.</li></ul></details>
+  <details class="srcgrp"><summary>Company commentary — management statements, not verified facts</summary><ul><li>Q2 2026 earnings call transcript, 2026-07-22 — 2026 capex guidance of $195–205B and "significant" 2027 increase; AI Mode MAU and query commentary; AI Mode response cost; Cloud backlog conversion; third-party bridging capacity and flagged margin pressure; TPU system revenue timing; TTM operating cash flow and free cash flow.</li></ul></details>
+  <details class="srcgrp"><summary>Used for orientation only — never cited as evidence</summary><ul><li>Prior GOOG coverage file (project doc, last updated 2026-09-07).</li></ul></details>
+  <details class="srcgrp"><summary>Not used</summary><ul><li>The Q2 2026 earnings press release exhibit is absent from the source collection; all Q2 figures were taken from the 10-Q and the call instead.</li><li>June 2026 investor presentation — not read for this memo.</li><li>No market, price or valuation data of any kind.</li></ul></details>
+</section>
+</main>
+</div>
+
+<script>
+(function(){
+  // --- view toggle for sections 2/3
+  var buttons = document.querySelectorAll('.toggle button');
+  var panels = document.querySelectorAll('[data-panel]');
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var mode = btn.getAttribute('data-mode');
+      buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+      panels.forEach(function(p){ p.hidden = (p.getAttribute('data-panel') !== mode); });
+    });
+  });
+
+  // --- scroll spy
+  var links = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
+  var sections = links.map(function(a){ return document.getElementById(a.getAttribute('data-t')); }).filter(Boolean);
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-t') === id); });
+  }
+  if ('IntersectionObserver' in window) {
+    var visible = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+      var best = null, bestv = 0;
+      sections.forEach(function(s){ var v = visible[s.id] || 0; if (v > bestv) { bestv = v; best = s.id; } });
+      if (best) setActive(best);
+    }, { rootMargin: '-10% 0px -55% 0px', threshold: [0, .15, .35, .6, 1] });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+  setActive('s1');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Costco Wholesale (COST)</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:44px 24px 80px}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif; font-weight:700; color:var(--ink); margin:0}
+  h1{font-size:38px; line-height:1.15; margin:6px 0 14px}
+  h2{font-size:27px; line-height:1.22; margin:52px 0 14px}
+  h3{font-size:21px; line-height:1.3; margin:30px 0 10px}
+  p{margin:0 0 16px}
+  a{color:var(--terracotta)}
+  .kicker{font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--terracotta); font-weight:700}
+  .srcline{color:var(--muted); font-size:15px; line-height:1.5; margin:0 0 30px; padding-bottom:22px; border-bottom:1px solid var(--line)}
+  .restate{
+    font-family:Georgia,'Times New Roman',serif; font-size:23px; line-height:1.45;
+    border-left:5px solid var(--terracotta); padding:4px 0 4px 20px; margin:0 0 30px; color:var(--ink);
+  }
+  .engine{
+    background:var(--ink); color:var(--cream); border-radius:10px; padding:26px 28px; margin:0 0 30px;
+  }
+  .engine .lbl{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#B9AE9C; font-weight:700; margin-bottom:10px}
+  .engine .unit{font-family:Georgia,serif; font-size:27px; line-height:1.25; margin-bottom:12px}
+  .engine p{margin:0; font-size:17px; line-height:1.55; color:#EDE4D6}
+  .engine .math{
+    margin-top:16px; padding-top:14px; border-top:1px solid #4A4640;
+    font-size:16px; color:#EDE4D6; font-variant-numeric:tabular-nums;
+  }
+  .engine .math b{color:#F0B49A}
+  .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 34px}
+  .kpi{background:#fff; border:1px solid var(--line); border-radius:10px; padding:15px 16px}
+  .kpi .k{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); font-weight:700; line-height:1.35}
+  .kpi .v{font-family:Georgia,serif; font-size:28px; color:var(--terracotta); line-height:1.15; margin:7px 0 4px; font-variant-numeric:tabular-nums}
+  .kpi .s{font-size:14px; color:var(--muted); line-height:1.42}
+  .card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:0 0 22px}
+  .lever{background:#fff; border:1px solid var(--line); border-left:5px solid var(--terracotta); border-radius:10px; padding:15px 18px; margin:0 0 12px}
+  .lever.structural{border-left-color:var(--good)}
+  .lever.mgmt{border-left-color:var(--gold)}
+  .lever.cyc{border-left-color:var(--blue)}
+  .lever .h{font-weight:700; font-size:18px; margin-bottom:5px}
+  .tag{font-size:11.5px; letter-spacing:.11em; text-transform:uppercase; font-weight:700; color:var(--terracotta)}
+  .lever.structural .tag{color:var(--good)}
+  .lever.mgmt .tag{color:var(--gold)}
+  .lever.cyc .tag{color:var(--blue)}
+  .lever p{margin:6px 0 0; font-size:17px; line-height:1.52}
+  .pull{
+    background:var(--terracotta-soft); border-radius:10px; padding:20px 24px; margin:26px 0;
+    font-family:Georgia,serif; font-size:20px; line-height:1.45;
+  }
+  .pull .attr{display:block; margin-top:10px; font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:14px; color:var(--muted); font-style:normal}
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:0 0 10px}
+  .two .card{margin:0}
+  .two h3{margin:0 0 10px; font-size:19px}
+  .two ul{margin:0; padding-left:19px}
+  .two li{margin-bottom:9px; font-size:16.5px; line-height:1.46}
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 8px}
+  table{border-collapse:collapse; width:100%; min-width:560px; font-size:16px; background:#fff}
+  caption{text-align:left; font-weight:700; font-size:17px; padding:0 0 9px; color:var(--ink)}
+  th,td{border:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:top}
+  th{background:#F4EEE3; font-weight:700; font-size:15px}
+  td.n,th.n{text-align:right; font-variant-numeric:tabular-nums}
+  tbody tr:nth-child(even) td{background:#FDFBF7}
+  .note{font-size:14.5px; color:var(--muted); line-height:1.5; margin:0 0 26px}
+  figure{margin:0 0 10px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px 18px 10px}
+  figcaption{font-size:14.5px; color:var(--muted); line-height:1.5; padding-top:6px}
+  svg{display:block; width:100%; height:auto}
+  .chart-t{font-weight:700; font-size:17px; margin:0 0 4px}
+  .chart-s{font-size:14.5px; color:var(--muted); margin:0 0 12px}
+  footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--line); font-size:14.5px; color:var(--muted); line-height:1.6}
+  footer h3{font-size:17px; margin:0 0 8px}
+  ul.plain{padding-left:19px; margin:0 0 16px}
+  ul.plain li{margin-bottom:9px}
+  @media (max-width:660px){
+    body{font-size:17.5px}
+    h1{font-size:29px} h2{font-size:23px}
+    .kpis{grid-template-columns:1fr 1fr}
+    .two{grid-template-columns:1fr}
+    .wrap{padding:30px 16px 60px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Business Overview</div>
+  <h1>Costco Wholesale Corporation — COST</h1>
+  <p class="srcline">
+    7 September 2026. Built from Costco’s SEC filings — Form 10-K for FY2016 through FY2025, Form 10-Q
+    through FY2026 Q3 (12 weeks ended 10 May 2026), proxies and Form 8-K filings — with independent
+    primary sources: the filings of Walmart, BJ’s Wholesale, Kroger, Albertsons, Target, Dollar General
+    and Amazon; US Census Bureau; Bureau of Labor Statistics; USDA ERS; the Federal Register; USTR; the
+    FTC; and the Supreme Court. Fiscal 2026 ended 30 August 2026 and only sales have been released — the
+    FY2026 income statement and membership statistics are not yet reported.
+    <strong>This is not a valuation and not a recommendation.</strong>
+  </p>
+
+  <div class="restate">
+    Costco is a subscription business that uses merchandise as the reason to renew: it collects a $65
+    annual fee from 81 million paying households and sells them goods at an 11% markup, low enough that
+    no conventional retailer can follow it there.
+  </div>
+
+  <div class="engine">
+    <div class="lbl">The economic engine</div>
+    <div class="unit">One paid household membership</div>
+    <p>
+      In FY2025 the average paid household paid $66 in membership fees, bought $3,332 of merchandise, and
+      produced $128 of operating income. A little under half of that came from selling it things. A little
+      over half came from the household simply agreeing to remain a member — and the fee is collected
+      before the goods are delivered, and often before Costco has paid its suppliers for them.
+    </p>
+    <div class="math">
+      $3,332 merchandise × 11.12% gross margin = $370 &nbsp;→&nbsp; less 9.25% SG&amp;A ($308) =
+      <b>$62 merchandise profit</b> &nbsp;+&nbsp; <b>$66 fee</b> &nbsp;=&nbsp;
+      <b>$128 operating income per household</b>
+      <br>Reconciles to $10,383m operating income ÷ 81.0m paid households (FY2025 10-K; arithmetic computed).
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">Unit price</div><div class="v">$65</div>
+      <div class="s">US Gold Star annual fee; $130 Executive. Raised from $60 on 1 Sep 2024 — the second increase in a decade.</div></div>
+    <div class="kpi"><div class="k">Unit profit</div><div class="v">$128</div>
+      <div class="s">Operating income per paid household, FY2025. $66 fee + $62 merchandise (computed).</div></div>
+    <div class="kpi"><div class="k">Headline earnings</div><div class="v">$18.21</div>
+      <div class="s">FY2025 diluted EPS on $8,099m net income and $269.9bn net sales.</div></div>
+    <div class="kpi"><div class="k">Leverage</div><div class="v">Net cash</div>
+      <div class="s">~$14.2bn net cash at Q3 FY2026 — $19,996m cash and investments against ~$5,766m of all-fixed-rate debt.</div></div>
+    <div class="kpi"><div class="k">Cycle position</div><div class="v">Reported peak</div>
+      <div class="s">FY2026 comps +8.4% reported — a ten-year high — while traffic, fee growth and core margin all decelerated.</div></div>
+    <div class="kpi"><div class="k">Organic vs reported</div><div class="v">6.6% / 8.4%</div>
+      <div class="s">FY2026 comps excluding gasoline and currency, against reported. No M&amp;A contribution.</div></div>
+  </div>
+
+  <!-- ============ 1 ============ -->
+  <h2>1. The snapshot</h2>
+  <div class="scroll">
+  <table>
+    <caption>Costco Wholesale Corporation — fiscal year ends late August</caption>
+    <tbody>
+      <tr><th style="width:29%">What the business is</th><td>A membership retailer. 914 warehouses at FY2025 year-end; 939 as of September 2026, of which 647 are in the US and Puerto Rico.</td></tr>
+      <tr><th>Industry</th><td>Warehouse club retail inside the broader grocery and general-merchandise market. Three US operators of scale: Costco, Sam’s Club (Walmart), BJ’s Wholesale.</td></tr>
+      <tr><th>How it makes money</th><td>An annual fee from 81m paying households, plus merchandise sold at roughly an 11% gross markup.</td></tr>
+      <tr><th>The unit</th><td>One paid household membership — $66 fee, $3,332 of purchases, $128 of operating income (FY2025, computed).</td></tr>
+      <tr><th>What protects it</th><td>~4× the sales per building of its nearest club competitor, funding a 9.25% expense ratio; 92.3% renewal; ownership of the building at 866 of 914 warehouses.</td></tr>
+      <tr><th>What drives earnings</th><td>Paid household growth, Executive-tier mix, sales density per warehouse, and periodic fee increases.</td></tr>
+      <tr><th>What to watch</th><td>Comps excluding gasoline and currency; shopping frequency versus ticket; core merchandise gross margin; renewal rate.</td></tr>
+      <tr><th>Cycle exposure</th><td>Low. Merchandise comps went negative in FY2009; membership fee income has never declined in a downturn, at Costco or BJ’s.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Costco FY2025 10-K; FY2026 Q3 10-Q; Costco August 2026 sales release (2 September 2026).</p>
+
+  <!-- ============ 2 ============ -->
+  <h2>2. What the company does</h2>
+
+  <p>
+    The problem Costco solves is a pricing problem, not a convenience problem. A supermarket needs a
+    22–27% gross margin to survive and a mass merchant roughly 25–28%, because that is what their
+    operating costs consume. Costco’s proposition is that a household willing to pay an annual fee, buy
+    larger pack sizes, accept a limited assortment and drive to a large box on the edge of town can buy
+    the same goods at an 11% markup instead. The fee is what makes that arithmetic work.
+  </p>
+
+  <p>
+    Everything organises around the paid household. At FY2025 year-end there were 81.0 million of them
+    and 145.2 million cardholders. They paid $5,323m in fees and bought $269,912m of merchandise. The
+    decomposition in the block above is the whole business: a little under half the profit on each
+    household comes from selling it things, a little over half from the household staying. Deferred
+    membership fees sat at $3,157m at Q3 FY2026 — cash collected before the service is delivered.
+    Merchandise is often sold before it is paid for: accounts payable of $19,783m exceeded merchandise
+    inventories of $18,116m at FY2025 year-end, so working capital is negative and the float funds growth.
+  </p>
+
+  <p>
+    The household pays $65 for Gold Star or $130 for Executive, which returns 2% of qualified purchases up
+    to $1,250 a year. Executive members were 38.7 million of the 81.0 million paid households at FY2025
+    year-end — 47.8% — and generated 73.6% of worldwide net sales. That 2% reward is recorded as a
+    reduction of net sales, not an expense: $3,007m in FY2025. The household shops a warehouse averaging
+    roughly 147,000 square feet stocking fewer than 4,000 active SKUs, against 9,000–10,000 online.
+  </p>
+
+  <p>
+    The warehouse is the second-order unit — 914 at FY2025 year-end, each serving roughly 88,600 paid
+    households. Costco discloses average sales per warehouse directly: $272m in FY2025, normalised for
+    first-year and 53-week effects, against $159m in FY2016. Warehouses opened in 2016 or earlier averaged
+    $287m; those opened in FY2025 averaged $192m. <strong>New units are dilutive to the average for roughly
+    a decade</strong>, which is the single most important thing to understand about Costco’s unit growth.
+  </p>
+
+  <p>
+    Merchandise splits four ways in FY2025: foods and sundries 40.6% of net sales, non-foods 26.4%, fresh
+    foods 14.1%, and warehouse ancillary and other businesses 19.0% — gasoline, pharmacy, optical, food
+    court, hearing aids, tyres, plus e-commerce, business centres and travel. Gasoline alone was
+    approximately 10% of net sales through 747 stations. Two mix movements matter: ancillary rose from
+    roughly 15% of net sales in FY2016 to 20.0% in FY2024 on gasoline penetration, which peaked near 14%
+    in FY2022; and non-foods peaked at 29.1% in FY2021 during the pandemic goods boom and gave the whole
+    gain back by FY2023. One line was genuinely exited — Costco chartered its own ocean freight during the
+    supply crunch, then wound it down, taking $391m of charges in FY2023 worth 16 basis points of gross
+    margin.
+  </p>
+
+  <!-- ============ 3 ============ -->
+  <h2>3. Industry, competitive position and moat</h2>
+
+  <p>
+    What the club industry sells is not merchandise but access: the right to buy at wholesale-adjacent
+    prices, renewed annually. The margin structure of US retail explains almost everything about who can
+    and cannot compete on those terms.
+  </p>
+
+  <div class="scroll">
+  <table>
+    <caption>The margin ladder — each figure from the named company’s own reporting</caption>
+    <thead><tr><th>Company</th><th>Format</th><th class="n">Gross margin</th><th class="n">Operating expense</th><th class="n">Operating margin</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Costco (FY2025)</strong></td><td>Warehouse club</td><td class="n"><strong>11.1%</strong></td><td class="n"><strong>9.3%</strong></td><td class="n">~3.8%</td></tr>
+      <tr><td>BJ’s Wholesale (FY2025)</td><td>Warehouse club</td><td class="n">~16.5%</td><td class="n">15.0%</td><td class="n">3.9%</td></tr>
+      <tr><td>Sam’s Club US (FY2026)</td><td>Warehouse club</td><td class="n">n/d</td><td class="n">n/d</td><td class="n">2.6%</td></tr>
+      <tr><td>Walmart total (FY2026)</td><td>Mass merchant</td><td class="n">24.3%</td><td class="n">21.2%</td><td class="n">4.2%</td></tr>
+      <tr><td>Target (FY2025)</td><td>Mass merchant</td><td class="n">27.9%</td><td class="n">20.6%</td><td class="n">4.9%</td></tr>
+      <tr><td>Kroger (FY2025)</td><td>Supermarket</td><td class="n">22.9%</td><td class="n">n/d</td><td class="n">1.3%</td></tr>
+      <tr><td>Albertsons (FY2025)</td><td>Supermarket</td><td class="n">27.2%</td><td class="n">26.3%</td><td class="n">0.9%</td></tr>
+      <tr><td>Dollar General (FY2025)</td><td>Small-box discount</td><td class="n">30.7%</td><td class="n">25.5%</td><td class="n">5.2%</td></tr>
+      <tr><td>Amazon North America (2025)</td><td>E-commerce</td><td class="n">n/d</td><td class="n">n/d</td><td class="n">6.9%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">
+    Ratios on net sales. BJ’s gross margin inferred from its reported operating income, membership fee
+    income and SG&amp;A. Costco’s operating margin is on net sales and includes membership fees in the
+    numerator. Sam’s Club is a Walmart segment and discloses no gross margin, operating expense or
+    membership fee income of its own.
+  </p>
+
+  <p>
+    The binding constraint is arithmetic, not aggression. <strong>Albertsons’ operating expenses alone,
+    at 26.3% of sales, are 2.4 times Costco’s entire gross margin</strong>; Target’s 20.6% is 1.9 times.
+    A supermarket or mass merchant cannot cut its markup to 11% and remain solvent — it is not declining
+    to compete, it is unable to. Dollar General, despite the name, runs the table’s highest gross margin
+    at 30.7%: it achieves a low ticket through small packs and small boxes, not a low markup, and earns
+    its profit on the markup itself. It is a convenience format and the opposite of the club model.
+  </p>
+
+  <p>
+    The mechanism behind Costco’s position is volume per building. Net sales divided by unit count gives
+    <strong>$316.6m per Costco warehouse, $154.8m per Sam’s Club and $79.7m per BJ’s club</strong> — a
+    ratio of roughly 4 : 2 : 1. Occupancy, utilities, club management and much of the labour bill do not
+    scale with volume. Four times the throughput through one box pays for an expense ratio 5.8 points
+    below BJ’s, which funds a gross margin 5.4 points below BJ’s, which is the price gap the member
+    experiences. <em>The low price is the output of the cost structure, not the input.</em>
+  </p>
+
+  <h3>The market is local, which changes what share means</h3>
+  <p>
+    National share statistics are close to meaningless here. The FTC has treated grocery geographic
+    markets as highly localised — alleging in one case a market “as small as approximately five or six
+    miles in radius” — and has generally not included club formats in supermarket market definitions at
+    all. BJ’s disclosed in an earlier filing that approximately 85% of its full-size clubs had at least one
+    competing club within about ten miles. A club chain is a portfolio of overlapping ten-mile local
+    positions, not one national franchise. Where a competitor has density — BJ’s says it runs nearly three
+    times the club count of the next largest club competitor in New England — Costco’s economics are
+    contested. Where it does not, they are not.
+  </p>
+
+  <h3>Which barrier actually binds</h3>
+  <p>
+    Siting binds as a cost and pace constraint, not an absolute one. A club needs ten to fourteen acres,
+    and US private commercial construction put in place was down 4.7% year on year in July 2026 (Census
+    Bureau). Yet all three operators keep opening: Costco went from 540 warehouses in FY2010 to 939 in
+    FY2026, BJ’s from 189 to 263, and Sam’s Club plans roughly fifteen clubs a year. Sites are being
+    secured, so availability is not the barrier.
+  </p>
+  <p>
+    <strong>No fourth US warehouse club of scale has entered in the last twenty years</strong> — no primary
+    source consulted records one. Sam’s Club closed 63 clubs in January 2018 and, at 601 eight years later,
+    has a net gain of four. The real barrier is the combination of a ten-mile trade area already served by
+    an incumbent renewing at 90% or better, and the requirement to match an 11% gross margin from opening
+    day with no membership annuity yet built. An entrant must fund the price gap out of equity for years
+    before density arrives. That is a harder problem than finding land.
+  </p>
+
+  <div class="pull">
+    “Because our business operates on very low margins, modest changes in various items in the consolidated
+    statements of income, particularly merchandise costs and SG&amp;A expenses, can have substantial impacts
+    on net income.”
+    <span class="attr">Costco FY2025 Form 10-K, Management’s Discussion and Analysis. The sentence is the
+    company’s own statement of how thin the buffer is — and it cuts in both directions.</span>
+  </div>
+
+  <h3>What outside evidence supports, and what it cannot check</h3>
+  <p>
+    Three things would be hardest for a well-funded competitor to reproduce: the volume density itself,
+    which took four decades to build; the real estate, since Costco owns the building at 866 of 914
+    warehouses and both land and building at 725, leasing both at only 48; and the renewal base of 92.3%
+    in the US and Canada — against BJ’s 90% measured only on tenured members, which excludes the
+    highest-churn first-year cohort, and against Sam’s Club, which discloses no renewal rate at all.
+  </p>
+  <p>
+    Two of Costco’s own claims cannot be verified from outside. Item-level price leadership has no primary
+    basket comparison behind it, and Costco’s gross margin actually rose from 10.92% to 11.12% between
+    FY2024 and FY2025, which sits awkwardly beside a claim to be minimising price. The Kirkland Signature
+    margin premium is asserted in the filings but <strong>never quantified — Costco has disclosed no
+    private-label penetration percentage and no margin differential in any year reviewed</strong>. BJ’s
+    discloses its own private label at 27% of net sales excluding gasoline, the only benchmark in the
+    channel.
+  </p>
+  <p>
+    The evidence points to three conditions for winning here: the lowest gross margin requirement in the
+    market, a recurring fee that funds the price gap, and the highest sales per box to amortise fixed cost.
+    Costco meets all three by the widest margin in the channel. The qualification is that all three are
+    defences against <em>store-based</em> competitors.
+  </p>
+
+  <!-- ============ 4 ============ -->
+  <h2>4. Growth engine</h2>
+
+  <p>
+    Costco grew net sales 10.2% in fiscal 2026, to $297.3bn. That number is a poor description of the
+    business, and the company supplies the tools to take it apart.
+  </p>
+
+  <div class="scroll">
+  <table>
+    <caption>Fiscal 2026 growth decomposition — reported versus underlying</caption>
+    <thead><tr><th>Component</th><th class="n">Contribution</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Reported net sales growth</td><td class="n"><strong>+10.2%</strong></td><td>$297.3bn from $269.9bn</td></tr>
+      <tr><td>Comparable sales, as reported</td><td class="n">+8.4%</td><td>Total company</td></tr>
+      <tr><td>Comparable sales, excluding gasoline prices and currency</td><td class="n"><strong>+6.6%</strong></td><td>The underlying rate</td></tr>
+      <tr><td>Gasoline price and currency contribution to the comp</td><td class="n">+1.8pp</td><td>Reverses when prices reverse</td></tr>
+      <tr><td>New-warehouse contribution to net sales growth</td><td class="n">~+1.8pp</td><td>25 net new units, 914 → 939</td></tr>
+      <tr><td>Acquisition contribution</td><td class="n">nil</td><td>No material acquisition since 2022</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">
+    Costco August 2026 sales release and FY2025 10-K. The new-warehouse contribution is the residual
+    between reported net sales growth and reported comparable sales growth, and is therefore approximate.
+  </p>
+
+  <p>
+    Acquisitions do not feature. In a decade Costco made two transactions of any size — Innovel Solutions
+    for $998m in March 2020 and the buyout of its Taiwan minority partner for $1,050m in June 2022 —
+    against $269.9bn of FY2025 revenue. <strong>Reported growth and organic growth are the same thing at
+    the corporate level.</strong> The distortion in the headline comes not from acquisition accounting but
+    from two things that move on their own: the price of gasoline and the value of the dollar. Both were
+    headwinds in FY2025 (gasoline −$2,329m, −93bp; currency −$1,943m, −78bp) and tailwinds in FY2026. By
+    Q3 FY2026 the average price per gallon was up 20%, adding 221bp to net sales, while currency added
+    104bp. Roughly three of the twelve points of Q3 net sales growth came from gasoline price alone. An
+    investor reading the reported line without the adjusted line is reading the oil market.
+  </p>
+
+  <h3>The drivers, ranked</h3>
+
+  <div class="lever structural">
+    <div class="h">1. New warehouses <span class="tag">· structural</span></div>
+    <p>Twenty-five net new units in FY2026, 2.7% of the base, worth roughly 1.8 points of net sales growth.
+    The lever is weakening on management’s own account: as the base grows and desirable sites get harder
+    to secure, square footage growth becomes “a comparatively less substantial component of growth”, new
+    warehouses open at lower initial profitability, and they cannibalise existing warehouses in existing
+    markets.</p>
+  </div>
+  <div class="lever structural">
+    <div class="h">2. Paid households and shopping frequency <span class="tag">· structural</span></div>
+    <p>81.0m paid households at FY2025 year-end to 82.9m by Q3 FY2026, up 4.1% year on year; cardholders
+    148.5m. Frequency is the higher-quality half of the comp, and it is decelerating — 5% growth in FY2025,
+    3% in each of the first two quarters of FY2026, 2% in the third.</p>
+  </div>
+  <div class="lever mgmt">
+    <div class="h">3. Executive membership upgrade <span class="tag">· management-driven</span></div>
+    <p>39% of paid members in FY2016, 47.8% in FY2025, generating 73.6% of worldwide net sales. Each
+    upgrade doubles the US fee from $65 to $130 against a 2% reward capped at $1,250. Costco named
+    Executive upgrades as a fee-growth driver for the first time in Q3 FY2026 and has added Executive-only
+    shopping hours. Real, but finite — it ends when penetration stops rising.</p>
+  </div>
+  <div class="lever mgmt">
+    <div class="h">4. Membership fee increases <span class="tag">· management-driven, episodic</span></div>
+    <p>Exactly two in the decade. On 1 June 2017 the US fee went $55 → $60, Executive $110 → $120, reward
+    cap $750 → $1,000 — worth roughly $178m in FY2018. On 1 September 2024 it went $60 → $65, Executive
+    $120 → $130, cap → $1,250, guided at approximately $370m over two years. The cadence is roughly seven
+    years, and the second increase has now fully lapped: about 40% of membership income growth in FY2025,
+    about 35% in Q2 FY2026, about 25% in Q3.</p>
+  </div>
+  <div class="lever structural">
+    <div class="h">5. International expansion <span class="tag">· structural</span></div>
+    <p>285 of 914 warehouses — 31% of the estate — were outside the US at FY2025 year-end, generating 27%
+    of net sales and 34% of operating income. The mix is favourable: Canada earned a 5.01% segment
+    operating margin and Other International 4.33%, against 3.44% in the US. Growth outside the US is
+    margin-accretive at the segment level.</p>
+  </div>
+  <div class="lever structural">
+    <div class="h">6. Digitally-enabled sales <span class="tag">· structural, but dilutive to margin</span></div>
+    <p>E-commerce was approximately 7% of net sales in FY2025 and digitally-enabled sales approximately
+    10%; the digitally-enabled comp grew 20.9% in FY2026. Costco states plainly that this business carries
+    a lower gross margin than its warehouse operations, so mix shift here is a margin headwind even as it
+    is a growth tailwind. The metric was redefined in FY2026 to include Costco Travel, so it is not on the
+    same basis as FY2025.</p>
+  </div>
+  <div class="lever cyc">
+    <div class="h">7. Gasoline price and currency <span class="tag">· cyclical</span></div>
+    <p>Worth 1.8 points of the FY2026 comparable sales figure and nothing at all to the underlying
+    business. This is the driver most likely to be mistaken for one of the others.</p>
+  </div>
+
+  <!-- ============ 5 ============ -->
+  <h2>5. Margin, cash and capital allocation</h2>
+
+  <p>
+    The most important thing that happened to Costco’s economics over the last decade is not visible in the
+    headline margin, which barely moved. It is visible in what the margin is made of.
+  </p>
+
+  <div class="scroll">
+  <table>
+    <caption>The financial spine — four 52-week years</caption>
+    <thead><tr><th></th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2022</th><th class="n">FY2025</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Net sales ($m)</strong></td><td class="n">116,073</td><td class="n">163,220</td><td class="n">222,730</td><td class="n">269,912</td></tr>
+      <tr><td><strong>Membership fees ($m)</strong></td><td class="n">2,646</td><td class="n">3,541</td><td class="n">4,224</td><td class="n">5,323</td></tr>
+      <tr><td><strong>Gross margin, % of net sales</strong></td><td class="n">11.35%</td><td class="n">11.20%</td><td class="n">10.48%</td><td class="n">11.12%</td></tr>
+      <tr><td><strong>SG&amp;A, % of net sales</strong></td><td class="n">10.40%</td><td class="n">10.01%</td><td class="n">8.88%</td><td class="n">9.25%</td></tr>
+      <tr><td><strong>Operating income ($m)</strong></td><td class="n">3,672</td><td class="n">5,435</td><td class="n">7,793</td><td class="n">10,383</td></tr>
+      <tr><td><strong>Membership fees as % of operating income</strong></td><td class="n">72.1%</td><td class="n">65.2%</td><td class="n">54.2%</td><td class="n"><strong>51.3%</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">
+    Three comparability breaks apply. From FY2022 preopening expenses were folded into SG&amp;A with prior
+    years restated, raising FY2020 SG&amp;A from $16,332m to $16,387m — roughly three basis points. The
+    FY2019 adoption of ASC 606 grossed up net sales by $1,332m with only an $8m effect on gross margin, so
+    ratios before and after FY2019 are not exactly comparable. Most importantly, gasoline was approximately
+    14% of net sales in FY2022 against roughly 9% in FY2020 and 10% in FY2025; excluding gasoline price
+    inflation, FY2022 gross margin was 10.94%, not the 10.48% reported.
+  </p>
+
+  <h3>The merchandise operation has become the growth engine of the profit</h3>
+  <p>
+    Membership fees supplied 72.1% of operating income in FY2016 and 51.3% in FY2025. The familiar claim
+    that Costco makes all its money on membership fees was close to true a decade ago and is becoming less
+    true every year. The mechanism is the gap between gross margin and SG&amp;A — what the merchandise
+    operation earns before the fee is added. <strong>That spread was 0.95% of net sales in FY2016 and 1.87%
+    in FY2025. In dollars, merchandise operating contribution rose from $1,026m to $5,060m — a factor of
+    4.9 — while membership fees rose by a factor of 2.0.</strong>
+  </p>
+  <p>
+    The reason is operating leverage on a fixed cost base. Sales per warehouse rose from $159m to $272m on
+    the company’s own normalised measure while the cost of running a warehouse did not rise
+    proportionally, so SG&amp;A fell from 10.40% of net sales to 9.25% even as Costco raised wages faster
+    than the retail industry. The consequence is that Costco today is more genuinely a retailer, and less
+    purely a subscription business, than it was in 2016. That is a better business — and a more exposed
+    one, because merchandise profit can be competed away and a fee cannot.
+  </p>
+
+  <figure>
+    <p class="chart-t">Sales per warehouse — the density that pays for the price gap</p>
+    <p class="chart-s">$ millions, Costco’s own normalised measure (first-year sales annualised, 53-week years adjusted). FY2025 10-K, Item 5.</p>
+    <svg viewBox="0 0 800 300" role="img" aria-label="Average sales per warehouse rose from $159 million in fiscal 2016 to $272 million in fiscal 2025">
+      <g stroke="#E5DDD0" stroke-width="1">
+        <line x1="58" y1="30" x2="780" y2="30"/><line x1="58" y1="90" x2="780" y2="90"/>
+        <line x1="58" y1="150" x2="780" y2="150"/><line x1="58" y1="210" x2="780" y2="210"/>
+        <line x1="58" y1="255" x2="780" y2="255"/>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C" text-anchor="end">
+        <text x="50" y="34">300</text><text x="50" y="94">260</text>
+        <text x="50" y="154">220</text><text x="50" y="214">180</text><text x="50" y="259">150</text>
+      </g>
+      <!-- x scale: FY2016..FY2025 at x=80..760 (step 75.6); y: value v -> 255 - (v-150)*1.5 -->
+      <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+        points="80,241.5 155.6,235.5 231.2,216 306.8,207 382.4,192 458,154.5 533.6,112.5 609.2,102 684.8,90 760,72"/>
+      <g fill="#C75B39">
+        <circle cx="80" cy="241.5" r="4"/><circle cx="155.6" cy="235.5" r="3"/><circle cx="231.2" cy="216" r="3"/>
+        <circle cx="306.8" cy="207" r="3"/><circle cx="382.4" cy="192" r="3"/><circle cx="458" cy="154.5" r="3"/>
+        <circle cx="533.6" cy="112.5" r="3"/><circle cx="609.2" cy="102" r="3"/><circle cx="684.8" cy="90" r="3"/>
+        <circle cx="760" cy="72" r="4"/>
+      </g>
+      <g font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#C75B39">
+        <text x="80" y="264" text-anchor="start">$159m</text>
+        <text x="760" y="62" text-anchor="end">$272m</text>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">
+        <text x="80" y="288" text-anchor="start">FY2016</text>
+        <text x="420" y="288" text-anchor="middle">FY2020</text>
+        <text x="760" y="288" text-anchor="end">FY2025</text>
+      </g>
+    </svg>
+    <figcaption>Up 71% in nine years. This single series is the mechanism behind the SG&amp;A ratio, which is the mechanism behind the price gap.</figcaption>
+  </figure>
+
+  <figure>
+    <p class="chart-t">Gross margin and operating expense — the spread is the story</p>
+    <p class="chart-s">% of net sales, FY2016–FY2025. The FY2022 dip in both lines is gasoline at ~14% of sales, not an operating change.</p>
+    <svg viewBox="0 0 800 300" role="img" aria-label="Gross margin held near 11 percent while SG and A fell from 10.4 to 9.25 percent of net sales, widening the merchandise spread">
+      <g stroke="#E5DDD0" stroke-width="1">
+        <line x1="58" y1="40" x2="780" y2="40"/><line x1="58" y1="76.7" x2="780" y2="76.7"/>
+        <line x1="58" y1="113.3" x2="780" y2="113.3"/><line x1="58" y1="150" x2="780" y2="150"/>
+        <line x1="58" y1="186.7" x2="780" y2="186.7"/><line x1="58" y1="223.3" x2="780" y2="223.3"/>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C" text-anchor="end">
+        <text x="50" y="44">11.5%</text><text x="50" y="80.7">11.0%</text>
+        <text x="50" y="117.3">10.5%</text><text x="50" y="154">10.0%</text>
+        <text x="50" y="190.7">9.5%</text><text x="50" y="227.3">9.0%</text>
+      </g>
+      <!-- y: v -> 40 + (11.5-v)*73.33 -->
+      <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+        points="80,51.0 155.6,52.5 231.2,73.7 306.8,75.2 382.4,62.0 458,67.1 533.6,114.8 609.2,108.2 684.8,82.5 760,67.9"/>
+      <polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round" stroke-dasharray="7 4"
+        points="80,120.7 155.6,130.9 231.2,148.5 306.8,147.1 382.4,149.3 458,175.7 533.6,232.1 609.2,217.5 684.8,213.1 760,205.0"/>
+      <g font-family="Georgia,serif" font-size="14" font-weight="bold">
+        <text x="80" y="42" fill="#C75B39" text-anchor="start">Gross margin 11.35%</text>
+        <text x="760" y="59" fill="#C75B39" text-anchor="end">11.12%</text>
+        <text x="80" y="112" fill="#3C6E8F" text-anchor="start">SG&amp;A 10.40%</text>
+        <text x="760" y="197" fill="#3C6E8F" text-anchor="end">9.25%</text>
+      </g>
+      <g font-family="Calibri,Arial,sans-serif" font-size="12" fill="#6E675C">
+        <text x="80" y="292" text-anchor="start">FY2016</text>
+        <text x="533.6" y="292" text-anchor="middle">FY2022</text>
+        <text x="760" y="292" text-anchor="end">FY2025</text>
+      </g>
+    </svg>
+    <figcaption>
+      Gross margin ends the decade almost exactly where it started. Operating expense falls 115 basis
+      points. The whole of the merchandise-profit improvement is in that second line — the widening gap
+      between them is what took membership fees from 72% of operating income to 51%.
+    </figcaption>
+  </figure>
+
+  <h3>Cost drivers and cash conversion</h3>
+  <p>
+    Compensation and benefits is the largest expense after merchandise itself. Costco raised the US and
+    Canada starting wage to at least $20.00 an hour in March 2025 and lifted the top of its wage scales by
+    $1.00, bringing the average US hourly rate to approximately $32.00 at FY2025 year-end. Its stated
+    philosophy is not to minimise wages and benefits, and it acknowledges this may cause it to absorb costs
+    other employers would pass through. Retention was approximately 94% for staff with more than a year of
+    service. Note that fresh-foods and certain ancillary labour sits in merchandise costs rather than
+    SG&amp;A, so the reported expense ratio understates the true labour bill.
+  </p>
+  <p>
+    Cash conversion is exceptional and comes from the payables cycle rather than from margin. Inventory
+    turned 13.0 times, or every 28 days, and Costco states it often sells inventory before it is required
+    to pay for it while still taking early-payment discounts. FY2025 operating cash flow was $13,335m
+    against $5,498m of capital expenditure, leaving $7,837m of free cash flow. Through 36 weeks of FY2026
+    operating cash flow reached $11,133m — but $2,498m of that was an accounts payable source against
+    $604m in the prior year, which management attributed to faster inventory turns and improved payment
+    terms with suppliers. <strong>That is a balance sheet stretch, and it does not repeat at the same
+    size.</strong> Capital expenditure is guided to approximately $6,500m for FY2026, with a new emphasis
+    on expanding the depot network; the maintenance-versus-growth split has never been disclosed.
+  </p>
+
+  <h3>Where the cash went over ten years, ranked</h3>
+  <div class="scroll">
+  <table>
+    <caption>Cumulative uses of cash, FY2016–FY2025 (computed from the cash flow statements)</caption>
+    <thead><tr><th>Use</th><th class="n">Approx. total</th><th>What it reveals</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Capital expenditure</strong></td><td class="n">$35.9bn</td><td>More than half of all discretionary cash went into the ground. The warehouse comes before everything.</td></tr>
+      <tr><td><strong>Dividends</strong></td><td class="n">$27.6bn</td><td>Of which roughly $14.2bn was three special payments — $7.00/sh May 2017, $10.00 Dec 2020, $15.00 Jan 2024 — alongside an ordinary dividend raised every April, $0.45 (2016) to $1.47 (April 2026).</td></tr>
+      <tr><td>Share repurchases</td><td class="n">$4.9bn</td><td>Not a capital return programme. Shares outstanding <em>rose</em> from 437.5m to 443.2m — buybacks have not even offset equity compensation dilution.</td></tr>
+      <tr><td>Acquisitions</td><td class="n">$2.0bn</td><td>Innovel (final-mile delivery, 2020) and the Taiwan minority buyout (2022). Nothing else of size.</td></tr>
+      <tr><td>Net debt paydown</td><td class="n">~nil</td><td>Total debt $5,161m in FY2016, $5,788m in FY2025. The balance sheet is deliberately unused: ~$14.2bn net cash at Q3 FY2026, all debt fixed rate.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">
+    The behaviour describes management that treats the share count as housekeeping, refuses to lever the
+    balance sheet, and hands back what it cannot deploy in a form that makes no commitment about the
+    future. The same conservatism shows in incentives: the chief executive’s maximum cash bonus for FY2026
+    was set at $1.12m, split between sales, pre-tax income and environmental and social targets (Form 8-K,
+    20 October 2025). No transaction has been announced and not yet closed as of the most recent filing.
+  </p>
+
+  <!-- ============ 6 ============ -->
+  <h2>6. Cyclicality, constraints and what to monitor</h2>
+
+  <p>
+    Costco is a low-cyclicality business on the evidence of the last recession, but it is not at a low
+    point in its own cycle — and the reported figures and the underlying figures are pointing in opposite
+    directions.
+  </p>
+
+  <div class="scroll">
+  <table>
+    <caption>Where the business sits right now — four measures, one direction</caption>
+    <thead><tr><th>Measure</th><th>FY2024</th><th>FY2025</th><th>FY2026</th><th>Read</th></tr></thead>
+    <tbody>
+      <tr><td>Comparable sales, reported</td><td>+5%</td><td>+6%</td><td class="n"><strong>+8.4%</strong></td><td>A ten-year high</td></tr>
+      <tr><td>Comparable sales, ex-gasoline and currency</td><td>+6%</td><td>+8%</td><td class="n"><strong>+6.6%</strong></td><td>Below FY2025 — decelerating</td></tr>
+      <tr><td>Shopping frequency</td><td>—</td><td>+5%</td><td>+3% → +3% → <strong>+2%</strong></td><td>Q1 → Q2 → Q3 FY2026</td></tr>
+      <tr><td>Membership fee growth</td><td>—</td><td>+10%</td><td>+14% → +14% → <strong>+11%</strong></td><td>The Sept-2024 increase lapping</td></tr>
+      <tr><td>Core merchandise gross margin, % of core sales</td><td>—</td><td>+16bp</td><td>+30bp → +22bp → <strong>−9bp</strong></td><td>First negative quarter of the year</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">
+    Costco FY2024 and FY2025 10-Ks; FY2026 Q1–Q3 10-Qs; August 2026 sales release. Gross margin of 11.12%
+    in FY2025 sits near the top of a ten-year range running from 11.35% (FY2016) to 10.48% (FY2022).
+  </p>
+
+  <p>
+    <strong>The honest reading: Costco is at or near a peak on reported metrics, decelerating on every
+    underlying one, and drawing an unusual amount of its headline growth from two variables it does not
+    control.</strong>
+  </p>
+
+  <h3>What a downturn looks like</h3>
+  <p>
+    Roughly 55% of net sales is food — foods and sundries at 40.6% plus fresh foods at 14.1% — which is the
+    most defensive category in retail. The US and Canada produce 86% of net sales and 84% of operating
+    income, and California alone 26% of US net sales, a concentration Costco names as a risk in its own
+    right.
+  </p>
+  <p>
+    The 2008–10 evidence is the most useful outside data available. Costco’s total comparable sales fell 4%
+    in FY2009 and its US comp 2%, but the reported decline was substantially gasoline deflation and
+    currency. BJ’s merchandise comps excluding gasoline <em>held at +4.0%</em> in the recession year while
+    Walmart’s US comp fell 0.7% — a spread of nearly five points in the club format’s favour. Sam’s Club
+    segment operating income fell only 8.1% peak to trough. Most tellingly, membership fee income never
+    declined at either company: Costco’s ran $1,506m → $1,533m → $1,691m through the worst of it, and BJ’s
+    $175.1m → $179.6m → $190.7m. <strong>Merchandise comps cycle; the annuity does not.</strong>
+  </p>
+  <p>
+    The plausible downside is therefore not a demand collapse but a forced choice. In a period of cost
+    inflation Costco elects not to pass through — which is what its stated pricing philosophy commits it
+    to — it must either hold price and accept lower gross margin, or hold margin and accept slower comps.
+    BJ’s is visibly making the first choice already: its merchandise gross margin fell 20 basis points in
+    Q2 FY2026 on what it called continued investments in pricing, and Costco’s own core merchandise margin
+    has already turned negative. On a business whose entire merchandise operating contribution is 1.87% of
+    net sales, a sustained 20 basis point give-back is roughly $540m — about eleven percent of that
+    contribution.
+  </p>
+  <p>
+    The physical constraint is unit growth. Costco added twenty-five net warehouses in FY2026, 2.7% of the
+    base, and trimmed the plan during the year — from thirty-three openings implied at Q1 to twenty-nine at
+    Q3. It added a constraint to its FY2025 risk disclosure that did not appear before: difficulty securing
+    long-term utility contracts for new buildings, given growth in global electricity demand and water
+    stress. Unit growth is already the smallest of the three main levers; a binding siting or utility
+    constraint removes the only one that does not depend on charging existing members more.
+  </p>
+
+  <h3>Durable versus borrowed</h3>
+  <div class="two">
+    <div class="card">
+      <h3 style="color:var(--good)">Durable — survives ten years</h3>
+      <ul>
+        <li>Renewal at 92.2–92.3% on 82.9m paid households; fee income has never fallen in a recession</li>
+        <li>~4× the sales per building of the nearest club competitor, funding a 9.25% expense ratio</li>
+        <li>An 11.12% gross margin no supermarket or mass merchant can match without abandoning its format</li>
+        <li>Ownership of the building at 866 of 914 warehouses; land and building at 725</li>
+        <li>Negative working capital — payables at 109% of merchandise inventories; the float funds growth</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--terracotta)">Borrowed — currently helping</h3>
+      <ul>
+        <li>Gasoline price inflation — 221bp added to net sales in Q3 FY2026 on a 20% rise per gallon</li>
+        <li>Currency — added 104bp in Q3 FY2026 after removing 78bp across FY2025</li>
+        <li>The September 2024 fee increase — 40% of fee growth in FY2025, about 25% by Q3 FY2026, now lapped</li>
+        <li>Extended supplier payment terms — a $2,498m payables source in 36 weeks against $604m prior year</li>
+        <li>A smaller LIFO charge — worth 14bp of gross margin in Q3 FY2026 versus the prior year</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scroll">
+  <table>
+    <caption>Leading indicators, and where they are published</caption>
+    <thead><tr><th>What to watch</th><th>Where it is published</th></tr></thead>
+    <tbody>
+      <tr><td>Comparable sales excluding gasoline and currency</td><td>Costco monthly sales release, investor.costco.com</td></tr>
+      <tr><td>Shopping frequency versus average ticket</td><td>Quarterly 10-Q, management’s discussion of net sales</td></tr>
+      <tr><td>Core merchandise gross margin, % of core sales</td><td>Quarterly 10-Q, gross margin basis-point bridge</td></tr>
+      <tr><td>Renewal rate, US and Canada and worldwide</td><td>Quarterly 10-Q and earnings release</td></tr>
+      <tr><td>Executive members as % of paid members</td><td>Quarterly earnings release supplement</td></tr>
+      <tr><td>Accounts payable against merchandise inventories</td><td>Quarterly 10-Q balance sheet</td></tr>
+      <tr><td>US food-at-home CPI; retail average hourly earnings</td><td>Bureau of Labor Statistics, monthly</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ============ 7 ============ -->
+  <h2>7. Risks, unknowns and questions for deeper work</h2>
+
+  <p>
+    Cyclicality is covered above and is not repeated. What follows is what cyclicality does not capture —
+    and the first two compound with each other, because both attack the merchandise half of the profit at
+    the moment the merchandise half has become the growing half.
+  </p>
+
+  <div class="lever">
+    <div class="h">A tariff refund Costco may not be allowed to keep</div>
+    <p>On 20 February 2026 the Supreme Court held in <em>Learning Resources v. Trump</em> that the
+    International Emergency Economic Powers Act does not authorise the President to impose tariffs,
+    invalidating the programmes issued under it — so refunds exist. In March 2026 four class actions were
+    filed against Costco, in the Northern District of Illinois, King County Superior Court, the District of
+    Puerto Rico and the Western District of Washington, asserting that refunds of tariffs Costco paid and
+    passed on to members through higher prices belong to the members. BJ’s has <em>already recognised</em>
+    tariff refund benefits in its gross margin; Walmart states it has recognised none; Costco discloses no
+    receivable and only an immaterial accrual. The mechanism is a one-off margin benefit a direct
+    competitor books and Costco may be obliged to hand back — on a business earning 3.85% at the operating
+    line.</p>
+  </div>
+  <div class="lever">
+    <div class="h">A competitor that earns more and has no boxes</div>
+    <p>Amazon’s North America segment earned a 6.9% operating margin in 2025 against Costco’s approximately
+    3.85%, and its subscription revenue of $49.6bn grew 14.1% — <strong>9.3 times Costco’s entire
+    membership fee income, growing faster</strong>. US e-commerce reached 17.1% of retail sales in Q2 2026,
+    compounding at 12.2% against 6.7% for total retail, taking roughly 0.8 points of share a year (Census
+    Bureau). Every structural advantage in Section 3 is a defence against store-based competitors. Against
+    a higher-margin operator with a larger membership annuity and no fourteen-acre land requirement, the
+    only relevant defence is the price gap itself — and price gaps are funded from a 1.87% merchandise
+    spread.</p>
+  </div>
+  <div class="lever">
+    <div class="h">Operating leverage running backwards</div>
+    <p>The decade’s margin improvement came from spreading fixed warehouse cost over rising volume per box,
+    and new units join that base well below the mature average. If sales density stops rising, the same
+    mechanism runs the other way, on an expense base that is structurally rigid. This is the risk the strong
+    FY2016-to-FY2025 record makes hardest to see.</p>
+  </div>
+  <div class="lever">
+    <div class="h">A wage base that only moves one way</div>
+    <p>The March 2021 permanent wage increase alone cost approximately $400m annualised, and Costco has
+    raised wages in most years since, reaching a $20.00 starting rate and approximately $32.00 average US
+    hourly rate. Retail average hourly earnings rose 3.2% in the year to August 2026 while food-at-home
+    prices rose 2.7% (BLS) — labour cost outrunning grocery price inflation. Costco has explicitly
+    committed to absorbing costs other employers pass through. On a 9.25% expense ratio, sustained real
+    wage growth is a permanent headwind that cannot be managed away without abandoning the labour model
+    that produces 94% retention.</p>
+  </div>
+  <div class="lever">
+    <div class="h">The fee lever is slow, and the renewal rate has begun to drift</div>
+    <p>Two US increases in a decade, seven years apart, and the second is fully lapped. The US and Canada
+    renewal rate slipped from 92.3% at FY2025 year-end to 92.2% by Q3 FY2026, which Costco attributes to a
+    higher number of memberships sold online, including through digital promotions, that renew at a
+    slightly lower rate. The mechanism matters more than the ten basis points: the cheapest channel for
+    adding members is producing a structurally lower-quality member, and paid household growth is
+    increasingly coming through it.</p>
+  </div>
+  <div class="lever">
+    <div class="h">An undisclosed dependence on a single brand</div>
+    <p>Costco states that Kirkland Signature products generally carry higher margins than national brands
+    and represent a growing portion of overall sales, and names loss of member acceptance of the brand as a
+    risk to sales and gross margin. It has never disclosed the penetration percentage or the margin
+    differential in any filing in the ten years reviewed, so an investor cannot size the exposure. Two
+    consumer class actions filed in late 2025 allege Kirkland Signature tequila was mislabelled; the dollar
+    exposure is not quantified.</p>
+  </div>
+
+  <h3>What the sources could not answer</h3>
+  <p>These are findings, not omissions. Each would need resolving before an investor could size the business properly.</p>
+  <ul class="plain">
+    <li><strong>Kirkland Signature penetration and margin differential.</strong> Never disclosed by Costco in any year reviewed. BJ’s discloses its own private label at 27% of net sales ex-gasoline — the only benchmark in the channel.</li>
+    <li><strong>Maintenance versus growth capital expenditure.</strong> Never split out, which makes free cash flow after maintaining the existing estate impossible to calculate.</li>
+    <li><strong>Gasoline gross profit in dollars.</strong> Only the basis-point distortion to consolidated ratios is given, so the profitability of roughly 10% of net sales is unknown.</li>
+    <li><strong>Sam’s Club membership fee income.</strong> Walmart does not break it out, so the single most important line in the second-largest US club’s P&amp;L is invisible and no reliable comparison of fee economics is possible.</li>
+    <li><strong>Executive member count for FY2026.</strong> Last disclosed at 38.7m, or 47.8% of paid members, at FY2025 year-end. Since Executive mix is one of the three main growth levers, its current level is a material gap.</li>
+    <li><strong>Any quantified tariff cost.</strong> Costco discloses only that higher tariffs are more likely to hurt than help, with no dollar or basis-point figure in any FY2026 filing.</li>
+    <li><strong>A primary price comparison against competitors.</strong> No basket-level study from a primary source exists, so price leadership at the item level is unverifiable. What is verifiable is the markup, not the shelf price.</li>
+    <li><strong>The fiscal 2026 income statement and membership statistics.</strong> FY2026 ended 30 August 2026 and only sales have been released, so FY2025 remains the most recent complete annual picture.</li>
+  </ul>
+
+  <!-- ============ 8 ============ -->
+  <h2>8. Investor takeaways</h2>
+  <ul class="plain">
+    <li><strong>What this business really is:</strong> a subscription business that uses merchandise as the reason to renew — though less purely so each year, as merchandise profit grows faster than fee income.</li>
+    <li><strong>The core economic engine:</strong> roughly four times the sales volume per building of the nearest club competitor, which funds an expense ratio low enough to sell at a markup no conventional retailer can survive.</li>
+    <li><strong>The main growth lever:</strong> paid household growth and Executive-tier mix, supplemented by a fee increase roughly every seven years and unit growth of under 3% a year that is slowly getting harder.</li>
+    <li><strong>What could break the story:</strong> a competitor that earns a higher margin and carries no real estate — the price gap is funded from a merchandise spread of 1.87% of sales, and every other defence is aimed at store-based rivals.</li>
+    <li><strong>What to monitor:</strong> comparable sales excluding gasoline and currency, shopping frequency against average ticket, and core merchandise gross margin — all three of which decelerated through fiscal 2026 while the reported figures accelerated.</li>
+  </ul>
+
+  <footer>
+    <h3>Sources</h3>
+    <p>
+      <strong>Company (research folder):</strong> Costco Form 10-K for FY2016, FY2017, FY2018, FY2019,
+      FY2020, FY2021, FY2022, FY2023, FY2024 and FY2025; Form 10-Q for FY2026 Q1, Q2 and Q3 (12 weeks
+      ended 10 May 2026); Form 8-K earnings releases and material events including the FY2026 executive
+      bonus plan (20 October 2025); proxy statements through December 2025.
+    </p>
+    <p>
+      <strong>Post-dating those filings:</strong> Costco’s August 2026 sales release (2 September 2026),
+      which reports fiscal 2026 net sales of $297.3bn, comparable sales of +8.4% reported and +6.6%
+      adjusted, and 939 warehouses. <em>The fiscal 2026 income statement, balance sheet and membership
+      statistics had not been reported as at 7 September 2026.</em>
+    </p>
+    <p>
+      <strong>Independent primary sources:</strong> Walmart FY2026 Form 10-K and Q1 FY2027 Form 10-Q;
+      BJ’s Wholesale Club FY2025 Form 10-K and Q2 FY2026 results; BJ’s Wholesale Club, Inc. fiscal 2010
+      Form 10-K; Kroger, Albertsons, Target, Dollar General and Amazon FY2025 results; Walmart FY2010
+      annual report; Costco FY2010 Form 10-K; US Census Bureau (Advance Monthly Retail Trade, Quarterly
+      E-Commerce Report, Construction Spending); Bureau of Labor Statistics (CPI, Import and Export Price
+      Indexes, Employment Situation); USDA Economic Research Service Food Price Outlook; Federal Trade
+      Commission submission to the OECD on structural issues in the groceries sector; Supreme Court of the
+      United States, <em>Learning Resources, Inc. v. Trump</em>, No. 24-1287; Federal Register; Office of
+      the US Trade Representative.
+    </p>
+    <p style="margin-top:18px"><strong>This document explains how the business works. It is not a valuation and not a recommendation.</strong></p>
+  </footer>
+
+</div>
+</body>
+</html>

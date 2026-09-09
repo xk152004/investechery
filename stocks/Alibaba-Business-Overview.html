@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business Overview — Alibaba Group (BABA)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+     font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+     -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:var(--ink);margin:0}
+h1{font-size:38px;line-height:1.18;margin:6px 0 14px}
+h2{font-size:27px;line-height:1.25;margin:52px 0 16px}
+h3{font-size:21px;line-height:1.3;margin:32px 0 10px}
+p{margin:0 0 18px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{font-size:15px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:34px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;border-left:5px solid var(--terracotta);
+  padding:4px 0 4px 22px;margin:0 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:0 0 34px}
+.engine .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C9BFAE;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:26px;line-height:1.35;margin:0 0 12px}
+.engine p{margin:0;font-size:17px;line-height:1.55;color:#EDE5D8}
+.engine b{color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 40px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px}
+.kpi .v{font-family:Georgia,serif;font-size:29px;line-height:1.1;color:var(--terracotta);
+  font-variant-numeric:tabular-nums;margin-bottom:6px}
+.kpi .s{font-size:14px;line-height:1.42;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 22px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:16px 20px;margin:0 0 14px}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta);margin-bottom:5px}
+.lever.structural .tag{color:var(--good)} .lever.mgmt .tag{color:var(--gold)} .lever.cyclical .tag{color:var(--blue)}
+.lever h4{font-family:Georgia,serif;font-size:18.5px;margin:0 0 7px;font-weight:700}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0 28px}
+.pull q{font-family:Georgia,serif;font-size:21px;line-height:1.45;display:block;margin-bottom:10px}
+.pull .attr{font-size:14px;color:var(--muted);letter-spacing:.02em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 24px}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 12px}
+.two ul{margin:0;padding-left:19px} .two li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+.tblwrap{overflow-x:auto;margin:0 0 10px;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:16px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:#FBF8F2}
+td.n,th.n{text-align:right}
+tr:last-child td{border-bottom:none}
+tr.total td{font-weight:700;background:#FBF8F2}
+.cap{font-size:14px;color:var(--muted);line-height:1.5;margin:0 0 30px}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 20px 10px;margin:0 0 10px}
+.chart svg{display:block;width:100%;height:auto}
+.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:24px;font-size:14.5px;color:var(--muted);line-height:1.6}
+.foot h3{font-size:16px;margin:0 0 10px}
+ul.body{padding-left:20px;margin:0 0 18px} ul.body li{margin-bottom:10px}
+@media (max-width:720px){ .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr} h1{font-size:31px} h2{font-size:23px} body{font-size:18px} }
+</style></head><body><div class="wrap">
+<div class="kicker">Business Overview</div>
+<h1>Alibaba Group Holding Limited</h1>
+<div class="srcline">
+NYSE: BABA · HKEX: 9988 / 89988 · fiscal year ends 31 March · 7 September 2026<br>
+Built from Alibaba's SEC filings — Form 20-F for FY2017 through FY2026 (FY2026, covering the year to 31 March 2026, filed 20 May 2026) and Form 6-K filings through 4 September 2026 — with industry structure, competitor economics and post-filing events drawn from independent and primary outside sources, cited where used. Figures in Renminbi as reported; percentages not printed in the filings are computed. <b>Not a valuation and not a recommendation.</b>
+</div>
+
+<div class="restate">Alibaba is a toll booth on other people's commerce, with a compute utility now being built alongside it — and in the year to March 2026 it spent almost the entire toll defending the road.</div>
+
+<div class="engine">
+  <div class="lab">The unit, and what it earns</div>
+  <div class="unit">One yuan of merchandise sold by a third party on Taobao or Tmall.</div>
+  <p>Alibaba takes no title to the goods and books no revenue on their value. It levies three things on the transaction: an <b>advertising bid</b> won at auction and prepaid by the merchant, a <b>commission</b> of "typically 0.1% to 5.0% for Tmall depending on the product category," and a <b>software service fee on GMV</b> imposed on every completed transaction since September 2024. Those three sit in one line — customer management revenue — which was <b>RMB459,917 million in FY2026, 44.9% of group revenue</b>, and carries almost no cost of goods. Against it Alibaba paid Alipay <b>RMB18,019 million</b> to settle and escrow the money. What the levy is <i>as a rate</i> — the take rate — is defined in the FY2026 20-F glossary, claimed to have improved, and no longer disclosed. Neither is the GMV beneath it.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Take rate — the unit price</div><div class="v">not disclosed</div><div class="s">Defined in the FY2026 20-F glossary and claimed to have improved; last quantified at 3.03% in FY2017.</div></div>
+  <div class="kpi"><div class="k">The levy, FY2026</div><div class="v">459,917</div><div class="s">RMB m of customer management revenue — 44.9% of group revenue, on goods Alibaba never owns.</div></div>
+  <div class="kpi"><div class="k">Adjusted EBITA, FY2026</div><div class="v">76,416</div><div class="s">RMB m, down 56%. Non-GAAP net income RMB60,658m, down 62%; GAAP net income down only 19%.</div></div>
+  <div class="kpi"><div class="k">Balance sheet</div><div class="v">+260,828</div><div class="s">RMB m net cash, computed — treasury of 520,824 less total borrowings of 259,996 at 31 March 2026. Alibaba discloses no leverage ratio.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">trough</div><div class="s">Adjusted EBITA margin 7.5% against 17.4% a year earlier and 43.7% in FY2017. Free cash flow negative for the first time.</div></div>
+  <div class="kpi"><div class="k">Reported vs like-for-like</div><div class="v">+3% / +11%</div><div class="s">FY2026 revenue growth as reported, and excluding the disposed Sun Art and Intime businesses.</div></div>
+</div>
+
+<h2>1. Executive snapshot</h2>
+<div class="tblwrap"><table>
+<tr><th style="width:26%">Item</th><th>Summary</th></tr>
+<tr><td><b>What the business is</b></td><td>Two businesses under one holding company: a Chinese commerce marketplace that rents attention and transaction infrastructure to third-party merchants, and a cloud and AI compute business now consuming most of the group's capital.</td></tr>
+<tr><td><b>Industry</b></td><td>Chinese online retail and instant retail; Chinese public cloud and AI infrastructure.</td></tr>
+<tr><td><b>How it makes money</b></td><td>Merchants sell goods Alibaba does not own; Alibaba levies advertising fees, a commission and a software service fee on the transaction, and separately rents metered compute to enterprises.</td></tr>
+<tr><td><b>Unit of economics</b></td><td>One yuan of third-party merchandise sold. The levy on it is no longer quantified, and neither is the volume beneath it.</td></tr>
+<tr><td><b>What protects it</b></td><td>Merchant demand aggregation and the auction that prices it; a 33% Ant Group interest and a payments agreement with a 50-year initial term; the largest Chinese cloud installed base; the most-downloaded open-weight model family in the world.</td></tr>
+<tr><td><b>What drives earnings</b></td><td>The take rate on core transactions; cloud revenue growth against a fixed-cost fleet; the rate at which quick-commerce and consumer-AI subsidies are withdrawn.</td></tr>
+<tr><td><b>What to watch</b></td><td>Sales and marketing as a share of revenue; cloud segment margin; free cash flow against a capex programme running at roughly twice its announced pace.</td></tr>
+<tr><td><b>Cycle exposure</b></td><td>High, and currently at a self-inflicted trough rather than a peak.</td></tr>
+</table></div>
+<p class="cap">Source: FY2026 20-F unless otherwise stated in the sections below.</p>
+
+<h2>2. What the company does</h2>
+<p>The customer with the problem is not the shopper. It is the merchant. There are millions of Chinese sellers offering broadly interchangeable goods, and the scarce thing is not shelf space but a buyer's attention at the moment of intent. Alibaba's marketplaces assemble that attention at national scale and sell access to it. Everything else — escrow, logistics, membership programmes, and now thirty-minute delivery — exists to keep the attention pooled where Alibaba can auction it.</p>
+<p>Follow one order through. A consumer pays; the money settles through Alipay, which Alibaba does not own, into escrow, and releases to the merchant on receipt. Alibaba pays Alipay for that service — RMB18,019 million in FY2026, up 37% in two years — with the rate reset annually by a committee of its own independent directors. Against that cost it collects the prepaid advertising bid, the commission and the software fee, plus a logistics fee if Cainiao or Fengniao carried the parcel. What it never collects is a margin on the merchandise itself.</p>
+
+<h3>Where the revenue sits</h3>
+<div class="tblwrap"><table>
+<tr><th>Revenue by type (RMB m)</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">% of FY26</th></tr>
+<tr><td>Customer management services</td><td class="n">386,571</td><td class="n">424,877</td><td class="n">459,917</td><td class="n">44.9%</td></tr>
+<tr><td>Sales of goods</td><td class="n">283,273</td><td class="n">274,276</td><td class="n">227,747</td><td class="n">22.2%</td></tr>
+<tr><td>Logistics services</td><td class="n">114,073</td><td class="n">123,379</td><td class="n">139,864</td><td class="n">13.7%</td></tr>
+<tr><td>Cloud services</td><td class="n">76,459</td><td class="n">84,517</td><td class="n">112,077</td><td class="n">10.9%</td></tr>
+<tr><td>Membership fees and value-added services</td><td class="n">41,956</td><td class="n">46,613</td><td class="n">47,638</td><td class="n">4.7%</td></tr>
+<tr><td>Other revenue</td><td class="n">38,836</td><td class="n">42,685</td><td class="n">36,427</td><td class="n">3.6%</td></tr>
+<tr class="total"><td>Total revenue</td><td class="n">941,168</td><td class="n">996,347</td><td class="n">1,023,670</td><td class="n">100%</td></tr>
+</table></div>
+<p class="cap">Source: FY2026 20-F, note 5. Sales of goods fell 17% over two years chiefly because Alibaba sold the Sun Art and Intime store chains. Nearly half of group revenue is the levy on other people's sales; sales of goods is the low-margin residue of the physical-retail experiments now being exited.</p>
+
+<h3>The second business: metered compute</h3>
+<p>Cloud sells a different unit. Customers buy elastic compute, storage, database and model-serving capacity and pay either by subscription, recognised rateably, or by consumption, recognised on utilisation. Alibaba discloses no price per instance-hour and no longer discloses a paying-customer count — it disclosed 874,000 at 31 March 2017 and none since.</p>
+<p>A newer unit is emerging inside it: the inference token. Alibaba publishes the Qwen model family with open weights, which earns no licence revenue at all, and monetises the workloads those models pull onto its own metal. AI-related product revenue reached RMB12,376 million in the June 2026 quarter, roughly a quarter of segment revenue, after twelve consecutive quarters of triple-digit growth.</p>
+<p>The direction of travel over two years is out of owned inventory and into owned compute. Alibaba disposed of Sun Art and Intime, sold 85% of Trendyol GO, and agreed to sell Lingxi Games in August 2026. In the opposite direction it launched Taobao Instant Commerce in April 2025 — a delivery business with a rider fleet attached — and a consumer AI application whose user-acquisition spend is now a named driver of group operating expense.</p>
+
+<h2>3. Industry, competitive position and moat</h2>
+<p>Chinese e-commerce sells two different products, and conflating them is the common error. To consumers it sells goods and, increasingly, speed. To merchants — and this is the profit product — it sells demand certainty. The profit pool sits with whoever monetises merchant competition for attention, and it sits nowhere else along the chain.</p>
+<p>The reported margins of the participants make the point without argument. In their most recent full fiscal years, <b>PDD Holdings</b> earned a 21.9% operating margin on RMB431.8bn of revenue with no logistics network and no instant-retail obligation. <b>JD.com</b> earned RMB2.8bn of operating income on RMB1,309.1bn of revenue — 0.2% — owning inventory and trucks. <b>Meituan</b>, which owns the rider fleet, lost RMB25.0bn at the operating line against a RMB36.8bn profit the year before. <b>Alibaba's</b> China e-commerce segment earned RMB107.5bn of adjusted EBITA, a 19.4% margin.</p>
+<p>The rule that falls out of those four sets of accounts: the asset-light monetiser of merchant competition captures the profit, and every layer that owns a physical asset earns single digits or loses money. Chinese instant retail is the first business in fifteen years that forces the marketplace layer to own the asset-heavy layer.</p>
+
+<h3>A share-transfer market, not a growth market</h3>
+<p>China's online retail of physical goods reached RMB13,092.3bn in 2025, up 5.2%, and represented 26.1% of total retail sales (National Bureau of Statistics). In the seven months to July 2026 it grew 4.6% while total retail sales grew 1.2%, and July alone grew 0.6%. Online is still taking share from offline, but penetration gains have compressed to roughly a point a year against multi-point gains a decade ago.</p>
+<p>The consequence is mechanical. If the total market grows around one percent and penetration adds around one point, essentially all remaining platform growth is transferred from a competitor rather than created. That is why a subsidy war broke out in 2025 — and why the category detail matters: online food and groceries grew 16.9% in the seven months to July 2026 while all other goods grew 1.1%. The only fast-growing pool left is the one that requires a delivery fleet.</p>
+
+<h3>Position: strong in commerce, stronger in cloud</h3>
+<p>Alibaba's absolute profit pool in Chinese commerce is larger than any competitor's — its FY2026 China e-commerce adjusted EBITA exceeded PDD's entire operating profit. But absolute scale has not translated into superior unit economics: PDD's operating margin is several points above Alibaba's China e-commerce margin, achieved with a fraction of the assets. The scale advantage is real in the size of the pool and unproven in the economics of the unit. Market share cannot settle it, because Alibaba stopped disclosing GMV and no independent tracker publishes verified platform shares.</p>
+<p>In cloud the outside evidence is stronger and more consistent. Omdia put Alibaba Cloud at <b>37%</b> of mainland China cloud infrastructure services in Q4 2025, against Huawei at 17% and Tencent at about 10%. IDC, on a wider public-cloud IaaS definition that includes the state telecom clouds, put Alibaba at <b>26.8%</b> in Q2 2025 — still roughly double the next vendor, and the only major vendor gaining share for five consecutive quarters. In the narrower market for large-model training and inference, IDC put Alibaba at <b>42.2%</b>. The two trackers are not interchangeable: on the broader definition Alibaba holds about a quarter of the market, not over a third.</p>
+<p>The model layer is the best-evidenced position of all, and it earns nothing directly. The independent ATOM Report counted 942.1 million cumulative Hugging Face downloads for the Qwen family to March 2026, against 476.0 million for Llama and 128.2 million for DeepSeek; in February 2026 Qwen accounted for <b>69% of all newly created fine-tuned derivative models</b>. Open weights generate no licence revenue. Their economic function is to make Alibaba's cloud the default place those workloads run.</p>
+
+<div class="tblwrap"><table>
+<tr><th style="width:28%">The company's claim</th><th style="width:16%">Outside verdict</th><th>Basis</th></tr>
+<tr><td><b>Scale advantages in Chinese commerce</b></td><td>Partly supported</td><td>Largest absolute profit pool in the sector, and customer management revenue grew right through the subsidy war. But PDD earns a higher operating margin with far fewer assets, and no independent source can verify a market share.</td></tr>
+<tr><td><b>Leading position in Chinese public cloud</b></td><td>Supported</td><td>Largest single vendor on both independent trackers, by roughly two to one, and gaining share. Qualification: IDC ranks Baidu first in the AI-applications sub-market.</td></tr>
+<tr><td><b>Leading position in open-weight AI models</b></td><td>Supported</td><td>Independent academic tracking corroborates the ranking. Alibaba's own claim of 3 billion cumulative downloads rests on a broader base and is unverified.</td></tr>
+<tr><td><b>Quick commerce strengthens the core platform</b></td><td>Unverified</td><td>Alibaba publishes no order volumes, no cohort frequency data and no standalone quick-commerce profit. The mechanism cannot be tested from outside — and the regulator has drafted rules to prohibit the method.</td></tr>
+</table></div>
+<p class="cap">Verdicts are this document's assessment of independent evidence against the FY2026 20-F and the June Quarter 2026 results.</p>
+
+<p>In Chinese marketplaces the winner is the operator with the lowest fixed cost, because in a market growing at one percent only that operator can decline to fight. Alibaba's marketplace half has been exactly that business for a decade; it has now voluntarily attached a rider fleet, a grocery chain and a thirty-minute delivery promise to it. In cloud the winner is the operator with the largest installed base to amortise capital across, a model franchise that pulls inference onto its own hardware for free, and captive first-party demand to fill the fleet. Chip design does not win — Cambricon, the only listed Chinese pure-play, reported roughly 20% yields on SMIC's 7nm process and inventory equal to 45% of total assets. Model labs alone do not win — DeepSeek fell from 75.6% of OpenRouter inference tokens in June 2025 to 31.1% in January 2026 with no infrastructure to defend the position. <b>Alibaba is unambiguously that kind of company in cloud. It is half that kind in commerce, and it has chosen to become less so.</b></p>
+
+<h2>4. Growth engine</h2>
+<p>Reported revenue grew 3% in FY2026. That number describes a different company from the one that actually operated: excluding the disposed Sun Art and Intime businesses, revenue grew <b>11%</b> on a like-for-like basis. The eight-point gap is the arithmetic of selling two large, low-margin retail chains, and it implies roughly RMB74bn of FY2025 revenue that simply left the group <i>(inferred — Alibaba does not disclose the disposed businesses' revenue directly)</i>.</p>
+
+<div class="tblwrap"><table>
+<tr><th>Reported against organic</th><th class="n">FY2021</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th></tr>
+<tr><td>Revenue growth as reported</td><td class="n">+41%</td><td class="n">+8%</td><td class="n">+6%</td><td class="n">+3%</td></tr>
+<tr><td>Company-stated like-for-like growth</td><td class="n">+32%</td><td class="n">not stated</td><td class="n">not stated</td><td class="n">+11%</td></tr>
+<tr><td>Effect of consolidation or disposal</td><td class="n">+9 pts</td><td class="n">nil</td><td class="n">nil</td><td class="n">−8 pts</td></tr>
+<tr><td>Cash consideration for all acquisitions (RMB m)</td><td class="n">19,137</td><td class="n">2,204</td><td class="n">(353)</td><td class="n">1,212</td></tr>
+</table></div>
+<p class="cap">Sources: FY2021 and FY2026 20-Fs. Sun Art contributed RMB42.9bn of revenue on consolidation in FY2021 and, with Intime, removed about eight points on the way out in FY2026. Alibaba published no like-for-like figure for FY2024 or FY2025; the FY2025 20-F incorporates its MD&A by reference to a Hong Kong annual report not filed with the SEC. M&A is now a rounding error — total consideration for all business combinations was RMB2,250m in FY2026. Growth from here is organic or it does not happen.</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever structural"><div class="tag">Structural</div><h4>Cloud and AI compute</h4><p>Segment revenue grew 34% in FY2026 to RMB158,132m and accelerated to 45% in the June 2026 quarter, with segment adjusted EBITA up 133% and the margin reaching 12%. Margin expanding while growth accelerates is the signature of capacity scarcity rather than share bought with price. This is the only driver in the list that improves the group's margin as it grows.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><h4>Quick commerce</h4><p>Revenue grew 47% in FY2026 to RMB78,520m and 45% in the June 2026 quarter to RMB53,295m. It is reported net of subsidies, treated as contra-revenue, so the headline understates gross volume and the subsidy quantum is never disclosed. The revenue is real; whether it is profitable at any scale is the unresolved question of the investment case.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><h4>Take rate on the core marketplace</h4><p>Customer management revenue rose 5% in FY2026 "driven by the improvement of take rate." No take rate and no GMV is disclosed to test the claim. The GMV-based software service fee introduced in September 2024 is the most plausible mechanism <i>(inferred)</i>.</p></div>
+<div class="lever structural"><div class="tag">Structural</div><h4>International commerce</h4><p>AIDC revenue grew 9% to RMB144,170m while its adjusted EBITA loss narrowed from RMB15,137m to RMB2,051m, which the company attributes to AliExpress operating efficiency. The wider context: the United States ended the $800 de minimis exemption for China and Hong Kong in May 2025 and suspended it globally that August, removing the parcel arbitrage underpinning the whole cross-border cohort and pushing every participant from loss-making growth toward profitability at once.</p></div>
+<div class="lever cyclical"><div class="tag">Temporary — currently a cost</div><h4>Consumer AI</h4><p>The Qwen application reached over 295 million monthly active users by March 2026, and Alibaba states 250 million users have had a first AI-driven shopping experience through it. On the June 2026 quarter's new segmentation, AI Labs and Applications produced RMB3,338m of revenue against an adjusted EBITA loss of RMB13,861m. It is a user-acquisition programme that has not yet become a revenue line.</p></div>
+<p>Two things are shrinking. The "All others" bucket fell 25% to RMB254,367m in FY2026 on the disposals and a decline in Cainiao revenue. And in the June 2026 quarter, under a segmentation adopted that quarter, China E-commerce revenue fell 8% year-on-year with customer management revenue down 7% — which management attributes largely to reclassification into the separate quick-commerce line and cites as up 1% like-for-like. An investor cannot independently separate reclassification from decline, because the underlying volume measure is not published.</p>
+
+<h2>5. Margin, cash and capital allocation</h2>
+<p>Group adjusted EBITA fell 56% in FY2026, from RMB173,065m to RMB76,416m, and income from operations fell 64%. One line explains it. Sales and marketing expense rose <b>70%</b>, from RMB144,021m to RMB245,023m — from 14% of revenue to 24% — "primarily attributable to the investment in user experiences of Alibaba China E-commerce Group and user acquisition of Qwen app." That single increase of RMB101bn is larger than the entire RMB96.6bn fall in group adjusted EBITA. Cost of revenue was flat at 60% of revenue; G&A actually fell 25%, helped by the absence of the prior year's provision for the US$433.5m securities class action settlement.</p>
+
+<div class="pull">
+  <q>"Total revenue increased by 3% … Excluding revenue from the disposed businesses of Sun Art and Intime, revenue on a like-for-like basis would have grown by 11% year-over-year."</q>
+  <div class="attr">Alibaba Group, Form 20-F for the fiscal year ended 31 March 2026, Item 5.A</div>
+</div>
+
+<p>Reported net income tells a much gentler story than the operations do, and the gap is not operational. Net income fell 19% to RMB102,127m while <b>non-GAAP net income fell 62%</b> to RMB60,658m. The difference is investment gains: interest and investment income swung to a positive RMB87,512m from RMB20,759m, including RMB74,416m of gains on the disposal, deemed disposal and revaluation of investments. Marking a portfolio upward is not the same event as earning money from customers.</p>
+
+<div class="chart"><svg viewBox="0 0 880 330" role="img" aria-label="Adjusted EBITA margin and capital expenditure as a share of revenue, FY2017 to FY2026">
+<line x1="52" y1="274.0" x2="846" y2="274.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="44" y="278.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">0%</text>
+<line x1="52" y1="191.3" x2="846" y2="191.3" stroke="#E5DDD0" stroke-width="1"/>
+<text x="44" y="195.3" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">15%</text>
+<line x1="52" y1="108.7" x2="846" y2="108.7" stroke="#E5DDD0" stroke-width="1"/>
+<text x="44" y="112.7" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">30%</text>
+<line x1="52" y1="26.0" x2="846" y2="26.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="44" y="30.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">45%</text>
+<text x="52.0" y="314" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2017</text>
+<text x="184.3" y="314" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2019</text>
+<text x="316.7" y="314" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2021</text>
+<text x="449.0" y="314" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2023</text>
+<text x="581.3" y="314" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2024</text>
+<text x="713.7" y="314" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2025</text>
+<text x="846.0" y="314" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2026</text>
+<path d="M52.0 33.2 L184.3 119.7 L316.7 142.8 L449.0 180.3 L581.3 177.6 L713.7 178.1 L846.0 232.7" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="52.0" cy="33.2" r="3.6" fill="#C75B39"/>
+<circle cx="184.3" cy="119.7" r="3.6" fill="#C75B39"/>
+<circle cx="316.7" cy="142.8" r="3.6" fill="#C75B39"/>
+<circle cx="449.0" cy="180.3" r="3.6" fill="#C75B39"/>
+<circle cx="581.3" cy="177.6" r="3.6" fill="#C75B39"/>
+<circle cx="713.7" cy="178.1" r="3.6" fill="#C75B39"/>
+<circle cx="846.0" cy="232.7" r="3.6" fill="#C75B39"/>
+<path d="M52.0 212.8 L184.3 222.2 L316.7 242.0 L449.0 252.0 L581.3 255.3 L713.7 226.6 L846.0 206.2" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="52.0" cy="212.8" r="3.6" fill="#3C6E8F"/>
+<circle cx="184.3" cy="222.2" r="3.6" fill="#3C6E8F"/>
+<circle cx="316.7" cy="242.0" r="3.6" fill="#3C6E8F"/>
+<circle cx="449.0" cy="252.0" r="3.6" fill="#3C6E8F"/>
+<circle cx="581.3" cy="255.3" r="3.6" fill="#3C6E8F"/>
+<circle cx="713.7" cy="226.6" r="3.6" fill="#3C6E8F"/>
+<circle cx="846.0" cy="206.2" r="3.6" fill="#3C6E8F"/>
+<text x="52.0" y="20.2" text-anchor="start" font-size="13.5" font-weight="700" fill="#C75B39" font-family="Calibri,Arial,sans-serif">Adjusted EBITA margin 43.7%</text>
+<text x="846.0" y="254.7" text-anchor="end" font-size="13.5" font-weight="700" fill="#C75B39" font-family="Calibri,Arial,sans-serif">7.5%</text>
+<text x="52.0" y="232.8" text-anchor="start" font-size="13.5" font-weight="700" fill="#3C6E8F" font-family="Calibri,Arial,sans-serif">Capex as % of revenue</text>
+<text x="846.0" y="194.2" text-anchor="end" font-size="13.5" font-weight="700" fill="#3C6E8F" font-family="Calibri,Arial,sans-serif">12.3%</text>
+</svg></div>
+<p class="cap">The mechanism, in one picture. Adjusted EBITA margin and capital expenditure as a percentage of revenue, computed from figures in the FY2017, FY2019, FY2021, FY2023, FY2025 and FY2026 20-Fs. The two lines have crossed for the first time: the business is now spending more of each revenue yuan on plant than it keeps as operating profit. Comparability caveats below apply to the margin series.</p>
+
+<h3>The financial spine</h3>
+<div class="tblwrap"><table>
+<tr><th>RMB millions unless stated</th><th class="n">FY2017</th><th class="n">FY2021</th><th class="n">FY2025</th><th class="n">FY2026</th></tr>
+<tr><td>Revenue</td><td class="n">158,273</td><td class="n">717,289</td><td class="n">996,347</td><td class="n">1,023,670</td></tr>
+<tr><td>Adjusted EBITA</td><td class="n">69,172</td><td class="n">170,453</td><td class="n">173,065</td><td class="n">76,416</td></tr>
+<tr><td>Adjusted EBITA margin</td><td class="n">43.7%</td><td class="n">23.8%</td><td class="n">17.4%</td><td class="n">7.5%</td></tr>
+<tr><td>Net income attributable to ordinary shareholders</td><td class="n">43,675</td><td class="n">150,308</td><td class="n">129,470</td><td class="n">105,904</td></tr>
+<tr><td>Free cash flow (company definition)</td><td class="n">68,790</td><td class="n">172,662</td><td class="n">73,870</td><td class="n">(46,609)</td></tr>
+<tr><td>Capital expenditure</td><td class="n">17,546</td><td class="n">41,450</td><td class="n">85,972</td><td class="n">126,063</td></tr>
+</table></div>
+<p class="cap"><b>Comparability is broken across these columns in four disclosed ways.</b> Reportable segments went from four (FY2017 and FY2021) to seven (from December 2021) to six (FY2024) to four (FY2026), with a further change to a different four-segment structure in the June 2026 quarter. The ADS ratio changed on the 8-for-1 share subdivision effective 30 July 2019, so FY2017 per-share figures are not comparable to later years. The definition of adjusted EBITA has been widened three times to add back new categories, including the FY2021 anti-monopoly fine of RMB18,228m. And the free cash flow definition changed on adoption of ASU 2019-02 on 1 April 2020. A trend line drawn straight across these columns is not a trend.</p>
+
+<h3>Cash conversion inverted</h3>
+<div class="chart"><svg viewBox="0 0 880 340" role="img" aria-label="Free cash flow and capital expenditure, FY2021 to FY2026, RMB billions">
+<line x1="58" y1="286.0" x2="846" y2="286.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="290.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">-60</text>
+<line x1="58" y1="221.5" x2="846" y2="221.5" stroke="#9C9384" stroke-width="1.4"/>
+<text x="50" y="225.5" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">0</text>
+<line x1="58" y1="157.0" x2="846" y2="157.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="161.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">60</text>
+<line x1="58" y1="92.5" x2="846" y2="92.5" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="96.5" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">120</text>
+<line x1="58" y1="28.0" x2="846" y2="28.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="32.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">180</text>
+<rect x="80.7" y="35.8" width="40" height="185.7" fill="#C75B39" rx="2"/>
+<rect x="126.7" y="176.9" width="40" height="44.6" fill="#3C6E8F" rx="2"/>
+<text x="123.7" y="326" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2021</text>
+<rect x="212.0" y="115.2" width="40" height="106.3" fill="#C75B39" rx="2"/>
+<rect x="258.0" y="164.2" width="40" height="57.3" fill="#3C6E8F" rx="2"/>
+<text x="255.0" y="326" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2022</text>
+<rect x="343.3" y="36.9" width="40" height="184.6" fill="#C75B39" rx="2"/>
+<rect x="389.3" y="184.6" width="40" height="36.9" fill="#3C6E8F" rx="2"/>
+<text x="386.3" y="326" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2023</text>
+<rect x="474.7" y="53.6" width="40" height="167.9" fill="#C75B39" rx="2"/>
+<rect x="520.7" y="187.0" width="40" height="34.5" fill="#3C6E8F" rx="2"/>
+<text x="517.7" y="326" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2024</text>
+<rect x="606.0" y="142.1" width="40" height="79.4" fill="#C75B39" rx="2"/>
+<rect x="652.0" y="129.1" width="40" height="92.4" fill="#3C6E8F" rx="2"/>
+<text x="649.0" y="326" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2025</text>
+<rect x="737.3" y="221.5" width="40" height="50.1" fill="#C75B39" rx="2"/>
+<rect x="783.3" y="85.9" width="40" height="135.6" fill="#3C6E8F" rx="2"/>
+<text x="780.3" y="326" text-anchor="middle" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">FY2026</text>
+<text x="80.7" y="26.8" text-anchor="start" font-size="13.5" font-weight="700" fill="#C75B39" font-family="Calibri,Arial,sans-serif">Free cash flow</text>
+<text x="823.3" y="287.6" text-anchor="end" font-size="13.5" font-weight="700" fill="#C75B39" font-family="Calibri,Arial,sans-serif">−46.6</text>
+<text x="126.7" y="167.9" text-anchor="start" font-size="13.5" font-weight="700" fill="#3C6E8F" font-family="Calibri,Arial,sans-serif">Capex</text>
+<text x="823.3" y="76.9" text-anchor="end" font-size="13.5" font-weight="700" fill="#3C6E8F" font-family="Calibri,Arial,sans-serif">126.1</text>
+</svg></div>
+<p class="cap">Free cash flow on Alibaba's own definition, and capital expenditure, RMB billions, from the FY2023, FY2025 and FY2026 20-F cash flow statements. FY2026 is the first negative free cash flow year in the company's public history.</p>
+<p>Operating cash flow fell 53% in FY2026, which the company attributes to "the investment in quick commerce and increase in our cloud infrastructure expenditure." Two mechanisms drive the gap between reported profit and cash: RMB66,089m of net income was a non-cash mark-up on investments, so it never became cash; and prepayments, receivables and other assets absorbed RMB67,931m, a build consistent with prepaid data-centre and chip capacity, though the filing does not disaggregate it. Working the other way, merchants prepaying for advertising took deferred revenue and customer advances to RMB77,415m — a genuine and growing source of negative working capital.</p>
+<p>Capital expenditure was RMB126,063m, 12.3% of revenue, against RMB32,087m and 3.4% two years earlier, with RMB54,136m of further commitments contracted but not provided for. Gross computer equipment and software rose 52% in one year to RMB238,760m. The depreciation policy for that equipment is unchanged at three to five years — the company has not extended useful lives to flatter the profit and loss account, which means the full bill arrives on schedule.</p>
+
+<h3>Where the cash went</h3>
+<div class="tblwrap"><table>
+<tr><th>Use of cash, FY2021–FY2026</th><th class="n">RMB m</th><th>Behaviour</th></tr>
+<tr><td>Capital expenditure</td><td class="n">373,211</td><td>Flat to falling until FY2024, then RMB212bn in the last two years alone</td></tr>
+<tr><td>Share repurchases</td><td class="n">319,789</td><td>RMB311bn across FY2022–FY2025, then RMB7,638m in FY2026</td></tr>
+<tr><td>Investments and securities</td><td class="n">204,045</td><td>Steady, with a step up in FY2026</td></tr>
+<tr><td>Dividends</td><td class="n">80,755</td><td>First declared for FY2024; specials in FY2024 and FY2025, none for FY2026</td></tr>
+<tr><td>Buy-ins of minority interests</td><td class="n">65,673</td><td>Persistent, concentrated in FY2025 and FY2026</td></tr>
+</table></div>
+<p class="cap">Ranked by six-year total, from the cash flow statements in the FY2021, FY2023, FY2025 and FY2026 20-Fs.</p>
+<p>The ranking describes a company that spent four years shrinking its own share count and one year abandoning that in favour of building compute. Repurchases fell from RMB86,662m in FY2025 to RMB7,638m in FY2026, with <b>none at all in any month from September 2025 through March 2026</b>, even though US$19,050m of authorisation remained. The special dividend was dropped and the total distribution halved from about US$4.6bn to about US$2.5bn. Ordinary shares outstanding, having fallen 14.4% between FY2021 and FY2025, rose 0.6% in FY2026.</p>
+
+<h3>What post-dates the filings</h3>
+<p>Three developments after the 20-F was signed on 20 May 2026 change the capital picture and belong on the record.</p>
+<ul class="body">
+<li><b>An equity raise.</b> On 26 August 2026 Alibaba completed a placing of 710,000,000 new ordinary shares at HK$112.70, raising HK$80.0bn gross — dilution of approximately 3.70% of the pre-issue share count on the company's own figures. It stated that 100% of net proceeds would fund full-stack AI capability, split approximately 60% (HK$47,871m) to expand global computing infrastructure and 40% (HK$31,914m) to accelerate hyperscale AI data-centre buildout. Alibaba characterised the price as a 3.6% discount to a referenced ADR-derived price; the same announcement discloses it as a 9.0% discount to the five-session average close.</li>
+<li><b>A capex plan running ahead of itself.</b> On 24 February 2025 Alibaba announced RMB380bn of AI and cloud infrastructure investment over three years. In May 2026 the chief executive said publicly the company would likely overshoot it; no revised headline has been issued. June-quarter capex alone was RMB67,678m, up 75% year-on-year — annualised, roughly twice the pace the announced plan implies <i>(inferred)</i>.</li>
+<li><b>Cash still going out.</b> Free cash flow in the June 2026 quarter was an outflow of RMB44,670m, against RMB18,815m a year earlier. Buybacks in the quarter were US$162m, against US$815m a year earlier.</li>
+</ul>
+<p>Read together: the company has moved from returning capital to raising it, it is spending faster than its own announced plan, and the deterioration in group profit has begun to narrow but has not reversed.</p>
+
+<h2>6. Cyclicality, constraints and what to monitor</h2>
+<p>Alibaba is a Chinese domestic consumption business with a capital-goods business bolted to it, and both halves are cyclical in different ways. It discloses <b>no geographic revenue split at all</b> — note 29 of the FY2026 20-F states that because substantially all long-lived assets and revenue are in the PRC, no geographical information is presented. What follows is the exposure that can be established.</p>
+
+<div class="tblwrap"><table>
+<tr><th>Exposure, FY2026</th><th class="n">RMB m</th><th class="n">% of group</th><th>What it is sensitive to</th></tr>
+<tr><td>Alibaba China E-commerce Group</td><td class="n">554,217</td><td class="n">54%</td><td>Chinese household consumption; competitive intensity in instant retail</td></tr>
+<tr><td>All others (Cainiao, Freshippo, Amap, health, media, Qwen consumer)</td><td class="n">254,367</td><td class="n">25%</td><td>Mixed; contains the disposals and the consumer-AI spend</td></tr>
+<tr><td>Cloud Intelligence Group</td><td class="n">158,132</td><td class="n">15%</td><td>Enterprise and AI compute demand; chip and power supply</td></tr>
+<tr><td>Alibaba International Digital Commerce Group</td><td class="n">144,170</td><td class="n">14%</td><td>Cross-border trade policy; Türkiye and Southeast Asia demand</td></tr>
+<tr><td><i>Inter-segment elimination and unallocated</i></td><td class="n">(87,216)</td><td class="n">−8%</td><td>—</td></tr>
+</table></div>
+<p class="cap">Source: FY2026 20-F, note 29 (segment revenue before inter-segment elimination). Percentages of consolidated revenue, computed; they sum above 100% before elimination. As a second proxy for geography: RMB28,081m of the RMB30,045m FY2026 tax charge — roughly 93% — was Chinese mainland tax. Note that the June 2026 quarter introduced a different four-segment structure again, in which international commerce is folded into a single Alibaba E-commerce Group and T-Head chips are merged into cloud.</p>
+
+<h3>Where the business sits in its cycle</h3>
+<p>This is a trough, and importantly a self-inflicted one rather than a demand collapse. Group adjusted EBITA margin was 7.5% against 17.4% a year earlier and 43.7% in FY2017; free cash flow is at its worst level ever. But revenue grew 11% like-for-like and customer management revenue grew through the whole episode. <b>The margin fell because the company chose to spend, not because customers left.</b></p>
+<p>The quarterly path shows the trough passing. Group adjusted EBITA fell 78% in the September 2025 quarter and 84% in the March 2026 quarter, then 30% in the June 2026 quarter — when the e-commerce segment's adjusted EBITA was down only 1% year-on-year even as quick-commerce revenue grew 45%. The competitors' books say the same thing independently: JD's marketing expense fell 24.8% year-on-year in the June 2026 quarter after rising 127.6% a year earlier, and Meituan's core local commerce swung back to a RMB5.7bn operating profit from a RMB14.1bn loss three quarters before. The subsidy war is de-escalating on three sets of accounts at once.</p>
+<p>The caution is that the capital did not go home; it changed uniform. In the same June 2026 quarter, RMB13,861m of quarterly loss appeared in AI Labs and Applications, driven by Qwen application inference cost and user acquisition. Modelling a margin recovery on quick-commerce normalisation alone would miss this.</p>
+
+<h3>Demand, and the constraints that bind</h3>
+<p>On consumption: total retail sales grew 1.2% in the seven months to July 2026 and 0.6% in July alone. The consumer trade-in programme that supported high-ticket online categories was allocated RMB250bn of ultra-long special treasury bonds for 2026, disbursed in four batches of RMB62.5bn, the third released around 20 June 2026 (NDRC). That is a smaller programme than 2025's against a base that programme itself inflated — the most probable explanation for online sales of goods other than food running at 1.1% while food runs at 16.9%.</p>
+<p>On compute: the binding constraint is not chip design but advanced-node wafer and high-bandwidth-memory capacity. The only auditable window is Cambricon, the listed Chinese accelerator pure-play, reported at roughly 20% yields on SMIC's 7nm process with inventory equal to 45% of total assets. US policy moved the other way in January 2026, when BIS revised its licence review policy to permit case-by-case exports of Nvidia H200-class chips to China subject to third-party testing in the United States — while China's own regulator was reported in September 2025 to have told domestic firms to stop buying certain Nvidia parts. Whether licences have actually been granted, in what volume, and how much of Alibaba's fleet runs on its own T-Head silicon are all <i>(unknown)</i>.</p>
+<p><b>The downside mechanism worth carrying is depreciation.</b> Capital expenditure of RMB67,678m in a single quarter becomes roughly RMB20–25bn a quarter of depreciation two to three years later on a three-to-five-year life <i>(inferred)</i>. If cloud revenue compounds more slowly than the fleet, the margin the company has just started to expand goes into reverse for reasons that have nothing to do with demand. Capex grew 75% year-on-year in the June quarter against cloud revenue growth of 45%; that gap is currently negative for the shareholder.</p>
+
+<div class="two">
+  <div class="col"><h4>Durable — likely intact in ten years</h4><ul>
+    <li>Merchant demand aggregation, and the advertising auction that prices it</li>
+    <li>The largest Chinese cloud installed base and the first-party workloads that fill it</li>
+    <li>The Qwen open-weight franchise as a demand funnel into Alibaba's own compute</li>
+    <li>The 33% Ant Group interest and a payments agreement with a 50-year initial term</li>
+    <li>A treasury of RMB520,824m against RMB259,996m of borrowings</li>
+  </ul></div>
+  <div class="col"><h4>Borrowed — currently helping, and will stop</h4><ul>
+    <li>Subsidy-funded quick-commerce volume growth, now targeted by draft regulation</li>
+    <li>Investment gains flattering reported net income — RMB74,416m in FY2026</li>
+    <li>The absence of the prior-year litigation provision, which cut G&amp;A 25%</li>
+    <li>Cloud pricing power arising from a chip shortage rather than from product</li>
+    <li>Capital-return capacity, suspended: buybacks cut 91%, special dividend dropped</li>
+  </ul></div>
+</div>
+
+<div class="tblwrap"><table>
+<tr><th>What to monitor</th><th>Why it matters</th><th>Where it is published</th></tr>
+<tr><td>Sales and marketing as % of revenue</td><td>The single line that took group margin from 17.4% to 7.5%</td><td>Alibaba quarterly results, Form 6-K</td></tr>
+<tr><td>Cloud segment adjusted EBITA margin</td><td>Tests whether scarcity pricing persists or capacity outruns demand</td><td>Alibaba quarterly results, Form 6-K</td></tr>
+<tr><td>Capex against cloud revenue growth</td><td>The gap determines when depreciation overtakes the revenue it funds</td><td>Quarterly results; 20-F Item 5.B</td></tr>
+<tr><td>Free cash flow, and any further equity issuance</td><td>Whether the AI build is self-funding</td><td>Quarterly results; HKEX announcements</td></tr>
+<tr><td>Meituan and JD instant-retail losses</td><td>Independent read on whether the subsidy war has really ended</td><td>HKEX and SEC quarterly filings</td></tr>
+<tr><td>Total retail and online physical goods sales</td><td>The demand ceiling for the whole sector</td><td>National Bureau of Statistics, monthly</td></tr>
+<tr><td>Food-delivery subsidy rules; Price Law amendment</td><td>Determines whether the growth method stays lawful</td><td>SAMR; State Council</td></tr>
+</table></div>
+
+<h2>7. Risks, unknowns and questions for deeper work</h2>
+<p>Cyclicality is dealt with above. What follows is what cyclicality does not capture, ordered by how much it compounds with the rest.</p>
+<ul class="body">
+<li><b>The denominator has been withdrawn while the ratio is still being claimed.</b> The FY2026 20-F defines take rate in its glossary, states that customer management revenue rose "driven by the improvement of take rate," and quantifies neither the take rate nor the GMV beneath it. Every per-unit metric that existed in FY2017 — a 3.03% monetisation rate, revenue per annual active buyer, mobile MAU, 874,000 cloud paying customers — and the FY2021 disclosures of 1.13 billion global annual active consumers and RMB7,494bn of China retail GMV have all been removed. An investor can no longer distinguish a take-rate gain from a volume decline. This compounds every other risk here, because it removes the instrument that would detect them early.</li>
+<li><b>The principal growth method may become unlawful before it becomes profitable.</b> On 17 June 2026 SAMR published draft Ten Rules on Food-Delivery Platform Subsidy Conduct for comment, prohibiting long-term large-scale subsidies that distort competition, compelling merchants to bear subsidy cost, and selling below cost, with mandatory disclosure of subsidy programmes. A first amendment in 27 years to the Price Law is in progress specifically to tighten the below-cost test; the revised Anti-Unfair Competition Law took effect on 15 October 2025. Final promulgation of the Ten Rules as at 7 September 2026 is <i>(unknown)</i>. Quick commerce reached RMB78.5bn of FY2026 revenue on subsidies reported as contra-revenue, and a rule that caps the subsidy without capping the delivery fleet leaves a fixed cost base that cannot be subsidised into utilisation.</li>
+<li><b>A US military-company designation with unquantified consequences.</b> A Federal Register notice of 10 June 2026 designated Alibaba, alongside 64 other entities, under Section 1260H. The FY2026 20-F, written before that notice, discloses that an earlier February 2026 designation was withdrawn, that even a designation without blocking sanctions has "significant adverse effect on our reputation, supply chain, business operations," and that relationships with business partners "have been affected" in anticipation. The concrete enforcement consequence of the June notice is not stated in it <i>(unknown)</i>.</li>
+<li><b>Compute supply squeezed from both directions.</b> US restrictions bear on advanced chips and semiconductor equipment; a bill passed by the House in January 2026 would further restrict Chinese access to remote compute powered by US chips; and China's own regulator moved the opposite way in September 2025. Alibaba states that "our supply chain has been and may be further disrupted, and our access to critical products and services, such as chips and data center services, have been and may be further negatively affected." Constrained compute constrains the only segment whose margin is expanding.</li>
+<li><b>Structural and listing risk that is dormant, not removed.</b> Variable interest entities generated RMB119,561m of FY2026 third-party revenue, 11.7% of the group total, and hold the internet licences the consumer businesses depend on; the contractual arrangements have never been tested in a PRC court. RMB344.6bn of net assets are restricted from distribution under PRC law. On audit inspection, the PCAOB vacated its determinations in December 2022 and Alibaba does not expect to be named a Commission-Identified Issuer, but access depends on factors it says are outside its control; the August 2024 conversion to primary listing in Hong Kong is the mitigant.</li>
+<li><b>Concentration inside the growth engine.</b> Ant Group, in which Alibaba holds 33% and over which it states it has no control, is now a cloud customer generating RMB19,134m of FY2026 related-party revenue — 12.1% of cloud segment revenue, up from RMB8,814m in FY2024. Ant also operates Alipay, which settles a significant majority of marketplace transactions and to which Alibaba paid RMB18,019m. The same counterparty is simultaneously the settlement layer of the commerce business and a material customer of the cloud business.</li>
+<li><b>A loss centre that is new and barely disclosed.</b> AI Labs and Applications, created as a reportable segment in the June 2026 quarter, lost RMB13,861m on RMB3,338m of revenue in its first reported quarter — a fourfold widening year-on-year. Annualised, that is a loss of the order of RMB55bn <i>(inferred)</i> against group adjusted EBITA of RMB76bn in FY2026.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<p>Each is a disclosure gap rather than a research failure, and each would need resolving before an investor could form a view on the unit economics of this business.</p>
+<ul class="body">
+<li>GMV, take rate, annual active consumers, order volumes, merchant counts and cloud paying customers — none is disclosed in the FY2026 20-F. The unit economics of a marketplace transaction cannot be computed from the filings.</li>
+<li>Quick-commerce order volumes, per-order economics, subsidy spend and standalone segment profit — not disclosed in the FY2026 20-F or the June Quarter 2026 release.</li>
+<li>The carrying value of the 33% Ant Group interest, which sits inside RMB206,803m of equity method investees. The only figure the filings give is the RMB90.7bn initial carrying value on recognition in 2019.</li>
+<li>The rate of the GMV-based software service fee, the Alipay processing rate, and the composition of the RMB67,931m build in prepayments and receivables.</li>
+<li>Any revised figure for the three-year AI and cloud investment plan. Management has said publicly that RMB380bn will be overshot; no replacement number has been issued.</li>
+<li>What share of Alibaba's compute fleet runs on its own T-Head silicon, and at what cost. Production "at scale" is claimed with no volumes.</li>
+<li>A full FY2025 business narrative and risk-factor set: the FY2025 20-F incorporates Items 4 through 7 and the risk factors by reference to a Hong Kong annual report not filed with the SEC, and the FY2026 20-F refers its own FY2024-versus-FY2025 comparison back into that document.</li>
+</ul>
+
+<h2>8. Investor takeaways</h2>
+<ul class="body">
+<li><b>What this business really is:</b> a toll on other people's commerce, attached to a compute utility. Nearly half of revenue is a levy on merchandise Alibaba never owns, and almost all of the group's profit comes from it.</li>
+<li><b>The core economic engine:</b> merchant competition for consumer attention, priced by auction. It survived the worst subsidy war in the sector's history — customer management revenue grew every quarter through it.</li>
+<li><b>The main growth lever:</b> cloud and AI compute, the only part of the group where revenue growth is accelerating and margin is expanding at the same time.</li>
+<li><b>What could break the story:</b> a capital-expenditure programme running at roughly twice its announced pace, now part-funded by equity, converting into depreciation faster than cloud revenue compounds — while the disclosure needed to see it happening has been withdrawn.</li>
+<li><b>What to monitor:</b> sales and marketing as a share of revenue, the cloud segment margin, and free cash flow. Those three lines will say whether FY2026 was an investment year or a change in the kind of business this is.</li>
+</ul>
+
+<div class="foot">
+<h3>Sources</h3>
+<p><b>Company filings, from the analyst's research folder.</b> Alibaba Group Holding Limited, Form 20-F for fiscal years 2017, 2021, 2023, 2025 and 2026 (FY2026 covering the year ended 31 March 2026, filed 20 May 2026); Form 6-K filings through 4 September 2026, including the June Quarter 2026 results furnished 20 August 2026 and the announcements of the proposed, priced and completed Hong Kong share placing dated 23, 24 and 26 August 2026.</p>
+<p><b>Competitor filings.</b> PDD Holdings FY2025 and Q2 2026 results; JD.com FY2025 and Q2 2026 results; Meituan FY2025, Q1 2026 and Q2 2026 results (HKEXnews); Tencent FY2025 and Q2 2026 results; Baidu Q2 2026 results; Kuaishou FY2025 and Q2 2026 results; Cambricon interim 2026 filing.</p>
+<p><b>Official statistics and regulators.</b> National Bureau of Statistics of China, monthly and annual retail sales releases (20 January 2026; 17 July 2026; 17 August 2026); NDRC releases on the 2026 consumer trade-in programme; SAMR, draft Ten Rules on Food-Delivery Platform Subsidy Conduct (17 June 2026) and the Price Law amendment statement (8 July 2026); MOFCOM and six-ministry Guiding Opinion on e-commerce (20 March 2026); US Bureau of Industry and Security licence policy revision (13 January 2026); Federal Register Section 1260H designation notice (10 June 2026); PCAOB determination vacature (15 December 2022).</p>
+<p><b>Independent trackers.</b> Omdia, mainland China cloud infrastructure services, Q4 2025 (published 27 April 2026); IDC China public cloud services trackers, H1 and H2 2025; the ATOM Report on open-model adoption, arXiv:2604.07190 (8 April 2026).</p>
+<p><b>Post-dating the filings.</b> The HK$80bn equity placing completed 26 August 2026, the June 2026 quarter results, the Section 1260H designation of 10 June 2026 and the agreed disposal of Lingxi Games in August 2026 all post-date the FY2026 20-F and are identified as such wherever used above.</p>
+<p style="margin-top:18px">Prepared 7 September 2026. This document explains how the business works and where its economics come from. It is not a valuation and not a recommendation.</p>
+</div>
+</div></body></html>

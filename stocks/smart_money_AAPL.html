@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Money Thesis Scanner — Apple Inc. (AAPL)</title>
+<style>
+:root {
+  --bg: #fafafa;
+  --panel: #fff;
+  --ink: #1a1a1a;
+  --ink-soft: #555;
+  --rule: #e5e5e5;
+  --accent: #1f4e79;
+  --accent-soft: #e8f0f8;
+  --green: #2f7a44;
+  --amber: #b07a18;
+  --red: #b94a48;
+  --grey: #8a8a8a;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+       background: var(--bg); color: var(--ink); line-height: 1.55; }
+.hero { background: linear-gradient(180deg, #1f4e79, #2a6396); color: #fff; padding: 48px 32px; }
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.hero .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; opacity: .85; }
+.hero h1 { margin: 8px 0 4px; font-size: 32px; }
+.hero .ticker { font-weight: 400; opacity: .85; }
+.hero .meta { font-size: 13px; opacity: .8; }
+main { max-width: 1200px; margin: 0 auto; padding: 32px; }
+section { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px;
+          padding: 24px 28px; margin-bottom: 24px; }
+h2 { margin-top: 0; font-size: 22px; color: var(--accent); }
+h3 { font-size: 16px; margin-top: 20px; }
+.lede { color: var(--ink-soft); margin-top: -4px; }
+.empty { color: var(--ink-soft); font-style: italic; padding: 12px 0; }
+.table-wrap, .heatmap-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+th { background: #f3f4f6; cursor: pointer; user-select: none; font-weight: 600; }
+th:hover { background: #e9eaee; }
+.fund { font-weight: 600; }
+.pm { font-size: 12px; color: var(--ink-soft); }
+.as-of { font-size: 12px; color: var(--ink-soft); }
+.notes { font-size: 12px; color: var(--ink-soft); max-width: 240px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.status-current { background: #e6f4ea; color: var(--green); }
+.status-historical { background: #fff4d6; color: var(--amber); }
+.status-mentioned { background: #f0f0f0; color: var(--grey); }
+.status-excluded { background: #f8e1e0; color: var(--red); }
+.conf { font-weight: 600; font-size: 12px; }
+.conf-high { color: var(--green); }
+.conf-medium { color: var(--amber); }
+.conf-low { color: var(--red); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+a:hover { border-bottom-style: solid; }
+.cards { display: flex; flex-direction: column; gap: 12px; }
+.card { background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 0; }
+.card[open] { box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+.card summary { list-style: none; cursor: pointer; padding: 16px 20px; }
+.card summary::-webkit-details-marker { display: none; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.card-title .fund { font-size: 16px; font-weight: 700; margin-right: 8px; }
+.card-title .pm { font-size: 13px; color: var(--ink-soft); }
+.card-tags { display: flex; gap: 8px; align-items: center; }
+.card-sub { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+.card-body { padding: 4px 20px 20px; border-top: 1px solid var(--rule); margin-top: 12px; }
+.field { padding: 10px 0; border-bottom: 1px dashed var(--rule); }
+.field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); margin-bottom: 4px; }
+.field-val { font-size: 14px; white-space: pre-wrap; }
+.card-stub .card-body { font-style: italic; color: var(--ink-soft); }
+.stub-note { padding: 12px 0; }
+.heatmap th.rot { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+                  height: 140px; padding: 8px 4px; min-width: 28px; }
+.heatmap th.rot span { font-size: 12px; }
+.heatmap td.cell { width: 28px; min-width: 28px; text-align: center; }
+.heatmap td.cell.on { background: var(--accent); }
+.heatmap td.cell.off { background: #f5f5f5; }
+.heatmap .driver-name { min-width: 260px; }
+.heatmap .d-name { font-weight: 600; }
+.heatmap .d-why { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.divergence { background: #fafbfc; padding: 12px 14px; border-radius: 6px;
+              border-left: 3px solid var(--accent); margin-bottom: 10px; }
+.div-framing { font-weight: 600; }
+.div-investors { font-size: 12px; color: var(--ink-soft); margin: 2px 0 6px; }
+.missing-item { background: #fff7e6; padding: 12px 14px; border-radius: 6px;
+                border-left: 3px solid var(--amber); margin-bottom: 10px; }
+.m-element { font-weight: 600; }
+.m-investors { font-size: 12px; color: var(--ink-soft); }
+.m-quote { font-style: italic; margin: 6px 0; }
+.m-strength { font-size: 12px; color: var(--ink-soft); }
+.questions { padding-left: 20px; }
+.questions li { margin-bottom: 8px; }
+.audit { font-size: 13px; color: var(--ink-soft); padding-left: 20px; }
+.sources { padding-left: 18px; font-size: 13px; }
+.src-meta { color: var(--ink-soft); font-size: 11px; }
+</style>
+</head>
+<body>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="kicker">Smart Money Thesis Scanner</div>
+        <h1>Apple Inc. <span class="ticker">(AAPL)</span></h1>
+        <div class="meta">Scan run: 2026-09-07</div>
+      </div>
+    </header>
+    
+<main>
+  
+    <section id="ownership">
+      <h2>1. Ownership Verification</h2>
+      <p class="lede">Buy-side investors with verified current or historical ownership. Click any column header to sort. Each evidence link opens the underlying source.</p>
+      <div class="table-wrap">
+        <table class="sortable" id="ownership-table">
+          
+      <thead>
+        <tr>
+          <th data-key="investor">Investor / Fund</th>
+          <th data-key="status">Status</th>
+          <th data-key="evidence">Evidence</th>
+          <th data-key="date">Source Date</th>
+          <th data-key="size">Position</th>
+          <th data-key="tier">Tier / Freshness</th>
+          <th data-key="conf">Confidence</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+    
+          <tbody>
+            
+          <tr class="status-current">
+            <td>
+              <div class="fund">H&amp;H International Investment</div>
+              <div class="pm">Duan Yongping &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://valuesider.com/guru/duan-yongping-h-h-international-investment/portfolio" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>41.05% of portfolio ($7.84B, 27,098,707 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">Largest position in the book by a wide margin. Share count reduced 6.38% during Q2 2026. Duan publishes commentary on Chinese social media (Xueqiu), which is a T4 source under this skill&#x27;s rules and is therefore not cited; no T1-T3 English-language commentary on Apple was located.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Berkshire Hathaway Inc.</div>
+              <div class="pm">Warren Buffett / Greg Abel &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener">Fund letter — annual</a></td>
+            <td>2026-02-28</td>
+            <td>
+              <div>22.04% of 13F portfolio ($65.95B, 227,917,808 shares); 1.6% of Apple outstanding, $6,255M cost basis, $61,962M market value at 2025 year-end</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-high">High</span></td>
+            <td class="notes">Position size cross-checked against the Q2 2026 13F filed 2026-08-14 (https://13f.info/manager/0001067983-berkshire-hathaway-inc). Share count unchanged versus Q1 2026 after the 2024-2025 trimming programme. Greg Abel authored the 2025 annual letter as CEO.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Greenbrier Partners Capital Management</div>
+              <div class="pm">Frederick &#x27;Shad&#x27; Rowe &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>21.60% of portfolio ($288.26M, 996,183 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">Held continuously since at least Q2 2013 — the longest continuous holding period in the verified set. No publicly archived investor letters or factsheets discussing Apple were located.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">7G Capital Management</div>
+              <div class="pm">Charles Jigarjian &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>13.24% of portfolio ($28.94M, 100,000 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Small manager; no public letters, factsheets or presentations located.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Wedgewood Partners</div>
+              <div class="pm">David Rolfe &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://wedgewoodpartners.com/wp-content/uploads/2026/07/Wedgewood_2Q2026_Hyperscalers.pdf" target="_blank" rel="noopener">Fund letter — quarterly</a></td>
+            <td>2026-07-31</td>
+            <td>
+              <div>7.81% of portfolio ($37.81M, 130,682 shares); 7.20% average weight during Q2 2026</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-high">High</span></td>
+            <td class="notes">Share count reduced 3.29% in Q2 2026; also trimmed in Q4 2025. 18-stock portfolio. The most substantive published commentary on Apple in the verified set.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Jensen Investment Management (Jensen Quality Growth Fund)</div>
+              <div class="pm">Eric Schoenstein / Rob McIver &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://www.jenseninvestment.com/growth-i-fact-sheet" target="_blank" rel="noopener">Factsheet</a></td>
+            <td>2026-06-30</td>
+            <td>
+              <div>6.01% of fund (factsheet); 6.04% of 13F portfolio ($249.13M, 860,969 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">Top-5 holding in the Jensen Quality Growth Fund. The 30 June 2026 factsheet and the 2Q 2026 quarterly update page confirm the holding but contain no Apple-specific commentary.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Matrix Asset Advisors (Matrix Advisors Value Fund)</div>
+              <div class="pm">David Katz &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>5.79% of portfolio ($4.08M, 16,300 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">The firm&#x27;s own Q2 2026 Capital Markets Commentary (https://matrixassetadvisors.com/wp-content/uploads/2026/07/Q2_2026_Commentary-FINAL-07.06.26-with-compliance.pdf, 2026-07-06) discusses several holdings but does not mention Apple.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Chou Associates Management</div>
+              <div class="pm">Francis Chou &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>5.34% of 13F portfolio ($11.57M, 40,000 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Securities/vehicle caveat: the Chou Funds semi-annual report to 30 June 2026 (https://choufunds.com/pdf/SEMI-AR%202026%20EN.pdf) does not list or discuss Apple in any of the five Canadian funds. The 13F is filed at the Chou Associates Management level and covers separately managed US accounts. Position appears to have been trimmed during Q2 2026.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Muhlenkamp &amp; Company</div>
+              <div class="pm">Ronald Muhlenkamp / Jeff Muhlenkamp &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>5.21% of portfolio ($17.98M, 62,125 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">The firm&#x27;s July 2026 quarterly commentary (https://www.advisorperspectives.com/commentaries/2026/07/07/muhlenkamp-quarterly-commentary-july-2026) covers macro, semiconductors and gold but does not mention Apple.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Mairs &amp; Power Growth Fund</div>
+              <div class="pm">Andrew R. Adams &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>3.70% of 13F portfolio ($205.57M, 710,431 shares)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Newest large-weight holder in the set (initiated Q4 2023). The fund&#x27;s own Q2 2026 commentary (https://www.mairsandpower.com/insights/fund-commentary, 2026-06-30) discusses Microsoft, Alphabet, Entegris and TSMC but does not mention Apple.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Himalaya Capital Management</div>
+              <div class="pm">Li Lu &middot; Common</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://pactolio.com/13f-portfolios/himalaya-capital-management" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>0.9% of portfolio ($32.0M)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Below the 2% conviction threshold. Included under the concentrated-fund exception: the Q2 2026 13F shows only 8 positions totalling $3.70B, an average weight of 12.5%. Apple is the smallest of the eight and is a residual tail rather than a conviction position — read it as such. Himalaya publishes no investor letters.</td>
+          </tr>
+        
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+  
+    <section id="theses">
+      <h2>2. Investor Theses</h2>
+      <p class="lede">Click any card to expand. Direct quotes are in quotation marks; paraphrases are tagged inline.</p>
+      <div class="cards">
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Wedgewood Partners</span>
+                <span class="pm">David Rolfe</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-high">High</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://wedgewoodpartners.com/wp-content/uploads/2026/07/Wedgewood_2Q2026_Hyperscalers.pdf" target="_blank" rel="noopener">Fund letter — quarterly (Q2 2026)</a> &middot; 2026-07-31 &middot; Position: 7.81% of portfolio (130,682 shares, $37.81M); 7.20% average weight in Q2 2026 as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">Apple is a two-decade core holding held as a quality compounder rather than a trade. &quot;we&#x27;ve owned Alphabet and Apple for two decades&quot; — Wedgewood Partners Q2 2026 Client Letter, July 2026. [Paraphrased from Wedgewood Q2 2026 and Q4 2025 client letters] Wedgewood&#x27;s case rests on Apple&#x27;s consistency of hardware/software execution and its ability to keep converting that into upgrade and trade-up demand; the firm manages the position&#x27;s weight against valuation rather than trading the thesis.</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">&quot;Apple&#x27;s multi-decade consistency in executing on hardware and software upgrades, along with increasingly proprietary silicon content, provides consumers with a dependable, high-quality user experience&quot; — Wedgewood Partners Q4 2025 Client Letter, January 2026. [Paraphrased from the same letter] Wedgewood links that experience directly to the company&#x27;s ability to drive adoption and trade-up across the installed base.</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">Q2 2026 letter: &quot;Revenues grew 17%, driven by 22% growth in iPhone and 16% growth in services.&quot; On the product cycle: &quot;The iPhone 17 family has catalyzed a solid upgrade cycle ahead of what we expect to be another strong launch later this year, featuring a new foldable form factor&quot; — Wedgewood Partners Q2 2026 Client Letter, July 2026. Q4 2025 letter cites &quot;+15% revenue growth in its services business&quot; on over $100B of trailing-twelve-month services revenue, and &quot;double-digit growth in iPhone revenues, as it experienced strong demand after launching several new models,&quot; with the company having &quot;guided to strong double-digit revenue growth in its holiday quarter&quot; — Wedgewood Partners Q4 2025 Client Letter, January 2026.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Three specific levers are named across the two letters. (1) iPhone unit/upgrade cycle economics — 22% iPhone revenue growth in the June 2026 quarter, with a foldable launch identified as the next catalyst. (2) Services revenue growth as a mix-and-margin lever — 16% growth in Q2 2026, 15% growth on a &gt;$100B base in Q4 2025. (3) Input-cost management and vertical integration as a gross-margin defence: &quot;As one of the largest single purchasers of DRAM, the Company has strong negotiating leverage, but it can also implement hardware and software innovations to reduce its dependence on memory&quot; — Wedgewood Partners Q2 2026 Client Letter, July 2026. Contribution to return in Q2 2026 was 0.95 percentage points on a 7.20% average weight; in Q4 2025 it was +0.50% on a 7.38% average weight, and +0.42% for full-year 2025 on a 7.01% average weight.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">&quot;increasingly proprietary silicon content&quot; combined with &quot;multi-decade consistency in executing on hardware and software upgrades&quot; — Wedgewood Partners Q4 2025 Client Letter, January 2026. The Q2 2026 letter adds scale-based supplier leverage: Apple as &quot;one of the largest single purchasers of DRAM&quot; with &quot;strong negotiating leverage,&quot; plus the engineering option to &quot;reduce its dependence on memory&quot; through hardware and software design.</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">unknown — the letters reviewed do not comment directly on Apple&#x27;s management team, incentives or capital allocation.</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">Wedgewood manages the weight, not the thesis. [Paraphrased from Wedgewood Partners Q4 2025 Client Letter, January 2026] The firm trimmed Apple during Q4 2025, grouping it among positions it viewed as due for a valuation pause or retreat after two consecutive strong years — a valuation-driven trim, not a change in the fundamental view. The Q2 2026 13F shows a further 3.29% reduction in share count. In the Q2 2026 letter Apple is grouped with other &#x27;Magnificent 7&#x27; holdings the firm believes remain attractive despite market headwinds affecting hyperscalers.</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">[Paraphrased from Wedgewood Partners Q2 2026 Client Letter, July 2026] Memory (DRAM) cost inflation is the risk the letter engages with most directly, framed as a bill-of-materials pressure Apple can partially offset through purchasing leverage and design. Valuation is treated as the second risk, evidenced by the Q4 2025 trim rationale rather than by an explicit risk statement.</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long. &quot;we&#x27;ve owned Alphabet and Apple for two decades&quot; — Q2 2026 letter; 13F data shows continuous disclosure since at least Q2 2013.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Three T1 primary sources on the manager&#x27;s own domain (Q2 2026, Q1 2026, Q4 2025 client letters). The Q1 2026 letter was checked and contains no Apple discussion — noted so the absence is not mistaken for an unread source. Position data cross-checked against the Q2 2026 13F.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://wedgewoodpartners.com/wp-content/uploads/2026/07/Wedgewood_2Q2026_Hyperscalers.pdf" target="_blank" rel="noopener">Wedgewood Partners Q2 2026 Client Letter — &#x27;Hyperscalers&#x27;</a> <span class="src-meta">2026-07-31 &middot; T1 / Fresh</span></li><li><a href="https://wedgewoodpartners.com/wp-content/uploads/2026/01/WW_4Q2025ClientLetter.pdf" target="_blank" rel="noopener">Wedgewood Partners Q4 2025 Client Letter — &#x27;Annus Horribilis&#x27;</a> <span class="src-meta">2026-01-31 &middot; T1 / Fresh</span></li><li><a href="https://wedgewoodpartners.com/wp-content/uploads/2026/04/Wedgewood-Partners-First-Quarter-2026-Client-Letter-Dire-Straits-1.pdf" target="_blank" rel="noopener">Wedgewood Partners Q1 2026 Client Letter — &#x27;Dire Straits&#x27; (checked; no Apple discussion)</a> <span class="src-meta">2026-04-30 &middot; T1 / Fresh</span></li><li><a href="https://valuesider.com/guru/david-rolfe-wedgewood-partners/portfolio" target="_blank" rel="noopener">Wedgewood Partners Q2 2026 13F holdings</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Berkshire Hathaway Inc.</span>
+                <span class="pm">Warren Buffett / Greg Abel</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-medium">Medium</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener">Fund letter — annual (2025 Annual Report)</a> &middot; 2026-02-28 &middot; Position: 227,917,808 shares, $65.95B, 22.04% of the 13F portfolio; 1.6% of Apple&#x27;s shares outstanding as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">Apple is held as one of a handful of understandable American businesses expected to compound over very long periods, with deliberate inactivity as the default. &quot;a large portion of our portfolio is concentrated in a small number of American companies such as Apple, American Express, Coca-Cola, and Moody&#x27;s – businesses we understand well&quot; that are expected to &quot;compound over decades&quot; — Gregory E. Abel, Berkshire Hathaway 2025 Annual Report, 28 February 2026.</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">[Paraphrased from Berkshire Hathaway 2025 Annual Report, 28 February 2026] Abel&#x27;s characterisation is at the level of the portfolio rather than the company: Apple is placed in the category of businesses Berkshire understands well and expects to compound. No company-specific analysis of Apple&#x27;s products, margins or competitive position appears in the letter.</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">unknown — the 2025 annual letter names no specific growth driver for Apple.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Disclosed economics only. Berkshire&#x27;s 2025 year-end equity table shows Apple at a $6,255M cost basis against $61,962M of market value, 1.6% of Apple&#x27;s shares outstanding, and $280M of dividends received in 2025 — Berkshire Hathaway 2025 Annual Report, 28 February 2026. [Analyst synthesis] The cost basis implies roughly a 10x gain on the original outlay; the dividend yield on cost is about 4.5%, versus well under 1% on market value.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">unknown — not discussed at the company level in the letter reviewed.</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">unknown — the letter does not comment on Apple&#x27;s management. It does state Berkshire&#x27;s own posture toward these holdings: &quot;limited activity in these holdings,&quot; with material adjustment reserved for cases where management identifies &quot;fundamental changes in its long-term economic prospects&quot; — Berkshire Hathaway 2025 Annual Report, 28 February 2026.</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">unknown as an explicit view. [Paraphrased from Berkshire Hathaway 2025 Annual Report, 28 February 2026] The stated policy is inactivity rather than valuation-based sizing: Berkshire expects limited activity in its core equity holdings and would adjust materially only on a change in long-term economic prospects, not on price. This is the operative contrast with Wedgewood, which trims on valuation.</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">unknown — no Apple-specific risk is flagged in the letter. The only conditional named is the general one above: a fundamental change in a holding&#x27;s long-term economic prospects.</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long — &quot;compound over decades&quot; (2025 Annual Report, February 2026). Held since Q1 2016.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">T1 primary source on Berkshire&#x27;s own domain, authored by Greg Abel in his first annual letter as CEO. The commentary is deliberately portfolio-level: Apple is named as a core holding but is not analysed as a business, so most thesis fields are honestly &#x27;unknown&#x27; rather than filled from Buffett&#x27;s older public statements. Position size cross-checked against the Q2 2026 13F filed 2026-08-14, which shows the share count unchanged versus Q1 2026 — the 2024-2025 trimming programme appears to have stopped.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.berkshirehathaway.com/2025ar/2025ar.pdf" target="_blank" rel="noopener">Berkshire Hathaway 2025 Annual Report — CEO&#x27;s letter (Greg Abel)</a> <span class="src-meta">2026-02-28 &middot; T1 / Fresh</span></li><li><a href="https://13f.info/manager/0001067983-berkshire-hathaway-inc" target="_blank" rel="noopener">Berkshire Hathaway Q2 2026 13F-HR</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li><li><a href="https://valuesider.com/guru/warren-buffett-berkshire-hathaway/portfolio" target="_blank" rel="noopener">Berkshire Hathaway Q2 2026 portfolio detail</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">H&amp;H International Investment</span>
+                <span class="pm">Duan Yongping</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://valuesider.com/guru/duan-yongping-h-h-international-investment/portfolio" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08-14 &middot; Position: 41.05% of portfolio (27,098,707 shares, $7.84B) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Position confirmed via Q2 2026 13F. Share count reduced 6.38% during the quarter. If you want this thesis, the Xueqiu archive is where it lives — outside this skill&#x27;s evidence bar, and worth reading directly rather than through an intermediary.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://valuesider.com/guru/duan-yongping-h-h-international-investment/portfolio" target="_blank" rel="noopener">H&amp;H International Investment Q2 2026 13F holdings</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Greenbrier Partners Capital Management</span>
+                <span class="pm">Frederick &#x27;Shad&#x27; Rowe</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08-14 &middot; Position: 21.60% of portfolio (996,183 shares, $288.26M) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Rowe has written publicly in the past (Forbes columns, panel appearances) but nothing located addresses Apple specifically within the freshness window.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">AAPL 13F ownership, Q2 2026</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Jensen Investment Management</span>
+                <span class="pm">Eric Schoenstein / Rob McIver</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.jenseninvestment.com/growth-i-fact-sheet" target="_blank" rel="noopener">Factsheet</a> &middot; 2026-06-30 &middot; Position: 6.01% of the Jensen Quality Growth Fund (860,969 shares, $249.13M) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">T1 factsheet confirms the holding and its weight. The 2Q 2026 quarterly update page (https://www.jenseninvestment.com/financial-advisor/insights/quality-growth-fund-update-2q-2026/) was checked; the accompanying webinar transcript is gated and could not be verified.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.jenseninvestment.com/growth-i-fact-sheet" target="_blank" rel="noopener">Jensen Quality Growth Fund factsheet, 30 June 2026</a> <span class="src-meta">2026-06-30 &middot; T1 / Fresh</span></li><li><a href="https://www.jenseninvestment.com/financial-advisor/insights/quality-growth-fund-update-2q-2026/" target="_blank" rel="noopener">Jensen Quality Growth Fund 2Q 2026 quarterly update (checked; no Apple commentary)</a> <span class="src-meta">2026-07-31 &middot; T1 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Matrix Asset Advisors</span>
+                <span class="pm">David Katz</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://matrixassetadvisors.com/wp-content/uploads/2026/07/Q2_2026_Commentary-FINAL-07.06.26-with-compliance.pdf" target="_blank" rel="noopener">Fund letter — quarterly</a> &middot; 2026-07-06 &middot; Position: 5.79% of portfolio (16,300 shares, $4.08M) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">The firm&#x27;s own Q2 2026 Capital Markets Commentary was read in full; Apple is not addressed on thesis, valuation, growth, risk or position change.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://matrixassetadvisors.com/wp-content/uploads/2026/07/Q2_2026_Commentary-FINAL-07.06.26-with-compliance.pdf" target="_blank" rel="noopener">Matrix Asset Advisors Q2 2026 Capital Markets Commentary (checked; no Apple discussion)</a> <span class="src-meta">2026-07-06 &middot; T1 / Fresh</span></li><li><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">AAPL 13F ownership, Q2 2026</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Chou Associates Management</span>
+                <span class="pm">Francis Chou</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://choufunds.com/pdf/SEMI-AR%202026%20EN.pdf" target="_blank" rel="noopener">Fund letter — semi-annual</a> &middot; 2026-06-30 &middot; Position: 5.34% of 13F portfolio (40,000 shares, $11.57M) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Vehicle mismatch flagged: 13F (manager level, US accounts) versus the published Canadian fund reports. Treat the 13F as the ownership evidence and the absence of commentary as genuine.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">AAPL 13F ownership, Q2 2026</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li><li><a href="https://choufunds.com/pdf/SEMI-AR%202026%20EN.pdf" target="_blank" rel="noopener">Chou Funds semi-annual report to 30 June 2026 (checked; Apple not held or discussed in the Canadian funds)</a> <span class="src-meta">2026-06-30 &middot; T1 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Muhlenkamp &amp; Company</span>
+                <span class="pm">Ronald Muhlenkamp / Jeff Muhlenkamp</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.advisorperspectives.com/commentaries/2026/07/07/muhlenkamp-quarterly-commentary-july-2026" target="_blank" rel="noopener">Fund letter — quarterly</a> &middot; 2026-07-07 &middot; Position: 5.21% of portfolio (62,125 shares, $17.98M) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">July 2026 quarterly commentary read in full; Apple absent.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.advisorperspectives.com/commentaries/2026/07/07/muhlenkamp-quarterly-commentary-july-2026" target="_blank" rel="noopener">Muhlenkamp Quarterly Market Commentary, July 2026 (checked; no Apple discussion)</a> <span class="src-meta">2026-07-07 &middot; T2 / Fresh</span></li><li><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">AAPL 13F ownership, Q2 2026</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Mairs &amp; Power Growth Fund</span>
+                <span class="pm">Andrew R. Adams</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.mairsandpower.com/insights/fund-commentary" target="_blank" rel="noopener">Fund letter — quarterly</a> &middot; 2026-06-30 &middot; Position: 3.70% of 13F portfolio (710,431 shares, $205.57M) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Q2 2026 fund commentary read in full; Apple absent from contributors, detractors, holdings discussion and new-position commentary.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.mairsandpower.com/insights/fund-commentary" target="_blank" rel="noopener">Mairs &amp; Power Fund Q2 2026 commentary (checked; no Apple discussion)</a> <span class="src-meta">2026-06-30 &middot; T1 / Fresh</span></li><li><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">AAPL 13F ownership, Q2 2026</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">7G Capital Management</span>
+                <span class="pm">Charles Jigarjian</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08-14 &middot; Position: 13.24% of portfolio (100,000 shares, $28.94M) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Small manager with no discoverable public archive.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://valuesider.com/ticker/AAPL/ownership" target="_blank" rel="noopener">AAPL 13F ownership, Q2 2026</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Himalaya Capital Management</span>
+                <span class="pm">Li Lu</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://pactolio.com/13f-portfolios/himalaya-capital-management" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08-14 &middot; Position: 0.9% of portfolio ($32.0M) — smallest of 8 disclosed positions as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">The concentrated-fund exception is applied here with the caution the skill&#x27;s rules call for: it admits the row, it does not make the row a conviction signal.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://pactolio.com/13f-portfolios/himalaya-capital-management" target="_blank" rel="noopener">Himalaya Capital Management Q2 2026 13F holdings</a> <span class="src-meta">2026-08-14 &middot; T2 / Fresh</span></li></ul></div>
+          </div>
+        </details>
+        
+      </div>
+    </section>
+    
+  
+    <section id="drivers">
+      <h2>3. Fundamental Driver Map</h2>
+      <p class="lede">Drivers cited by verified holders. A filled cell means the driver appears in that investor's card (quoted or paraphrased). Drivers added by the model with no investor citation do not appear.</p>
+      <div class="heatmap-wrap">
+        <table class="heatmap">
+          <thead>
+            <tr>
+              <th class="driver-col">Driver</th>
+              <th class="rot"><span>Wedgewood Partners</span></th><th class="rot"><span>Berkshire Hathaway Inc.</span></th>
+              <th>Evidence</th>
+              <th>Consensus</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">iPhone upgrade cycle and product cadence</div>
+              <div class="d-why">&quot;Revenues grew 17%, driven by 22% growth in iPhone&quot;; &quot;The iPhone 17 family has catalyzed a solid upgrade cycle ahead of what we expect to be another strong launch later this year, featuring a new foldable form factor&quot; — Wedgewood Q2 2026 letter.</div>
+            </td>
+            <td class="cell on"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Services revenue growth</div>
+              <div class="d-why">&quot;16% growth in services&quot; (Q2 2026 letter); &quot;+15% revenue growth in its services business&quot; on over $100B trailing-twelve-month revenue (Q4 2025 letter).</div>
+            </td>
+            <td class="cell on"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Input-cost leverage and vertical integration (DRAM / silicon)</div>
+              <div class="d-why">&quot;As one of the largest single purchasers of DRAM, the Company has strong negotiating leverage, but it can also implement hardware and software innovations to reduce its dependence on memory&quot; — Wedgewood Q2 2026 letter. The only bill-of-materials / gross-margin argument any verified holder makes.</div>
+            </td>
+            <td class="cell on"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Hardware-software integration and proprietary silicon as the moat</div>
+              <div class="d-why">&quot;Apple&#x27;s multi-decade consistency in executing on hardware and software upgrades, along with increasingly proprietary silicon content, provides consumers with a dependable, high-quality user experience&quot; — Wedgewood Q4 2025 letter, linked to adoption and trade-up.</div>
+            </td>
+            <td class="cell on"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Understandability and multi-decade compounding</div>
+              <div class="d-why">Apple is named among &quot;businesses we understand well&quot; expected to &quot;compound over decades&quot; — Greg Abel, Berkshire Hathaway 2025 Annual Report, February 2026. The whole of Berkshire&#x27;s stated case, at portfolio level.</div>
+            </td>
+            <td class="cell off"></td><td class="cell on"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Valuation discipline / multiple risk</div>
+              <div class="d-why">[Paraphrased from Wedgewood Q4 2025 letter] Apple was grouped among positions due for a valuation pause or retreat after two strong years, which drove the trim; a further 3.29% share-count reduction followed in Q2 2026. Berkshire takes the opposite stance — &quot;limited activity in these holdings&quot; absent &quot;fundamental changes in its long-term economic prospects.&quot;</div>
+            </td>
+            <td class="cell on"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+  
+    <section id="consensus">
+      <h2>4. Consensus & Divergence</h2>
+      <h3>Where investors agree</h3>
+      <p>The verified holder base is united by duration, not by argument. Both investors with published commentary — Wedgewood Partners and Berkshire Hathaway — hold Apple as a very long-duration core position (Wedgewood &quot;for two decades&quot; and disclosed since Q2 2013; Berkshire since Q1 2016) and both frame it as a quality business rather than a cyclical or event-driven trade. Beyond that the agreement is thin, because the agreement is thin in the source material: of eleven verified holders, only two have published anything substantive about Apple in the freshness window. Note also that duration is the pattern across the whole table even where no thesis exists — Greenbrier Partners (21.6% of portfolio) and Muhlenkamp have held since at least Q2 2013, and 7G Capital since Q4 2020. What the smart-money map for Apple actually shows is a base of long-duration owners who have largely stopped explaining themselves.</p>
+      <h3>Where investors split</h3>
+      
+        <div class="divergence">
+          <div class="div-framing">Driver-specific quality thesis, actively sized against valuation</div>
+          <div class="div-investors">Wedgewood Partners</div>
+          <div class="div-summary">Wedgewood names its levers — iPhone cycle economics, services growth, DRAM purchasing leverage, proprietary silicon — and manages the weight against price. It trimmed in Q4 2025 on the view that the position was due for a valuation pause after two strong years, and cut the share count a further 3.29% in Q2 2026, while continuing to describe the business favourably. Thesis intact, position size negotiable.</div>
+        </div>
+        
+        <div class="divergence">
+          <div class="div-framing">Portfolio-level quality thesis, deliberate inactivity</div>
+          <div class="div-investors">Berkshire Hathaway Inc.</div>
+          <div class="div-summary">Abel&#x27;s first annual letter places Apple in a category — understandable American businesses expected to compound over decades — without analysing the company. The stated policy is &quot;limited activity in these holdings,&quot; with material change reserved for &quot;fundamental changes in its long-term economic prospects,&quot; i.e. explicitly not for valuation. The Q2 2026 13F is consistent: the share count is unchanged versus Q1 2026, ending the 2024-2025 trimming programme.</div>
+        </div>
+        
+        <div class="divergence">
+          <div class="div-framing">Time-shifted divergence in the commentary itself</div>
+          <div class="div-investors">Berkshire Hathaway Inc., Wedgewood Partners</div>
+          <div class="div-summary">The clearest split is not bull versus bear but specific versus generic, and it has widened over time. Berkshire&#x27;s public case on Apple was once detailed and Buffett-voiced; in the February 2026 letter, under a new CEO, it is a single clause in a list of four names. Wedgewood&#x27;s has stayed granular and, if anything, become more operational — the Q2 2026 letter argues about memory pricing. An investor relying on Berkshire&#x27;s disclosure for an Apple view is now relying on considerably less than they were two years ago.</div>
+        </div>
+        
+        <div class="divergence">
+          <div class="div-framing">Position weight versus published conviction — the two do not line up</div>
+          <div class="div-investors">H&amp;H International Investment, Greenbrier Partners Capital Management, 7G Capital Management, Wedgewood Partners</div>
+          <div class="div-summary">The three largest Apple weights in the verified set — Duan Yongping&#x27;s H&amp;H at 41.05%, Greenbrier at 21.60%, 7G Capital at 13.24% — produce no citable commentary at all, while the most substantive thesis comes from the fifth-largest weight. Duan&#x27;s commentary exists but lives on Xueqiu, below this skill&#x27;s evidence bar. Anyone reading the ownership table as a conviction ranking would be reading it backwards.</div>
+        </div>
+        
+    </section>
+    
+  
+        <section id="missing">
+          <h2>5. What the Market May Be Missing</h2>
+          <div class="empty">No investor in the verified set explicitly framed a market mispricing.</div>
+        </section>
+        
+  
+    <section id="questions">
+      <h2>6. Research Questions</h2>
+      <ol class="questions"><li>Wedgewood is the only verified holder making a gross-margin argument, and it is a DRAM-cost argument. Does Apple&#x27;s own disclosure support the claim that purchasing leverage plus design substitution offsets memory inflation, and over what lag?</li><li>Services grew 16% in the June 2026 quarter on a base above $100B. How much of that is App Store take-rate and Google TAC — the two lines most exposed to regulatory and contractual change — versus subscription lines Apple controls outright?</li><li>Berkshire&#x27;s share count was unchanged in Q2 2026 after two years of trimming. Is that a decision or an absence of one? Nothing in Abel&#x27;s letter distinguishes the two, and it matters for how much signal to read into the pause.</li><li>Duan Yongping holds 41% of his book in Apple and trimmed 6.4% in Q2 2026. His reasoning is public but only on Xueqiu — worth reading in the original rather than through intermediaries, since no source at this skill&#x27;s evidence bar carries it.</li><li>The foldable iPhone Wedgewood expects later this year is the only near-term catalyst any verified holder names. What does the bill of materials and expected ASP do to blended hardware gross margin if it ships at volume?</li><li>Nine of eleven verified holders publish nothing about Apple despite meaningful weights. For the ones that do write regularly and chose not to mention it — Matrix, Muhlenkamp, Mairs &amp; Power — check prior-year letters to see whether Apple was ever discussed, or whether it has always been a position they hold without arguing for.</li></ol>
+    </section>
+    
+</main>
+<script>
+document.querySelectorAll('table.sortable').forEach(function(table){
+  var headers = table.querySelectorAll('thead th');
+  headers.forEach(function(h, idx){
+    if (!h.dataset.key) return;
+    h.addEventListener('click', function(){
+      var body = table.querySelector('tbody');
+      var rows = Array.from(body.querySelectorAll('tr'));
+      var asc = h.dataset.dir !== 'asc';
+      headers.forEach(function(x){ x.removeAttribute('data-dir'); });
+      h.dataset.dir = asc ? 'asc' : 'desc';
+      rows.sort(function(a, b){
+        var av = a.children[idx].innerText.trim().toLowerCase();
+        var bv = b.children[idx].innerText.trim().toLowerCase();
+        if (!isNaN(parseFloat(av)) && !isNaN(parseFloat(bv))) {
+          return (parseFloat(av) - parseFloat(bv)) * (asc ? 1 : -1);
+        }
+        return av.localeCompare(bv) * (asc ? 1 : -1);
+      });
+      rows.forEach(function(r){ body.appendChild(r); });
+    });
+  });
+});
+</script>
+</body>
+</html>

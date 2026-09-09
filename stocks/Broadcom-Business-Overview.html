@@ -1,0 +1,625 @@
+<title>Broadcom Business Overview</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+body{background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:var(--ink)}
+h1{font-size:38px;line-height:1.18;margin:6px 0 14px}
+h2{font-size:27px;line-height:1.25;margin:52px 0 14px}
+h3{font-size:21px;line-height:1.3;margin:30px 0 8px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;line-height:1.5;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);padding:12px 0;margin:0 0 34px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 20px;margin:0 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:#C9BFAF;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:26px;line-height:1.35;margin:0 0 12px}
+.engine p{margin:0;font-size:17px;line-height:1.55;color:#EDE5D8}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;line-height:1.3;margin-bottom:8px}
+.kpi .v{font-family:Georgia,serif;font-size:30px;color:var(--terracotta);
+  font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .s{font-size:14px;color:var(--muted);line-height:1.4;margin-top:6px}
+.note{font-size:14px;color:var(--muted);line-height:1.45;margin:0 0 34px}
+.lever{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:14px 18px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever h4{font-family:Georgia,serif;font-size:18px;margin:4px 0 6px;font-weight:700}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.quote{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0}
+.quote blockquote{font-family:Georgia,serif;font-size:21px;line-height:1.45;margin:0 0 10px}
+.quote cite{font-style:normal;font-size:14px;color:var(--muted);letter-spacing:.04em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 8px}
+.col{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.col h4{font-family:Georgia,serif;font-size:17px;margin:0 0 10px}
+.col.dur h4{color:var(--good)}
+.col.bor h4{color:var(--terracotta)}
+.col ul{margin:0;padding-left:18px}
+.col li{font-size:16px;line-height:1.45;margin-bottom:7px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;min-width:560px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;font-size:16px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#F4EFE6;font-weight:700;font-size:14px;letter-spacing:.03em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:16px 10px 8px;margin:18px 0 6px}
+.chart svg{display:block;width:100%;height:auto}
+.grid{stroke:#EFE8DC;stroke-width:1}
+.axis{stroke:#D8CFC0;stroke-width:1}
+.ax{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;fill:#6E675C}
+.slab{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;font-weight:700}
+.cap{font-size:14px;color:var(--muted);line-height:1.45;margin:0 0 30px}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:22px;
+  font-size:15px;color:var(--muted);line-height:1.55}
+footer h3{font-size:16px;margin:0 0 10px;color:var(--ink)}
+@media (max-width:720px){
+  body{font-size:18px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .restate{font-size:20px}
+}
+</style>
+
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Broadcom Inc. <span style="color:var(--muted);font-weight:400">(NASDAQ: AVGO)</span></h1>
+<div class="srcline">
+7 September 2026 &nbsp;·&nbsp; Built from Broadcom&rsquo;s SEC filings FY2018&ndash;FY2025 (10-K), 10-Qs
+through Q2 FY2026, proxy statements through 2026 and selected 8-Ks; the Q3 FY2026 earnings release
+and call of 2 September 2026; and independent sources &mdash; competitor filings, TSMC disclosures,
+SIA/WSTS, the European Commission, the Japan Fair Trade Commission and BIS.
+&nbsp;·&nbsp; <strong>Not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Broadcom is a capital allocator that owns two things: designs for semiconductors it does not
+manufacture, and software an enterprise cannot easily stop using. It buys entrenched positions,
+sells whatever inside them does not clear its margin threshold, and returns the rest.
+</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One custom AI accelerator &mdash; an XPU &mdash; plus the Ethernet and optical
+  content that ships beside it.</div>
+  <p>The customer specifies the architecture and funds the engineering. Broadcom contributes the
+  interconnect IP, TSMC fabricates the wafers, and Broadcom holds a sole-source socket for the three
+  to five years that customer&rsquo;s platform lives. In FY2025 that unit carried a 68.1% segment
+  gross margin and a 57.6% segment operating margin. The second unit &mdash; one subscribed
+  VMware Cloud Foundation licence &mdash; carried 93.0% and 76.8%.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">AI semiconductor revenue, Q3 FY2026</div><div class="v">$16.7bn</div>
+    <div class="s">+221% year on year, +54% sequentially. Q4 guided to $21.7bn.</div></div>
+  <div class="kpi"><div class="k">Segment gross margin, FY2025</div><div class="v">68.1%</div>
+    <div class="s">Semiconductors. Software 93.0%. Mix, not cost, sets the blend.</div></div>
+  <div class="kpi"><div class="k">Operating cash flow, FY2025</div><div class="v">$27.5bn</div>
+    <div class="s">Against $623m of capital expenditure &mdash; 2.3% of it.</div></div>
+  <div class="kpi"><div class="k">Total debt, Q3 FY2026</div><div class="v">$59.4bn</div>
+    <div class="s">Against $24.0bn cash. No leverage target is stated in any 10-K.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak</div>
+    <div class="s">54.0% GAAP operating margin vs a 45.2% prior peak and a 15.2% FY2019 trough.</div></div>
+  <div class="kpi"><div class="k">Organic vs reported growth</div><div class="v">+55% / +55%</div>
+    <div class="s">9M FY2026, all organic. FY2024 was +44% reported but +9.4% organic.</div></div>
+</div>
+<p class="note">Figures from the FY2025 10-K, the FY2026 Q2 10-Q and the Q3 FY2026 earnings release
+of 2 September 2026. Broadcom does not disclose AI revenue in any 10-K or 10-Q; it appears only in
+quarterly releases and on calls.</p>
+
+<h2>1. What the business is</h2>
+<p>Two very different customers have the same problem: they need infrastructure that a
+general-purpose product does not deliver economically at their scale. A hyperscaler running one
+enormous, well-understood workload can buy merchant GPUs, or it can commission silicon shaped
+around that workload and own the resulting cost advantage. A large enterprise running thousands of
+applications on its own servers needs software that turns a rack of machines into a pool of
+capacity, and needs it to keep working with every storage array, network card and application it
+already owns. Broadcom sells to both, and the two businesses are close to equal contributors:
+semiconductors were 58% of FY2025 revenue and software 42%, but software produced 49% of the two
+segments&rsquo; combined operating income.</p>
+
+<h2>2. Tracing one unit</h2>
+<p>Follow a single XPU from design to cash. The customer specifies the architecture and funds the
+non-recurring engineering. Broadcom designs the system-on-chip around its own serialiser/
+deserialiser, optical and packaging intellectual property. TSMC fabricates the wafers &mdash;
+approximately 95% of every wafer Broadcom&rsquo;s contract manufacturers produced in the first half
+of FY2026. Title on most products transfers in Penang, Malaysia, and the parts are sold largely
+through a single distributor, which accounted for 42% of net revenue in Q2 FY2026 against 32% for
+all of FY2025 and 21% in FY2023.</p>
+<p>What that unit earns became visible only in the FY2025 10-K, which adopted the expanded
+segment-expense standard. Semiconductor segment revenue of $36,858m carried $11,740m of segment
+cost of revenue &mdash; a 68.1% gross margin &mdash; and produced $21,232m of segment operating
+income. The software segment turned $27,029m of revenue into $20,765m of operating income on
+$1,902m of cost. Because these segment lines exclude acquisition amortisation and stock
+compensation, they describe the products rather than the reported income statement.</p>
+<p>Broadcom sells the parts of what it buys that do not clear its threshold: Brocade&rsquo;s IP
+networking business for $800m, CA&rsquo;s Veracode for $950m, Symantec&rsquo;s Cyber Security
+Services, and VMware&rsquo;s end-user computing division to KKR for $3.5bn &mdash; each described
+in the filings as &ldquo;not aligned with our strategic objectives.&rdquo; The move now running the
+other way deserves attention precisely because it breaks that pattern.</p>
+
+<div class="quote">
+  <blockquote>&ldquo;The sale or leasing of AI racks or systems based on our XPUs will likely
+  increase our operating margin but compress or lower future gross margin, which would adversely
+  impact our stock price.&rdquo;</blockquote>
+  <cite>Broadcom FY2025 Form 10-K, Item 1A</cite>
+</div>
+<p>Racks carry memory, substrates and assembly that pass through at a fraction of silicon&rsquo;s
+mark-up. This is the first business in two decades Broadcom has entered because a customer asked
+rather than because the margin was attractive.</p>
+
+<h2>3. Where the profit sits in this industry</h2>
+<p>The AI data-centre industry sells one thing: usable compute inside a power envelope. Everything
+else is an input. The profit is distributed along the chain with unusual sharpness &mdash; design,
+IP, foundry and memory earn 58&ndash;85% gross margins, while physically assembling the result
+earns 6&ndash;12%. Broadcom sits firmly on the profitable side, and the rack business is a
+deliberate step toward the other one.</p>
+
+<div class="scroll"><table>
+<tr><th>Layer</th><th>Company, latest reported quarter</th><th class="n">Gross margin</th><th>Basis</th></tr>
+<tr><td>Memory / HBM</td><td>Micron (Q3 FY2026)</td><td class="n">84.6%</td><td>GAAP</td></tr>
+<tr><td>Merchant GPU</td><td>NVIDIA (Q2 FY2027)</td><td class="n">75.0%</td><td>GAAP</td></tr>
+<tr><td>Custom silicon + networking</td><td>Broadcom (Q3 FY2026)</td><td class="n">74.9%</td><td>Non-GAAP</td></tr>
+<tr><td>EDA / silicon IP</td><td>Synopsys (Q2 FY2026)</td><td class="n">72.3%</td><td>GAAP</td></tr>
+<tr><td>Foundry</td><td>TSMC (2Q 2026)</td><td class="n">67.7%</td><td>Reported</td></tr>
+<tr><td>Networking systems</td><td>Arista (Q2 2026)</td><td class="n">62.9%</td><td>GAAP</td></tr>
+<tr><td>Custom silicon, peer</td><td>Marvell (Q2 FY2027)</td><td class="n">58.9%</td><td>Non-GAAP</td></tr>
+<tr><td>ASIC design services</td><td>Alchip (Q2 2026)</td><td class="n">34.8%</td><td>Reported</td></tr>
+<tr><td>Systems assembly</td><td>Celestica (Q2 2026)</td><td class="n">12.3%</td><td>GAAP</td></tr>
+<tr><td>Systems assembly</td><td>Hon Hai / Foxconn (Q2 2026)</td><td class="n">6.1%</td><td>Reported</td></tr>
+</table></div>
+<p class="cap">Each figure from that company&rsquo;s own quarterly release.</p>
+
+<h3>Merchant silicon versus custom silicon</h3>
+<p>NVIDIA sells a part it designed, owns and prices: $89.0bn of data-centre revenue at a 75.0%
+gross margin in the quarter ended July 2026. Broadcom sells a part its customer specified and paid
+to develop. It takes less margin per unit, but carries no architectural bet and less inventory
+risk, and keeps the socket for the platform&rsquo;s life. That the model is real is now visible
+outside Broadcom&rsquo;s accounts: Amazon disclosed a custom-chip run-rate &ldquo;now over $20
+billion&rdquo; with &ldquo;over $225 billion in revenue commitments for Trainium,&rdquo; and Google
+has shipped seven TPU generations. The competitive question is who supplies it. Marvell is the only
+comparably scaled alternative at $2.171bn of data-centre revenue and 58.9% non-GAAP gross margin
+&mdash; roughly an eighth of Broadcom&rsquo;s AI run-rate. Below that sit design houses such as
+Alchip at 34.8%, the commodity end of the same activity.</p>
+
+<h3>What would actually be hard to reproduce</h3>
+<p>Three things bind. The first is the interconnect IP that moves data between accelerators, which
+has become harder than the compute itself &mdash; evidenced by the fact that every disclosed deal
+in the field over the past year has been in interconnect rather than compute: Qualcomm bought
+Alphawave for $2.4bn, NVIDIA put $4bn into Coherent and Lumentum for photonics capacity rights, and
+Marvell, Credo, Semtech and Infineon all made photonics tuck-ins.</p>
+<p>The second is advanced packaging, which is the industry&rsquo;s binding physical constraint and
+is not Broadcom&rsquo;s to control. TSMC&rsquo;s chief executive said on the 2Q 2026 call that
+&ldquo;our packaging capacity is so tight that now it&rsquo;s limiting my customers&rsquo;
+growth,&rdquo; that &ldquo;the gap is very big,&rdquo; and that the shortage runs through
+2029&ndash;2030; TSMC raised FY2026 capital expenditure to $60&ndash;64bn. Broadcom&rsquo;s
+advantage here is priority born of volume, not of contract: it states it does &ldquo;not generally
+have long-term capacity commitments&rdquo; with its contract manufacturers.</p>
+<p>The third is the design win. Once a customer has committed a rack architecture, a compiler stack
+and a year of software work to a specific accelerator, switching means redoing all of it. That is
+why Broadcom can name six XPU customers &mdash; Google, Anthropic, OpenAI and Meta among them
+&mdash; and treat the number as the business rather than as a concentration problem. It is both.</p>
+<p>Networking is more contested than the AI numbers suggest. Cisco announced its Silicon One G300
+at 102.4 Tb/s in February 2026, matching Broadcom&rsquo;s Tomahawk 6, and NVIDIA reported $14.8bn
+of data-centre networking revenue in its April 2026 quarter, up 199%. No independent body publishes
+Ethernet switching-silicon market share, so the size of Broadcom&rsquo;s lead is unknown rather
+than established.</p>
+
+<h3>The software position, tested against outside evidence</h3>
+<p>Broadcom asserts that its infrastructure software is mission-critical and sticky. Outside
+evidence supports the mechanism and is more specific than the company is. When the European
+Commission cleared the VMware acquisition in July 2023 it required Broadcom to commit to open
+access to VMware&rsquo;s APIs and certification programme and to grant an open-source driver
+&mdash; remedies aimed at the I/O Vendor Partner certification programme, because hardware makers
+depend on it for their adapters to work at all. A competition authority mandating access is the
+strongest available proof that the certification matrix, not the hypervisor, is the lock.</p>
+<p>The durability claim also holds so far. Software ARR grew 15% year on year in Q3 FY2026 with
+revenue up 29% to $8.8bn. Nutanix, the most direct beneficiary of any exodus, reported FY2026
+revenue of $2.85bn &mdash; about a twelfth of Broadcom&rsquo;s software run-rate &mdash; growing
+12% with 106% net dollar retention and FY2027 guidance implying further deceleration. No competitor
+has published a quantified VMware displacement rate. The Japan Fair Trade Commission, the only
+authority to have adjudicated the licensing conduct, closed its investigation on 3 July 2026
+finding that &ldquo;facts sufficient to constitute a violation of the Act were not found.&rdquo;
+Where the evidence is weak is on price: CISPE alleges cumulative increases &ldquo;exceeding 1,000
+percent&rdquo; in a pending Article 102 complaint and is separately seeking annulment of the merger
+clearance, but no primary source establishes a verified like-for-like price series.</p>
+
+<h2>4. Growth: what is real and what was bought</h2>
+<p>Reported growth over the last three years has three different explanations, and conflating them
+produces the wrong business.</p>
+
+<div class="scroll"><table>
+<tr><th></th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">9M FY2026</th><th class="n">FY2026 implied</th></tr>
+<tr><td>Net revenue ($m)</td><td class="n">51,574</td><td class="n">63,887</td><td class="n">71,098</td><td class="n">c. 105,900</td></tr>
+<tr><td>Reported growth</td><td class="n">+44.0%</td><td class="n">+24.0%</td><td class="n">+55.0%</td><td class="n">+65.8%</td></tr>
+<tr><td>Acquired contribution</td><td class="n">12,384 (VMware)</td><td class="n">none</td><td class="n">none</td><td class="n">none</td></tr>
+<tr><td><strong>Organic growth</strong></td><td class="n"><strong>+9.4%</strong></td><td class="n"><strong>+24.0%</strong></td><td class="n"><strong>+55.0%</strong></td><td class="n"><strong>+65.8%</strong></td></tr>
+<tr><td>Extra week in the year</td><td class="n">Yes, 53 weeks</td><td class="n">No</td><td class="n">&mdash;</td><td class="n">No</td></tr>
+</table></div>
+<p class="cap">VMware contribution from the FY2024 10-K acquisition note. 9M FY2026 is Q1 and Q2 as
+filed plus the Q3 release; the implied year adds Broadcom&rsquo;s own $34.8bn Q4 guidance and is
+therefore part reported, part guided. FY2024 growth is flattered twice &mdash; by an acquisition
+and by a 53-week year.</p>
+
+<p>Strip VMware from FY2024 and the underlying business grew 9.4%. FY2025 and FY2026 are different:
+Broadcom has made no acquisition since a $600m Seagate asset purchase in April 2024, so the 24% of
+FY2025 and the 55% of the first nine months of FY2026 are organic. This is the first period in a
+decade in which Broadcom has grown substantially without buying anything.</p>
+
+<div class="chart"><svg viewBox="0 0 900 356" role="img"
+  aria-label="Broadcom net revenue by fiscal year, split between semiconductors and infrastructure software">
+<line x1="78" y1="322.0" x2="878" y2="322.0" class="grid"/>
+<text x="68" y="326.0" class="ax" text-anchor="end">0</text>
+<line x1="78" y1="257.7" x2="878" y2="257.7" class="grid"/>
+<text x="68" y="261.7" class="ax" text-anchor="end">25</text>
+<line x1="78" y1="193.4" x2="878" y2="193.4" class="grid"/>
+<text x="68" y="197.4" class="ax" text-anchor="end">50</text>
+<line x1="78" y1="129.1" x2="878" y2="129.1" class="grid"/>
+<text x="68" y="133.1" class="ax" text-anchor="end">75</text>
+<line x1="78" y1="64.9" x2="878" y2="64.9" class="grid"/>
+<text x="68" y="68.9" class="ax" text-anchor="end">100</text>
+<text x="68" y="20" class="ax" text-anchor="end">$bn</text>
+<rect x="94.0" y="277.0" width="48" height="45.0" fill="#C75B39"/>
+<text x="118.0" y="342" class="ax" text-anchor="middle">FY17</text>
+<rect x="174.0" y="273.0" width="48" height="49.0" fill="#C75B39"/>
+<rect x="174.0" y="268.4" width="48" height="4.6" fill="#3C6E8F"/>
+<text x="198.0" y="342" class="ax" text-anchor="middle">FY18</text>
+<rect x="254.0" y="277.2" width="48" height="44.8" fill="#C75B39"/>
+<rect x="254.0" y="263.9" width="48" height="13.3" fill="#3C6E8F"/>
+<text x="278.0" y="342" class="ax" text-anchor="middle">FY19</text>
+<rect x="334.0" y="277.6" width="48" height="44.4" fill="#C75B39"/>
+<rect x="334.0" y="260.6" width="48" height="17.0" fill="#3C6E8F"/>
+<text x="358.0" y="342" class="ax" text-anchor="middle">FY20</text>
+<rect x="414.0" y="269.6" width="48" height="52.4" fill="#C75B39"/>
+<rect x="414.0" y="251.4" width="48" height="18.2" fill="#3C6E8F"/>
+<text x="438.0" y="342" class="ax" text-anchor="middle">FY21</text>
+<rect x="494.0" y="255.6" width="48" height="66.4" fill="#C75B39"/>
+<rect x="494.0" y="236.6" width="48" height="19.0" fill="#3C6E8F"/>
+<text x="518.0" y="342" class="ax" text-anchor="middle">FY22</text>
+<rect x="574.0" y="249.5" width="48" height="72.5" fill="#C75B39"/>
+<rect x="574.0" y="229.9" width="48" height="19.6" fill="#3C6E8F"/>
+<text x="598.0" y="342" class="ax" text-anchor="middle">FY23</text>
+<rect x="654.0" y="244.6" width="48" height="77.4" fill="#C75B39"/>
+<rect x="654.0" y="189.4" width="48" height="55.2" fill="#3C6E8F"/>
+<text x="678.0" y="342" class="ax" text-anchor="middle">FY24</text>
+<rect x="734.0" y="227.2" width="48" height="94.8" fill="#C75B39"/>
+<rect x="734.0" y="157.7" width="48" height="69.5" fill="#3C6E8F"/>
+<text x="758.0" y="342" class="ax" text-anchor="middle">FY25</text>
+<rect x="814.0" y="49.7" width="48" height="272.3" fill="none" stroke="#C75B39" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="838.0" y="342" class="ax" text-anchor="middle">FY26</text>
+<rect x="96" y="62" width="13" height="13" fill="#C75B39"/>
+<text x="116" y="73" class="slab" text-anchor="start" fill="#C75B39">Semiconductor solutions</text>
+<rect x="96" y="86" width="13" height="13" fill="#3C6E8F"/>
+<text x="116" y="97" class="slab" text-anchor="start" fill="#3C6E8F">Infrastructure software</text>
+<text x="838.0" y="39.7" class="slab" text-anchor="middle" fill="#C75B39">guided</text>
+<line x1="78" y1="322" x2="878" y2="322" class="axis"/>
+</svg></div>
+<p class="cap">Net revenue by fiscal year, $bn, split by segment. FY2017&ndash;FY2025 from the
+FY2019, FY2022 and FY2025 10-Ks, using recast segment figures where a filing restated them. FY2026
+is the dashed bar: three reported quarters plus Broadcom&rsquo;s own Q4 guidance, so it is part
+result and part forecast. The VMware step in FY2024 is visible in the blue.</p>
+
+<h3>What is driving it, ranked</h3>
+<div class="lever structural"><div class="tag">Structural</div>
+  <h4>Custom AI accelerator volume</h4>
+  <p>AI semiconductor revenue reached $16.7bn in Q3 FY2026, up 221% year on year, with Q4 guided to
+  $21.7bn. Six customers deploying committed gigawatts of their own architectures is a demand source
+  that does not need a broad market to recover. Management has stated FY2026 AI revenue of roughly
+  $58bn and targets of approximately $115bn in FY2027 and $230bn in FY2028 &mdash; the
+  company&rsquo;s own forward statements, not results.</p></div>
+<div class="lever structural"><div class="tag">Structural</div>
+  <h4>Attached networking and optical content</h4>
+  <p>Every accelerator deployment pulls Ethernet switching, network-interface controllers and
+  optics. Broadcom does not split XPU from networking inside its AI revenue, so the relative
+  contribution is unknown; NVIDIA&rsquo;s $14.8bn networking quarter indicates the attach economics
+  are large.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven, and finite</div>
+  <h4>Repricing the VMware installed base onto subscription</h4>
+  <p>Software revenue grew 29% to $8.8bn in Q3 FY2026 with ARR up 15%. This is a conversion, not a
+  market: it ends when the base is converted, and management has not disclosed how much remains.
+  The gap between 29% revenue growth and 15% ARR growth is the signature of upfront licence
+  recognition rather than underlying consumption.</p></div>
+<div class="lever cyclical"><div class="tag">Structural, but hollowing the base</div>
+  <h4>Mix shift toward AI inside the semiconductor segment</h4>
+  <p>Non-AI semiconductor revenue was $4.2bn in Q3 FY2026, up 5% year on year and flat sequentially,
+  with broadband and server storage up and wireless down. At that run-rate the entire non-AI
+  franchise is smaller than Broadcom&rsquo;s whole semiconductor segment was in FY2023, when it
+  earned $28,182m. Growth is not broadening; it is concentrating.</p></div>
+<div class="lever"><div class="tag">Temporary, and now behind</div>
+  <h4>The extra week and the acquisition base effect</h4>
+  <p>FY2024&rsquo;s 53rd week and the VMware lap flattered FY2024 and depressed FY2025 optics.
+  Neither affects FY2026.</p></div>
+
+<h2>5. Margin, cash and where the money goes</h2>
+<p>Broadcom converts revenue to cash better than almost any company of its size because it owns
+designs rather than plant. Capital expenditure over FY2018&ndash;FY2025 totalled $4,020m against
+$126,722m of operating cash flow &mdash; 3.2%. The capital intensity of the industry sits on
+TSMC&rsquo;s balance sheet, which is why TSMC is spending $60&ndash;64bn this year while Broadcom
+spends around $2bn. What Broadcom pays for that arrangement is dependence, not cash.</p>
+
+<div class="scroll"><table>
+<tr><th></th><th class="n">FY2019</th><th class="n">FY2023</th><th class="n">FY2025</th><th class="n">9M FY2026</th></tr>
+<tr><td>Net revenue ($m)</td><td class="n">22,597</td><td class="n">35,819</td><td class="n">63,887</td><td class="n">71,098</td></tr>
+<tr><td>GAAP gross margin</td><td class="n">55.2%</td><td class="n">68.9%</td><td class="n">67.8%</td><td class="n">69.0%</td></tr>
+<tr><td>GAAP operating margin</td><td class="n">15.2%</td><td class="n">45.2%</td><td class="n">39.9%</td><td class="n">49.7%</td></tr>
+<tr><td>Operating cash flow ($m)</td><td class="n">9,697</td><td class="n">18,085</td><td class="n">27,537</td><td class="n">c. 32,985</td></tr>
+<tr><td>Total debt, principal ($m)</td><td class="n">33,059</td><td class="n">40,815</td><td class="n">67,120</td><td class="n">59,400</td></tr>
+<tr><td>Diluted shares (m, split-adj.)</td><td class="n">4,190</td><td class="n">4,272</td><td class="n">4,853</td><td class="n">c. 4,888</td></tr>
+</table></div>
+<p class="cap">Years chosen to show the shape of the change, not the full series. Comparability
+warnings: FY2019 was the first year of CA and used a three-segment presentation later recast;
+FY2024, not shown, had 53 weeks and the VMware close; FY2025 reclassified $7,800m of upfront licence
+revenue between the products and subscriptions lines with prior years restated; share counts before
+July 2024 are restated for a ten-for-one split. The 9M FY2026 cash flow and share count are derived
+from reported quarters plus the Q3 release, and total debt at Q3 FY2026 is carrying value.</p>
+
+<div class="chart"><svg viewBox="0 0 900 334" role="img"
+  aria-label="Broadcom GAAP gross margin and operating margin by fiscal year">
+<line x1="78" y1="300.0" x2="878" y2="300.0" class="grid"/>
+<text x="68" y="304.0" class="ax" text-anchor="end">0%</text>
+<line x1="78" y1="233.5" x2="878" y2="233.5" class="grid"/>
+<text x="68" y="237.5" class="ax" text-anchor="end">20%</text>
+<line x1="78" y1="167.0" x2="878" y2="167.0" class="grid"/>
+<text x="68" y="171.0" class="ax" text-anchor="end">40%</text>
+<line x1="78" y1="100.5" x2="878" y2="100.5" class="grid"/>
+<text x="68" y="104.5" class="ax" text-anchor="end">60%</text>
+<line x1="78" y1="34.0" x2="878" y2="34.0" class="grid"/>
+<text x="68" y="38.0" class="ax" text-anchor="end">80%</text>
+<path d="M78.0,139.7 L166.9,128.8 L255.8,116.5 L344.7,111.8 L433.6,95.8 L522.4,78.9 L611.3,70.9 L700.2,90.5 L789.1,74.6 L878.0,70.6" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="78.0" cy="139.7" r="3.4" fill="#C75B39"/>
+<circle cx="166.9" cy="128.8" r="3.4" fill="#C75B39"/>
+<circle cx="255.8" cy="116.5" r="3.4" fill="#C75B39"/>
+<circle cx="344.7" cy="111.8" r="3.4" fill="#C75B39"/>
+<circle cx="433.6" cy="95.8" r="3.4" fill="#C75B39"/>
+<circle cx="522.4" cy="78.9" r="3.4" fill="#C75B39"/>
+<circle cx="611.3" cy="70.9" r="3.4" fill="#C75B39"/>
+<circle cx="700.2" cy="90.5" r="3.4" fill="#C75B39"/>
+<circle cx="789.1" cy="74.6" r="3.4" fill="#C75B39"/>
+<circle cx="878.0" cy="70.6" r="3.4" fill="#C75B39"/>
+<path d="M78.0,255.4 L166.9,218.2 L255.8,249.5 L344.7,244.1 L433.6,196.9 L522.4,157.7 L611.3,149.7 L700.2,213.2 L789.1,167.3 L878.0,134.7" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="78.0" cy="255.4" r="3.4" fill="#3C6E8F"/>
+<circle cx="166.9" cy="218.2" r="3.4" fill="#3C6E8F"/>
+<circle cx="255.8" cy="249.5" r="3.4" fill="#3C6E8F"/>
+<circle cx="344.7" cy="244.1" r="3.4" fill="#3C6E8F"/>
+<circle cx="433.6" cy="196.9" r="3.4" fill="#3C6E8F"/>
+<circle cx="522.4" cy="157.7" r="3.4" fill="#3C6E8F"/>
+<circle cx="611.3" cy="149.7" r="3.4" fill="#3C6E8F"/>
+<circle cx="700.2" cy="213.2" r="3.4" fill="#3C6E8F"/>
+<circle cx="789.1" cy="167.3" r="3.4" fill="#3C6E8F"/>
+<circle cx="878.0" cy="134.7" r="3.4" fill="#3C6E8F"/>
+<text x="78.0" y="320" class="ax" text-anchor="middle">FY17</text>
+<text x="166.9" y="320" class="ax" text-anchor="middle">FY18</text>
+<text x="255.8" y="320" class="ax" text-anchor="middle">FY19</text>
+<text x="344.7" y="320" class="ax" text-anchor="middle">FY20</text>
+<text x="433.6" y="320" class="ax" text-anchor="middle">FY21</text>
+<text x="522.4" y="320" class="ax" text-anchor="middle">FY22</text>
+<text x="611.3" y="320" class="ax" text-anchor="middle">FY23</text>
+<text x="700.2" y="320" class="ax" text-anchor="middle">FY24</text>
+<text x="789.1" y="320" class="ax" text-anchor="middle">FY25</text>
+<text x="878.0" y="320" class="ax" text-anchor="middle">9M26</text>
+<text x="86.0" y="127.7" class="slab" text-anchor="start" fill="#C75B39">Gross margin</text>
+<text x="86.0" y="275.4" class="slab" text-anchor="start" fill="#3C6E8F">Operating margin</text>
+<text x="872.0" y="58.6" class="slab" text-anchor="end" fill="#C75B39">69.0%</text>
+<text x="872.0" y="154.7" class="slab" text-anchor="end" fill="#3C6E8F">49.7%</text>
+<line x1="78" y1="300" x2="878" y2="300" class="axis"/>
+</svg></div>
+<p class="cap">GAAP gross and operating margin by fiscal year, from the FY2019, FY2022 and FY2025
+10-Ks and the FY2026 quarterly filings. The FY2024 dip is VMware acquisition amortisation, not a
+demand trough; the FY2019 low is the last real semiconductor downturn. Both measures are now above
+any prior peak.</p>
+
+<h3>What actually moves the margin</h3>
+<p>Gross margin is a mix question, not a cost question. In FY2025 the semiconductor segment carried
+68.1% and software 93.0%, so every point of mix that shifts toward semiconductors mechanically
+lowers the blend. That is what is happening: semiconductors were 58% of FY2025 revenue and 70% in
+Q3 FY2026. Broadcom&rsquo;s own explanation is identical &mdash; gross margin improved
+&ldquo;partially offset by a higher mix of semiconductor solutions net revenue, which has a lower
+gross margin than infrastructure software.&rdquo; Non-GAAP gross margin fell 210 basis points
+sequentially in Q3 FY2026 to 74.9% for this reason, while non-GAAP operating margin rose.</p>
+<p>The largest non-cash cost is stock compensation, $7,568m in FY2025 &mdash; 11.8% of revenue, up
+from 6.1% in FY2023 &mdash; because Broadcom granted two-year equity awards in Q2 FY2025 in place of
+the usual annual grant, front-loading the expense. $20,106m remained unrecognised at May 2026 over
+roughly three years.</p>
+
+<h3>Where the cash went, FY2018&ndash;FY2025</h3>
+<div class="scroll"><table>
+<tr><th>Use</th><th class="n">Cumulative</th><th>What it reveals</th></tr>
+<tr><td>Acquisitions, net of cash acquired</td><td class="n">$57,990m</td><td>Against c. $122bn of gross announced consideration across Brocade, CA, Symantec&rsquo;s enterprise business, VMware and a Seagate asset purchase &mdash; of which $53.4bn was stock and c. $10.5bn debt assumed.</td></tr>
+<tr><td>Dividends</td><td class="n">$54,612m</td><td>Per share $0.700 to $2.360 split-adjusted, a 19% compound rate, plus a further 10% rise to $0.65 a quarter in FY2026.</td></tr>
+<tr><td>Share repurchases</td><td class="n">$50,627m</td><td>$35,143m under programmes plus $15,484m of shares withheld for employee tax. Split-adjusted diluted shares still rose from c. 4,310m to 4,853m &mdash; 544m were issued for VMware.</td></tr>
+<tr><td>Capital expenditure</td><td class="n">$4,020m</td><td>Less than a single year of dividends. Q4 FY2026 is guided to $1.4bn against $532m in Q3 &mdash; a real step-up tied to the rack business.</td></tr>
+</table></div>
+<p class="cap">From the cash flow statements in the FY2020, FY2023 and FY2025 10-Ks. Debt principal
+went from $17,609m at FY2018 to $67,120m at FY2025; 64.5% of it matures after FY2030. No 10-K in the
+archive states a leverage target, a covenant ratio or a deleveraging commitment.</p>
+
+<p>Two arrangements struck after the last audited year change the risk profile and appear in no
+annual report. On 8 June 2026 Broadcom arranged for an investor partner to take on agreements to
+purchase AI racks and the related customer leases, entering a backstop of that customer&rsquo;s
+lease obligations over five-year terms with a maximum exposure of $29bn. Management described the
+same structure on the Q3 call as the &ldquo;XPV platform,&rdquo; with a first tranche of $35bn
+closed in June for one gigawatt for Anthropic. The economic substance is that Broadcom stands
+behind a customer&rsquo;s multi-year payment obligation in order to book the revenue now.</p>
+
+<h2>6. Cycle position, constraints and what to monitor</h2>
+<p>Broadcom is at the top of its own range on every measure that exists. Q3 FY2026 GAAP gross
+margin of 69.1% and operating margin of 54.0% compare with prior peaks of 68.9% and 45.2% in FY2023
+and troughs of 55.2% and 15.2% in FY2019. Revenue in that single quarter, $29.6bn, exceeded the
+whole of FY2019. A record margin at a peak and a record margin at a trough are opposite facts, and
+this is the first kind.</p>
+<p>The industry is genuinely cyclical and the record is specific: global semiconductor sales fell
+32% in 2001, roughly 11.5% peak-to-trough across 2008&ndash;09, 12.0% in 2019 and 8.2% in
+2022&ndash;23. Each resolved within 12 to 24 months, and each happened. Against that, the current
+expansion is larger than any prior contraction &mdash; sales reached $403.3bn in Q2 2026, up 35.1%
+sequentially, and WSTS forecasts 2026 industry revenue of $1.51 trillion, roughly double 2025.</p>
+<p>Broadcom&rsquo;s demand curve is four companies&rsquo; capital budgets. In the June 2026 quarter
+Amazon spent $54.2bn, Alphabet $44.9bn, Microsoft $35.8bn and Meta $31.1bn on property and equipment
+&mdash; about $166bn in one quarter, with Meta guiding FY2026 to $130&ndash;145bn. That spending is
+discretionary in a way a handset cycle is not, and it can be deferred by a board in a single
+meeting. The downside case is not a demand collapse but a deferral: hyperscalers slowing deployment
+by two or three quarters to digest what they have installed, landing on shipment volumes against a
+supply chain Broadcom has already committed to.</p>
+
+<h3>Committed on one side only</h3>
+<p>Purchase commitments &mdash; binding obligations to buy goods, primarily inventory &mdash; went
+from $132m at November 2025 and $54m at February 2026 to $128,110m at May 2026, with $55,214m
+falling in FY2027 and $72,870m in FY2028. Against that, Broadcom buys substantially all
+manufacturing on purchase orders with no long-term capacity commitment. It has bound itself to buy;
+it has not bound anyone to supply. Inventory rose from $2,270m at FY2025 year-end to $4,328m at May
+2026, finished goods up 172%, &ldquo;primarily to support higher expected shipments for custom AI
+accelerators.&rdquo;</p>
+<p>The order book moved just as violently. Committed remaining performance obligations went $27.5bn
+in August 2025, $33.3bn in November, $45.0bn in February 2026, then $164.6bn at May 2026 &mdash; a
+$120bn jump in one quarter driven by a single long-term custom accelerator contract, with about 30%
+expected in revenue within twelve months. The company cautions these &ldquo;are not indicative of
+revenue for future periods.&rdquo; Concentration of that magnitude in one agreement is the central
+fact about Broadcom&rsquo;s forward visibility, and it is simultaneously the strongest and the most
+fragile thing in the filings.</p>
+
+<div class="two">
+  <div class="col dur"><h4>Durable &mdash; likely intact in ten years</h4><ul>
+    <li>SerDes, optical and packaging IP that makes an accelerator work as a system</li>
+    <li>Sole-source design wins with 3&ndash;5 year platform lives</li>
+    <li>A near-zero-capital, fabless operating model</li>
+    <li>The VMware installed base and its certification dependency</li>
+    <li>Priority allocation at TSMC earned by volume</li>
+  </ul></div>
+  <div class="col bor"><h4>Borrowed &mdash; currently helping, will stop</h4><ul>
+    <li>The step from $45bn to $164.6bn of committed backlog on one contract</li>
+    <li>Upfront licence revenue recognised at signature, $7,800m in FY2025</li>
+    <li>Hyperscaler capital expenditure growing 40%+ a year</li>
+    <li>The one-off conversion of the VMware base from perpetual to subscription</li>
+    <li>Advanced-packaging scarcity that currently favours the largest buyer</li>
+  </ul></div>
+</div>
+<p class="cap">The left column survives a downturn; the right column is what a downturn removes.</p>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="scroll"><table>
+<tr><th>Indicator</th><th>Where it is published</th><th>Why it matters</th></tr>
+<tr><td>Hyperscaler capital expenditure</td><td>Alphabet, Amazon, Microsoft, Meta quarterly releases and 10-Qs</td><td>This is the demand curve. A guided reduction shows here first.</td></tr>
+<tr><td>TSMC revenue, capex and packaging commentary</td><td>tsmc.com investor relations, monthly and quarterly</td><td>The binding physical constraint on the whole industry.</td></tr>
+<tr><td>Remaining performance obligations and purchase commitments</td><td>Broadcom 10-Q, each quarter</td><td>Whether the $164.6bn converts, and whether the $128.1bn moves with it.</td></tr>
+<tr><td>Non-AI semiconductor revenue</td><td>Broadcom quarterly earnings call only</td><td>A recovering base would broaden the story; flatness confirms concentration.</td></tr>
+<tr><td>Software ARR against reported revenue</td><td>Broadcom quarterly earnings call</td><td>The gap measures how much software growth is signature timing, not consumption.</td></tr>
+<tr><td>Free cash flow as a share of revenue</td><td>Broadcom quarterly earnings release</td><td>The rack and leasing model is the thing most likely to break the profit-to-cash link.</td></tr>
+<tr><td>Global semiconductor sales</td><td>SIA monthly; WSTS forecasts</td><td>The industry-wide turn.</td></tr>
+</table></div>
+
+<h2>7. Risks that cyclicality does not capture</h2>
+<p><strong>Revenue and receivables depend on a handful of counterparties whose own funding is
+uncertain.</strong> One distributor accounted for 42% of net revenue in Q2 FY2026, against 32% for
+FY2025 and 21% for FY2023, and one customer represented 44% of net accounts receivable at November
+2025 against 18% a year earlier. Of the four named XPU customers, two &mdash; OpenAI and Anthropic
+&mdash; fund purchases from raised capital rather than operating profit. Broadcom&rsquo;s own filing
+states that AI customers &ldquo;may have constrained resources or capital and may be unable to pay
+for their required AI infrastructure.&rdquo;</p>
+<p><strong>The financing structures convert customer credit risk into Broadcom&rsquo;s risk while
+leaving the revenue on Broadcom&rsquo;s income statement.</strong> A $29bn maximum backstop of a
+customer&rsquo;s five-year lease obligations means a customer failure would not simply cost a future
+order; it would create a direct payment obligation against revenue already recognised. The exposure
+grows as racks deploy.</p>
+<p><strong>Broadcom has committed $128.1bn to purchase inventory without securing the capacity to
+build it or a disclosed cancellation right.</strong> If deployment slows, the obligation does not.
+Whether these commitments are cancellable, and on what terms, is the single most consequential
+undisclosed fact in the current accounts.</p>
+<p><strong>The rack and leasing model degrades the economics that made the business worth
+owning.</strong> It passes through low-margin content, consumes working capital, introduces credit
+exposure, and by the company&rsquo;s own statement lowers gross margin and may hurt free cash flow.
+<strong>A single foundry relationship carries the entire semiconductor franchise</strong> &mdash;
+approximately 95% of wafers from TSMC, with no long-term capacity commitment and an acknowledgement
+that TSMC &ldquo;could choose or be required to materially prioritize capacity for other
+customers.&rdquo; And <strong>the balance sheet has no tangible cushion</strong>: goodwill and
+intangibles of $130,074m are 76.0% of total assets against $81,292m of equity, a tangible book
+value of roughly negative $48.8bn, with no goodwill ever impaired.</p>
+<p><strong>Management&rsquo;s pay is levered to the one number an investor most needs to evaluate
+independently.</strong> The September 2025 CEO award pays nothing below $60bn of AI revenue and 300%
+above $120bn, measured on the best four consecutive quarters in FY2028&ndash;FY2030, using a
+company-defined &ldquo;AI Revenue&rdquo; figure disclosed on earnings calls and audited nowhere. The
+stated FY2028 target of approximately $230bn sits well above the maximum. The incentive to maximise
+disclosed AI revenue, including through rack sales that dilute margin, is direct.</p>
+
+<h3>What the sources could not answer</h3>
+<p>Each is a gap in the evidence rather than a judgement, and each would need resolving before
+forming a thesis: the split of AI revenue between XPUs and networking, never disclosed, which
+determines whether the growth is low-margin pass-through or high-margin silicon; revenue by end
+market, where Broadcom names five semiconductor end markets and discloses revenue against none of
+them in any year; how far through the VMware perpetual-to-subscription conversion the installed base
+is, last quantified over a year ago; whether the $128.1bn of purchase commitments is cancellable;
+the commercial terms of the custom accelerator contracts &mdash; who owns the IP, who bears a
+cancellation, whether pricing is fixed across the platform life, none of it disclosed by any party
+in the industry; the identity of the distributor representing 42% of revenue; and a verified
+like-for-like VMware price series, where alleged increases run from tenfold to 1,200% in filed
+complaints and no primary source establishes the actual magnitude.</p>
+
+<h2>8. Investor takeaways</h2>
+<div class="lever"><p><strong>This is a capital allocator that happens to own semiconductors and
+software</strong>, not a chip company &mdash; $58bn of cash on acquisitions and $4bn on plant since
+FY2018, and it sells whatever it buys that does not clear its margin threshold.</p></div>
+<div class="lever"><p><strong>The engine is the sole-source socket:</strong> a design the customer
+paid to develop, produced with almost no Broadcom capital, at 68% segment gross margin in silicon
+and 93% in software, held for the three to five years the customer&rsquo;s platform lives.</p></div>
+<div class="lever"><p><strong>The growth lever is the number of gigawatts of custom AI compute six
+customers deploy</strong>, and for the first time in a decade the growth is organic rather than
+acquired.</p></div>
+<div class="lever"><p><strong>What could break the story is not a demand collapse but the shape of
+the commitment:</strong> $128bn of purchase obligations and a $29bn lease backstop against six
+customers, two of which are funded by capital markets rather than profits.</p></div>
+<div class="lever"><p><strong>Watch free cash flow as a share of revenue and the non-AI base.</strong>
+The first tells you whether the rack model is eroding the economics; the second tells you whether
+anything is growing that is not four capital budgets.</p></div>
+
+<footer>
+<h3>Sources</h3>
+<p><strong>Company (from the analyst&rsquo;s local filing archive):</strong> Broadcom Inc. Forms
+10-K for FY2018, FY2019, FY2020, FY2022, FY2023, FY2024 and FY2025; Forms 10-Q for FY2024 Q1&ndash;Q3,
+FY2025 Q1&ndash;Q3 and FY2026 Q1&ndash;Q2; DEF 14A proxy statements 2024, 2025 and 2026; Forms 8-K
+of 22 November 2023 (VMware close), 9 September 2025 (CEO equity award), 2 March and 2 April 2026
+(director retirement and CFO transition), 6 April 2026 (Google supply assurance agreement and
+Anthropic capacity) and 6 July 2026 (Apple custom ASIC agreements through 2031).</p>
+<p><strong>Company (post-dating the archive):</strong> Broadcom Q3 FY2026 earnings release and
+conference call, 2 September 2026 &mdash; the source of every AI revenue figure, the non-AI
+semiconductor figure, ARR, free cash flow, Q4 guidance and the FY2027&ndash;FY2028 targets, none of
+which appear in any 10-K or 10-Q.</p>
+<p><strong>Independent:</strong> quarterly releases of NVIDIA, Marvell, Micron, SK hynix, Synopsys,
+Arista, Alchip, Celestica and Hon Hai; TSMC 6-K filings, monthly revenue disclosures and the 2Q 2026
+earnings call; Amazon, Alphabet, Microsoft and Meta quarterly releases for capital expenditure;
+Nutanix FY2026 results and IBM Q2 2026 results; Semiconductor Industry Association monthly and
+annual data and WSTS forecasts; European Commission decision in Case M.10806 (12 July 2023) and
+General Court Case T-503/25; Japan Fair Trade Commission press release of 3 July 2026; CISPE
+Article 102 complaint of 19 March 2026; <em>AT&amp;T Services v. Broadcom</em>, N.Y. Sup. Ct. Index
+No. 654490/2024; BIS licence-review revision and Federal Register rule of January 2026; Ultra
+Ethernet Consortium specification materials.</p>
+<p><strong>Post-dating the last annual report:</strong> the $164.6bn remaining performance
+obligation and the $128.1bn of purchase commitments were first disclosed in the FY2026 Q2 10-Q of
+9 June 2026. The $29bn lease backstop was a subsequent event in that filing, dated 8 June 2026. The
+FY2027 and FY2028 AI revenue targets are management statements made on the Q3 FY2026 call and are
+not results. There is no announced but unclosed acquisition as of the FY2025 10-K.</p>
+<p style="margin-top:18px"><em>Prepared 7 September 2026. This is an investor-grade description of
+the business, not a valuation and not a recommendation.</em></p>
+</footer>
+
+</div>

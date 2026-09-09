@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Ciena Corporation (CIEN)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+  font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:900px; margin:0 auto; padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif; font-weight:700; line-height:1.2}
+h1{font-size:38px; margin:6px 0 14px}
+h2{font-size:27px; margin:52px 0 14px}
+h3{font-size:21px; margin:32px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); font-weight:700}
+.srcline{color:var(--muted); font-size:15px; margin:0 0 34px; padding-bottom:26px; border-bottom:1px solid var(--line)}
+
+.restate{
+  font-family:Georgia,'Times New Roman',serif; font-size:23px; line-height:1.5;
+  border-left:5px solid var(--terracotta); padding:4px 0 4px 22px; margin:0 0 34px;
+}
+
+.engine{background:var(--ink); color:var(--cream); border-radius:10px; padding:28px 30px; margin:0 0 30px}
+.engine .lbl{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#B9AE9C; font-weight:700; margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif; font-size:27px; font-weight:700; margin-bottom:10px; color:#fff}
+.engine p{margin:0; font-size:18px; line-height:1.55; color:#EDE5D8}
+
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 0 40px}
+.kpi{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+.kpi .k{font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:8px}
+.kpi .v{font-family:Georgia,serif; font-size:29px; font-weight:700; color:var(--terracotta); line-height:1.1}
+.kpi .s{font-size:14px; color:var(--muted); margin-top:7px; line-height:1.4}
+
+.card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:22px 24px; margin:0 0 20px}
+.lever{background:#fff; border:1px solid var(--line); border-left:5px solid var(--terracotta); border-radius:10px; padding:16px 20px; margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .t{font-weight:700; font-size:17.5px; margin-bottom:4px}
+.lever .tag{font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever p{margin:6px 0 0; font-size:17px; line-height:1.52}
+
+.quote{background:var(--terracotta-soft); border-radius:10px; padding:24px 26px; margin:26px 0}
+.quote blockquote{margin:0; font-family:Georgia,serif; font-size:21px; line-height:1.48}
+.quote cite{display:block; margin-top:12px; font-style:normal; font-size:14px; color:var(--muted)}
+
+.two{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:0 0 20px}
+.two .col{background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px 20px}
+.two h4{font-family:Georgia,serif; font-size:18px; margin:0 0 12px; font-weight:700}
+.two .durable h4{color:var(--good)}
+.two .borrowed h4{color:var(--terracotta)}
+.two ul{margin:0; padding-left:18px}
+.two li{font-size:16.5px; line-height:1.45; margin-bottom:9px}
+
+.tw{overflow-x:auto; margin:0 0 10px; border:1px solid var(--line); border-radius:10px; background:#fff}
+table{border-collapse:collapse; width:100%; font-size:16px; min-width:520px}
+th{background:var(--ink); color:var(--cream); text-align:left; padding:11px 14px; font-weight:700; font-size:14px; letter-spacing:.03em}
+td{padding:10px 14px; border-top:1px solid var(--line); vertical-align:top}
+td.n,th.n{text-align:right; font-variant-numeric:tabular-nums}
+tbody tr:nth-child(even){background:#FCFAF6}
+.cap{font-size:13.5px; color:var(--muted); margin:0 0 30px; line-height:1.45}
+
+.chart{background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px 14px 8px; margin:0 0 8px}
+.chart svg{display:block; width:100%; height:auto}
+
+.verdict{font-weight:700}
+.v-sup{color:var(--good)} .v-part{color:var(--gold)} .v-con{color:var(--terracotta)} .v-unv{color:var(--blue)}
+
+footer{margin-top:56px; padding-top:26px; border-top:1px solid var(--line); font-size:15px; color:var(--muted)}
+footer h3{font-size:17px; margin:0 0 10px; color:var(--ink)}
+footer p{margin:0 0 12px; line-height:1.5}
+
+@media (max-width:720px){
+  body{font-size:17.5px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .restate{font-size:20px}
+}
+@media (max-width:460px){ .kpis{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Ciena Corporation <span style="color:var(--muted); font-weight:400">(NYSE: CIEN)</span></h1>
+<p class="srcline">7 September 2026 · Built from Ciena's SEC filings — ten fiscal years of 10-Ks through FY2025 (year ended 1 November 2025), 10-Qs through the quarter ended 1 August 2026, and quarterly releases through 3 September 2026 — with industry structure, competitor economics and pricing data from Dell'Oro Group, Cignal AI, TeleGeography and competitors' own filings. <strong>Not a valuation and not a recommendation.</strong></p>
+
+<div class="restate">
+Ciena sells the equipment that lights fibre — coherent modems and the photonic line systems they run over — to the carriers and cloud operators that move data between buildings, cities and continents.
+</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One coherent wavelength</div>
+  <p>A customer buys a photonic line system for a fibre route once, at low margin. Then, as traffic on that route grows, it buys modems and channel cards to light additional wavelengths over the system already installed — and those fills carry the real economics. Ciena discloses no unit count in any of its ten 10-Ks, so the unit is named from the mechanics, not measured. What is measurable: Optical Networking, which carries it, was <strong>$3,246.2m of FY2025 revenue at a 39.3% segment gross margin</strong>.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi">
+    <div class="k">Price of what the gear produces</div>
+    <div class="v">−11%/yr</div>
+    <div class="s">Weighted-median 100Gbps wavelength price, key global routes, Q4 2021–Q4 2024 (TeleGeography, 20 May 2025)</div>
+  </div>
+  <div class="kpi">
+    <div class="k">Product gross margin</div>
+    <div class="v">44.7%</div>
+    <div class="s">Q3 FY2026, up 410bp year on year; 41.1% for FY2025 and unchanged from FY2024</div>
+  </div>
+  <div class="kpi">
+    <div class="k">Headline earnings</div>
+    <div class="v">$2.11</div>
+    <div class="s">Adjusted diluted EPS, Q3 FY2026, from $0.67. Adjusted operating margin 22.5% from 10.7%</div>
+  </div>
+  <div class="kpi">
+    <div class="k">Leverage</div>
+    <div class="v">2.6×</div>
+    <div class="s">Gross; net debt $431m. $2.88bn of the $3.23bn debt is a 0.00%-coupon convertible due 2031</div>
+  </div>
+  <div class="kpi">
+    <div class="k">Cycle position</div>
+    <div class="v">Record</div>
+    <div class="s">Revenue far above any prior peak; adjusted operating margin above every prior peak; gross margin still below the FY2021 high</div>
+  </div>
+  <div class="kpi">
+    <div class="k">Organic vs reported</div>
+    <div class="v">37% / 37%</div>
+    <div class="s">Q3 FY2026 growth. Identical — the only acquisition, Nubis, was too immaterial for pro forma disclosure</div>
+  </div>
+</div>
+
+<h2>1. What the business is, in one table</h2>
+<div class="tw"><table>
+<tbody>
+<tr><td style="width:30%"><strong>Industry</strong></td><td>Optical transport equipment. $16.0bn globally in 2025, +10% (Dell'Oro, 18 Feb 2026); forecast to pass $18bn in 2026 for the first time since the year 2000.</td></tr>
+<tr><td><strong>How it earns</strong></td><td>Sells a photonic line system into a fibre route, then sells modems and channel cards to light more wavelengths on it as traffic grows, plus maintenance and installation around both.</td></tr>
+<tr><td><strong>What protects it</strong></td><td>One of only six firms worldwide building coherent DSPs (Cignal AI, 30 Apr 2026); installed line systems at large North American carriers and cloud operators; roughly 40% share of disaggregated WDM, the fastest-growing segment (Dell'Oro, 16 Jun 2026).</td></tr>
+<tr><td><strong>What drives earnings</strong></td><td>Cloud capital spending on data-centre interconnect; the mix between embedded modems and lower-revenue pluggables; operating leverage on ~$850m of annual R&amp;D that does not shrink.</td></tr>
+<tr><td><strong>What to watch</strong></td><td>Two customers at 41.7% of the latest quarter; an excess-and-obsolete inventory provision that doubled to $72.4m in nine months against a record backlog; pluggables' share of WDM bandwidth.</td></tr>
+<tr><td><strong>Cycle exposure</strong></td><td><strong>High.</strong> Revenue fell 8.5% in FY2024 in a four-quarter industry inventory correction, grew 18.8% in FY2025, and is guided to +35% in FY2026.</td></tr>
+</tbody>
+</table></div>
+<p class="cap">Sources: FY2025 10-K; Q3 FY2026 10-Q and release (3 Sep 2026); Dell'Oro Group; Cignal AI.</p>
+
+<h2>2. What the company does</h2>
+<p>The problem Ciena solves is bandwidth over distance. A strand of fibre can carry an enormous amount of data, but only if something at each end encodes light precisely enough to push signal through hundreds or thousands of kilometres of glass without noise swamping it. That encoding is done by a coherent modem — a specialised digital signal processor paired with a laser and modulator. Ciena designs those modems, builds them into transport systems, and sells the systems to whoever owns or leases the fibre.</p>
+
+<p>Follow one unit through to cash. An unnamed contract manufacturer in Canada, Mexico, Thailand, Vietnam or the United States builds the hardware to Ciena's specification — Ciena owns no factory and, as of 1 November 2025, no real property at all. Revenue is recognised when control transfers, <em>"generally upon shipment or delivery to the customer."</em> All Networking Platforms revenue, 77% of the company, is recognised at that point; 81.3% of FY2025 revenue was point-in-time. Installation is a separate obligation recognised over time inside Global Services. Days sales outstanding were 76 in the latest quarter, so cash follows shipment by roughly a quarter. Revenue is <strong>not</strong> gated on the customer accepting a working network — which is why a demand change, in either direction, shows up fast.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Segment</th><th class="n">FY2025 revenue</th><th class="n">Segment gross margin</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><strong>Networking Platforms</strong></td><td class="n">$3,676.4m</td><td class="n">39.3%</td><td>The hardware. Optical Networking ($3,246.2m) is the 6500 platform, Waveserver, the reconfigurable line system and coherent pluggables. Routing &amp; Switching ($430.1m) is coherent IP and service aggregation.</td></tr>
+<tr><td><strong>Platform Software &amp; Services</strong></td><td class="n">$363.8m</td><td class="n">84.5%</td><td>The Navigator control suite that runs the optical network, plus its subscription and support. Small, but the highest-margin line in the company.</td></tr>
+<tr><td><strong>Blue Planet</strong></td><td class="n">$115.5m</td><td class="n">58.2%</td><td>Orchestration, inventory and assurance software above the network layer. Loss-making every year FY2018–FY2024; FY2025 was its first profitable year.</td></tr>
+<tr><td><strong>Global Services</strong></td><td class="n">$613.8m</td><td class="n">35.6%</td><td>Maintenance, installation and network design. Labour-based; margin moves with the mix between recurring maintenance and project implementation.</td></tr>
+</tbody>
+</table></div>
+<p class="cap">Source: FY2025 10-K, Note 24. Segment gross profit was disclosed for the first time in FY2025 under ASU 2023-07, so no earlier year has a comparable figure.</p>
+
+<p>Two exits explain more than any strategy statement. The legacy Optical Transport line — pre-coherent equipment — fell from $127.2m in FY2014 to $36.0m in FY2016 and stopped being reported: the older technology had no cost-reduction runway against coherent economics. Then in Q4 FY2025 Ciena abandoned its 25G passive optical networking programme, writing off <strong>$89.1m of in-process R&amp;D</strong> acquired with Tibit and cutting 4–5% of the workforce. Tibit and Benu had cost roughly $291.7m three years earlier. Both exits say the same thing: outside coherent transport, Ciena's engineering economics have not travelled well.</p>
+
+<h2>3. Industry, competitive position and moat</h2>
+<p>Optical transport has grown in bandwidth relentlessly and in dollars barely at all — $16.0bn in 2025, and Dell'Oro's forecast has 2026 passing $18bn for the first time <em>since the year 2000</em>. Twenty-six years of no nominal growth while traffic rose by orders of magnitude is the single most important fact about this industry. The reason is price: 100Gbps wavelength prices fell at an 11% compound annual rate from Q4 2021 to Q4 2024, and 25% a year on Miami–São Paulo (TeleGeography). Vendors here do not earn returns from pricing power. They earn them from volume outrunning price decline, and from surviving the years when it does not.</p>
+
+<h3>Where the profit sits</h3>
+<div class="tw"><table>
+<thead><tr><th>Layer</th><th>Company, most recent fiscal year</th><th class="n">Gross margin</th><th class="n">Operating margin</th></tr></thead>
+<tbody>
+<tr><td>Merchant silicon</td><td>Broadcom FY2025</td><td class="n">67.8%</td><td class="n">39.9%</td></tr>
+<tr><td>Merchant silicon</td><td>Marvell FY2026 (non-GAAP)</td><td class="n">59.5%</td><td class="n">35.3%</td></tr>
+<tr><td>Modules &amp; components</td><td>Lumentum FY2026</td><td class="n">41.7%</td><td class="n">17.4%</td></tr>
+<tr><td><strong>Transport systems</strong></td><td><strong>Ciena FY2025</strong></td><td class="n"><strong>42.0%</strong></td><td class="n"><strong>4.1%</strong></td></tr>
+<tr><td>Transport systems</td><td>Nokia Network Infrastructure FY2025</td><td class="n">n/d</td><td class="n">9.8%</td></tr>
+<tr><td>Transport systems</td><td>ADTRAN FY2025</td><td class="n">38.3%</td><td class="n">(1.4)%</td></tr>
+<tr><td>Contract manufacture</td><td>Fabrinet FY2026</td><td class="n">12.0%</td><td class="n">10.0%</td></tr>
+</tbody>
+</table></div>
+<p class="cap">GAAP unless stated; each company's own results release. Nokia's figure is its reported comparable operating margin. Infinera's last standalone year, FY2024, was a (5.9)% operating margin on $1,418.4m of revenue.</p>
+
+<p>The system vendors sit in the worst part of this chain, and the mechanism is visible above. Ciena earns a 42.0% gross margin and converts almost none of it, because it spent <strong>$848.3m on R&amp;D in FY2025 — 17.8% of revenue</strong> — to keep a coherent modem roadmap current. Fabrinet earns 12.0% gross margin and converts most of it, because contract manufacturing carries almost no R&amp;D. Broadcom and Marvell earn 35–40% operating margins because a DSP design is amortised across every customer that buys it, <em>including Ciena's competitors</em>. Profit accrues where fixed development cost is spread over the largest unit volume, not where the gross margin is highest.</p>
+
+<h3>Structure, and which barriers actually bind</h3>
+<p>In FY2024 Dell'Oro put Huawei at 33% of global revenue, Ciena at 19%, and Nokia plus Infinera at a combined 19%. The 2025 ranking is Huawei, Ciena, Nokia, ZTE, Cisco, with the top four holding over 80%. But Huawei's share is concentrated in China and non-Western markets and effectively closed to Western vendors, while North America alone is more than 40% of global revenue. Global share understates what Ciena holds in the pool it can actually compete for — though no published source quantifies that adjusted share, so it stays an inference.</p>
+
+<p>Of the barriers, one binds hard and one is eroding. The hard one is coherent DSP design: only <strong>six firms</strong> develop coherent DSPs — Acacia (Cisco) and Marvell selling merchant silicon, and Ciena, Huawei, Infinera and Nokia building captive. No published figure exists for what a generation costs; Ciena's $848m annual R&amp;D is the best proxy. The eroding one is the system bundle. Ciena's own FY2025 10-K states operators "may use a line system from one vendor and modem technology from a different vendor" — and the hedge it used in FY2021, that adoption "has been limited to date," is gone from the FY2025 filing.</p>
+
+<p>The erosion is large. Disaggregated WDM was around 40% of market revenue in 9M 2025, and disaggregated line system revenue grew 80% year on year in Q2 2026. Standalone coherent pluggables reached $1.8bn in 2025, up 37%, and now carry <strong>more than half of all WDM bandwidth shipped</strong>. That pair is the whole competitive question in one line: <strong>more than half the bandwidth moves on a format generating roughly 11% of industry revenue.</strong> Bandwidth is migrating to a product monetising at roughly a fifth of the revenue intensity of the embedded systems it replaces.</p>
+
+<p>What has saved the incumbents is that they are winning the disaggregation rather than losing to it. Dell'Oro names Ciena and Nokia the leading suppliers of disaggregated optical line systems and puts Ciena at roughly 40% of the disaggregated WDM segment, compounding at 17% to about $13bn by 2030. Ciena and Nokia each gained about two share points in 2025. The vendors that buy merchant silicon and lack that position — ADTRAN at a 1.4% operating loss, Ribbon at breakeven — are the ones the format has hurt.</p>
+
+<h3>Testing what Ciena says about itself</h3>
+<p>Ciena's 10-K makes no quantified market-share claim anywhere. It asserts "global leadership in optical networking" and lists "incumbency" among the factors that decide deals. Against outside evidence:</p>
+<div class="tw"><table>
+<thead><tr><th>Company claim</th><th>Verdict</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Leading optical transport vendor in North America</td><td class="verdict v-sup">Supports, indirectly</td><td>#2 globally behind Huawei, which is absent from North America; NA is &gt;40% of the market; Ciena is #1 in DCI. No published North American share percentage exists.</td></tr>
+<tr><td>WaveLogic 6 Extreme gives a lead in 1.6T coherent</td><td class="verdict v-part">Partially supports</td><td>First to announce 1.6T (Feb 2023) and first live-network trial (Arelion, Aug 2024), ahead of Nokia's ICE7 and Cisco's CIM8 at 1.2T. But Huawei ships 2.0T wavelengths with a European tier-1 deployment in progress (Dell'Oro, 31 Mar 2026), and six vendors shipped 1.2T-plus embedded modules in 2025. The lead is one to two years, and Western-only.</td></tr>
+<tr><td>Installed base makes Ciena hard to displace</td><td class="verdict v-part">Partially supports</td><td>~40% of disaggregated WDM and no publicly disclosed competitive loss in 18 months. But the lock-in holds at the line-system layer, not the modem layer, where Ciena is not among the ZR/ZR+ module share leaders — Cisco's Acacia first, Marvell second.</td></tr>
+<tr><td>Cloud and AI demand is structural, not cyclical</td><td class="verdict v-unv">Unverified, leaning supportive</td><td>DCI grew 45% year on year in Q2 2026; Dell'Oro raised its 2026 forecast from 10% to 16% within three months and says supply, not demand, is the constraint. But no vendor has reported lead times normalising — the one metric that separates a buildout from a pull-forward.</td></tr>
+<tr><td>Software is a differentiator</td><td class="verdict v-con">Contradicts on materiality</td><td>Blue Planet was $115.5m in FY2025, 2.4% of revenue, and reached profitability for the first time only that year. No independent source ranks Ciena's software position.</td></tr>
+</tbody>
+</table></div>
+<p class="cap">Sources: Dell'Oro Group releases 18 Feb, 31 Mar, 16 Jun and 21 Aug 2026; Cignal AI, 16 and 21 Apr 2026; Ciena FY2025 10-K and Q3 FY2026 materials.</p>
+
+<p>The evidence points to a consistent answer on what kind of company earns durable returns here: one that owns its coherent silicon or has the volume to amortise someone else's; that leads the disaggregation rather than defending against it; that sells to cloud operators as well as carriers, because carrier capital spending is forecast to compound at 1% to 2030; and that has the balance sheet to fund an $850m R&amp;D line through a digestion year. <strong>Ciena is that kind of company on all four counts.</strong> What it is not is a company with pricing power — and nothing in the outside evidence suggests any vendor in this industry has ever had it.</p>
+
+<h2>4. Growth engine</h2>
+<p>Ciena is growing 37% year on year and essentially all of it is organic. The only acquisition, Nubis Communications, closed 7 October 2025 for $232.6m cash out of ~$270.5m total consideration, and Ciena omitted pro forma disclosures because the contribution was immaterial. There is no acquired-versus-organic wedge to unpick. The wedge that matters is between <em>customers</em>.</p>
+
+<p>In FY2025 revenue grew $754.6m. A single unnamed cloud provider accounted for <strong>$319.3m of that</strong> — its revenue rose from $532.3m to $851.6m — which is 42% of the company's entire growth from one customer. By the quarter ended 1 August 2026, cloud providers were 53% of revenue growing 82%, and two customers alone were 41.7% of the quarter: $476.6m (28.5%) and $219.6m (13.1%). AT&amp;T, by contrast, has gone from $479.1m in FY2016 to $500.7m in FY2025 — 4.5% of growth in nine years while the company grew 83%. The telco base has not shrunk; it has stopped mattering to the growth rate.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Reported vs organic, and where growth comes from</th><th class="n">FY2025</th><th class="n">9M FY2026</th></tr></thead>
+<tbody>
+<tr><td>Reported revenue growth</td><td class="n">+18.8%</td><td class="n">+36.6%</td></tr>
+<tr><td>Contribution from acquisitions</td><td class="n">nil</td><td class="n">immaterial</td></tr>
+<tr><td><strong>Organic growth</strong></td><td class="n"><strong>+18.8%</strong></td><td class="n"><strong>+36.6%</strong></td></tr>
+<tr><td>Revenue from the two largest customers</td><td class="n">$1,352.3m</td><td class="n">$1,720.9m</td></tr>
+<tr><td>Their share of the period's revenue</td><td class="n">28.4%</td><td class="n">36.9%</td></tr>
+<tr><td>Share of FY2025 growth from one cloud customer</td><td class="n">42%</td><td class="n">—</td></tr>
+</tbody>
+</table></div>
+<p class="cap">Sources: FY2025 10-K; Q3 FY2026 10-Q, 3 Sep 2026. FY2025's two &gt;10% customers were an unnamed cloud provider ($851.6m) and AT&amp;T ($500.7m); 9M FY2026's were two cloud providers. Nubis pro forma omitted for immateriality (FY2025 10-K, Note 3).</p>
+
+<div class="chart">
+<svg viewBox="0 0 820 320" role="img" aria-label="Ciena revenue by fiscal year, 2016 to 2026 estimate">
+  <text x="14" y="20" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#2B2B2B">Revenue, $m — the cycle and the current step-change</text>
+  <line x1="60" y1="250" x2="795" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="60" y1="30" x2="60" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+  <g font-size="11" fill="#6E675C" font-family="Calibri,Arial,sans-serif">
+    <line x1="60" y1="250" x2="795" y2="250" stroke="#E5DDD0"/><text x="30" y="254">0</text>
+    <line x1="60" y1="187" x2="795" y2="187" stroke="#F0EADF"/><text x="24" y="191">2,000</text>
+    <line x1="60" y1="124" x2="795" y2="124" stroke="#F0EADF"/><text x="24" y="128">4,000</text>
+    <line x1="60" y1="61"  x2="795" y2="61"  stroke="#F0EADF"/><text x="24" y="65">6,000</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+    points="60,168 133,162 206,153 279,138 352,139 425,136 498,136 571,112 644,124 717,100 790,48"/>
+  <g fill="#C75B39">
+    <circle cx="60" cy="168" r="3.6"/><circle cx="133" cy="162" r="3.6"/><circle cx="206" cy="153" r="3.6"/>
+    <circle cx="279" cy="138" r="3.6"/><circle cx="352" cy="139" r="3.6"/><circle cx="425" cy="136" r="3.6"/>
+    <circle cx="498" cy="136" r="3.6"/><circle cx="571" cy="112" r="3.6"/><circle cx="644" cy="124" r="4.6"/>
+    <circle cx="717" cy="100" r="3.6"/><circle cx="790" cy="48" r="4.6"/>
+  </g>
+  <text x="60" y="158" text-anchor="start" font-size="12" font-family="Calibri,Arial,sans-serif" fill="#C75B39" font-weight="700">2,601</text>
+  <text x="644" y="143" text-anchor="middle" font-size="12" font-family="Calibri,Arial,sans-serif" fill="#6E675C">4,015 trough</text>
+  <text x="790" y="38" text-anchor="end" font-size="12" font-family="Calibri,Arial,sans-serif" fill="#C75B39" font-weight="700">6,420 guide</text>
+  <g font-size="11" fill="#6E675C" text-anchor="middle" font-family="Calibri,Arial,sans-serif">
+    <text x="60" y="270">FY16</text><text x="133" y="270">17</text><text x="206" y="270">18</text>
+    <text x="279" y="270">19</text><text x="352" y="270">20</text><text x="425" y="270">21</text>
+    <text x="498" y="270">22</text><text x="571" y="270">23</text><text x="644" y="270">24</text>
+    <text x="717" y="270">25</text><text x="790" y="270">26E</text>
+  </g>
+  <text x="14" y="300" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">Six flat years, a 20.8% surge in FY2023, an 8.5% inventory-correction fall in FY2024, then the AI interconnect build.</text>
+</svg>
+</div>
+<p class="cap">Sources: 10-Ks FY2016–FY2025; FY2026 from guidance of 3 September 2026. FY2018 and FY2024 were 53-week years.</p>
+
+<div class="chart">
+<svg viewBox="0 0 820 320" role="img" aria-label="Cloud share of revenue against adjusted gross margin, by quarter">
+  <text x="14" y="20" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#2B2B2B">The dilution thesis, tested: cloud share vs adjusted gross margin (%)</text>
+  <line x1="60" y1="250" x2="795" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="60" y1="30" x2="60" y2="250" stroke="#E5DDD0" stroke-width="1.5"/>
+  <g font-size="11" fill="#6E675C" font-family="Calibri,Arial,sans-serif">
+    <line x1="60" y1="250" x2="795" y2="250" stroke="#E5DDD0"/><text x="34" y="254">30</text>
+    <line x1="60" y1="177" x2="795" y2="177" stroke="#F0EADF"/><text x="34" y="181">40</text>
+    <line x1="60" y1="104" x2="795" y2="104" stroke="#F0EADF"/><text x="34" y="108">50</text>
+    <line x1="60" y1="31"  x2="795" y2="31"  stroke="#F0EADF"/><text x="34" y="35">60</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+    points="60,191 207,177 354,162 501,162 648,133 790,81"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="6 4"
+    points="60,169 207,163 354,152 501,142 648,141 790,130"/>
+  <g fill="#C75B39"><circle cx="60" cy="191" r="3.4"/><circle cx="207" cy="177" r="3.4"/><circle cx="354" cy="162" r="3.4"/><circle cx="501" cy="162" r="3.4"/><circle cx="648" cy="133" r="3.4"/><circle cx="790" cy="81" r="4.4"/></g>
+  <g fill="#3C6E8F"><circle cx="60" cy="169" r="3.4"/><circle cx="207" cy="163" r="3.4"/><circle cx="354" cy="152" r="3.4"/><circle cx="501" cy="142" r="3.4"/><circle cx="648" cy="141" r="3.4"/><circle cx="790" cy="130" r="4.4"/></g>
+  <text x="60" y="207" text-anchor="start" font-size="12.5" fill="#C75B39" font-weight="700" font-family="Calibri,Arial,sans-serif">Cloud share 38%</text>
+  <text x="790" y="71" text-anchor="end" font-size="12.5" fill="#C75B39" font-weight="700" font-family="Calibri,Arial,sans-serif">53%</text>
+  <text x="60" y="156" text-anchor="start" font-size="12.5" fill="#3C6E8F" font-weight="700" font-family="Calibri,Arial,sans-serif">Adj. gross margin 41.0%</text>
+  <text x="790" y="120" text-anchor="end" font-size="12.5" fill="#3C6E8F" font-weight="700" font-family="Calibri,Arial,sans-serif">46.4%</text>
+  <g font-size="11" fill="#6E675C" text-anchor="middle" font-family="Calibri,Arial,sans-serif">
+    <text x="60" y="270">Q2 FY25</text><text x="207" y="270">Q3 FY25</text><text x="354" y="270">Q4 FY25</text>
+    <text x="501" y="270">Q1 FY26</text><text x="648" y="270">Q2 FY26</text><text x="790" y="270">Q3 FY26</text>
+  </g>
+  <text x="14" y="300" font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif">Ciena spent three years saying cloud mix diluted product margin. Cloud share rose 15 points and margin rose 540bp alongside it.</text>
+</svg>
+</div>
+<p class="cap">Sources: Ciena quarterly presentations and releases, 5 Jun 2025 – 3 Sep 2026. The metric label changed from "direct cloud provider" to "cloud provider" in Q2 FY2026, and the "non-telco %" disclosure was discontinued after Q1 FY2026 — so service-provider revenue for the two most recent quarters is not disclosed.</p>
+
+<p>That result deserves a caveat rather than a victory lap. The Q3 FY2026 10-Q attributes the margin gain to "cost reduction, pricing optimization, product mix, and tariff refunds." Two of those four — pricing optimisation and tariff refunds — are conditions of a supply-constrained market rather than properties of the customer mix. The reversal is not yet proof that cloud revenue is structurally as good as carrier revenue. It is proof that the dilution thesis does not hold <em>while supply is short</em>.</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever structural"><div class="tag">Structural</div><div class="t">Cloud data-centre interconnect and "scale-across"</div><p>Training clusters are being split across buildings roughly 100km apart to reach different electricity grids, and each split creates coherent transport demand that did not exist when the cluster sat in one building (Dell'Oro, 17 Dec 2025). DCI grew 45% year on year in Q2 2026. This is the largest driver by a distance and the reason the whole market is growing again.</p></div>
+
+<div class="lever structural"><div class="tag">Structural — and dilutive</div><div class="t">Coherent pluggables</div><p>Ciena's pluggable revenue more than doubled year on year in Q3 FY2026 and WaveLogic 6 Nano 800ZR shipments more than doubled sequentially. But given the revenue intensity of the format described above, every wavelength that migrates to a pluggable arrives with a fraction of the revenue the embedded equivalent carried. Growing here is necessary and dilutive at the same time.</p></div>
+
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="t">The WaveLogic 6 Extreme refresh cycle</div><p>Customer count went from five at commercial availability in December 2024 to 110 by June 2026. Ciena has never disclosed what WaveLogic 6 Extreme contributes to revenue in any period, so its size can only be inferred from Optical Networking's 46.1% growth in the latest quarter.</p></div>
+
+<div class="lever"><div class="tag">Temporary</div><div class="t">Backlog conversion against constrained supply</div><p>Backlog rose from $2.1bn to $5.0bn during FY2025, and Ciena said "a portion is related to an industry-wide constrained supply environment." Some current revenue is catch-up shipment against orders placed early to secure capacity, and that component stops when lead times normalise.</p></div>
+
+<div class="lever cyclical"><div class="tag">Cyclical</div><div class="t">Service providers and managed optical fibre networks</div><p>More than 30 MOFN wins in FY2025 — arrangements where a carrier builds and leases dedicated capacity to a cloud provider — and India revenue more than doubled year on year in Q2 FY2026 on that basis. This is cloud demand reaching Ciena through a telco balance sheet, and it moves with carrier willingness to fund it.</p></div>
+
+<div class="lever mgmt"><div class="tag">Management-driven — immaterial today</div><div class="t">Interconnects inside the data centre</div><p>Nubis brings co-packaged optics and active copper cables. The market it targets — datacom optical components — was over $19bn in 2025 and grew more than 70% (Cignal AI, 21 Apr 2026), several times the growth rate of Ciena's own market. Ciena has disclosed one "significant direct performance optics module order" with no dollar amount, and nothing else.</p></div>
+
+<p style="margin-top:20px">Guidance for FY2026 is $6.42bn, up about 35%, with a preliminary FY2027 view of at least 30% further growth at a 45–46% adjusted gross margin and a 25–27% adjusted operating margin. FY2026 guidance has been raised every quarter this year, from $5.7–6.1bn in December to $6.42bn in September. These are the first quantified multi-year figures in the filing record examined here — neither the FY2016 nor the FY2021 10-K contains any stated financial target.</p>
+
+<h2>5. Margin, cash and capital allocation</h2>
+<p>Ciena's margin structure has two layers that behave differently. Gross margin is set by product mix and by whether the market is short of supply; it has oscillated between 42% and 48% for a decade with no trend. Operating margin is set by whether revenue is growing faster than an R&amp;D line that does not shrink. <strong>The second is where the earnings come from.</strong></p>
+
+<p>R&amp;D was 17.4% of revenue in FY2016, 14.8% in FY2021 and 17.8% in FY2025. Over a decade in which revenue grew 83%, R&amp;D grew 88%. There is no R&amp;D operating leverage across the cycle — the coherent roadmap has to be funded whether or not customers are buying, which is precisely why only six firms build these chips and why the barrier is real. What changes is the denominator. In the quarter ended 1 August 2026, revenue of $1,671.1m grew 37% while adjusted operating expense grew 5.2%, and adjusted operating margin went from 10.7% to 22.5%. That single comparison is the entire earnings story: <em>the fixed cost was already there, and the revenue arrived.</em></p>
+
+<div class="tw"><table>
+<thead><tr><th></th><th class="n">FY2016</th><th class="n">FY2021</th><th class="n">FY2025</th><th class="n">FY2026 guide</th></tr></thead>
+<tbody>
+<tr><td><strong>Revenue</strong></td><td class="n">$2,600.6m</td><td class="n">$3,620.7m</td><td class="n">$4,769.5m</td><td class="n">~$6,420m</td></tr>
+<tr><td><strong>Gross margin (GAAP)</strong></td><td class="n">44.7%</td><td class="n">47.6%</td><td class="n">42.0%</td><td class="n">n/g</td></tr>
+<tr><td><strong>Adjusted operating margin</strong></td><td class="n">11.4%</td><td class="n">16.8%</td><td class="n">11.2%</td><td class="n">~19–20%</td></tr>
+<tr><td><strong>R&amp;D, % of revenue</strong></td><td class="n">17.4%</td><td class="n">14.8%</td><td class="n">17.8%</td><td class="n">n/g</td></tr>
+<tr><td><strong>Cash from operations</strong></td><td class="n">$289.5m</td><td class="n">$541.6m</td><td class="n">$806.1m</td><td class="n">n/g</td></tr>
+<tr><td><strong>Diluted shares</strong></td><td class="n">150.7m</td><td class="n">156.7m</td><td class="n">145.2m</td><td class="n">n/g</td></tr>
+</tbody>
+</table></div>
+<p class="cap"><strong>Comparability warning.</strong> Adjusted operating margin comes from each year's Q4 release, as the 10-Ks contain no non-GAAP measures. FY2017 net income was inflated by a $1.1bn deferred-tax valuation-allowance release and FY2018 reversed $472.8m of it under the Tax Cuts and Jobs Act; FY2018 and FY2024 were 53-week years; ASC 606 was adopted in FY2019, which also split the software segment in two; geographic regions went from four to three in FY2020; FY2022 operating cash flow was <em>negative</em> $167.8m on a $589m inventory build; and segment profit was recast in Q4 FY2025 to exclude share-based compensation, restating FY2023–FY2024 but not earlier years.</p>
+
+<p>Operating cash flow was $683.6m for nine months of FY2026 against $435.0m a year earlier. Free cash flow, however, <em>fell 14%</em> in the latest quarter to $116m, because nine-month capital expenditure doubled to $194.9m, receivables rose $251.5m and inventory rose $118.3m. That is what a supply ramp costs. Ciena is also buying ahead: purchase commitments to contract manufacturers and component suppliers stood at <strong>$3.3bn</strong> on 1 August 2026, against $2.1bn at the prior year end and $1.7bn the year before, with multi-year supplier agreements "some of which involve firm purchase commitments and prepayment arrangements." The obligation is real; the demand behind it is forecast.</p>
+
+<div class="quote">
+<blockquote>"While we believe much of this backlog growth reflects the increased demand for connectivity to address AI workloads, a portion is related to an industry-wide constrained supply environment."</blockquote>
+<cite>Ciena, FY2025 Form 10-K, 12 December 2025 — on backlog rising from $2.1bn to $5.0bn</cite>
+</div>
+
+<p>Against that, the excess-and-obsolete inventory provision was $72.4m for nine months of FY2026 versus $34.2m a year earlier, attributed in the 10-Q to "reductions in forecasted demand for certain products." That sentence sits inside the same document describing historically high backlog. Both can be true — short of the parts customers want, long the parts they do not — but a rising obsolescence charge during a demand boom is the kind of detail that reads differently in hindsight.</p>
+
+<h3>Capital allocation</h3>
+<p>Where the cash went over ten fiscal years, FY2016–FY2025, summed from the annual cash flow statements: <strong>share buybacks $1,758.9m, capital expenditure $968.7m, debt repayment $849.4m, acquisitions $666.2m, dividends nil.</strong> Ciena has never paid a dividend. Buybacks and M&amp;A together consumed roughly 95% of the $2,554.7m of cash generated after capital expenditure.</p>
+
+<p>The buyback record is the most revealing item in the capital account. Shares outstanding were 139.8m at the end of FY2016, rose to 154.9m by FY2021 — largely because convertible notes converted into 12.2m shares in FY2018 — and stood at 141.0m at the end of FY2025. <strong>Ten years and $1.76bn of repurchases left the count 0.9% higher than where it started.</strong> Share-based compensation rose from $52.0m to $184.5m over the same period. For most of the decade the buyback offset dilution rather than reduced the count; only from FY2023 did the count actually fall. Prices tell their own story: the FY2025 programme averaged $83.38 a share, Q4 FY2025 averaged $165.44, and repurchases through 28 August 2026 averaged $404.52. The bulk of the decade's repurchases were executed well below current levels rather than at them.</p>
+
+<p>The balance sheet was restructured in June 2026 on unusually favourable terms. Ciena issued <strong>$2.88bn of convertible senior notes due 2031 at a 0.00% coupon</strong>, initial conversion price roughly $746.66, paying $988.4m for a note hedge and receiving $873.4m from warrants; it used part of the proceeds to repay the $1.14bn term loan in full. Quarterly interest expense fell from $22.8m to $5.8m. Cash and investments stood at $2,843.6m against $3,229.8m of carrying-value debt — net debt of $431m, gross leverage 2.6×. The company has funded a multi-year supply build with a zero-coupon instrument, at the cost of a dilution obligation that only bites well above the current share price.</p>
+
+<h2>6. Cyclicality, constraints and what to monitor</h2>
+<p>This business is not merely cyclical; it has been through a full cycle in the last three years, which makes the shape of the last one the most useful thing available. Customer inventory digestion began in Q4 2023. The industry contracted for four quarters, falling 18% year on year in Q3 2024 and 13% for the full year, with India down 40% and China down 30%. Ciena's own revenue fell 8.5% in FY2024 to $4,015.0m, and adjusted operating margin bottomed at 6.8% in the quarter ended 27 April 2024. Then the market rebounded roughly 45% sequentially in Q4 2024 and Dell'Oro declared the glut over. <strong>Four quarters down, and the recovery was violent.</strong></p>
+
+<div class="tw"><table>
+<thead><tr><th>Where it sits now</th><th class="n">Prior trough</th><th class="n">Prior peak</th><th class="n">Latest</th></tr></thead>
+<tbody>
+<tr><td>Revenue, annualised</td><td class="n">$3,643m<br><span style="font-size:13px;color:var(--muted)">Q2 FY2024</span></td><td class="n">$4,770m<br><span style="font-size:13px;color:var(--muted)">FY2025</span></td><td class="n">~$6,684m<br><span style="font-size:13px;color:var(--muted)">Q3 FY2026</span></td></tr>
+<tr><td>Adjusted gross margin</td><td class="n">41.0%<br><span style="font-size:13px;color:var(--muted)">Q2 FY2025</span></td><td class="n">47.9%<br><span style="font-size:13px;color:var(--muted)">FY2021</span></td><td class="n">46.4%<br><span style="font-size:13px;color:var(--muted)">still below peak</span></td></tr>
+<tr><td>Adjusted operating margin</td><td class="n">6.8%<br><span style="font-size:13px;color:var(--muted)">Q2 FY2024</span></td><td class="n">17.6%<br><span style="font-size:13px;color:var(--muted)">FY2020</span></td><td class="n">22.5%<br><span style="font-size:13px;color:var(--muted)">above any prior peak</span></td></tr>
+</tbody>
+</table></div>
+<p class="cap">Sources: Ciena quarterly and annual releases. Q3 FY2026 revenue annualised as 4× the quarter, for comparison only.</p>
+
+<p>That combination is the tell. Ciena is <strong>not</strong> earning a record margin because its product economics improved beyond anything it has achieved before; it is earning a record margin because a normal-to-good gross margin is being spread across a revenue base half again as large as the one carrying the same fixed costs two years ago. Operating leverage, not pricing.</p>
+
+<p>The demand underneath it is split in a way that matters. Carrier capital spending was flat globally in 2025 and Dell'Oro forecasts a 2% decline in 2026 and 1% compound growth to 2030. AT&amp;T guides to $23–24bn of investment in 2026 and Verizon to $16.0–16.5bn, but BT has guided FY2027 capital expenditure down roughly £0.8bn. Cloud providers, meanwhile, are 34% of the whole optical transport market and are the entire growth. Submarine cable construction is a genuine third leg: cables planned to enter service between 2026 and 2029 exceed $16bn of investment, against an average above $2bn a year over the prior nine years (TeleGeography, 28 Apr 2026).</p>
+
+<p>The downside case does not require a recession. It requires only that the AI interconnect buildout prove to be a step change rather than a run rate. Cloud is 34% of the market and growing 40–60%; if that flattens, the 2024 template says the market falls into a four-quarter digestion of roughly 13% — and Ciena falls harder than the market because two customers are 41.7% of it. The second mechanism is slower and worse: if disaggregation continues past the thresholds above, the transport vendor's product converges on an amplifier and a management plane, and the layer's economics converge on Fabrinet's. The third is specific: a single top-four cloud provider standardising on merchant ZR+ optics with an open line system would remove the integrated system sale from its interconnect spending entirely.</p>
+
+<div class="two">
+  <div class="col durable"><h4>Durable — what survives ten years</h4>
+  <ul>
+    <li>A captive coherent DSP programme, one of only six in the world, funded at roughly $850m a year</li>
+    <li>Roughly 40% share of disaggregated WDM, the fastest-growing segment of the market</li>
+    <li>Line-system incumbency at large North American carriers and cloud operators</li>
+    <li>$2.88bn of funding at a 0.00% coupon to 2031, and net debt of just $431m</li>
+    <li>The scale to keep funding the roadmap through a digestion year, which competitors at breakeven cannot</li>
+  </ul></div>
+  <div class="col borrowed"><h4>Borrowed — what is helping right now</h4>
+  <ul>
+    <li>Two customers whose combined capital budgets set the growth rate — the concentration and the growth are the same fact</li>
+    <li>A backlog that management itself says is partly inflated by industry-wide supply constraint</li>
+    <li>Tariff refunds, named by the company as a driver of the latest quarter's gross-margin gain, unquantified</li>
+    <li>A 14.2% GAAP tax rate helped by a share-based compensation benefit that moves with the share price</li>
+    <li>Pricing and cost benefits of a demand–supply imbalance, which Ciena's own outlook language names as a variable</li>
+  </ul></div>
+</div>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tw"><table>
+<thead><tr><th>Indicator</th><th>Why it matters</th><th>Published by</th></tr></thead>
+<tbody>
+<tr><td>Cloud share of optical transport revenue; disaggregated WDM share; DCI vs non-DCI growth</td><td>The three numbers that describe whether the market's shape is still moving Ciena's way</td><td>Dell'Oro Group, quarterly</td></tr>
+<tr><td>Standalone coherent pluggable revenue and its share of WDM bandwidth shipped</td><td>The single best read on whether the revenue-intensity problem is accelerating</td><td>Cignal AI, quarterly</td></tr>
+<tr><td>Wavelength price erosion by route; submarine cable investment pipeline</td><td>Price is the industry's permanent headwind; subsea is the third demand leg</td><td>TeleGeography</td></tr>
+<tr><td>Customer concentration note; excess-and-obsolete provision; purchase commitments</td><td>Together these say whether the supply build is matched to real demand</td><td>Ciena 10-Q, quarterly</td></tr>
+<tr><td>Year-end backlog</td><td>The $2.1bn→$5.0bn move led this year; the next print leads the one after</td><td>Ciena 10-K, annually</td></tr>
+<tr><td>Optical Networks net sales and Network Infrastructure comparable operating margin</td><td>The cleanest public read on whether a direct competitor sees the same demand</td><td>Nokia, quarterly</td></tr>
+<tr><td>Global telecom capital expenditure</td><td>Whether the carrier half of the business stabilises or keeps shrinking</td><td>Dell'Oro, annually in April</td></tr>
+</tbody>
+</table></div>
+
+<h2>7. Risks, unknowns and questions for deeper work</h2>
+<p>Cyclicality is covered above. These are the risks a normal cycle does not capture, ordered by how much they compound with each other.</p>
+
+<div class="card">
+<p><strong>1. Concentration and durability are the same question.</strong> Two customers were 41.7% of the quarter ended 1 August 2026, one of them 28.5% alone, up from 26.1% in Q1 FY2025. Ciena's contracts "generally do not include minimum or guaranteed purchases and may allow customers to modify or cancel purchase orders." A single hyperscaler pausing its interconnect programme removes roughly a quarter of revenue against a research budget that cannot be cut without surrendering the roadmap, and the drop-through to operating profit is close to gross-margin rates. The customer that makes the growth structural is the one that makes it fragile.</p>
+<p><strong>2. The supply build is committed against forecast demand, and the obsolescence charge is already rising.</strong> Purchase commitments were $3.3bn against net inventory of $872m, some with prepayments. Revenue is recognised at shipment rather than acceptance, so backlog converts fast in both directions. Meanwhile the excess-and-obsolete provision more than doubled to $72.4m for nine months, on "reductions in forecasted demand for certain products." If the forecast is wrong, committed parts arrive anyway, flow into inventory, and are written down through product cost of goods — exactly the sequence Ciena ran in FY2024, when it took $77.3m of such charges on lower forecast demand for service-provider products.</p>
+<p><strong>3. Bandwidth is migrating to a format monetising at a fifth the revenue intensity, and Ciena is not the leader in it.</strong> Its own pluggable revenue more than doubled, which is the right response, but Dell'Oro's ZR/ZR+ module share leaders are Cisco's Acacia and Marvell — Ciena is not named. The risk is not that Ciena loses the pluggable market; it is that the pluggable market <em>wins</em>, and revenue per unit of traffic falls faster than volume rises. This compounds with risk 1, because hyperscalers are precisely the buyers most willing to disaggregate.</p>
+<p><strong>4. The technology lead is narrower than the marketing, and Western-only.</strong> WaveLogic 6 Extreme at 1.6T leads Nokia's ICE7 and Cisco's CIM8 at 1.2T, but Huawei ships 2.0T wavelengths with a European tier-1 deployment in progress, and six vendors shipped 1.2T-plus embedded modules in 2025. Cignal AI reports pluggable coherent performance is now comparable to embedded at 400G, and Marvell's 1.6T merchant part samples in 2H 2026. Each generation Ciena leads by less time buys less pricing advantage, against a development cost that does not fall.</p>
+<p><strong>5. The convertible is cheap money with a tail.</strong> $2.88bn at 0.00% due 2031 is close to free funding, and the note hedge pushes the effective dilution point higher. But it is $2.88bn of principal to be refinanced or settled in 2031 by a company whose revenue is set by two customers' capital budgets, and it was sized to fund a supply expansion that assumes current demand holds.</p>
+<p><strong>6. The deferred tax asset is 36% of book equity.</strong> $1,092.7m against $3,056.7m of equity, its carrying value dependent on projected future taxable income. Ciena has been here before: it released a $1.1bn valuation allowance in FY2017 and reversed $472.8m of the benefit a year later. A period of losses or a statutory rate change forces a non-cash charge exceeding several years of GAAP net income.</p>
+<p><strong>7. Disclosure has narrowed as concentration has risen.</strong> Ciena disclosed top-ten customer concentration every year from FY2014 to FY2024 — the last figure was 57.9%, an all-decade high — and replaced it with top-five in FY2025. It named WaveLogic generations and capacities from FY2017 to FY2024 and dropped both from the FY2025 10-K. It discontinued the "non-telco percentage of revenue" metric after Q1 FY2026. Each change is defensible alone; together they remove exactly the disclosures that would let an outsider judge how much of the story rests on two buyers.</p>
+<p style="margin-bottom:0"><strong>8. The adjacency record is poor.</strong> $89.1m of in-process R&amp;D written off on 25G PON, technology acquired with Tibit as part of ~$291.7m of consideration. Blue Planet, ten years old, is 2.4% of revenue, was loss-making FY2018–FY2024, and fell 16.5% in the latest quarter — with FY2025 segment R&amp;D <em>lower</em> than FY2023, meaning part of its first profitable year came from spending less. WaveRouter, named six times in the FY2024 10-K, appears nowhere in the FY2025 one, with no explanation. Nubis targets a market growing several times faster than Ciena's own, which is the reason to try — and the reason to watch what it costs.</p>
+</div>
+
+<h3>What the sources could not answer</h3>
+<p>These are gaps in the evidence, not judgements. Each would change how confidently the analysis above could be stated.</p>
+<div class="card">
+<ul style="margin:0; padding-left:20px">
+<li style="margin-bottom:10px"><strong>No unit metric of any kind</strong>, in any of ten 10-Ks — no wavelengths, ports, modems or shipment counts. Every per-unit statement here is inferred from revenue and margin, not measured.</li>
+<li style="margin-bottom:10px"><strong>Aggregate cloud-provider revenue</strong> has never appeared in a filing; only a single unnamed customer's dollars. The 53% figure comes from a presentation, and its definition changed in Q2 FY2026 from "direct cloud provider" to "cloud provider" without explanation of what moved.</li>
+<li style="margin-bottom:10px"><strong>No backlog figure since the $5.0bn</strong> at 1 November 2025, and no split between contracted and forecast, or disclosed cancellation terms. Remaining performance obligations — the non-cancellable subset — were only $2.1bn against that $5.0bn.</li>
+<li style="margin-bottom:10px"><strong>WaveLogic 6 Extreme revenue and standalone pluggable revenue</strong> have never been disclosed in any period, so the two most important mix questions cannot be answered from the filings.</li>
+<li style="margin-bottom:10px"><strong>The tariff refund</strong> that helped the latest quarter's gross margin is named but not quantified, so the underlying margin cannot be isolated.</li>
+<li style="margin-bottom:10px"><strong>Contract manufacturers are never named</strong>, in any year — only the countries. A supplier concentration this material to a company with no factories of its own is invisible.</li>
+<li style="margin-bottom:10px">The research folder holds <strong>no earnings-call transcripts and no investor-day materials</strong>, so no Q&amp;A-level management commentary was available for any period.</li>
+<li style="margin-bottom:0">Externally: no source publishes Ciena's <strong>percentage share of North American optical transport</strong> or its share level before 2024; no hyperscaler discloses networking capital expenditure separately; and no published figure exists for what a coherent DSP generation costs to develop or how long a carrier qualification cycle takes.</li>
+</ul>
+</div>
+
+<h2>8. Investor takeaways</h2>
+<div class="lever"><div class="t">What this business really is</div><p>A subscale-margin hardware company sitting in the least profitable layer of the optical value chain, which has bought itself a defensible position by owning coherent modem silicon that only five other firms in the world can build.</p></div>
+<div class="lever"><div class="t">The economic engine</div><p>A gross margin that has oscillated between 42% and 48% for a decade with no trend, applied to a revenue base that has just grown 37% against a fixed R&amp;D line of roughly $850m. The earnings are operating leverage, not pricing power — and the industry has never had pricing power.</p></div>
+<div class="lever"><div class="t">The main growth lever</div><p>Cloud providers connecting AI training clusters across separate data centres. That is 53% of revenue growing 82%, and 42% of last year's entire revenue growth came from one customer.</p></div>
+<div class="lever"><div class="t">What could break it</div><p>The same customers. Two are 41.7% of revenue with no minimum purchase commitments, against $3.3bn of purchase commitments Ciena has made to its own suppliers — and behind that, bandwidth migrating to pluggable modules that generate a fifth of the revenue per unit of traffic.</p></div>
+<div class="lever"><div class="t">What to monitor</div><p>The excess-and-obsolete inventory provision against the backlog figure — the two disclosures that would diverge first if the demand forecast is wrong — and pluggables' share of WDM bandwidth in Cignal AI's quarterly data.</p></div>
+
+<footer>
+<h3>Sources</h3>
+<p><strong>Company.</strong> Ciena Form 10-K for FY2025 (year ended 1 November 2025, filed 12 December 2025) and the nine prior annual filings back to FY2016; Form 10-Q for the quarter ended 1 August 2026 (filed 3 September 2026) and prior quarters; quarterly earnings releases, shareholder letters and presentations from December 2016 through 3 September 2026; DEF 14A proxies 2017–2026; Forms 8-K on the Nubis acquisition (22 September and 7 October 2025) and the convertible note offering (8 and 11 June 2026). Non-GAAP measures come from the quarterly releases, because the 10-Ks contain none.</p>
+<p><strong>Industry and competitors.</strong> Dell'Oro Group optical transport and telecom capex releases (18 February, 2 April, 19 May, 16 June, 21 August 2026, and 25 February 2025); Cignal AI transport hardware, coherent pluggable, DSP supply chain and datacom component releases (16, 21 and 30 April 2026); TeleGeography bandwidth pricing (20 May 2025) and submarine cable investment (28 April 2026); ABI Research open line systems (30 June 2026); and the FY2025/FY2026 results of Nokia, Cisco, Broadcom, Marvell, Lumentum, Coherent, Fabrinet, ADTRAN, Ribbon and Infinera.</p>
+<p><strong>What post-dates the filings.</strong> Nothing material. Ciena has no announced-but-unclosed transaction as of 7 September 2026; the most recent corporate action, the $2.88bn convertible note issue and $1.14bn term loan repayment, closed 11 June 2026 and is fully reflected in the quarter ended 1 August 2026. The FY2027 revenue, gross-margin and operating-margin figures cited are a preliminary company view given on 3 September 2026, not guidance.</p>
+<p style="margin-bottom:0"><em>This document explains how the business works and what drives its economics. It is not a valuation and not a recommendation.</em></p>
+</footer>
+
+</div>
+</body>
+</html>

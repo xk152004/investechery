@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta Platforms — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#faf9f7;--panel:#fff;--ink:#1a1a1a;--muted:#6b6b6b;--faint:#8f8f8f;
+  --rule:#e3e0da;--rule2:#d0ccc4;
+  --bull:#14606f;--bull-bg:#e8f4f5;--bull-rule:#a8d3d9;
+  --bear:#963028;--bear-bg:#fbeceb;--bear-rule:#e6b4b0;
+  --accent:#1a1a1a;--chip:#f0ede8;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141413;--panel:#1c1c1a;--ink:#eceae5;--muted:#a3a09a;--faint:#807d77;
+  --rule:#2e2d2a;--rule2:#3d3b37;
+  --bull:#6fc4cf;--bull-bg:#132a2e;--bull-rule:#245b64;
+  --bear:#e8918a;--bear-bg:#2c1715;--bear-rule:#6b332e;
+  --accent:#eceae5;--chip:#26251f;}}
+:root[data-theme="dark"]{
+  --bg:#141413;--panel:#1c1c1a;--ink:#eceae5;--muted:#a3a09a;--faint:#807d77;
+  --rule:#2e2d2a;--rule2:#3d3b37;
+  --bull:#6fc4cf;--bull-bg:#132a2e;--bull-rule:#245b64;
+  --bear:#e8918a;--bear-bg:#2c1715;--bear-rule:#6b332e;
+  --accent:#eceae5;--chip:#26251f;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:242px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:34px 20px 40px 24px;border-right:1px solid var(--rule)}
+main{padding:34px 40px 120px 44px;min-width:0}
+@media (max-width:880px){.wrap{grid-template-columns:1fr}
+ nav{position:static;height:auto;border-right:none;border-bottom:1px solid var(--rule);padding:18px 20px}
+ main{padding:24px 20px 80px}
+ .navlist{display:flex;flex-wrap:wrap;gap:6px}
+ .navlist a{border-left:none!important;padding:5px 11px!important;background:var(--chip);border-radius:20px}}
+.brand{font-family:var(--mono);font-size:9.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.navtitle{font-family:var(--serif);font-size:19px;line-height:1.24;font-weight:600;margin:0 0 20px}
+.navlist{display:flex;flex-direction:column;gap:1px;margin-bottom:24px}
+.navlist a{display:block;padding:6px 0 6px 12px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;font-size:13px;transition:.14s}
+.navlist a:hover{color:var(--ink)}
+.navlist a.on{color:var(--ink);border-left-color:var(--accent);font-weight:600}
+.navmeta{border-top:1px solid var(--rule);padding-top:14px;font-size:11.5px;color:var(--faint);line-height:1.5}
+.navmeta b{color:var(--muted);font-weight:600}
+.themebtn{display:block;margin-top:14px;background:none;border:1px solid var(--rule2);color:var(--muted);border-radius:5px;padding:4px 9px;font-size:11px;cursor:pointer;font-family:var(--sans)}
+.themebtn:hover{color:var(--ink);border-color:var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--faint)}
+h1{font-family:var(--serif);font-size:clamp(30px,4.4vw,42px);line-height:1.1;font-weight:600;margin:10px 0 8px;letter-spacing:-.015em}
+.dek{color:var(--muted);font-size:14.5px;font-style:italic;margin:0 0 26px;padding-bottom:22px;border-bottom:2px solid var(--ink)}
+.hdrgrid{display:grid;grid-template-columns:152px minmax(0,1fr);margin:0 0 30px;border-top:1px solid var(--rule)}
+.hdrgrid dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--faint);padding:11px 14px 11px 0;border-bottom:1px solid var(--rule)}
+.hdrgrid dd{margin:0;padding:11px 0;font-size:13px;color:var(--muted);border-bottom:1px solid var(--rule)}
+section{scroll-margin-top:20px;padding-top:34px}
+h2{font-family:var(--serif);font-size:25px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.h2num{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.14em;display:block;margin-bottom:3px}
+h2+.lede{color:var(--muted);font-size:13.5px;margin:0 0 20px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+p{margin:0 0 14px}
+.pitch{font-family:var(--serif);font-size:19px;line-height:1.45;margin:0 0 12px;padding:16px 20px;border-left:3px solid;background:var(--panel)}
+.pitch.bull{border-color:var(--bull)}.pitch.bear{border-color:var(--bear)}
+.pitch em{font-style:italic;color:var(--muted);font-size:16px}
+.typetag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;background:var(--chip);border:1px solid var(--rule2);padding:3px 9px;border-radius:3px;margin:0 5px 5px 0}
+.typetag.off{opacity:.3}
+.duelbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 20px;padding:12px 14px;background:var(--panel);border:1px solid var(--rule);border-radius:8px}
+.duelbar .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.seg{display:inline-flex;border:1px solid var(--rule2);border-radius:6px;overflow:hidden}
+.seg button{background:none;border:none;padding:6px 14px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer;font-family:var(--sans);transition:.14s}
+.seg button+button{border-left:1px solid var(--rule2)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+.duelbar .hint{font-size:12px;color:var(--faint);margin-left:auto}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:9px;margin:0 0 12px;overflow:hidden}
+.card>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;transition:background .14s}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary:hover{background:var(--chip)}
+.tick{font-family:var(--mono);font-size:10px;letter-spacing:.05em;padding:3px 7px;border-radius:4px;flex:none;margin-top:2px;font-weight:600;white-space:nowrap}
+.bull .tick{background:var(--bull-bg);color:var(--bull);border:1px solid var(--bull-rule)}
+.bear .tick{background:var(--bear-bg);color:var(--bear);border:1px solid var(--bear-rule)}
+.ctitle{font-weight:600;font-size:15px;line-height:1.35;flex:1}
+.chev{flex:none;color:var(--faint);font-size:11px;margin-top:4px;transition:transform .18s}
+.card[open]>summary .chev{transform:rotate(90deg)}
+.cbody{padding:2px 16px 16px;border-top:1px solid var(--rule)}
+.field{margin:12px 0 0}
+.field .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:3px}
+.field .v{font-size:14px;line-height:1.6}
+.sev{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:3px;font-weight:400}
+.pairgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.pairgrid.solo{grid-template-columns:1fr}
+.pairgrid .card{margin:0 0 12px}
+.paircol-h{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);padding:0 0 6px 2px}
+.pairwrap{margin-bottom:20px}
+.pairtag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--faint);border-top:1px solid var(--rule);padding-top:10px;margin-bottom:8px;display:block}
+@media (max-width:760px){.pairgrid{grid-template-columns:1fr}}
+cite{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap}
+.sigs{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:11px}
+.sig{background:var(--panel);border:1px solid var(--rule);border-radius:9px;padding:14px 15px;display:flex;flex-direction:column;gap:7px}
+.sig h3{margin:0;font-size:14px;font-weight:600;line-height:1.3}
+.sig .val{font-family:var(--mono);font-size:14.5px;font-weight:600;line-height:1.4}
+.sig .src{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.sig .dir{font-size:13px;color:var(--muted);line-height:1.5;border-top:1px solid var(--rule);padding-top:8px;margin-top:auto}
+.tracks{display:flex;gap:5px;flex-wrap:wrap}
+.trk{font-family:var(--mono);font-size:9.5px;padding:2px 6px;border-radius:3px;font-weight:600;cursor:pointer}
+.trk.b{background:var(--bull-bg);color:var(--bull);border:1px solid var(--bull-rule)}
+.trk.r{background:var(--bear-bg);color:var(--bear);border:1px solid var(--bear-rule)}
+.bl{counter-reset:bl}
+.bl p{position:relative;padding-left:34px;margin-bottom:16px;font-size:15.5px}
+.bl p::before{counter-increment:bl;content:counter(bl);position:absolute;left:0;top:2px;font-family:var(--mono);font-size:11px;color:var(--faint);border:1px solid var(--rule2);width:21px;height:21px;border-radius:50%;display:grid;place-items:center}
+.srcgrp{background:var(--panel);border:1px solid var(--rule);border-radius:8px;margin-bottom:8px}
+.srcgrp>summary{cursor:pointer;list-style:none;padding:11px 15px;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;gap:10px}
+.srcgrp>summary::-webkit-details-marker{display:none}
+.srcgrp>summary:hover{background:var(--chip)}
+.srcgrp .cnt{font-family:var(--mono);font-size:10.5px;color:var(--faint);font-weight:400}
+.srcgrp ul{margin:0;padding:11px 15px 13px 32px;border-top:1px solid var(--rule)}
+.srcgrp li{font-size:13px;color:var(--muted);margin-bottom:5px}
+footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--faint);line-height:1.6}
+.flash{animation:fl 1.3s ease-out}
+@keyframes fl{0%,55%{box-shadow:0 0 0 2px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
+</style></head>
+<body><div class="wrap">
+<nav>
+  <div class="brand">Bull &amp; Bear Memo</div>
+  <div class="navtitle">Meta Platforms, Inc.</div>
+  <div class="navlist" id="nav">
+    <a href="#s1">1 · Business in one line</a>
+    <a href="#s2">2 · Bull case</a>
+    <a href="#s3">3 · Bear case</a>
+    <a href="#s4">4 · Signals to monitor</a>
+    <a href="#s5">5 · Bottom line</a>
+    <a href="#s6">Sources &amp; gaps</a>
+  </div>
+  <div class="navmeta">
+    <b>Latest period</b><br>Q2 2026 (qtr ended 30 Jun 2026)<br><br>
+    <b>Evidence base</b><br>FY2025 10-K · Q2 2026 10-Q · Q2 2026 call &amp; follow-up call<br><br>
+    <b>Not included</b><br>Valuation, price, recommendation, external sources
+    <button class="themebtn" id="themebtn" type="button">Toggle theme</button>
+  </div>
+</nav>
+<main>
+  <div class="eyebrow">Fast thinking anchor · Nasdaq: META</div>
+  <h1>Meta Platforms, Inc.</h1>
+  <p class="dek">Why it could work, how I could lose money, and what to watch — reopenable in six months.</p>
+  <dl class="hdrgrid">
+    <dt>company</dt><dd>Meta Platforms, Inc. (Nasdaq: META)</dd>
+    <dt>sources used</dt><dd>FY2025 10-K (filed 29 Jan 2026); Q2 2026 10-Q (filed 30 Jul 2026); Q2 2026 earnings call transcript (29 Jul 2026); Q2 2026 follow-up call transcript (29 Jul 2026). FY2023–FY2024 comparatives taken from the FY2025 10-K.</dd>
+    <dt>latest period</dt><dd>Q2 2026 — quarter ended 30 June 2026</dd>
+    <dt>missing or stale data</dt><dd>Ad load level and remaining headroom: not disclosed. Return metric on AI infrastructure: not disclosed; management declined a timeline. Maintenance-versus-growth split of capex: not disclosed. The MDL state-AG trial (began 12 Aug 2026) and the expanded New Mexico trial (begins 8 Sep 2026) post-date the latest filing in sources, so their outcomes are unknown here. No market or valuation data is used; this memo takes no view on price.</dd>
+  </dl>
+
+  <section id="s1">
+    <h2><span class="h2num">SECTION 01</span>Business in one line</h2>
+    <p class="lede">What it does, how it makes money, and which type it is.</p>
+    <p>Meta sells auction-priced advertising against the attention of 3.60 billion daily active people across Facebook, Instagram, WhatsApp and Messenger. Advertising was $196.18bn of FY2025's $200.97bn of revenue — 97.6% <cite>[FY2025 10-K, share computed]</cite>. Revenue is impressions multiplied by price per ad, sold in a real-time auction with no contracts and no backlog. Reality Labs, the second segment, produced $2.21bn of FY2025 revenue and lost $19.19bn <cite>[FY2025 10-K]</cite>.</p>
+    <p style="margin-bottom:12px"><span class="typetag off">slow grower</span><span class="typetag off">stalwart</span><span class="typetag">fast grower</span><span class="typetag off">cyclical</span><span class="typetag off">turnaround</span><span class="typetag off">asset play</span></p>
+    <p><strong>Fast grower</strong> — revenue grew 30% in H1 2026 <cite>[Q2 2026 10-Q]</cite> — that has just bolted a heavy-industry capital cycle onto itself, with FY2026 capex guided to $130–145bn against FY2025 revenue of $200.97bn <cite>[Q2 2026 call; FY2025 10-K]</cite>.</p>
+    <p>That matters because a fast grower is judged on the durability of its growth rate and a cyclical on where it sits in the capacity cycle. Meta is now both, and the clocks are not synchronised: the leases run 30 years, the auction reprices every quarter.</p>
+  </section>
+
+  <section id="s2">
+    <h2><span class="h2num">SECTIONS 02 &amp; 03</span>Bull case vs. Bear case</h2>
+    <p class="lede">The Peter Lynch pitch against the Munger invert. Side by side puts each load-bearing assumption next to the attack on it; the toggle reads either case alone.</p>
+    <p class="pitch bull"><em>The simple reason this stock could work is </em>that Meta is growing revenue roughly nine times faster than its user base, and the machine doing it is software Meta owns outright.</p>
+    <p class="pitch bear"><em>The most likely way I lose money is </em>that Meta signs twenty- and thirty-year fixed obligations against a revenue stream that reprices every quarter, and the auction turns before the concrete does.</p>
+    <p>In Q2 2026 advertising revenue rose 27% while Family daily active people rose 3% <cite>[Q2 2026 10-Q]</cite>. The gap is ranking quality, ad load and new surfaces — internal levers, none dependent on taking users from a rival.</p>
+    <div class="duelbar">
+      <span class="lbl">View</span>
+      <span class="seg" id="seg">
+        <button type="button" data-v="bull" aria-pressed="false">Bull only</button>
+        <button type="button" data-v="duel" aria-pressed="true">Side by side</button>
+        <button type="button" data-v="bear" aria-pressed="false">Bear only</button>
+      </span>
+      <span class="hint">Click any card to expand.</span>
+    </div>
+    <div id="duel"></div>
+    <p style="margin-top:22px"><strong>Why the market might be missing it: </strong>margin and free cash flow are the two numbers a screen reads, and both are collapsing mechanically: capex hits the cash flow statement in full the moment it is spent, while $80.35bn of it produces neither depreciation nor revenue yet <cite>[Q2 2026 10-Q]</cite>. If the ad gains are real — and price accelerating from 9% to 12% against adverse mix says they are — Q2's $784m of free cash flow is a construction schedule, not an earnings statement.</p>
+  </section>
+  <section id="s3" style="padding:0;height:0"></section>
+
+  <section id="s4">
+    <h2><span class="h2num">SECTION 04</span>Signals to monitor</h2>
+    <p class="lede">Every signal traces to a named assumption or risk above. Click a tag to jump to it.</p>
+    <div class="sigs" id="sigs"></div>
+  </section>
+
+  <section id="s5">
+    <h2><span class="h2num">SECTION 05</span>Bottom line</h2>
+    <p class="lede">Four sentences: why it works, what must go right, how it breaks, what changes my mind.</p>
+    <div class="bl"><p>Meta could work because it converts a near-flat user base into revenue at roughly nine times the rate that base grows, using an ad system it owns end to end — price per ad rose 12% in Q2 2026 against 9% a year earlier, despite adverse mix <cite>[Q2 2026 10-Q]</cite>.</p>
+      <p>What must go right is that price per ad stays in double digits while the $80.35bn now in construction in progress begins producing revenue before it begins producing depreciation <cite>[Q2 2026 10-Q]</cite>.</p>
+      <p>The thesis most likely breaks not through the ad business failing but through its cost base becoming fixed and long-dated ahead of it — $278.99bn of leases not yet commenced with terms up to 30 years, plus $349.31bn of non-cancelable commitments, against auction revenue that reprices quarterly <cite>[Q2 2026 10-Q]</cite>.</p>
+      <p>I change my mind if price per ad decelerates to mid-single digits while impressions keep growing, if Family of Apps operating margin falls below the mid-30s, or if a court orders engagement-limiting product changes rather than a penalty — and, on the other side, if buybacks resume at scale with revenue growth above 20%, which reduces the bear case to an argument about timing.</p></div>
+  </section>
+
+  <section id="s6">
+    <h2><span class="h2num">APPENDIX</span>Sources &amp; disclosure gaps</h2>
+    <p class="lede">Every figure above is stated in one of these documents, or derived from them and marked (computed).</p>
+    <div id="srcs"></div>
+    <footer>No external, market or valuation data is used anywhere in this memo. The standard format's external-challenge section is absent because it was not requested; re-run with “external challenge” to add it.</footer>
+  </section>
+</main></div>
+<script>
+const BULL=[{"id":"B1","tag":"BULL 1","title":"Price per ad keeps compounding at double digits","f":[["What must happen","Price per ad grew 12% in Q2 2026, against 9% in Q2 2025 [Q2 2026 10-Q]. It has to stay in double digits."],["Why this company","Meta owns both ends of the auction loop — the conversion signal and the ranking model that consumes it. Advertisers bid up only when measured conversion rises, and Meta does the measuring."],["Evidence","New generative ranking and sequence-learning models produced an 8.3% rise in ad clicks and a 15.7% uplift in conversions on Facebook; Advantage+ passed $75bn in annual run-rate [Q2 2026 call]. Price rose despite mix working against it: the gain was partly offset by more impressions in lower-monetising geographies and products such as Reels [Q2 2026 10-Q]."],["What to monitor","Price per ad, year over year, every quarter."]]},{"id":"B2","tag":"BULL 2","title":"Impression growth comes from engagement and ad load, not user count","f":[["What must happen","Impressions grew 14% in Q2 2026 and 16% in H1 [Q2 2026 10-Q] against 3% user growth. Inventory has to keep expanding without users doing so."],["Why this company","Meta sets its own ad load and can open new inventory — Threads, WhatsApp — at zero user-acquisition cost. A network buying third-party inventory cannot."],["Evidence","The 10-Q attributes impression growth to users, engagement and “the frequency of ads shown on our products” — ad load — especially in Asia-Pacific [Q2 2026 10-Q]. Instagram time spent grew double digits; Facebook video time spent rose 9% globally [Q2 2026 call]."],["What to monitor","The spread between impression and DAP growth. This is the memo's weakest-evidenced assumption: current ad load and remaining headroom are disclosed nowhere."]]},{"id":"B3","tag":"BULL 3","title":"Capex converts into revenue before it converts into depreciation","f":[["What must happen","$80.35bn sat in construction in progress at 30 June 2026, up from $50.52bn six months earlier, none of it yet depreciating [Q2 2026 10-Q]. It has to earn before it charges."],["Why this company","Unlike a merchant compute provider, Meta has a captive first customer — its own ads ranking — already showing measurable revenue lift. No external customer is needed to earn a return on the first tranche of capacity."],["Evidence","Revenue growth accelerated from 22% in FY2025 to 28% in Q2 2026 [FY2025 10-K; Q2 2026 10-Q] while infrastructure costs rose. Excluding Q2's legal and severance charges, operating income grew 9%, not the reported 8% decline [Q2 2026 call]."],["What to monitor","Capex-to-revenue — 51% in Q2 2026 alone (computed) — against depreciation growth."]]},{"id":"B4","tag":"BULL 4","title":"Youth-harm litigation resolves as cash, not as product changes","f":[["What must happen","The cases cost money but do not force engagement-limiting changes to the product."],["Why this company","Meta has absorbed penalties of this class before — $5.0bn to the FTC in 2020, $725m in the consumer privacy settlement [FY2025 10-K] — against $83.28bn of FY2025 operating income."],["Evidence","Mixed; the weaker half sits in the bear case. Verdicts so far are small against earnings: a $375m New Mexico civil penalty in March 2026, and $6m in the first personal-injury bellwether, 70% allocated to Meta [Q2 2026 10-Q]."],["What to monitor","The quarterly legal charge run-rate — $2.40bn in Q2 2026 — and whether any ruling carries injunctive terms [Q2 2026 10-Q]."]]}], BEAR=[{"id":"R1","attacks":"B3","tag":"BEAR 1","title":"Fixed, long-dated obligations against variable revenue","sev":"Damage: high · Permanence: high · Fixable: no","f":[["How it could fail","At 30 June 2026 Meta had $278.99bn of leases not yet commenced, running 2026–2036 with terms up to 30 years, roughly $68bn more signed in July 2026, and $349.31bn of non-cancelable commitments — $53.52bn due in 2026, $81.65bn in 2027 [Q2 2026 10-Q]. None of it flexes with ad demand."],["What would confirm failure","Impairment or abandonment charges; held-for-sale reclassifications beyond the $2.03bn El Paso campus; FY2027 capex guidance rising without a revenue step-up."],["Effect on economics","Depreciation from the $80.35bn of construction in progress lands in cost of revenue as lease payments commence — Q2 depreciation was already $6.00bn against $4.28bn a year earlier [Q2 2026 10-Q]. Operating income can fall for years with the ad business intact."],["Permanent or fixable","Permanent for what is contracted; management puts flexibility at 2028 and beyond [Q2 2026 call]."]]},{"id":"R2","attacks":"B4","tag":"BEAR 2","title":"Litigation arrives as an injunction rather than a cheque","sev":"Damage: high · Permanence: high · Fixable: no","f":[["How it could fail","New Mexico seeks $953m in abatement and “extensive changes to the manner in which we provide our services”; its expanded trial begins 8 September 2026 with up to $62.85bn indicated. An MDL trial covering four states plus a federal disgorgement claim by all 29 suing attorneys general began 12 August 2026. Over 200,000 mass arbitration demands are outstanding, and indicated demands run “up to more than a trillion dollars” [Q2 2026 10-Q]."],["What would confirm failure","A ruling imposing age gating, feed redesign or default time limits rather than a penalty alone."],["Effect on economics","A cash penalty hits book value once — Q2's $2.40bn was 4% of quarterly revenue (computed). Mandated cuts to teen engagement permanently remove impressions on the surfaces where future adult users are acquired, compounding against Bull 2 rather than sitting beside it."],["Permanent or fixable","Cash is absorbable. Injunctive relief cannot be paid off."]]},{"id":"R3","attacks":"B1","tag":"BEAR 3","title":"Price per ad is advertiser surplus Meta is renting, not owning","sev":"Damage: high · Permanence: low · Fixable: partly","f":[["How it could fail","Meta ties the price increase to advertiser demand “mostly due to ongoing improvements to our ad performance”, plus favourable currency [Q2 2026 10-Q]. Bidding transfers that improvement to Meta only while it is Meta-specific. Once rival ad systems close the gap, or advertiser budgets bind, price reverts toward impression growth and Meta is selling volume, not scarcity."],["What would confirm failure","Price per ad decelerating to mid-single digits while impressions keep growing. That combination is the signature."],["Effect on economics","FY2026 expenses are guided to $165–169bn [Q2 2026 call], an increasing share fixed — depreciation, commenced leases, contracted cloud. Operating leverage runs violently in reverse: mid-teens revenue growth against that base compresses margin further, not less."],["Permanent or fixable","Cyclical in the ad business; not fixable in the cost base for years."]]},{"id":"R4","attacks":"B2","tag":"BEAR 4","title":"Ad load has a ceiling, and pushing it costs price","sev":"Damage: high · Permanence: medium · Fixable: partly","f":[["How it could fail","The 10-Q names “the frequency of ads shown on our products” as an impression driver, especially in Asia-Pacific [Q2 2026 10-Q]. Load is finite and its current level is disclosed nowhere. Meta also warns that competitive products such as TikTok have reduced some users' engagement, and that it has experienced and expects declines in its active user base in some markets — Family DAP fell quarter over quarter in Q1 2026 on internet disruptions in Iran and a WhatsApp restriction in Russia [Q2 2026 10-Q]."],["What would confirm failure","Impression growth converging on DAP growth; or DAP flat-to-down while impressions hold, which means load is doing all the work."],["Effect on economics","Impressions are the volume half of revenue, so a maxed-out load caps growth at price times user growth. Worse, the surfaces carrying the impression growth — Reels, Asia-Pacific — monetise at lower rates and already offset the price gain [Q2 2026 10-Q]. Bull 1 and Bull 2 are therefore not independent: buying impressions costs price."],["Permanent or fixable","Fixable only by opening genuinely new surfaces, which takes years. Reality Labs, at $19.19bn of FY2025 losses [FY2025 10-K], is what that costs when it does not work."]]},{"id":"R5","attacks":null,"tag":"BEAR 5","title":"The margin being compared against is itself flattered","sev":"Damage: medium · Permanence: low · Fixable: n/a (accounting)","f":[["How it could fail","In January 2025 Meta extended the useful lives of most servers and network assets to 5.5 years, cutting FY2025 depreciation by $2.92bn and raising net income $2.59bn, $1.00 per diluted share [FY2025 10-K]."],["What would confirm failure","A further extension — the cheapest way to defend a margin that is falling for real reasons."],["Effect on economics","The underlying compression is worse than the reported fall from a 43% to a 31% operating margin [Q2 2026 10-Q] implies. Reversible, but the bear's starting point is lower than the print."]]},{"id":"R6","attacks":null,"tag":"BEAR 6","title":"The funding model has already changed, quietly","sev":"Damage: medium · Permanence: medium · Fixable: partly","f":[["How it could fail","Buybacks were $26.26bn in FY2025 with $25.03bn still authorised [FY2025 10-K] — and zero in H1 2026 against $22.92bn a year earlier. Long-term debt reached $83.66bn after $24.91bn of new notes. Off balance sheet, the Louisiana venture carries $46.03bn of maximum exposure to loss against a $2.92bn carrying value [Q2 2026 10-Q]."],["What would confirm failure","A further large raise at wider spreads, or equity issued to fund infrastructure — Susan Li would not rule that out for 2027, calling operating cash flow “the primary pillar” for now [Q2 2026 follow-up call]."],["Effect on economics","Whoever owned Meta for capital returns no longer owns that company; whoever owns it for compounding is underwriting a build with no disclosed return metric. Asked for one, Li said Meta has “multiple pathways to generating return on invested capital here, but we don't have a more definitive timeline to share” [Q2 2026 follow-up call]."]]}], SIGNALS=[{"n":"Average price per ad, YoY","v":"+12% (Q2 2026), vs +9% in Q2 2025","s":"Q2 2026 10-Q","d":"Deceleration to mid-single digits kills the bull assumption and confirms the bear risk.","t":[["b","BULL 1"],["r","BEAR 3"]]},{"n":"Ad impressions YoY vs DAP YoY","v":"+14% vs +3% (Q2 2026)","s":"Q2 2026 10-Q","d":"The spread is the thesis. Narrowing means ad-load and new-surface runway is exhausted.","t":[["b","BULL 2"],["r","BEAR 4"]]},{"n":"Family of Apps operating margin","v":"39% (Q2 2026), from 53%","s":"Q2 2026 10-Q","d":"Below the mid-30s means cost growth has landed in the core, not just in Reality Labs.","t":[["r","BEAR 1"],["r","BEAR 3"]]},{"n":"Quarterly free cash flow","v":"$784m (Q2 2026); $13.17bn H1 (computed)","s":"Q2 2026 call; Q2 2026 10-Q","d":"Two consecutive negative quarters with revenue growth under 15% breaks the thesis.","t":[["b","BULL 3"],["r","BEAR 1"]]},{"n":"Construction in progress","v":"$80.35bn (30 Jun 26), from $50.52bn","s":"Q2 2026 10-Q","d":"Depreciation not yet in the P&L. Rising alongside revenue supports the bull; rising without it confirms the bear.","t":[["b","BULL 3"],["r","BEAR 1"]]},{"n":"Share repurchases","v":"$0 in H1 2026; $25.03bn authorised","s":"Q2 2026 10-Q; FY2025 10-K","d":"Resumption at scale would show the build is self-funding.","t":[["b","BULL 3"],["r","BEAR 6"]]},{"n":"Quarterly legal charges","v":"$2.40bn (Q2 2026)","s":"Q2 2026 10-Q","d":"A rising run-rate is absorbable; injunctive terms in a ruling are not.","t":[["b","BULL 4"],["r","BEAR 2"]]},{"n":"Data-centre assets held for sale or abandoned","v":"$2.03bn (El Paso), 30 Jun 26","s":"Q2 2026 10-Q","d":"Growth beyond this one campus is the first visible evidence of capex stranding.","t":[["r","BEAR 1"]]}], SOURCES=[{"g":"Annual report","items":["FY2025 Form 10-K, year ended 31 December 2025, filed 29 January 2026 — segment results, multi-year P&L and cash flow, buyback history and authorisation, server useful-life change, dual-class control, prior settlements."]},{"g":"Interim report","items":["Q2 2026 Form 10-Q, quarter ended 30 June 2026, filed 30 July 2026 — quarterly revenue and segments, impressions and price per ad, DAP, balance sheet, debt, capex, property and equipment, leases not yet commenced, contractual commitments, VIEs, legal proceedings."]},{"g":"Management commentary","items":["Q2 2026 earnings call transcript, 29 July 2026 — free cash flow, cash and debt, ad-system performance metrics, Advantage+ run-rate, FY2026 expense and capex guidance, Q3 revenue guidance.","Q2 2026 follow-up call transcript, 29 July 2026 — infrastructure funding, partnership structures, return-on-invested-capital commentary."]},{"g":"Disclosure gaps — nothing in sources answers these","items":["Current ad load and remaining headroom.","Any disclosed return metric on AI infrastructure, or a timeline for one.","Maintenance-versus-growth split of capital expenditure.","Outcomes of the MDL state-AG trial (began 12 August 2026) and the expanded New Mexico trial (begins 8 September 2026) — both post-date the Q2 2026 10-Q.","Run-rate opex effect of the ~8,000-person May 2026 reduction, net of AI hiring."]}];
+function cite(s){return String(s).replace(/\[([^\]]*(?:10-K|10-Q|call)[^\]]*)\]/g,'<cite>[$1]</cite>');}
+function fields(fs){return fs.map(f=>'<div class="field"><span class="k">'+f[0]+'</span><div class="v">'+cite(f[1])+'</div></div>').join('');}
+function card(o,kind){
+  return '<details class="card '+kind+'" id="c-'+o.id+'"><summary><span class="tick">'+o.tag+'</span>'+
+    '<span class="ctitle">'+o.title+(o.sev?'<div class="sev">'+o.sev+'</div>':'')+'</span>'+
+    '<span class="chev">&#9654;</span></summary><div class="cbody">'+fields(o.f)+'</div></details>';
+}
+const duelEl=document.getElementById('duel');
+function render(view){
+  if(view==='bull'){duelEl.innerHTML=BULL.map(b=>card(b,'bull')).join('');return;}
+  if(view==='bear'){duelEl.innerHTML=BEAR.map(b=>card(b,'bear')).join('');return;}
+  let h='';
+  BULL.forEach(b=>{
+    const atk=BEAR.filter(r=>r.attacks===b.id);
+    h+='<div class="pairwrap"><span class="pairtag">'+b.tag+' &nbsp;&rarr;&nbsp; '+
+       (atk.length?'attacked by '+atk.map(a=>a.tag).join(', '):'not directly attacked')+'</span>'+
+       '<div class="pairgrid'+(atk.length?'':' solo')+'">'+
+       '<div><div class="paircol-h">The assumption</div>'+card(b,'bull')+'</div>'+
+       (atk.length?'<div><div class="paircol-h">The attack on it</div>'+atk.map(a=>card(a,'bear')).join('')+'</div>':'')+
+       '</div></div>';
+  });
+  const orph=BEAR.filter(r=>!r.attacks);
+  if(orph.length){
+    h+='<div class="pairwrap"><span class="pairtag">STANDALONE RISKS &nbsp;&rarr;&nbsp; these attack the numbers the assumptions are measured against, not an assumption itself</span>'+
+       '<div class="pairgrid">'+orph.map(o=>card(o,'bear')).join('')+'</div></div>';
+  }
+  duelEl.innerHTML=h;
+}
+render('duel');
+document.getElementById('seg').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-v]'); if(!b)return;
+  [].slice.call(e.currentTarget.querySelectorAll('button')).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  render(b.dataset.v);
+});
+const TAGID={};
+BULL.concat(BEAR).forEach(o=>{TAGID[o.tag]=o.id;});
+document.getElementById('sigs').innerHTML=SIGNALS.map(s=>
+ '<div class="sig"><h3>'+s.n+'</h3><div class="val">'+s.v+'</div><div class="src">'+s.s+'</div>'+
+ '<div class="tracks">'+s.t.map(t=>'<span class="trk '+t[0]+'" data-tag="'+t[1]+'">'+t[1]+'</span>').join('')+'</div>'+
+ '<div class="dir">'+s.d+'</div></div>').join('');
+document.getElementById('sigs').addEventListener('click',e=>{
+  const t=e.target.closest('.trk'); if(!t)return;
+  const el=document.getElementById('c-'+TAGID[t.dataset.tag]);
+  if(!el)return;
+  el.open=true; el.scrollIntoView({behavior:'smooth',block:'center'});
+  el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+});
+document.getElementById('srcs').innerHTML=SOURCES.map((g,i)=>
+ '<details class="srcgrp"'+(i===3?' open':'')+'><summary><span>'+g.g+'</span><span class="cnt">'+g.items.length+'</span></summary>'+
+ '<ul>'+g.items.map(x=>'<li>'+x+'</li>').join('')+'</ul></details>').join('');
+const links=[].slice.call(document.querySelectorAll('#nav a'));
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function spy(){let cur=secs[0];secs.forEach(s=>{if(s.getBoundingClientRect().top<=140)cur=s;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur.id));}
+addEventListener('scroll',spy,{passive:true});spy();
+const root=document.documentElement;
+try{var t=localStorage.getItem('meta-memo-theme');if(t)root.setAttribute('data-theme',t);}catch(e){}
+document.getElementById('themebtn').addEventListener('click',function(){
+  var rgb=getComputedStyle(document.body).backgroundColor.match(/\d+/g);
+  var dark=rgb?(+rgb[0]+ +rgb[1]+ +rgb[2])/3<128:false;
+  var next=dark?'light':'dark';
+  root.setAttribute('data-theme',next);
+  try{localStorage.setItem('meta-memo-theme',next);}catch(e){}
+});
+</script></body></html>

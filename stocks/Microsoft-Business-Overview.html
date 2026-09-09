@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Microsoft Corporation (MSFT)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;margin:0}
+h1{font-size:38px;letter-spacing:-.4px;margin:6px 0 14px}
+h2{font-size:27px;margin:52px 0 16px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:21px;margin:32px 0 10px}
+p{margin:0 0 17px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{font-size:15px;color:var(--muted);margin:0 0 34px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 22px;margin:0 0 34px}
+
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:0 0 30px}
+.engine .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#B8AF9F;font-weight:700;margin-bottom:12px}
+.engine .unit{font-family:Georgia,serif;font-size:26px;font-weight:700;line-height:1.3;margin-bottom:12px}
+.engine p{margin:0;font-size:17px;color:#E6DFD2;line-height:1.55}
+.engine .split{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:20px;padding-top:20px;border-top:1px solid #4A4A4A}
+.engine .split div{font-size:16px;color:#E6DFD2}
+.engine .split b{display:block;font-family:Georgia,serif;font-size:19px;color:#fff;margin-bottom:4px}
+@media(max-width:640px){.engine .split{grid-template-columns:1fr;gap:16px}}
+
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px}
+.kpi .v{font-family:Georgia,serif;font-size:29px;font-weight:700;color:var(--terracotta);
+  font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .n{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.kpis{grid-template-columns:1fr}}
+
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:15px 19px;margin:0 0 13px}
+.lever.s{border-left-color:var(--good)} .lever.m{border-left-color:var(--gold)} .lever.c{border-left-color:var(--blue)}
+.lever .t{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta);margin-bottom:5px}
+.lever.s .t{color:var(--good)} .lever.m .t{color:var(--gold)} .lever.c .t{color:var(--blue)}
+.lever .h{font-family:Georgia,serif;font-size:19px;font-weight:700;margin-bottom:5px}
+.lever p{margin:0;font-size:17px;line-height:1.52}
+
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0}
+.pull p{font-family:Georgia,serif;font-size:20px;line-height:1.5;margin:0 0 10px;font-style:italic}
+.pull .attr{font-size:14px;color:var(--muted);font-style:normal;margin:0}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:19px 21px}
+.card h4{font-family:Georgia,serif;font-size:19px;margin:0 0 12px;font-weight:700}
+.card.dur h4{color:var(--good)} .card.bor h4{color:var(--terracotta)}
+.card ul{margin:0;padding-left:19px} .card li{font-size:16px;line-height:1.5;margin-bottom:9px}
+@media(max-width:700px){.two{grid-template-columns:1fr}}
+
+.tw{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;background:#fff;
+  border:1px solid var(--line);border-radius:10px;font-size:16px}
+caption{caption-side:bottom;text-align:left;font-size:14px;color:var(--muted);padding-top:9px;line-height:1.45}
+th{background:var(--ink);color:var(--cream);text-align:left;font-weight:700;padding:10px 13px;font-size:14px;
+  letter-spacing:.03em}
+td{padding:9px 13px;border-top:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:700;background:#FBF8F2}
+.neg{color:var(--terracotta)}
+
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px 12px;margin:24px 0}
+.chart h4{font-family:Georgia,serif;font-size:19px;margin:0 0 3px;font-weight:700}
+.chart .sub{font-size:14px;color:var(--muted);margin:0 0 12px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .cap{font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.45}
+
+.verdict{font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.v-p{color:var(--gold)} .v-c{color:var(--terracotta)} .v-n{color:var(--muted)}
+
+.note{font-size:16px;color:var(--muted);border-left:3px solid var(--line);padding-left:16px;margin:20px 0}
+footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);line-height:1.6}
+footer strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Microsoft Corporation <span style="color:var(--muted);font-weight:400">(NASDAQ: MSFT)</span></h1>
+<p class="srcline">7 September 2026 · Built from Microsoft's FY2026 Form 10-K (filed 29 July 2026), the FY2016–FY2025 10-Ks, FY2026 10-Qs, the Q4 FY2026 earnings release, the 2025 proxy and the 8-K of 2 September 2026 — with independent industry evidence from competitors' filings, Synergy Research, Lawrence Berkeley National Laboratory, EIA, PJM, the US Census Bureau, the Federal Reserve, NBER, the UK CMA and the European Commission. <strong>Not a valuation and not a recommendation.</strong></p>
+
+<div class="restate">Microsoft is a software annuity that has bolted a capital-intensive utility onto itself: it sells the same enterprise customer a per-user subscription that needs almost no capital, and a metered compute contract that consumes almost $116bn of it a year.</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">Two units, opposite economics</div>
+  <p>Microsoft's unit used to be one paid seat. It still is for most of the profit — but the marginal dollar now comes from one metered hour of rented computing capacity, and the two behave nothing alike.</p>
+  <div class="split">
+    <div><b>One commercial seat</b>Roughly $1,000 a year, invoiced in advance, renewed on a three-year agreement. Requires essentially no capital. Sits in a segment earning a <strong>59.9% operating margin</strong>, up from 53.2% three years ago.</div>
+    <div><b>One compute-hour</b>Requires a server bought from a supplier earning 75% gross margin, a datacenter on a 13-year finance lease, and grid power secured years ahead. Sits in a segment whose gross margin fell from <strong>66.9% to 58.0%</strong> in three years.</div>
+  </div>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Revenue per M365 seat</div><div class="v">+10%</div><div class="n">M365 Commercial cloud revenue grew 17% on 6% seat growth — the rest is price and mix</div></div>
+  <div class="kpi"><div class="k">PBP operating margin</div><div class="v">59.9%</div><div class="n">42% of revenue producing 54% of operating income</div></div>
+  <div class="kpi"><div class="k">Diluted EPS FY2026</div><div class="v">$17.95</div><div class="n">$17.28 adjusted, excluding OpenAI gains</div></div>
+  <div class="kpi"><div class="k">Total debt</div><div class="v">$40.3bn</div><div class="n">Down 48% from the FY2017 peak; no debt issued in FY2025 or FY2026</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Late</div><div class="n">Record 46.8% operating margin at a record 34.9% capex-to-revenue</div></div>
+  <div class="kpi"><div class="k">Organic growth</div><div class="v">18%</div><div class="n">Essentially all of it — $1.7bn of acquisitions in the year</div></div>
+</div>
+
+<!-- ===== 1 ===== -->
+<h2>1. Executive snapshot</h2>
+<div class="tw">
+<table>
+<tbody>
+<tr><td style="width:26%"><strong>What the business is</strong></td><td>The dominant supplier of the software layer enterprises run their operations on — productivity, identity, developer tools, databases — now also one of three global suppliers of rented computing capacity.</td></tr>
+<tr><td><strong>How it makes money</strong></td><td>It sells the same enterprise customer a per-user subscription that renews annually and a metered compute contract that bills on consumption, mostly through multi-year volume licensing agreements invoiced in advance.</td></tr>
+<tr><td><strong>What protects it</strong></td><td>Contractual and administrative lock-in — the enterprise agreement, the identity directory, the licensing terms — rather than technical superiority. Two competition regulators are currently examining exactly this.</td></tr>
+<tr><td><strong>What drives earnings</strong></td><td>Azure consumption (+41%); revenue per Microsoft 365 seat, rising faster than seat count; and operating leverage from a sales force that has fallen from 17.2% of revenue to 8.0% over eleven years.</td></tr>
+<tr><td><strong>What to watch</strong></td><td>Microsoft Cloud gross margin (66%, a six-year low); free cash flow conversion (50% of net income, from 84%); and the $329.1bn of datacenter leases signed but not yet commenced.</td></tr>
+<tr><td><strong>Cycle exposure</strong></td><td><strong>Medium at the revenue line, high at the capital line.</strong> Subscription revenue is contractually insulated. The $115.9bn annual capital programme committed against it is not.</td></tr>
+</tbody>
+<caption>Sources: FY2026 10-K; FY2025 10-K; UK CMA; European Commission. Segment margins computed from FY2026 10-K Note 18.</caption>
+</table>
+</div>
+
+<!-- ===== 2 ===== -->
+<h2>2. What the company does</h2>
+
+<p>Every organisation of any size faces the same problem: its employees need a common set of tools to write, communicate and analyse; its applications need somewhere to run; and both need a single system that knows who each employee is and what they may see. Historically an enterprise bought software licences and ran them on machines it owned. Microsoft sells the modern version of the same thing — the tools, the place to run them, and the identity system connecting the two — as subscriptions and metered services, invoiced in advance under agreements that typically run three years.</p>
+
+<h3>Tracing one compute-hour</h3>
+<p>Microsoft buys a GPU server from a supplier earning roughly 75% gross margin, installs it in a datacenter it has either built under a construction commitment or taken on a finance lease with a thirteen-year weighted-average term, and powers it with electricity secured years ahead. It capitalises the server and depreciates it over up to six years, then sells the hours it produces under a contract recognised as consumed. <strong>The revenue is recognised over years; the cash left the building at the start.</strong> That timing gap is the single most important fact about Microsoft's current financial statements.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Product and service offering</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">Growth</th></tr></thead>
+<tbody>
+<tr><td>Server products and cloud services</td><td class="n">79,828</td><td class="n">98,435</td><td class="n">129,425</td><td class="n">+31%</td></tr>
+<tr><td>Microsoft 365 Commercial</td><td class="n">76,969</td><td class="n">87,767</td><td class="n">101,997</td><td class="n">+16%</td></tr>
+<tr><td>XBOX</td><td class="n">21,503</td><td class="n">23,455</td><td class="n">21,790</td><td class="n neg">−7%</td></tr>
+<tr><td>LinkedIn</td><td class="n">16,372</td><td class="n">17,812</td><td class="n">19,817</td><td class="n">+11%</td></tr>
+<tr><td>Windows and Devices</td><td class="n">17,026</td><td class="n">17,314</td><td class="n">17,084</td><td class="n neg">−1%</td></tr>
+<tr><td>Search advertising</td><td class="n">12,306</td><td class="n">13,878</td><td class="n">15,176</td><td class="n">+9%</td></tr>
+<tr><td>Microsoft 365 Consumer</td><td class="n">6,648</td><td class="n">7,404</td><td class="n">9,175</td><td class="n">+24%</td></tr>
+<tr><td>Dynamics</td><td class="n">6,831</td><td class="n">7,827</td><td class="n">9,006</td><td class="n">+15%</td></tr>
+<tr><td>Enterprise and partner services</td><td class="n">7,594</td><td class="n">7,760</td><td class="n">8,260</td><td class="n">+6%</td></tr>
+<tr class="tot"><td>Total revenue</td><td class="n">245,122</td><td class="n">281,724</td><td class="n">331,839</td><td class="n">+18%</td></tr>
+</tbody>
+<caption>$m. Source: FY2026 10-K, Note 18; growth computed. These line items were re-cut in the August 2024 recast — the FY2024 column is the recast one and does not match the FY2024 10-K as filed.</caption>
+</table>
+</div>
+
+<p>The buyer is overwhelmingly a business. No customer and no country other than the United States accounted for more than 10% of revenue in FY2026, FY2025 or FY2024. The one exception to that diversification is a related party: Microsoft recorded <strong>$24.1bn of revenue from OpenAI</strong> in FY2026 and carried <strong>$6.0bn of receivables</strong> from it — 7.3% of revenue and 7.4% of gross receivables, from a counterparty in which Microsoft holds an approximate 25% as-converted interest. The FY2025 comparable is not disclosed, so this counterparty's contribution to FY2026 growth cannot be established from the filings.</p>
+
+<p>Two lines are shrinking. XBOX fell 7%, with hardware down 29% on lower console volume, and the 10-K names an "impairment and other related expenses in our XBOX business" three times without ever quantifying it. Windows and Devices fell 1%. In both cases Microsoft attributes the segment's improving margin to the shrinkage — More Personal Computing gross margin rose "driven by sales mix shift to higher margin businesses." <strong>A hardware line contracting while segment margin expands is the clearest available evidence that physical products dilute Microsoft's economics rather than enhance them.</strong></p>
+
+<div class="note">From fiscal 2027 the reporting changes again. On 2 September 2026 Microsoft announced it will report two segments — Agents and Infra, and Devices and Consumer — replacing the three used throughout this page. The recast historical data was not available for this analysis, so nothing here will be directly comparable to what Microsoft publishes next.</div>
+
+<!-- ===== 3 ===== -->
+<h2>3. Industry, competitive position and moat</h2>
+
+<p>The cloud industry exists because computing has fixed costs most organisations cannot use efficiently. A datacenter is only economic at scale and almost no enterprise has enough demand to fill one. The industry aggregates that demand and rents the capacity back. What is sold is not technology but utilisation — the provider's margin is the difference between the price of a compute-hour and the cost of owning the machine that produces it.</p>
+
+<h3>Where the profit actually sits</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Layer and company</th><th class="n">Revenue, latest qtr</th><th class="n">Operating margin</th><th class="n">Growth</th></tr></thead>
+<tbody>
+<tr><td>Chip designer — NVIDIA</td><td class="n">$96.2bn</td><td class="n">66.2%</td><td class="n">+106%</td></tr>
+<tr><td>Foundry — TSMC</td><td class="n">$40.2bn</td><td class="n">60.3%</td><td class="n">+36%</td></tr>
+<tr class="tot"><td>Cloud — MSFT Intelligent Cloud</td><td class="n">$39.3bn</td><td class="n">40.6%</td><td class="n">+32%</td></tr>
+<tr><td>Cloud — Amazon AWS</td><td class="n">$42.2bn</td><td class="n">39.3%</td><td class="n">+37%</td></tr>
+<tr><td>Cloud — Google Cloud</td><td class="n">$24.8bn</td><td class="n">35.5%</td><td class="n">+82%</td></tr>
+<tr><td>Cloud — Oracle (FY2026)</td><td class="n">$67.4bn</td><td class="n">30.6%</td><td class="n">+17%</td></tr>
+<tr><td>Applications — Salesforce</td><td class="n">$11.3bn</td><td class="n">20.5%</td><td class="n">+11%</td></tr>
+<tr><td>Applications — ServiceNow</td><td class="n">$4.0bn</td><td class="n">4.0%</td><td class="n">+24%</td></tr>
+<tr><td>Merchant GPU — CoreWeave</td><td class="n">$2.6bn</td><td class="n neg">−2.0%</td><td class="n">+112%</td></tr>
+<tr><td>Merchant GPU — Nebius</td><td class="n">$0.6bn</td><td class="n neg">−30.0%</td><td class="n">+454%</td></tr>
+</tbody>
+<caption>Each company's own quarterly release or 8-K, calendar Q2 2026 except Oracle (FY2026), NVIDIA (FQ2 FY2027) and Salesforce (FQ2 FY2027). Application margins are GAAP; non-GAAP they are 34.1% and 29.5%, the difference being stock compensation.</caption>
+</table>
+</div>
+
+<p>Three conclusions follow. <strong>The profit is concentrated upstream</strong>, at the two layers with the fewest substitutes — NVIDIA's 75% gross margin is not a curiosity, it is Microsoft's cost of goods. <strong>The hyperscalers are the second-best-positioned layer, not the best</strong> — though within it Microsoft's 40.6% is the highest of the three disclosed cloud segments. And <strong>the merchant GPU providers show what rented compute earns without a second business attached</strong>: CoreWeave reports a 59% adjusted EBITDA margin and a −2% operating margin on 112% growth, the gap being depreciation, while paying $640m a quarter in interest on $35bn of debt. That is Azure's economics run without Microsoft's balance sheet or its software franchise.</p>
+
+<h3>What the share data shows</h3>
+<p>Synergy Research put cloud infrastructure at $143.4bn in calendar Q2 2026, growing 43%, with Amazon at 28%, Microsoft at 20% and Google at 15%. Against Synergy's own Q3 2025 edition — Amazon 29%, Microsoft 20%, Google 13% — the reading is specific: over three quarters <strong>Google gained about two points, Amazon lost about one, and Microsoft was flat</strong>, while the Big Three's combined share stayed at 63% in a market growing 43%. Microsoft is holding position in a fast-growing market, not compounding share within it.</p>
+
+<div class="note">Microsoft has never disclosed absolute Azure revenue in any 10-K from FY2016 to FY2026 — growth rates only. Azure sits inside "Server products and cloud services" and is never broken out. Every published Azure share figure is a third-party reconstruction, and should be read as an estimate rather than a measurement.</div>
+
+<h3>Which barriers actually bind</h3>
+<div class="lever c"><div class="t">Binds hard · physical</div><div class="h">Power and grid interconnection</div><p>Lawrence Berkeley National Laboratory's June 2026 queue study finds a median request-to-operation time of over five years for large loads, with only 13% of capacity requested 2000–2020 having reached operation by end-2025 and 75% withdrawn. PJM's 2028/29 capacity auction cleared at the regulatory price cap and still fell 6,831 MW short of its reliability requirement — the first RTO-wide shortfall in its history. Chips arrive in eighteen months; a substation does not.</p></div>
+<div class="lever s"><div class="t">Binds hard · and is the real moat</div><div class="h">Contractual lock-in</div><p>The UK CMA's final report of 31 July 2025 named three structural frictions in cloud competition: egress fees, committed-spend agreements, and Microsoft's software licensing practices. That is an independent regulator finding that what keeps customers in place is commercial architecture, not engineering.</p></div>
+<div class="lever c"><div class="t">Binds hard · supply</div><div class="h">Chip and advanced-packaging allocation</div><p>NVIDIA carried $119bn of manufacturing purchase commitments at its most recent quarter end. That queue is effectively pre-booked, and position in it is a barrier no amount of capital can jump.</p></div>
+<div class="lever m"><div class="t">Binds less than it sounds</div><div class="h">Capital scale</div><p>CoreWeave reached 1.5 GW of active capacity, 3.7 GW contracted and a ~$104bn backlog on borrowed money. Capital is available to newcomers — the question is its cost, not its availability.</p></div>
+
+<h3>Microsoft's own position, tested</h3>
+<p>Microsoft names no individual competitor anywhere in the FY2026 or FY2025 10-K — competition is described entirely by category. The filings therefore cannot be used to establish relative position at all. What can be established is the asset hardest to reproduce, and it is not the datacenters: any of four companies can build those. It is the incumbent position inside the enterprise administrative stack — the identity directory, and the licensing agreement renegotiated once every three years rather than continuously. <strong>A competitor can match the compute. It cannot easily be the vendor whose agreement is already signed.</strong></p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Claim in the FY2026 10-K</th><th>Verdict</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Hybrid cloud plus "the ability to run at a scale that meets the needs of businesses of all sizes"</td><td><span class="verdict v-p">Partially<br>supports</span></td><td>Scale is real — 40.6% is the highest disclosed cloud margin. But the attribution to hybrid engineering is unsupported, and Synergy shows Microsoft flat at 20% for four quarters. Hybrid did not produce share gain.</td></tr>
+<tr><td>Global scale plus identity and security "differentiates us from the competition"</td><td><span class="verdict v-c">Contradicts</span></td><td>The CMA's May 2026 investigation and the reported FTC demands both name security and identity specifically, examining whether they function as leverage into adjacent markets. Two authorities with subpoena power call this position, not product superiority.</td></tr>
+<tr><td>"Custom-built silicon and strong partnerships with chip manufacturers"</td><td><span class="verdict v-c">Contradicts</span></td><td>No primary evidence that Microsoft-designed accelerators serve a material share of Azure AI capacity. NVIDIA sold $89.0bn of data centre product in one quarter at 75% gross margin. The operative fact is dependence. Announced substantially exceeds deployed.</td></tr>
+<tr><td>Implicit: AI investment will generate commensurate revenue</td><td><span class="verdict v-n">Not<br>established</span></td><td>NBER w35290 computes that at a 25% depreciation rate the buildout needs roughly a <strong>2.7× rise in AI-sector productivity</strong> to be zero-NPV. Census BTOS measures 19.8% of US businesses using AI as of May 2026, flat below 20 employees; the Fed said in April 2026 it has not measured the productivity effect. Unproven rather than falsified.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The industry rewards a company that can fund the build from operating cash rather than debt, whose contractual position survives a price war in compute, and which has a second profit pool to pay the depreciation bill if the first disappoints. <strong>Microsoft satisfies all three</strong> — $155.2bn of operating income against $115.9bn of capex, funded internally, versus Oracle's negative $23.7bn free cash flow and $43bn of new debt. The two places outside evidence does not validate its self-description are share, where it is holding rather than gaining, and silicon, where it is a customer rather than a manufacturer.</p>
+
+<!-- ===== 4 ===== -->
+<h2>4. Growth engine</h2>
+
+<p>Revenue rose $50.1bn, or 18%. Almost none of it was bought: Microsoft spent $1.7bn on acquisitions net of divestitures, against $69.1bn in FY2024. <strong>FY2026 growth is essentially entirely organic</strong> — a material contrast with FY2024's 13.6%, which included Activision Blizzard at $75.4bn. A headline rate that is partly acquired describes a different business from the same rate grown, and Microsoft's has switched from one to the other. Currency contributed a favourable 2%.</p>
+
+<div class="lever s"><div class="t">Structural · 63% of total growth</div><div class="h">Azure consumption</div><p>Intelligent Cloud contributed $31.5bn of the $50.1bn increase. Azure and other cloud services grew 41% — 43% in the June quarter — while server products, the on-premises remainder, grew 1%. The mechanism is customers buying more compute-hours, not Microsoft raising the price of one.</p></div>
+<div class="lever s"><div class="t">Structural · highest quality</div><div class="h">Revenue per Microsoft 365 seat</div><p>M365 Commercial cloud revenue grew 17% on 6% seat growth — roughly ten points from price and mix, which Microsoft attributes to Copilot and E5. Selling more to a customer already under contract requires no new datacenter, which is why the segment's gross margin rose in the same year the company's overall gross margin fell.</p></div>
+<div class="lever s"><div class="t">Structural · slow</div><div class="h">Seat count</div><p>6% growth, from small and medium businesses and frontline worker offerings. The knowledge-worker base is largely penetrated; incremental seats now come from the parts of the workforce never issued a licence.</p></div>
+<div class="lever c"><div class="t">Cyclical</div><div class="h">Search advertising</div><p>+9%, and +12% excluding traffic acquisition costs, on higher volume, higher revenue per search and third-party partnerships. This is the most economically sensitive revenue line Microsoft has.</p></div>
+<div class="lever s"><div class="t">Structural · steady</div><div class="h">LinkedIn and Dynamics</div><p>+11% and +15%, with Dynamics 365 at +18%. Together they added $3.2bn.</p></div>
+<div class="lever m"><div class="t">Management-driven · negative</div><div class="h">XBOX</div><p>The only line that subtracted from growth. Content and services fell 5% against a prior year that benefited from strong first-party performance, offset in part by Game Pass; the hardware retreat accounts for the rest.</p></div>
+
+<h3>What the backlog says — and what it does not</h3>
+<p>Commercial remaining performance obligation rose <strong>84% to $678bn</strong>, against Microsoft Cloud revenue of $214.4bn. That is 3.2 years of cloud revenue already under contract, and it is the strongest single piece of evidence that demand is real and durable.</p>
+<p>Two qualifications matter. The weighted-average duration is about 2.3 years and Microsoft expects to recognise only <strong>about 30% within twelve months</strong> — down from ~40% a year earlier, ~45% in FY2023, and ~60% when the disclosure began in FY2018. The backlog is lengthening as it grows, so a smaller share is near-term revenue and a larger share is a promise about the middle of the decade. And remaining performance obligation is a contract, not cash: it converts only if the counterparty consumes and pays.</p>
+
+<div class="chart">
+  <h4>Azure growth: a long deceleration, a trough, and two years of reacceleration</h4>
+  <p class="sub">Azure and other cloud services revenue growth, % year on year, FY2016–FY2026</p>
+  <svg viewBox="0 0 900 350" role="img" aria-label="Azure revenue growth by fiscal year, falling from 113% in FY2016 to 29% in FY2023 then rising to 41% in FY2026">
+    <g stroke="#E5DDD0" stroke-width="1">
+      <line x1="70" y1="300" x2="880" y2="300"/><line x1="70" y1="235" x2="880" y2="235"/>
+      <line x1="70" y1="170" x2="880" y2="170"/><line x1="70" y1="105" x2="880" y2="105"/>
+      <line x1="70" y1="40" x2="880" y2="40"/>
+    </g>
+    <g fill="#6E675C" font-size="13" font-family="Calibri,Arial" text-anchor="end">
+      <text x="60" y="305">0%</text><text x="60" y="240">30%</text><text x="60" y="175">60%</text>
+      <text x="60" y="110">90%</text><text x="60" y="45">120%</text>
+    </g>
+    <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+      points="70,55 149,86 228,103 307,144 386,179 465,192 544,202 623,237 702,235 781,226 860,211"/>
+    <g fill="#C75B39">
+      <circle cx="70" cy="55" r="4"/><circle cx="149" cy="86" r="3"/><circle cx="228" cy="103" r="3"/>
+      <circle cx="307" cy="144" r="3"/><circle cx="386" cy="179" r="3"/><circle cx="465" cy="192" r="3"/>
+      <circle cx="544" cy="202" r="3"/><circle cx="623" cy="237" r="5"/><circle cx="702" cy="235" r="3"/>
+      <circle cx="781" cy="226" r="3"/><circle cx="860" cy="211" r="5"/>
+    </g>
+    <g font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39">
+      <text x="70" y="42" text-anchor="start">113%</text>
+      <text x="623" y="256" text-anchor="middle">29%</text>
+      <text x="860" y="199" text-anchor="end">41%</text>
+    </g>
+    <text x="623" y="272" text-anchor="middle" font-family="Calibri,Arial" font-size="12" fill="#6E675C">trough</text>
+    <g fill="#6E675C" font-size="12.5" font-family="Calibri,Arial" text-anchor="middle">
+      <text x="70" y="322">FY16</text><text x="149" y="322">FY17</text><text x="228" y="322">FY18</text>
+      <text x="307" y="322">FY19</text><text x="386" y="322">FY20</text><text x="465" y="322">FY21</text>
+      <text x="544" y="322">FY22</text><text x="623" y="322">FY23</text><text x="702" y="322">FY24</text>
+      <text x="781" y="322">FY25</text><text x="860" y="322">FY26</text>
+    </g>
+  </svg>
+  <p class="cap">Source: MD&amp;A of each fiscal year's 10-K. Microsoft discloses the growth rate but has never disclosed absolute Azure revenue, so this series cannot be converted to dollars.</p>
+</div>
+
+<!-- ===== 5 ===== -->
+<h2>5. Margin, cash and capital allocation</h2>
+
+<div class="tw">
+<table>
+<thead><tr><th>$m unless stated</th><th class="n">FY2020</th><th class="n">FY2023</th><th class="n">FY2025</th><th class="n">FY2026</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td class="n">143,015</td><td class="n">211,915</td><td class="n">281,724</td><td class="n">331,839</td></tr>
+<tr><td>Operating margin</td><td class="n">37.0%</td><td class="n">41.8%</td><td class="n">45.6%</td><td class="n">46.8%</td></tr>
+<tr><td>Microsoft Cloud gross margin</td><td class="n">67%</td><td class="n">72%</td><td class="n">69%</td><td class="n neg">66%</td></tr>
+<tr><td>Capital expenditure</td><td class="n">15,441</td><td class="n">28,107</td><td class="n">64,551</td><td class="n">115,948</td></tr>
+<tr><td>Free cash flow</td><td class="n">45,234</td><td class="n">59,475</td><td class="n">71,611</td><td class="n neg">66,987</td></tr>
+<tr class="tot"><td>FCF as % of net income</td><td class="n">102%</td><td class="n">82%</td><td class="n">70%</td><td class="n neg">50%</td></tr>
+</tbody>
+<caption>Sources: FY2020, FY2023, FY2025, FY2026 10-Ks. FCF and conversion computed as operating cash flow less additions to PP&amp;E. <strong>Comparability:</strong> FY2021 and FY2023 operating margins each include a benefit from a change in the estimated useful life of server and network equipment — $2.7bn and $3.7bn of operating income respectively — so the margin trend across those years is partly an accounting effect.</caption>
+</table>
+</div>
+
+<h3>Two margins moving in opposite directions</h3>
+<p>The consolidated operating margin of 46.8% is the highest in Microsoft's history, and it is misleading read alone, because it is the average of two divergent trends. Productivity and Business Processes went from a 53.2% operating margin in FY2023 to 59.9% in FY2026. Intelligent Cloud's gross margin went from 66.9% to 58.0% over exactly the same period. <strong>The consolidated figure rises because the software segment is improving faster than the infrastructure segment is deteriorating — not because the infrastructure business is getting better.</strong></p>
+
+<div class="pull">
+  <p>"Microsoft Cloud gross margin percentage decreased to 66% driven by continued investments in AI infrastructure and growing AI product usage, offset in part by efficiency gains in Azure and Microsoft 365 Commercial cloud."</p>
+  <p class="attr">— FY2026 Form 10-K, MD&amp;A. The mechanism is simple: depreciation on newly-installed capacity enters cost of revenue immediately, while the revenue from that capacity arrives over the following years. Microsoft Cloud gross margin has fallen six points from its FY2023 peak of 72%.</p>
+</div>
+
+<div class="chart">
+  <h4>The scissors: cloud margin falling as capital intensity triples</h4>
+  <p class="sub">Microsoft Cloud gross margin % (left) against capital expenditure as % of revenue (right), FY2020–FY2026</p>
+  <svg viewBox="0 0 900 350" role="img" aria-label="Microsoft Cloud gross margin falls from 72 percent in FY2023 to 66 percent in FY2026 while capital expenditure rises from 10.8 to 34.9 percent of revenue">
+    <g stroke="#E5DDD0" stroke-width="1">
+      <line x1="80" y1="300" x2="880" y2="300"/><line x1="80" y1="235" x2="880" y2="235"/>
+      <line x1="80" y1="170" x2="880" y2="170"/><line x1="80" y1="105" x2="880" y2="105"/>
+      <line x1="80" y1="40" x2="880" y2="40"/>
+    </g>
+    <g fill="#C75B39" font-size="13" font-family="Calibri,Arial" text-anchor="end">
+      <text x="72" y="305">55%</text><text x="72" y="240">60%</text><text x="72" y="175">65%</text>
+      <text x="72" y="110">70%</text><text x="72" y="45">75%</text>
+    </g>
+    <g fill="#3C6E8F" font-size="13" font-family="Calibri,Arial" text-anchor="start">
+      <text x="866" y="305">0%</text><text x="866" y="240">10%</text><text x="866" y="175">20%</text>
+      <text x="866" y="110">30%</text><text x="866" y="45">40%</text>
+    </g>
+    <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+      points="80,144 208,92 337,105 465,79 593,92 722,118 850,157"/>
+    <polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round" stroke-dasharray="7 4"
+      points="80,230 208,220 337,222 465,214 593,182 722,151 850,73"/>
+    <g fill="#C75B39"><circle cx="80" cy="144" r="3"/><circle cx="208" cy="92" r="3"/><circle cx="337" cy="105" r="3"/><circle cx="465" cy="79" r="5"/><circle cx="593" cy="92" r="3"/><circle cx="722" cy="118" r="3"/><circle cx="850" cy="157" r="5"/></g>
+    <g fill="#3C6E8F"><circle cx="80" cy="230" r="3"/><circle cx="208" cy="220" r="3"/><circle cx="337" cy="222" r="3"/><circle cx="465" cy="214" r="3"/><circle cx="593" cy="182" r="3"/><circle cx="722" cy="151" r="3"/><circle cx="850" cy="73" r="5"/></g>
+    <g font-family="Georgia,serif" font-size="14.5" font-weight="700">
+      <text x="80" y="172" fill="#C75B39" text-anchor="start">Cloud gross margin 67%</text>
+      <text x="465" y="68" fill="#C75B39" text-anchor="middle">72% peak</text>
+      <text x="850" y="176" fill="#C75B39" text-anchor="end">66%</text>
+      <text x="80" y="249" fill="#3C6E8F" text-anchor="start">Capex/revenue 10.8%</text>
+      <text x="850" y="62" fill="#3C6E8F" text-anchor="end">34.9%</text>
+    </g>
+    <g fill="#6E675C" font-size="12.5" font-family="Calibri,Arial" text-anchor="middle">
+      <text x="80" y="322">FY20</text><text x="208" y="322">FY21</text><text x="337" y="322">FY22</text>
+      <text x="465" y="322">FY23</text><text x="593" y="322">FY24</text><text x="722" y="322">FY25</text>
+      <text x="850" y="322">FY26</text>
+    </g>
+  </svg>
+  <p class="cap">Sources: Microsoft Cloud gross margin from each year's 10-K MD&amp;A; capex/revenue computed from the cash flow statement and income statement. The FY2021 and FY2023 margin figures include the useful-life benefits noted above.</p>
+</div>
+
+<p>Against that, the operating expense line is the most durable good news in the financial statements. <strong>Sales and marketing grew 82% in absolute terms over eleven years while revenue grew 289%, taking it from 17.2% of revenue to 8.0%</strong> — a release of over 900 basis points. R&amp;D fell from 13.2% to 10.7% of revenue on the comparable basis while growing 197% in dollars. Headcount fell 5,000 in FY2026 to 223,000, the first decline in eleven years, while revenue grew 18%. Revenue per employee has risen from roughly $800,000 to roughly $1.49m.</p>
+
+<h3>The cash conversion problem</h3>
+<p>Free cash flow was $66,987m in FY2026, against $71,611m in FY2025 and $74,071m in FY2024. <strong>Free cash flow has now declined for two consecutive years while net income rose 52%.</strong> The cash flow statement also understates the capital committed in two ways: Microsoft obtained <strong>$24.6bn of right-of-use assets under finance leases</strong>, which is capital expenditure in substance but not in cash; and purchases of PP&amp;E still in accounts payable rose from $6.9bn to $26.7bn. Adding finance leases to cash capex gives roughly <strong>$140.6bn of capital committed in one year, 42.4% of revenue</strong>, reducing free cash flow after finance leases to about $42.4bn — against $48.7bn returned to shareholders. Cash and short-term investments fell $17.7bn during the year.</p>
+
+<h3>Where the cash has gone over eleven years</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Use of cash, FY2016–FY2026</th><th class="n">Total</th><th>What it reveals</th></tr></thead>
+<tbody>
+<tr><td><strong>Capital expenditure</strong></td><td class="n">$355.1bn</td><td>FY2026 alone is 33% of the eleven-year total; FY2025 and FY2026 together are 51%.</td></tr>
+<tr><td><strong>Share repurchases</strong></td><td class="n">$221.3bn</td><td>Retired only <strong>7.0%</strong> of the diluted share count, because most of it offsets $12.4bn a year of stock compensation. Net retirement has all but stopped since FY2024.</td></tr>
+<tr><td><strong>Dividends</strong></td><td class="n">$191.3bn</td><td>Dividend per share grew from $1.44 to $3.64, a 9.7% compound rate, raised every year without exception.</td></tr>
+<tr><td><strong>Acquisitions</strong></td><td class="n">$142.6bn</td><td>Four deals: LinkedIn ($27.0bn, 2016), Nuance ($18.8bn, 2022), ZeniMax ($8.1bn, 2021), Activision Blizzard ($75.4bn, 2023). Nothing material since.</td></tr>
+<tr><td><strong>Debt reduction</strong></td><td class="n neg">−$36.8bn</td><td>Total debt fell from a $77.1bn peak in FY2017 to $40.3bn. No debt issued at all in FY2025 or FY2026.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>The ranking has inverted.</strong> For most of the eleven years Microsoft returned more cash than it invested — cumulative shareholder returns of $412.5bn are 62% of cumulative free cash flow of $665.6bn. In FY2026 capital expenditure alone exceeded dividends and buybacks combined by a factor of 2.4. Management has redirected the company's cash from shareholders to the balance sheet, has been explicit about it, and has funded it from operating cash flow rather than debt — a distinction separating Microsoft from every other large builder in the industry.</p>
+
+<h3>What is committed but not yet spent</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Contractual obligation ($m)</th><th class="n">30 Jun 2025</th><th class="n">30 Jun 2026</th><th class="n">Change</th></tr></thead>
+<tbody>
+<tr><td>Operating and finance leases</td><td class="n">178,701</td><td class="n">443,506</td><td class="n">+148%</td></tr>
+<tr><td>Purchase commitments</td><td class="n">109,953</td><td class="n">194,060</td><td class="n">+77%</td></tr>
+<tr><td>Construction commitments</td><td class="n">32,149</td><td class="n">34,566</td><td class="n">+8%</td></tr>
+<tr><td>Long-term debt and interest</td><td class="n">76,242</td><td class="n">71,689</td><td class="n">−6%</td></tr>
+<tr class="tot"><td>Total contractual obligations</td><td class="n">397,045</td><td class="n">743,821</td><td class="n">+87%</td></tr>
+<tr class="tot"><td>Leases signed, not yet commenced</td><td class="n">92,700</td><td class="n">329,100</td><td class="n">+255%</td></tr>
+</tbody>
+<caption>FY2026 and FY2025 10-Ks, contractual obligations table and Note 13. Purchase commitments "primarily relate to datacenters and include open purchase orders and take-or-pay contracts." Not-yet-commenced leases are stated to commence between fiscal 2027 and fiscal 2033.</caption>
+</table>
+</div>
+
+<p>Adding the $329.1bn of leases signed but not commenced to the $743.8bn of contractual obligations gives roughly <strong>$1.07 trillion of committed future outflow</strong>, against $442.4bn of shareholders' equity and $331.8bn of annual revenue. The trajectory of the not-yet-commenced figure through the year is the sharpest single series in the filings: <strong>$92.7bn (Jun 2025) → $106.2bn (Sep 2025) → $196.6bn (Mar 2026) → $329.1bn (Jun 2026)</strong>. One qualification is new in the FY2026 wording: the leases are described as "with some arrangements subject to certain contractual conditions being met," a clause absent in FY2025. Microsoft does not say what proportion is conditional.</p>
+
+<!-- ===== 6 ===== -->
+<h2>6. Cyclicality, constraints and what to monitor</h2>
+
+<p>Microsoft's revenue is unusually well insulated; its capital position is not. Operating margin at 46.8% is an all-time high and capital expenditure at 34.9% of revenue is more than triple FY2016's 9.8%. <strong>The two records were set in the same year, and that combination is the cycle position</strong>: the margin describes capacity installed years ago and already paid for, while the capital intensity describes capacity whose revenue has not yet arrived.</p>
+
+<p>The revenue base itself is genuinely defensive. Roughly $73.0bn of short-term unearned revenue sits on the balance sheet, invoiced and collected in advance; $678bn of commercial backlog is contracted; and volume licensing means most enterprise customers renegotiate once every three years rather than continuously. Microsoft's own history supports this — FY2023 was a weak year for the sector and revenue still grew 7%, with Windows OEM down 25% while the commercial cloud grew 22%. <strong>The consumer and OEM lines are cyclical; the commercial contract base is not.</strong></p>
+
+<h3>The constraints that actually bind</h3>
+<p>The FY2026 risk disclosures are unusually specific, and the outside data confirms them. LBNL's June 2026 update puts US datacenter electricity use at <strong>192 TWh in 2024, 4.7% of US electricity</strong>, rising to roughly 235 TWh in 2025, with a 2030 reference case of 649 TWh or 11.8% — a forecast, and one whose own authors note that newer shipment data projects up to 50% fewer GPU units than earlier estimates. On the supply side, <strong>Texas suspended large-load interconnection studies on 3 August 2026</strong> pending a statewide audit with no completion date, against roughly 474 GW of pending large-load requests in ERCOT of which about 90% are datacenters; the EIA responded by cutting its Texas 2027 demand-growth forecast from 14% to 6%. Power, not chips, determines whether committed capital becomes revenue on schedule.</p>
+
+<div class="pull">
+  <p>"Overestimation of demand or misalignment of capacity investments may result in underutilisation of infrastructure and may lead to impairment of assets on our balance sheet."</p>
+  <p class="attr">— FY2026 Form 10-K, Item 1A. Microsoft also added a category absent from prior years: "community opposition, state and local moratoriums, and hyper-local dissent, as well as increasingly coordinated opposition to infrastructure development across jurisdictions."</p>
+</div>
+
+<h3>The downside mechanism</h3>
+<p>The relevant analogue is the telecommunications buildout of 1996–2001, and its mechanism transfers precisely. Communications equipment investment grew from about $62bn to over $135bn in constant dollars over five years, then <strong>fell to 69% of the prior year in a single year</strong>; telecom employment fell 22% from its March 2001 peak; roughly $700bn of market value was lost, over 3.5% of total US corporate equity value at the peak. Meanwhile aggregate real US investment in information processing equipment and software fell only 0.4% in 2001 and 2.9% in 2002, and had fully recovered by 2003. <strong>The buyers of technology were largely fine. The builders of the capacity were not.</strong></p>
+
+<p>Applied to Microsoft, the mechanism is a depreciation schedule meeting a demand curve that slows. Servers and network equipment are carried at $215.9bn gross, depreciated over two to six years; depreciation expense was $34.3bn in FY2026 against $15.2bn in FY2024. If the average depreciable life proved to be five years rather than six, annual depreciation would rise by roughly <strong>$7bn</strong>; at four years, by roughly <strong>$18bn</strong> — 4.6% and 11.6% of FY2026 operating income. <em>(Computed and illustrative: applies a single life to the full gross balance.)</em></p>
+
+<h3>Durable versus borrowed</h3>
+<div class="two">
+  <div class="card dur"><h4>Durable — likely still true in ten years</h4><ul>
+    <li>The enterprise agreement and identity directory as the default administrative layer of large organisations.</li>
+    <li>Price and mix growth on an installed seat base — 17% revenue growth on 6% seat growth, with no capital required.</li>
+    <li>Sales and marketing at 8.0% of revenue, down from 17.2%, and still falling.</li>
+    <li>A balance sheet that funds $115.9bn of capex from operating cash with no new debt.</li>
+    <li>Contracted commercial backlog of $678bn, invoiced in advance.</li>
+  </ul></div>
+  <div class="card bor"><h4>Borrowed — helping now, may not persist</h4><ul>
+    <li>Azure growth of 41%, which reflects an industry-wide capital cycle as much as Microsoft's own position.</li>
+    <li>A 46.8% operating margin that depends on PBP improving faster than Intelligent Cloud deteriorates.</li>
+    <li>$24.1bn of revenue from a single related party in which Microsoft holds a 25% stake.</li>
+    <li>A six-year depreciable life on server equipment, set in FY2023 before the current generation of AI hardware.</li>
+    <li>A 2% favourable currency effect on both revenue and operating income.</li>
+  </ul></div>
+</div>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Indicator</th><th>Where published</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td><strong>Microsoft Cloud gross margin %</strong></td><td>Quarterly — MSFT earnings release and 10-Q MD&amp;A</td><td>Fell 72% → 66% in three years. Whether it stabilises is the central question about the economics of the build.</td></tr>
+<tr><td><strong>12-month conversion of commercial RPO</strong></td><td>Annually — 10-K, Note 11</td><td>Fell from ~60% (FY2018) to ~30%. A further fall means the backlog lengthens faster than it converts.</td></tr>
+<tr><td><strong>Leases not yet commenced</strong></td><td>Quarterly — leases note of each 10-Q and 10-K</td><td>The forward capital commitment. Moved $92.7bn → $329.1bn in one year.</td></tr>
+<tr><td><strong>FCF after finance-lease additions</strong></td><td>Computed — cash flow statement plus leases note</td><td>Cash capex alone now understates capital committed by ~$25bn a year.</td></tr>
+<tr><td><strong>Interconnection queues and moratoriums</strong></td><td>LBNL "Queued Up"; FERC; ISO announcements</td><td>Determines the timing of revenue from capital already committed.</td></tr>
+<tr><td><strong>CMA strategic market status decision</strong></td><td>UK CMA — statutory deadline February 2027</td><td>Covers Windows, Office, Teams, Copilot, server software, security and identity — i.e. the moat itself.</td></tr>
+<tr><td><strong>Census BTOS AI-use series</strong></td><td>US Census Bureau — biweekly</td><td>The only government measurement of whether enterprise AI adoption is broadening. 19.8% at 3 May 2026; flat below 20 employees.</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ===== 7 ===== -->
+<h2>7. Risks, unknowns and questions for deeper work</h2>
+<p>Cyclicality and capacity constraints are covered above. What follows is what cyclicality does not capture, ordered by how much each compounds with the others.</p>
+
+<div class="lever"><div class="h">The OpenAI relationship changed in FY2026, and the filing does not explain why</div><p>The FY2025 10-K stated that "the OpenAI API is exclusive to Azure" and that Microsoft held "a right of first refusal on OpenAI's new capacity needs." <strong>Both sentences are absent from the FY2026 10-K</strong>, and "reciprocal revenue-sharing arrangements" became "will continue to receive revenue-sharing payments." The filing does not say whether these terms were renegotiated, expired, or merely dropped from disclosure. In the same year OpenAI became a $24.1bn customer, a $6.0bn receivable, and an equity-method investee whose recapitalisation produced a $6.5bn pre-tax gain that Microsoft created a new non-GAAP measure specifically to exclude. <strong>The mechanism:</strong> if that counterparty's compute purchases slow or move elsewhere, roughly 7% of revenue, an unsizeable share of Azure growth, and a $6.0bn receivable are exposed at once — and Microsoft's own risk factor concedes that strategic partners "are significant customers of Azure" and that expected consumption "may not materialise, may be delayed or reduced."</p></div>
+
+<div class="lever"><div class="h">The moat and the regulatory exposure are the same object</div><p>Contractual lock-in is the real barrier to entry, and three authorities are examining precisely that. The CMA opened a strategic market status investigation into Microsoft's business software ecosystem on 14 May 2026 — covering Windows, Office, Teams, Copilot, server software, security and identity — with a decision due February 2027. The European Commission opened a market investigation in November 2025 into whether Azure should be designated a DMA gatekeeper despite not meeting the quantitative thresholds. The FTC was reported in February 2026 to have issued civil investigative demands to at least six competitors covering licensing terms and the cost of running Microsoft software on rival clouds. <strong>A remedy that unbundled licensing or capped egress and committed-spend terms would attack the mechanism, not the margin</strong> — which is why it compounds rather than merely costs.</p></div>
+
+<div class="lever"><div class="h">The depreciable life is a judgement made before the current hardware generation</div><p>Microsoft set the six-year life for server and network equipment in July 2022 and has not revisited it, while capex grew from $28.1bn to $115.9bn. The two prior changes to this estimate <strong>both increased reported profit</strong> — by $2.7bn of operating income in FY2021 and $3.7bn in FY2023 — and the FY2023 10-K concedes that excluding that year's change, gross margin percentage decreased by a point. The estimate has only ever moved in the direction that helps. A reassessment in the other direction would be the first, and it would land on a gross asset base of $215.9bn.</p></div>
+
+<div class="lever"><div class="h">A meaningful share of industry demand is financed by its own suppliers</div><p>NVIDIA holds $42.3bn of non-marketable equity securities in its own ecosystem and $30bn of commitments to buy cloud capacity from its customers; Amazon booked $53.4bn of other income in one quarter primarily from its Anthropic investment; Microsoft booked $3.2bn from the same holding. Microsoft's disclosure that roughly <strong>90% of its $678bn backlog comes from customers outside frontier-model companies</strong> is the only quantified bound any major has published, and it is reassuring. It also implies roughly $68bn that is not — and the equivalent figure for competitors' backlogs is not published at all.</p></div>
+
+<div class="lever"><div class="h">Incentive pay is measured entirely on growth, not on the return from the capital producing it</div><p>The chief executive's equity award is 100% performance stock, and <strong>all four metrics are revenue-growth metrics</strong> — Azure growth 35%, other Microsoft Cloud growth 35%, consumer services 15%, XBOX content and services 15%. The cash incentive's two financial metrics are revenue and operating income. There is no margin, return-on-capital, free-cash-flow or capital-efficiency metric anywhere in either plan. In a year when capital expenditure reached 34.9% of revenue, that is a structural asymmetry worth naming.</p></div>
+
+<div class="lever"><div class="h">The IRS transfer-pricing claim remains unresolved after three years</div><p>The IRS is seeking <strong>$28.9bn of additional tax</strong> plus penalties and interest for tax years 2004–2013, with 2014–2017 still under audit. Microsoft states its allowances are adequate and carries $28.6bn of long-term income taxes. No settlement, payment or filing is disclosed. Deloitte's critical audit matter notes that resolution "could have a material impact."</p></div>
+
+<h3>What the sources could not answer</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Question</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Absolute Azure revenue, any year FY2016–FY2026</td><td><strong>Never disclosed.</strong> Growth rates only. Every Azure margin, share and return calculation is therefore an estimate rather than a measurement.</td></tr>
+<tr><td>FY2025 revenue from OpenAI</td><td><strong>Not disclosed.</strong> Only FY2026's $24.1bn, so OpenAI's contribution to FY2026 growth cannot be isolated.</td></tr>
+<tr><td>Any dollar figure for OpenAI's Azure compute commitment</td><td><strong>Not found.</strong> The $194.1bn of purchase commitments carries no counterparty attribution.</td></tr>
+<tr><td>The size of the FY2026 XBOX impairment</td><td><strong>Not quantified.</strong> Named three times in MD&amp;A; Note 9 confirms it is not an intangible impairment and goodwill was essentially unchanged.</td></tr>
+<tr><td>What share of the $329.1bn of not-yet-commenced leases is conditional</td><td><strong>Not disclosed.</strong> The "certain contractual conditions" clause is new in FY2026 and unquantified.</td></tr>
+<tr><td>Forward capital expenditure guidance</td><td>Given on the earnings call rather than in the release or 10-K; <strong>could not be confirmed from a primary source</strong> for this analysis.</td></tr>
+<tr><td>Recast historicals on the FY2027 two-segment basis</td><td>Furnished to the SEC on 2 September 2026; <strong>exhibit content not available here.</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Three questions would need resolving before an investor could form a view. <strong>What is Azure's actual revenue base and unit margin</strong>, without which the return on $355bn of eleven-year capital cannot be computed? <strong>What are the current terms of the OpenAI arrangement</strong>, given that two material terms disappeared from disclosure in a single year? And <strong>what does Microsoft believe the useful economic life of an AI accelerator to be</strong>, as distinct from the six-year accounting life set in 2022?</p>
+
+<!-- ===== 8 ===== -->
+<h2>8. Investor takeaways</h2>
+<div class="lever s"><div class="h">This is a software annuity that has bolted a capital-intensive utility onto itself</div><p>The seat business earns a 59.9% operating margin and needs no capital; the compute business earns 41.3% on a gross margin falling three points a year. Both sit inside one income statement, and the consolidated margin hides the divergence.</p></div>
+<div class="lever s"><div class="h">The economic engine is the incumbent position, not the datacenters</div><p>Microsoft 365 Commercial cloud revenue grew 17% on 6% seat growth — ten points of price and mix sold into customers already under contract, requiring no incremental capital. That is what a moat looks like in the financial statements.</p></div>
+<div class="lever s"><div class="h">The main growth lever is Azure consumption, and it is working</div><p>Intelligent Cloud supplied 63% of FY2026's revenue growth, Azure grew 41%, and commercial backlog rose 84% to $678bn. FY2026's growth was almost entirely organic.</p></div>
+<div class="lever m"><div class="h">What could break the story is the gap between when the capital leaves and when the revenue arrives</div><p>Cash conversion has halved to 50% of net income; roughly $1.07 trillion of future outflow is committed; and the historical precedent for this pattern is a buildout in which the buyers of the technology were fine and the builders were not.</p></div>
+<div class="lever c"><div class="h">Watch three numbers</div><p>Microsoft Cloud gross margin, the twelve-month conversion rate of the backlog, and leases not yet commenced. They are the earliest available evidence on whether $115.9bn a year of capital is buying an annuity or an inventory.</p></div>
+
+<footer>
+<p><strong>Built from:</strong> Microsoft Form 10-K for fiscal years 2016–2026 (FY2026 filed 29 July 2026); Forms 10-Q for FY2026 Q1 and Q3; the Q4 FY2026 earnings release of 29 July 2026; DEF 14A proxy statement of 21 October 2025; Form 8-K furnished 2 September 2026.</p>
+<p><strong>Independent evidence from:</strong> Amazon, Alphabet, Oracle, NVIDIA, TSMC, Meta, CoreWeave, Nebius, Salesforce, ServiceNow and Workday quarterly filings and releases; Synergy Research (Q2 2026 and Q3 2025); Lawrence Berkeley National Laboratory (<em>US Data Center Energy Usage Report: 2025 Update</em>, June 2026; <em>Queued Up: 2026 Edition</em>); PJM 2028/29 Base Residual Auction results; EIA Short-Term Energy Outlook, August 2026; US Census Bureau Business Trends and Outlook Survey; Federal Reserve FEDS Notes (April and July 2026); NBER working papers 34984 and 35290; Federal Reserve Bank of Richmond <em>Economic Quarterly</em> (Spring 2003); UK Competition and Markets Authority; European Commission.</p>
+<p><strong>Post-dating the figures:</strong> On 2 September 2026 Microsoft announced that from fiscal 2027 it will report two segments — Agents and Infra, and Devices and Consumer — replacing the three-segment structure used throughout this page. The accompanying recast historical data was not available for this analysis.</p>
+<p style="margin-top:16px"><strong>This is an analysis of how the business works. It is not a valuation and not a recommendation.</strong> 7 September 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

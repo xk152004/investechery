@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta Platforms — Story Explorer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root{ --navy:#1F3864; --navy2:#2E4F80; }
+  body{ background:#FBFCFD; color:#1a2230; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .navy{ color:var(--navy); } .bg-navy{ background:var(--navy); }
+  h1,h2,h3{ letter-spacing:-0.01em; }
+  .sect{ scroll-margin-top:24px; }
+  .sidelink{ display:block; padding:7px 12px; border-radius:6px; font-size:13.5px; color:#4a5568; border-left:3px solid transparent; }
+  .sidelink:hover{ background:#EEF2F8; color:var(--navy); }
+  .sidelink.active{ background:#EEF2F8; color:var(--navy); font-weight:650; border-left-color:var(--navy); }
+  .card-body{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .card-body.open{ max-height:2400px; }
+  .chev{ transition:transform .25s ease; display:inline-block; }
+  .chev.open{ transform:rotate(90deg); }
+  .flash{ animation:flash 1.6s ease; }
+  @keyframes flash{ 0%{background:#FEF3C7;} 60%{background:#FEF3C7;} 100%{background:transparent;} }
+  .ynode{ cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; }
+  .ynode:hover{ transform:translateY(-3px); }
+  .ynode.sel{ box-shadow:0 0 0 4px rgba(31,56,100,.18); }
+  .tt{ position:relative; }
+  .tt .ttbox{ visibility:hidden; opacity:0; transition:opacity .15s; position:absolute; z-index:60; bottom:115%; left:50%; transform:translateX(-50%);
+    width:270px; background:#1F3864; color:#fff; font-size:11.5px; line-height:1.5; padding:9px 11px; border-radius:7px; box-shadow:0 8px 24px rgba(0,0,0,.22); text-align:left; font-weight:400; }
+  .tt:hover .ttbox{ visibility:visible; opacity:1; }
+  .tt .ttbox:after{ content:""; position:absolute; top:100%; left:50%; margin-left:-6px; border:6px solid transparent; border-top-color:#1F3864; }
+  table.heat td:first-child, table.heat th:first-child{ position:sticky; left:0; background:#FBFCFD; z-index:5; }
+  .evmark{ cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+  .evmark:hover{ transform:translateX(2px); box-shadow:0 3px 10px rgba(0,0,0,.10); }
+  @media (max-width:767px){
+    #sidebar{ position:static; width:100%; height:auto; }
+    .rail-h{ display:none; } .rail-v{ display:block; }
+  }
+  @media (min-width:768px){ .rail-v{ display:none; } }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- mobile top bar -->
+<div class="md:hidden sticky top-0 z-50 bg-white border-b border-slate-200 flex items-center justify-between px-4 py-3">
+  <span class="font-bold navy text-sm">Meta — Story Explorer</span>
+  <button id="burger" class="text-sm px-3 py-1.5 rounded border border-slate-300 text-slate-700">Sections ▾</button>
+</div>
+
+<div class="md:flex">
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="hidden md:block md:sticky md:top-0 md:h-screen w-full md:w-[220px] shrink-0 bg-white border-r border-slate-200 px-3 py-6 overflow-y-auto">
+    <div class="px-3 mb-5 hidden md:block">
+      <div class="text-[11px] uppercase tracking-widest text-slate-400 font-semibold">Read the Story</div>
+      <div class="text-[15px] font-bold navy mt-0.5">Meta Platforms</div>
+      <div class="text-[11px] text-slate-400 mt-0.5">FY2021 – FY2026</div>
+    </div>
+    <nav id="nav" class="space-y-0.5">
+      <a class="sidelink" href="#overview">Overview</a>
+      <a class="sidelink" href="#timeline">Timeline</a>
+      <a class="sidelink" href="#themes">Theme Tracker</a>
+      <a class="sidelink" href="#findings">Key Findings</a>
+      <a class="sidelink" href="#tone">Tone Evolution</a>
+      <a class="sidelink" href="#reframing">Reframing Spotlight</a>
+      <a class="sidelink" href="#assessment">Investor Assessment</a>
+      <a class="sidelink" href="#questions">Follow-Up Questions</a>
+    </nav>
+    <div class="mt-8 px-3 text-[10.5px] text-slate-400 leading-relaxed hidden md:block">
+      19 earnings calls (Q3 2021 – Q2 2026) and FY2021–FY2025 Forms 10-K. Meta publishes no shareholder letter.
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 min-w-0 px-5 md:px-10 lg:px-14 max-w-[1180px]">
+
+  <!-- ============ A. HEADER ============ -->
+  <section id="overview" class="sect py-12">
+    <div class="text-[11px] uppercase tracking-[0.18em] text-slate-400 font-semibold mb-2">Management Narrative Analysis</div>
+    <h1 class="text-3xl md:text-4xl font-bold navy">Meta Platforms, Inc.</h1>
+    <div class="mt-2 text-slate-500 text-sm">FY2021 – FY2026 (half year to date) &nbsp;·&nbsp; Generated 8 September 2026</div>
+
+    <div class="mt-7 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg px-6 py-5">
+      <div class="text-[11px] uppercase tracking-widest text-blue-800/70 font-bold mb-2">Thesis</div>
+      <p class="text-[15.5px] leading-relaxed text-slate-800">
+        Across five years Meta's narrative shows real business progress, a real strategic transition, and material narrative management running at the same time — and the three are easy to mistake for one another.
+        The pattern that matters is one-directional: themes that stop working (metaverse, Llama, open source, young adults, the Reality Labs quarterly loss) exit in silence, while themes that start working enter loudly and with numbers. In nineteen calls, management has not once stated on the record that a prior commitment was wrong.
+      </p>
+    </div>
+
+    <div id="howto" class="mt-4 border border-slate-200 rounded-lg bg-white px-5 py-4">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <div class="font-semibold text-[13.5px] navy mb-1.5">How to read this</div>
+          <ul class="text-[13px] text-slate-600 leading-relaxed list-disc pl-5 space-y-1">
+            <li><span class="font-semibold">Timeline</span> — click a year node for that year's story; click an event marker to jump to the finding behind it.</li>
+            <li><span class="font-semibold">Theme Tracker</span> — hover any cell for the evidence at that theme × year intersection.</li>
+            <li><span class="font-semibold">Findings</span> — each card labels whether it is an observation or an inference. Signal strength is the left border colour.</li>
+            <li>Every figure has been checked against the source transcript page or filing. Quotes are verbatim from prepared remarks or Item 1 / Item 7.</li>
+          </ul>
+        </div>
+        <button onclick="document.getElementById('howto').remove()" class="text-slate-400 hover:text-slate-700 text-lg leading-none shrink-0">×</button>
+      </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="border border-slate-200 rounded-lg bg-white px-4 py-3">
+        <div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-semibold">Calls read</div>
+        <div class="text-lg lg:text-2xl font-bold navy mt-1">19</div>
+        <div class="text-[11px] text-slate-500">Q3 2021 – Q2 2026</div>
+      </div>
+      <div class="border border-slate-200 rounded-lg bg-white px-4 py-3">
+        <div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-semibold">Themes gone silent</div>
+        <div class="text-lg lg:text-2xl font-bold text-red-600 mt-1">6</div>
+        <div class="text-[11px] text-slate-500">none formally retired</div>
+      </div>
+      <div class="border border-slate-200 rounded-lg bg-white px-4 py-3">
+        <div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-semibold">Capex guide</div>
+        <div class="text-lg lg:text-2xl font-bold navy mt-1 whitespace-nowrap">$29bn→$140bn</div>
+        <div class="text-[11px] text-slate-500">FY2022 → FY2026 midpoint</div>
+      </div>
+      <div class="border border-slate-200 rounded-lg bg-white px-4 py-3">
+        <div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-semibold">RL loss, FY2025</div>
+        <div class="text-lg lg:text-2xl font-bold text-red-600 mt-1">$19.19bn</div>
+        <div class="text-[11px] text-slate-500">unstated on calls since Q3 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B. TIMELINE ============ -->
+  <section id="timeline" class="sect py-12 border-t border-slate-200">
+    <div class="flex items-end justify-between flex-wrap gap-3 mb-1">
+      <h2 class="text-2xl font-bold navy">Narrative Timeline</h2>
+      <button id="tlToggle" class="text-[12px] text-slate-500 hover:text-slate-800 border border-slate-300 rounded px-3 py-1.5">Expand All | Collapse All</button>
+    </div>
+    <p class="text-slate-500 text-[13.5px] mb-8 max-w-3xl">The story map. Node colour is tone, node size is how pivotal the year was. Event markers below the rail show when themes appeared, disappeared or were reframed — click one to jump to the finding.</p>
+
+    <!-- Layer 1: year rail (horizontal, desktop) -->
+    <div class="rail-h relative bg-white border border-slate-200 rounded-xl px-8 pt-10 pb-6 overflow-x-auto">
+      <div class="relative" style="min-width:820px">
+        <div class="absolute left-0 right-0 top-[34px] h-[2px] bg-slate-200"></div>
+        <div id="rail" class="relative flex justify-between items-start"></div>
+        <!-- Layer 2: event markers -->
+        <div id="events" class="relative flex justify-between items-start mt-8"></div>
+        <!-- Layer 3: tone gradient -->
+        <div class="mt-8">
+          <div class="h-3 rounded-full" style="background:linear-gradient(90deg,#f59e0b 0%,#ef4444 18%,#22c55e 42%,#22c55e 62%,#16a34a 80%,#3b82f6 100%)"></div>
+          <div class="flex justify-between text-[10.5px] text-slate-500 mt-1.5">
+            <span>FY2021 · cautious</span><span>FY2022 · defensive</span><span>FY2023–24 · confident</span><span>FY2025 · promotional</span><span>FY2026 · hedged</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- vertical rail (mobile) -->
+    <div class="rail-v bg-white border border-slate-200 rounded-xl px-4 py-6">
+      <div id="railv" class="space-y-1"></div>
+    </div>
+
+    <!-- year detail panel -->
+    <div id="ydetail" class="mt-5"></div>
+  </section>
+
+  <!-- ============ C. THEME TRACKER ============ -->
+  <section id="themes" class="sect py-12 border-t border-slate-200">
+    <h2 class="text-2xl font-bold navy mb-1">Theme Tracker</h2>
+    <p class="text-slate-500 text-[13.5px] mb-6 max-w-3xl">Emphasis of each theme in management's own voice, by fiscal year. Hover any cell for the evidence behind it.</p>
+    <div class="overflow-x-auto border border-slate-200 rounded-xl bg-white">
+      <table class="heat w-full text-left" style="min-width:940px">
+        <thead>
+          <tr class="bg-slate-50 border-b border-slate-200">
+            <th class="px-4 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold" style="width:210px">Theme</th>
+            <th class="px-2 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold text-center">FY21</th>
+            <th class="px-2 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold text-center">FY22</th>
+            <th class="px-2 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold text-center">FY23</th>
+            <th class="px-2 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold text-center">FY24</th>
+            <th class="px-2 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold text-center">FY25</th>
+            <th class="px-2 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold text-center">FY26</th>
+            <th class="px-4 py-3 text-[11px] uppercase tracking-widest text-slate-500 font-bold" style="width:300px">Interpretation</th>
+          </tr>
+        </thead>
+        <tbody id="heatbody"></tbody>
+      </table>
+    </div>
+    <div class="flex flex-wrap gap-5 mt-4 text-[12px] text-slate-600 items-center">
+      <span class="font-semibold text-slate-500 text-[11px] uppercase tracking-widest">Legend</span>
+      <span class="flex items-center gap-2"><span class="w-6 h-4 rounded" style="background:#1e3a5f"></span>Strong emphasis</span>
+      <span class="flex items-center gap-2"><span class="w-6 h-4 rounded" style="background:#4b7bbd"></span>Moderate</span>
+      <span class="flex items-center gap-2"><span class="w-6 h-4 rounded" style="background:#cbd5e1"></span>Weak mention</span>
+      <span class="flex items-center gap-2"><span class="w-6 h-4 rounded border border-dashed border-slate-400" style="background:#f1f5f9"></span>Absent / silent</span>
+    </div>
+  </section>
+
+  <!-- ============ D. FINDINGS ============ -->
+  <section id="findings" class="sect py-12 border-t border-slate-200">
+    <div class="flex items-end justify-between flex-wrap gap-3 mb-1">
+      <h2 class="text-2xl font-bold navy">Key Findings</h2>
+      <button id="fToggle" class="text-[12px] text-slate-500 hover:text-slate-800 border border-slate-300 rounded px-3 py-1.5">Expand All | Collapse All</button>
+    </div>
+    <p class="text-slate-500 text-[13.5px] mb-7 max-w-3xl">Each card separates what was said from what it implies. Left border shows signal strength.</p>
+    <div id="findbox" class="space-y-8"></div>
+  </section>
+
+  <!-- ============ E. TONE ============ -->
+  <section id="tone" class="sect py-12 border-t border-slate-200">
+    <h2 class="text-2xl font-bold navy mb-1">Tone Evolution</h2>
+    <p class="text-slate-500 text-[13.5px] mb-6 max-w-3xl">Scored on the prepared remarks only. Hover a point for the evidence.</p>
+    <div class="bg-white border border-slate-200 rounded-xl p-5">
+      <div style="height:290px"><canvas id="toneChart"></canvas></div>
+    </div>
+    <div id="toneCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-4"></div>
+  </section>
+
+  <!-- ============ F. REFRAMING ============ -->
+  <section id="reframing" class="sect py-12 border-t border-slate-200">
+    <h2 class="text-2xl font-bold navy mb-1">Reframing Spotlight</h2>
+    <p class="text-slate-500 text-[13.5px] mb-7 max-w-3xl">The same underlying reality described in materially different language. This is where narrative and business reality diverge.</p>
+    <div id="reframebox" class="space-y-10"></div>
+  </section>
+
+  <!-- ============ G. ASSESSMENT ============ -->
+  <section id="assessment" class="sect py-12 border-t border-slate-200">
+    <h2 class="text-2xl font-bold navy mb-1">Investor Assessment</h2>
+    <p class="text-slate-500 text-[13.5px] mb-7 max-w-3xl">Observations are separated from interpretation.</p>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-white border border-slate-200 rounded-xl p-6">
+        <div class="text-[11px] uppercase tracking-widest text-slate-400 font-bold mb-3">Observations — stated or disclosed</div>
+        <ul class="text-[13.5px] text-slate-700 leading-relaxed space-y-2.5 list-disc pl-5">
+          <li>Revenue grew from $134,902m (FY2023) to $164,501m (FY2024) to $200,966m (FY2025). Q2 2026 revenue was $60.8bn, up 28%.</li>
+          <li>Reality Labs loss from operations rose every year: $16,120m (FY2023), $17,729m (FY2024), $19,193m (FY2025). The quarterly figure left prepared remarks after Q2 2025.</li>
+          <li>Capex guidance rose from $29–34bn (FY2022) to $130–145bn (FY2026); total expense guidance from $90–95bn to $162–169bn.</li>
+          <li>Six themes left the narrative without being formally retired. None was ever explicitly withdrawn on the record.</li>
+          <li>New themes enter with numbers; departing themes leave without a sentence.</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl p-6">
+        <div class="text-[11px] uppercase tracking-widest text-slate-400 font-bold mb-3">Interpretation — inference</div>
+        <div class="text-[13.5px] text-slate-700 leading-relaxed space-y-3">
+          <p><span class="font-semibold navy">Progress is not in doubt.</span> The advertising claims are the most specific and most repeated statements in the corpus, made quarter after quarter with different numbers, and consistent with the reported revenue line. Management's most checkable claims have held up.</p>
+          <p><span class="font-semibold navy">The transition is real.</span> Meta is becoming a consumer advertising business bolted to a capital-intensive compute platform with enterprise ambitions. The evidence is structural — external financing, a President for sovereign capital, custom silicon, a reordered CFO script, layoffs framed as a capex offset.</p>
+          <p><span class="font-semibold navy">The narrative management is a pattern, not an incident.</span> The asymmetry between how themes arrive and how they leave is durable, which means the absence of a theme now carries more information than its presence.</p>
+          <p><span class="font-semibold navy">The credibility asset is real but stretched.</span> The Reels under-build story — an admitted mistake converted into a policy, retold annually, so far vindicated by ad revenue — is genuine. It is now carrying a capital programme roughly four times larger with no comparable proof point, and the arrival of downside language in Q3 2025 and Q2 2026 suggests management knows it.</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-5 bg-slate-50 border border-slate-200 rounded-xl p-6">
+      <div class="text-[11px] uppercase tracking-widest text-slate-400 font-bold mb-3">What to weight most heavily</div>
+      <ol class="text-[13.5px] text-slate-700 leading-relaxed space-y-2 list-decimal pl-5">
+        <li>Whether the Reality Labs loss trajectory actually inflects in FY2026 as promised — the one place a stated commitment and a disclosed number can be checked against each other.</li>
+        <li>Whether enterprise and compute revenue becomes a disclosed line rather than a claim.</li>
+        <li>Whether the model franchise, having been renamed once without explanation, is named consistently from here.</li>
+      </ol>
+      <p class="text-[13px] text-slate-600 mt-4 italic">The record suggests all three will be reported enthusiastically if they succeed and quietly if they do not. The discipline required is to look for the absence, not the announcement.</p>
+    </div>
+  </section>
+
+  <!-- ============ H. QUESTIONS ============ -->
+  <section id="questions" class="sect py-12 border-t border-slate-200">
+    <h2 class="text-2xl font-bold navy mb-1">Follow-Up Questions</h2>
+    <p class="text-slate-500 text-[13.5px] mb-7 max-w-3xl">Answerable from disclosure, management access, or the next two reporting periods.</p>
+    <div id="qbox" class="space-y-4"></div>
+    <div class="mt-12 pt-6 border-t border-slate-200 text-[11.5px] text-slate-400 leading-relaxed">
+      Sources: prepared remarks from 19 Meta Platforms earnings calls (Q3 2021 – Q2 2026) and the Item 1 / Item 7 narrative sections of the FY2021–FY2025 Forms 10-K, as collected in the META research folder. No transcript exists in the collection for the Q1 2025 call. Meta has never published a shareholder or CEO letter, so prepared remarks are the primary management voice. All figures verified against source pages. Narrative analysis only — no valuation, target price or recommendation.
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+const YEARS = [
+{
+  y:"FY2021", tone:"Cautious", toneKey:"amber", score:2, big:false,
+  src:"Q3 2021 and Q4 2021 earnings calls; FY2021 10-K",
+  story:"Meta has just renamed itself around the metaverse and is asking investors to accept near-term pain for a long-term platform bet. The quarter's problems are named openly — TikTok, Apple's iOS changes, and a self-inflicted shift of engagement toward lower-monetising Reels. Management frames all three as deliberate trade-offs it has made successfully before.",
+  themes:["Seven named investment priorities for 2022: Reels, community messaging, commerce, ads, privacy, AI, metaverse","Serving young adults (18–29) as a stated north star for every app","Reels and the short-form video transition as an engagement headwind accepted on purpose","Apple iOS / signal loss as the dominant external constraint (14 mentions in Q3 2021)","Metaverse as organising purpose — avatars, Horizon, Quest, Project Nazare"],
+  toneWhy:"Explanatory and defensive without being contrite. Headwinds are named first, then reframed as chosen trade-offs. The 'we've made these transitions before' playbook analogy does most of the persuasive work.",
+  quote:"I'm confident that leaning harder into these trends is the right short-term tradeoff to make in order to get long-term gains. We've made these types of transitions before with mobile feed and Stories."
+},
+{
+  y:"FY2022", tone:"Defensive", toneKey:"red", score:1, big:true,
+  src:"Q1–Q4 2022 earnings calls; FY2022 10-K",
+  story:"The worst year in the corpus. Revenue declines for the first time in company history and the narrative pivots hard from ambition to cost. Q4 2022 introduces the 'year of efficiency' as a management theme, alongside an 11,000-person layoff and a lowered capex guide — a capex cut presented as a strategic achievement.",
+  themes:["'Year of efficiency' as the CEO's management theme for 2023 (15 uses of the word in one call)","Capex guidance lowered to $30–33bn from $34–37bn and framed as a win","Reels monetisation efficiency as the named bottleneck — 'we actually lose money'","Business messaging positioned as 'the next pillar of our business'; click-to-message at a $10bn run rate","Metaverse still present but shrinking — the FY2022 10-K uses the word 36 times, its peak"],
+  toneWhy:"The most defensive year. The call opens by conceding the year was challenging and the first third of the CEO's remarks is about cost, org structure and cutting projects, not products.",
+  quote:"2022 was a challenging year, but I think we ended it having made good progress on our main priorities… I want to discuss my management theme for 2023, which is the 'year of efficiency'."
+},
+{
+  y:"FY2023", tone:"Confident", toneKey:"green", score:4, big:false,
+  src:"Q1–Q4 2023 earnings calls; FY2023 10-K",
+  story:"Recovery, and the most intellectually substantive year in the corpus. Efficiency is declared achieved and made permanent culture rather than a theme. Q4 2023 lays out a full four-part AI playbook — compute, open source, long-horizon research, proprietary feedback loops — and defends open-sourcing Llama at length. Threads, Ray-Ban Meta glasses and Quest 3 all ship.",
+  themes:["'Year of efficiency' declared complete; leanness reframed as permanent culture","The open-source doctrine, defended over a full page with named strategic benefits (11 mentions)","Compute as competitive position — ~350k H100s, ~600k H100-equivalents by end-2024","'Full general intelligence' named as the product goal for the first time","Business messaging still 'the next revenue pillar'; Threads at 130m MAU; glasses emerge"],
+  toneWhy:"Confident but explanatory rather than promotional. Management is arguing a case with reasons, and volunteering the Reels GPU under-build as an admitted mistake that produced a policy.",
+  quote:"We initially under-built our GPU clusters for Reels… at the time the decision was somewhat controversial and we faced a lot of questions about capex spending, but I'm really glad that we did this."
+},
+{
+  y:"FY2024", tone:"Confident", toneKey:"green", score:4, big:false,
+  src:"Q1–Q4 2024 earnings calls; FY2024 10-K",
+  story:"A deadline-driven year of specific, falsifiable predictions. Capex guidance roughly doubles to $60–65bn. Underneath the confidence, the FY2024 10-K quietly rewrites the corporate mission and deletes the metaverse from the opening description of the business.",
+  themes:["FY2025 capex guided to $60–65bn — roughly double the prior year","Llama at peak prominence (12 mentions in Q3 2024); 'our goal for Llama 4 is to lead'","AI glasses established as a category test — 'a defining year'","Mission statement rewritten in the FY2024 10-K; 'metaverse' removed from Item 1's opening","'Next pillar' language for business messaging disappears from CEO remarks"],
+  toneWhy:"Confident and time-boxed. The CEO stakes out one-year predictions that can be checked — Meta AI reaching a billion users, Llama 4 leading, an AI engineering agent at mid-level capability.",
+  quote:"I know it always feels like every year is a big year, but more than usual it feels like the trajectory for most of our long-term initiatives is going to be a lot clearer by the end of this year… we have about 48 weeks."
+},
+{
+  y:"FY2025", tone:"Promotional", toneKey:"green", score:5, big:true,
+  src:"Q2–Q4 2025 earnings calls; FY2025 10-K. No transcript in the collection for the Q1 2025 call.",
+  story:"The pivot year. 'Superintelligence' arrives fully formed in Q2 2025 with a definition, an organisation and named hires, and capex guidance for FY2026 jumps to $115–135bn. In the same period, three long-running themes go silent without explanation — Llama, open source, and the Reality Labs quarterly operating loss — and the CFO reorders the script to lead with segments rather than consolidated results.",
+  themes:["Superintelligence defined and Meta Superintelligence Labs created (Q2 2025)","Multi-gigawatt clusters named — Prometheus (1GW+) and Hyperion (scaling to 5GW)","Reality Labs quarterly operating loss disappears from prepared remarks after Q2 2025","Llama last named in Q2 2025; open source last named in Q3 2025","FY2026 capex guided to $115–135bn; 'Meta Compute' launched as a named initiative"],
+  toneWhy:"The most promotional year. The remarks are organised around vision rather than results, talent language spikes, and the largest claims arrive with the least disclosure. The first explicit downside scenarios also appear here.",
+  quote:"Over the last few months we have begun to see glimpses of our AI systems improving themselves. The improvement is slow for now, but undeniable. Developing superintelligence… we think is now in sight."
+},
+{
+  y:"FY2026", tone:"Confident but hedged", short:"Hedged", toneKey:"blue", score:4, big:true,
+  src:"Q1 2026 and Q2 2026 earnings calls (half year to date)",
+  story:"Confidence on the core business, hedging on the thesis. Agents become the dominant product frame, the Muse model family replaces Llama without comment, and Meta narrates an enterprise and compute-selling business for the first time. Simultaneously the CFO introduces the fallback position that Meta wins on distribution 'regardless of whether our models are on the frontier', and a May 2026 layoff is framed as a way to offset infrastructure spend.",
+  themes:["Agents as the primary product frame — 10 mentions in Q1, 28 in Q2","Muse family (Spark, Image, Video) launched; 'Llama' and 'open source' now absent entirely","Enterprise opportunity named: APIs, business agents, 'potentially selling compute directly'","Capex raised to $125–145bn then narrowed to $130–145bn; $107bn step-up in contractual commitments","May 2026 headcount reduction ($1.2bn severance) framed by the CFO as an offset to investment"],
+  toneWhy:"Two registers running at once. Specificity is highest where evidence is strongest (ad conversions, glasses, business-agent counts) and lowest where claims are largest (personal agents, superintelligence). The hedges are new and precise.",
+  quote:"our distribution advantages will give us the opportunity to serve AI products that are valuable for everyone… This should be true regardless of whether our models are on the frontier."
+}
+];
+
+const EVENTS = [
+ {yr:"FY2021", type:"appeared", label:"Young adults named as north star", find:"f-young"},
+ {yr:"FY2022", type:"tone",     label:"Tone: confident → defensive (first revenue decline)", find:"f-capex"},
+ {yr:"FY2022", type:"appeared", label:"'Year of efficiency' management theme", find:"f-efficiency"},
+ {yr:"FY2023", type:"appeared", label:"Open-source doctrine argued in full", find:"f-opensource"},
+ {yr:"FY2024", type:"reframed", label:"Mission rewritten; 'metaverse' cut from 10-K opening", find:"f-metaverse"},
+ {yr:"FY2024", type:"disappeared", label:"'Next pillar' business-messaging language goes quiet", find:"f-pillar"},
+ {yr:"FY2025", type:"appeared", label:"Superintelligence + MSL arrive fully formed", find:"f-superint"},
+ {yr:"FY2025", type:"disappeared", label:"Reality Labs quarterly loss drops from script", find:"f-rl"},
+ {yr:"FY2025", type:"disappeared", label:"Llama and open source go silent", find:"f-opensource"},
+ {yr:"FY2026", type:"reframed", label:"'Efficiency' now means compute cost, not less spend", find:"f-efficiency"},
+ {yr:"FY2026", type:"appeared", label:"Enterprise + selling compute directly", find:"f-enterprise"},
+ {yr:"FY2026", type:"tone",     label:"Tone: frontier leadership hedged by CFO", find:"f-frontier"}
+];
+
+// status: 4 strong, 3 moderate, 2 weak, 1 silent
+const THEMES = [
+ {n:"Scale / daily people", r:[4,4,4,4,4,4], read:"The one constant. Never argued for, always stated first.",
+  ev:["2.8bn daily across the Family of Apps in Dec 2021","3.0bn+ daily; Facebook passes 2bn DAU","3.1bn daily at Q4 2023","3.3bn daily at Q4 2024","3.5bn daily at Q4 2025; Instagram hits 3bn MAU","3.6bn daily at Q2 2026; Threads passes 500m MAU"]},
+ {n:"Recommendation & ranking AI", r:[3,3,4,4,4,4], read:"The best-evidenced claim in the corpus, and the one with the most falsifiable numbers.",
+  ev:["AI named as an area with 'stronger returns than we've expected'","'AI discovery engine' framing introduced; 20%+ more conversions YoY","Recommendations become the stated core of both feed and ads","19 ranking mentions in Q2 2024; Advantage+ scales","+5% time on Facebook, +6% on Instagram in one quarter (Q2 2025)","LLMs merged into recommendation systems; Muse Image expands the content universe"]},
+ {n:"Metaverse", r:[4,4,3,2,1,2], read:"Peak to silence in four years. Never formally retired.",
+  ev:["12 mentions in Q4 2021 CEO remarks; company renamed around it","FY2022 10-K uses the word 36 times — its peak","Still one of 'two major waves' but subordinate to AI","Cut from the 10-K's opening description of the business","Zero mentions in Q2, Q3 and Q4 2025 CEO remarks","One passing mention in Q1 2026; zero in Q2 2026"]},
+ {n:"Reality Labs P&L disclosure", r:[4,4,4,4,2,1], read:"Stopped being said aloud in Q3 2025 while the loss kept growing. The clearest silence in the corpus.",
+  ev:["Q4 2021 loss $3.3bn; FY2021 loss $10.2bn stated","Q4 2022 loss $4.3bn stated","Q4 2023 loss $4.6bn stated","Q4 2024 loss $5.0bn stated","Last stated Q2 2025 ($4.5bn); absent from Q3 and Q4","Absent from Q1 and Q2 2026. FY2025 10-K discloses $19.19bn"]},
+ {n:"Reels / short-form video", r:[4,4,4,3,2,2], read:"Faded because it worked — the useful control case for reading the other silences.",
+  ev:["Named the first of seven investment priorities for 2022","24 mentions in Q2 2022; $1bn ads run rate crossed","$10bn+ run rate across apps; 'contributing to net revenue'","Absorbed into the broader recommendation-systems narrative","$50bn+ annual run rate disclosed in Q3 2025","2–5 mentions per call; discussed as video, not as Reels"]},
+ {n:"Cost efficiency / headcount", r:[1,4,4,3,2,3], read:"Same word, opposite meaning. Now an engineering metric and a capex offset.",
+  ev:["Not a theme; headcount up 23% YoY to 71,900","'Year of efficiency'; 11,000-person layoff; capex guide cut","Efficiency goals declared achieved and made permanent culture","Present but routine; leanness assumed rather than argued","Reframed as 'efficiency of building compute' (Meta Compute)","May 2026 layoff, $1.2bn severance, framed as offsetting investment"]},
+ {n:"Capex & infrastructure", r:[3,3,3,4,4,4], read:"From a variable to be minimised to the central strategic claim, with no acknowledgement of the reversal.",
+  ev:["FY2022 guided $29–34bn","FY2023 guided $30–33bn, 'lowered from $34–37bn'","FY2024 guided $30–37bn","FY2025 guided $60–65bn; ~1GW capacity, 2GW datacentre","FY2026 guided $115–135bn; Prometheus and Hyperion named","Raised to $125–145bn, narrowed to $130–145bn; BlackRock JV"]},
+ {n:"Open source / Llama", r:[1,1,4,4,2,1], read:"A stated doctrine and a named franchise both left the record without a sentence marking their departure.",
+  ev:["Not a theme","Not a theme; generative AI leadership stated as a goal","Full strategic defence in Q4 2023 (11 mentions)","Peak Llama prominence; 'our goal for Llama 4 is to lead'","Llama last named Q2 2025; open source last named Q3 2025","Zero mentions of either. Muse family launched with a paid API"]},
+ {n:"Superintelligence / MSL", r:[1,1,1,1,4,4], read:"Fastest full-narrative adoption in the period — and it arrived exactly as Llama left.",
+  ev:["Absent","Absent","Absent","Absent","Defined in Q2 2025 with 9 mentions; MSL created with named leaders","Sustained; 'personal superintelligence' is the stated vision"]},
+ {n:"Agents", r:[1,1,2,2,2,4], read:"Periphery to primary frame in a single quarter.",
+  ev:["Absent","Absent","Occasional mentions alongside generative AI","Llama 4 described as having 'agentic capabilities'","Business AIs tested; early product-market fit claimed","10 mentions Q1, 28 in Q2 2026; personal + business agents"]},
+ {n:"AI glasses / wearables", r:[2,2,3,4,4,4], read:"Real, well-evidenced, and now the stated hardware endgame in place of headsets.",
+  ev:["Project Nazare mentioned; headsets dominate","One mention in the FY2022 10-K","Ray-Ban Meta ships; 8 mentions in Q3 2023","'A defining year' for the category; 10 mentions in Q1 2024","Oakley Meta launched; sales 'more than tripled' in 2025","Daily users tripling YoY; RL investment redirected to glasses"]},
+ {n:"Business messaging as a pillar", r:[3,4,4,2,2,4], read:"Went quiet in the CEO's remarks while the revenue kept compounding — then returned rebadged as agents.",
+  ev:["Click-to-message named as the largest monetisation effort","'The next pillar of our business'; $10bn run rate","Still 'the next revenue pillar' at Q4 2023","Pillar language gone; survives as a CFO revenue driver","Business AIs described as finding product-market fit","1m+ businesses using Meta Business Agents weekly; 'business-in-a-box'"]},
+ {n:"Young adults / TikTok pressure", r:[4,2,1,2,1,1], read:"A stated multi-year reorganisation of product goals that simply left the narrative.",
+  ev:["'Retooling our teams to make serving young adults their north star'","One echo in Q4 2021, then gone","Absent","Two passing mentions; TikTok discussed as a regulatory question","Absent","Absent"]},
+ {n:"Enterprise / selling compute", r:[1,1,1,1,2,4], read:"A new business model, not a new product. First appearance of non-ad revenue as strategy.",
+  ev:["Absent","Absent","Absent","Absent","'Very high demand for additional compute both internally and externally'","APIs, business agents, 'potentially selling compute directly'"]}
+];
+
+const FINDINGS = [
+{cat:"What Changed", items:[
+ {id:"f-capex", sig:"high", t:"Capex went from a variable to be minimised to the central strategic claim",
+  sub:"A $4bn guide cut was a headline win in FY2023; a $70bn increase is now table stakes.",
+  ev:[["Q4 2022","capital expenditures “$30-33 billion, lowered from our prior estimate of $34-37 billion” — presented as an efficiency achievement."],
+      ["Q4 2025","FY2026 capex guided to “$115-135 billion.”"],
+      ["Q1 2026","raised to $125–145bn; Q2 2026 narrowed to $130–145bn."],
+      ["Expenses","total expense guidance moved from $90–95bn (FY2022) to $162–169bn (FY2026)."]],
+  interp:"Nothing in the narrative marks this as a change of view. The same management framing — disciplined stewardship of capital — is applied to both a cut and a fourfold increase, which means the word ‘discipline’ has stopped carrying information about the spending decision.",
+  kind:"Observation, with inference on the framing continuity"},
+ {id:"f-owner", sig:"medium", t:"Cost discipline changed owner and changed altitude",
+  sub:"A billion-dollar layoff moved from the CEO's opening theme to a CFO expense paragraph.",
+  ev:[["Q4 2022","the CEO opens with “my management theme for 2023, which is the ‘year of efficiency’” and spends the first third of his remarks on it."],
+      ["Q1 2026","the CFO discloses it mid-paragraph: “we recently shared internally that we plan to reduce the size of our employee base in May… helping to offset the substantial investments we’re making.”"],
+      ["Q2 2026","$1.2bn of severance booked for the May 2026 action."]],
+  interp:"The action is comparable in materiality; the disclosure is not. An investor tracking only the CEO’s remarks would have missed a billion-dollar event, and the stated purpose has shifted from building a better company to funding the capital programme.",
+  kind:"Observation"},
+ {id:"f-enterprise", sig:"high", t:"A genuine business-model addition: enterprise and compute sales",
+  sub:"First time in five years that non-advertising revenue is narrated as strategy rather than incidental.",
+  ev:[["Q2 2026 (CEO)","“we see a large enterprise opportunity to sell to businesses, including APIs, business agents, potentially selling compute directly.”"],
+      ["Q2 2026 (CEO)","“we’re getting a lot of offers for compute at a significant premium over what we paid for it.”"],
+      ["Q2 2026 (CFO)","enterprise offerings may take the form of “agentic tools, our API, or monetizing compute directly given outsized market demand.”"]],
+  interp:"This implies a customer set, a sales motion and a margin profile Meta has never operated. It is also the first framing in which the capital programme has a direct external revenue path rather than only an internal one — which is convenient at exactly the moment capex crossed $100bn.",
+  kind:"Observation, with inference on timing"},
+ {id:"f-financing", sig:"medium", t:"Financing entered the story only after capex crossed $100bn",
+  sub:"Off-balance-sheet structures, sovereign capital and a new President appear together.",
+  ev:[["Q1 2026","“infrastructure purchase agreements drove a $107 billion step up in our contractual commitments this quarter.”"],
+      ["Q4 2025","Dina Powell McCormick joins as President and Vice Chairman to lead partnerships with “governments, sovereigns, and strategic capital partners.”"],
+      ["Q2 2026","BlackRock joint venture for a 1GW data centre in El Paso; “the strength of our balance sheet gives us the ability to attract capital from a wide range of markets.”"]],
+  interp:"For most of the period Meta funded everything from operating cash flow and still repurchased stock. The arrival of third-party structures changes the company’s financial character, and it makes the headline capex number a less complete picture of committed capital.",
+  kind:"Observation"},
+ {id:"f-script", sig:"medium", t:"The CFO reordered the script in Q3 2025",
+  sub:"Consolidated-first became segment-first in the same quarter the Reality Labs loss stopped being read aloud.",
+  ev:[["Q1 2022 – Q2 2025","every call opens “Let’s begin with our consolidated results.”"],
+      ["Q3 2025 – Q2 2026","every call opens “Let’s begin with our segment results.”"]],
+  interp:"The change is exact and dateable. Segment-first ordering places Family of Apps revenue growth ahead of the consolidated expense picture. Whether that was the purpose is inference; the coincidence with the Reality Labs silence is not.",
+  kind:"Observation, with inference on intent"}
+]},
+{cat:"What Disappeared", items:[
+ {id:"f-rl", sig:"high", t:"The Reality Labs quarterly operating loss stopped being said aloud",
+  sub:"Last stated Q2 2025 at $4.5bn. FY2025 annual loss was $19.19bn.",
+  ev:[["Q4 2021 – Q2 2025","stated every quarter by the CFO: $3.3bn (Q4 2021), $4.3bn (Q4 2022), $4.6bn (Q4 2023), $5.0bn (Q4 2024), $4.5bn (Q2 2025)."],
+      ["Q3 2025 onward","zero mentions across four consecutive calls. Only Reality Labs revenue is stated."],
+      ["FY2025 10-K","RL loss from operations of $19,193m, up from $17,729m (FY2024) and $16,120m (FY2023). “Our investments in Reality Labs reduced our 2025 overall operating profit by approximately $19.19 billion.”"]],
+  interp:"The number did not shrink; the sentence did. One reading is benign — the segment is being redirected toward glasses, which are working. The competing reading is that a $19bn annual loss became inconvenient to state at the exact moment the company began asking investors to fund a far larger bet. The Q4 2025 claim that 2026 will be “likely the peak” is the checkable part.",
+  kind:"Observation; the two readings are competing inferences"},
+ {id:"f-metaverse", sig:"high", t:"'Metaverse' was deleted, not retired",
+  sub:"12 CEO mentions in Q4 2021 to zero in Q4 2025. The mission statement was rewritten without comment.",
+  ev:[["FY2022 10-K","36 uses — the peak. Item 1 opens: “All of our products, including our apps, share the vision of helping to bring the metaverse to life.”"],
+      ["FY2024 10-K","that sentence is gone. “To help build the metaverse” becomes “to help build the next computing platform.” The corporate mission changes from “give people the power to build community and bring the world closer together” to “build the future of human connection.”"],
+      ["FY2025 10-K","9 uses, all definitional or in risk factors."],
+      ["Calls","zero mentions in Q2, Q3 and Q4 2025 and in Q2 2026; one passing mention in Q1 2026."]],
+  interp:"The strategy genuinely changed and the new direction is more defensible. What is missing is any accounting of what roughly $77bn of cumulative Reality Labs operating losses from FY2021 to FY2025 bought — $10.2bn, $13.7bn, $16.1bn, $17.7bn and $19.2bn respectively.",
+  kind:"Observation, with inference on the absent accounting"},
+ {id:"f-opensource", sig:"high", t:"Llama and open source both left the record in silence",
+  sub:"A named franchise and a stated doctrine disappeared across four calls, then reappeared renamed and commercialised.",
+  ev:[["Q4 2023","eleven mentions and roughly a full page defending open source — safety, industry standards, recruiting, and the claim that it “doesn’t reduce our main advantages.”"],
+      ["Q2 2025","Llama named for the last time: “we’re making good progress towards Llama 4.1 and 4.2.”"],
+      ["Q3 2025","open source named for the last time, in one generic sentence."],
+      ["Q1 2026","the Muse family appears, with Muse Spark described as “our first model” from Meta Superintelligence Labs."],
+      ["Q2 2026","Muse Spark 1.1 shipped through “our new public API” with enterprise adoption features. Zero mentions of Llama or open source."]],
+  interp:"This is the clearest instance in the period of a commitment abandoned in practice while remaining unretracted in words. The only oblique acknowledgement is Q4 2025’s “in ’25 we rebuilt the foundations of our AI program.” The Q4 2023 defence rested on three specific benefits — safety, standards, recruiting — none of which has been given a replacement.",
+  kind:"Observation"},
+ {id:"f-pillar", sig:"low", t:"'The next pillar of our business' went quiet while the revenue compounded",
+  sub:"The useful counter-example: silence here looks like crowd-out, not failure.",
+  ev:[["Q4 2022 – Q4 2023","CEO language: “Facebook and Instagram are the first two pillars of our business, and in the next few years we hope to bring messaging online as the next pillar.”"],
+      ["FY2024 – FY2025","pillar framing absent from CEO remarks; business messaging survives only as a CFO explanation of Family of Apps other revenue."],
+      ["Revenue","Family of Apps other revenue grew from $155m in Q4 2021 to $885m in Q1 2026 (+74%) and $1.0bn in Q2 2026 (+73%)."],
+      ["FY2026","the theme returns rebadged as “business agents” — 1m+ businesses using them weekly."]],
+  interp:"Worth holding alongside the other silences as a control. A theme can leave the narrative because a louder theme displaced it, not because it failed. The test is whether the underlying disclosed number kept moving — here it did, which is precisely what distinguishes this case from the Reality Labs one.",
+  kind:"Observation"},
+ {id:"f-young", sig:"medium", t:"Young adults as a north star vanished within two quarters",
+  sub:"A stated multi-year reorganisation of product goals, never mentioned again and never measured.",
+  ev:[["Q3 2021","“we are retooling our teams to make serving young adults their north star, rather than optimizing for the larger number of older people… This shift will take years, not months.”"],
+      ["Q4 2021","one echo, then effectively nothing. Two passing mentions across 2024; none since."],
+      ["Metrics","no cohort metric was ever introduced to track it."]],
+  interp:"The strongest structural evidence for the asymmetry that runs through this whole analysis: a commitment framed as multi-year and organisational left the narrative in one quarter, with no metric ever created that would have made its abandonment visible.",
+  kind:"Observation"}
+]},
+{cat:"New Themes", items:[
+ {id:"f-superint", sig:"high", t:"Superintelligence arrived fully formed — exactly as Llama left",
+  sub:"Nine mentions, a definition, an organisation and three named leaders in its first appearance.",
+  ev:[["Q2 2025","“Developing superintelligence — which we define as AI that surpasses human intelligence in every way — we think is now in sight.” Meta Superintelligence Labs announced with Alexandr Wang, Nat Friedman and Shengjia Zhao."],
+      ["Q3 2025","the stated corporate goal becomes “establishing Meta as the leading frontier AI lab.”"],
+      ["FY2025 10-K","uses “superintelligence” nine times. No prior 10-K uses it at all."],
+      ["Infrastructure","Prometheus (1GW+) and Hyperion (scaling to 5GW) named the same quarter."]],
+  interp:"The organisational change, named hires and gigawatt commitments are real and expensive. But the word also arrived in the same quarter that Llama stopped being named, which makes it a replacement narrative as well as a new one — and unlike a model version number, a superintelligence timeline cannot be marked to market on any call.",
+  kind:"Observation, with inference on the substitution"},
+ {id:"f-agents", sig:"medium", t:"Agents went from periphery to primary frame in one quarter",
+  sub:"10 mentions in Q1 2026, 28 in Q2 2026.",
+  ev:[["Q1 2026","“our goal is not just to deliver Meta AI as an assistant, but to deliver agents that can understand your goals and then work day and night.” Business AI weekly conversations up 10x since the start of 2026."],
+      ["Q2 2026","split into personal agents, business agents and an eventual “business-in-a-box.” More than 1 million businesses using Meta Business Agents weekly."],
+      ["Monetisation","“a mix of subscriptions, volume-based pricing, and… businesses only pay us when we achieve results — an efficient auction over our compute.”"]],
+  interp:"The business-agent side carries real disclosed numbers. The personal-agent side is still entirely in the future tense, and it is the half carrying the larger claim. Worth tracking which of the two gets a disclosed metric first.",
+  kind:"Observation"},
+ {id:"f-glasses", sig:"low", t:"AI glasses quietly replaced headsets as the hardware endgame",
+  sub:"The best-evidenced of the new themes, and the one management argues for least.",
+  ev:[["FY2021–FY2022 10-Ks","“glasses” used zero and one time respectively."],
+      ["Q3 2023","8 mentions; Ray-Ban Meta ships with Meta AI."],
+      ["Q4 2025","“Sales of our glasses more than tripled last year”; RL investment redirected — “we’re directing most of our investment towards glasses and wearables going forward.”"],
+      ["Q1 2026","daily users tripling year-over-year. FY2025 10-K uses “glasses” 14 times."]],
+  interp:"Reality Labs revenue growth is now attributed to glasses offsetting declining Quest sales, which is a substantive segment change disclosed without being framed as a strategic reversal. The metaverse bet became a wearables bet.",
+  kind:"Observation"}
+]},
+{cat:"Reframed Problems", items:[
+ {id:"f-efficiency", sig:"high", t:"'Efficiency' survived a complete inversion of its cash-flow meaning",
+  sub:"In FY2023 it meant a capex cut to $30–33bn. In FY2026 it accompanies capex of $130–145bn.",
+  ev:[["Q4 2022","“working with our infrastructure team on how to deliver our roadmap while spending less on capex… flattening our org structure and removing some layers of middle management.”"],
+      ["Q1 2026","“we are increasing our infrastructure capex forecast for this year… That said, we are very focused on increasing the efficiency of our investments.”"],
+      ["Q4 2025","“being the most efficient at how we engineer, invest, and partner to build our infrastructure will become a strategic advantage.”"]],
+  interp:"Both usages are internally coherent. Used across years without comment, the continuity of the word obscures the discontinuity of the policy — a reader tracking the vocabulary would conclude the capital stance never changed.",
+  kind:"Observation, with inference on the effect"},
+ {id:"f-frontier", sig:"high", t:"Frontier leadership was quietly downgraded to a distribution argument",
+  sub:"Three quarters between “the leading frontier AI lab” and “regardless of whether our models are on the frontier.”",
+  ev:[["Q3 2025 (CEO)","“I’m very focused on establishing Meta as the leading frontier AI lab — building personal superintelligence for everyone.”"],
+      ["Q2 2026 (CFO)","“our distribution advantages will give us the opportunity to serve AI products that are valuable for everyone… This should be true regardless of whether our models are on the frontier.”"],
+      ["Q3 2025","the first downside path also appears: “in the worst case, we would just slow building new infrastructure for some period while we grow into what we build.”"]],
+  interp:"The second position may well be the more defensible one — Meta’s distribution advantage is real and its model position is not obviously leading. But it is a materially lower bar, introduced without reference to the first, and delivered by the CFO rather than the CEO who set the original goal.",
+  kind:"Observation, with inference on why it was lowered"}
+]}
+];
+
+const REFRAMINGS = [
+ {topic:"“Efficiency”",
+  before:{yr:"Q4 2022 — earnings call",q:"we’ve taken some additional steps like working with our infrastructure team on how to deliver our roadmap while spending less on capex… we’re working on flattening our org structure and removing some layers of middle management.",frame:"Efficiency = spend less."},
+  after:{yr:"Q1 2026 — earnings call",q:"we are increasing our infrastructure capex forecast for this year… That said, we are very focused on increasing the efficiency of our investments. One of the primary goals of our Meta Compute initiative is to lead the industry in efficiency of building compute.",frame:"Efficiency = better cost per unit of compute, while total spend rises."},
+  analysis:"The word survived a complete inversion of its cash-flow meaning. FY2023 efficiency meant a capex guide cut to $30–33bn; FY2026 efficiency accompanies a capex guide of $130–145bn. Verdict: obscures."},
+ {topic:"The metaverse",
+  before:{yr:"FY2022 Form 10-K, Item 1",q:"All of our products, including our apps, share the vision of helping to bring the metaverse to life… Meta is moving our offerings beyond 2D screens toward immersive experiences like augmented and virtual reality to help build the metaverse, which we believe is the next evolution in social technology.",frame:"The metaverse is the company’s organising purpose."},
+  after:{yr:"FY2025 Form 10-K, Item 1",q:"Our products enable people to connect and share through mobile devices, personal computers, virtual reality (VR) headsets, and AI glasses. We are innovating in artificial intelligence (AI) technologies… and to advance our vision to deliver personal superintelligence for everyone.",frame:"AI and glasses are the organising purpose; the metaverse survives only in risk factors."},
+  analysis:"The FY2024 10-K performed the swap at sentence level — “to help build the metaverse” became “to help build the next computing platform” — and rewrote the corporate mission in the same filing. Verdict: clarifies the direction, obscures the cost. Roughly $77bn of cumulative Reality Labs operating losses from FY2021 to FY2025 has never been reconciled to a stated outcome."},
+ {topic:"Open source and the model franchise",
+  before:{yr:"Q4 2023 — earnings call",q:"our long-standing strategy has been to build and open source general infrastructure while keeping our specific product implementations proprietary… we find that there are mostly advantages to being the open source leader and it doesn’t remove differentiation from our products much anyway.",frame:"Open source is a durable competitive strategy with named benefits in safety, standards and recruiting."},
+  after:{yr:"Q2 2026 — earnings call",q:"Muse Spark 1.1 is a strong agentic and coding model… It’s available through our new public API, and we’re ramping up distribution through partner channels… We’re also building out features to make it easier for enterprises to adopt Muse Spark.",frame:"The model franchise is a renamed, commercialised, API-gated product."},
+  analysis:"Across four calls a stated doctrine and a named product line both left the record without a sentence marking their departure. The only oblique reference is Q4 2025’s “in ’25 we rebuilt the foundations of our AI program.” Verdict: obscures — the clearest case in the period of a commitment abandoned in practice while unretracted in words."},
+ {topic:"Headcount reduction",
+  before:{yr:"Q4 2022 — CEO",q:"I want to discuss my management theme for 2023, which is the ‘year of efficiency’… even if our business outperforms our goals, this will stay our management theme for the year.",frame:"A company-defining commitment, owned by the CEO, announced first."},
+  after:{yr:"Q1 2026 — CFO",q:"As we grow our infrastructure spend, we remain committed to operating efficiently, and we recently shared internally that we plan to reduce the size of our employee base in May… a leaner operating model will allow us to move more quickly while also helping to offset the substantial investments we’re making.",frame:"A funding offset, disclosed by the CFO inside the expense paragraph."},
+  analysis:"Q2 2026 booked $1.2bn of severance for the May 2026 action. The change is not in what was done but in who said it, where it sat, and what it was said to be for. Verdict: obscures — headcount reduction is now explicitly a mechanism for funding capex."},
+ {topic:"Frontier leadership",
+  before:{yr:"Q3 2025 — CEO",q:"I’m very focused on establishing Meta as the leading frontier AI lab — building personal superintelligence for everyone.",frame:"Winning the model race is the goal."},
+  after:{yr:"Q2 2026 — CFO",q:"our distribution advantages will give us the opportunity to serve AI products that are valuable for everyone… This should be true regardless of whether our models are on the frontier.",frame:"Distribution, not model leadership, is the durable advantage."},
+  analysis:"Three quarters separate these statements. The second is a materially lower bar, introduced without reference to the first, and delivered by a different executive. Verdict: clarifies the economics, obscures the retreat."}
+];
+
+const QUESTIONS = [
+ {u:"critical", q:"What happened in Q3 2025 that removed the Reality Labs quarterly operating loss from prepared remarks — and what exactly does “losses will peak” mean?",
+  ctx:"The loss was stated every quarter from Q4 2021 through Q2 2025 ($4.5bn) and has not been stated since, in the same quarter the CFO reordered the script to segment-first. The FY2025 10-K discloses a $19,193m annual loss and guides to 2026 losses “similar to 2025”; Q4 2025 called 2026 “likely the peak.” Establish whether that means peak absolute dollars — which is checkable — or peak as a share of a much larger expense base, which is not the same claim."},
+ {u:"critical", q:"Were Llama 4.1 and 4.2 shipped, abandoned, or absorbed into Muse?",
+  ctx:"Q2 2025 said Meta was “making good progress towards Llama 4.1 and 4.2.” The name has not been spoken since. Muse Spark was introduced in Q1 2026 as “our first model” from Meta Superintelligence Labs. A named franchise with a stated roadmap disappeared across two quarters with no explanation beyond “in ’25 we rebuilt the foundations of our AI program.” The answer bears on how much of the AI R&D in that window produced shippable output."},
+ {u:"important", q:"Has the open-source commitment been retired, and what replaces the benefits it was said to deliver?",
+  ctx:"The Q4 2023 defence rested on three specific claims: community scrutiny improves safety and compute efficiency, an open stack becomes an industry standard, and open source is a recruiting advantage. Meta now sells API access, subscriptions and possibly compute. If the doctrine is gone, each benefit needs a replacement — and the recruiting one matters most given how much of the FY2025 narrative rested on talent density."},
+ {u:"important", q:"Is headcount reduction now a permanent funding mechanism for capex, and what is the operating expense trajectory excluding infrastructure?",
+  ctx:"The May 2026 action cost $1.2bn in severance and was framed by the CFO as “helping to offset the substantial investments we’re making.” With total expense guidance at $162–169bn and capex at $130–145bn, the split between infrastructure and everything else determines whether the core business is operating leaner or simply being harvested. This is checkable from segment and expense-line disclosure and is not addressed in the narrative."},
+ {u:"watch", q:"What is behind “offers for compute at a significant premium over what we paid for it,” and how much of FY2026 capex is contractually committed versus optional?",
+  ctx:"Q2 2026 made an unusually strong claim about external demand for Meta’s compute without naming size, duration or counterparties. In the same period Q1 2026 disclosed a $107bn step-up in contractual commitments and Q2 2026 announced a BlackRock joint venture. Management describes the long-lived nature of the assets as providing flexibility “to adjust our investment to the pace of AI adoption” — the commitment schedule is the test of whether that flexibility is real."}
+];
+
+/* ============ helpers ============ */
+const TONECOLOR = { green:"#22c55e", amber:"#f59e0b", red:"#ef4444", blue:"#3b82f6" };
+const TONEBADGE = { green:"bg-green-100 text-green-800", amber:"bg-amber-100 text-amber-800",
+                    red:"bg-red-100 text-red-700", blue:"bg-blue-100 text-blue-800" };
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* ============ B1. year rail ============ */
+const rail = document.getElementById('rail');
+const railv = document.getElementById('railv');
+YEARS.forEach((Y,i) => {
+  const size = Y.big ? 72 : 56;
+  const glow = Y.big ? 'box-shadow:0 0 0 6px rgba(31,56,100,.09), 0 6px 18px rgba(0,0,0,.13);' : 'box-shadow:0 2px 6px rgba(0,0,0,.10);';
+  const d = document.createElement('div');
+  d.className = 'flex flex-col items-center';
+  d.style.width = (100/YEARS.length)+'%';
+  d.innerHTML =
+    '<div class="ynode rounded-full flex items-center justify-center text-white font-bold" data-yi="'+i+'" '+
+    'style="width:'+size+'px;height:'+size+'px;background:'+TONECOLOR[Y.toneKey]+';'+glow+'font-size:'+(Y.big?12:11)+'px">'+
+      Y.y.replace('FY','’').replace('20','') +
+    '</div>'+
+    '<div class="mt-2 text-[12px] font-semibold text-slate-700">'+Y.y+'</div>'+
+    '<div class="text-[10.5px] text-slate-400">'+(Y.short||Y.tone)+'</div>';
+  rail.appendChild(d);
+
+  const v = document.createElement('div');
+  v.className = 'flex items-start gap-3 py-2 border-l-2 border-slate-200 pl-4 ml-4 relative';
+  v.innerHTML =
+    '<div class="ynode rounded-full flex items-center justify-center text-white font-bold shrink-0" data-yi="'+i+'" '+
+    'style="width:44px;height:44px;margin-left:-38px;background:'+TONECOLOR[Y.toneKey]+';font-size:10px">'+Y.y.replace('FY','’').replace('20','')+'</div>'+
+    '<div class="pl-1 flex-1"><div class="text-[13px] font-semibold text-slate-800">'+Y.y+' · '+Y.tone+'</div>'+
+    '<div class="text-[11.5px] text-slate-500 mt-0.5 mb-1.5">Tap for detail</div>'+
+    '<div class="vev space-y-1.5"></div></div>';
+  railv.appendChild(v);
+});
+
+/* ============ B2. event markers ============ */
+const EVSTYLE = {
+  appeared:    {b:'#22c55e', p:'+',  bg:'bg-green-50',  t:'text-green-900'},
+  disappeared: {b:'#ef4444', p:'×', bg:'bg-red-50', t:'text-red-900'},
+  reframed:    {b:'#f59e0b', p:'↻', bg:'bg-amber-50', t:'text-amber-900'},
+  tone:        {b:'#3b82f6', p:'↕', bg:'bg-blue-50',  t:'text-blue-900'}
+};
+const evwrap = document.getElementById('events');
+YEARS.forEach(Y => {
+  const col = document.createElement('div');
+  col.className = 'flex flex-col items-center gap-1.5 px-1';
+  col.style.width = (100/YEARS.length)+'%';
+  const mine = EVENTS.filter(e => e.yr === Y.y);
+  if (mine.length) col.innerHTML = '<div class="w-px h-5 bg-slate-300 -mt-8 mb-1"></div>';
+  mine.forEach(e => {
+    const s = EVSTYLE[e.type];
+    const a = document.createElement('div');
+    a.className = 'evmark w-full rounded-md px-2.5 py-1.5 text-[10.5px] leading-snug '+s.bg+' '+s.t;
+    a.style.borderLeft = '3px solid '+s.b;
+    a.setAttribute('data-find', e.find);
+    a.innerHTML = '<span class="font-bold mr-1">'+s.p+'</span>'+esc(e.label);
+    col.appendChild(a);
+  });
+  evwrap.appendChild(col);
+});
+// mobile: event pills beside each vertical year node
+document.querySelectorAll('#railv .vev').forEach((slot, i) => {
+  EVENTS.filter(e => e.yr === YEARS[i].y).forEach(e => {
+    const s2 = EVSTYLE[e.type];
+    const a = document.createElement('div');
+    a.className = 'evmark rounded-md px-2.5 py-1.5 text-[10.5px] leading-snug '+s2.bg+' '+s2.t;
+    a.style.borderLeft = '3px solid '+s2.b;
+    a.setAttribute('data-find', e.find);
+    a.innerHTML = '<span class="font-bold mr-1">'+s2.p+'</span>'+esc(e.label);
+    slot.appendChild(a);
+  });
+});
+
+/* ============ B3. year detail ============ */
+const ydetail = document.getElementById('ydetail');
+function yearPanel(i){
+  const Y = YEARS[i];
+  return '' +
+   '<div class="bg-white border border-slate-200 rounded-xl p-6 md:p-7">'+
+    '<div class="flex items-center gap-3 flex-wrap mb-1">'+
+      '<h3 class="text-xl font-bold navy">'+Y.y+'</h3>'+
+      '<span class="text-[11px] font-semibold px-2.5 py-1 rounded-full '+TONEBADGE[Y.toneKey]+'">'+esc(Y.tone)+'</span>'+
+    '</div>'+
+    '<div class="text-[11.5px] text-slate-400 mb-5">Source: '+esc(Y.src)+'</div>'+
+    '<div class="grid md:grid-cols-2 gap-7">'+
+      '<div>'+
+        '<div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-bold mb-2">Core story</div>'+
+        '<p class="text-[13.5px] text-slate-700 leading-relaxed mb-5">'+esc(Y.story)+'</p>'+
+        '<div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-bold mb-2">Key themes</div>'+
+        '<ul class="text-[13px] text-slate-700 leading-relaxed list-disc pl-5 space-y-1.5">'+
+          Y.themes.map(t => '<li>'+esc(t)+'</li>').join('')+
+        '</ul>'+
+      '</div>'+
+      '<div>'+
+        '<div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-bold mb-2">Tone</div>'+
+        '<p class="text-[13.5px] text-slate-700 leading-relaxed mb-5"><span class="font-semibold">'+esc(Y.tone)+'.</span> '+esc(Y.toneWhy)+'</p>'+
+        '<div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-bold mb-2">Notable quote</div>'+
+        '<blockquote class="border-l-4 pl-4 py-1 text-[13.5px] italic text-slate-700 leading-relaxed" style="border-color:'+TONECOLOR[Y.toneKey]+'">“'+esc(Y.quote)+'”</blockquote>'+
+      '</div>'+
+    '</div>'+
+   '</div>';
+}
+function showYear(i){
+  document.querySelectorAll('.ynode').forEach(n => n.classList.toggle('sel', n.getAttribute('data-yi') == i));
+  ydetail.innerHTML = yearPanel(i);
+}
+document.addEventListener('click', ev => {
+  const n = ev.target.closest('.ynode');
+  if (n) { showYear(+n.getAttribute('data-yi')); ydetail.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+});
+showYear(YEARS.length-1);
+
+let tlOpen = false;
+const tlBtn = document.getElementById('tlToggle');
+tlBtn.addEventListener('click', () => {
+  tlOpen = !tlOpen;
+  if (tlOpen) {
+    document.querySelectorAll('.ynode').forEach(n => n.classList.remove('sel'));
+    ydetail.innerHTML = '<div class="space-y-4">' + YEARS.map((Y,i) => yearPanel(i)).join('') + '</div>';
+  } else {
+    showYear(YEARS.length-1);
+  }
+});
+
+/* ============ C. theme tracker ============ */
+const HEAT = {4:{bg:'#1e3a5f',fg:'#fff',lab:'Strong'},3:{bg:'#4b7bbd',fg:'#fff',lab:'Moderate'},
+              2:{bg:'#cbd5e1',fg:'#334155',lab:'Weak'},1:{bg:'#f1f5f9',fg:'#94a3b8',lab:'Silent'}};
+const YL = ['FY2021','FY2022','FY2023','FY2024','FY2025','FY2026'];
+const hb = document.getElementById('heatbody');
+THEMES.forEach(T => {
+  const tr = document.createElement('tr');
+  tr.className = 'border-b border-slate-100';
+  let html = '<td class="px-4 py-2.5 text-[12.5px] font-semibold text-slate-800">'+esc(T.n)+'</td>';
+  T.r.forEach((v,i) => {
+    const h = HEAT[v];
+    html += '<td class="px-1.5 py-2.5"><div class="tt w-full h-10 rounded flex items-center justify-center text-[10.5px] font-semibold" '+
+      'style="background:'+h.bg+';color:'+h.fg+(v===1?';border:1px dashed #94a3b8':'')+'">'+h.lab+
+      '<span class="ttbox"><b>'+YL[i]+' · '+esc(T.n)+'</b><br>'+esc(T.ev[i])+'</span></div></td>';
+  });
+  html += '<td class="px-4 py-2.5 text-[12px] text-slate-600 leading-snug">'+esc(T.read)+'</td>';
+  tr.innerHTML = html;
+  hb.appendChild(tr);
+});
+
+/* ============ D. findings ============ */
+const SIG = { high:{c:'#dc2626', badge:'bg-red-100 text-red-700', lab:'HIGH SIGNAL'},
+              medium:{c:'#f59e0b', badge:'bg-amber-100 text-amber-800', lab:'MEDIUM'},
+              low:{c:'#3b82f6', badge:'bg-blue-100 text-blue-800', lab:'LOW'} };
+const fbox = document.getElementById('findbox');
+FINDINGS.forEach(group => {
+  const g = document.createElement('div');
+  let h = '<div class="text-[11px] uppercase tracking-[0.16em] text-slate-400 font-bold mb-3">'+esc(group.cat)+'</div><div class="space-y-3">';
+  group.items.forEach(it => {
+    const s = SIG[it.sig];
+    h += '<div id="'+it.id+'" class="bg-white border border-slate-200 rounded-lg overflow-hidden" style="border-left:4px solid '+s.c+'">'+
+      '<button class="fhead w-full text-left px-5 py-4 flex items-start gap-3 hover:bg-slate-50">'+
+        '<span class="chev navy font-bold text-lg leading-none mt-0.5">›</span>'+
+        '<span class="flex-1">'+
+          '<span class="flex items-center gap-2.5 flex-wrap">'+
+            '<span class="font-semibold text-[14.5px] text-slate-900">'+esc(it.t)+'</span>'+
+            '<span class="'+s.badge+' text-[9.5px] font-bold px-2 py-0.5 rounded-full tracking-wide">'+s.lab+'</span>'+
+          '</span>'+
+          '<span class="block text-[12.5px] text-slate-500 mt-1">'+esc(it.sub)+'</span>'+
+        '</span>'+
+      '</button>'+
+      '<div class="card-body"><div class="px-5 pb-5 pl-12">'+
+        '<div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-bold mb-2">Evidence</div>'+
+        '<ul class="space-y-2 mb-4">'+ it.ev.map(e =>
+          '<li class="text-[13px] text-slate-700 leading-relaxed"><span class="font-bold navy">'+esc(e[0])+'</span> — '+esc(e[1])+'</li>').join('') +'</ul>'+
+        '<div class="text-[10.5px] uppercase tracking-widest text-slate-400 font-bold mb-2">Interpretation</div>'+
+        '<p class="text-[13.5px] text-slate-700 leading-relaxed">'+esc(it.interp)+'</p>'+
+        '<div class="mt-4 inline-block text-[10.5px] font-semibold text-slate-500 bg-slate-100 rounded px-2.5 py-1">'+esc(it.kind)+'</div>'+
+      '</div></div></div>';
+  });
+  h += '</div>';
+  g.innerHTML = h;
+  fbox.appendChild(g);
+});
+function toggleCard(head, force){
+  const body = head.nextElementSibling, chev = head.querySelector('.chev');
+  const open = force === undefined ? !body.classList.contains('open') : force;
+  body.classList.toggle('open', open); chev.classList.toggle('open', open);
+}
+document.querySelectorAll('.fhead').forEach(h => h.addEventListener('click', () => toggleCard(h)));
+let fOpen = false;
+document.getElementById('fToggle').addEventListener('click', () => {
+  fOpen = !fOpen;
+  document.querySelectorAll('.fhead').forEach(h => toggleCard(h, fOpen));
+});
+
+/* event marker -> finding card */
+document.querySelectorAll('.evmark').forEach(m => m.addEventListener('click', () => {
+  const el = document.getElementById(m.getAttribute('data-find'));
+  if (!el) return;
+  const head = el.querySelector('.fhead');
+  toggleCard(head, true);
+  el.scrollIntoView({behavior:'smooth', block:'center'});
+  el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+}));
+
+/* ============ E. tone chart ============ */
+const TL = {1:'Defensive',2:'Cautious',3:'Neutral',4:'Confident',5:'Celebratory'};
+try{ if(typeof Chart==='undefined') throw new Error('chart lib unavailable');
+new Chart(document.getElementById('toneChart'), {
+  type:'line',
+  data:{ labels: YEARS.map(y=>y.y),
+    datasets:[{ data: YEARS.map(y=>y.score), borderColor:'#1F3864', borderWidth:2.5, tension:0.32, fill:false,
+      pointRadius:8, pointHoverRadius:11, pointBorderColor:'#fff', pointBorderWidth:2.5,
+      pointBackgroundColor: YEARS.map(y=>TONECOLOR[y.toneKey]) }]},
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false},
+      tooltip:{ backgroundColor:'#1F3864', padding:12, titleFont:{size:13,weight:'700'}, bodyFont:{size:11.5},
+        displayColors:false, boxPadding:4,
+        callbacks:{
+          title: c => YEARS[c[0].dataIndex].y + ' · ' + YEARS[c[0].dataIndex].tone,
+          label: c => { const w = YEARS[c.dataIndex].toneWhy.split(' '); const out=[]; let ln='';
+            w.forEach(x => { if((ln+' '+x).length>52){out.push(ln);ln=x;} else ln = ln?ln+' '+x:x; }); out.push(ln); return out; }
+        }}},
+    layout:{ padding:{left:4,right:10,top:10} },
+    scales:{ y:{ min:0.5, max:5.5,
+        afterBuildTicks: ax => { ax.ticks = [1,2,3,4,5].map(v => ({value:v})); },
+        ticks:{ color:'#64748b', font:{size:11}, padding:6, autoSkip:false,
+        callback: v => TL[v] || '' }, grid:{color:'#eef2f7'} },
+      x:{ ticks:{color:'#64748b', font:{size:11.5, weight:'600'}}, grid:{display:false} } } }
+});
+}catch(err){
+  const cv=document.getElementById('toneChart');
+  if(cv&&cv.parentElement){ cv.parentElement.innerHTML =
+    '<div class="h-full flex flex-col justify-center gap-2">'+
+    YEARS.map(Y=>'<div class="flex items-center gap-3"><span class="text-[12px] font-semibold text-slate-700 w-16">'+Y.y+'</span>'+
+      '<div class="h-4 rounded" style="width:'+(Y.score*17)+'%;background:'+TONECOLOR[Y.toneKey]+'"></div>'+
+      '<span class="text-[11.5px] text-slate-500">'+Y.tone+'</span></div>').join('')+'</div>'; }
+}
+const tc = document.getElementById('toneCards');
+YEARS.forEach(Y => {
+  const d = document.createElement('div');
+  d.className = 'bg-white border border-slate-200 rounded-lg p-4';
+  d.style.borderTop = '3px solid '+TONECOLOR[Y.toneKey];
+  d.innerHTML = '<div class="flex items-center justify-between mb-1.5">'+
+    '<span class="font-bold text-[13px] navy">'+Y.y+'</span>'+
+    '<span class="text-[9.5px] font-bold px-2 py-0.5 rounded-full '+TONEBADGE[Y.toneKey]+'">'+esc(Y.tone.toUpperCase())+'</span></div>'+
+    '<p class="text-[11.5px] italic text-slate-600 leading-relaxed">“'+esc(Y.quote.length>165?Y.quote.slice(0,165)+'…':Y.quote)+'”</p>';
+  tc.appendChild(d);
+});
+
+/* ============ F. reframing ============ */
+const rbox = document.getElementById('reframebox');
+REFRAMINGS.forEach((R,i) => {
+  const d = document.createElement('div');
+  d.innerHTML =
+   '<h3 class="text-[17px] font-bold navy mb-3">'+(i+1)+'. '+esc(R.topic)+'</h3>'+
+   '<div class="grid md:grid-cols-2 gap-6">'+
+     '<div class="bg-red-50 border-l-4 border-red-500 rounded-r-lg p-5">'+
+       '<div class="text-[10.5px] uppercase tracking-widest text-red-700/80 font-bold mb-2">Before · '+esc(R.before.yr)+'</div>'+
+       '<p class="text-[13.5px] italic text-slate-800 leading-relaxed mb-3">“'+esc(R.before.q)+'”</p>'+
+       '<div class="text-[12.5px] text-slate-700"><span class="font-bold">Frame:</span> '+esc(R.before.frame)+'</div>'+
+     '</div>'+
+     '<div class="bg-green-50 border-l-4 border-green-500 rounded-r-lg p-5">'+
+       '<div class="text-[10.5px] uppercase tracking-widest text-green-800/80 font-bold mb-2">After · '+esc(R.after.yr)+'</div>'+
+       '<p class="text-[13.5px] italic text-slate-800 leading-relaxed mb-3">“'+esc(R.after.q)+'”</p>'+
+       '<div class="text-[12.5px] text-slate-700"><span class="font-bold">Frame:</span> '+esc(R.after.frame)+'</div>'+
+     '</div>'+
+   '</div>'+
+   '<div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-4">'+
+     '<span class="text-[10.5px] uppercase tracking-widest text-slate-400 font-bold mr-2">Reading</span>'+
+     '<span class="text-[13.5px] text-slate-700 leading-relaxed">'+esc(R.analysis)+'</span>'+
+   '</div>';
+  rbox.appendChild(d);
+});
+
+/* ============ G. questions ============ */
+const UC = { critical:'#dc2626', important:'#f59e0b', watch:'#3b82f6' };
+const UL = { critical:'MOST CRITICAL', important:'IMPORTANT', watch:'WORTH INVESTIGATING' };
+const UB = { critical:'bg-red-100 text-red-700', important:'bg-amber-100 text-amber-800', watch:'bg-blue-100 text-blue-800' };
+const qb = document.getElementById('qbox');
+QUESTIONS.forEach((Q,i) => {
+  const d = document.createElement('div');
+  d.className = 'bg-white border border-slate-200 rounded-lg p-5';
+  d.style.borderLeft = '4px solid '+UC[Q.u];
+  d.innerHTML =
+    '<div class="flex items-start gap-3">'+
+      '<span class="text-[15px] font-bold shrink-0" style="color:'+UC[Q.u]+'">'+(i+1)+'.</span>'+
+      '<div class="flex-1">'+
+        '<div class="flex items-start gap-2.5 flex-wrap mb-1.5">'+
+          '<span class="font-semibold text-[14.5px] text-slate-900 flex-1 min-w-[200px]">'+esc(Q.q)+'</span>'+
+          '<span class="'+UB[Q.u]+' text-[9.5px] font-bold px-2 py-0.5 rounded-full tracking-wide shrink-0">'+UL[Q.u]+'</span>'+
+        '</div>'+
+        '<p class="text-[13px] text-slate-600 leading-relaxed">'+esc(Q.ctx)+'</p>'+
+      '</div>'+
+    '</div>';
+  qb.appendChild(d);
+});
+
+/* ============ nav ============ */
+const links = [...document.querySelectorAll('#nav a')];
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) {
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+e.target.id));
+  }});
+}, {rootMargin:'-15% 0px -70% 0px', threshold:0});
+document.querySelectorAll('main section').forEach(s => obs.observe(s));
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('hidden');
+});
+links.forEach(l => l.addEventListener('click', () => {
+  if (window.innerWidth < 768) document.getElementById('sidebar').classList.add('hidden');
+}));
+</script>
+</body>
+</html>

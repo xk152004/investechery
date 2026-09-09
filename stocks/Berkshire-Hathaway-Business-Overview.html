@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Berkshire Hathaway Inc. (BRK.B)</title>
+<style>
+:root{
+  color-scheme: light;
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+  font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:900px; margin:0 auto; padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif; font-weight:700; color:var(--ink); margin:0}
+h1{font-size:38px; line-height:1.16; letter-spacing:-.01em; margin:6px 0 14px}
+h2{font-size:27px; line-height:1.22; margin:52px 0 14px}
+h3{font-size:21px; line-height:1.3; margin:30px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--terracotta); font-weight:700}
+.srcline{font-size:14.5px; color:var(--muted); line-height:1.5; border-top:1px solid var(--line); padding-top:14px; margin-top:18px}
+.rule{height:1px; background:var(--line); border:0; margin:40px 0}
+
+.restate{
+  font-family:Georgia,serif; font-size:24px; line-height:1.45;
+  border-left:5px solid var(--terracotta); padding:6px 0 6px 22px; margin:30px 0 34px;
+}
+.engine{
+  background:var(--ink); color:var(--cream); border-radius:10px; padding:26px 28px; margin:30px 0 30px;
+}
+.engine .lab{font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:#C9BFB0; font-weight:700; margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif; font-size:29px; line-height:1.28; margin:0 0 12px}
+.engine p{margin:0; font-size:17.5px; color:#EDE5D9; line-height:1.55}
+.engine .hi{color:#F0A184; font-weight:700}
+
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:26px 0 34px}
+.kpi{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 17px}
+.kpi .k{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700; line-height:1.35}
+.kpi .v{font-family:Georgia,serif; font-size:31px; color:var(--terracotta); line-height:1.15; margin:8px 0 5px; font-weight:700}
+.kpi .s{font-size:14px; color:var(--muted); line-height:1.4}
+
+.card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:22px 24px; margin:24px 0}
+.lever{background:#fff; border:1px solid var(--line); border-left:5px solid var(--terracotta); border-radius:10px; padding:15px 19px; margin:12px 0}
+.lever.s{border-left-color:var(--good)} .lever.m{border-left-color:var(--gold)} .lever.c{border-left-color:var(--blue)}
+.lever .tag{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--terracotta)}
+.lever.s .tag{color:var(--good)} .lever.m .tag{color:var(--gold)} .lever.c .tag{color:var(--blue)}
+.lever .nm{font-weight:700; font-size:18px; margin:3px 0 5px}
+.lever p{margin:0; font-size:17px; line-height:1.52}
+
+.pull{background:var(--terracotta-soft); border-radius:10px; padding:24px 26px; margin:28px 0}
+.pull p{font-family:Georgia,serif; font-size:20.5px; line-height:1.5; margin:0 0 12px}
+.pull .attr{font-size:14px; color:var(--muted); font-style:normal; margin:0}
+
+.two{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0}
+.two .col{background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px 20px}
+.two h4{margin:0 0 12px; font-family:Georgia,serif; font-size:18px}
+.two .durable h4{color:var(--good)} .two .borrowed h4{color:var(--terracotta)}
+.two ul{margin:0; padding-left:19px} .two li{font-size:16.5px; line-height:1.48; margin-bottom:9px}
+
+.tbox{overflow-x:auto; margin:22px 0; border:1px solid var(--line); border-radius:10px; background:#fff}
+table{border-collapse:collapse; width:100%; font-size:16px; min-width:560px}
+th,td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.42}
+th{background:#F4EFE6; font-weight:700; font-size:14px; letter-spacing:.03em}
+td.n,th.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.tot td{font-weight:700; background:#FBF7F0}
+.cap{font-size:13.5px; color:var(--muted); line-height:1.5; margin:-8px 0 26px}
+
+figure{margin:28px 0}
+figure svg{width:100%; height:auto; display:block; background:#fff; border:1px solid var(--line); border-radius:10px}
+figcaption{font-size:13.5px; color:var(--muted); line-height:1.5; margin-top:9px}
+
+.foot{border-top:1px solid var(--line); margin-top:52px; padding-top:22px; font-size:14.5px; color:var(--muted); line-height:1.6}
+.foot strong{color:var(--ink)}
+@media (max-width:720px){
+  body{font-size:17.5px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .restate{font-size:20px} .engine .unit{font-size:24px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Berkshire Hathaway Inc. <span style="color:var(--muted); font-weight:400">(NYSE: BRK.A / BRK.B)</span></h1>
+<div class="srcline">
+7 September 2026. Built from Berkshire's own SEC filings — the FY2016, FY2020, FY2024 and FY2025 Forms 10-K, the Q2 FY2026 Form 10-Q filed 10 August 2026, the 2026 proxy statement and Items 5.02/8.01 Forms 8-K — tested against independent sources: NAIC, the Insurance Information Institute, the Bureau of Labor Statistics, Swiss Re sigma, Guy Carpenter, the Association of American Railroads, the Surface Transportation Board, the EIA, EEI, the CPUC, and the filings of named competitors. <strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Berkshire is an insurance company that gets <em>paid</em> to borrow $177.5 billion, wrapped around one person who decides where that money goes — with a railroad, a utility and a large, low-margin industrial group attached to soak up the overflow.
+</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">The unit is <span class="hi">one dollar of float</span>.</div>
+  <p>A premium dollar arrives when a policy is written and is not paid out for years. Berkshire underwrites at a profit, so the dollar costs <em>less than nothing</em> to borrow — a pre-tax underwriting gain of $9.46bn on average float of about $173.5bn in FY2025 is a negative cost of funds of roughly <span class="hi">5.4%</span>. Then Berkshire keeps the entire investment return on the dollar until the claim is paid. Do that for sixty years and add $87bn of deferred taxes that behave the same way, and you have $263bn of interest-free funding with no covenants and no maturity date, against $717bn of equity.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Insurance float</div><div class="v">$177.5bn</div><div class="s">30 Jun 2026; $176bn at FY2025, ~$91bn at FY2016</div></div>
+  <div class="kpi"><div class="k">Cost of that float</div><div class="v">−5.4%</div><div class="s">Derived: FY2025 underwriting gain ÷ average float. Berkshire publishes no number</div></div>
+  <div class="kpi"><div class="k">Operating earnings</div><div class="v">$44.5bn</div><div class="s">FY2025, after tax, excluding investment gains. Down from $47.4bn</div></div>
+  <div class="kpi"><div class="k">Interest-free funding</div><div class="v">$263bn</div><div class="s">Float $176bn + deferred taxes $87bn, against $717bn equity</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Past peak</div><div class="s">GEICO combined ratio 81.5% (FY24) → 84.7% (FY25) → 89.3% (1H26)</div></div>
+  <div class="kpi"><div class="k">Organic vs reported</div><div class="v">3.1% <span style="font-size:20px;color:var(--muted)">vs 7.3%</span></div><div class="s">1H26 revenue growth, ex-Pilot fuel price and OxyChem</div></div>
+</div>
+
+<hr class="rule">
+
+<h2>1. What it is, in one table</h2>
+<div class="tbox"><table>
+<tr><th style="width:26%">Item</th><th>Summary</th></tr>
+<tr><td><strong>The business</strong></td><td>A holding company that owns insurance underwriters outright and uses the money they hold before paying claims, plus everything it retains, to buy whole businesses and marketable securities. 387,800 employees; $1,222bn of assets; $717bn of equity.</td></tr>
+<tr><td><strong>Industries</strong></td><td>P&amp;C insurance and reinsurance (the engine), Class I freight rail (BNSF), regulated electric and gas utilities (Berkshire Hathaway Energy), plus manufacturing, service and retailing.</td></tr>
+<tr><td><strong>The unit</strong></td><td>One dollar of float — $176bn at FY2025, $177.5bn at 30 June 2026, at a negative cost of roughly 5.4%.</td></tr>
+<tr><td><strong>What protects it</strong></td><td>$333bn of combined statutory surplus — about 26% of the entire U.S. P&amp;C industry's $1,266bn of policyholder surplus — standing behind just 5.8% of industry premium.</td></tr>
+<tr><td><strong>What drives earnings</strong></td><td>Underwriting margin; the yield on $359bn of Treasury bills; BNSF volume and price; BHE's regulated rate base; and the capital allocation decisions of one person.</td></tr>
+<tr><td><strong>What to watch</strong></td><td>GEICO's combined ratio; the direction of the cash pile, which fell for the first time in years in 1H26; PacifiCorp's unresolved Oregon wildfire liability.</td></tr>
+<tr><td><strong>Cycle exposure</strong></td><td>Medium-to-high, and past the peak in its largest business. U.S. personal auto insurance prices went from +20.3% year-on-year (Dec 2023) to −4.5% (Jul 2026).</td></tr>
+</table></div>
+
+<h2>2. What the company does</h2>
+
+<p>Berkshire solves two unrelated problems with the same asset. An insurance buyer facing a large or unusual risk needs a counterparty that will certainly still exist after the event occurs — a promise, not a product. The owner of a private business who wants to sell but does not want the company broken up or resold in five years needs a permanent buyer. Both are paying for the same thing: a balance sheet big enough and patient enough that neither a catastrophe nor a credit market can force it to act.</p>
+
+<p>That is why the two halves belong together. Insurance generates the money; the acquisition operation gives it somewhere permanent to go; and the size of the second is what makes the first credible.</p>
+
+<h3>Where the earnings actually come from</h3>
+<p>Berkshire publishes no operating-earnings subtotal. It disaggregates after-tax earnings by source, which is the honest way to read it:</p>
+
+<div class="tbox"><table>
+<tr><th>After-tax earnings by source ($m)</th><th class="n">FY2025</th><th class="n">FY2024</th><th class="n">FY2023</th><th class="n">% of FY25</th></tr>
+<tr><td>Insurance — investment income</td><td class="n">12,513</td><td class="n">13,670</td><td class="n">9,567</td><td class="n">28%</td></tr>
+<tr><td>Insurance — underwriting</td><td class="n">7,258</td><td class="n">9,020</td><td class="n">5,428</td><td class="n">16%</td></tr>
+<tr><td>Manufacturing, service &amp; retailing</td><td class="n">13,647</td><td class="n">13,072</td><td class="n">13,362</td><td class="n">31%</td></tr>
+<tr><td>BNSF (railroad)</td><td class="n">5,476</td><td class="n">5,031</td><td class="n">5,087</td><td class="n">12%</td></tr>
+<tr><td>Berkshire Hathaway Energy</td><td class="n">3,979</td><td class="n">3,730</td><td class="n">2,331</td><td class="n">9%</td></tr>
+<tr><td>Other</td><td class="n">1,613</td><td class="n">2,914</td><td class="n">1,575</td><td class="n">4%</td></tr>
+<tr class="tot"><td>Operating earnings</td><td class="n">44,486</td><td class="n">47,437</td><td class="n">37,350</td><td class="n">100%</td></tr>
+<tr><td>Investment gains and impairments</td><td class="n">22,482</td><td class="n">41,558</td><td class="n">58,873</td><td class="n">—</td></tr>
+<tr class="tot"><td>Net earnings to shareholders</td><td class="n">66,968</td><td class="n">88,995</td><td class="n">96,223</td><td class="n">—</td></tr>
+</table></div>
+<div class="cap">FY2025 Form 10-K, MD&amp;A earnings-by-source table. The operating subtotal sums the operating lines; FY2025 investment gains of $30,737m are shown net of $8,255m of impairments on Kraft Heinz and Occidental.</div>
+
+<p>Two things follow. Insurance supplies 44% of operating earnings but nearly all of the capital that produces the rest. And manufacturing, service and retailing is the largest single line — and the least interesting economically: $214bn of revenue became $17.5bn of pre-tax profit in FY2025, an 8.2% margin. That group matters because it absorbs capital and produces cash, not because it earns unusual returns.</p>
+
+<p><strong>What has been moving.</strong> Pilot Travel Centers went from a 38.6% stake to control in 2023 ($8.2bn) to full ownership in January 2024 ($2.6bn); its pre-tax margin has since fallen from 1.9% to 0.5%. OxyChem closed 2 January 2026 for about $9.4bn and earned $121m pre-tax on $2.6bn of revenue in its first half. Taylor Morrison closed 24 July 2026 for about $6.8bn — after the balance sheet date, with purchase accounting deferred to the Q3 filing.</p>
+
+<figure>
+<svg viewBox="0 0 860 340" role="img" aria-label="Insurance float, 2016 to first half 2026, rising from about 91 billion dollars to 177.5 billion dollars">
+  <rect x="0" y="0" width="860" height="340" fill="#ffffff"/>
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="40" x2="820" y2="40"/><line x1="70" y1="105.5" x2="820" y2="105.5"/>
+    <line x1="70" y1="170.9" x2="820" y2="170.9"/><line x1="70" y1="236.4" x2="820" y2="236.4"/>
+    <line x1="70" y1="280" x2="820" y2="280"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13" fill="#6E675C" text-anchor="end">
+    <text x="60" y="45">190</text><text x="60" y="110.5">160</text>
+    <text x="60" y="175.9">130</text><text x="60" y="241.4">100</text>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="302">2016</text><text x="227.9" y="302">2018</text><text x="306.8" y="302">2019</text>
+    <text x="385.8" y="302">2020</text><text x="543.7" y="302">2022</text><text x="622.6" y="302">2023</text>
+    <text x="701.6" y="302">2024</text><text x="780.5" y="302">2025</text><text x="820" y="320">1H26</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"
+    points="70,256.0 227.9,186.2 306.8,173.1 385.8,153.5 543.7,96.7 622.6,85.8 701.6,81.5 780.5,70.5 820,67.3"/>
+  <g fill="#C75B39">
+    <circle cx="70" cy="256.0" r="4"/><circle cx="227.9" cy="186.2" r="4"/><circle cx="306.8" cy="173.1" r="4"/>
+    <circle cx="385.8" cy="153.5" r="4"/><circle cx="543.7" cy="96.7" r="4"/><circle cx="622.6" cy="85.8" r="4"/>
+    <circle cx="701.6" cy="81.5" r="4"/><circle cx="780.5" cy="70.5" r="4"/><circle cx="820" cy="67.3" r="4.5"/>
+  </g>
+  <g font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39">
+    <text x="80" y="277" text-anchor="start" font-size="14">$91bn</text>
+    <text x="812" y="56" text-anchor="end">$177.5bn</text>
+  </g>
+  <text x="70" y="24" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#2B2B2B">Insurance float ($bn) — the unit, compounding</text>
+</svg>
+<figcaption>Sourced year-end data points from the FY2016, FY2020, FY2024 and FY2025 Forms 10-K and the Q2 FY2026 Form 10-Q. FY2017 and FY2021 float balances were not disclosed in the filings read and are not plotted; the line is drawn between sourced points only. Float rose 95% over the period while the share count fell 12.5%.</figcaption>
+</figure>
+
+<h2>3. Industry, competitive position and moat</h2>
+
+<p>U.S. property and casualty insurers sell a promise to pay, and they make money two ways: an underwriting margin, and the investment return on reserves. The first is close to worthless in aggregate. Across the twelve years for which comparable data could be sourced, the industry's combined ratio averaged about 99 and it underwrote at a profit in eight of twelve years. Over a full cycle, underwriting is roughly a breakeven activity for the industry as a whole. The economics live in the float — which is exactly the asset Berkshire is organised around.</p>
+
+<p>The industry is fragmented: the ten largest groups write 47.6% of all-lines premium and no one exceeds 11% (NAIC 2025). The barriers that genuinely bind are statutory and rating-agency capital, and the loss-history data that makes pricing segmentation possible. Absolute scale and distribution breadth do not bind — Progressive added 3.7m policies in a single year straight through them.</p>
+
+<h3>The moat is a capital ratio, and it is extreme</h3>
+
+<p>Berkshire's U.S. insurers held <strong>$333bn of combined statutory surplus</strong> at FY2025 against a total industry policyholder surplus of <strong>$1,266bn</strong> — roughly 26% of the industry's entire capital base standing behind 5.8% of its premium. The industry runs about 0.77x premium to surplus. Berkshire runs a small fraction of that.</p>
+
+<p>The mechanism that turns this into earnings is investment freedom. The typical U.S. P&amp;C insurer holds about 49% bonds and roughly 18% marketable equities, because risk-based capital and rating-agency models charge equities heavily and reserves must be matched to payout patterns. Berkshire's insurance subsidiaries held $294bn of equities against $529bn of investments at FY2025 — <strong>56% in equities, 3% in fixed maturities, 40% in Treasury bills</strong>. Berkshire earns an equity return on liabilities its competitors must fund with bonds. Sustained across decades, that single asymmetry is most of the compounding.</p>
+
+<div class="pull">
+  <p>"Since a large percentage of our equity securities are held by our insurance subsidiaries, significant decreases in the fair values of these investments will produce significant declines in the statutory surplus of our insurance subsidiaries. Our large statutory surplus is a competitive advantage, and a long-term material decline could have an adverse effect on our claims-paying ability ratings and our ability to write new insurance business."</p>
+  <p class="attr">— Berkshire Hathaway, FY2025 Form 10-K, Item 1A. The company describing, precisely, the loop that connects its investment portfolio to its underwriting franchise.</p>
+</div>
+
+<h3>GEICO: a real cost advantage that is currently being spent</h3>
+
+<p>GEICO's underwriting expense ratio was 12.4% in FY2025 against a U.S. industry aggregate of 25.8%, Progressive's personal lines at 21.6% and Allstate's property-liability at 21.4%. Direct distribution removes the agency commission and scale spreads fixed claims cost. Roughly thirteen points of premium that competitors must spend on acquiring the policy, GEICO can keep or give back in price.</p>
+
+<p>The outside evidence contradicts the comfortable reading of that fact. GEICO's share of U.S. private passenger auto has fallen from about 13.8% (2019 data) to 12.3% (2023) to 11.6% (2024 data), moving it from second to third in the market. Progressive gained 1.9 points of share in the first nine months of 2025 while running an 87.4% combined ratio and growing policies in force 10%. The cost advantage is real and unmatched by anyone; it has not, on its own, been enough to hold share against a competitor spending more to win it.</p>
+
+<figure>
+<svg viewBox="0 0 860 340" role="img" aria-label="GEICO combined ratio from 98.2 percent in 2016 to 81.5 percent in 2024 and back up to 89.3 percent in the first half of 2026">
+  <rect x="0" y="0" width="860" height="340" fill="#ffffff"/>
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="60" x2="820" y2="60"/><line x1="70" y1="110" x2="820" y2="110"/>
+    <line x1="70" y1="160" x2="820" y2="160"/><line x1="70" y1="210" x2="820" y2="210"/>
+    <line x1="70" y1="260" x2="820" y2="260"/><line x1="70" y1="280" x2="820" y2="280"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13" fill="#6E675C" text-anchor="end">
+    <text x="60" y="65">100</text><text x="60" y="115">95</text><text x="60" y="165">90</text>
+    <text x="60" y="215">85</text><text x="60" y="265">80</text>
+  </g>
+  <line x1="70" y1="131" x2="820" y2="131" stroke="#3C6E8F" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="816" y="122" text-anchor="end" font-family="Calibri,Arial,sans-serif" font-size="13.5" font-weight="700" fill="#3C6E8F">U.S. P&amp;C industry combined ratio, 2025: 92.9%</text>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="302">2016</text><text x="385.8" y="302">2020</text><text x="622.6" y="302">2023</text>
+    <text x="701.6" y="302">2024</text><text x="780.5" y="302">2025</text><text x="820" y="320">1H26</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"
+    points="70,78 385.8,158 622.6,153 701.6,245 780.5,213 820,167"/>
+  <g fill="#C75B39">
+    <circle cx="70" cy="78" r="4"/><circle cx="385.8" cy="158" r="4"/><circle cx="622.6" cy="153" r="4"/>
+    <circle cx="701.6" cy="245" r="4"/><circle cx="780.5" cy="213" r="4"/><circle cx="820" cy="167" r="4.5"/>
+  </g>
+  <g font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39">
+    <text x="78" y="72" text-anchor="start">98.2%</text>
+    <text x="701.6" y="264" text-anchor="middle">81.5%</text>
+    <text x="820" y="156" text-anchor="end">89.3%</text>
+  </g>
+  <text x="70" y="24" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#2B2B2B">GEICO combined ratio (%) — lower is better</text>
+</svg>
+<figcaption>Berkshire Forms 10-K and 10-Q; industry benchmark from the NAIC 2025 P&amp;C industry snapshot. FY2021 and FY2022 combined ratios were not extracted from the sources read and are not plotted. FY2024's 81.5% was the trough; the 1H26 deterioration is 4.9 points of loss ratio on frequency and severity, plus 2.7 points of expense ratio on advertising and commissions.</figcaption>
+</figure>
+
+<h3>Rail and utilities: two regulated positions, two different problems</h3>
+
+<p>BNSF is one of two western trunk systems in a duopoly with Union Pacific. The right-of-way was assembled in the nineteenth century and cannot be recreated; the industry has reinvested roughly $840bn of private capital since 1980 (AAR). The open-access threat of the last cycle receded when the Seventh Circuit vacated the Surface Transportation Board's reciprocal switching rule in August 2025.</p>
+
+<p>The uncomfortable comparison is operational. BNSF's operating ratio was 65.5% in FY2025 and 65.5% in 1H26; Union Pacific reported 59.7% in Q2 2026. Six points of operating ratio on $23bn of revenue is roughly $1.4bn of annual pre-tax earnings that BNSF does not earn. Berkshire's filings do not make this comparison.</p>
+
+<p>The live question is structural. Union Pacific's proposed merger with Norfolk Southern sits at the STB as <strong>Docket FD 36873</strong>. The application was rejected as incomplete in January 2026, refiled and accepted in April, held in abeyance in May and revived in August 2026; comments are due 18 November 2026 and responses 16 February 2027, so <strong>no decision is possible before late 2027</strong>. BNSF has formally opposed it, arguing the combined system would control 45% of freight and eliminate around 300 intermodal lanes. Approval would leave BNSF the smaller western railroad facing a single-line transcontinental competitor — the largest unresolved question about a business contributing 12% of operating earnings.</p>
+
+<p>Berkshire Hathaway Energy earns a legislated spread: rate base times an allowed return on equity of roughly 9.6% at about a 51% equity ratio. Demand has turned after two decades of flat U.S. electricity consumption, and EEI puts 2026 industry capex at $238.8bn, up 17%, and $1.4tn cumulatively through 2030. Berkshire spent $10.6bn at BHE in FY2025 and guides to about $15bn across BNSF and BHE in 2026.</p>
+
+<p>The offsetting exposure is wildfire liability, and it is asymmetric. PacifiCorp has accrued about $2.85bn of cumulative probable losses, paid roughly $2.3bn, and carried only <strong>$572m of unpaid liability</strong> at 30 June 2026. Against that, an Oregon jury awarded $305m to sixteen plaintiffs in February 2026 — about $19m each against a prior average near $5m — and S&amp;P placed PacifiCorp's BBB− on watch in March 2026, citing potential payouts approaching $50bn. The Court of Appeals decertified the class in April 2026; the Oregon Supreme Court hears argument on 3 November 2026. Berkshire does not guarantee BHE's $61.8bn of borrowings, which limits contagion but not the equity loss.</p>
+
+<h3>Testing what the company says about itself</h3>
+<div class="tbox"><table>
+<tr><th style="width:30%">Company claim</th><th style="width:17%">Verdict</th><th>Basis</th></tr>
+<tr><td>Financial strength lets Berkshire write risk others cannot</td><td><strong style="color:var(--good)">Supported</strong></td><td>26% of industry statutory surplus behind 5.8% of premium. Guy Carpenter records that only 14% of 2024's global catastrophe losses were reinsured, against a ~20% historical average — willingness to retain single-event risk is genuinely scarce.</td></tr>
+<tr><td>GEICO is a low-cost operator</td><td><strong style="color:var(--gold)">Supported, narrowing</strong></td><td>The expense-ratio gap against every named competitor is unambiguous. But auto share fell from 13.8% to 11.6% over six years while Progressive gained, so low cost has not translated into share.</td></tr>
+<tr><td>Its capital position permits an equity-heavy investment of float</td><td><strong style="color:var(--blue)">Partially supported</strong></td><td>The allocation is genuinely unusual (56% equities vs ~18% industry) and the capital arithmetic plainly relaxes the constraint that binds others. Outside sources cannot confirm capital strength is the <em>only</em> reason — a firm willing to carry a lower rating could do the same.</td></tr>
+</table></div>
+
+<p><strong>What kind of company wins here?</strong> Three kinds: the low-cost operator, the disciplined underwriter that beats the composite in every cycle position, and the firm whose capital lets it retain risk others must cede. Berkshire is decisively the third and structurally the first. It is not clearly the second — FY2025 insurance results sit level with Progressive and behind Chubb and Allstate on combined ratio. The moat is the balance sheet, not the underwriting desk.</p>
+
+<h2>4. Growth engine</h2>
+
+<p>Revenue grew 7.3% in the first half of 2026, to $195.5bn from $182.2bn. Almost none of it is what an investor would want it to be.</p>
+
+<div class="tbox"><table>
+<tr><th>1H26 revenue decomposition ($m)</th><th class="n">1H 2026</th><th class="n">1H 2025</th><th class="n">Change</th><th class="n">Growth</th></tr>
+<tr class="tot"><td>Total revenues, as reported</td><td class="n">195,483</td><td class="n">182,240</td><td class="n">+13,243</td><td class="n">+7.3%</td></tr>
+<tr><td>Less: Pilot fuel price pass-through</td><td class="n">26,177</td><td class="n">20,539</td><td class="n">+5,638</td><td class="n">—</td></tr>
+<tr><td>Less: OxyChem (acquired 2 Jan 2026)</td><td class="n">2,600</td><td class="n">—</td><td class="n">+2,600</td><td class="n">—</td></tr>
+<tr class="tot"><td>Remaining, all other businesses</td><td class="n">166,706</td><td class="n">161,701</td><td class="n">+5,005</td><td class="n">+3.1%</td></tr>
+</table></div>
+<div class="cap">Q2 FY2026 Form 10-Q. Pilot revenue rose on higher fuel <em>prices</em> with slightly lower fuel volumes, per management's own explanation; Pilot's 1H26 pre-tax margin was 0.9%. Sixty-three percent of reported revenue growth came from one acquisition and a pass-through carrying almost no margin.</div>
+
+<p>The same decomposition holds inside the segments. Manufacturing revenue rose 11.6% as reported but 4.9% excluding OxyChem; service and retailing rose 10.5% reported but 2.9% excluding Pilot. Earnings tell a better story than revenue: manufacturing pre-tax earnings rose 20.3% on organic strength at Precision Castparts (+33.6%), IMC (+56.6%) and Lubrizol (+16.5%), with OxyChem contributing only $121m of the $1,213m increase.</p>
+
+<div class="lever s"><div class="tag">Structural</div><div class="nm">1. Compounding float and redeploying retained earnings</div>
+<p>Float grew from roughly $91bn (FY2016) to $177.5bn (Jun 2026) while Berkshire paid no dividend and retained everything. Each dollar added is interest-free funding with no maturity date. This is the only lever that worked in every year of the period.</p></div>
+
+<div class="lever m"><div class="tag">Management-driven</div><div class="nm">2. Acquisition of whole businesses</div>
+<p>$9.4bn (OxyChem) and $6.8bn (Taylor Morrison) closed in the first seven months of 2026, against $1.1bn of acquisitions in all of FY2025. This is the lever that has changed most under new leadership.</p></div>
+
+<div class="lever c"><div class="tag">Cyclical — reversing</div><div class="nm">3. Insurance pricing and volume</div>
+<p>GEICO written premium grew 5.3% in FY2025 on policy count but only 1.3% in 1H26, while U.S. personal auto prices turned negative. The primary group is deliberately shrinking — written premium down 1.7% in 1H26, RSUI down 13.2% — because management instructs underwriters to decline business priced below the risk.</p></div>
+
+<div class="lever c"><div class="tag">Cyclical</div><div class="nm">4. BNSF volume and yield</div>
+<p>Volumes rose 4.3% in 1H26 on west-coast import intermodal, share gains and tight truck capacity, with revenue per car up 5.3%. Note fuel expense rose 32.2% over the same period — a meaningful part of the yield gain is fuel surcharge recovery, not core price.</p></div>
+
+<div class="lever s"><div class="tag">Structural — capital-hungry</div><div class="nm">5. Regulated rate base growth at BHE</div>
+<p>Retail volumes rose 3.1% in 1H26 and electric utility margin 5.4%, funded by $4.9bn of half-year capex and $2.5bn of new borrowing.</p></div>
+
+<div class="lever"><div class="tag">Temporary</div><div class="nm">6. Fuel-price pass-through at Pilot and McLane</div>
+<p>Economically empty — tens of billions of revenue at margins of 0.9% and 1.3%. It should be excluded from any assessment of growth.</p></div>
+
+<h2>5. Margin, cash and capital allocation</h2>
+
+<p>Operating earnings compounded from $27.6bn in 2021 to $47.4bn in 2024 — 103% over five years, on the company's own measure disclosed in the 2026 proxy. In FY2025 they fell to $44.4bn, the first decline in the series. The causes are specific: GEICO's underwriting earnings dropped $989m as the expense ratio rose 2.7 points on advertising; the reinsurance group fell $886m on weaker prior-year reserve releases; and insurance investment income fell $1,487m pre-tax as Treasury bill yields declined. Nothing structural broke. The cycle turned.</p>
+
+<div class="tbox"><table>
+<tr><th>($m unless stated)</th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2024</th><th class="n">FY2025</th></tr>
+<tr><td>Total revenues</td><td class="n">223,604</td><td class="n">245,510</td><td class="n">371,433</td><td class="n">371,444</td></tr>
+<tr><td>Operating earnings, after tax</td><td class="n">17,577</td><td class="n">10,930</td><td class="n">47,437</td><td class="n">44,486</td></tr>
+<tr><td>Insurance float (approx.)</td><td class="n">91,000</td><td class="n">138,000</td><td class="n">171,000</td><td class="n">176,000</td></tr>
+<tr><td>Cash and U.S. Treasury bills</td><td class="n">70,919</td><td class="n">135,014</td><td class="n">318,000</td><td class="n">369,153</td></tr>
+<tr><td>Shareholders' equity</td><td class="n">283,001</td><td class="n">443,164</td><td class="n">649,368</td><td class="n">717,419</td></tr>
+<tr><td>Class A-equivalent shares</td><td class="n">1,644,321</td><td class="n">1,543,960</td><td class="n">1,438,223</td><td class="n">1,438,223</td></tr>
+</table></div>
+<div class="cap"><strong>Comparability warnings.</strong> FY2016 pre-dates ASU 2016-01, adopted 1 January 2018 without restatement, which routed unrealised equity gains through net earnings — management states the change "significantly increases the volatility of our periodic net earnings" and that the resulting gains have "little analytical or predictive value," so reported net earnings before and after 2018 are not comparable. FY2020 operating earnings are depressed by $11.0bn of goodwill and intangible impairments. FY2016 included a Finance and Financial Products segment, since dissolved, and General Re as a separate segment, since folded into reinsurance. Cash for FY2024 and FY2025 is net of payables for unsettled Treasury bill purchases; FY2016 and FY2020 are not.</div>
+
+<p>The share count line is the quiet one: Berkshire retired 12.5% of its A-equivalent shares between FY2016 and FY2024 — 206,098 shares — without issuing any. It has not declared a dividend since 1967.</p>
+
+<p><strong>Capital intensity.</strong> Capital expenditure was $20.9bn in FY2025, of which $14.4bn was BNSF and BHE. Those two consume roughly 70% of group capex to produce 21% of operating earnings, and industry data indicates around 78% of a Class I railroad's capex is non-discretionary maintenance. These are not capital-light toll roads; they must be rebuilt every year before a dollar of owner earnings appears.</p>
+
+<h3>Where the cash went — and what changed in 2026</h3>
+<div class="tbox"><table>
+<tr><th>Capital deployed ($m)</th><th class="n">FY2023</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">1H 2026</th></tr>
+<tr><td>Capital expenditure</td><td class="n">19,409</td><td class="n">18,976</td><td class="n">20,927</td><td class="n">10,631</td></tr>
+<tr><td>Acquisitions of businesses</td><td class="n">8,604</td><td class="n">396</td><td class="n">1,074</td><td class="n">9,704</td></tr>
+<tr><td>Equity securities purchased</td><td class="n">n/a</td><td class="n">9,200</td><td class="n">16,923</td><td class="n">39,405</td></tr>
+<tr><td>Equity securities sold</td><td class="n">n/a</td><td class="n">143,400</td><td class="n">30,686</td><td class="n">27,780</td></tr>
+<tr><td>Share repurchases</td><td class="n">9,171</td><td class="n">2,918</td><td class="n">0</td><td class="n">4,444</td></tr>
+<tr><td>Dividends paid</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr>
+</table></div>
+<div class="cap">FY2024 and FY2025 Forms 10-K and the Q2 FY2026 Form 10-Q cash flow statements. 1H26 acquisitions comprise OxyChem; Taylor Morrison ($6.8bn) closed 24 July 2026 and is not in these figures. FY2023 equity purchase and sale proceeds were not among the figures extracted from the sources read.</div>
+
+<p>Read down the last two columns and the behaviour changes completely. Through 2024 and 2025 Berkshire was a large net <em>seller</em> of equities — $143bn of disposals in 2024 alone, on which it paid $101bn of taxable gains — bought back progressively less stock, and finally repurchased nothing at all in 2025 while accumulating $369bn of Treasury bills. In the first half of 2026 it bought $39.4bn of equities against $27.8bn of sales, becoming a net <em>buyer</em> of $11.6bn; spent $9.4bn on OxyChem and committed $6.8bn to Taylor Morrison; and resumed repurchases, spending $4.8bn, most of it in the second quarter. The cash pile fell from $369.2bn to $359.2bn — its first decline in years.</p>
+
+<p>The timing is not incidental. Greg Abel became chief executive on 1 January 2026, and per the FY2025 10-K major capital allocation and investment decisions are his responsibility. The repurchase programme was amended in 2025 to give that authority to the chief executive after consultation with the chairman, replacing Warren Buffett by name; Buffett remains chairman. Berkshire filed an 8-K on 5 March 2026 stating that, "in the interest of transparency with our leadership transition," it had commenced repurchasing shares the previous day. The hard constraint is unchanged: no repurchases that would take consolidated cash and Treasury bills below $30bn.</p>
+
+<p>What the ranking reveals: capital expenditure has been the largest and steadiest use of cash, acquisitions the lumpiest, buybacks entirely discretionary and price-dependent. The company will hold cash indefinitely rather than deploy it at a price it does not like — and then move $20bn in six months when it does.</p>
+
+<h2>6. Cyclicality, constraints and what to monitor</h2>
+
+<p>Berkshire's largest profit engine is past its peak, and the evidence is unambiguous. U.S. personal auto insurance prices rose 20.3% year-on-year in December 2023, 11.3% in December 2024, 2.8% in December 2025, and <strong>fell 4.5%</strong> in the year to July 2026 (BLS CPI). That is a complete hard-to-soft transit in about thirty months, and personal auto is now in outright price deflation. The industry combined ratio tracked it: 102.5% (2022), 101.7% (2023), 96.9% (2024), 92.9% (2025) — the best year in the series and, by construction, a peak. Property-catastrophe reinsurance rates confirm the same phase, falling 12% at the January 2026 renewal after rising 27.5% in 2023 (Guy Carpenter rate-on-line index).</p>
+
+<p>The second cyclical exposure is interest rates, and it is unusually direct: Berkshire holds about $360bn in Treasury bills, and insurance interest income fell 11.9% in FY2025 and 11.6% in 1H26. Every fall in short rates is a mechanical reduction in an earnings line that carries no offsetting cost.</p>
+
+<p>Catastrophe experience has been flattering. Significant catastrophe losses were $850m after tax in FY2025 against $1.2bn in FY2024, and there were <em>none</em> in the first half of 2026. Independent data shows 2025 produced $107bn of global insured catastrophe losses including a record $40bn Los Angeles wildfire event, despite no U.S. hurricane landfall (Swiss Re sigma). Berkshire's stated tolerance is to avoid aggregations from which a single event could produce more than roughly $15bn of pre-tax loss; that tolerance has not been tested recently.</p>
+
+<div class="card">
+<h3 style="margin-top:0">The downside case, as a mechanism</h3>
+<p style="margin-bottom:0">The mechanism that would actually hurt is a simultaneous one. Auto pricing keeps deflating while bodily-injury severity runs at 10–12%, pushing GEICO toward an underwriting loss of the kind it recorded in 2022; short rates fall, cutting the $10bn interest line; and a severe catastrophe year arrives. Berkshire has faced all three before — the reinsurance group lost $2.7bn pre-tax in 2020, GEICO lost $1.9bn in 2022 — and absorbed them without incident. Solvency is not the question. The point is that operating earnings could fall materially from $44bn with nothing structural having changed, and that a decline of that kind will look identical, in the reported figures, to one that means something.</p>
+</div>
+
+<div class="two">
+  <div class="col durable"><h4>Durable — intact in ten years</h4><ul>
+    <li>Negative-cost float, grown from $91bn to $177.5bn</li>
+    <li>26% of U.S. industry statutory surplus behind 5.8% of premium</li>
+    <li>GEICO's structural cost advantage in direct distribution</li>
+    <li>BNSF's right-of-way and the western duopoly</li>
+    <li>No dividend, permanent retention, a shrinking share count</li>
+  </ul></div>
+  <div class="col borrowed"><h4>Borrowed — currently helping, will not persist</h4><ul>
+    <li>~$10bn a year of Treasury bill interest, falling with short rates</li>
+    <li>An exceptionally benign catastrophe run: zero significant cat losses in 1H26</li>
+    <li>Prior-year reserve releases — $957m at GEICO, $869m at reinsurance</li>
+    <li>BNSF revenue-per-car gains partly from fuel surcharge (fuel expense +32%)</li>
+    <li>Tariff refunds and one-off settlements flattering 1H26 manufacturing</li>
+  </ul></div>
+</div>
+
+<div class="tbox"><table>
+<tr><th style="width:44%">What to monitor</th><th>Where it is published</th></tr>
+<tr><td>GEICO loss, expense and combined ratios — the expense ratio moves first</td><td>Berkshire Form 10-Q, MD&amp;A — quarterly</td></tr>
+<tr><td>Personal auto price direction, independent of the company</td><td>BLS CPI, motor vehicle insurance, 12-month change — monthly</td></tr>
+<tr><td>Cash and Treasury bills; net equity purchases less sales</td><td>Berkshire balance sheet and cash flow statement — quarterly</td></tr>
+<tr><td>Share repurchase dollars — the fact of a repurchase is itself information</td><td>Berkshire Form 10-Q, Part II Item 2 — quarterly</td></tr>
+<tr><td>Insurance float</td><td>Berkshire Form 10-Q, MD&amp;A liquidity discussion — quarterly</td></tr>
+<tr><td>Union Pacific–Norfolk Southern merger, Docket FD 36873</td><td>stb.gov — comments due 18 Nov 2026, responses 16 Feb 2027</td></tr>
+<tr><td>BNSF intermodal demand</td><td>AAR weekly rail traffic; Port of Los Angeles container statistics</td></tr>
+<tr><td>PacifiCorp unpaid wildfire liability</td><td>Berkshire 10-Q contingencies note; Oregon Supreme Court argument 3 Nov 2026</td></tr>
+<tr><td>Reinsurance pricing cycle</td><td>Guy Carpenter global property catastrophe rate-on-line index, 1 January renewal</td></tr>
+</table></div>
+
+<h2>7. Risks, unknowns and questions for deeper work</h2>
+
+<p>Cyclicality is covered above. What follows is what cyclicality does not capture, ordered by how much each compounds with the others.</p>
+
+<div class="lever"><div class="nm">Equity concentration feeds back into insurance capacity</div>
+<p>Five holdings — Alphabet, American Express, Apple, Bank of America and Coca-Cola — were 66% of a $324bn equity portfolio at 30 June 2026. The mechanism is quoted above in Berkshire's own words: a large decline in those holdings reduces statutory surplus, which supports the claims-paying ratings and the capacity to write new business. A severe drawdown therefore does not merely reduce book value — it constrains the underwriting franchise at exactly the moment a dislocated insurance market would offer the best pricing. This is the one risk that compounds with every other risk in this list.</p></div>
+
+<div class="lever"><div class="nm">PacifiCorp's wildfire tail is orders of magnitude larger than the accrual</div>
+<p>$572m of unpaid liability at 30 June 2026 against remaining unsettled Oregon and California claims that Berkshire itself totals at approximately $50bn, before any doubling or trebling — and Oregon law permits doubling of economic damages for gross negligence and trebling for vegetation trespass. Berkshire does not guarantee BHE's debt, so the loss is bounded by BHE's equity; but that equity is the vehicle through which Berkshire participates in the utility capex supercycle, so an impairment closes a growth avenue as well as destroying capital.</p></div>
+
+<div class="lever"><div class="nm">Reserve leverage on a $152.9bn liability</div>
+<p>Berkshire notes that a small percentage increase in unpaid P&amp;C losses materially reduces reported earnings; about 75% of the balance sits at GEICO and the reinsurance group. Social inflation — litigation funding, expanding liability theories, larger verdicts — is the named driver, and bodily-injury severity running 10–12% is exactly what an emerging reserve problem looks like early. Note that 1H26 earnings were flattered by $869m of prior-year releases at reinsurance; releases and strengthening are the same lever pulled in opposite directions.</p></div>
+
+<div class="lever"><div class="nm">The allocator has changed and the track record has not been established</div>
+<p>Greg Abel became chief executive on 1 January 2026 with sole responsibility for major capital allocation, and has deployed roughly $20bn in seven months after a year in which his predecessor deployed almost nothing. Both approaches can be right; they cannot both be right about the same opportunity set. Berkshire's central mechanism is one person's judgement applied to $360bn, and there is no historical record of this person applying it at this scale.</p></div>
+
+<div class="lever"><div class="nm">An unresolved governance question sits behind the operating one</div>
+<p>Warren Buffett, aged 95, holds 30.2% of voting power against 13.7% of economic interest and is deemed Berkshire's controlling shareholder; a voting agreement caps him at 49.9%. The proxy states the board discusses succession at every meeting and that Buffett believes a family member should serve as non-executive chairman after his death, while noting the decision belongs to the then-board. How that voting block is disposed of over time, and what replaces it, is not described anywhere in the sources read.</p></div>
+
+<div class="lever"><div class="nm">Scale itself constrains the return</div>
+<p>At $717bn of equity with $360bn in Treasury bills, the number of acquisitions large enough to move the result is very small, and Berkshire competes for them against private equity and strategic buyers. The evidence is in the figures: $2.9bn of buybacks in 2024 and none in 2025 while cash rose to $369bn is not a strategy so much as an absence of qualifying opportunities.</p></div>
+
+<div class="card">
+<h3 style="margin-top:0">What the sources could not answer</h3>
+<ul style="margin:0; padding-left:20px">
+<li style="margin-bottom:8px">GEICO's <strong>absolute policies-in-force count</strong> is not disclosed in any filing read — only percentage changes. Without it, share loss cannot be separated from market contraction.</li>
+<li style="margin-bottom:8px">Berkshire publishes <strong>no numeric cost of float</strong>, only the statement that it has been negative. The −5.4% used throughout is derived.</li>
+<li style="margin-bottom:8px">Per-security cost basis and fair value for <strong>individual equity holdings</strong> ceased to be disclosed after FY2020; only three industry categories are given.</li>
+<li style="margin-bottom:8px">BNSF's <strong>revenue per car</strong> is given only as a percentage change, so core price, mix and fuel surcharge cannot be separated.</li>
+<li style="margin-bottom:8px"><strong>Todd Combs and Ted Weschler</strong> are not named anywhere in the 2026 proxy or the FY2025 10-K. Their current roles and the share of the portfolio they manage are unknown — which matters more now that the person who hired them is no longer chief executive.</li>
+<li style="margin-bottom:8px">Charles Chang succeeds Marc Hamburg as CFO on 1 June 2026; his <strong>compensation arrangements</strong> were expressly "not finalized" at the time of the 8-K.</li>
+<li style="margin-bottom:0">No <strong>Form 4 filings</strong> were available in the source archive. Buffett's Class A holding fell 4.9% between the 2025 and 2026 proxies; the filings do not explain the mechanism.</li>
+</ul>
+<p style="margin:16px 0 0">Before forming a view, three things would need resolving: whether GEICO's rising expense ratio is buying policy growth or merely defending a shrinking book; whether the Oregon Supreme Court restores the PacifiCorp class certification; and how Abel intends to run the repurchase programme — the one capital allocation decision an outside shareholder can observe in near-real time.</p>
+</div>
+
+<h2>8. Investor takeaways</h2>
+
+<div class="lever s"><div class="nm">What this business really is</div><p>An insurance company that has been paid to borrow $177.5bn, wrapped around a capital allocator who invests that borrowing in equities and whole businesses, with a railroad, a utility and a large low-margin industrial group attached.</p></div>
+<div class="lever s"><div class="nm">The core economic engine</div><p>Negative-cost float invested at equity-like returns. Holding 26% of the U.S. industry's statutory capital behind 5.8% of its premium is what permits a 56% equity allocation where competitors manage 18% — and that asymmetry, not underwriting skill, is the moat.</p></div>
+<div class="lever m"><div class="nm">The main growth lever</div><p>Deployment of retained capital. Everything else — insurance pricing, rail volumes, rate base — is cyclical or capital-hungry. The $20bn committed in Abel's first seven months is the lever being pulled now.</p></div>
+<div class="lever"><div class="nm">What could break the story</div><p>A severe equity drawdown that simultaneously reduces statutory surplus and constrains underwriting capacity, arriving alongside a soft insurance market and a bad catastrophe year. The three are correlated, which is the point.</p></div>
+<div class="lever c"><div class="nm">What to monitor</div><p>GEICO's expense and combined ratios; the direction of the cash balance and net equity purchases; and Docket FD 36873 at the Surface Transportation Board.</p></div>
+
+<div class="foot">
+<p><strong>Built from.</strong> Berkshire Hathaway Forms 10-K for FY2016 (filed 27 Feb 2017), FY2020 (1 Mar 2021), FY2024 (24 Feb 2025) and FY2025 (2 Mar 2026); Form 10-Q for Q2 FY2026 (10 Aug 2026); DEF 14A proxy statement (13 Mar 2026); Forms 8-K dated 8 May 2025, 3 Oct 2025, 21 Nov 2025, 11 Dec 2025, 6 Jan 2026, 5 Mar 2026 and 16 Apr 2026.</p>
+<p><strong>Independent sources.</strong> NAIC P&amp;C industry analysis and market share reports (2020–2025); Insurance Information Institute; U.S. Bureau of Labor Statistics CPI motor vehicle insurance series; Swiss Re Institute sigma 1/2026; Guy Carpenter global property catastrophe rate-on-line index; AM Best; Association of American Railroads; Surface Transportation Board Docket FD 36873; U.S. Energy Information Administration; Edison Electric Institute; California Public Utilities Commission; S&amp;P Global Market Intelligence RRA; and the SEC filings and results releases of Progressive, Allstate, Travelers, Chubb, State Farm, Union Pacific, CSX and Norfolk Southern.</p>
+<p><strong>Post-dating the annual filings.</strong> The OxyChem acquisition closed 2 January 2026 (~$9.4bn) and the Taylor Morrison acquisition closed 24 July 2026 (~$6.8bn); purchase accounting for Taylor Morrison is deferred to the Q3 2026 Form 10-Q. Greg Abel became chief executive on 1 January 2026. Marc Hamburg was succeeded as CFO by Charles Chang on 1 June 2026. The Oregon Supreme Court hears the PacifiCorp class certification appeal on 3 November 2026.</p>
+<p style="margin-bottom:0"><em>This page is an analysis of the business. It contains no valuation, no target price and no recommendation.</em></p>
+</div>
+
+</div>
+</body>
+</html>

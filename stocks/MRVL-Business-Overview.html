@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview: Marvell Technology (MRVL)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-size:19px; line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;margin:0}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:30px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.source-line{font-size:15px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+.restate{
+  font-family:Georgia,serif;font-size:23px;line-height:1.45;
+  border-left:5px solid var(--terracotta);padding:6px 0 6px 22px;margin:0 0 32px;
+}
+.engine{
+  background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:0 0 30px;
+}
+.engine .lab{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#B9AE9C;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:27px;font-weight:700;margin-bottom:10px;color:#fff}
+.engine p{margin:0;font-size:17px;color:#E8E0D4;line-height:1.55}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi .v{font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--terracotta);margin:6px 0 4px;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:13.5px;color:var(--muted);line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:22px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:16px 20px;margin:12px 0}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .name{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:4px 0 6px}
+.lever p{margin:0;font-size:16.5px;line-height:1.52}
+.pull{
+  background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:24px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.45;
+}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;color:var(--muted);margin-top:12px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.two h4{font-family:Georgia,serif;font-size:17px;margin:0 0 12px;font-weight:700}
+.two .durable h4{color:var(--good)}
+.two .borrowed h4{color:var(--terracotta)}
+.two ul{margin:0;padding-left:18px}
+.two li{font-size:16px;line-height:1.45;margin-bottom:9px}
+.tblwrap{overflow-x:auto;margin:20px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:520px;background:#fff;font-size:15.5px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#F5EFE5;font-weight:700;font-size:14px}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+caption{caption-side:bottom;text-align:left;font-size:13.5px;color:var(--muted);padding-top:9px;line-height:1.45}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 18px 12px;margin:24px 0}
+.chart h4{font-family:Georgia,serif;font-size:18px;margin:0 0 4px;font-weight:700}
+.chart .sub{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+.chart svg{display:block;width:100%;height:auto}
+.note{font-size:14.5px;color:var(--muted);line-height:1.5;margin:14px 0}
+ul.plain{padding-left:20px}
+ul.plain li{margin-bottom:10px;line-height:1.5}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:24px;font-size:14.5px;color:var(--muted);line-height:1.6}
+footer h3{font-size:17px;margin:0 0 10px;color:var(--ink)}
+@media (max-width:700px){
+  body{font-size:17.5px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .restate{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Marvell Technology, Inc. <span style="color:var(--muted);font-weight:400">(NASDAQ: MRVL)</span></h1>
+<div class="source-line">
+7 September 2026 · Built from Marvell's SEC filings through the Q2 FY2027 10-Q (quarter ended 1 August 2026), the FY2026 10-K and 10-Ks back to FY2022, the 19 August 2026 8-K and the 27 August 2026 earnings release; industry structure from competitors' and customers' own filings and releases, TSMC investor materials and SIA/WSTS data. <strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Marvell designs — but does not manufacture — the chips that move and process data inside AI data centres, and in three years it has rebuilt itself around that single end market, taking it from 40% of revenue to 79%.
+</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">One design-win socket</div>
+  <p>The unit is not a chip. It is a slot inside one customer's platform, won on a competitive bid, that then yields shipped chips for the life of that platform. Marvell spends design engineering one to three years ahead of any revenue, recovers part of it through customer-paid NRE milestones, commits to wafer supply 26 to 52 weeks in advance, and earns product revenue on shipment. Win the socket and you own it for a generation. Lose it and there is no other buyer — a custom part has exactly one customer.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">The unit</div><div class="v">1 socket</div><div class="s">No unit volumes, ASPs, wafer counts or backlog are disclosed in any filing</div></div>
+  <div class="kpi"><div class="k">Gross margin, Q2 FY27</div><div class="v">53.1%</div><div class="s">58.9% non-GAAP; the highest in the filings</div></div>
+  <div class="kpi"><div class="k">Diluted EPS, Q2 FY27</div><div class="v">$0.33</div><div class="s">GAAP; $0.94 non-GAAP</div></div>
+  <div class="kpi"><div class="k">Net debt, 1 Aug 2026</div><div class="v">$1.07bn</div><div class="s">$5.00bn face notes less $3.93bn cash; no maturity until Feb 2029</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak</div><div class="s">Revenue, gross margin and operating margin all at record, inside a record industry</div></div>
+  <div class="kpi"><div class="k">Organic vs reported</div><div class="v">≈ equal</div><div class="s">1H FY27 grew 32.2%; acquired revenue disclosed as "not material"</div></div>
+</div>
+
+<h2>What the company does</h2>
+
+<p>The customer problem is bandwidth and power. A modern AI data centre is limited less by how fast one processor computes than by how quickly data moves between processors, racks and buildings, and by how much electricity that movement consumes. Marvell sells the silicon that does the moving, and increasingly the compute silicon at either end of it.</p>
+
+<p>It is fabless — it designs and contracts manufacture to third-party foundries, described as "located in Taiwan," with TSMC named in the 10-Q risk list as the source of advanced-node wafers. It employed 7,480 people at 31 January 2026 and holds over 10,000 issued and pending patents, with no substantial dependence on any single one.</p>
+
+<p>The company sells two archetypes with different economics. Standard products, where "the exact same product is sold to multiple customers," and custom solutions built to one specification. Marvell states plainly which is the better business: the ASIC model "tends to have a lower gross margin," carries "significant NRE costs that customers pay based on the completion of milestones," and can compress operating margin "if we are unable to sell products in sufficient volumes to cover the development costs." The custom share has been rising for several years — which means the mix is shifting toward the lower-margin archetype at the same time as it drives the growth.</p>
+
+<p>The product lines span the data path: custom ASICs built on a platform of ultra-high-speed SerDes, Arm compute, silicon photonics and advanced packaging (5nm designs shipped, 3nm in progress, 2nm in development); interconnect covering PAM and coherent DSPs, laser drivers, silicon photonics, PCIe retimers and AEC DSPs; Ethernet switching up to 51.2Tbps; and storage controllers that are, on the company's own account, "being used by all the current HDD makers" — the only near-share claim anywhere in the filing.</p>
+
+<h3>Who pays — and how few of them there are</h3>
+
+<p>Buyers are OEMs, ODMs and distributors, and the concentration is the single most important structural fact about the revenue base. It has tightened sharply, driven almost entirely by one unnamed distributor.</p>
+
+<div class="tblwrap">
+<table>
+<caption>Source: FY2026 10-K Item 1 and Note 2; Q1 and Q2 FY2027 10-Q MD&amp;A. Marvell names neither party. Receivables are comparably concentrated: three to five customers were 72–75% of gross receivables at each of the last four balance-sheet dates.</caption>
+<thead><tr><th>Share of net revenue</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">1H FY2027</th></tr></thead>
+<tbody>
+<tr><td>Customer A (direct)</td><td class="n">&lt;10%</td><td class="n">13%</td><td class="n">14%</td><td class="n">16%</td></tr>
+<tr><td>Distributor A</td><td class="n">24%</td><td class="n">34%</td><td class="n">37%</td><td class="n"><strong>45%</strong></td></tr>
+<tr><td><strong>Named ≥10% combined</strong></td><td class="n">24%+</td><td class="n">47%</td><td class="n">51%</td><td class="n"><strong>61%</strong></td></tr>
+<tr><td>Top ten customers</td><td class="n">n/d</td><td class="n">n/d</td><td class="n">82%</td><td class="n">n/d</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The portfolio behind those numbers has been narrowed deliberately. Marvell exited standard server processors in fiscal 2021; its fiscal 2025 restructuring was an explicit reallocation — "to increase research and development investment in the data center end market and reduce investment in new product development in other end markets including the cancellation of certain future product releases" — costing $711.8m; and in August 2025 it sold the automotive ethernet business to Infineon for $2.5bn cash, booking a $1,830.4m pre-tax gain. Infineon disclosed what Marvell did not: roughly $225–250m of calendar-2025 revenue at around 60% gross margin. Marvell sold a business earning above its own corporate margin in order to concentrate capital on a data-centre business whose fastest-growing component earns less. That is the strategy in one transaction.</p>
+
+<div class="chart">
+<h4>The rebuild, in one picture</h4>
+<p class="sub">Revenue by end market, fiscal years 2020–2026, $m. Categories were consolidated from five to two in Q4 FY2026; the data-centre series is continuous throughout.</p>
+<svg viewBox="0 0 820 320" role="img" aria-label="Data centre revenue rose from $824m in FY2020 to $6,100m in FY2026 while all other end markets peaked at $3,511m in FY2023 and fell to $2,094m in FY2026">
+  <line x1="70" y1="270" x2="790" y2="270" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="201.4" x2="790" y2="201.4" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="132.9" x2="790" y2="132.9" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="64.3" x2="790" y2="64.3" stroke="#E5DDD0" stroke-width="1"/>
+  <text x="62" y="274" text-anchor="end" font-size="12" fill="#6E675C">0</text>
+  <text x="62" y="205" text-anchor="end" font-size="12" fill="#6E675C">2,000</text>
+  <text x="62" y="137" text-anchor="end" font-size="12" fill="#6E675C">4,000</text>
+  <text x="62" y="68" text-anchor="end" font-size="12" fill="#6E675C">6,000</text>
+
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5"
+    points="70,241.8 188.3,234.3 306.7,208.8 425,187.4 543.3,194.0 661.7,127.2 780,60.8"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="5 4"
+    points="70,205.7 188.3,203.9 306.7,178.2 425,149.6 543.3,157.2 661.7,215.0 780,198.2"/>
+
+  <circle cx="70" cy="241.8" r="3" fill="#C75B39"/><circle cx="188.3" cy="234.3" r="3" fill="#C75B39"/>
+  <circle cx="306.7" cy="208.8" r="3" fill="#C75B39"/><circle cx="425" cy="187.4" r="3" fill="#C75B39"/>
+  <circle cx="543.3" cy="194.0" r="3" fill="#C75B39"/><circle cx="661.7" cy="127.2" r="3" fill="#C75B39"/>
+  <circle cx="780" cy="60.8" r="4" fill="#C75B39"/>
+  <circle cx="70" cy="205.7" r="3" fill="#3C6E8F"/><circle cx="188.3" cy="203.9" r="3" fill="#3C6E8F"/>
+  <circle cx="306.7" cy="178.2" r="3" fill="#3C6E8F"/><circle cx="425" cy="149.6" r="3" fill="#3C6E8F"/>
+  <circle cx="543.3" cy="157.2" r="3" fill="#3C6E8F"/><circle cx="661.7" cy="215.0" r="3" fill="#3C6E8F"/>
+  <circle cx="780" cy="198.2" r="3" fill="#3C6E8F"/>
+
+  <text x="76" y="259" text-anchor="start" font-size="12.5" fill="#C75B39" font-weight="700">Data centre 824</text>
+  <text x="774" y="52" text-anchor="end" font-size="12.5" fill="#C75B39" font-weight="700">6,100</text>
+  <text x="76" y="196" text-anchor="start" font-size="12.5" fill="#3C6E8F" font-weight="700">All other 1,875</text>
+  <text x="774" y="216" text-anchor="end" font-size="12.5" fill="#3C6E8F" font-weight="700">2,094</text>
+
+  <text x="70" y="290" text-anchor="middle" font-size="12" fill="#6E675C">FY20</text>
+  <text x="188.3" y="290" text-anchor="middle" font-size="12" fill="#6E675C">FY21</text>
+  <text x="306.7" y="290" text-anchor="middle" font-size="12" fill="#6E675C">FY22</text>
+  <text x="425" y="290" text-anchor="middle" font-size="12" fill="#6E675C">FY23</text>
+  <text x="543.3" y="290" text-anchor="middle" font-size="12" fill="#6E675C">FY24</text>
+  <text x="661.7" y="290" text-anchor="middle" font-size="12" fill="#6E675C">FY25</text>
+  <text x="780" y="290" text-anchor="middle" font-size="12" fill="#6E675C">FY26</text>
+</svg>
+</div>
+
+<h2>Industry, competitive position and moat</h2>
+
+<p>What is actually bought in this industry is a rack that computes a certain number of tokens per second inside a fixed power envelope. Every stage of the chain is priced by how much of that constraint it relieves — and the profit distribution is unusually legible right now, because every stage reports publicly.</p>
+
+<p>Operating margins on the most recent reported quarter run: Micron 80.4% and SK hynix 76% in HBM memory; Broadcom 67.9% non-GAAP; Nvidia 66.2%; TSMC 60.3%; Astera Labs 39.1% non-GAAP; Alchip roughly 26.7%; AMD 17% GAAP; Supermicro 7.1% for its full fiscal year. The ordering is not about technical sophistication. It tracks one thing: whether the stage controls an input a customer cannot re-source inside a design cycle.</p>
+
+<p>Two entries on that list deserve full attention. Supermicro converted $39.1bn of fiscal-2026 revenue into a 7.1% operating margin, because system integration is re-sourceable. And Alchip — the purest listed comparable for merchant custom-ASIC design work — reported a 34.8% gross margin and revenue <em>down 18.7% year on year</em> in the June 2026 quarter, in the middle of the largest semiconductor upcycle on record. That is what custom silicon economics look like when the vendor supplies design labour without owning the differentiated IP or the customer seat. The spread between Alchip's 34.8% and Broadcom's 74.9% consolidated gross margin is the value of owning the IP, the packaging allocation and the prime-contractor relationship. It is the spread Marvell is competing for.</p>
+
+<h3>A market with roughly six buyers</h3>
+
+<p>Demand is concentrated to a degree with few parallels. The five largest buyers reported roughly $187bn of capital expenditure in their most recent quarters alone — Amazon $54.2bn, Alphabet $44.9bn, Microsoft $35.8bn, Meta $31.1bn, Oracle $21.2bn — with Alphabet guiding to $195–205bn and Meta to $130–145bn for the full year. Contracted backlog corroborates durability better than capex guidance does: Oracle reported $638bn of remaining performance obligations and Google Cloud $514bn. On the supply side, Broadcom states it has exactly six XPU customers.</p>
+
+<p>Every one of those buyers designs its own accelerators and says so in its own materials — Google's TPU 8t and 8i, Amazon's Trainium3 on 3nm, Microsoft's Maia 200, Meta's MTIA 300 in production with three further generations disclosed. All state a deliberately multi-vendor posture. This is a market where the customer is also the competitor, and where every seat is retendered.</p>
+
+<h3>Which barriers actually bind</h3>
+
+<p>Three bind. The first is packaging and foundry allocation, and it binds hardest because allocation is granted, not bought.</p>
+
+<div class="pull">
+"Our packaging capacity is so tight that now it's limiting my customers' growth." … On the supply-demand gap: "The gap is very big."
+<span class="attr">C.C. Wei, CEO, TSMC — Q2 2026 earnings call, 16 July 2026. TSMC raised 2026 capital expenditure to $60–64bn, with 10–20% directed at packaging and test.</span>
+</div>
+
+<p>The second is the customer seat itself, precisely because there are so few. Meta's April 2026 agreement with Broadcom — announced by Meta, covering chip design, packaging and networking across multiple MTIA generations, with an initial commitment above one gigawatt and Broadcom's CEO taking a formal advisory role on Meta's silicon roadmap — is what entrenchment looks like, and what displacement would have to overcome. The third is sustained R&D against that tiny buyer set: Nvidia spent $18.5bn in fiscal 2026, Broadcom runs near $11.6bn annualised.</p>
+
+<p>One barrier is weaker than it is usually presented. High-speed SerDes and interface IP is genuinely hard engineering and genuinely commands margin — but it is not a moat. Synopsys and Cadence sell interface IP and are named NVLink Fusion partners. Credo grew fiscal-2026 revenue to $1.335bn, more than tripling, at 68.2% gross margin; Astera Labs grew 104% year on year at 73.3%. Two businesses built from nothing inside five years in exactly this space. It is a lead worth a generation or two of pricing, not a permanent structural advantage.</p>
+
+<h3>Marvell's specific position</h3>
+
+<p>Three assets. A proven advanced-node ASIC platform with 5nm shipped and 3nm in progress — process-node execution is a track record a competitor cannot assert, only accumulate. An unusually broad interconnect portfolio, which lets it attach high-margin connectivity content alongside lower-margin compute in the same rack. And named incumbency: on 29 July 2026 Marvell and Google LLC entered a commercial agreement for custom semiconductor products spanning AI inference accelerators, storage controllers, NICs, memory interface controllers and near-memory compute inside Google's TPU ecosystem. That is the only hyperscaler custom-silicon programme Marvell has named in a filing.</p>
+
+<p>Marvell names 23 competitors in its own 10-K. The most instructive entry is Nvidia, which appeared on that list in the 10-K filed 11 March 2026 and then, on 31 March 2026, bought $2.0bn of Marvell convertible preferred alongside an NVLink Fusion partnership under which "Marvell will provide custom XPUs and NVLink Fusion-compatible scale-up networking." Competitor and strategic investor are now the same party.</p>
+
+<h3>What could weaken it</h3>
+
+<p>The optical DSP franchise is under direct architectural attack, and this is the clearest structural threat in the evidence. Broadcom's Tomahawk 6 – Davisson integrates co-packaged optics on TSMC's COUPE process and claims a 70% reduction in optical interconnect power, more than 3.5× better than pluggables. Nvidia's Spectrum-X and Quantum-X Photonics switches claim 3.5× the power efficiency and four times fewer lasers. Cisco launched 800G linear pluggable optics in February 2026 claiming 50% lower module power than <em>retimed</em> modules — retimed being the module that contains the DSP. Both architectures remove or bypass the standalone DSP, both ship today from the two largest networking-silicon vendors, and both are justified on power, the binding constraint in an AI data centre. The counterargument — that co-packaged optics is hard to service and linear optics has link-budget limits at 200G per lane — is about pace, not direction.</p>
+
+<p class="note">No primary or free independent source publishes optical DSP or PAM4 market shares. Any share figure for Marvell in this market should be treated as unestablished. Marvell itself discloses no market share, TAM or unit-share figure anywhere in its filings.</p>
+
+<p><strong>What kind of company wins here.</strong> On the margin evidence: those that own an input a customer cannot re-source inside a design cycle, hold allocated foundry and packaging capacity, sit inside a multi-generation roadmap rather than a per-generation tender, and attach high-margin connectivity to lower-margin compute. Marvell has three of the four. Where it is weakest is the third — one named hyperscaler custom relationship, a broad but unspecified AWS relationship, and two unnamed accounts at 61% of revenue. Broadcom has six named frontier customers and a customer-announced multi-generation roadmap. Marvell is the right kind of company on capability and the more fragile one on position.</p>
+
+<h2>Growth engine</h2>
+
+<p>Revenue grew 42.1% in fiscal 2026 to $8,194.6m, 36.5% year on year in the June-2026 quarter to $2,739.3m, and 32.2% across the first half of FY2027. Marvell guided the October quarter to $3,150m ± 5%. Almost none of that is acquired — and that reverses the company's own history.</p>
+
+<div class="tblwrap">
+<table>
+<caption>Sources: FY2022 10-K Note 4 and MD&amp;A; FY2026 10-K MD&amp;A; Q2 FY2027 10-Q Note 4; Infineon release, 14 August 2025. The decomposition runs in the unusual direction — the headline <em>understates</em> the underlying rate in fiscal 2026, because a revenue-generating business was sold mid-year.</caption>
+<thead><tr><th>Period</th><th class="n">Reported</th><th>Acquisition contribution</th><th>Divestiture drag</th><th>Read</th></tr></thead>
+<tbody>
+<tr><td>FY2022</td><td class="n">+50.3%</td><td>Inphi (Apr 2021), Innovium (Oct 2021). Standalone acquired revenue "impracticable to determine"; pro-forma implies c.$717m of FY2021 revenue</td><td>—</td><td>Substantially acquisition-driven</td></tr>
+<tr><td>FY2026</td><td class="n">+42.1%</td><td>None — no acquisition closed in the year</td><td>Automotive ethernet from 14 Aug 2025 (c.$225–250m annual revenue per Infineon)</td><td>Organic growth <em>exceeded</em> the reported rate</td></tr>
+<tr><td>1H FY2027</td><td class="n">+32.2%</td><td>Celestial AI and XConn closed Feb 2026; revenue and earnings "not material"</td><td>Full-period absence of automotive ethernet</td><td>Essentially all organic</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Fiscal 2022's 50% growth was bought: Marvell paid $9.9bn for Inphi and $1.0bn for Innovium, issuing 146.2m shares and raising $3.9bn of debt in a single year. Fiscal 2026's 42% was not. The two look identical in a growth table and describe entirely different businesses.</p>
+
+<h3>The drivers, ranked</h3>
+
+<div class="lever structural">
+  <div class="tag">Structural — externally set</div>
+  <div class="name">1. Hyperscaler AI capital spending</div>
+  <p>Data-centre revenue went from 40% of the total in FY2024 to 72%, 74% and then 79% in the June-2026 quarter, reaching $2,171.5m on 46% year-on-year growth. The five largest hyperscalers reported roughly $187bn of capex in their latest quarters. Marvell does not create this demand; it competes for a share of it, and the spending decision sits with five companies.</p>
+</div>
+
+<div class="lever structural">
+  <div class="tag">Structural — the largest identifiable lever</div>
+  <div class="name">2. The Google custom-silicon agreement</div>
+  <p>The 29 July 2026 agreement covers AI inference accelerators, storage controllers, NICs, memory interface controllers and near-memory compute for Google's TPU ecosystem. The attached warrant vests in 240 tranches, one for each $500m of cumulative custom-products revenue, through fiscal 2033. That structure is disclosure about scale <em>ambition</em>, not a commitment — a full-vesting ceiling, with no revenue expectation published against it. Management said on 27 August 2026 that it expects "a significant acceleration in our Custom business beginning in the second half of fiscal 2027."</p>
+</div>
+
+<div class="lever structural">
+  <div class="tag">Structural — the margin-protective driver</div>
+  <div class="name">3. Interconnect content attach</div>
+  <p>The Q2 FY2027 MD&amp;A widened its attribution from fiscal 2026's "custom products and electro-optics" to "a broad range of our products, including electro-optics, custom, storage, and switching." Because interconnect carries a richer margin than custom compute, growth arriving through this channel is worth materially more per dollar than growth arriving through the ASIC channel.</p>
+</div>
+
+<div class="lever mgmt">
+  <div class="tag">Management-driven — unproven in revenue</div>
+  <div class="name">4. The Nvidia partnership</div>
+  <p>Marvell supplies custom XPUs and NVLink Fusion-compatible scale-up networking into Nvidia's rack ecosystem, with $2.0bn of preferred stock attached. It widens the addressable set of platforms, but no revenue has been attributed to it in any filing.</p>
+</div>
+
+<div class="lever cyclical">
+  <div class="tag">Cyclical — largely spent</div>
+  <div class="name">5. The communications recovery</div>
+  <p>Communications and other grew 31% in fiscal 2026 as "a period of inventory correction" ended, but only 10% year on year in the June quarter. This was a restocking rebound off a depressed base, and the base effect has now lapsed.</p>
+</div>
+
+<div class="lever mgmt">
+  <div class="tag">Management-driven — revenue immaterial so far</div>
+  <div class="name">6. Acquired capability</div>
+  <p>Celestial AI ($3,533.7m total consideration, Photonic Fabric scale-up interconnect) and XConn ($469.0m, PCIe and CXL switching) both closed in February 2026, both contributing revenue disclosed as "not material." These are option purchases on the scale-up interconnect standard, not current growth.</p>
+</div>
+
+<p class="note">Price is not on this list, and its absence is a finding. Marvell discloses no unit volumes, ASPs or backlog, and states that "the average unit selling prices of our products will continue to be subject to significant pricing pressures." Growth here is won by taking sockets, not by raising prices.</p>
+
+<h2>Margin, cash and capital allocation</h2>
+
+<p>Gross margin reached 51.0% in fiscal 2026 from 41.3%, and 53.1% in the June-2026 quarter. Most of the first move was the disappearance of a prior-year charge, not operating improvement: fiscal 2025 carried $357.9m of restructuring impairments inside cost of goods sold, worth 6.2 points of that year's revenue. Adjusting for it, fiscal 2025 gross margin was approximately 47.5% and the underlying fiscal 2026 improvement was closer to 3.5 points.</p>
+
+<p>The mix wording is worth tracking sentence by sentence, because it is the tell on custom economics. Fiscal 2026 and Q1 FY2027 both describe product mix as a partial <em>offset</em> — a drag. Q2 FY2027 flips it to "better cost absorption driven by higher revenues and better product mix." One quarter of favourable mix does not overturn the company's own structural statement that the ASIC model "tends to have a lower gross margin," and the custom ramp management has guided to for the second half of fiscal 2027 has not yet run through the reported numbers.</p>
+
+<div class="chart">
+<h4>Margin, through a trough and out</h4>
+<p class="sub">GAAP gross margin and operating margin, % of net revenue. FY2025's gross margin includes $357.9m of restructuring charges in cost of goods sold.</p>
+<svg viewBox="0 0 820 320" role="img" aria-label="GAAP gross margin fell from 50.5% in FY2023 to 41.3% in FY2025 then rose to 53.1% in Q2 FY2027; operating margin moved from negative 12.5% in FY2025 to positive 16.8%">
+  <line x1="70" y1="270" x2="790" y2="270" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="222" x2="790" y2="222" stroke="#BFB6A6" stroke-width="1"/>
+  <line x1="70" y1="158" x2="790" y2="158" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="94" x2="790" y2="94" stroke="#E5DDD0" stroke-width="1"/>
+  <line x1="70" y1="30" x2="790" y2="30" stroke="#E5DDD0" stroke-width="1"/>
+  <text x="62" y="274" text-anchor="end" font-size="12" fill="#6E675C">−15%</text>
+  <text x="62" y="226" text-anchor="end" font-size="12" fill="#6E675C">0%</text>
+  <text x="62" y="162" text-anchor="end" font-size="12" fill="#6E675C">20%</text>
+  <text x="62" y="98" text-anchor="end" font-size="12" fill="#6E675C">40%</text>
+  <text x="62" y="34" text-anchor="end" font-size="12" fill="#6E675C">60%</text>
+
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5"
+    points="70,73.8 212,60.4 354,88.9 496,89.8 638,58.8 780,52.1"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="5 4"
+    points="70,247.0 212,209.2 354,255.0 496,262.0 638,170.5 780,168.2"/>
+
+  <circle cx="70" cy="73.8" r="3" fill="#C75B39"/><circle cx="212" cy="60.4" r="3" fill="#C75B39"/>
+  <circle cx="354" cy="88.9" r="3" fill="#C75B39"/><circle cx="496" cy="89.8" r="3" fill="#C75B39"/>
+  <circle cx="638" cy="58.8" r="3" fill="#C75B39"/><circle cx="780" cy="52.1" r="4" fill="#C75B39"/>
+  <circle cx="70" cy="247.0" r="3" fill="#3C6E8F"/><circle cx="212" cy="209.2" r="3" fill="#3C6E8F"/>
+  <circle cx="354" cy="255.0" r="3" fill="#3C6E8F"/><circle cx="496" cy="262.0" r="3" fill="#3C6E8F"/>
+  <circle cx="638" cy="170.5" r="3" fill="#3C6E8F"/><circle cx="780" cy="168.2" r="3" fill="#3C6E8F"/>
+
+  <text x="76" y="60" text-anchor="start" font-size="12.5" fill="#C75B39" font-weight="700">Gross margin 46.3%</text>
+  <text x="774" y="43" text-anchor="end" font-size="12.5" fill="#C75B39" font-weight="700">53.1%</text>
+  <text x="76" y="264" text-anchor="start" font-size="12.5" fill="#3C6E8F" font-weight="700">Operating margin −7.8%</text>
+  <text x="774" y="161" text-anchor="end" font-size="12.5" fill="#3C6E8F" font-weight="700">16.8%</text>
+  <text x="496" y="278" text-anchor="middle" font-size="11.5" fill="#6E675C">trough</text>
+
+  <text x="70" y="298" text-anchor="middle" font-size="12" fill="#6E675C">FY22</text>
+  <text x="212" y="298" text-anchor="middle" font-size="12" fill="#6E675C">FY23</text>
+  <text x="354" y="298" text-anchor="middle" font-size="12" fill="#6E675C">FY24</text>
+  <text x="496" y="298" text-anchor="middle" font-size="12" fill="#6E675C">FY25</text>
+  <text x="638" y="298" text-anchor="middle" font-size="12" fill="#6E675C">FY26</text>
+  <text x="780" y="298" text-anchor="middle" font-size="12" fill="#6E675C">Q2 FY27</text>
+</svg>
+</div>
+
+<p>Below the gross line, the cost structure is dominated by three quasi-fixed or non-cash items. Amortisation of acquired intangibles was $942.0m in fiscal 2026 — 11.5% of revenue, sitting inside cost of goods sold and operating expenses without a separate income-statement line — with $814.0m scheduled for fiscal 2027 on the pre-acquisition base alone, before roughly $1.0bn of new Celestial and XConn intangibles. Stock-based compensation was 7.2% of revenue in fiscal 2026 and has since jumped to 11.9% in the June quarter, driven by $190.1m of assumed Celestial awards and acquisition headcount. R&amp;D fell from 33.9% of revenue to 25.3% purely through revenue growth — the absolute figure rose every year.</p>
+
+<div class="tblwrap">
+<table>
+<caption>Sources: FY2022, FY2024, FY2025 and FY2026 10-Ks. <strong>Comparability warnings, all material:</strong> FY2024 was a 53-week year; FY2025 gross margin includes $357.9m of restructuring in cost of goods sold, absent in every other year shown; FY2022 gross margin includes $194.3m of acquired-inventory fair-value amortisation from Inphi; and end-market categories were consolidated from five to two in Q4 FY2026, so the data-centre line is the only end-market series continuous across all four years. FY2026 net income of $2,670.1m includes the $1,830.4m pre-tax divestiture gain, below the operating line.</caption>
+<thead><tr><th>$m unless stated</th><th class="n">FY2022</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th></tr></thead>
+<tbody>
+<tr><td>Net revenue</td><td class="n">4,462.4</td><td class="n">5,507.7</td><td class="n">5,767.3</td><td class="n">8,194.6</td></tr>
+<tr><td>GAAP gross margin</td><td class="n">46.3%</td><td class="n">41.6%</td><td class="n">41.3%</td><td class="n">51.0%</td></tr>
+<tr><td>Operating income (loss)</td><td class="n">(347.7)</td><td class="n">(567.7)</td><td class="n">(720.3)</td><td class="n">1,322.9</td></tr>
+<tr><td>Data centre % of revenue</td><td class="n">40%</td><td class="n">40%</td><td class="n">72%</td><td class="n">74%</td></tr>
+<tr><td>Operating cash flow</td><td class="n">819.4</td><td class="n">1,370.5</td><td class="n">1,681.2</td><td class="n">1,750.5</td></tr>
+<tr><td>Capital expenditure</td><td class="n">169.3</td><td class="n">336.3</td><td class="n">284.6</td><td class="n">354.1</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Cash conversion.</strong> Operating cash flow was $1,750.5m in fiscal 2026 against $354.1m of capex — roughly $1,396m of free cash flow, almost identical to the prior year despite 42% revenue growth. Working capital is why: receivables absorbed $1,158.2m and inventory $389.8m. Two adjustments belong alongside the reported figure — operating cash flow includes $735.5m of factored receivable proceeds, and unpaid capex at year end rose to $156.4m from $69.3m, so cash capex understates fiscal 2026 spend by roughly $87m.</p>
+
+<p>The balance sheet is not the constraint: $3,932.8m of cash against $4,999.9m of face-value senior unsecured notes at 1 August 2026, no maturity until February 2029, a $1.5bn revolver undrawn. What it does carry is concentration — goodwill of $13,873.9m and intangibles of $2,346.6m are 58.9% of total assets, tested against a <em>single</em> reporting unit, so any impairment test is all-or-nothing rather than segment-buffered.</p>
+
+<h3>Where the cash went — and what the ranking says</h3>
+
+<p><strong>Fiscal 2026, in order:</strong> buybacks $2,040.1m · debt repayment $790.6m · capex $354.1m · employee tax withholding on share settlement $240.7m · dividends $205.1m · technology licence obligations $128.3m. Funded by $1,750.5m of operating cash flow, $2,478.6m of divestiture proceeds and $1,198.6m of new borrowing.</p>
+
+<p><strong>First half fiscal 2027 reorders it completely:</strong> acquisitions $1,270.9m net of cash acquired · debt repayment $500.0m · buybacks $400.0m · employee tax withholding $365.2m · capex $282.4m · dividends $107.7m. Funded by $1,244.3m of operating cash flow, $2.0bn from Nvidia's preferred investment and $998.9m of new notes.</p>
+
+<p>Three behaviours stand out across the two years. Management recycled a divestiture into buybacks at scale — $2.0bn in one year against $990m across the prior four combined, at an average $76.46 per share. It then stopped: 1.1m shares in May 2026 and none in June or July, with $5.1bn of authority still available. And it funded Celestial and XConn substantially with its own equity — $2.5bn of the combined consideration was stock — while accepting $2.0bn of preferred from a named competitor. The dividend has been $0.24 per share every year since fiscal 2020, never raised through a period in which revenue tripled; it is a legacy line, not an allocation instrument.</p>
+
+<p>The share count tells the same story from the other side. Buybacks cut shares outstanding by 18.7m in fiscal 2026, to 847.3m. In the first half of fiscal 2027 the count rose 29.5m to 876.8m as 26.8m shares were issued for the acquisitions. Against that sit up to 21.8m shares from Nvidia's preferred conversion, up to 22.4m from the Celestial earn-out, and up to 59.0m from the Google warrant — a potential share count near 990m, roughly 17% above the fiscal 2026 year-end figure.</p>
+
+<h2>Cyclicality, constraints and what to monitor</h2>
+
+<p>Every operating metric is at or near its record. Revenue of $2,739.3m in the June-2026 quarter annualises to roughly $11.0bn against $8.2bn actual for fiscal 2026; gross margin of 53.1% and operating margin of 16.8% are both the highest in the filings. The prior trough is close behind and instructive: fiscal 2025 gross margin was 41.3%, operating margin was −12.5%, and the company reported an $885.0m net loss. Two years ago.</p>
+
+<p>The industry backdrop is at a record too. Global semiconductor sales ran $403.3bn in Q2 2026, up 35.1% sequentially, and the SIA moved its 2026 forecast from roughly $1 trillion in February to above $1.5 trillion in August. A record margin at a cycle peak and a record margin at a trough are opposite facts, and this is the former.</p>
+
+<div class="tblwrap">
+<table>
+<caption>Source: FY2026 10-K Note 3; Q2 FY2027 10-Q Note 3 and MD&amp;A. Marvell states that a substantial majority of China shipments go to factories or contract manufacturers serving non-China customers, so ship-to destination materially overstates true China end-demand — which is not disclosed.</caption>
+<thead><tr><th>Exposure</th><th class="n">Latest</th><th class="n">Prior year</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>Data centre</td><td class="n">79% (Q2 FY27)</td><td class="n">74%</td><td>40% as recently as FY2024</td></tr>
+<tr><td>Communications and other</td><td class="n">21%</td><td class="n">26%</td><td>Four former end markets, merged in Q4 FY2026</td></tr>
+<tr><td>Ship-to China</td><td class="n">42% (Q2 FY27)</td><td class="n">29%</td><td>Mostly contract manufacturing for non-China customers</td></tr>
+<tr><td>Ship-to Asia in total</td><td class="n">84% (Q2 FY27)</td><td class="n">76%</td><td>US ship-to fell to 7% from 15%</td></tr>
+<tr><td>Distributor A</td><td class="n">45% (1H FY27)</td><td class="n">35%</td><td>Party not named in any filing</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>The constraint that binds hardest</h3>
+
+<p>Marvell's binding constraint is supply commitment against cancellable demand, and it has grown dramatically. Unconditional purchase commitments to foundries and test and assembly partners went from <strong>$2,665.8m at 31 January 2026 to $8,518.9m at 1 August 2026</strong> — a 220% increase in six months, with roughly $2.1–2.2bn locked into each of fiscal 2028, 2029 and 2030. Prepayments on capacity reservation agreements rose to $487.0m from $278.8m; capex commitments to $351.6m from $152.0m. Reservation agreements run four to ten years.</p>
+
+<p>The asymmetry is the point. Cancelling a supply order "requires payment of all costs and expenses incurred through the date of cancellation, and in some cases, may result in incremental fees, loss of amounts paid in advance, or loss of priority to reserved capacity," and "if we are able to secure capacity, we may be obligated to use all of that capacity or incur penalties." On the other side, customer orders are cancellable on short notice. In a demand shortfall that gap converts directly into inventory write-downs, forfeited prepayments and take-or-pay charges landing in cost of goods sold. The mechanism is not hypothetical: fiscal 2025 produced $711.8m of charges, including $63.1m of inventory, when Marvell cancelled its <em>own</em> product releases.</p>
+
+<p><strong>What a downturn would feel like.</strong> The historical record is thinner than it appears. Global semiconductor sales fell 12.1% in 2019 and 8.2% in 2023, each trough roughly four to five quarters — but damage concentrates violently in whichever segment was most inflated going in (DRAM fell 37.1% in 2019 against an index down 12.1%). Critically, neither SIA nor WSTS publishes a series isolating data-centre or networking semiconductors, and both prior downturns were driven by handsets, PCs and enterprise inventory. There is no completed AI-datacentre cycle in the data at all. Resist treating "down 8% for four quarters" as the downside case here; the analogue does not exist. What <em>can</em> be said is the transmission path: a hyperscaler capex pause reaches Marvell through cancellable purchase orders within a quarter, while $8.5bn of supply commitments stay fixed for years — and because two accounts are 61% of revenue, the shortfall need not be industry-wide to be severe.</p>
+
+<div class="two">
+  <div class="col durable">
+    <h4>Durable — likely intact in ten years</h4>
+    <ul>
+      <li>Advanced-node ASIC platform, 5nm shipped and 3nm in progress</li>
+      <li>Broad interconnect IP: PAM and coherent DSPs, silicon photonics, retimers</li>
+      <li>Named multi-year custom incumbency at Google; broad AWS relationship</li>
+      <li>Storage controllers used by all current HDD makers</li>
+      <li>Fabless model — no fab capital to service in a downturn</li>
+    </ul>
+  </div>
+  <div class="col borrowed">
+    <h4>Borrowed — currently helping, may not persist</h4>
+    <ul>
+      <li>Record 53.1% gross margin, set at an industry cycle peak</li>
+      <li>The 9.7-point FY2026 gross-margin jump, c.6.2 points of which was the absence of a prior-year charge</li>
+      <li>Communications restocking after an inventory correction — already decelerated to +10%</li>
+      <li>$88.3m of government incentives, $68.8m credited to cost of goods sold, expiring February 2030</li>
+      <li>One quarter of "better product mix" against a stated structural custom-margin drag</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Leading indicators, and where each is published</h3>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th>What to watch</th><th>Where it is published</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>Distributor A and Customer A percentages</td><td>Marvell 10-Q MD&amp;A; 10-K Note 2, quarterly</td><td>Fastest read on whether concentration is still tightening. A fall would be as informative as a rise.</td></tr>
+<tr><td>Foundry purchase commitments and capacity prepayments</td><td>Marvell 10-K Note 8; 10-Q Note 9, quarterly</td><td>Management's own demand forecast, expressed in cash it cannot get back.</td></tr>
+<tr><td>Gross margin against custom-mix commentary</td><td>Marvell MD&amp;A, quarterly</td><td>Whether "product mix" stays positive as the guided second-half custom ramp arrives, or reverts to an offset.</td></tr>
+<tr><td>Hyperscaler contracted backlog — not capex guidance</td><td>Alphabet, Microsoft, Amazon, Meta, Oracle quarterly releases</td><td>Oracle's RPO and Google Cloud's backlog are customer-committed; capex guidance is discretionary and lags.</td></tr>
+<tr><td>TSMC monthly revenue and packaging-capacity commentary</td><td>TSMC investor site, monthly around the 10th; quarterly conference</td><td>When packaging stops being the bottleneck, allocation stops being a moat.</td></tr>
+<tr><td>Co-packaged and linear optics deployment</td><td>Broadcom, Nvidia and Cisco newsrooms</td><td>A named hyperscaler production deployment of CPO at scale is the clearest signal the standalone DSP socket is compressing.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Risks, unknowns and questions for deeper work</h2>
+
+<p>Cyclicality and the supply-commitment asymmetry are covered above and not repeated. What follows is what cyclicality does not capture, ordered by how badly each compounds with the others.</p>
+
+<ul class="plain">
+<li><strong>Concentration and in-housing compound into the same event.</strong> Two unnamed accounts are 61% of 1H FY2027 revenue and the top ten are 82%, while every major buyer designs accelerators in-house and states a multi-vendor posture. Marvell notes that "some of our customers have chosen to develop certain semiconductor products internally and this trend may continue to proliferate." A customer moving one programme in-house or to a rival removes a double-digit percentage of revenue with no salvage market for the custom parts, no contractual floor, and a receivable balance that grew $1,158.2m in fiscal 2026 concentrated in three to five names.</li>
+
+<li><strong>The Google warrant converts commercial success into dilution and a revenue haircut.</strong> Warrant vesting is "recognized as a reduction to revenue as qualifying revenues are recognized." The 58,970,907-share warrant at $206.58 is 6.7% of shares outstanding at 1 August 2026, and it vests precisely as the Google programme ramps. No fair value has been disclosed anywhere, so the size of the contra-revenue charge is presently unquantifiable from public information.</li>
+
+<li><strong>The custom-ASIC model may scale revenue faster than profit.</strong> Marvell states the ASIC model "tends to have a lower gross margin," that NRE recovery depends on customers agreeing to pay and paying enough, and that operating margin declines "if we are unable to sell products in sufficient volumes to cover the development costs." R&amp;D runs at $741.1m a quarter, up 42.8% year on year, against revenue arriving six months to three years later and only if the customer's own product sells. Alchip's 34.8% gross margin and 18.7% revenue decline in a boom quarter is the outside evidence for what this model looks like without differentiated IP behind it.</li>
+
+<li><strong>The Celestial earn-out charges earnings when things go right.</strong> Contingent consideration is remeasured quarterly through other expense using a Monte Carlo model whose inputs include Marvell's own share price. It went from $315.8m at acquisition to $749.5m at 1 August 2026, costing $433.7m of first-half pre-tax income against a $131.0m gain on a $300m-notional hedge. This is why 1H FY2027 net income <em>fell</em> to $342.5m from $372.7m on 32% revenue growth — and the adjustments are non-deductible, so the tax rate moves with them too.</li>
+
+<li><strong>Optical DSP displacement removes the margin-protective half.</strong> Interconnect is the high-margin attach that offsets custom-compute dilution. If co-packaged or linear optics designs that content out of the rack, Marvell is left with more of the lower-margin half.</li>
+
+<li><strong>Goodwill is 50% of total assets against a single reporting unit.</strong> Goodwill of $13,873.9m plus intangibles of $2,346.6m is 58.9% of the $27,554.6m balance sheet, tested as one unit, with the filing naming "a significant decline in our stock price for a sustained period" as a trigger. There is no segment buffer. Fiscal 2025 established that Marvell will write assets off when strategy changes — $240.1m of intangibles and $159.0m of technology licences went in one year.</li>
+
+<li><strong>A China export-licensing revenue share would hit gross margin directly.</strong> The 10-K names a 15% gross-revenue remittance implied by US government interactions in 2025 and a 25% tariff in the January 2026 BIS licensing policy, states neither has impacted Marvell, then gives the mechanism: such revenue sharing "could erode our gross margins, reduce our pricing flexibility, and potentially prompt us to curtail or discontinue sales in China." China ship-to was 42% of June-quarter revenue. The Section 232 semiconductor investigation opened in April 2025 remains unresolved.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+
+<ul class="plain">
+<li>Unit volumes, ASPs, wafer counts, product-line revenue splits, backlog and book-to-bill — none disclosed in any filing. There is no way to separate volume from price in the growth.</li>
+<li>The identity of Distributor A and Customer A, together 61% of 1H FY2027 revenue. A March 2026 resale prospectus lists Amazon.com Investment Holdings LLC as holding Marvell warrants exercisable within 60 days — circumstantial, and it does not establish the identity of either account <em>(inferred)</em>.</li>
+<li>The fair value of the 58,970,907-share Google warrant, and therefore the scale of the future contra-revenue charge. Expected first in the Q3 FY2027 10-Q.</li>
+<li>Whether Marvell supplies Microsoft's Maia or Meta's MTIA. Both are widely asserted in trade press and supported by no primary source <em>(unknown)</em>. The AWS relationship is confirmed by both parties in a December 2024 release covering custom AI products, optical DSPs, AEC DSPs, PCIe retimers, DCI modules and Ethernet switching — but no accelerator programme is named.</li>
+<li>NRE dollar amounts, milestone schedules, or the NRE-versus-production revenue split on any custom programme.</li>
+<li>Optical DSP market share, from any primary or free independent source.</li>
+<li>Whether previously written-down inventory has since been sold at a margin benefit. The policy note states the mechanism exists; no disclosure quantifies it.</li>
+</ul>
+
+<p>Before forming a thesis, three of these would need resolving: the identity and stability of Distributor A, the fair value and vesting economics of the Google warrant, and the standalone gross margin of custom compute versus interconnect. Without the third, the central question — whether growth at this mix builds or dilutes economic value — cannot be answered from public information.</p>
+
+<h2>Investor takeaways</h2>
+
+<div class="card">
+<ul class="plain" style="margin-bottom:0">
+<li><strong>What this business really is.</strong> A fabless designer that converted itself into an AI data-centre company in three years, taking that end market from 40% of revenue in FY2024 to 79% in the June-2026 quarter, and selling a higher-margin automotive business to fund the concentration.</li>
+<li><strong>The core economic engine.</strong> The design-win socket: costs spent one to three years ahead of revenue, part-recovered through customer NRE, then earned back over a platform's life — with no salvage market if the platform is cancelled.</li>
+<li><strong>The main growth lever.</strong> The named Google custom-silicon agreement of July 2026, alongside interconnect content attach. Growth in FY2026 and 1H FY2027 was essentially all organic, which is not true of the company's earlier growth.</li>
+<li><strong>What could break the story.</strong> Concentration: two unnamed accounts are 61% of revenue, every buyer designs silicon in-house, and $8.5bn of non-cancellable supply commitments sit against orders customers can cancel on short notice.</li>
+<li><strong>What to monitor.</strong> The customer concentration percentages, the purchase-commitment balance, and whether gross margin holds as the guided custom ramp arrives — that last one is where the durability of the whole model gets tested.</li>
+</ul>
+</div>
+
+<footer>
+<h3>Sources</h3>
+<p><strong>Company (source of truth):</strong> Marvell FY2026 10-K (FY ended 31 January 2026, filed 11 March 2026) · FY2025, FY2024, FY2023 and FY2022 10-Ks · Q1 and Q2 FY2027 10-Qs (quarters ended 2 May and 1 August 2026) · 8-K filed 19 August 2026 (Google commercial agreement and warrant) · 8-K filed 31 March 2026 (Nvidia Series A convertible preferred) · earnings release of 27 August 2026 · 424B7 of 19 March 2026.</p>
+<p><strong>Industry and counterparties:</strong> Broadcom FQ3'26 release (2 September 2026) · Nvidia FQ2'27 release (26 August 2026) and FY2026 release · TSMC Q2 2026 release and earnings call (16 July 2026) · Micron FQ3'26 · SK hynix Q2'26 · Alchip Q2'26 release (26 August 2026) · Credo FQ4'26 · Astera Labs Q2'26 · Supermicro FQ4'26 · AMD Q2'26 · quarterly releases of Alphabet, Amazon, Microsoft, Meta and Oracle · Meta newsroom (14 April 2026) · Microsoft Maia 200 blog (26 January 2026) · Amazon Trainium3 release (2 December 2025) · Nvidia NVLink Fusion releases (18 May 2025, 31 March 2026) · Broadcom Tomahawk 6 – Davisson (8 October 2025) · Nvidia Spectrum-X Photonics (18 March 2025) · Cisco Silicon One G300 (10 February 2026) · Infineon completion announcement (14 August 2025) · SIA quarterly and annual sales releases.</p>
+<p><strong>Post-dating the reported figures:</strong> the Google commercial agreement (29 July 2026) and its warrant (issued 18 August 2026, no fair value disclosed) both post-date the Q2 FY2027 balance sheet. So does the Celestial earn-out obligation of up to approximately $233.0m cash and 22.4m shares through fiscal 2029. Marvell has scheduled an Investor Day for 6 October 2026. No transaction was announced and unclosed as of the 28 August 2026 filing.</p>
+<p style="margin-top:18px"><em>Prepared 7 September 2026. Not a valuation and not a recommendation.</em></p>
+</footer>
+
+</div>
+</body>
+</html>

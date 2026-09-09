@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coherent Corp. — Business Overview</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:30px 0 8px}
+p{margin:0 0 16px}
+.kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);
+  font-weight:700;margin:0 0 4px}
+.srcline{color:var(--muted);font-size:15px;margin:0 0 26px;padding-bottom:22px;
+  border-bottom:1px solid var(--line)}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;
+  border-left:5px solid var(--terracotta);padding:6px 0 6px 20px;margin:0 0 30px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 28px}
+.engine .lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#C9BFAE;
+  font-weight:700;margin:0 0 8px}
+.engine .unit{font-family:Georgia,serif;font-size:27px;font-weight:700;margin:0 0 10px;color:#FAF6EF}
+.engine p{margin:0;font-size:17px;color:#E7DFD2}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin:0 0 6px}
+.kpi .v{font-family:Georgia,serif;font-size:27px;font-weight:700;color:var(--terracotta);
+  font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi .s{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 22px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:16px 20px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  color:var(--terracotta);margin:0 0 5px}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .hd{font-weight:700;margin:0 0 5px}
+.lever p{margin:0;font-size:17px}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:24px 0;
+  font-family:Georgia,serif;font-size:21px;line-height:1.45}
+.pull .attr{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;color:var(--muted);
+  margin-top:10px;line-height:1.4}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 22px}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px}
+.two .d{color:var(--good)}
+.two .b{color:var(--terracotta)}
+.two ul{margin:0;padding-left:18px}
+.two li{font-size:16px;margin-bottom:9px;line-height:1.45}
+.scroll{overflow-x:auto;margin:0 0 10px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:560px;background:#fff;font-size:16px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#F4EEE3;font-weight:700;font-size:14px;letter-spacing:.02em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:14px;padding-top:8px;
+  line-height:1.45}
+.figure{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 12px 10px;
+  margin:0 0 12px}
+.chart{width:100%;height:auto;display:block}
+.chart .grid{stroke:#EFE8DC;stroke-width:1}
+.chart .ax{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:12px;fill:#6E675C}
+.chart .s1{fill:none;stroke:#C75B39;stroke-width:2.4}
+.chart .s2{fill:none;stroke:#3C6E8F;stroke-width:2.4;stroke-dasharray:5 4}
+.chart .d1{fill:#C75B39}.chart .d2{fill:#3C6E8F}
+.chart .lbl{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;font-weight:700}
+.chart .t1{fill:#C75B39}.chart .t2{fill:#3C6E8F}
+.cap{color:var(--muted);font-size:14px;margin:0 0 30px;line-height:1.45}
+.note{color:var(--muted);font-size:15px;line-height:1.5}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:14px;line-height:1.55}
+footer h3{font-size:16px;margin:0 0 8px;color:var(--ink)}
+@media (max-width:720px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  h1{font-size:30px}h2{font-size:23px}
+  body{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<p class="kicker">Business Overview</p>
+<h1>Coherent Corp. &nbsp;<span style="color:var(--muted);font-weight:400">NYSE: COHR</span></h1>
+<p class="srcline">7 September 2026 &middot; Built from Coherent's own filings FY2016&ndash;FY2026 in the
+provided research folder, plus independent industry and competitor sources. Not a valuation and not a
+recommendation.</p>
+
+<p class="restate">Coherent grows crystals, cuts laser chips out of them, and sells the chips
+&mdash; mostly inside optical transceivers that let AI datacentres move data as light instead of
+electricity. It is the only company in its industry that owns every step from the raw wafer to the
+finished module, and that is not currently what earns the highest margin in the industry.</p>
+
+<div class="engine">
+  <p class="lab">The economic engine</p>
+  <p class="unit">One 6-inch indium phosphide wafer</p>
+  <p>The saleable unit is one high-speed optical transceiver, but the unit that governs the
+  economics sits upstream. A transceiver is largely a housing for a laser, and the laser is the part
+  that cannot currently be bought in sufficient quantity. Coherent's chief executive: indium phosphide
+  capacity &ldquo;continues to be our primary constraint&rdquo;, while transceiver assembly and test
+  capacity is not. Every dollar of Datacenter &amp; Communications revenue &mdash; $5,275M in FY2026,
+  at a 25.2% segment margin &mdash; is rate-limited by wafers out of Sherman, Texas and J&auml;rf&auml;lla,
+  Sweden.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><p class="k">Industry unit price</p><p class="v">~$248</p>
+    <p class="s">Average optical module ASP, from the only competitor that discloses units
+    (Innolight, 21.09M modules, 2025). Coherent discloses none.</p></div>
+  <div class="kpi"><p class="k">What the unit earns</p><p class="v">25.2%</p>
+    <p class="s">Datacenter &amp; Communications segment profit margin, FY2026, up from 24.1% and
+    19.0%. Excludes stock comp, amortisation, corporate cost.</p></div>
+  <div class="kpi"><p class="k">Headline earnings</p><p class="v">$4.12</p>
+    <p class="s">GAAP diluted EPS FY2026; $5.61 non-GAAP. Contains $124M of divestiture gains,
+    $74M on an equity sale, and a 7% tax rate.</p></div>
+  <div class="kpi"><p class="k">Leverage</p><p class="v">$1.24bn</p>
+    <p class="s">Net debt at 30 June 2026, from $2.78bn a year earlier. No leverage ratio is
+    disclosed. $604M of cash is trapped inside the silicon carbide subsidiary.</p></div>
+  <div class="kpi"><p class="k">Cycle position</p><p class="v">+49%</p>
+    <p class="s">Q4 FY2026 revenue above the prior peak quarter. But gross margin is still
+    250bp below its 2020 peak.</p></div>
+  <div class="kpi"><p class="k">Reported vs organic</p><p class="v">+22.5%</p>
+    <p class="s">FY2026 reported. Datacom +40%, Industrial &minus;10% mostly on disposals.
+    No organic bridge is disclosed.</p></div>
+</div>
+
+<h2>1. What this business actually is</h2>
+<p>Inside an AI datacentre the chips that do the computing talk to each other electrically, and an
+electrical signal falls apart beyond about one to two metres at modern per-lane speeds. Past that
+distance the signal has to become light, travel down a fibre, and become electricity again. The
+device that performs that conversion is an optical transceiver, and Coherent is one of a very small
+number of companies that can build one starting from the raw crystal.</p>
+<p>Everything is sold outright. Revenue is recognised at a point in time, generally on shipment,
+with 30 to 90 day payment terms; contract liabilities were $63M against $7,118M of revenue, so there
+is no meaningful recurring or deferred revenue. This is a manufacturer that ships goods and gets
+paid once. It does not disclose how many units it ships or at what price &mdash; the 10-K states
+plainly that revenue is not disaggregated by product because the chief operating decision maker does
+not use that view.</p>
+<p>From 1 July 2025 the company reports two segments instead of three, recasting prior years.
+<strong>Datacenter &amp; Communications</strong> is $5,275M, 74.1% of revenue, up 40%: 800G and 1.6T
+transceivers, co-packaged optics, optical circuit switches, ZR/ZR+ coherent modules for linking
+datacentres, and the merchant lasers and detectors underneath. <strong>Industrial</strong> is
+$1,844M, down 10%: excimer and CO&#8322; lasers for displays and wafers, ultrafast lasers for chip
+inspection, and engineered materials including silicon carbide substrates. Segment profit is the
+company's own generous measure &mdash; the gap between the $1,752M of segment profit and $848M of
+pre-tax earnings is $905M of amortisation, corporate cost, stock compensation and interest.</p>
+
+<h2>2. Where the money sits in this industry</h2>
+<p>Read across the reported results of every listed company in the optical chain and gross margin is
+highest at the two ends and lowest in the middle. Broadcom, which designs the switch silicon and
+owns no fabs, earned a 67.8% gross margin and 39.9% operating margin. Fabrinet, which assembles
+modules to order in Thailand, earned 12.0% gross and 10.0% operating. Coherent, which owns more of
+the chain than anyone, earned 37.5% gross and 12.6% operating.</p>
+<p>The second comparison is the uncomfortable one. Fabrinet turns 12.0% gross into 10.0% operating
+because its operating costs are about two points of sales. Coherent turns 37.5% into 12.6% because
+its operating costs are roughly twenty-five points, and it spends 15.5% of revenue on equipment
+while Fabrinet builds sheds. On the operating line, the contract manufacturer is within three points
+of the vertically integrated technology owner &mdash; on a fraction of the capital and none of the
+technology risk.</p>
+
+<div class="scroll">
+<table>
+<caption>Sources: most recent reported fiscal year for each company &mdash; Coherent FY2026 (June),
+Lumentum FY2026 (June), Fabrinet FY2026 (June), Broadcom FY2025 (November), Innolight and Eoptolink
+calendar 2025 annual reports filed on the Shenzhen exchange, Applied Optoelectronics and IPG calendar
+2025. Chinese net margins derived from reported revenue and net profit attributable.</caption>
+<thead><tr><th>Stage of the chain</th><th>Company</th><th class="n">Gross margin</th>
+<th class="n">Bottom-line margin</th></tr></thead>
+<tbody>
+<tr><td>Switch and DSP silicon (fabless)</td><td>Broadcom</td><td class="n">67.8%</td><td class="n">39.9% op.</td></tr>
+<tr><td>Module assembly, buys chips</td><td>Eoptolink</td><td class="n">47.8%</td><td class="n">38.4% net</td></tr>
+<tr><td>Chips + modules, buys substrate</td><td>Lumentum</td><td class="n">41.7%</td><td class="n">17.4% op.</td></tr>
+<tr><td>Module assembly, buys chips</td><td>Innolight</td><td class="n">42.6%</td><td class="n">28.2% net</td></tr>
+<tr><td><strong>Substrate &rarr; epi &rarr; chip &rarr; module</strong></td><td><strong>Coherent</strong></td>
+<td class="n"><strong>37.5%</strong></td><td class="n"><strong>12.6% op.</strong></td></tr>
+<tr><td>Industrial laser, integrated</td><td>IPG Photonics</td><td class="n">38.0%</td><td class="n">1.3% op.</td></tr>
+<tr><td>Sub-scale module assembly</td><td>Applied Optoelectronics</td><td class="n">30.0%</td><td class="n">&minus;12.0% op.</td></tr>
+<tr><td>Contract assembly</td><td>Fabrinet</td><td class="n">12.0%</td><td class="n">10.0% op.</td></tr>
+</tbody></table>
+</div>
+
+<h3>Which barriers actually bind</h3>
+<p>One does: qualified indium phosphide epitaxy. Two competing issuers independently describe the
+same shortage &mdash; Coherent calls it its primary constraint, Lumentum says it is
+&ldquo;effectively sold out for the foreseeable future despite our rapid capacity expansion&rdquo;.
+The upstream metal is constrained too. China refines about 70% of world indium, imposed export
+controls in February 2025, and unwrought indium exports fell 72% year on year to September 2025
+(USGS, 2026).</p>
+<p>A second is Coherent's own and is measurable: the 6-inch wafer learning curve. The company claims
+6-inch InP delivers four times the capacity and a 60% lower die cost than its legacy 3-inch lines,
+and its CFO says 6-inch yields already exceed 3-inch across all devices with the bulk of the ramp
+still ahead. The US Commerce Department calls Sherman, Texas the first and largest high-volume
+150mm InP facility and issued a letter of intent for up to $50M of CHIPS support in June 2026.</p>
+<p>The barriers most often cited do not bind. LightCounting judged Chinese vendors two to three
+years behind on 100G-per-lane components in January 2024; by 2026 Innolight and Eoptolink held more
+than 60% of the market above 800G, and Chinese firms held seven of the top ten positions. In the
+fourth calendar quarter of 2025, Innolight alone booked $1.87bn against Coherent's $1.2bn of
+datacentre and communications revenue. Hyperscaler qualification slows share shifts by quarters, not
+years. And capital intensity only bars entry when capital is scarce &mdash; Coherent raised $2.0bn
+from a single buyer in a single day in March 2026.</p>
+
+<h3>Testing the company's account of itself</h3>
+<p>Coherent makes four claims about its position. Outside evidence supports one and a half.</p>
+<div class="card">
+<p><strong>Vertical integration into InP is a differentiator &mdash; partially supported.</strong>
+The rarity is real: Lumentum buys InP substrate externally and said so on its own call; Innolight
+derives 98% of revenue from module assembly with no substrate or epitaxy operation disclosed.
+Coherent appears to be the only participant owning substrate through module. The margin evidence
+contradicts the value of it. The most integrated company in the set earns a lower gross margin than
+the two least integrated, and the two other chip-owning integrators &mdash; Accelink and Ligent
+&mdash; earn the worst margins of any branded module maker. Ligent's own listing prospectus
+discloses an optical chip segment running a negative 121% gross margin in 2025 because volume did
+not cover fixed cost. Integration buys supply access, not margin.</p>
+<p><strong>Its capacity is scarce &mdash; supported, but the scarcity belongs to the industry.</strong>
+Every participant is adding into the same shortage at once: Coherent doubled internal InP output a
+quarter early and intends to more than double it again by the end of calendar 2027; Lumentum is
+expanding two Japanese fabs and converting a US one; Applied Optoelectronics targets 650,000 modules
+a month by the end of 2026; Fabrinet is building a two-million-square-foot plant adding $3.0&ndash;3.5bn
+of revenue capacity. LightCounting expected the shortage to ease from mid-2026.</p>
+<p><strong>It has pricing power in AI datacom &mdash; contradicted.</strong> Coherent's own risk
+factor concedes that large customers seek price concessions and will continue to. Its defence is
+long-term agreements &mdash; but the chief executive described those as carrying agreed pricing
+running three years and in some cases through the rest of the decade, which means it cannot reprice
+upward into a shortage. Coherent's non-GAAP gross margin rose 152 basis points in FY2026. Lumentum's
+rose 1,130. Innolight's rose 796.</p>
+<p style="margin:0"><strong>The materials business is a moat &mdash; contradicted, and the disclosure
+has been withdrawn.</strong> Materials was Coherent's highest-margin reported segment in FY2024, at
+$1,017M of revenue and a 21.0% non-GAAP operating margin. It no longer exists as a reported segment;
+it sits inside Industrial, which fell 10% in the strongest capital-spending year the industry has
+ever had. A moat that shrinks in a boom, and whose disclosure is then removed, cannot be tested.</p>
+</div>
+
+<div class="pull">
+&ldquo;Our large customers have in the past sought price concessions from us, and we expect that they
+will continue to do so in the future.&rdquo;
+<div class="attr">Coherent Corp., FY2026 Form 10-K, Item 1A. Two customers accounted for 20% and 12%
+of FY2026 revenue &mdash; roughly $2.28bn between them, both in Datacenter &amp; Communications.
+Neither is named.</div>
+</div>
+
+<h3>What could weaken the position</h3>
+<p>The most concrete threat is a customer moving upstream. At OFC in March 2026 Broadcom announced
+not only a 400G-per-lane optical DSP but &ldquo;first-to-market 400G electro-absorption modulated
+laser and photodiodes&rdquo;, alongside 200G-per-lane VCSEL, EML and co-packaged optics
+technologies. Those are Coherent's core categories, entered by a company with a 67.8% gross margin
+that can fund the attempt out of petty cash. Broadcom does not disclose optical revenue, so the
+scale is unknown &mdash; but a fabless business with two-thirds gross margins subsidising entry into
+a capital-intensive one with a third is the textbook shape of a profit pool migrating.</p>
+<p>On the evidence, winners here own a scarce input the buyer cannot second-source, or sit where
+their part is a small share of system cost but determines system performance, or are the low-cost
+producer at scale. Coherent qualifies on the first and is trying to on the third. It does not
+qualify on the second, and LightCounting's account of why explains most of the industry's history:
+optics is &ldquo;a tiny part of a massive industry&rdquo; yet an &ldquo;ever-larger portion of the
+bill of materials&rdquo; &mdash; big enough to be worth squeezing, small enough to have no leverage.
+Coherent is a good version of a structurally difficult business.</p>
+
+<h2>3. What is driving growth</h2>
+<p>FY2026 revenue grew 22.5%. That is Datacenter &amp; Communications up 40% and Industrial down
+10%, and the Industrial decline is attributed primarily to two disposals &mdash; so reported growth
+<em>understates</em> organic growth this year, the mirror image of the usual problem. The reverse
+distortion sits in the history and matters more.</p>
+
+<div class="scroll">
+<table>
+<caption>Reported growth against what caused it. Coherent gives no organic revenue bridge in any
+year and does not disclose the revenue of the businesses it sold, so the organic column below is
+directional, not calculated (FY2020 10-K Note 3; FY2023 10-K Note 3; FY2026 10-K Note 7).</caption>
+<thead><tr><th>Year</th><th class="n">Reported growth</th><th>What caused it</th></tr></thead>
+<tbody>
+<tr><td>FY2020</td><td class="n">+74.7%</td><td>Finisar closed Sept 2019 for $2,909M and contributed
+$938M of revenue in nine months, with a $94.6M net loss. Almost entirely acquired.</td></tr>
+<tr><td>FY2023</td><td class="n">+55.6%</td><td>Coherent, Inc. closed 1 July 2022 for $7,096M and
+contributed $1,469M of revenue, with a $412M net loss. Almost entirely acquired.</td></tr>
+<tr><td>FY2024</td><td class="n">&minus;8.8%</td><td>Organic. Declines in all four then-reported
+markets: electronics &minus;43%, instrumentation &minus;17%, industrial &minus;5%,
+communications &minus;1%.</td></tr>
+<tr><td>FY2025</td><td class="n">+23.4%</td><td>Organic. Communications +51% on AI datacom.</td></tr>
+<tr><td>FY2026</td><td class="n">+22.5%</td><td>Organic and understated. D&amp;C +40%; Industrial
+&minus;10% on the aerospace &amp; defence and Munich disposals.</td></tr>
+</tbody></table>
+</div>
+<p class="note" style="margin-bottom:26px">Over the decade revenue rose from $827M to $7,118M &mdash;
+but diluted shares went from 62.9 million to 195.4 million and total debt from $235M to $3,222M. A
+long-run revenue chart for this company is substantially a chart of acquisitions.</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever structural"><p class="tag">Structural in direction, cyclical in amplitude</p>
+<p class="hd">1. AI datacentre transceiver volume</p>
+<p>Hyperscaler capital spending is the entire mechanism. Amazon's trailing-twelve-month capex to
+June 2026 was $169.0bn, up 64%; Microsoft spent $115.9bn in FY2026, up 80%; Meta guided calendar
+2026 to $130&ndash;145bn; Alphabet spent $80.6bn in the first half of 2026 alone. LightCounting puts
+optics at 2.7% of top-five cloud capex in 2025, rising to 3.1% in 2026. The direction is structural
+because copper does not reach. The amplitude is a spending cycle set by four balance sheets.</p></div>
+
+<div class="lever mgmt"><p class="tag">Management-driven</p>
+<p class="hd">2. Indium phosphide output and 6-inch yield</p>
+<p>Coherent produced roughly 80% more InP lasers in the June 2026 quarter than a year earlier and
+doubled internal capacity a quarter ahead of plan. This is the driver most within management's
+control, and the one that converts scarcity into Coherent's revenue rather than someone else's.</p></div>
+
+<div class="lever mgmt"><p class="tag">Management-driven</p>
+<p class="hd">3. Mix shift out of Industrial</p>
+<p>Datacenter &amp; Communications went from 55.9% of revenue in FY2024 to 74.1% in FY2026, partly by
+growing and partly by selling the other side. Because D&amp;C earns a 25.2% segment margin against
+Industrial's 22.9%, and Industrial carries 58% of group depreciation and amortisation on 26% of
+revenue, the mix shift moves reported margin on its own.</p></div>
+
+<div class="lever"><p class="tag">Temporary</p>
+<p class="hd">4. Pricing optimisation</p>
+<p>Management names pricing as one of five gross-margin drivers, without quantifying it. Current
+pricing strength is a scarcity artefact. The last time this industry had one, in 2016&ndash;17, price
+erosion resumed and then accelerated within two quarters of the shortage ending.</p></div>
+
+<div class="lever structural"><p class="tag">Structural, early</p>
+<p class="hd">5. Datacentre interconnect and telecom transport</p>
+<p>Elevated demand for new ZR and ZR+ transceivers, plus sustained telecom transport growth.
+Dell'Oro forecasts the optical transport equipment market to grow 16% in 2026 and pass $18bn for the
+first time since 2000, and notes lengthening lead times.</p></div>
+
+<div class="lever cyclical"><p class="tag">Cyclical</p>
+<p class="hd">6. Semiconductor capital equipment</p>
+<p>The one part of Industrial that management describes as strong. It is a capital-equipment cycle
+and it behaves like one.</p></div>
+
+<h3>The NVIDIA arrangement</h3>
+<p>On 2 March 2026 NVIDIA bought 7,788,161 shares at $256.80 for $2.0bn, alongside a multi-year
+agreement carrying a &ldquo;multi-billion-dollar purchase commitment&rdquo;, future access and
+capacity rights, and access to five additional Coherent product families related to co-packaged
+optics. The dollar value is not disclosed. Coherent also entered a capacity agreement that
+&ldquo;may require incremental investments in equipment, labor, and working capital&hellip; through
+2030&rdquo; and which &ldquo;may result in material future cash requirements and could affect
+revenue concentration, gross margin, and capital expenditures as volumes ramp&rdquo;. The equity
+funded the capital expenditure; the commitment is the reason for it. Whether the arrangement is
+worth more than it costs cannot be answered from what has been disclosed.</p>
+
+<h2>4. Margin, cash and where the capital went</h2>
+<p>Gross margin rose 233 basis points to 37.5%. Management attributes it to five things: lower input
+costs, better cycle times, yield improvement in Datacenter &amp; Communications, pricing
+optimisation, and lower intangible amortisation &mdash; none quantified. Two of the five are
+mechanical rather than operational: amortisation fell from $303M to $280M because acquired assets
+age, and the Industrial benefit is a subtraction of bad margin rather than an addition of good.</p>
+
+<div class="figure"><svg viewBox="0 0 820 330" class="chart" role="img" aria-label="Coherent revenue and GAAP gross margin, fiscal 2016 to 2026">
+  <line x1="62" y1="258.0" x2="762" y2="258.0" class="grid"/><line x1="62" y1="200.5" x2="762" y2="200.5" class="grid"/><line x1="62" y1="143.0" x2="762" y2="143.0" class="grid"/><line x1="62" y1="85.5" x2="762" y2="85.5" class="grid"/><line x1="62" y1="28.0" x2="762" y2="28.0" class="grid"/>
+  <text x="52" y="262.0" text-anchor="end" class="ax">0</text><text x="52" y="204.5" text-anchor="end" class="ax">$2bn</text><text x="52" y="147.0" text-anchor="end" class="ax">$4bn</text><text x="52" y="89.5" text-anchor="end" class="ax">$6bn</text><text x="52" y="32.0" text-anchor="end" class="ax">$8bn</text>
+  <text x="772" y="229.1" text-anchor="start" class="ax">30%</text><text x="772" y="163.4" text-anchor="start" class="ax">34%</text><text x="772" y="97.7" text-anchor="start" class="ax">38%</text><text x="772" y="32.0" text-anchor="start" class="ax">42%</text>
+  <path d="M 62.0 234.2 L 132.0 230.1 L 202.0 224.7 L 272.0 218.8 L 342.0 189.6 L 412.0 168.7 L 482.0 162.6 L 552.0 109.7 L 622.0 122.6 L 692.0 91.0 L 762.0 53.4" class="s1"/>
+  <path d="M 62.0 97.0 L 132.0 60.9 L 202.0 64.1 L 272.0 88.8 L 342.0 152.9 L 412.0 74.0 L 482.0 90.4 L 552.0 202.1 L 622.0 210.4 L 692.0 139.7 L 762.0 101.9" class="s2"/>
+  <circle cx="62.0" cy="234.2" r="3" class="d1"/><circle cx="132.0" cy="230.1" r="3" class="d1"/><circle cx="202.0" cy="224.7" r="3" class="d1"/><circle cx="272.0" cy="218.8" r="3" class="d1"/><circle cx="342.0" cy="189.6" r="3" class="d1"/><circle cx="412.0" cy="168.7" r="3" class="d1"/><circle cx="482.0" cy="162.6" r="3" class="d1"/><circle cx="552.0" cy="109.7" r="3" class="d1"/><circle cx="622.0" cy="122.6" r="3" class="d1"/><circle cx="692.0" cy="91.0" r="3" class="d1"/><circle cx="762.0" cy="53.4" r="3" class="d1"/><circle cx="62.0" cy="97.0" r="3" class="d2"/><circle cx="132.0" cy="60.9" r="3" class="d2"/><circle cx="202.0" cy="64.1" r="3" class="d2"/><circle cx="272.0" cy="88.8" r="3" class="d2"/><circle cx="342.0" cy="152.9" r="3" class="d2"/><circle cx="412.0" cy="74.0" r="3" class="d2"/><circle cx="482.0" cy="90.4" r="3" class="d2"/><circle cx="552.0" cy="202.1" r="3" class="d2"/><circle cx="622.0" cy="210.4" r="3" class="d2"/><circle cx="692.0" cy="139.7" r="3" class="d2"/><circle cx="762.0" cy="101.9" r="3" class="d2"/>
+  <text x="62.0" y="222.2" text-anchor="start" class="lbl t1">Revenue $0.83bn</text>
+  <text x="762.0" y="41.4" text-anchor="end" class="lbl t1">$7.12bn</text>
+  <text x="62.0" y="85.0" text-anchor="start" class="lbl t2">Gross margin 37.8%</text>
+  <text x="752.0" y="143.9" text-anchor="end" class="lbl t2">37.5%</text>
+  <text x="622.0" y="232.4" text-anchor="middle" class="lbl t2">30.9%</text>
+  <text x="62.0" y="280" text-anchor="middle" class="ax">FY16</text><text x="202.0" y="280" text-anchor="middle" class="ax">FY18</text><text x="342.0" y="280" text-anchor="middle" class="ax">FY20</text><text x="482.0" y="280" text-anchor="middle" class="ax">FY22</text><text x="622.0" y="280" text-anchor="middle" class="ax">FY24</text><text x="762.0" y="280" text-anchor="middle" class="ax">FY26</text>
+</svg></div>
+<p class="cap">Revenue and GAAP gross margin, FY2016&ndash;FY2026. The two step-ups in revenue are
+acquisitions, not organic growth: Finisar in FY2020 and Coherent, Inc. in FY2023 &mdash; and both
+arrived with purchase-accounting inventory step-ups that drove gross margin down, $87.7M in FY2020
+and $158M in FY2023. Margin has recovered to 37.5% but remains below the 39.9% of FY2017 and the
+39.1% of FY2021, on more than five times the revenue.</p>
+
+<h3>The quality of FY2026 earnings</h3>
+<p>Reported earnings of $805M and $4.12 of diluted EPS contain a large amount that will not repeat.
+A $124M gain on the sale of businesses appears as a new income-statement line, zero in both prior
+years. A $74M gain on an unnamed equity investment sits in other income. The effective tax rate was
+7%, against 68% in FY2025 and a 21% statutory rate, on discrete items &mdash; a $62.8M release of
+unrecognised tax benefits and a $47.5M German tax-law change. At the statutory rate the charge would
+have been roughly $178M rather than $61M. Restructuring also fell $97M year on year, worth about
+1.4 points of margin, and management expects the programme substantially complete by the end of
+FY2026, so that year-on-year benefit stops as well. Strip the gain and add back the held-for-sale
+impairment and operating income is $838M, an 11.8% margin rather than 12.6%.</p>
+
+<h3>Cash is the part that has not recovered</h3>
+<div class="figure"><svg viewBox="0 0 820 330" class="chart" role="img" aria-label="Coherent operating cash flow versus capital expenditure, fiscal 2016 to 2026">
+  <line x1="62" y1="258.0" x2="762" y2="258.0" class="grid"/><line x1="62" y1="200.5" x2="762" y2="200.5" class="grid"/><line x1="62" y1="143.0" x2="762" y2="143.0" class="grid"/><line x1="62" y1="85.5" x2="762" y2="85.5" class="grid"/><line x1="62" y1="28.0" x2="762" y2="28.0" class="grid"/>
+  <text x="52" y="262.0" text-anchor="end" class="ax">$0M</text><text x="52" y="204.5" text-anchor="end" class="ax">$300M</text><text x="52" y="147.0" text-anchor="end" class="ax">$600M</text><text x="52" y="89.5" text-anchor="end" class="ax">$900M</text><text x="52" y="32.0" text-anchor="end" class="ax">$1200M</text>
+  <path d="M 62.0 234.4 L 132.0 235.2 L 202.0 227.1 L 272.0 223.9 L 342.0 201.1 L 412.0 148.0 L 482.0 178.8 L 552.0 136.5 L 622.0 153.3 L 692.0 136.5 L 762.0 242.7" class="s2"/>
+  <path d="M 62.0 246.9 L 132.0 231.4 L 202.0 228.7 L 272.0 231.7 L 342.0 231.7 L 412.0 230.0 L 482.0 197.8 L 552.0 174.4 L 622.0 191.5 L 692.0 173.5 L 762.0 46.6" class="s1"/>
+  <circle cx="62.0" cy="234.4" r="3" class="d2"/><circle cx="132.0" cy="235.2" r="3" class="d2"/><circle cx="202.0" cy="227.1" r="3" class="d2"/><circle cx="272.0" cy="223.9" r="3" class="d2"/><circle cx="342.0" cy="201.1" r="3" class="d2"/><circle cx="412.0" cy="148.0" r="3" class="d2"/><circle cx="482.0" cy="178.8" r="3" class="d2"/><circle cx="552.0" cy="136.5" r="3" class="d2"/><circle cx="622.0" cy="153.3" r="3" class="d2"/><circle cx="692.0" cy="136.5" r="3" class="d2"/><circle cx="762.0" cy="242.7" r="3" class="d2"/><circle cx="62.0" cy="246.9" r="3" class="d1"/><circle cx="132.0" cy="231.4" r="3" class="d1"/><circle cx="202.0" cy="228.7" r="3" class="d1"/><circle cx="272.0" cy="231.7" r="3" class="d1"/><circle cx="342.0" cy="231.7" r="3" class="d1"/><circle cx="412.0" cy="230.0" r="3" class="d1"/><circle cx="482.0" cy="197.8" r="3" class="d1"/><circle cx="552.0" cy="174.4" r="3" class="d1"/><circle cx="622.0" cy="191.5" r="3" class="d1"/><circle cx="692.0" cy="173.5" r="3" class="d1"/><circle cx="762.0" cy="46.6" r="3" class="d1"/>
+  <text x="62.0" y="221.4" text-anchor="start" class="lbl t2">Operating cash flow</text>
+  <text x="762.0" y="262.7" text-anchor="end" class="lbl t2">$80M</text>
+  <text x="62.0" y="266.9" text-anchor="start" class="lbl t1">Capital expenditure</text>
+  <text x="762.0" y="33.6" text-anchor="end" class="lbl t1">$1,103M</text>
+  <text x="62.0" y="280" text-anchor="middle" class="ax">FY16</text><text x="202.0" y="280" text-anchor="middle" class="ax">FY18</text><text x="342.0" y="280" text-anchor="middle" class="ax">FY20</text><text x="482.0" y="280" text-anchor="middle" class="ax">FY22</text><text x="622.0" y="280" text-anchor="middle" class="ax">FY24</text><text x="762.0" y="280" text-anchor="middle" class="ax">FY26</text>
+</svg></div>
+<p class="cap">Operating cash flow against capital expenditure, FY2016&ndash;FY2026. In FY2026 the two
+lines cross for the first time and cross hard: $80M of operating cash flow against $1,103M of capex,
+for free cash flow of &minus;$1,023M. The gap was funded by NVIDIA's $2.0bn equity purchase, $437M
+of divestiture proceeds and $89M from an equity sale. For contrast, Lumentum &mdash; running the
+same demand at 42% of Coherent's revenue &mdash; generated $751M of operating cash flow and $300M of
+free cash flow in the same fiscal year.</p>
+<p>The mechanism is a working-capital build of extraordinary size. Inventories rose 79.5% to $2,581M
+against 22.5% revenue growth, with work in progress alone up 89%; receivables rose 39.3%. Days of
+inventory went from 139 to 212. Against that, payables rose 125% to $1,905M and days payable
+stretched from 82 to 156 &mdash; without that extension operating cash flow would have been sharply
+negative, and $372M of the payables balance is unpaid capital expenditure rather than trade credit.
+Behind it sit $11.8bn of purchase commitments to vendors, $3.4bn of them falling due in FY2027
+against $1,092M a year earlier. Depreciation actually <em>fell</em> in FY2026 despite a 60% rise in
+net property, because most of the new capacity is not yet in service. It will step up sharply.</p>
+
+<div class="scroll">
+<table>
+<caption>Not a like-for-like series. Finisar closed in September 2019 and Coherent, Inc. in July
+2022, so FY2023 onward describes a different company from FY2019. Segments were redefined in FY2020,
+FY2023, FY2025 and FY2026. The company presents no operating-income subtotal on the face of its
+income statement, so operating margins are derived from disclosed lines and reconcile to reported
+pre-tax earnings. FY2026 is not like-for-like with FY2025 because the divested businesses were held
+for sale within continuing operations, so prior years were not restated.</caption>
+<thead><tr><th>US$ millions</th><th class="n">FY2019</th><th class="n">FY2023</th>
+<th class="n">FY2024</th><th class="n">FY2026</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td class="n">1,362</td><td class="n">5,160</td><td class="n">4,708</td><td class="n">7,118</td></tr>
+<tr><td>Gross margin (GAAP)</td><td class="n">38.3%</td><td class="n">31.4%</td><td class="n">30.9%</td><td class="n">37.5%</td></tr>
+<tr><td>Operating margin (derived)</td><td class="n">10.9%</td><td class="n">(0.7)%</td><td class="n">2.0%</td><td class="n">12.6%</td></tr>
+<tr><td>Operating cash flow</td><td class="n">178</td><td class="n">634</td><td class="n">546</td><td class="n">80</td></tr>
+<tr><td>Capital expenditure</td><td class="n">137</td><td class="n">436</td><td class="n">347</td><td class="n">1,103</td></tr>
+<tr><td>Total debt</td><td class="n">467</td><td class="n">4,310</td><td class="n">4,100</td><td class="n">3,222</td></tr>
+</tbody></table>
+</div>
+
+<h3>Where the cash went, FY2023&ndash;FY2026</h3>
+<p>Ranked: acquisitions $5,489M &mdash; effectively all of it the Coherent, Inc. close on the first
+day of FY2023; gross debt repayment $4,466M, of which $1,269M was voluntary prepayment; capital
+expenditure $2,327M, front-loaded into FY2026; dividends $50M, all on preferred stock, with no
+common dividend ever paid; and share repurchases of exactly zero, with no programme in effect in
+FY2025 or FY2026.</p>
+<p>The pattern is legible. Management bought two large businesses on debt, spent four years paying
+it down ahead of schedule, refinanced repeatedly to cut the spread &mdash; the term loan margin came
+down from 2.75% to 2.50% in April 2024, to 2.00% in January 2025 and to 1.75% in September 2025
+&mdash; and then, once the balance sheet was repaired, turned the capital taps on. Total debt fell
+from $4,310M to $3,222M while interest expense fell from $288M to $190M. The equity side went the
+other way: the $2.15bn of Series B preferred issued to Bain Capital converted into 30.1 million
+common shares in December 2025 after the holder waived its dividend rights, and NVIDIA bought 7.8
+million more. Shares outstanding rose 25.8% in one year. This is management that has consistently
+chosen dilution over leverage, and growth over returning cash.</p>
+<p class="note" style="margin-bottom:26px">Post-dating the reported figures: a ~$945M unsecured
+subsidiary facility signed 12 August 2026, undrawn at the filing date; and $100M of one-time
+performance share units approved 27 August 2026 across five executives, $50M of it to the chief
+executive, vesting only against 10&ndash;25% absolute share-price CAGRs over four years.</p>
+
+<h2>5. Cyclicality and where the business sits</h2>
+<p>At the top on volume; not at the top on margin. Fourth-quarter FY2026 revenue of $2,045M is 49%
+above the previous peak quarter of $1,370M in December 2022 and 94% above the trough of $1,053M in
+September 2023. Full-year revenue is 38% above the prior peak year. On gross margin the picture
+differs: the quarterly GAAP figure of 38.5% is still 250 basis points below the all-time peak of
+41.0% set in December 2020, and annual GAAP operating margin of 12.6% is 30 basis points below the
+FY2021 peak &mdash; 11.8% excluding the one-off gain and impairment. Peak volume at below-peak
+margin is what a business looks like when it is growing into a cost base rather than harvesting one.</p>
+
+<div class="scroll">
+<table>
+<caption>Exposure as most recently disclosed. Coherent discontinued its four-market split
+(communications, industrial, instrumentation, electronics) from 1 July 2025 and did not restate it,
+so the market disclosure is now identical to the segment disclosure and carries no incremental
+information (FY2026 10-K, Notes 3 and 20).</caption>
+<thead><tr><th>Exposure</th><th class="n">FY2026</th><th class="n">FY2025</th><th>Direction</th></tr></thead>
+<tbody>
+<tr><td>Datacenter &amp; Communications</td><td class="n">74.1%</td><td class="n">64.6%</td><td>Growing, +40%</td></tr>
+<tr><td>Industrial</td><td class="n">25.9%</td><td class="n">35.4%</td><td>Shrinking, &minus;10% on disposals</td></tr>
+<tr><td>North America (customer HQ)</td><td class="n">65.1%</td><td class="n">61.4%</td><td>Rising with hyperscaler mix</td></tr>
+<tr><td>China (revenue)</td><td class="n">11.4%</td><td class="n">11.7%</td><td>+19.6% in dollars</td></tr>
+<tr><td>China (long-lived assets)</td><td class="n">$969M</td><td class="n">$403M</td><td>+140% &mdash; asset exposure rising far faster than revenue</td></tr>
+<tr><td>Largest customer</td><td class="n">20%</td><td class="n">10%</td><td>Doubled in one year; a second at 12%</td></tr>
+</tbody></table>
+</div>
+
+<h3>What a downturn does to this industry</h3>
+<p>The cleanest evidence is Lumentum, whose mix made it the pure-play victim of the last cycle.
+Revenue fell 23.1% from FY2023 to FY2024; GAAP gross margin fell 1,370 basis points to 18.5% and
+non-GAAP gross margin 1,020 basis points; GAAP operating margin went from &minus;6.5% to
+&minus;31.9%. Roughly 44 basis points of gross margin was lost for every 1% of revenue decline.
+Coherent's more diversified mix cushioned it to about 27 basis points per 1%. Apply the milder of
+those elasticities to a company whose depreciation base is about to step up materially, and the
+outcome is worse than FY2024, not better. This does not require an AI spending pause. It requires
+only that the shortage ends &mdash; which is what the industry's own tracker expects, and what every
+competitor's capacity expansion is designed to cause.</p>
+<p>The base rate is the other half. Average optical component supplier margins ran 9% in
+2016&ndash;17, 4% in 2018 and 1% in 2019, and LightCounting attributed the collapse to price erosion
+that accelerated as volumes fell. There is no episode in this dataset where volumes declined and
+price held.</p>
+
+<div class="two">
+<div class="col"><h4 class="d">Durable &mdash; likely still true in ten years</h4>
+<ul>
+<li>6-inch InP and GaAs fabs in the US and Europe, and the yield learning embedded in them</li>
+<li>Largest US-domiciled transceiver supplier, with CHIPS support at Sherman, Texas</li>
+<li>Protocol-agnostic portfolio across Ethernet, InfiniBand and NVLink, with design-in at NVIDIA on
+both pluggables and co-packaged optics</li>
+<li>Genuinely rare engineered materials: 200mm semi-insulating SiC substrates, ZnSe, ZnS, GaSb</li>
+<li>~51,000 employees and a diversified footprint customers value for supply resilience</li>
+</ul></div>
+<div class="col"><h4 class="b">Borrowed &mdash; helping now, and dated</h4>
+<ul>
+<li>InP scarcity. The tracker expected it to ease from mid-2026; Coherent is itself doubling output
+annually</li>
+<li>A 7% effective tax rate, resting on a $63M reserve release and a $47M German rate change</li>
+<li>$124M of divestiture gains and $74M on an equity sale &mdash; a new income line in FY2026,
+zero in FY2025</li>
+<li>A $97M fall in restructuring charges, with the programme ending</li>
+<li>Industrial margin flattered by the disposals. Those base effects lap by H1 FY2027</li>
+</ul></div>
+</div>
+
+<h2>6. Risks that cyclicality does not capture</h2>
+<div class="card">
+<p><strong>Concentration compounding with commitment.</strong> One customer is 20% of revenue and a
+second is 12%. The filing concedes such customers seek price concessions and may impose
+most-favoured-customer or exclusivity terms that foreclose selling to others. If forecast orders do
+not arrive, the 10-K names the consequences precisely: excess or obsolete inventory, underutilised
+capacity, liabilities under supplier arrangements, reimbursement obligations for supplier capital
+expenditure, and non-cancellable purchase commitments. The exposure is $2,581M of inventory at 212
+days and $11.8bn of vendor commitments. One customer deferring a ramp produces a cost-of-goods
+charge and a balance-sheet write-down at the same time.</p>
+<p><strong>$3.1bn of goodwill in the shrinking half, with an 8% cushion.</strong> At the 1 April 2026
+test the Lasers reporting unit's fair value exceeded carrying value by approximately 8% on an 11.0%
+discount rate, and the company states the unit &ldquo;remains sensitive to changes in assumptions
+and future operating performance&rdquo;. That unit sits inside Industrial, whose revenue fell 10%.
+Goodwill and intangibles together are $7.26bn &mdash; 39.7% of assets and 64.6% of equity.</p>
+<p><strong>An unreserved export-control contingency.</strong> In January 2025 Coherent received a
+Bureau of Industry and Security inquiry about past sales to Huawei. It has stopped shipping to
+Huawei, is cooperating, and states it cannot determine an estimate or range of loss. There is no
+update in the FY2026 10-K.</p>
+<p><strong>A concentrated maturity.</strong> $2,136M of principal matures in FY2030 and $986M in
+FY2031 &mdash; 96% of the total in a two-year window, including $990M of 5.00% notes due December
+2029. Most debt floats; 100 basis points is $25M of interest, and the cap that saved $17M in FY2026
+has decayed in value from $17M to $3M.</p>
+<p style="margin:0"><strong>The thesis is falsifiable and dated.</strong> The case rests on InP
+scarcity being structural rather than cyclical, and on Chinese module supply being restricted. As of
+September 2026 no US rule in force restricts imports of Chinese optical transceiver modules: the
+Section 301 semiconductor action carries a 0% additional rate until June 2027 and does not name
+modules, and the reported FCC action remains a draft with no primary document located.</p>
+</div>
+
+<h3>What the sources could not answer</h3>
+<p class="note">Transceiver-only revenue, unit volumes and average selling prices &mdash; the company
+states it does not disaggregate by product. &middot; The organic versus divested revenue bridge for
+Industrial, and the revenue of the businesses sold. &middot; The identity of the two customers at 20%
+and 12%, and whether NVIDIA is one of them; the 10-K does not say and the connection should not be
+inferred. &middot; The dollar value of the NVIDIA purchase commitment. &middot; The split of capital
+expenditure between growth and maintenance, and any FY2027 capex plan. &middot; Backlog and
+book-to-bill, neither of which is disclosed. &middot; Standalone silicon carbide economics, invisible
+since Materials folded into Industrial, against an implied $4.0bn valuation set in 2023 and $604M of
+restricted cash inside the subsidiary. &middot; Whether optical transceivers fall inside the Section
+232 covered-product annex. &middot; Per-vendor 800G and 1.6T market share, which every independent
+tracker places behind subscription.</p>
+
+<h2>7. What to monitor, and where it is published</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Indicator</th><th>Published in</th></tr></thead>
+<tbody>
+<tr><td>Whether InP is still called the primary constraint, and the stated reason for gross-margin
+change &mdash; yield and mix, or price</td><td>Coherent quarterly earnings release and call, roughly
+November, February, May and August</td></tr>
+<tr><td>Operating cash flow against net earnings, and inventory days</td><td>Coherent 10-Q and 10-K
+cash flow statement and balance sheet, SEC EDGAR CIK 0000820318</td></tr>
+<tr><td>Whether unit growth and revenue growth diverge &mdash; the divergence is price</td>
+<td>LightCounting Quarterly Market Update</td></tr>
+<tr><td>Chinese competitors' revenue and gross margin &mdash; the share clock and the price tell</td>
+<td>Zhongji Innolight (300308.SZ) and Eoptolink (300502.SZ) filings on CNINFO</td></tr>
+<tr><td>Whether a US import restriction on Chinese optical modules is actually enacted</td>
+<td>Federal Register; FCC docket notices</td></tr>
+<tr><td>Section 301 rate step-up on HTS 8541 and 8542, scheduled 23 June 2027</td>
+<td>Federal Register; USTR Section 301 notices</td></tr>
+<tr><td>Indium supply, Chinese share, price and export volumes</td>
+<td>USGS Mineral Commodity Summaries, indium chapter, each January</td></tr>
+<tr><td>Broadcom's advance into EMLs, photodiodes and VCSELs</td>
+<td>Broadcom OFC product announcements each March</td></tr>
+<tr><td>Lumentum and Fabrinet results as an independent read on the same demand</td>
+<td>Lumentum and Fabrinet quarterly releases, both on a June fiscal year</td></tr>
+</tbody></table>
+</div>
+
+<h2>8. Takeaways</h2>
+<div class="card">
+<p><strong>What this business really is.</strong> A vertically integrated component manufacturer
+that has become, for now, an AI infrastructure supplier &mdash; three-quarters of revenue is
+Datacenter &amp; Communications, sold outright with no recurring revenue.</p>
+<p><strong>The economic engine.</strong> The indium phosphide wafer. Owning qualified 6-inch InP
+capacity is what lets Coherent ship transceivers when the industry cannot, and the 6-inch yield curve
+is the one genuine cost advantage the evidence supports.</p>
+<p><strong>The main growth lever.</strong> Hyperscaler capital spending, converted through wafer
+output. Everything else &mdash; mix, pricing, restructuring &mdash; is second order or
+non-repeating.</p>
+<p><strong>What breaks the story.</strong> The shortage ending. Prices here have never held when
+volumes fell, Coherent has fixed its selling prices under multi-year agreements, and it has taken
+capex to 15.5% of sales into a shortage every competitor is spending to eliminate.</p>
+<p style="margin:0"><strong>What to monitor.</strong> The gap between earnings and cash. FY2026
+produced $805M of net earnings and $80M of operating cash flow; until that closes, the reported
+recovery is an accrual, not a cash, event.</p>
+</div>
+
+<footer>
+<h3>Sources</h3>
+<p><strong>Company (from the provided research folder):</strong> Coherent Corp. Forms 10-K for
+FY2016&ndash;FY2026 (FY2026 filed 14 August 2026); Forms 10-Q through FY2026 Q3; Forms 8-K including
+the Finisar merger agreement (9 November 2018) and close (24 September 2019), the Coherent, Inc.
+bidding sequence (March 2021) and close (1 July 2022), the silicon carbide investment agreements
+(10 October 2023), the credit agreement amendments (April 2024, January 2025, September 2025), the
+Bain dividend waiver (21 November 2025), the NVIDIA private placement (2 March 2026) and the
+executive award grants (31 August 2026); proxy statements 2016&ndash;2025.</p>
+<p><strong>Company (not in the folder, taken from Coherent's own publication):</strong> the FY2026
+fourth-quarter earnings press release and earnings call of 12 August 2026, which supply all non-GAAP
+figures, Q1 FY2027 guidance and management's InP capacity commentary. The folder's earnings 8-Ks
+contain only cover pages; Exhibits 99.1 and 99.2 were not captured.</p>
+<p><strong>Independent:</strong> Lumentum, Fabrinet, Broadcom, Marvell, Applied Optoelectronics, IPG
+Photonics and nLIGHT earnings releases and 10-Ks; Zhongji Innolight and Eoptolink 2025 annual
+reports and 2026 interim reports filed on the Shenzhen exchange; Ligent Hong Kong listing
+prospectus; LightCounting Quarterly Market Update (March 2026), Optics for AI Clusters (January
+2026) and State of the Industry (May 2020); Dell'Oro Group optical transport forecast (19 May 2026);
+USGS Mineral Commodity Summaries 2026, indium chapter; Federal Register Section 301 semiconductor
+notice (29 December 2025) and FCC equipment-authorisation proceeding (7 August 2026); NIST CHIPS
+Program Office announcement (16 June 2026); Amazon, Alphabet, Meta and Microsoft quarterly earnings
+releases.</p>
+<p><strong>Post-dating the reported figures:</strong> the ~$945M subsidiary credit facility of
+12 August 2026 (undrawn) and the $100M executive performance share grants of 27 August 2026 are
+disclosed but not reflected in FY2026 results. One Industrial entity remained classified held-for-sale
+at 30 June 2026 with no buyer, price or timing disclosed.</p>
+<p style="margin-top:18px">Q4 FY2026 quarterly figures used in this page are derived by subtracting
+nine-month figures from the full year, because Coherent does not report a discrete fourth quarter.
+Operating income is likewise derived, because the income statement presents no operating-income
+subtotal. Both reconcile to reported pre-tax earnings.</p>
+<p style="margin-top:18px"><em>This is a business overview for investment research. It is not a
+valuation and not a recommendation.</em></p>
+</footer>
+
+</div>
+
+</body>
+</html>

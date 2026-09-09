@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMZN Coverage File</title>
+<style>
+:root{
+  --paper:#faf9f6; --card:#ffffff; --ink:#1b1a17; --ink-2:#403c35; --ink-3:#6d675d;
+  --rule:#e3ded4; --rule-2:#efebe3; --accent:#8c3b2e; --accent-soft:#f5ece9;
+  --measure:min(74ch,720px);
+}
+:root{ --good:#2c6a4a; --good-soft:#eaf2ed; --warn:#8a6314; --warn-soft:#f8f1e2; --bad:#8c3b2e; --bad-soft:#f7ebe8; }
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px; line-height:1.62; letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;
+}
+.ui{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+/* ---------- header band ---------- */
+header.band{
+  background:var(--card); border-bottom:1px solid var(--rule);
+  padding:44px 24px 30px;
+}
+.band-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.eyebrow{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 10px}
+h1{font-size:clamp(28px,3.4vw,40px);line-height:1.14;margin:0;font-weight:600;letter-spacing:-.012em}
+h1 .tick{color:var(--ink-3);font-weight:400}
+.stamps{display:flex;gap:28px;flex-wrap:wrap}
+.stamp{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.stamp-k{display:block;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.stamp-v{display:block;font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+
+/* ---------- layout ---------- */
+.shell{max-width:1120px;margin:0 auto;padding:0 24px;display:grid;min-width:0;grid-template-columns:210px minmax(0,1fr);gap:52px;align-items:start}
+nav.toc{min-width:0;position:sticky;top:26px;padding:34px 0 40px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+nav.toc .toc-h{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px;font-weight:600}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li{margin:0}
+nav.toc a{display:flex;gap:9px;padding:4px 8px 4px 6px;border-radius:5px;text-decoration:none;color:var(--ink-2);font-size:12.8px;line-height:1.4;border-left:2px solid transparent}
+nav.toc a:hover{background:var(--accent-soft);color:var(--accent)}
+nav.toc a.on{border-left-color:var(--accent);color:var(--accent);font-weight:600}
+nav.toc .n{color:var(--ink-3);font-variant-numeric:tabular-nums;min-width:14px;text-align:right}
+nav.toc a.on .n{color:var(--accent)}
+main{padding:34px 0 90px;max-width:var(--measure);min-width:0;overflow-wrap:break-word}
+
+/* ---------- sections ---------- */
+section.section{padding:28px 0 4px;border-top:1px solid var(--rule-2)}
+section.section:first-of-type{border-top:0;padding-top:26px}
+h2{display:flex;gap:14px;align-items:baseline;font-size:22px;font-weight:600;letter-spacing:-.01em;margin:0 0 16px;line-height:1.25}
+h2 .secnum{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.08em;
+  border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:3px 7px;flex:none;transform:translateY(-2px)}
+h3{font-size:16.5px;font-weight:600;margin:30px 0 8px;letter-spacing:-.005em}
+p{margin:0 0 14px}
+p.note{font-size:14.2px;color:var(--ink-3);line-height:1.55}
+strong{font-weight:600}
+ul,ol{margin:0 0 16px;padding-left:1.25em}
+li{margin:0 0 7px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.87em;background:var(--rule-2);padding:1px 5px;border-radius:4px}
+a{color:var(--accent)}
+
+/* summary card (section 0) */
+section.summary{background:var(--card);border:1px solid var(--rule);border-radius:12px;
+  padding:26px 28px 14px;margin:6px 0 26px;box-shadow:0 1px 2px rgba(27,26,23,.04),0 8px 24px -18px rgba(27,26,23,.5)}
+section.summary h2{margin-bottom:14px}
+section.summary ul{list-style:none;padding-left:0;margin-bottom:8px}
+section.summary li{padding:9px 0;border-bottom:1px solid var(--rule-2);font-size:16px;line-height:1.55}
+section.summary li:last-child{border-bottom:0}
+
+/* citations */
+.tight{margin-left:-3px}
+.cite{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:11px;color:var(--ink-3);white-space:nowrap;letter-spacing:.01em;
+  background:var(--rule-2);border-radius:3px;padding:1px 5px;margin-left:1px}
+
+/* risk chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+.chip{display:inline-flex;align-items:baseline;gap:7px;border-radius:6px;padding:5px 10px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  border:1px solid var(--rule);background:var(--card)}
+.chip-k{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+.chip-v{font-size:12.5px;font-weight:600}
+.chip.lvl-high{background:var(--bad-soft);border-color:#eccfc8}
+.chip.lvl-high .chip-v{color:var(--bad)}
+.chip.lvl-medium{background:var(--warn-soft);border-color:#ecdcbb}
+.chip.lvl-medium .chip-v{color:var(--warn)}
+.chip.lvl-low{background:var(--good-soft);border-color:#c9ddd2}
+.chip.lvl-low .chip-v{color:var(--good)}
+
+/* risk fields */
+p.field{margin:0 0 9px;font-size:16px}
+.field-k{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);margin-right:7px}
+
+/* tables */
+.table-wrap{overflow-x:auto;margin:4px 0 22px;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:480px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:13.6px}
+th{text-align:left;font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+  padding:11px 14px;border-bottom:1px solid var(--rule);background:#fdfcfa;white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-2);color:var(--ink-2);vertical-align:top;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#fdfbf8}
+td.d-good strong{color:var(--good)} td.d-warn strong{color:var(--warn)} td.d-bad strong{color:var(--bad)}
+td .cite{white-space:normal}
+
+/* market-data callout */
+aside.callout{position:relative;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  border-radius:8px;padding:22px 24px 8px;margin:18px 0 22px;font-size:15.6px}
+aside.callout .callout-mark{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:9px}
+aside.callout p:last-child{margin-bottom:14px}
+
+footer{max-width:1120px;margin:0 auto;padding:26px 24px 60px;border-top:1px solid var(--rule);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:12px;color:var(--ink-3);line-height:1.6}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr;gap:0}
+  nav.toc{position:static;padding:22px 0 4px;border-bottom:1px solid var(--rule-2)}
+  nav.toc ol{display:flex;flex-wrap:wrap;gap:5px}
+  nav.toc a{border-left:0;border:1px solid var(--rule);background:var(--card);padding:5px 10px;font-size:12px}
+  nav.toc a.on{background:var(--accent-soft);border-color:#e6d3ce}
+  main{padding-top:22px}
+  body{font-size:16.5px}
+  header.band{padding:32px 20px 24px}
+  section.summary{padding:22px 20px 10px}
+}
+
+/* ---------- print ---------- */
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.45}
+  header.band{padding:0 0 14pt;border-bottom:1pt solid #ccc}
+  .band-inner,.shell,footer{max-width:none;padding:0}
+  nav.toc{display:none}
+  .shell{display:block}
+  main{max-width:none;padding:14pt 0 0}
+  section.section{break-inside:auto;padding-top:12pt}
+  h2,h3{break-after:avoid}
+  .table-wrap,aside.callout,section.summary{break-inside:avoid;box-shadow:none}
+  table{min-width:0;font-size:8.5pt}
+  a{color:inherit;text-decoration:none}
+  .cite{background:none;color:#666}
+}
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="band-inner">
+    <div>
+      <p class="eyebrow">Coverage File</p>
+      <h1>Amazon.com, Inc. <span class="tick">(AMZN)</span></h1>
+    </div>
+    <div class="stamps">
+      <div class="stamp"><span class="stamp-k">Data as of</span><span class="stamp-v">Q2 FY2026 (quarter ended June 30, 2026); market data September 4, 2026</span></div>
+      <div class="stamp"><span class="stamp-k">File last updated</span><span class="stamp-v">September 7, 2026</span></div>
+    </div>
+  </div>
+</header>
+<div class="shell">
+<nav class="toc ui"><p class="toc-h">Contents</p><ol>
+<li><a href="#0-30-second-reopen"><span class="n">0</span><span>30-second reopen</span></a></li>
+<li><a href="#1-business-snapshot"><span class="n">1</span><span>Business snapshot</span></a></li>
+<li><a href="#2-core-debate"><span class="n">2</span><span>Core debate</span></a></li>
+<li><a href="#3-base-thesis"><span class="n">3</span><span>Base thesis</span></a></li>
+<li><a href="#4-main-bear-case"><span class="n">4</span><span>Main bear case</span></a></li>
+<li><a href="#5-business-quality"><span class="n">5</span><span>Business quality</span></a></li>
+<li><a href="#6-key-value-drivers"><span class="n">6</span><span>Key value drivers</span></a></li>
+<li><a href="#7-financial-profile"><span class="n">7</span><span>Financial profile</span></a></li>
+<li><a href="#8-valuation"><span class="n">8</span><span>Valuation</span></a></li>
+<li><a href="#9-management-capital-allocation"><span class="n">9</span><span>Management &amp; capital allocation</span></a></li>
+<li><a href="#10-risks-ranked-by-damage"><span class="n">10</span><span>Risks ranked by damage</span></a></li>
+<li><a href="#11-metrics-to-monitor"><span class="n">11</span><span>Metrics to monitor</span></a></li>
+<li><a href="#12-thesis-tripwires"><span class="n">12</span><span>Thesis tripwires</span></a></li>
+<li><a href="#13-open-questions"><span class="n">13</span><span>Open questions</span></a></li>
+<li><a href="#14-update-log"><span class="n">14</span><span>Update log</span></a></li>
+<li><a href="#15-source-map"><span class="n">15</span><span>Source map</span></a></li>
+</ol></nav>
+<main>
+<section id="0-30-second-reopen" class="section summary">
+<h2><span class="secnum">0</span><span class="sectitle">30-second reopen</span></h2>
+<ul><li><strong>Business:</strong> Three segments — North America and International (retail marketplace, 3P seller services, advertising, Prime) and AWS. AWS is 21% of revenue but 61% of operating income <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span></li><li><strong>Core debate:</strong> Is the $169B/yr capex build an infrastructure land-grab that compounds AWS's lead, or a shift into a lower-return, contract-bound utility funded by debt?</li><li><strong>Base thesis:</strong> AWS re-accelerated to 37% growth with a $496B contracted backlog; retail's fixed-cost base is now largely built, so advertising and 3P mix should keep lifting margins while AWS scales.</li><li><strong>Bear case:</strong> Capex has overtaken operating cash flow — TTM FCF is <strong>negative $7.6B</strong> — the backlog is concentrated in two loss-making AI labs Amazon itself funds, and reported earnings are inflated by non-cash marks on those same investments.</li><li><strong>Valuation:</strong> ~$2.79T market cap; ~29.8x TTM operating income. The 20.8x trailing P/E is not an operating multiple — TTM net income includes ~$69B of pre-tax investment markups.</li><li><strong>Watch next:</strong> AWS backlog conversion to revenue, capex vs. OCF, AWS margin as depreciation lands, and whether FCF returns to positive.</li></ul>
+</section>
+<section id="1-business-snapshot" class="section">
+<h2><span class="secnum">1</span><span class="sectitle">Business snapshot</span></h2>
+<p>Amazon reports three segments. <strong>North America</strong> ($220.3B H1 2026 revenue) and <strong>International</strong> ($82.0B) are the consumer businesses: first-party retail, a third-party marketplace, advertising, Prime subscriptions, and physical stores. <strong>AWS</strong> ($79.8B H1 2026) sells compute, storage, database and AI infrastructure <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span></p>
+<p>By product line, FY2025 revenue of $716.9B broke down as: online stores $269.3B, third-party seller services $172.2B, AWS $128.7B, advertising $68.6B, subscriptions $49.6B, physical stores $22.6B, other $5.9B <span class="cite">[FY2025 10-K]</span><span class="tight">.</span> The economically important detail is that the three highest-margin lines — 3P seller services, advertising and subscriptions — together were $290.4B, or 41% of revenue, and are all monetizations of the same retail asset base rather than separate businesses.</p>
+<p>The company employed approximately 1,576,000 people at December 31, 2025 <span class="cite">[FY2025 10-K]</span><span class="tight">.</span> The United States was $489.7B of FY2025 revenue; Germany, the UK and Japan together $119.8B.</p>
+<p><strong>How it makes money.</strong> Retail earns a thin spread on first-party goods but collects high-margin commissions, fulfillment fees and ad dollars on third-party volume that runs through infrastructure already paid for by the first-party business. AWS earns a utility margin on capital it deploys ahead of demand. Prime is the binding mechanism: it pre-pays, raises purchase frequency, and makes the fixed logistics base denser.</p>
+</section>
+<section id="2-core-debate" class="section">
+<h2><span class="secnum">2</span><span class="sectitle">Core debate</span></h2>
+<p>Amazon is spending $169B a year on property and equipment against $161B of operating cash flow <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span> The bull reading is that this is the same pattern as the 2015–2021 fulfillment build — capital deployed ahead of demand into an asset with visible contracted revenue ($496B backlog) that later drops through at high incremental margin. The bear reading is that AI infrastructure has shorter useful lives, more competition, and — critically — that Amazon is funding the customers. It has committed roughly $50B to OpenAI and ~$18B of cash to Anthropic, both of which have signed nine- and ten-figure AWS commitments.</p>
+<p>The debate is therefore not "will AWS grow" — it is growing 37% — but <strong>what the returns on this capital cycle are, and how much of the backlog is genuine third-party demand versus vendor-financed demand.</strong></p>
+</section>
+<section id="3-base-thesis" class="section">
+<h2><span class="secnum">3</span><span class="sectitle">Base thesis</span></h2>
+<p>AWS re-accelerated from 17% growth in Q2 2025 to 37% in Q2 2026, while segment operating margin rose from 32.9% to 39.4% <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span> Contracted-but-unrecognized performance obligations doubled from $244B at December 2025 to $496B at June 2026, with weighted-average life extending from 4.1 to 6.4 years <span class="cite">[FY2025 10-K; FY2026 Q2 10-Q]</span><span class="tight">.</span> That is unusually good forward visibility for an infrastructure business. Meanwhile the retail business is showing operating leverage without heroic assumptions: North America margin reached 7.9% and International 4.1% in Q2 2026, with fulfillment costs falling to 14.8% of sales from 15.5%, and advertising growing 22% in FY2025 against 12% total revenue growth <span class="cite">[FY2025 10-K; FY2026 Q2 10-Q]</span><span class="tight">.</span> Consolidated Q3 2026 guidance of $22.5–26.5B operating income against $17.4B a year earlier implies the trend continues.</p>
+<p>The thesis is that Amazon owns two structurally advantaged positions — the densest consumer logistics network and the largest cloud installed base — and is converting both into higher-margin, less capital-hungry revenue (ads, 3P fees, committed cloud contracts) faster than the capital intensity of the AI build erodes returns.</p>
+<p><strong>Assumptions this rests on:</strong></p>
+<ol><li>The $496B backlog converts to revenue at roughly the contracted pace and is not materially renegotiated or cancelled <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span></li><li>AWS holds operating margins near 35–40% as the current capex vintage depreciates into the cost base.</li><li>Capex intensity peaks — capex was 21.8% of TTM revenue vs. 17.9% in FY2025 — and FCF turns positive again rather than staying negative.</li><li>Advertising continues growing meaningfully faster than retail volume, lifting consolidated mix.</li><li>Retail fixed costs stay largely built, so North America incremental margins remain above the current 7.9% average.</li></ol>
+</section>
+<section id="4-main-bear-case" class="section">
+<h2><span class="secnum">4</span><span class="sectitle">Main bear case</span></h2>
+<p>Amazon has stopped generating free cash flow. TTM free cash flow at June 30, 2026 was <strong>negative $7.6B</strong>, versus positive $18.2B a year earlier and $38.2B in FY2024 <span class="cite">[FY2025 10-K; FY2026 Q2 10-Q]</span><span class="tight">.</span> The gap is being financed: long-term debt went from $65.6B to $128.9B in six months, with $36.9B of notes issued in March 2026, $24.9B in July 2026 (coupons up to 6.25%), and a $17.5B delayed-draw term loan facility signed in June <span class="cite">[8-K 2026-03-13; 8-K 2026-07-09; 8-K 2026-06-10]</span><span class="tight">.</span></p>
+<p>The demand backing this build is concentrated and circular. Of the backlog growth, the disclosed drivers are an OpenAI commitment expanded by $100B over 8 years on top of an existing $38B, and an Anthropic expansion of more than $100B over 10 years <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span> Amazon is simultaneously an equity funder of both: $50B committed to OpenAI Series C and roughly $18B of cash into Anthropic. Neither counterparty is cash-generative today.</p>
+<p>Reported earnings obscure this. Q2 2026 net income of $62.6B included $53.4B of non-cash "other income" from marking up the Anthropic stake; H1 2026 carried $69.1B of such gains against $51.3B of actual operating income <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span> Non-marketable private-company investments went from $16.2B to $122.3B in six months on price observations, not cash.</p>
+<p><strong>How the thesis breaks:</strong> AI capex commitments prove to be a fixed cost against variable demand. Backlog conversion slows or is renegotiated; the 2025–2026 capex vintage depreciates on five-year lives into a decelerating revenue line; AWS margin compresses toward the high-20s; the Anthropic/OpenAI marks reverse; and the equity is left with a leveraged balance sheet and no free cash flow at a ~30x operating-income multiple.</p>
+</section>
+<section id="5-business-quality" class="section">
+<h2><span class="secnum">5</span><span class="sectitle">Business quality</span></h2>
+<p>The retail moat is scale-and-density and self-reinforcing: more selection attracts more buyers, which attracts more sellers, which funds denser logistics, which shortens delivery and raises conversion. Advertising is the highest-quality piece — it monetizes purchase intent Amazon already owns, needs little incremental capital, and grew 22% in FY2025 <span class="cite">[FY2025 10-K]</span><span class="tight">.</span></p>
+<p>AWS quality is high but changing character. It was an on-demand utility with switching costs from data gravity and a long tail of customers; the 2026 backlog shifts the mix toward very large, long-dated, negotiated contracts with a handful of AI labs — better visibility, worse counterparty diversification, weaker pricing power (the 10-Q attributes AWS price declines to "long-term customer contracts").</p>
+<p>Capital intensity has risen sharply — property and equipment grew from $252.7B to $446.0B in eighteen months <span class="cite">[FY2025 10-K; FY2026 Q2 10-Q]</span> — making this a materially more asset-heavy business than two years ago. Working capital remains a genuine advantage: $147.4B of accounts payable against $38.2B of inventory means suppliers and customers fund much of the retail float <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span></p>
+</section>
+<section id="6-key-value-drivers" class="section">
+<h2><span class="secnum">6</span><span class="sectitle">Key value drivers</span></h2>
+<ul><li><strong>AWS revenue growth and backlog conversion.</strong> AWS is 61% of operating income; nothing else matters as much.</li><li><strong>AWS operating margin</strong> as the current capex vintage moves through depreciation. D&amp;A was $65.8B in FY2025 and is rising <span class="cite">[FY2025 10-K]</span><span class="tight">.</span></li><li><strong>Advertising growth</strong>, as the highest-incremental-margin revenue line.</li><li><strong>North America operating margin</strong>, the proxy for whether retail fixed costs stay built.</li><li><strong>Capex trajectory and FCF inflection</strong> — the single clearest signal on whether the AI build is an investment or a treadmill.</li><li><strong>Share count.</strong> Diluted shares rose from 10,492M (2023) to 10,889M (H1 2026); no buybacks occurred in 2023, 2024 or 2025 <span class="cite">[FY2025 10-K]</span><span class="tight">.</span></li></ul>
+</section>
+<section id="7-financial-profile" class="section">
+<h2><span class="secnum">7</span><span class="sectitle">Financial profile</span></h2>
+<p>FY2025: revenue $716.9B (+12.4%), operating income $80.0B (11.2% margin), net income $77.7B, diluted EPS $7.17 — after a $2.5B FTC settlement, $2.7B of severance and $1.1B of Italian tax resolutions. Segment operating income: AWS $45.6B (35.4% margin), North America $29.6B, International $4.75B <span class="cite">[FY2025 10-K]</span><span class="tight">.</span> Q2 2026: revenue $200.6B (+20%), operating income $27.5B (+43%), AWS $42.2B (+37%) at a 39.4% margin <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span></p>
+<p>Cash: FY2025 OCF $139.5B, net capex $128.3B, FCF $11.2B. TTM to June 2026: OCF $161.4B, capex $169.0B, FCF <strong>–$7.6B</strong>.</p>
+<p>Balance sheet at June 30, 2026: total assets $1,095.7B, PP&amp;E net $446.0B, cash and securities $123.0B, long-term debt $128.9B, long-term lease liabilities $94.3B, equity $551.6B — of which $66.3B is accumulated other comprehensive income, largely unrealized gains on the Anthropic notes <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span> Quarterly interest expense rose from $516M to $1.3B year over year. Total contractual commitments were $439.7B at December 31, 2025, including $96.4B of leases not yet commenced <span class="cite">[FY2025 10-K]</span><span class="tight">.</span></p>
+</section>
+<section id="8-valuation" class="section">
+<h2><span class="secnum">8</span><span class="sectitle">Valuation</span></h2>
+<p>Filing-anchored view: TTM revenue $775.7B and TTM operating income $93.7B (FY2025 less H1 2025 plus H1 2026) <span class="cite">[FY2025 10-K; FY2026 Q2 10-Q]</span><span class="tight">.</span> TTM free cash flow is negative, so no trailing FCF yield exists.</p>
+<p>The reported trailing P/E is misleading: TTM net income is inflated by ~$69B of pre-tax non-cash gains on Anthropic, while the operating business earned $93.7B before interest and tax. Any earnings multiple on AMZN should be built off operating income until the investment marks stop dominating.</p>
+<p>A separate asset sits outside operating earnings: equity, warrant and convertible-debt investments carried at <strong>$229.7B</strong> at June 30, 2026, of which only $7.4B is publicly traded <span class="cite">[FY2026 Q2 10-Q]</span> — roughly 8% of market capitalization in Level 3 assets valued off private funding rounds.</p>
+<aside class="callout"><div class="callout-mark">Market data</div><p><strong>Market data callout — as of September 4, 2026 (external source, not from filings)</strong> Share price $258.51 · Market capitalization ~$2.79T · Trailing P/E 20.8x · Forward P/E 27.9x · Sell-side consensus target $328.17. Derived: enterprise value ≈ $2.80T (market cap + $128.9B long-term debt − $123.0B cash and securities, excluding lease liabilities) → <strong>≈29.8x TTM operating income</strong>. <em>Source: stockanalysis.com. Not a filing; kept separate from company-source evidence.</em></p></aside>
+</section>
+<section id="9-management-capital-allocation" class="section">
+<h2><span class="secnum">9</span><span class="sectitle">Management &amp; capital allocation</span></h2>
+<p>Andy Jassy has been CEO since July 2021. His 2025 Summary Compensation Table total was $2.07M — salary and other only, no equity granted that year <span class="cite">[2026 Proxy]</span><span class="tight">.</span> The stated philosophy is periodic long-vesting RSU grants with <strong>no financial performance metrics</strong> attached, on the reasoning that TSR is the alignment mechanism. That is unusually clean on short-termism and unusually weak on accountability for returns on invested capital — which matters more than usual during a capex cycle of this size. Jeff Bezos held 8.8% of shares at February 24, 2026; all directors and officers together 8.9%. AWS is run by Matt Garman; Andrew Ng sits on the board.</p>
+<p>Capital allocation is entirely reinvestment. No dividend; no shares repurchased in 2023, 2024 or 2025, leaving $6.1B of a $10B authorization unused <span class="cite">[FY2025 10-K]</span><span class="tight">.</span> Stock-based compensation has been managed down from $24.0B (2023) to $19.5B (2025), but diluted share count still rose.</p>
+<p>One accounting decision is worth crediting: effective January 1, 2025 management <strong>shortened</strong> the useful life of a subset of servers and networking equipment from six years to five, citing the pace of AI development, costing $1.4B of depreciation and $1.0B of net income <span class="cite">[FY2025 10-K]</span><span class="tight">.</span> Shortening lives into a capex boom is the conservative direction, and the opposite of optimizing near-term optics.</p>
+<p><strong>Claims to verify over time:</strong> that capex is demand-driven rather than commitment-driven, and that AWS incremental returns justify the debt funding them. Tested through §11 metrics and §12 tripwires.</p>
+</section>
+<section id="10-risks-ranked-by-damage" class="section">
+<h2><span class="secnum">10</span><span class="sectitle">Risks ranked by damage</span></h2>
+<h3 id="10-1-ai-capex-proves-to-be-a-fixed-cost-against-variable-demand">10.1 AI capex proves to be a fixed cost against variable demand</h3>
+<div class="chips">
+<span class="chip lvl-high"><span class="chip-k">Damage rank</span><span class="chip-v">High</span></span>
+<span class="chip lvl-high"><span class="chip-k">Permanence</span><span class="chip-v">High</span></span>
+<span class="chip lvl-low"><span class="chip-k">Fixability</span><span class="chip-v">Low</span></span>
+</div>
+<p class="field"><span class="field-k">Mechanism</span> Multi-year capital and long-dated debt committed against contracts whose conversion depends on AI demand Amazon does not control. Once data centers, power contracts and custom silicon are built, the cost is sunk and depreciates on five-year lives.</p>
+<p class="field"><span class="field-k">Evidence today</span> Capex $169.0B TTM vs. $161.4B operating cash flow; FCF –$7.6B; long-term debt doubled to $128.9B in six months; $96.4B of leases not yet commenced at December 2025 <span class="cite">[FY2025 10-K; FY2026 Q2 10-Q]</span><span class="tight">.</span></p>
+<p class="field"><span class="field-k">What would confirm it</span> Backlog growth stalling while capex stays elevated; AWS margin falling below the low-30s; more debt issuance without an FCF inflection.</p>
+<p class="field"><span class="field-k">Impact on value</span> Converts Amazon from a compounder into a capital-intensive utility, compressing the earnings base and the multiple at once.</p>
+<h3 id="10-2-customer-concentration-and-circular-financing-in-the-aws-backlog">10.2 Customer concentration and circular financing in the AWS backlog</h3>
+<div class="chips">
+<span class="chip lvl-high"><span class="chip-k">Damage rank</span><span class="chip-v">High</span></span>
+<span class="chip lvl-medium"><span class="chip-k">Permanence</span><span class="chip-v">Medium</span></span>
+<span class="chip lvl-low"><span class="chip-k">Fixability</span><span class="chip-v">Low</span></span>
+</div>
+<p class="field"><span class="field-k">Mechanism</span> The disclosed backlog expansion is dominated by OpenAI (+$100B/8 years on an existing $38B) and Anthropic (+$100B/10 years), both of which Amazon funds as an equity holder <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span> Revenue quality depends on counterparties that are not self-funding.</p>
+<p class="field"><span class="field-k">Evidence today</span> $50B committed to OpenAI Series C; ~$18B of cash into Anthropic; private-company carrying value $122.3B.</p>
+<p class="field"><span class="field-k">What would confirm it</span> A funding round at a flat or down price; a renegotiated commitment; a write-down in "other income (expense), net."</p>
+<p class="field"><span class="field-k">Impact on value</span> Would hit revenue visibility, the $229.7B investment carrying value, and management's credibility on capital deployment at once.</p>
+<h3 id="10-3-reported-earnings-quality-decoupling-from-cash">10.3 Reported earnings quality decoupling from cash</h3>
+<div class="chips">
+<span class="chip lvl-medium"><span class="chip-k">Damage rank</span><span class="chip-v">Medium</span></span>
+<span class="chip lvl-low"><span class="chip-k">Permanence</span><span class="chip-v">Low</span></span>
+<span class="chip lvl-medium"><span class="chip-k">Fixability</span><span class="chip-v">Medium</span></span>
+</div>
+<p class="field"><span class="field-k">Mechanism</span> Level 3 markups flow through the income statement. H1 2026 showed $69.1B of such gains against $51.3B of operating income, and drove a $15.9B discrete tax expense <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span></p>
+<p class="field"><span class="field-k">Evidence today</span> TTM net income $135.3B on TTM operating income $93.7B and negative free cash flow.</p>
+<p class="field"><span class="field-k">What would confirm it</span> Downward revisions in the same line; growing divergence between net income and OCF.</p>
+<p class="field"><span class="field-k">Impact on value</span> Mostly a mis-anchoring risk for the market rather than an economic one — but it makes headline multiples unusable.</p>
+<h3 id="10-4-regulatory-and-antitrust-action">10.4 Regulatory and antitrust action</h3>
+<div class="chips">
+<span class="chip lvl-medium"><span class="chip-k">Damage rank</span><span class="chip-v">Medium</span></span>
+<span class="chip lvl-high"><span class="chip-k">Permanence</span><span class="chip-v">High</span></span>
+<span class="chip lvl-low"><span class="chip-k">Fixability</span><span class="chip-v">Low</span></span>
+</div>
+<p class="field"><span class="field-k">Mechanism</span> Marketplace conduct, Prime/fulfillment bundling and advertising practices face scrutiny in multiple jurisdictions. Structural remedies would break the cross-subsidy between 3P fees, fulfillment and ads.</p>
+<p class="field"><span class="field-k">Evidence today</span> $2.5B FTC settlement recorded in Q3 2025; ongoing Italian and Luxembourg competition matters <span class="cite">[FY2025 10-K]</span><span class="tight">.</span></p>
+<p class="field"><span class="field-k">What would confirm it</span> A remedy separating marketplace from fulfillment, or restricting self-preferencing in search results.</p>
+<p class="field"><span class="field-k">Impact on value</span> Directly threatens the highest-margin revenue lines.</p>
+<h3 id="10-5-retail-cyclicality-tariffs-and-input-costs">10.5 Retail cyclicality, tariffs and input costs</h3>
+<div class="chips">
+<span class="chip lvl-medium"><span class="chip-k">Damage rank</span><span class="chip-v">Medium</span></span>
+<span class="chip lvl-low"><span class="chip-k">Permanence</span><span class="chip-v">Low</span></span>
+<span class="chip lvl-high"><span class="chip-k">Fixability</span><span class="chip-v">High</span></span>
+</div>
+<p class="field"><span class="field-k">Mechanism</span> Consumer softness, tariff shifts and memory-chip supply are named guidance risks <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span> Retail margins are thin enough (International 4.1%) that modest volume or cost shocks swing segment profit materially.</p>
+<p class="field"><span class="field-k">Evidence today</span> Q2 2026 cost of sales included IEEPA tariff refunds; guidance cites tariff/trade policy and memory-chip volatility.</p>
+<p class="field"><span class="field-k">What would confirm it</span> Fulfillment or cost of sales rising as a percentage of sales for consecutive quarters.</p>
+<p class="field"><span class="field-k">Impact on value</span> Cyclical and recoverable; unlikely to change the long-run case.</p>
+</section>
+<section id="11-metrics-to-monitor" class="section">
+<h2><span class="secnum">11</span><span class="sectitle">Metrics to monitor</span></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Metric</th>
+<th>Prior</th>
+<th>Latest</th>
+<th>As of</th>
+<th>Why it matters</th>
+</tr></thead><tbody>
+<tr>
+<td>AWS revenue growth (y/y)</td>
+<td>17%</td>
+<td>37%</td>
+<td>Q2 2026</td>
+<td>Core driver; tests demand vs. backlog optics</td>
+</tr>
+<tr>
+<td>AWS operating margin</td>
+<td>32.9%</td>
+<td>39.4%</td>
+<td>Q2 2026</td>
+<td>Tests whether capex depresses returns</td>
+</tr>
+<tr>
+<td>AWS backlog (RPO)</td>
+<td>$244B</td>
+<td>$496B</td>
+<td>Jun 30, 2026</td>
+<td>Forward visibility and concentration</td>
+</tr>
+<tr>
+<td>Backlog weighted-avg life</td>
+<td>4.1 yrs</td>
+<td>6.4 yrs</td>
+<td>Jun 30, 2026</td>
+<td>Longer = more locked in, less flexible</td>
+</tr>
+<tr>
+<td>TTM free cash flow</td>
+<td>+$18.2B</td>
+<td>–$7.6B</td>
+<td>TTM Jun 2026</td>
+<td>The thesis-critical number</td>
+</tr>
+<tr>
+<td>Capex as % of revenue (TTM)</td>
+<td>12.2%</td>
+<td>21.8%</td>
+<td>TTM Jun 2026</td>
+<td>Capital intensity trajectory</td>
+</tr>
+<tr>
+<td>North America op. margin</td>
+<td>7.5%</td>
+<td>7.9%</td>
+<td>Q2 2026</td>
+<td>Retail operating leverage</td>
+</tr>
+<tr>
+<td>Advertising revenue growth</td>
+<td>19.8%</td>
+<td>22.1%</td>
+<td>FY2025</td>
+<td>Highest-margin mix shift</td>
+</tr>
+<tr>
+<td>Long-term debt</td>
+<td>$65.6B</td>
+<td>$128.9B</td>
+<td>Jun 30, 2026</td>
+<td>How the build is being funded</td>
+</tr>
+<tr>
+<td>Diluted share count</td>
+<td>10,721M</td>
+<td>10,889M</td>
+<td>Q2 2026</td>
+<td>Dilution absent buybacks</td>
+</tr>
+</tbody></table></div>
+<p class="note"><em>Prior-period figures: AWS growth/margin and NA margin from Q2 2025; RPO and life from Dec 31, 2025; FCF from TTM Jun 2025; capex % from FY2024 ($77.7B / $638.0B); advertising growth FY2024; debt from Dec 31, 2025; shares from FY2024 <span class="cite">[FY2025 10-K; FY2026 Q2 10-Q]</span><span class="tight">.</span></em></p>
+</section>
+<section id="12-thesis-tripwires" class="section">
+<h2><span class="secnum">12</span><span class="sectitle">Thesis tripwires</span></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Direction</th>
+<th>Trigger</th>
+</tr></thead><tbody>
+<tr>
+<td class="d-good"><strong>Stronger</strong></td>
+<td>AWS backlog grows from sources beyond OpenAI/Anthropic; AWS margin holds ≥38% for two more quarters; TTM FCF returns to positive with capex still growing; buybacks resume</td>
+</tr>
+<tr>
+<td class="d-good"><strong>Stronger</strong></td>
+<td>North America operating margin sustains above 9%, confirming retail fixed costs are built</td>
+</tr>
+<tr>
+<td class="d-warn"><strong>Weaker</strong></td>
+<td>AWS growth decelerates below 25% while capex guidance stays elevated</td>
+</tr>
+<tr>
+<td class="d-warn"><strong>Weaker</strong></td>
+<td>AWS operating margin falls below 33% as 2025–26 capex depreciates</td>
+</tr>
+<tr>
+<td class="d-warn"><strong>Weaker</strong></td>
+<td>Long-term debt passes $200B without an FCF inflection</td>
+</tr>
+<tr>
+<td class="d-bad"><strong>Breaks</strong></td>
+<td>Material backlog cancellation or renegotiation by a named AI counterparty</td>
+</tr>
+<tr>
+<td class="d-bad"><strong>Breaks</strong></td>
+<td>Downward revaluation of the Anthropic or OpenAI stakes alongside AWS deceleration — the two risks arriving together</td>
+</tr>
+<tr>
+<td class="d-bad"><strong>Breaks</strong></td>
+<td>A structural antitrust remedy separating marketplace from fulfillment or advertising</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="13-open-questions" class="section">
+<h2><span class="secnum">13</span><span class="sectitle">Open questions</span></h2>
+<ol><li>What share of the $496B backlog is attributable to counterparties Amazon has itself funded? The filings disclose the two expansions but not the concentration percentage.</li><li>What is the incremental return on the 2025–2026 capex vintage? Amazon discloses no segment ROIC, and technology infrastructure assets are allocated across segments by usage <span class="cite">[FY2025 10-K]</span><span class="tight">.</span></li><li>How much of AWS's 37% growth is new third-party demand versus commitment drawdown? Not separable from disclosures.</li><li>What is the expected peak of capex intensity? Management says capex will "increase in 2026" but gives no ceiling <span class="cite">[FY2026 Q2 10-Q]</span><span class="tight">.</span></li><li>Why no buybacks with $6.1B authorized while issuing debt at 6%+ coupons? A capital-allocation question the proxy does not address.</li></ol>
+<p class="note"><em>Sources not yet consulted that would answer these: earnings-call transcripts (Q&amp;A on backlog concentration and capex ceiling) and any investor-day materials. Neither is present in <code>sources/</code>.</em></p>
+</section>
+<section id="14-update-log" class="section">
+<h2><span class="secnum">14</span><span class="sectitle">Update log</span></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Date</th>
+<th>Source / event</th>
+<th>What changed</th>
+<th>Impact on thesis</th>
+</tr></thead><tbody>
+<tr>
+<td>2026-09-07</td>
+<td>Initial build from FY2016–FY2025 10-Ks, FY2026 Q2 10-Q, 2026 proxy, 2026 8-Ks</td>
+<td>Initial Coverage File created</td>
+<td>Baseline established</td>
+</tr>
+</tbody></table></div>
+</section>
+<section id="15-source-map" class="section">
+<h2><span class="secnum">15</span><span class="sectitle">Source map</span></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Document</th>
+<th>Period / date</th>
+<th>Used for</th>
+</tr></thead><tbody>
+<tr>
+<td>Form 10-K</td>
+<td>FY2025 (filed 2026-02-06)</td>
+<td>Segment structure, revenue disaggregation, FY financials, backlog at Dec 2025, useful-life change, buyback history, employees, commitments, Anthropic accounting</td>
+</tr>
+<tr>
+<td>Form 10-Q</td>
+<td>FY2026 Q2 (filed 2026-07-31)</td>
+<td>Q2/H1 2026 results, segment margins, TTM FCF, balance sheet, RPO at Jun 2026, OpenAI/Anthropic commitments and investments, Q3 2026 guidance</td>
+</tr>
+<tr>
+<td>Form 10-K</td>
+<td>FY2024 (filed 2025-02-07)</td>
+<td>Prior-period comparatives</td>
+</tr>
+<tr>
+<td>DEF 14A</td>
+<td>2026-04-09</td>
+<td>Executive compensation philosophy, CEO comp, beneficial ownership, board</td>
+</tr>
+<tr>
+<td>Form 8-K</td>
+<td>2026-02-27</td>
+<td>OpenAI $35B equity commitment letter</td>
+</tr>
+<tr>
+<td>Form 8-K</td>
+<td>2026-03-13</td>
+<td>$36.9B notes issuance</td>
+</tr>
+<tr>
+<td>Form 8-K</td>
+<td>2026-06-10</td>
+<td>$17.5B delayed-draw term loan facility</td>
+</tr>
+<tr>
+<td>Form 8-K</td>
+<td>2026-07-09</td>
+<td>$24.9B notes issuance</td>
+</tr>
+<tr>
+<td>stockanalysis.com (external)</td>
+<td>2026-09-04</td>
+<td>§8 market-data callout only</td>
+</tr>
+</tbody></table></div>
+<p><strong>Known gaps:</strong> No earnings-call transcripts, no investor-day materials, and no Form 4 insider-trading data in <code>sources/</code>. Earnings-release 8-Ks in the folder contain cover pages only — the press-release exhibits (Ex-99.1) were not collected, so guidance was taken from the 10-Q's Guidance section instead.</p>
+</section>
+</main>
+</div>
+<footer class="ui">
+  Rendered from <strong>AMZN_Coverage_File.md</strong>, the source of record. The HTML adds presentation only &mdash;
+  same words, same numbers, same citations. Not investment advice.
+</footer>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var secs  = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
+  function sync(){
+    var best = 0, y = window.scrollY + 130;
+    for (var i=0;i<secs.length;i++){ if (secs[i] && secs[i].offsetTop <= y) best = i; }
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+  }
+  window.addEventListener('scroll', sync, {passive:true});
+  window.addEventListener('resize', sync);
+  sync();
+})();
+</script>
+</body>
+</html>

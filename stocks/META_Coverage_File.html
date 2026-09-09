@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meta Platforms, Inc. (META) — Coverage File</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+ --ink:#16171a; --ink2:#3f434a; --mute:#767c86; --line:#e3e1dc; --line2:#efedE8;
+ --bg:#faf9f6; --card:#ffffff; --accent:#8a3324; --accent-s:#f5efe9;
+ --hi:#9a2f22; --hi-bg:#f8ecea; --md:#8a6a1f; --md-bg:#faf3e2;
+ --lo:#3d6b4c; --lo-bg:#ecf3ee;
+ --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Source Serif Pro',Georgia,serif;
+ --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);
+ font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+/* header band */
+.band{background:var(--card);border-bottom:1px solid var(--line);padding:44px 24px 30px}
+.band-in{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;
+ align-items:flex-end;justify-content:space-between}
+.eyebrow{font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--accent);font-weight:700;margin:0 0 10px}
+h1{font-size:34px;line-height:1.15;margin:0;font-weight:600;letter-spacing:-.015em}
+h1 .tk{color:var(--mute);font-weight:400}
+.meta{font-family:var(--sans);font-size:12px;color:var(--mute);display:flex;gap:26px;
+ flex-wrap:wrap;text-align:right}
+.meta b{display:block;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+ color:#9aa0a8;font-weight:700;margin-bottom:3px}
+.meta span{color:var(--ink2);font-size:13px}
+
+/* layout */
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;gap:52px;align-items:flex-start}
+nav{position:sticky;top:26px;flex:0 0 196px;padding:38px 0 60px;font-family:var(--sans)}
+nav .nt{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#9aa0a8;
+ font-weight:700;margin-bottom:12px}
+nav a{display:flex;gap:9px;text-decoration:none;color:var(--ink2);font-size:12.5px;
+ padding:4px 0;line-height:1.35;border-left:2px solid transparent;padding-left:11px;
+ margin-left:-13px;transition:color .15s,border-color .15s}
+nav a:hover{color:var(--accent);border-left-color:var(--accent)}
+nav a i{font-style:normal;color:#b6bac0;font-variant-numeric:tabular-nums;min-width:13px}
+main{flex:1 1 auto;min-width:0;max-width:740px;padding:38px 0 90px}
+
+section{padding:34px 0;border-top:1px solid var(--line2)}
+section:first-of-type{border-top:0;padding-top:14px}
+h2{font-family:var(--sans);font-size:19px;font-weight:640;letter-spacing:-.01em;
+ margin:0 0 18px;display:flex;gap:12px;align-items:baseline}
+.secnum{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-s);
+ border-radius:4px;padding:3px 7px;font-variant-numeric:tabular-nums;flex:0 0 auto;
+ position:relative;top:-2px}
+h3{font-family:var(--sans);font-size:14px;font-weight:650;margin:26px 0 9px;color:var(--ink)}
+p{margin:0 0 15px}
+strong{font-weight:640}
+em{font-style:italic}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+ background:#f1efea;padding:1px 5px;border-radius:3px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:8px}
+li::marker{color:var(--mute)}
+
+.cite{font-family:var(--sans);font-size:10.5px;color:var(--mute);background:#f2f0ec;
+ border:1px solid var(--line);border-radius:3px;padding:1px 5px;white-space:nowrap;
+ vertical-align:1px}
+
+/* summary card (§0) */
+.reopen{background:var(--card);border:1px solid var(--line);border-radius:10px;
+ padding:26px 30px 20px;margin:6px 0 8px;border-top:3px solid var(--accent)}
+.reopen h2{margin-bottom:14px}
+.reopen ul{list-style:none;padding:0;margin:0}
+.reopen li{padding:11px 0;border-top:1px solid var(--line2);font-size:15.5px;
+ line-height:1.55;margin:0}
+.reopen li:first-child{border-top:0;padding-top:2px}
+.reopen strong{font-family:var(--sans);font-size:11px;letter-spacing:.08em;
+ text-transform:uppercase;color:var(--accent);font-weight:700;display:inline-block;
+ min-width:82px;vertical-align:1px}
+
+/* callout (§8 market data) */
+.callout{background:#fffdf7;border:1px solid #e6dcc4;border-left:3px solid #b9932f;
+ border-radius:8px;padding:18px 22px;margin:20px 0}
+.callout-h{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+ font-weight:700;color:#8a6a1f;margin-bottom:10px}
+.callout p{font-size:15px;margin:0 0 8px}
+.callout p:last-child{margin-bottom:0}
+
+/* risks */
+.risk{background:var(--card);border:1px solid var(--line);border-radius:9px;
+ padding:20px 24px 8px;margin:0 0 18px}
+.risk-h{font-family:var(--sans);font-size:15px;font-weight:650;display:flex;gap:11px;
+ align-items:center;margin-bottom:12px}
+.risk-n{background:var(--ink);color:#fff;font-size:11px;width:21px;height:21px;
+ border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+ flex:0 0 auto;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.chip{font-family:var(--sans);font-size:10.5px;display:inline-flex;align-items:center;
+ gap:6px;border:1px solid var(--line);border-radius:5px;padding:3px 8px;background:#fbfaf8}
+.chip-k{color:var(--mute);letter-spacing:.03em}
+.chip-v{font-weight:700;color:var(--ink2)}
+.chip.hi{background:var(--hi-bg);border-color:#eccfc9}.chip.hi .chip-v{color:var(--hi)}
+.chip.md{background:var(--md-bg);border-color:#ece0bd}.chip.md .chip-v{color:var(--md)}
+.chip.lo{background:var(--lo-bg);border-color:#cfe0d4}.chip.lo .chip-v{color:var(--lo)}
+.risk-p{font-size:15.5px;margin-bottom:11px}
+.risk-p>strong:first-child{font-family:var(--sans);font-size:11px;letter-spacing:.06em;
+ text-transform:uppercase;color:var(--mute);font-weight:700}
+.risk-p strong{font-weight:660;color:var(--ink)}
+
+/* tables */
+.tw{overflow-x:auto;margin:6px 0 20px;border:1px solid var(--line);border-radius:8px;
+ background:var(--card)}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:13px}
+th{text-align:left;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--mute);font-weight:700;padding:11px 14px;background:#f7f5f1;
+ border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--line2);vertical-align:top;
+ color:var(--ink2);line-height:1.5}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--ink);font-weight:550}
+td .cite{font-size:10px}
+
+footer{max-width:1140px;margin:0 auto;padding:24px;font-family:var(--sans);font-size:11.5px;
+ color:var(--mute);border-top:1px solid var(--line)}
+
+@media(max-width:900px){
+ nav{display:none}
+ .wrap{padding:0 18px}
+ main{max-width:none;padding-top:24px}
+ h1{font-size:26px}
+ .band{padding:28px 18px 22px}
+ .meta{text-align:left}
+ .reopen{padding:20px 18px 14px}
+ .reopen strong{display:block;min-width:0;margin-bottom:2px}
+ body{font-size:16px}
+}
+@media print{
+ body{background:#fff;font-size:11pt}
+ nav{display:none}
+ .wrap{display:block;padding:0}
+ main{max-width:none;padding:0}
+ section{break-inside:auto;page-break-inside:auto;border-top:1px solid #ddd}
+ .risk,.callout,.reopen,.tw{break-inside:avoid;page-break-inside:avoid}
+ .band{border-bottom:2px solid #000;padding:0 0 12pt;margin-bottom:12pt}
+ h2{break-after:avoid}
+ .cite{border:0;background:none}
+}
+</style></head><body>
+<header class="band"><div class="band-in">
+<div><p class="eyebrow">Coverage File</p>
+<h1>Meta Platforms, Inc. <span class="tk">(META)</span></h1></div>
+<div class="meta"><div><b>Data as of</b><span>Q2 2026 (quarter ended 30 June 2026; 10-Q filed 30 July 2026) · market data 4 September 2026</span></div><div><b>File last updated</b><span>7 September 2026</span></div></div>
+</div></header>
+<div class="wrap">
+<nav><div class="nt">Contents</div><a href="#0-30-second-reopen"><i>0</i><span>30-second reopen</span></a><a href="#1-business-snapshot"><i>1</i><span>Business snapshot</span></a><a href="#2-core-debate"><i>2</i><span>Core debate</span></a><a href="#3-base-thesis"><i>3</i><span>Base thesis</span></a><a href="#4-main-bear-case"><i>4</i><span>Main bear case</span></a><a href="#5-business-quality"><i>5</i><span>Business quality</span></a><a href="#6-key-value-drivers"><i>6</i><span>Key value drivers</span></a><a href="#7-financial-profile"><i>7</i><span>Financial profile</span></a><a href="#8-valuation"><i>8</i><span>Valuation</span></a><a href="#9-management-capital-allocation"><i>9</i><span>Management &amp; capital allocation</span></a><a href="#10-risks-ranked-by-damage"><i>10</i><span>Risks ranked by damage</span></a><a href="#11-metrics-to-monitor"><i>11</i><span>Metrics to monitor</span></a><a href="#12-thesis-tripwires"><i>12</i><span>Thesis tripwires</span></a><a href="#13-open-questions"><i>13</i><span>Open questions</span></a><a href="#14-update-log"><i>14</i><span>Update log</span></a><a href="#15-source-map"><i>15</i><span>Source map</span></a></nav>
+<main><section id="0-30-second-reopen" class="reopen">
+<h2><span class="secnum">0</span><span>30-second reopen</span></h2>
+<ul><li><strong>Business</strong>One advertising business (97.6% of FY25 revenue) monetising 3.60bn daily users, plus a loss-making hardware segment and a very large new AI infrastructure programme.</li><li><strong>Debate</strong>Whether the ~$130–145bn/yr capex build is a re-investment of an unusually good business at attractive returns, or a permanent step-up in capital intensity that resets Meta from a cash machine to a capital-hungry utility.</li><li><strong>Thesis</strong>Ad revenue is accelerating (+28% in Q2&#x27;26) on AI-driven ranking gains, not user growth; if the spend is genuinely growth capex against real demand, operating income compounds through the build.</li><li><strong>Bear</strong>Margin is already falling (31% vs 43% a year ago), FCF is at a multi-year trough ($784m in Q2&#x27;26), buybacks stopped, debt has grown to $84bn, and $279bn of leases have not yet commenced.</li><li><strong>Risks</strong>Youth-harm litigation with trials running now and stated demands &quot;up to more than a trillion dollars&quot;; capex stranding; ad-cycle reversal; a controlled-company governance structure with no external check.</li><li><strong>Watch</strong>Free cash flow, FoA operating margin, price-per-ad, capex-to-revenue, buyback resumption, and the New Mexico and MDL trial outcomes.</li></ul>
+</section>
+<section id="1-business-snapshot">
+<h2><span class="secnum">1</span><span>Business snapshot</span></h2>
+<p>Meta operates two reportable segments. <strong>Family of Apps</strong> (Facebook, Instagram, WhatsApp, Messenger, Threads) generated $198.76bn of FY2025 revenue and $102.47bn of operating income — a 52% margin <span class="cite">FY2025 10-K</span>. <strong>Reality Labs</strong> generated $2.21bn of revenue and lost $19.19bn <span class="cite">FY2025 10-K</span>.</p>
+<p>The revenue model is narrow and transactional. Advertising was $196.18bn of FY2025&#x27;s $200.97bn, or 97.6% <span class="cite">FY2025 10-K</span>. Ads sell through a real-time auction, not under contract, so there is no meaningful backlog. Revenue is impressions × price per ad — in Q2 2026, impressions rose 14% and price per ad 12% <span class="cite">Q2 2026 10-Q</span>.</p>
+<p>The unit is one Family daily active person (DAP): 3.60bn on average for June 2026, up 3% <span class="cite">Q2 2026 10-Q</span>. Growth is therefore monetisation, not user acquisition. FoA revenue per DAP rose to roughly $16.8 from roughly $13.5 a year earlier, but FoA operating income per DAP fell to roughly $6.50 from roughly $7.13 (both computed) — more revenue and less profit per user.</p>
+<p>Two non-advertising lines are emerging but small: FoA &quot;other revenue&quot; reached its first $1bn quarter (+73%, on WhatsApp paid messaging and subscriptions) <span class="cite">Q2 2026 10-Q</span>, and Meta has begun selling model access through a public API and a new subscription, Meta One <span class="cite">Q2 2026 call</span>.</p>
+</section>
+<section id="2-core-debate">
+<h2><span class="secnum">2</span><span>Core debate</span></h2>
+<p>Not whether the advertising business works — it does. The debate is <strong>what the AI infrastructure build does to the economics of owning it.</strong></p>
+<p>Bulls read capex as re-investment: the ad gains are AI-driven and measurable, compute is scarce, and Meta is buying an asset it can monetise several ways. Bears read a regime change in capital intensity, in which the free cash flow that defined Meta as an investment has become depreciation, debt and off-balance-sheet lease obligations, with no disclosed return metric. Both sides accept the same facts; they disagree on whether the margin and FCF compression is a J-curve or a new baseline.</p>
+</section>
+<section id="3-base-thesis">
+<h2><span class="secnum">3</span><span>Base thesis</span></h2>
+<p>Meta owns the only Western consumer attention pool of its scale and is converting that attention into revenue faster than the attention itself is growing. Ad revenue grew 27% in Q2&#x27;26 while users grew 3% <span class="cite">Q2 2026 10-Q</span> — the gap is ranking quality, ad load and new surfaces (Threads globally, WhatsApp Status), all internally controlled rather than market-dependent. Management reports concrete gains: an 8.3% increase in ad clicks and 15.7% uplift in conversions on Facebook from new ranking models, and Advantage+ at over $75bn annual revenue run-rate <span class="cite">Q2 2026 call</span>. If those gains persist and the build is demand-led, operating income compounds through the investment period and the current margin trough is a bottom, not a trend.</p>
+<p><strong>Assumptions this rests on:</strong></p>
+<ol><li><strong>Price per ad holds double-digit growth.</strong> It has run +6% to +12% over the last five quarters and was +12% in Q2&#x27;26 <span class="cite">Q2 2026 10-Q</span>. This is the single most fragile input.</li><li><strong>Ad load and new-surface expansion still have runway.</strong> Meta cites &quot;ad load optimizations&quot; as an impression driver <span class="cite">Q2 2026 call</span>; the current level and headroom are not disclosed.</li><li><strong>Capex converts to revenue rather than to depreciation alone.</strong> $80.35bn sits in construction in progress and is not yet depreciating <span class="cite">Q2 2026 10-Q</span>; that lag flatters today&#x27;s margin and reverses.</li><li><strong>The 2026–27 capacity is used, not stranded.</strong> Management&#x27;s plan is explicitly to &quot;maximise 2026 and 2027 capacity&quot; with flexibility deferred to 2028+ <span class="cite">Q2 2026 call</span>.</li><li><strong>Youth-harm litigation resolves at a cost that is large but absorbable</strong> relative to ~$87bn of LTM operating income.</li></ol>
+</section>
+<section id="4-main-bear-case">
+<h2><span class="secnum">4</span><span>Main bear case</span></h2>
+<p>The bear case does not require the ad business to break — only that the cost of running it has permanently risen. Q2&#x27;26 operating margin was 31% against 43% a year earlier; FoA margin fell to 39% from 53% <span class="cite">Q2 2026 10-Q</span>. Quarterly free cash flow was $784m <span class="cite">Q2 2026 call</span>, against $52.1bn for the whole of 2024 (computed). Buybacks, $30.1bn in 2024 and $26.2bn in 2025, were <strong>zero</strong> in H1 2026 despite $25.03bn remaining authorised <span class="cite">FY2025 10-K, Q2 2026 10-Q</span>. Long-term debt rose from $59.0bn to $84.0bn in six months, the May 2026 issue priced as high as 6.45%. Beyond the balance sheet sit $278.99bn of leases not yet commenced, roughly $68bn more signed in July 2026, and $349.31bn of non-cancelable commitments <span class="cite">Q2 2026 10-Q</span>. A shareholder who owned Meta for its cash returns no longer owns that company.</p>
+<p><strong>How it breaks:</strong> those obligations are fixed and long-dated (lease terms to 30 years) while the revenue justifying them is a variable auction. If ad growth decelerates to mid-teens while depreciation from $80bn of construction in progress lands and lease payments commence, operating income can decline for years without anything dramatic happening to the business. The Louisiana venture alone carries maximum exposure to loss of $46.03bn against a $2.92bn carrying value <span class="cite">Q2 2026 10-Q</span>.</p>
+</section>
+<section id="5-business-quality">
+<h2><span class="secnum">5</span><span>Business quality</span></h2>
+<p>Genuinely high, but two grades lower than it was two years ago on capital intensity rather than on competitive position.</p>
+<p><strong>What is durable:</strong> scale, a two-sided network across four apps, an ad system whose targeting and measurement loop improves with volume, and a diffuse advertiser base (9m small businesses use at least one AI creative tool <span class="cite">Q2 2026 call</span>). No customer concentration is disclosed.</p>
+<p><strong>What is not:</strong> the moat is contested. In <em>FTC v. Meta</em> the court granted judgment in Meta&#x27;s favour on 18 November 2025; the FTC appealed on 20 January 2026 <span class="cite">Q2 2026 10-Q</span>. Reality Labs has lost $92.2bn cumulatively since 2020 (computed from FY2022, FY2024 and FY2025 10-Ks and the Q2 2026 10-Q) against $2.21bn of FY25 revenue — persistent evidence that capital allocation outside the core has been poor.</p>
+<p>The economics have changed: Meta converted ~32% of revenue to free cash flow in FY2024 and 1.3% in Q2&#x27;26 (computed).</p>
+</section>
+<section id="6-key-value-drivers">
+<h2><span class="secnum">6</span><span>Key value drivers</span></h2>
+<ol><li><strong>Price per ad</strong> — the purest read on whether AI ranking gains are real and captured by Meta rather than passed to advertisers.</li><li><strong>Ad impressions</strong> — engagement, ad load and new surfaces, not users.</li><li><strong>FoA operating margin</strong> — where cost growth lands first.</li><li><strong>Capex-to-revenue</strong> — 51% in Q2&#x27;26 alone (computed). Whether it returns toward historic levels is the thesis.</li><li><strong>Non-advertising revenue</strong> — FoA other, API, Meta One, Business Agents; ~1.7% of FoA revenue today.</li><li><strong>Legal charge run-rate</strong> — $2.4bn in Q2&#x27;26 alone <span class="cite">Q2 2026 call</span>.</li></ol>
+</section>
+<section id="7-financial-profile">
+<h2><span class="secnum">7</span><span>Financial profile</span></h2>
+<p>Revenue compounded from $134.90bn (FY23) to $164.50bn (FY24) to $200.97bn (FY25), with operating margin 35% → 42% → 41% <span class="cite">FY2025 10-K</span>. H1 2026 revenue was $117.11bn, +30%, but operating income grew only 10% to $41.65bn <span class="cite">Q2 2026 10-Q</span>.</p>
+<p>Cash generation has inverted. Operating cash flow is rising ($115.80bn FY25; $64.09bn H1&#x27;26), but capex including finance leases went $28.10bn (FY23) → $39.23bn (FY24) → $72.22bn (FY25) → $50.92bn in H1&#x27;26 alone. Free cash flow: $43.01bn, $52.10bn, $43.59bn, then $13.17bn in H1&#x27;26 (computed).</p>
+<p>The balance sheet is strong in absolute terms — $90.3bn cash and marketable securities against $83.7bn of debt <span class="cite">Q2 2026 call</span> — but net cash has effectively gone. Property and equipment net is $225.72bn, of which $80.35bn is construction in progress not yet depreciating <span class="cite">Q2 2026 10-Q</span>. Depreciation is already accelerating: $6.00bn in Q2&#x27;26 against $4.28bn a year earlier.</p>
+<p>One accounting item deserves attention: Meta extended the estimated useful lives of most servers and network assets to 5.5 years effective 1 January 2025 <span class="cite">FY2025 10-K</span>. The benefit is not separately quantified, but it flatters reported FY25 and FY26 margins relative to the prior policy.</p>
+<p>FY2026 guidance: total expenses $165–169bn; capex $130–145bn; tax rate 15–17% for the remaining quarters; operating income above 2025 <span class="cite">Q2 2026 call</span>.</p>
+</section>
+<section id="8-valuation">
+<h2><span class="secnum">8</span><span>Valuation</span></h2>
+<p>On reported earnings Meta does not look expensive; on cash it does. Trailing twelve-month operating income is roughly $86.9bn against TTM free cash flow of roughly $37.9bn (both computed from FY2025 10-K and Q2 2026 10-Q). The gap between those two numbers is the investment question: buying Meta today is buying a claim on operating income the company is choosing not to convert into cash.</p>
+<aside class="callout">
+<div class="callout-h"><strong>Market data callout — as of 4 September 2026 close (external source, not from sources/)</strong></div>
+<p>Share price <strong>$616.77</strong>; market capitalisation <strong>~$1.57tn</strong>; trailing P/E <strong>23.2x</strong>; forward P/E <strong>19.1x</strong>.</p>
+<p>Derived (computed using Q2 2026 10-Q balance sheet): enterprise value ≈ <strong>$1.56tn</strong>; EV / TTM operating income ≈ <strong>18x</strong>; TTM free cash flow yield ≈ <strong>2.4%</strong>; free cash flow yield on FY2024 FCF ≈ <strong>3.3%</strong>.</p>
+<p>Market data is used for valuation context only and is not blended with company-source evidence.</p>
+</aside>
+<p>The multiple is undemanding against earnings and demanding against cash. A view on Meta at this price is largely a view on when — and whether — capex intensity normalises.</p>
+</section>
+<section id="9-management-capital-allocation">
+<h2><span class="secnum">9</span><span>Management &amp; capital allocation</span></h2>
+<p>Mark Zuckerberg controls a majority of voting power through the dual-class structure and can determine the outcome of all matters submitted to stockholders <span class="cite">FY2025 10-K</span>. There is no external check on capital allocation — the company&#x27;s strength (fast, large, unconsensus bets) and its most expensive weakness (Reality Labs).</p>
+<p>The current stance is unambiguous: infrastructure first, shareholder returns second. Buybacks went to zero in H1 2026 while the dividend continued at ~$1.35bn a quarter <span class="cite">Q2 2026 10-Q</span>. Debt was raised twice in eight months ($30bn November 2025, $25bn May 2026), and capital is increasingly sourced through partnerships — Blue Owl, and a new BlackRock venture for a 1GW El Paso campus <span class="cite">Q2 2026 call</span>. Susan Li describes operating cash flow as &quot;the primary pillar&quot; of funding, with 2027 options still under evaluation <span class="cite">Q2 2026 follow-up call</span>. Cost discipline runs alongside the spend: roughly 8,000 employees were affected by a May 2026 reduction, with $1.2bn of severance in Q2 <span class="cite">Q2 2026 call</span>.</p>
+<p><strong>Claims to verify over time:</strong></p>
+<ul><li>That compute demand exceeds supply and Meta is receiving offers &quot;at multiples of what we paid for it&quot; <span class="cite">Q2 2026 follow-up call</span> — asserted, never quantified, and Li explicitly declined to give a timeline for return on invested capital.</li><li>That the venture backstops decline in value over time and provide flexibility every four years <span class="cite">Q2 2026 follow-up call</span> — testable against the disclosed RVG thresholds.</li><li>That operating income in FY2026 exceeds FY2025&#x27;s $83.28bn <span class="cite">Q2 2026 call</span>.</li></ul>
+</section>
+<section id="10-risks-ranked-by-damage">
+<h2><span class="secnum">10</span><span>Risks ranked by damage</span></h2>
+<div class="risk">
+<div class="risk-h"><span class="risk-n">1</span><span>Youth-harm litigation and regulatory remedies</span></div>
+<div class="chips"><span class="chip hi"><span class="chip-k">Damage rank</span><span class="chip-v">High</span></span><span class="chip md"><span class="chip-k">Permanence</span><span class="chip-v">Medium</span></span><span class="chip lo"><span class="chip-k">Fixability</span><span class="chip-v">Low</span></span></div>
+<p class="risk-p"><strong>Mechanism</strong> — Simultaneous exposure across state AG suits, an MDL, personal-injury bellwethers, over 200,000 mass arbitration demands and EU DSA proceedings. The threat is not only cash but injunctive relief that changes the product for the most engaged cohort.</p>
+<p class="risk-p"><strong>Evidence today</strong> — A New Mexico jury ordered a $375m civil penalty on 24 March 2026; the AG seeks $953m in abatement and an expanded trial begins <strong>8 September 2026</strong>, in which New Mexico has indicated it intends to seek up to <strong>$62.85bn</strong> in penalties. The MDL state-AG trial began 12 August 2026 covering four states plus a federal disgorgement claim by all 29 AGs. Meta states plaintiffs&#x27; indicated demands range &quot;in certain cases up to more than a trillion dollars.&quot; The EC issued preliminary DSA findings on 29 April and 10 July 2026 regarding under-13 users and addictive design <span class="cite">all Q2 2026 10-Q</span>. $2.4bn of legal charges were recognised in Q2 alone <span class="cite">Q2 2026 call</span>.</p>
+<p class="risk-p"><strong>What would confirm it</strong> — An adverse verdict with a nine-figure-plus penalty and product injunctions; a rising quarterly legal charge run-rate.</p>
+<p class="risk-p"><strong>Impact on value</strong> — Cash losses look absorbable against ~$87bn LTM operating income; mandated engagement limits would be structural.</p>
+</div>
+<div class="risk">
+<div class="risk-h"><span class="risk-n">2</span><span>Capex stranding / return failure</span></div>
+<div class="chips"><span class="chip hi"><span class="chip-k">Damage rank</span><span class="chip-v">High</span></span><span class="chip hi"><span class="chip-k">Permanence</span><span class="chip-v">High</span></span><span class="chip lo"><span class="chip-k">Fixability</span><span class="chip-v">Low</span></span></div>
+<p class="risk-p"><strong>Mechanism</strong> — $130–145bn of annual capex, $278.99bn of leases not yet commenced (plus ~$68bn added in July 2026), $349.31bn of non-cancelable commitments and $10.80bn of escrowed cash create fixed, long-dated obligations against variable revenue <span class="cite">Q2 2026 10-Q</span>.</p>
+<p class="risk-p"><strong>Evidence today</strong> — No disclosed return metric on AI capex; Li declined to give an ROIC timeline <span class="cite">Q2 2026 follow-up call</span>. Louisiana venture maximum exposure to loss $46.03bn.</p>
+<p class="risk-p"><strong>What would confirm it</strong> — Impairments or abandonment charges, further held-for-sale reclassifications (El Paso, $2.03bn, is the first), capex guidance rising without commensurate revenue.</p>
+<p class="risk-p"><strong>Impact on value</strong> — Would permanently reset the free-cash-flow multiple the market applies.</p>
+</div>
+<div class="risk">
+<div class="risk-h"><span class="risk-n">3</span><span>Advertising deceleration</span></div>
+<div class="chips"><span class="chip hi"><span class="chip-k">Damage rank</span><span class="chip-v">High</span></span><span class="chip lo"><span class="chip-k">Permanence</span><span class="chip-v">Low</span></span><span class="chip md"><span class="chip-k">Fixability</span><span class="chip-v">Medium</span></span></div>
+<p class="risk-p"><strong>Mechanism</strong> — 97.6% single-revenue-source dependence on a cyclical, uncontracted auction. Deferred revenue is negligible.</p>
+<p class="risk-p"><strong>Evidence today</strong> — Growth is accelerating and Q3&#x27;26 guidance of $61–64bn implies continued strength <span class="cite">Q2 2026 call</span>. The risk is latent, not active.</p>
+<p class="risk-p"><strong>What would confirm it</strong> — Price per ad falling below mid-single digits; impression growth decoupling from revenue.</p>
+<p class="risk-p"><strong>Impact on value</strong> — Severe but cyclical; the newly fixed cost base makes operating leverage work violently in reverse.</p>
+</div>
+<div class="risk">
+<div class="risk-h"><span class="risk-n">4</span><span>Balance-sheet and funding risk</span></div>
+<div class="chips"><span class="chip md"><span class="chip-k">Damage rank</span><span class="chip-v">Medium</span></span><span class="chip md"><span class="chip-k">Permanence</span><span class="chip-v">Medium</span></span><span class="chip md"><span class="chip-k">Fixability</span><span class="chip-v">Medium</span></span></div>
+<p class="risk-p"><strong>Mechanism</strong> — Debt at $84.0bn from $59.0bn six months earlier, at coupons up to 6.45%, funding assets with uncertain payback <span class="cite">Q2 2026 10-Q</span>.</p>
+<p class="risk-p"><strong>Evidence today</strong> — Interest cost is rising materially; buybacks suspended. Coverage is still comfortable.</p>
+<p class="risk-p"><strong>What would confirm it</strong> — A further large raise at wider spreads, or equity issuance to fund infrastructure (management would not rule this out) <span class="cite">Q2 2026 follow-up call</span>.</p>
+</div>
+<div class="risk">
+<div class="risk-h"><span class="risk-n">5</span><span>Antitrust and platform regulation</span></div>
+<div class="chips"><span class="chip md"><span class="chip-k">Damage rank</span><span class="chip-v">Medium</span></span><span class="chip hi"><span class="chip-k">Permanence</span><span class="chip-v">High</span></span><span class="chip lo"><span class="chip-k">Fixability</span><span class="chip-v">Low</span></span></div>
+<p class="risk-p"><strong>Mechanism</strong> — Structural remedies or forced changes to data combination across apps.</p>
+<p class="risk-p"><strong>Evidence today</strong> — Meta won at trial on 18 November 2025; the FTC appealed 20 January 2026. A €1.2bn Irish DPC fine stands, and the EC opened an antitrust investigation into WhatsApp Business API access for AI chatbot providers in December 2025 <span class="cite">Q2 2026 10-Q</span>.</p>
+<p class="risk-p"><strong>Impact on value</strong> — Low probability, but a divestiture of Instagram would be unrecoverable.</p>
+</div>
+</section>
+<section id="11-metrics-to-monitor">
+<h2><span class="secnum">11</span><span>Metrics to monitor</span></h2>
+<div class="tw"><table><thead><tr><th>Metric</th><th>Prior</th><th>Latest</th><th>As of</th><th>Why it matters</th></tr></thead><tbody><tr><td>Total revenue growth (YoY)</td><td>+22% (FY25)</td><td>+28%</td><td>Q2 2026</td><td>Is monetisation still accelerating</td></tr><tr><td>Average price per ad (YoY)</td><td>+9% (Q2&#x27;25)</td><td>+12%</td><td>Q2 2026</td><td>Purest read on AI ranking gains</td></tr><tr><td>Ad impressions (YoY)</td><td>—</td><td>+14%</td><td>Q2 2026</td><td>Engagement + ad load, not users</td></tr><tr><td>Family DAP</td><td>~3.50bn</td><td>3.60bn (+3%)</td><td>June 2026</td><td>Reach base; growth is now marginal</td></tr><tr><td>FoA operating margin</td><td>53%</td><td>39%</td><td>Q2 2026</td><td>Where cost growth lands first</td></tr><tr><td>Total operating margin</td><td>43%</td><td>31%</td><td>Q2 2026</td><td>Headline profitability</td></tr><tr><td>Free cash flow</td><td>$18.9bn (H1&#x27;25)</td><td>$13.2bn (H1&#x27;26); $0.78bn in Q2 alone</td><td>Q2 2026</td><td>The thesis-critical number</td></tr><tr><td>Capex incl. finance leases</td><td>$39.2bn (FY24)</td><td>$50.9bn (H1&#x27;26)</td><td>H1 2026</td><td>Intensity trajectory</td></tr><tr><td>Long-term debt (face)</td><td>$59.0bn</td><td>$84.0bn</td><td>30 Jun 2026</td><td>Funding pressure</td></tr><tr><td>Share repurchases</td><td>$26.2bn (FY25)</td><td>$0</td><td>H1 2026</td><td>Capital-return posture</td></tr><tr><td>Construction in progress</td><td>$50.5bn</td><td>$80.3bn</td><td>30 Jun 2026</td><td>Future depreciation not yet in P&amp;L</td></tr><tr><td>Legal charges (quarter)</td><td>—</td><td>$2.4bn</td><td>Q2 2026</td><td>Litigation run-rate</td></tr></tbody></table></div>
+</section>
+<section id="12-thesis-tripwires">
+<h2><span class="secnum">12</span><span>Thesis tripwires</span></h2>
+<div class="tw"><table><thead><tr><th>Direction</th><th>Trigger</th></tr></thead><tbody><tr><td><strong>Stronger</strong></td><td>Quarterly FCF returns above $10bn while revenue growth stays above 20%; buybacks resume at scale; FY26 capex comes in at or below the $130bn low end; non-advertising revenue passes ~5% of FoA revenue; a disclosed return metric on AI infrastructure.</td></tr><tr><td><strong>Weaker</strong></td><td>Price per ad decelerates to mid-single digits; FoA operating margin falls below 35%; FY27 capex guidance exceeds FY26 without a matching revenue step-up; further debt raised at wider spreads; equity issued to fund infrastructure.</td></tr><tr><td><strong>Breaks</strong></td><td>Court-ordered structural remedies (divestiture, or mandated engagement caps applied broadly rather than to teens); an impairment or abandonment charge on data-centre assets materially above $10bn; two consecutive quarters of negative free cash flow with revenue growth below 15%.</td></tr></tbody></table></div>
+</section>
+<section id="13-open-questions">
+<h2><span class="secnum">13</span><span>Open questions</span></h2>
+<ul><li>What is the actual return on the AI infrastructure — no metric is disclosed, and management declined to provide a timeline (see §9).</li><li>What is the maintenance-versus-growth split of capex? Not disclosed. Without it, normalised free cash flow cannot be estimated.</li><li>What is current ad load and how much headroom remains? Not disclosed.</li><li>What quantified benefit did the 5.5-year server useful-life extension deliver to FY25 and FY26 margins? Not disclosed.</li><li>What is the run-rate opex effect of the ~8,000-person reduction net of AI hiring? Not quantified.</li><li>What is the outcome of the New Mexico trial commencing 8 September 2026, and of the MDL state-AG trial that began 12 August 2026? Both post-date the latest filings in <code>sources/</code>.</li><li><strong>Flagged, unverified:</strong> prior project notes reference a broad state-AG settlement reported in late August 2026 with an expected ~$10bn Q3 legal charge. This is <strong>not in <code>sources/</code></strong> and post-dates the Q2 10-Q. It must be confirmed against a primary filing (8-K or Q3 10-Q) before it is treated as fact or written into the thesis.</li></ul>
+</section>
+<section id="14-update-log">
+<h2><span class="secnum">14</span><span>Update log</span></h2>
+<div class="tw"><table><thead><tr><th>Date</th><th>Trigger</th><th>What changed</th><th>Impact on thesis</th></tr></thead><tbody><tr><td>2026-09-07</td><td>Initial build</td><td>Initial Coverage File created from FY2021–FY2025 10-Ks, Q2 2026 10-Q, and Q2 2026 earnings and follow-up transcripts.</td><td>—</td></tr></tbody></table></div>
+</section>
+<section id="15-source-map">
+<h2><span class="secnum">15</span><span>Source map</span></h2>
+<div class="tw"><table><thead><tr><th>Document</th><th>Period / date</th><th>Used for</th></tr></thead><tbody><tr><td>FY2025 10-K</td><td>FY ended 31 Dec 2025, filed 29 Jan 2026</td><td>Segment results, multi-year P&amp;L and cash flow, buyback authorisation, useful-life change, governance</td></tr><tr><td>Q2 2026 10-Q</td><td>Q ended 30 Jun 2026, filed 30 Jul 2026</td><td>Q2 revenue/segments/margins, balance sheet, debt, capex, leases and commitments, VIEs, legal proceedings</td></tr><tr><td>Q2 2026 earnings call transcript</td><td>29 Jul 2026</td><td>Management framing, ad-system metrics, FCF and cash figures, FY26 guidance</td></tr><tr><td>Q2 2026 follow-up call transcript</td><td>29 Jul 2026</td><td>Capex funding, partnership structures, ROIC commentary</td></tr><tr><td>FY2024 / FY2023 / FY2022 / FY2021 10-K</td><td>FY2021–FY2024</td><td>Multi-year comparatives (via FY2025 10-K restated tables)</td></tr><tr><td>External market data (stockanalysis.com)</td><td>4 Sep 2026 close</td><td>§8 market-data callout only</td></tr></tbody></table></div>
+</section></main>
+</div>
+<footer>Rendered from META_Coverage_File.md — the Markdown file is the source of record.
+Regenerated on every update.</footer>
+</body></html>

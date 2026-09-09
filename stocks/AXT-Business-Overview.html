@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AXT, Inc. — Business Overview</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+  font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:900px; margin:0 auto; padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif; font-weight:700; line-height:1.2}
+h1{font-size:38px; margin:6px 0 12px}
+h2{font-size:27px; margin:52px 0 14px}
+h3{font-size:21px; margin:32px 0 8px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--terracotta); font-weight:700}
+.srcline{color:var(--muted); font-size:15px; line-height:1.5; border-bottom:1px solid var(--line); padding-bottom:22px; margin-bottom:30px}
+.restate{
+  font-family:Georgia,serif; font-size:23px; line-height:1.5;
+  border-left:5px solid var(--terracotta); padding:4px 0 4px 22px; margin:0 0 30px; color:var(--ink);
+}
+.engine{
+  background:var(--ink); color:var(--cream); border-radius:10px; padding:26px 28px; margin:0 0 30px;
+}
+.engine .lab{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#B9AE9C; font-weight:700; margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif; font-size:26px; line-height:1.3; margin-bottom:10px}
+.engine p{margin:0; font-size:17px; line-height:1.55; color:#E6DCCB}
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 0 8px}
+.kpi{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+.kpi .k{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:6px}
+.kpi .v{font-family:Georgia,serif; font-size:27px; color:var(--terracotta); line-height:1.15}
+.kpi .s{font-size:14px; color:var(--muted); line-height:1.4; margin-top:5px}
+.card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:22px 0}
+.lever{background:#fff; border:1px solid var(--line); border-left:5px solid var(--terracotta); border-radius:10px; padding:15px 18px; margin:0 0 12px}
+.lever.s{border-left-color:var(--good)} .lever.m{border-left-color:var(--gold)} .lever.c{border-left-color:var(--blue)}
+.lever .t{font-weight:700; font-size:17px; margin-bottom:3px}
+.lever .tag{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--terracotta); margin-bottom:6px}
+.lever.s .tag{color:var(--good)} .lever.m .tag{color:var(--gold)} .lever.c .tag{color:var(--blue)}
+.lever p{margin:0; font-size:16.5px; line-height:1.5}
+.pq{background:var(--terracotta-soft); border-radius:10px; padding:20px 24px; margin:24px 0}
+.pq q{font-family:Georgia,serif; font-size:20px; line-height:1.45; display:block; quotes:'“' '”'}
+.pq .attr{font-size:14px; color:var(--muted); margin-top:10px}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:22px 0}
+.two h4{font-family:Georgia,serif; font-size:18px; margin:0 0 10px}
+.two ul{margin:0; padding-left:19px} .two li{margin-bottom:8px; font-size:16px; line-height:1.45}
+.tw{overflow-x:auto; margin:20px 0; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; min-width:520px; background:#fff; font-size:16px}
+caption{text-align:left; font-size:14px; color:var(--muted); padding:0 0 8px; line-height:1.45}
+th,td{border:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:top}
+th{background:#F2EBE0; font-weight:700; font-size:14.5px}
+td.n,th.n{text-align:right}
+tbody tr:nth-child(even) td{background:#FCFAF6}
+.note{font-size:14.5px; color:var(--muted); line-height:1.5; margin:8px 0 0}
+figure{margin:26px 0; background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px}
+figcaption{font-size:14.5px; color:var(--muted); line-height:1.5; margin-top:10px}
+svg{display:block; width:100%; height:auto}
+.foot{border-top:1px solid var(--line); margin-top:52px; padding-top:22px; font-size:14.5px; color:var(--muted); line-height:1.6}
+.foot h3{font-size:17px; margin:0 0 10px; color:var(--ink)}
+ul.tight{padding-left:20px} ul.tight li{margin-bottom:7px}
+@media (max-width:700px){
+  body{font-size:17px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  .restate{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>AXT, Inc. <span style="color:var(--muted);font-size:26px">NASDAQ: AXTI</span></h1>
+<div class="srcline">
+7 September 2026 · Built from AXT's SEC filings 2016–2026 — ten annual reports through the FY2025 10-K (filed 17 March 2026), the 10-Q for the quarter ended 30 June 2026, the 2026 proxy and the 2025–26 8-K record — with independent industry evidence from USGS, USITC, China's MOFCOM announcements and the disclosures of named competitors and customers. No earnings-call transcripts, shareholder letters or investor-day materials were available.
+<br><br><strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+AXT grows single crystals of indium phosphide, gallium arsenide and germanium in Chinese factories and sells them as polished wafers — the base layer other companies build lasers, RF chips and satellite solar cells on. Since February 2025, every one of those wafers has needed a Chinese export permit to leave the country.
+</div>
+
+<div class="engine">
+  <div class="lab">The unit, and what it earns</div>
+  <div class="unit">One polished substrate wafer.</div>
+  <p>AXT has never disclosed wafer volumes, average selling prices, capacity utilisation or backlog — in any of the ten annual reports examined. Unit economics are visible only through consolidated gross margin, which ran <strong>−6.4% in Q1 2025 and 44.9% in Q2 2026</strong> on largely the same plant. The margin is not a pricing outcome; it is a utilisation outcome against a fixed cost base.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Unit price</div><div class="v">Not disclosed</div><div class="s">AXT publishes no ASP. Industry reference: 6″ InP wafers ≈ $5,000, up 250% since Feb 2025 (Reuters, Jun 2026)</div></div>
+  <div class="kpi"><div class="k">Unit profit</div><div class="v">44.9%</div><div class="s">Q2 2026 gross margin — the highest in the ten-year record, vs 12.7% in FY2025</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">$11.1m</div><div class="s">Q2 2026 net income to AXT; $0.17 diluted EPS. $4.7m of pre-tax income was interest, not operations</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">Net cash</div><div class="s">$748.8m of cash, restricted cash and investments against $99.7m of Chinese bank debt at 30 Jun 2026</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Above peak on margin</div><div class="s">44.9% vs the FY2022 peak of 36.9%; quarterly revenue annualises to ~$190m vs the FY2022 record $141.1m</div></div>
+  <div class="kpi"><div class="k">Reported vs organic</div><div class="v">+165% = +165%</div><div class="s">Q2 2026 YoY. No acquisitions or divestitures of any size in the period — reported growth is organic growth</div></div>
+</div>
+
+<h2>1. What the company does</h2>
+<p>Some devices cannot be built on silicon. A laser needs a material that emits light efficiently, which silicon does not. A satellite solar cell needs a material that converts a wide slice of the spectrum in a thin stack. A handset power amplifier needs electrons that move faster than silicon allows. Those devices are built on compound semiconductors — and before anyone can build them, someone has to grow a near-perfect single crystal and slice it into flat, polished discs.</p>
+<p>That is AXT's entire business. The company states it does not design or manufacture chips and does not grow the epitaxial layer (FY2025 10-K). Trace one wafer through: a consolidated Chinese subsidiary refines raw gallium to 6N or 7N purity or produces InP starting material; another, BoYu, makes the pyrolytic boron nitride crucible the melt sits in; Tongmei, the operating subsidiary, grows an ingot by vertical gradient freeze — a slow, controlled solidification judged by etch pit density, the count of crystal defects per square centimetre. The ingot is sliced, lapped, polished to an epi-ready finish and shipped against a purchase order. Contracts are short: the majority are a single performance obligation, “usually less than six months”.</p>
+
+<h3>Three families, three different fates</h3>
+<div class="lever s">
+  <div class="tag">InP — structural growth</div>
+  <div class="t">The growth engine</div>
+  <p>2″, 3″ and 4″ diameters, with 6″ in pilot production and customer qualification. Ends up in the lasers inside datacentre optical transceivers, in passive optical networks and in coherent telecom optics. Every incremental AI accelerator port is an optical port, and InP is where the light comes from.</p>
+</div>
+<div class="lever c">
+  <div class="tag">GaAs — cyclical, and blocked</div>
+  <div class="t">The mature leg</div>
+  <p>Semi-insulating for handset RF and satellite comms; semi-conducting for VCSELs, LEDs and sensors. 1″ to 6″, with 8″ “selling in small quantities”. This is the family shut out of the United States: “no permits for the export of gallium arsenide to the U.S. have yet been approved” (FY2025 10-K).</p>
+</div>
+<div class="lever m">
+  <div class="tag">Ge — management-driven contraction</div>
+  <div class="t">Shrinking on purpose</div>
+  <p>2″, 4″ and 6″ for triple-junction satellite solar and infrared optics. AXT “deliberately reduced” germanium wafer sales in 2025 because “raw material costs needed for the germanium wafers increased substantially in 2025 but pricing remained competitive”. When a by-product feedstock is under export control and the customer will not pay through, the right answer is to sell less.</p>
+</div>
+
+<p>A second product line — 33% of FY2025 revenue, 21% in Q2 2026 — sells purified gallium, boron trioxide and pBN crucibles to third parties. It exists mainly for a different reason. AXT holds positions in over ten Chinese raw-material companies, five consolidated and three carried by the equity method, and states that this “provides us with pricing advantages, reliable supply, market trend visibility and better sourcing lead-times”, adding that it believes it is “the only compound semiconductor substrate supplier to have a position in raw materials”. Because gallium is a by-product of aluminium refining and germanium of zinc and coal processing, neither responds to price in the short run — so owning a slice of the supply buys priority rather than cheapness.</p>
+<p class="note">Two caveats on that position. AXT has been retreating from ownership where it does not control: Beijing JiYa was deconsolidated in March 2019 when its stake fell from 46% to 39%, removing raw gallium revenue outright. And the ventures are run locally — “the daily operations … are managed by local management and not by us” — with some housed physically inside partners' plants.</p>
+
+<h2>2. Industry structure and where the profit sits</h2>
+<p>The industry exists because the value of a compound semiconductor device is set almost entirely downstream while the risk of the whole stack sits upstream. A defective crystal ruins every die built on it, so device makers qualify substrate suppliers slowly and change them reluctantly — but they also refuse to pay much, because the wafer is a small fraction of the finished module. Yole sized the entire compound-substrate market at $945m in 2021 growing to $2.3bn by 2027, against an InP bare-die market alone forecast above $5bn in 2026. The substrate stage gates a value pool many times its own size.</p>
+
+<div class="tw">
+<table>
+<caption>Reported margins along the chain — the merchant middle is the worst place to stand</caption>
+<thead><tr><th>Stage</th><th>Company</th><th>Period</th><th class="n">Revenue</th><th class="n">Margin</th></tr></thead>
+<tbody>
+<tr><td>Refining / specialty materials</td><td>5N Plus</td><td>FY2025</td><td class="n">$391.1m</td><td class="n">33.7% adj. gross</td></tr>
+<tr><td>Substrates &amp; semi materials</td><td>JX Advanced Metals</td><td>FY2024</td><td class="n">¥148.0bn</td><td class="n">18.0% operating</td></tr>
+<tr><td>Merchant epitaxy</td><td>IQE plc</td><td>FY2024</td><td class="n">£118.0m</td><td class="n">6.9% adj. EBITDA<br>(£33.0m operating loss)</td></tr>
+<tr><td>Device / module</td><td>Coherent</td><td>FY2025</td><td class="n">$5.81bn</td><td class="n">17.8% non-GAAP operating</td></tr>
+<tr><td>Device / module</td><td>Lumentum</td><td>Q3 FY2026</td><td class="n">$808.4m</td><td class="n">32.2% non-GAAP operating</td></tr>
+</tbody>
+</table>
+</div>
+<p>The stages that touch the end customer captured the AI cycle; the merchant middle did not. That matters for AXT because AXT sits upstream of the squeezed stage, not inside it — its economics are set by scarcity of qualified crystal, which works well when crystal is scarce and poorly when it is not.</p>
+
+<h3>An oligopoly with a disputed map</h3>
+<p>InP substrates are made at scale by a short list: Sumitomo Electric, JX Advanced Metals, AXT's Tongmei, Coherent, Freiberger Compound Materials, and a growing Chinese cohort including Yunnan Germanium and Vital Materials. AXT names essentially the same competitors it named in 2016. Share estimates conflict materially and should not be relied on: JX self-reports roughly 40% of the global InP substrate market, while Reuters reporting in June 2026 put AXT and Sumitomo at roughly 80% combined with JX near 10%. Both are cited; neither is corroborated.</p>
+<p>What is not in dispute is that the qualified supplier set thins sharply at 6-inch. Freiberger caps at 4″ InP; Coherent describes its Sherman, Texas line as “the world's first and largest volume-production 6-inch InP platform”; AXT is still in qualification. <strong>The scarce asset in this industry is not wafer capacity — it is qualified capacity at the largest diameter.</strong></p>
+
+<h3>Which barriers actually bind</h3>
+<p>Capital is not one of them. Vital Materials' approved Zhejiang project commits RMB 2bn for 6m wafers a year; Sumitomo is spending ¥18bn to take InP capacity to 3.1× its FY2024 level by FY2028. These are two to three orders of magnitude below a leading-edge silicon fab. Three things bind instead: <strong>yield learning</strong>, which is why every announced expansion lands in 2028–29 rather than next year; <strong>feedstock concentration</strong> — China produced 839,000kg of the world's 848,000kg of primary gallium in 2024, and the United States has had no primary gallium production since 1987 (USGS 2026); and <strong>qualification</strong>, though AXT itself notes a customer “typically … has at least two qualified substrate suppliers”, which caps the switching cost.</p>
+
+<h2>3. The moat, and what kind it is</h2>
+<p>Two AXT assets are genuinely hard to copy, and they point in opposite directions. The first is the vertical position in Chinese raw materials, backed by 198 VGF patents plus 130 held by the consolidated raw-material companies. The second is the location of every gram of that production: all AXT manufacturing is in China, which since February 2025 has meant that InP, GaAs and Ge substrates all require a Ministry of Commerce export permit.</p>
+<p>This is not a conventional moat, because AXT did not build it and cannot control it. China's regime tightened in three steps — gallium and germanium items from 1 August 2023, a US-directed prohibition on 3 December 2024, and indium phosphide added by customs code on 4 February 2025. The named scope covers finished substrates, not merely feedstock metal. The November 2025 suspensions covered the December 2024 announcement's Article 2; <strong>the February 2025 indium controls were not suspended</strong>.</p>
+
+<div class="pq">
+  <q>InP export permits represent the most significant challenge we currently face.</q>
+  <div class="attr">AXT, Inc. — FY2025 Form 10-K, filed 17 March 2026</div>
+</div>
+
+<p>The price effect was immediate. Germanium metal moved from $1,392/kg in 2023 to $4,100/kg in 2025; gallium from $365/kg to $580/kg (USGS 2026). Reuters reported average 6-inch InP wafer prices up 250% to about $5,000 after the February 2025 restrictions. Chinese germanium metal exports fell from 36,656kg in January–September 2023 to 7,520kg in the same period of 2025. For a company whose crystal is grown inside the export-control perimeter and whose customers are outside it, that is simultaneously a price umbrella and a permanent political dependency.</p>
+
+<div class="tw">
+<table>
+<caption>Testing AXT's account of its own position against outside evidence</caption>
+<thead><tr><th>Company claim</th><th>Verdict</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>VGF process control creates “a barrier to entry”</td><td>Partially supported</td><td>Yield learning is genuinely multi-year — but AXT concedes “at least two of our competitors are shipping high volumes of GaAs substrates manufactured using a process similar to our VGF technology” and that this “has eroded our technological differentiation”.</td></tr>
+<tr><td>Only substrate supplier with a raw-material position</td><td>Supported, not unique in kind</td><td>No competitor discloses equity in gallium refiners. But Umicore meets 50% of its germanium needs through recycling and 5N Plus is a refiner outright — feedstock integration exists in other forms.</td></tr>
+<tr><td>InP demand is structurally growing</td><td>Supported</td><td>400G and 800G datacom module shipments passed 20m units and $9bn in 2024, units up nearly fourfold YoY (Cignal AI). JX describes the AI/datacentre InP market as having grown 1.5× in a year.</td></tr>
+<tr><td>Export permits are the principal constraint</td><td>Supported</td><td>North America fell from 8% of revenue in FY2024 to ~2% in FY2025 and 0.3% in Q2 2026, while Europe rose from 9% to 19% as permits were issued.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>On this evidence the companies that win here own or recycle their feedstock, sit at the largest qualified diameter, and are close enough to the device to capture the cycle rather than supply it. <strong>AXT satisfies the first condition well, is still qualifying on the second, and fails the third by design</strong> — it is a pure merchant upstream supplier with no device business. Its position rests on being a large qualified InP source inside an export-control perimeter at the moment that perimeter became the industry's binding constraint. That is a real advantage and a borrowed one.</p>
+
+<h2>4. Growth engine</h2>
+<p>AXT has made no acquisitions or divestitures of any size in the period examined, so reported growth is organic growth. The one break in comparability runs the other way: the March 2019 deconsolidation of Beijing JiYa removed raw gallium revenue from the consolidated line. Growth is therefore decomposed by geography and product, not by deal.</p>
+
+<div class="tw">
+<table>
+<caption>Q2 2026 vs Q2 2025, US$ millions. Product and geographic splits are separate disaggregations of the same total and should not be added together. Source: 10-Q for the quarter ended 30 June 2026.</caption>
+<thead><tr><th>Line</th><th class="n">Q2 2025</th><th class="n">Q2 2026</th><th class="n">Change</th><th class="n">Share of increase</th></tr></thead>
+<tbody>
+<tr><td><strong>Substrates</strong></td><td class="n">11.3</td><td class="n">37.6</td><td class="n">+26.3</td><td class="n">89%</td></tr>
+<tr><td><strong>Raw materials and other</strong></td><td class="n">6.7</td><td class="n">10.0</td><td class="n">+3.3</td><td class="n">11%</td></tr>
+<tr><td>China</td><td class="n">14.5</td><td class="n">30.8</td><td class="n">+16.3</td><td class="n">55%</td></tr>
+<tr><td>Europe</td><td class="n">1.6</td><td class="n">9.2</td><td class="n">+7.6</td><td class="n">26%</td></tr>
+<tr><td>Asia-Pacific ex China/TW/JP</td><td class="n">0.4</td><td class="n">3.5</td><td class="n">+3.1</td><td class="n">10%</td></tr>
+<tr><td>Taiwan and Japan</td><td class="n">1.2</td><td class="n">3.9</td><td class="n">+2.7</td><td class="n">9%</td></tr>
+<tr><td>North America</td><td class="n">0.2</td><td class="n">0.2</td><td class="n">−0.1</td><td class="n">−0%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The company attributes the Taiwan, Japan and Europe increases explicitly to “additional export approvals granted by the China government”, and the North America decline to “the impact of China export restrictions”. North America was 8% of revenue in FY2024, about 2% in FY2025 and 0.3% in Q2 2026 — the largest market for AI optical infrastructure is presently the one AXT barely serves.</p>
+<p><strong>What cannot be decomposed is volume versus price.</strong> AXT discloses neither, and industry evidence points to a large price component: Reuters reported 6-inch InP wafer prices up 250%, and TrendForce describes an InP supply-demand gap exceeding that in DRAM and NAND, with customers “placing orders further in advance and paying substantial deposits”. A 165% revenue increase built substantially on scarcity pricing is a different proposition from the same increase built on units, and the filings do not permit the distinction <em>(unknown)</em>.</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever c">
+  <div class="tag">1 · Cyclical / policy-driven</div>
+  <div class="t">Export-permit release</div>
+  <p>The largest single driver and entirely outside management's control. Tongmei received its first InP permits on 11 June 2025 and further permits that August; the Q2 2026 filing still reports “a backlog of orders for which we have not yet received permits”. Every permit converts existing demand into shipments. It reverses as easily as it arrived.</p>
+</div>
+<div class="lever s">
+  <div class="tag">2 · Structural</div>
+  <div class="t">InP demand from AI datacentre optics</div>
+  <p>Optical port count scales with accelerator deployment, and InP is where the laser light originates — silicon photonics does not remove the InP laser, it packages it. Lumentum's cloud and networking revenue rose 30% between FY2024 and FY2025, and total revenue 90% year on year in its March 2026 quarter.</p>
+</div>
+<div class="lever">
+  <div class="tag">3 · Temporary</div>
+  <div class="t">Scarcity pricing on InP wafers</div>
+  <p>Prices are elevated because the export perimeter and the qualified 6-inch supplier set are both narrow. Announced capacity from Sumitomo, Coherent, Vital and Yunnan Germanium clusters in 2027–2029, and Fraunhofer has demonstrated 150mm InP-on-GaAs engineered substrates targeted at below 20% of today's InP price.</p>
+</div>
+<div class="lever m">
+  <div class="tag">4 · Management-driven</div>
+  <div class="t">Contracted capacity reservations</div>
+  <p>Three agreements in seven weeks converted spot demand into committed volume with cash up front: Nanjing Casela (RMB 173m for calendar 2027, 50% prepaid, 80% take-or-pay floor), Coherent (three years of 6-inch InP, $22.3m prepayment) and Lumentum (six years, two deposits of $43.5m). Roughly $135m of customer money, with the shortfall risk on the customer.</p>
+</div>
+<div class="lever s">
+  <div class="tag">5 · Structural, unproven</div>
+  <div class="t">Six-inch InP qualification</div>
+  <p>Six-inch is where demand and pricing concentrate and where the qualified supplier set is thinnest. AXT is in pilot production and customer qualification; the Coherent agreement is specifically for 6-inch product. Success moves AXT to the diameter frontier; failure leaves it selling into the commoditising part of the market.</p>
+</div>
+<div class="lever c">
+  <div class="tag">6 · Structurally weak</div>
+  <div class="t">Raw materials and germanium</div>
+  <p>Raw materials grew 50% in Q2 2026 against substrates' 233%, and equity income from the unconsolidated gallium ventures fell from $3.4m in FY2024 to $0.8m in FY2025 as Chinese gallium suppliers “reduced their pricing as they competed for market share within their domestic market”. This leg does not participate in the AI cycle.</p>
+</div>
+
+<h2>5. Margin, cash and capital allocation</h2>
+<p>AXT's margin is a utilisation story with almost no ambiguity. The company states that “because many portions of our manufacturing costs are relatively fixed, high utilisation rates are critical to our gross margins”, and attributes the FY2025 collapse to “lower revenue resulting in fixed costs being spread over fewer units”. Crystal growth is a slow batch process in an owned building with a trained workforce; the furnaces run whether or not the wafers ship. In Q2 2026 cost of revenue rose 59% while revenue rose 165% — the fixed base working in the favourable direction.</p>
+
+<figure>
+<svg viewBox="0 0 860 340" role="img" aria-label="AXT annual revenue and gross margin, FY2016 to FY2025">
+  <g font-family="Calibri, Segoe UI, Arial" font-size="12" fill="#6E675C">
+    <!-- gridlines -->
+    <line x1="58" y1="40" x2="820" y2="40" stroke="#E5DDD0"/>
+    <line x1="58" y1="100" x2="820" y2="100" stroke="#E5DDD0"/>
+    <line x1="58" y1="160" x2="820" y2="160" stroke="#E5DDD0"/>
+    <line x1="58" y1="220" x2="820" y2="220" stroke="#E5DDD0"/>
+    <line x1="58" y1="280" x2="820" y2="280" stroke="#2B2B2B" stroke-width="1"/>
+    <text x="50" y="44" text-anchor="end">160</text>
+    <text x="50" y="104" text-anchor="end">120</text>
+    <text x="50" y="164" text-anchor="end">80</text>
+    <text x="50" y="224" text-anchor="end">40</text>
+    <text x="50" y="284" text-anchor="end">0</text>
+    <text x="58" y="22" font-size="12" font-weight="700" fill="#C75B39">Revenue, US$m</text>
+    <text x="820" y="22" font-size="12" font-weight="700" fill="#3C6E8F" text-anchor="end">Gross margin, %</text>
+    <text x="828" y="104" fill="#3C6E8F">40%</text>
+    <text x="828" y="164" fill="#3C6E8F">27%</text>
+    <text x="828" y="224" fill="#3C6E8F">13%</text>
+  </g>
+  <!-- revenue: y = 280 - rev*1.5 ; x from 90 step 81 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.5"
+    points="90,158 171,132 252,126 333,155 414,137 495,74 576,68 657,166 738,131 819,148"/>
+  <g fill="#C75B39">
+    <circle cx="90" cy="158" r="3.5"/><circle cx="171" cy="132" r="3.5"/><circle cx="252" cy="126" r="3.5"/>
+    <circle cx="333" cy="155" r="3.5"/><circle cx="414" cy="137" r="3.5"/><circle cx="495" cy="74" r="3.5"/>
+    <circle cx="576" cy="68" r="3.5"/><circle cx="657" cy="166" r="3.5"/><circle cx="738" cy="131" r="3.5"/>
+    <circle cx="819" cy="148" r="3.5"/>
+  </g>
+  <!-- gross margin: scaled y = 280 - gm*4.4 -->
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="5 4"
+    points="90,137 171,126 252,121 333,149 414,141 495,128 576,118 657,203 738,174 819,224"/>
+  <g fill="#3C6E8F">
+    <circle cx="90" cy="137" r="3"/><circle cx="171" cy="126" r="3"/><circle cx="252" cy="121" r="3"/>
+    <circle cx="333" cy="149" r="3"/><circle cx="414" cy="141" r="3"/><circle cx="495" cy="128" r="3"/>
+    <circle cx="576" cy="118" r="3"/><circle cx="657" cy="203" r="3"/><circle cx="738" cy="174" r="3"/>
+    <circle cx="819" cy="224" r="3"/>
+  </g>
+  <g font-family="Georgia, serif" font-size="13" font-weight="700">
+    <text x="90" y="176" fill="#C75B39" text-anchor="start">81.3</text>
+    <text x="576" y="58" fill="#C75B39" text-anchor="middle">141.1</text>
+    <text x="657" y="184" fill="#C75B39" text-anchor="middle">75.8</text>
+    <text x="819" y="140" fill="#C75B39" text-anchor="end">88.3</text>
+    <text x="90" y="128" fill="#3C6E8F" text-anchor="start">32.4%</text>
+    <text x="576" y="108" fill="#3C6E8F" text-anchor="middle">36.9%</text>
+    <text x="819" y="243" fill="#3C6E8F" text-anchor="end">12.7%</text>
+  </g>
+  <g font-family="Calibri, Segoe UI, Arial" font-size="12" fill="#6E675C" text-anchor="middle">
+    <text x="90" y="300">FY16</text><text x="171" y="300">FY17</text><text x="252" y="300">FY18</text>
+    <text x="333" y="300">FY19</text><text x="414" y="300">FY20</text><text x="495" y="300">FY21</text>
+    <text x="576" y="300">FY22</text><text x="657" y="300">FY23</text><text x="738" y="300">FY24</text>
+    <text x="819" y="300">FY25</text>
+  </g>
+  <text x="58" y="326" font-family="Calibri, Segoe UI, Arial" font-size="12.5" fill="#6E675C">Three deep troughs in seven years — FY2019 on GaAs sensors, FY2023 on the optical inventory correction, FY2025 on export permits.</text>
+</svg>
+<figcaption>Annual revenue and gross margin, FY2016–FY2025. Sources: FY2016, FY2020, FY2022, FY2024 and FY2025 10-Ks. Right-hand axis is gross margin; the two series use independent scales.</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 860 358" role="img" aria-label="AXT quarterly revenue and gross margin, Q1 2025 to Q2 2026">
+  <!-- ===== upper panel: revenue bars ===== -->
+  <g font-family="Calibri, Segoe UI, Arial" font-size="12" fill="#6E675C">
+    <line x1="58" y1="40" x2="800" y2="40" stroke="#E5DDD0"/>
+    <line x1="58" y1="120" x2="800" y2="120" stroke="#E5DDD0"/>
+    <line x1="58" y1="200" x2="800" y2="200" stroke="#2B2B2B"/>
+    <text x="50" y="44" text-anchor="end">50</text>
+    <text x="50" y="124" text-anchor="end">25</text>
+    <text x="50" y="204" text-anchor="end">0</text>
+    <text x="58" y="22" font-size="12.5" font-weight="700" fill="#C75B39">Revenue, US$m</text>
+  </g>
+  <g fill="#C75B39" opacity="0.88">
+    <rect x="79" y="138" width="62" height="62"/>
+    <rect x="194" y="142" width="62" height="58"/>
+    <rect x="309" y="110" width="62" height="90"/>
+    <rect x="424" y="126" width="62" height="74"/>
+    <rect x="539" y="114" width="62" height="86"/>
+    <rect x="654" y="48" width="62" height="152"/>
+  </g>
+  <g font-family="Georgia, serif" font-size="13" font-weight="700" fill="#C75B39" text-anchor="middle">
+    <text x="110" y="131">19.4</text><text x="225" y="135">18.0</text><text x="340" y="103">28.0</text>
+    <text x="455" y="119">23.0</text><text x="570" y="107">26.9</text><text x="685" y="41">47.6</text>
+  </g>
+  <!-- ===== lower panel: gross margin line ===== -->
+  <g font-family="Calibri, Segoe UI, Arial" font-size="12" fill="#6E675C">
+    <line x1="58" y1="290" x2="800" y2="290" stroke="#2B2B2B"/>
+    <line x1="58" y1="227" x2="800" y2="227" stroke="#E5DDD0"/>
+    <text x="50" y="294" text-anchor="end">0%</text>
+    <text x="50" y="231" text-anchor="end">45%</text>
+    <text x="58" y="223" font-size="12.5" font-weight="700" fill="#3C6E8F">Gross margin</text>
+  </g>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5"
+    points="110,299 225,279 340,259 455,261 570,249 685,227"/>
+  <g fill="#3C6E8F">
+    <circle cx="110" cy="299" r="4"/><circle cx="225" cy="279" r="4"/><circle cx="340" cy="259" r="4"/>
+    <circle cx="455" cy="261" r="4"/><circle cx="570" cy="249" r="4"/><circle cx="685" cy="227" r="4"/>
+  </g>
+  <g font-family="Georgia, serif" font-size="13" font-weight="700" fill="#3C6E8F">
+    <text x="110" y="313" text-anchor="start">−6.4%</text>
+    <text x="340" y="252" text-anchor="middle">22.3%</text>
+    <text x="685" y="220" text-anchor="end">44.9%</text>
+  </g>
+  <g font-family="Calibri, Segoe UI, Arial" font-size="12" fill="#6E675C" text-anchor="middle">
+    <text x="110" y="330">Q1 25</text><text x="225" y="330">Q2 25</text><text x="340" y="330">Q3 25</text>
+    <text x="455" y="330">Q4 25</text><text x="570" y="330">Q1 26</text><text x="685" y="330">Q2 26</text>
+  </g>
+  <text x="58" y="352" font-family="Calibri, Segoe UI, Arial" font-size="12.5" fill="#6E675C">Five quarters, the same plant: gross margin from −6.4% to 44.9% as export permits released volume onto a fixed cost base.</text>
+</svg>
+<figcaption>Quarterly revenue and gross margin, Q1 2025 – Q2 2026. Q1 2025 and Q3 2025 gross margins are stated in the FY2025 10-K; Q4 2025 (20.9%) and Q1 2026 (29.6%) are derived by subtraction from disclosed year-to-date figures. The two panels share the quarter axis; the lower panel's baseline is 0% gross margin.</figcaption>
+</figure>
+
+<p>Two things sit inside the reported margin that a reader should separate out. First, <strong>inventory</strong>: the excess-and-obsolete reserve stood at $32.0m at 30 June 2026 against a carrying value of $96.3m — gross inventory is roughly $128m and about a quarter of it is reserved. That reserve was a critical audit matter in the FY2025 audit. Product sold out of previously reserved inventory carries no cost, so a demand recovery after a deep reserving cycle flatters gross margin by an amount the filings do not quantify <em>(unknown)</em>. Second, <strong>earnings</strong>: of $15.1m of Q2 2026 pre-tax income, $4.7m was net interest income on cash from the April equity raise. Roughly a third of the quarter's pre-tax profit was earned by the balance sheet, not the factory.</p>
+
+<div class="tw">
+<table>
+<caption>The financial spine, US$ millions. Sources: FY2024 10-K (FY2022), FY2025 10-K (FY2024–25), 10-Q for the quarter ended 30 June 2026. 6M 2026 is a half-year and is not annualised.</caption>
+<thead><tr><th>&nbsp;</th><th class="n">FY2022</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">6M 2026</th></tr></thead>
+<tbody>
+<tr><td><strong>Revenue</strong></td><td class="n">141.1</td><td class="n">99.4</td><td class="n">88.3</td><td class="n">74.5</td></tr>
+<tr><td><strong>Gross margin</strong></td><td class="n">36.9%</td><td class="n">24.0%</td><td class="n">12.7%</td><td class="n">39.4%</td></tr>
+<tr><td><strong>Operating income (loss)</strong></td><td class="n">12.6</td><td class="n">(14.8)</td><td class="n">(22.0)</td><td class="n">8.8</td></tr>
+<tr><td><strong>Net income (loss) to AXT</strong></td><td class="n">15.8</td><td class="n">(11.6)</td><td class="n">(21.3)</td><td class="n">9.5</td></tr>
+<tr><td><strong>Operating cash flow</strong></td><td class="n">(8.8)</td><td class="n">(12.1)</td><td class="n">(12.8)</td><td class="n">(0.9)</td></tr>
+<tr><td><strong>Diluted shares (m)</strong></td><td class="n">42.7</td><td class="n">43.2</td><td class="n">43.9</td><td class="n">59.6</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">Comparability: the March 2019 deconsolidation of Beijing JiYa removed raw gallium revenue and makes pre-2019 product-line figures non-comparable with later years.</p>
+
+<p>The row that deserves the most attention is operating cash flow. AXT generated $9.5m of net income in the first half of 2026 and still consumed $0.9m of cash, because receivables rose $9.2m and inventories $12.2m against the ramp. Over FY2023–FY2025 the company produced cumulative operating cash flow of roughly negative $21m while spending $22m on capex. <strong>This business has not funded itself from operations in the period examined</strong> — it has been funded by Chinese bank loans, by minority investors in Tongmei, and now by public equity.</p>
+
+<h3>Where the capital came from, ranked</h3>
+<ul class="tight">
+<li><strong>Equity issuance — ~$700m gross.</strong> 8.16m shares at $12.25 in December 2025 for $93.9m net; 9.84m shares at $64.25 in April 2026 for $600.1m net. The second raise took roughly six times the dollars for about 20% more shares. Authorised shares were raised from 70m to 120m in June 2026; shares outstanding went from 45.4m at end-2024 to 65.6m at 30 June 2026.</li>
+<li><strong>Customer deposits and prepayments — ~$135m committed.</strong> Lumentum $87m in two deposits, Coherent $22.3m, Casela RMB 173m half-prepaid. Customer capital funding the same capacity build, with the shortfall obligation on the customer.</li>
+<li><strong>Chinese bank debt — ~$99.7m at 30 June 2026.</strong> Short-term facilities across eleven Chinese banks at 2.0–3.8%, partly collateralised by land use rights and buildings at Dingxing and Kazuo.</li>
+<li><strong>Capital expenditure — $8.6m in H1 2026</strong>, against $6.0m in all of FY2025 and $28.5m in FY2022. The $700m raised has not yet been spent: $748.8m sat in cash, restricted cash and investments at 30 June 2026.</li>
+<li><strong>Returns to shareholders — none.</strong> No common dividend has ever been paid. The 2014 buyback authorisation was last used in 2015; ~$2.7m remains and the company states it does not plan to repurchase shares.</li>
+</ul>
+<p>That ranking describes a management team that funds growth by issuing claims rather than generating cash, consistently, for a decade — diluted shares rose from 32.9m in FY2016 to 59.6m in H1 2026, alongside a $49m sale of minority equity in the operating subsidiary in 2020. The December 2025 raise at $12.25, four months before the April raise at $64.25, is the cost of that pattern made explicit.</p>
+
+<div class="card">
+<h3 style="margin-top:0">A transaction that post-dates the reported figures</h3>
+<p style="margin-bottom:0">On 8 July 2026 the Shanghai Stock Exchange accepted Tongmei's withdrawal of its STAR Market IPO application — filed December 2021, approved by the exchange in July 2022, never cleared by the CSRC. The withdrawal triggers a redemption right held by eleven Chinese private equity funds that invested RMB 324.4m (~US$49m) for a 7.28% interest in Tongmei; each may require redemption at the original amount invested, without interest. AXT states it has sufficient funds to redeem in full, which the $748.8m liquidity position supports, and intends to pursue a Hong Kong listing instead, emphasising InP rather than the GaAs and micro-LED story of the 2021 application. Separately, on 23 July 2026 AXT agreed to buy ~0.58% of Tongmei from a related party for ~$6m, taking its stake to ~86.09%; unclosed when the Q2 statements were issued. None of this appears in the FY2025 figures.</p>
+</div>
+
+<h2>6. Cyclicality, constraints and where the business sits now</h2>
+<p>Revenue over FY2016–FY2025 ran 81.3, 98.7, 102.4, 83.3, 95.4, 137.4, 141.1, 75.8, 99.4, 88.3, with gross margin between 12.7% and 36.9%. The FY2019 downturn came from GaAs weakness in automotive and industrial sensors; the FY2023 collapse from the optical inventory correction, when revenue fell 46% in a single year; the FY2025 trough from export permits, a policy event rather than a demand event. Three different mechanisms, three deep troughs in seven years.</p>
+<p><strong>The business now sits above its prior peak on margin and below it on revenue.</strong> Q2 2026 gross margin of 44.9% is the highest in the ten-year record, eight points above the FY2022 peak. Quarterly revenue of $47.6m annualises to roughly $190m against the FY2022 record of $141.1m — but only one quarter has printed at that level. On the company's own framing demand is not the constraint: “although demand for InP wafers increased in 2025, revenue declined because of the export permit requirements”.</p>
+<p>The exposure is concentrated and geographically odd. China is 66% of Q2 2026 revenue and Europe 19%; the United States, the largest single market for AI datacentre infrastructure, is 0.3%. Long-lived assets are $175.8m in China against $0.9m in North America. A US-listed company earns essentially all of its revenue outside North America from assets that are essentially all inside China.</p>
+
+<div class="tw">
+<table>
+<caption>Revenue by destination — the shape of a permit-gated recovery. Source: FY2025 10-K and the 10-Q for the quarter ended 30 June 2026.</caption>
+<thead><tr><th>Destination</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">Q2 2026</th><th>What moved it</th></tr></thead>
+<tbody>
+<tr><td>China</td><td class="n">56%</td><td class="n">62%</td><td class="n">66%</td><td>Domestic sales need no export permit</td></tr>
+<tr><td>Europe</td><td class="n">14%</td><td class="n">13%</td><td class="n">19%</td><td>First InP permits granted June 2025</td></tr>
+<tr><td>Taiwan</td><td class="n">14%</td><td class="n">15%</td><td class="n">5%</td><td>Permit-gated; recovering off a low base</td></tr>
+<tr><td>Asia-Pacific ex China/TW/JP</td><td class="n">3%</td><td class="n">3%</td><td class="n">7%</td><td>Additional approvals granted in 2026</td></tr>
+<tr><td>Japan</td><td class="n">5%</td><td class="n">5%</td><td class="n">3%</td><td>Permitted, but a small base</td></tr>
+<tr><td><strong>North America</strong></td><td class="n">8%</td><td class="n">2%</td><td class="n">0.3%</td><td><strong>GaAs permits still not approved; InP permits not yet granted</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>The downside mechanism, as this business would feel it</h3>
+<p>Three things must hold for the current economics to persist: permits keep flowing, InP prices stay elevated, and the 2027–2029 capacity wave does not overshoot. The downside case is that the third arrives while the second unwinds. Sumitomo's 3.1× expansion completes by FY2028, Coherent's Sherman quadrupling by end-2027, Vital's Zhejiang plant in 2029, Yunnan Germanium's 450,000-wafer line sooner — all landing into a demand curve that will have decelerated. For AXT this transmits directly: with a largely fixed cost base and no device business to absorb volume, <strong>a 20% price reversion on substrates removes roughly the whole of the gross profit improvement</strong>, and the leverage that produced 44.9% runs in reverse exactly as it did into Q1 2025's −6.4%. The company has been on both sides of that line inside eighteen months.</p>
+
+<div class="two">
+  <div class="card" style="margin:0">
+    <h4 style="color:var(--good)">Durable — likely still true in ten years</h4>
+    <ul>
+      <li>InP is the material lasers are made from; optical port count scales with compute</li>
+      <li>Crystal-growth yield is learned slowly and cannot be bought</li>
+      <li>Gallium, germanium and indium are by-products with inelastic supply concentrated in China</li>
+      <li>Equity positions in ten Chinese raw-material companies</li>
+      <li>Customers keep at least two qualified suppliers, so a qualified position is defensible even when it is not exclusive</li>
+    </ul>
+  </div>
+  <div class="card" style="margin:0">
+    <h4 style="color:var(--terracotta)">Borrowed — currently helping, and reversible</h4>
+    <ul>
+      <li>Export-permit scarcity: prices and Western allocation rest on a Chinese licensing regime partly suspended in November 2025</li>
+      <li>Fixed-cost absorption at high utilisation — the same leverage that took margin from −6.4% to 44.9%</li>
+      <li>Sale of previously reserved inventory against a $32.0m excess-and-obsolete reserve</li>
+      <li>$4.7m of quarterly net interest income on undeployed offering proceeds — about a third of pre-tax profit</li>
+      <li>Three capacity-reservation contracts signed inside seven weeks at the tightest point of the shortage</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tw">
+<table>
+<caption>What to monitor, and where it is published</caption>
+<thead><tr><th>Indicator</th><th>Why it matters</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>North America and Taiwan as a share of revenue</td><td>The cleanest read on permit flow. North America above 5% would mean US GaAs and InP permits are being granted; it was 0.3% in Q2 2026.</td><td>Quarterly 10-Q, geographic disaggregation note</td></tr>
+<tr><td>MOFCOM announcements and suspension dates</td><td>Announcement 2024 No. 46's Article 2 suspension expires 27 Nov 2026; the Feb 2025 indium controls were never suspended.</td><td>China Ministry of Commerce</td></tr>
+<tr><td>Gallium and germanium price and trade series</td><td>The outside check on whether the input-cost squeeze that forced AXT out of germanium wafers is easing.</td><td>USGS Mineral Commodity Summaries, each January</td></tr>
+<tr><td>Cost of revenue growth vs revenue growth</td><td>Cost growing materially slower means volume is filling existing capacity; the two converging means price, not volume, did the work.</td><td>Quarterly earnings release and 10-Q</td></tr>
+<tr><td>Capex and construction in progress</td><td>$8.6m in H1 2026 is not yet consistent with the capacity committed to Coherent and Lumentum.</td><td>10-Q cash flow statement and PP&amp;E note</td></tr>
+<tr><td>Accrued liabilities and contract liabilities</td><td>Rose from $14.8m to $27.1m in six months. Deposits are cash today and shipment credits later; tracking the balance separates cash-in from revenue.</td><td>10-Q balance sheet</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7. Risks and what the sources could not answer</h2>
+<p>Cyclicality is covered above. What follows is what cyclicality does not capture — risks that compound rather than pass.</p>
+<ul class="tight">
+<li><strong>The asset base and the regulator share a jurisdiction.</strong> $175.8m of long-lived assets, all manufacturing, 1,048 of 1,072 core employees and the entire crystal-growth capability sit in China, while the customers who set the price are in Europe, Taiwan, Japan and the United States. Beijing does not need to expropriate anything to determine AXT's revenue; it needs only to slow permit issuance, which it has already demonstrated. Cash reaching shareholders runs through export licences, a 10% withholding tax on subsidiary dividends and SAFE approval.</li>
+<li><strong>Engineered substrates attack precisely the stage now earning the rent.</strong> Fraunhofer has demonstrated 150mm InP-on-GaAs targeted at below 20% of today's InP price. That leaves InP device demand entirely intact while removing the substrate profit pool — the one part of the chain AXT occupies. Research stage, no qualification evidence: a five-to-ten-year risk, and therefore easy to underweight.</li>
+<li><strong>The capacity reservations concentrate counterparty and delivery risk at once.</strong> Roughly $135m of the funding for this build comes from three customers, two of whom — Coherent and Lumentum — are also potential competitors, operating a 6-inch InP platform and a captive InP wafer fab respectively, both expanding. Failure to meet the Coherent capacity commitment for six successive months permits Coherent to terminate and reclaim its unapplied prepayment. AXT has committed to a build it has not yet made the capital expenditure to deliver.</li>
+<li><strong>Dilution is the funding model, with no stated limit.</strong> Shares outstanding rose 44% in eighteen months, authorised shares went to 120m, the December 2025 raise priced at one-fifth of the April 2026 raise, and the company has never returned capital.</li>
+<li><strong>Governance is moving toward less shareholder friction.</strong> The board carried a Nasdaq audit-committee deficiency from July 2025 to January 2026, cured by re-designating an 85-year-old former director as independent once his consulting payments aged out of the look-back. Having failed to reach a majority quorum in May 2026, the board unilaterally cut the bylaw quorum to 33⅔% on 26 July 2026. The board is classified, directors are elected by plurality, and the founder is chairman and CEO.</li>
+<li><strong>The 2026 proxy does not mention Tongmei.</strong> “Tongmei” and “STAR Market” appear zero times in the DEF 14A filed 31 March 2026 — despite Tongmei receiving all offering proceeds, being counterparty to two of the three supply agreements, and carrying a US$49m redeemable minority stake whose IPO was withdrawn ten weeks later.</li>
+</ul>
+
+<h3>Open questions — findings, not omissions</h3>
+<ul class="tight">
+<li><strong>Volume versus price in the 165% growth.</strong> No wafer volumes, ASPs, utilisation or backlog are disclosed in any year examined. Whether Q2 2026 is units filling capacity or scarcity pricing on similar units is undeterminable from the filings — and it is the difference between a structural re-rating and a policy windfall.</li>
+<li><strong>Substrate margin versus raw-material margin.</strong> AXT disclosed this split in FY2016 — “substrate gross margin increased to 34.7% … and raw materials gross margin increased to 23.0%” — and stopped. Without it, consolidated margin cannot be attributed to the growing line or the shrinking one.</li>
+<li><strong>The reserved-inventory contribution to gross margin.</strong> A $32.0m reserve against $96.3m carried is large enough that the share of Q2 2026 gross profit arising from previously written-down material is a first-order question. Not disclosed.</li>
+<li><strong>Management's own account of any of it.</strong> No transcripts, shareholder letters or investor-day materials exist in the source set. Two standard checks cannot be run — what management has said over time, and what they do with their own money, since the Form 4 record was also not collected. Both should be pulled from EDGAR before a thesis is formed.</li>
+</ul>
+
+<h2>8. Investor takeaways</h2>
+<ul class="tight">
+<li><strong>What this business really is:</strong> a Chinese crystal-growth operation with a US listing, selling the base wafer that lasers, RF chips and satellite solar cells are built on, plus equity in the Chinese companies that refine its feedstock.</li>
+<li><strong>The economic engine:</strong> a largely fixed cost base against a wafer whose price AXT does not disclose. Utilisation is the whole margin — the same plant produced −6.4% and 44.9% gross margin five quarters apart.</li>
+<li><strong>The main growth lever:</strong> InP into AI datacentre optics, gated by Chinese export permits. Demand rose in 2025 while revenue fell, because permits, not orders, were the constraint.</li>
+<li><strong>What could break the story:</strong> the 2027–2029 capacity wave arriving as export scarcity unwinds, with cheaper engineered substrates behind it — and a funding model that has met every need by issuing shares.</li>
+<li><strong>What to monitor:</strong> North America as a share of revenue, MOFCOM permit policy, capital expenditure against the capacity promised to Coherent and Lumentum, and whether operating cash flow ever turns positive.</li>
+</ul>
+
+<div class="foot">
+<h3>Sources</h3>
+<p><strong>Company (primary):</strong> AXT, Inc. Forms 10-K for FY2016, FY2020, FY2022, FY2024 and FY2025 (the last filed 17 March 2026); Form 10-Q for the quarter ended 30 June 2026 (filed 13 August 2026) and for the quarter ended 30 September 2025; DEF 14A filed 31 March 2026; Forms 8-K filed 11 June 2025, 18 July 2025, 4 August 2025, 19 August 2025, 30 December 2025, 29 January 2026, 21 April 2026, 15 May 2026, 9 June 2026, 17 June 2026, 22 June 2026, 2 July 2026, 8 July 2026, 22 July 2026 and 29 July 2026.</p>
+<p><strong>Industry and third-party:</strong> USGS Mineral Commodity Summaries 2026 (gallium; germanium); USITC Executive Briefing on germanium and gallium; China MOFCOM/GAC Announcements 2023 No. 23, 2024 No. 46 and 2025 No. 10; JX Advanced Metals Integrated Report 2025; Umicore Capital Markets Day 2025; 5N Plus FY2025 results; IQE plc FY2024 results; Coherent FY2025 Q4 release and Sherman InP announcements; Lumentum Q3 FY2026 release; Yole Group compound-substrate and InP bare-die analyses; Cignal AI optical module shipment data; TrendForce reporting on InP supply, Sumitomo and Vital Materials capacity; Reuters reporting on Chinese control of indium phosphide exports (June 2026); Fraunhofer InP-on-GaAs work via Compound Semiconductor.</p>
+<p><strong>Post-dating the last audited figures:</strong> the Tongmei STAR Market withdrawal and resulting ~US$49m redemption right (8 July 2026), the Lumentum capacity reservation (26 July 2026) and the agreement to acquire a further ~0.58% of Tongmei (23 July 2026) all occurred after the FY2025 10-K and are reflected only in the Q2 2026 filing and the 8-K record.</p>
+<p style="margin-top:16px"><strong>Not available:</strong> earnings-call transcripts, shareholder letters, investor-day materials and Form 4 insider-trading records were absent from the source set. Where management's own framing or insider behaviour would normally be evidence, this document says so rather than inferring it.</p>
+<p style="margin-top:16px; color:var(--ink)">Prepared 7 September 2026. This document explains how the business works. It is not a valuation and not a recommendation.</p>
+</div>
+
+</div>
+</body>
+</html>

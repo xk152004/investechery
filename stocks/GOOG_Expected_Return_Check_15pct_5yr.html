@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alphabet: is 15% a year possible? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:22px;margin:30px 0 8px;color:var(--ink);}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .tabs{display:flex;gap:8px;margin:26px 0 6px;border-bottom:2px solid var(--line);}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .question-restate{font-family:Georgia,serif;font-size:24px;line-height:1.4;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 8px;}
+  .warning{background:var(--terracotta-soft);border:1px solid var(--terracotta);padding:14px 18px;border-radius:6px;margin:18px 0;font-size:18px;}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .bet-sentence{font-family:Georgia,serif;font-size:22px;line-height:1.45;background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 26px;margin:14px 0 6px;}
+  .bet-sentence strong{color:var(--terracotta);}
+  .engine{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0;}
+  @media(max-width:700px){.engine{grid-template-columns:1fr;}}
+  .engine .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .engine .col h3{margin-top:0;font-size:19px;}
+  .engine .col .tagline{color:var(--terracotta);font-size:15px;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+  .engine .col p{font-size:17px;margin-bottom:0;}
+  .leverblock{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:18px 24px;margin:16px 0;}
+  .leverblock h3{margin-top:0;}
+  .leverblock .verdictline{font-family:Georgia,serif;font-size:18px;color:var(--good);border-top:1px solid var(--line);padding-top:10px;margin-top:12px;}
+  .leverblock .verdictline.warn{color:var(--terracotta);}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .steelman{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:700px){.steelman{grid-template-columns:1fr;}}
+  .steelman .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;}
+  .steelman .col h3{margin-top:0;} .steelman ul{padding-left:20px;} .steelman li{margin-bottom:10px;font-size:18px;}
+  .inversion{border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;background:#fff;font-size:19px;}
+  .presets{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 6px;}
+  .presets button{font-family:Georgia,serif;font-size:17px;padding:10px 18px;border:1px solid var(--ink);background:#fff;color:var(--ink);border-radius:8px;cursor:pointer;}
+  .presets button:hover{background:var(--terracotta-soft);} .presets button.onp{background:var(--ink);color:var(--cream);}
+  .panel{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;margin-top:18px;}
+  @media(max-width:760px){.panel{grid-template-columns:1fr;}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;}
+  .card h3{margin:0 0 4px;font-size:20px;} .card .sub{color:var(--muted);font-size:16px;margin-bottom:14px;}
+  .lev{margin:16px 0;} .lev .row{display:flex;justify-content:space-between;align-items:baseline;}
+  .lev label{font-weight:700;font-size:18px;} .lev .val{font-family:Georgia,serif;font-size:19px;color:var(--terracotta);font-weight:700;}
+  .lev input[type=range]{width:100%;margin-top:8px;accent-color:var(--terracotta);height:22px;} .lev .hint{font-size:15px;color:var(--muted);margin-top:2px;}
+  .readout{background:var(--ink);color:var(--cream);border-radius:12px;padding:22px 24px;margin-top:6px;}
+  .readout .eg{font-size:17px;color:var(--terracotta-soft);letter-spacing:1px;text-transform:uppercase;}
+  .readout .egval{font-family:Georgia,serif;font-size:26px;margin:2px 0 16px;}
+  .irrgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .irrbox{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;text-align:center;}
+  .irrbox .lbl{font-size:15px;letter-spacing:1px;text-transform:uppercase;color:var(--terracotta-soft);}
+  .irrbox .num{font-family:Georgia,serif;font-size:40px;line-height:1.1;margin-top:4px;}
+  .irrbox .num.hit{color:#9ED8AE;} .irrbox .num.near{color:var(--gold);}
+  .verdictchip{font-size:16px;margin-top:12px;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.08);}
+  .bridge{margin-top:22px;}
+  .bar{display:flex;height:46px;border-radius:8px;overflow:hidden;border:1px solid var(--line);font-size:14px;}
+  .bar span{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;}
+  .seg-eg{background:var(--terracotta);} .seg-div{background:var(--good);} .seg-rr{background:var(--blue);}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:16px;color:var(--muted);}
+  .legend i{display:inline-block;width:13px;height:13px;border-radius:3px;margin-right:6px;vertical-align:middle;}
+  .note{font-size:16px;color:var(--muted);margin-top:14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:17px;margin-top:8px;}
+  th{font-family:Georgia,serif;text-align:left;padding:10px 12px;border-bottom:2px solid var(--ink);font-size:16px;}
+  td{padding:10px 12px;border-bottom:1px solid var(--line);}
+  .tblwrap{overflow-x:auto;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">IRR Reality Check, Compound With AI</div>
+  <h1>Alphabet: is 15% a year possible?</h1>
+  <p class="source">GOOG, Nasdaq. Run 8 September 2026. Built from ten years of Alphabet 10-K filings, the Q2 2026 10-Q and the Q2 2026 earnings call, plus cited web market data for price. Base: ~$336 per share, ~34x normalised after-tax operating earnings.</p>
+
+  <div class="tabs">
+    <button id="tabCase" class="on" onclick="showView('case')">The Case</button>
+    <button id="tabSim" onclick="showView('sim')">The Simulator</button>
+  </div>
+
+  <!-- ==================== VIEW 1: THE CASE ==================== -->
+  <div class="view on" id="viewCase">
+
+    <div class="question-restate">
+      15% a year over 5 years means one thing: Alphabet must be worth roughly 2.0x today's price by 2031, dividends included. On ~12.3 billion shares that is a company of roughly $8 trillion, from ~$4.1 trillion today (market cap from web market data, 4 September 2026).
+    </div>
+
+    <div class="warning">
+      <strong>Earnings were normalised before anything else.</strong> Alphabet's reported trailing EPS of about $19.93 and its reported P/E of about 17x are not usable numbers. Other income in the second quarter of 2026 alone was $98.0 billion, "primarily due to unrealised gains in our equity securities portfolio" (Q2 2026 10-Q; Q2 2026 call). This whole page therefore runs on after-tax operating income: trailing operating income of ~$147.6 billion (FY2025 10-K plus Q2 2026 10-Q arithmetic) taxed at ~17% (Q2 2025 effective rate 16.9%, Q2 2026 10-Q Note 14), which is ~$122 billion, or ~$9.90 per diluted share. That puts the shares at ~34x, not 17x. Every multiple on this page is on that same basis.
+    </div>
+
+    <div class="verdict-banner">
+      <div class="label">Verdict</div>
+      <div class="verdict">Requires the multiple to do the work. At any exit multiple at or below Alphabet's own ten-year median of ~29x, the target needs ~18.5%/yr earnings growth, and the operating levers reconcile to roughly ~7 to 11%/yr. The arithmetic only closes if Alphabet still trades near a ten-year-high multiple in 2031, and even then a gap remains. Its second face is "possible only if the past repeats at larger scale": Alphabet did grow operating income ~26%/yr from 2020 to 2025, but from a base one third of today's size.</div>
+    </div>
+    <div class="bet-sentence">
+      The bet, precisely stated: <strong>you are betting that the compute Alphabet is buying at ~$200 billion a year turns into earnings faster than its own depreciation arrives, and that in 2031 the market still pays a multiple near the top of Alphabet's own ten-year range for those earnings.</strong>
+    </div>
+
+    <h2>The business: how the machine actually works</h2>
+    <p>Alphabet is one very large, very old profit engine bolted to one very large, very new capital project. The old engine is Google Services: Search, YouTube, Android, Play, devices and subscriptions, $342.7 billion of FY2025 revenue at a 41% operating margin (FY2025 10-K). It sells advertiser access to user intent through an auction, at close to zero incremental cost, with traffic acquisition cost of 20.3% of relevant revenue as the main variable cost of distribution (FY2025 10-K). The new project is Google Cloud plus the frontier-model stack behind it: $58.7 billion of FY2025 revenue, $24.8 billion in the second quarter of 2026 alone, growing 82% year over year at a 35.6% operating margin, up from 20.7% a year earlier (Q2 2026 call). A fourth line, Alphabet-level activities, absorbed $16.8 billion of shared AI research in FY2025 and $11.2 billion in the first half of 2026 alone, and is charged to no segment at all (FY2025 10-K; Q2 2026 10-Q).</p>
+    <div class="engine">
+      <div class="col">
+        <div class="tagline">The big, slow engine</div>
+        <h3>Google Services</h3>
+        <p>85% of FY2025 revenue, 41% operating margin. Search and other alone was $224.5 billion, growing 17% in Q2 2026. YouTube ads $40.4 billion. Network $29.8 billion and shrinking. Subscriptions, platforms and devices $48.0 billion, +15%. This is what pays for everything else (FY2025 10-K; Q2 2026 call).</p>
+      </div>
+      <div class="col">
+        <div class="tagline">The small, fast, expensive engine</div>
+        <h3>Google Cloud and the AI stack</h3>
+        <p>15% of FY2025 revenue, ~21% by Q2 2026. Backlog $514 billion, up more than $50 billion sequentially, with just over 50% expected to be recognised within 24 months. It also now sells TPU systems into customers' own data centres, with the bulk of that revenue expected in 2027 (Q2 2026 call).</p>
+      </div>
+    </div>
+    <p>Hold that picture: a mature, high-margin advertising machine that grows in the low teens, and a capital-hungry compute business growing at triple that rate whose costs arrive before its revenue does. Every lever below is really a question about which of those two is setting the pace.</p>
+
+    <h2>The four levers, in plain terms</h2>
+
+    <div class="leverblock">
+      <h3>Volume: where do more units come from?</h3>
+      <p>Alphabet has two completely different volume mechanisms. In Search the unit is the paid click, and the filings show a long, orderly decay: clicks grew 40%, 54% and 62% in 2016 to 2018, then 23%, 19%, 23%, 10%, 7%, 5% and 6% in the years to 2025 (FY2016 to FY2025 10-Ks). Mid-single digits is now the run rate, and it is a genuine ceiling: there are only so many people, and Alphabet already has thirteen products with over a billion users. Management's own evidence that AI is adding rather than subtracting queries is real but qualitative, with AI Mode past one billion monthly active users and Search usage at an all-time high during the World Cup (Q2 2026 call). In Cloud the unit is a chip-hour, and the ceiling is physical: Alphabet says it is operating in a "supply constraint environment" and is renting third-party capacity in Q3 as a bridge while it builds its own. Capex of $195 to $205 billion in 2026, raised mid-year from $180 to $190 billion and set to "increase significantly in 2027", is not a financing detail here. It is the volume lever (Q2 2026 call). Against that sits Google Network, where impressions fell 7% in 2025 and revenue is in structural decline (FY2025 10-K).</p>
+      <div class="verdictline">The target requires ~9 to 10 points from volume. Weighting Search at mid-single-digit click growth, Cloud at a still-fast but decelerating pace off a contracted backlog, and Network at a decline, volume can plausibly supply ~8 to 9 points a year. This is the strongest lever Alphabet has and it very nearly does the job on its own.</div>
+    </div>
+
+    <div class="leverblock">
+      <h3>Price: can they charge more?</h3>
+      <p>This is where the case is most fragile, and the filings say so plainly. Cost-per-click on Google Search and other properties was <strong>negative every single year from 2016 through 2020</strong>: minus 13%, minus 21%, minus 25%, minus 7%, minus 10% (FY2016 to FY2020 10-Ks). It turned up in 2021 at plus 15%, went flat in 2022 and 2023 at minus 1% and plus 1%, and has now printed plus 7% in both 2024 and 2025 (FY2021 to FY2025 10-Ks). So Alphabet's demonstrated long-run price contribution in its largest business is roughly zero to negative, and the last two years are the exception, not the rule. Any scenario that carries plus 7% forward for five years is assuming that a two-year run is the new normal. There is real evidence behind the recent pace: management reports "encouraging" monetisation on queries showing AI Overviews even as coverage widened to more commercial queries, with retail and finance driving the largest contributions to a 17% Search revenue gain (Q2 2026 call). But Alphabet publishes no monetisation-per-query figure, so the claim cannot be checked from outside. On the Cloud side price is not Alphabet's to set: it competes with two well-capitalised rivals, and its own advantage is on cost, not price, as shown by cutting the cost of an AI Mode response to its lowest level since launch (Q2 2026 call).</p>
+      <div class="verdictline warn">The target requires ~3 to 4 points from price. Given a decade of flat-to-negative CPC and only two years of plus 7%, price can plausibly supply ~1.5 to 2.5 points a year across the whole company, and that already assumes the recent pace only half fades.</div>
+    </div>
+
+    <div class="leverblock">
+      <h3>Mix: is the basket getting richer, and how do the levers interact?</h3>
+      <p>Two mix shifts are running at once and they point in opposite directions. The helpful one: Cloud has gone from 7% of revenue in FY2020 to 14.6% in FY2025 to about 21% in Q2 2026, and its operating margin has gone from 20.7% to 35.6% in a year, which is now above Alphabet's consolidated 34% (FY2020 and FY2025 10-Ks; Q2 2026 call). Meanwhile Google Network, the lowest-quality revenue in the house because most of it is paid straight back out as traffic acquisition cost, is shrinking at 1 to 2% a year. Both of those quietly raise the average. The unhelpful one: the incoming mix is capital-heavy. TPU system sales are hardware, and hardware carries a different cost structure to selling chip-hours; inventory jumped from $2.4 billion to $10.0 billion in six months as those systems were built, and management expects the vast majority of that revenue in 2027 (Q2 2026 10-Q; Q2 2026 call). Alphabet has not disclosed the margin on it. Add the third-party bridging capacity that management says "will create modest margin pressure in the near-term", and the shared AI research bucket that grew to $11.2 billion in half a year and belongs to no segment, and the mix runway is genuinely ambiguous rather than simply favourable. Mix also interacts with the other levers: the Cloud shift is the volume lever, it dilutes the price lever because Cloud has less pricing power than Search, and it is the direct cause of the margin problem below.</p>
+      <div class="verdictline">The target requires ~1 to 2 points from mix. Netting the Cloud and Network shifts against hardware mix and unallocated AI research, mix can plausibly supply ~0 to 1 point a year, and perhaps two to three more years of the Cloud benefit before the hardware and depreciation weight cancel it.</div>
+    </div>
+
+    <div class="leverblock">
+      <h3>Margin: which line item gives, or is it a drag?</h3>
+      <p>Margin was Alphabet's single best lever of the last decade and is now running in reverse. Consolidated operating margin went from 20.1% in 2018 to 32.0% in 2025 and 34% in Q2 2026, roughly fourteen points of expansion, most of it operating leverage on headcount and the 2023 cost programme (FY2018 to FY2025 10-Ks; Q2 2026 call). That is close to the ceiling. Google Services is already at 41.8%, off a peak near 45%, and consolidated 33 to 34% is the highest Alphabet has ever printed. There is a named frontier above it (Microsoft has sustained mid-forties operating margins) but Alphabet is not structurally that business. Now the drag, which is arithmetic rather than opinion. Depreciation went from $15.3 billion in FY2024 to $21.1 billion in FY2025 to $13.6 billion in the first half of 2026 alone, up 43% year on year (FY2024 and FY2025 10-Ks; Q2 2026 10-Q). Management says roughly 60% of technical-infrastructure spend is servers and 40% data centres and networking (Q2 2026 call). On six-year server lives, every $100 billion of annual capex adds roughly $12 billion a year of run-rate depreciation once in service. At the guided ~$200 billion for 2026 that is ~$24 billion a year added, each year, and management has said 2027 goes higher (capex beyond 2026 is tagged approx., unverified). Set that against revenue growth: on a plausible build Alphabet adds roughly $70 billion of revenue a year, so incremental depreciation runs at roughly a third of incremental revenue, against 5.2% of revenue in FY2025. Operating expenses cannot leverage fast enough to offset that; they were 27.6% of revenue in FY2025, so even growing three points a year slower than revenue buys back only about two points of margin over five years. Management itself guides to the drag: higher depreciation and data-centre operating costs "will continue to put pressure on the P&L" and free cash flow "will remain under pressure" (Q2 2026 call).</p>
+      <div class="verdictline warn">The target requires zero to positive from margin. Margin is currently a drag and can plausibly supply <strong>minus 1 to minus 3 points a year</strong> over the horizon, unless the revenue the capex buys arrives faster and at higher incremental margin than the backlog schedule implies.</div>
+    </div>
+
+    <div class="pull">
+      Alphabet's engine has quietly changed shape. For a decade it grew earnings faster than revenue, because margin and mix were both pulling forward. Now volume is still strong, price is running above its own long-run norm, mix is ambiguous, and margin has flipped from the biggest contributor to a subtraction. That means earnings growth for the next five years is likely to run <strong>below</strong> revenue growth rather than above it, which is the reverse of the pattern the last ten years taught investors to expect.
+    </div>
+
+    <h2>So what does 15% actually depend on?</h2>
+    <p>Add the levers honestly. Volume ~8 to 9 points, price ~1.5 to 2.5 points, mix ~0 to 1 point gives plausible revenue growth of roughly 10 to 13% a year, which is consistent with a bottom-up build of the segments: Search at ~10%, YouTube at ~12%, subscriptions at ~14%, Network declining, and Cloud compounding at ~28% off its FY2025 base takes total revenue to roughly $750 billion by 2030, about 13.5% a year (author's build on FY2025 10-K segment revenue). Apply the margin lever at minus 1 to minus 3 points a year and plausible <strong>earnings growth is roughly 7 to 11% a year</strong>. The dividend adds ~0.26% ($0.22 per quarter declared, Q2 2026 call). So the business, on its own, supplies roughly 7 to 11% a year before the market does anything at all.</p>
+    <p>The target needs ~14.5% a year in earnings if the multiple simply holds at today's ~34x, and ~18.5% a year if it drifts back to Alphabet's own ten-year median of ~29x. That is a gap of roughly <strong>4 to 7 points a year at the current multiple and 8 to 11 points at the median</strong>, and those points have no identified source in the levers. Worse, the funding branch makes it harder rather than easier. Alphabet bought back $45.4 billion of stock in FY2025 and zero in the first half of 2026; it issued $49.6 billion of equity including a $19 billion mandatory convertible preferred, opened a $40 billion at-the-market programme on 1 June 2026, and took long-term debt from $46.5 billion to $98.2 billion; shares outstanding went from 12,088 million to 12,230 million in six months, an annualised pace of about 2.4% (FY2025 10-K; Q2 2026 10-Q). Trailing free cash flow is $53.3 billion against trailing capex of $132.4 billion, and Q2 2026 free cash flow was negative $5.9 billion (Q2 2026 call). Growth here is consuming the cash flow, so the dividend and buyback that quietly sit inside a 15% target have to be set to zero and dilution added back: at the current multiple the requirement becomes roughly <strong>16.5% a year of net income growth</strong> at a modest 1.5% dilution rate, and roughly 20% a year at the median multiple. <strong>This is a re-rating bet.</strong> Not because the business is weak, but because the arithmetic only reaches 15% if Alphabet is still valued at or above ~34x in 2031, which is the very top of the range it has traded in for ten years (~19x in 2022, ~29x median, ~35x peak in 2020).</p>
+    <p class="note">On precedent, the honest answer is that there is almost none to consult. The requirement is roughly 15% a year of after-tax earnings growth for five years from a ~$122 billion base. Only three or four companies in history have had a base that size at all. Microsoft compounded net income at roughly 18% a year from FY2020 to FY2025, but from a base of about $44 billion, roughly a third of Alphabet's (macrotrends.net, approx., unverified). Alphabet itself grew operating income at roughly 26% a year from FY2020 to FY2025, also from about a third of today's base (FY2020 and FY2025 10-Ks). Apple's earnings have been roughly flat in the high nineties of billions for several years, which is the closest analogue for a company already at this base size (approx., unverified). Fewer than three genuinely comparable peers exist, so precedent analysis is thin here, and that thinness is itself the finding: no company has been observed compounding a $120 billion-plus earnings base at 15% a year for five years, because almost none has had one.</p>
+
+    <h2>Both sides of the bet</h2>
+    <div class="steelman">
+      <div class="col">
+        <h3>What would make 15% work</h3>
+        <ul>
+          <li>The revenue build above may badly undercount Cloud. Backlog is $514 billion with just over half expected within 24 months, which alone implies a run rate far above the FY2025 base, and Cloud was already at a ~$100 billion annualised pace in Q2 2026 (Q2 2026 call). Cloud at 35%/yr rather than 28% takes total revenue toward $880 billion by 2030 and pushes revenue growth to ~17%/yr.</li>
+          <li>The depreciation drag assumes the assets sit idle for a while. They are not idle: Alphabet says it is supply-constrained and renting third-party capacity. If capacity is sold as fast as it is built, the depreciation arrives alongside its revenue rather than ahead of it, and Cloud's margin has already gone from 20.7% to 35.6% in a year while carrying a rising depreciation load (Q2 2026 call).</li>
+          <li>The cost curve is moving in Alphabet's favour in a way rivals cannot copy. Ten years of TPU development gave it a serving-cost position others must buy at merchant margins, and it cut the cost of an AI Mode response to its lowest level since launch even while adding capability (Q2 2026 call). Falling unit cost on rising volume is exactly what turns a capital project into operating leverage.</li>
+          <li>TPU system sales are a genuinely new revenue line with almost nothing in the base. Inventory rose from $2.4 billion to $10.0 billion in six months building them, and the vast majority of the revenue lands in 2027 (Q2 2026 10-Q; Q2 2026 call). If it scales, the volume lever is larger than any Search-based extrapolation.</li>
+          <li>The funding regime can reverse quickly. Buybacks stopped, they were not abolished; management has said it does not plan further equity raises beyond the ATM (Q2 2026 call). If free cash flow turns positive in 2027 as TPU revenue is recognised, dilution flips back to shrinkage and roughly two points a year come back into the requirement.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>What stands against it</h3>
+        <ul>
+          <li>The price lever is borrowed. CPC was negative in every year from 2016 to 2020 and has printed plus 7% only in 2024 and 2025 (FY2016 to FY2025 10-Ks). Carrying the recent pace forward is the single most common way this case is built, and the filings do not support it as a norm.</li>
+          <li>The capital commitment is contractual and the demand behind it is not. Purchase commitments and other contractual obligations total $811.0 billion, of which $200.7 billion is short-term, plus $43.8 billion of credit derivatives backstopping third-party data-centre builds (Q2 2026 10-Q). The cost is fixed whether or not the revenue shows up.</li>
+          <li>Depreciation is compounding faster than anything else in the P&L: $15.3 billion in FY2024, $21.1 billion in FY2025, $13.6 billion in the first half of 2026 alone (FY2024 and FY2025 10-Ks; Q2 2026 10-Q). And 2026 capex was raised mid-year, with 2027 guided higher again.</li>
+          <li>The share count is going the wrong way at exactly the moment the requirement is highest: 12,088 million to 12,230 million in six months, with a $40 billion at-the-market programme still open (Q2 2026 10-Q). Every point of dilution is a point added to the required growth rate.</li>
+          <li>Entry is at ~34x against a ten-year median of ~29x and a low of ~19x reached as recently as 2022. Even holding the current multiple is an assumption, and the median case takes about four points a year off the return before the business does anything.</li>
+          <li>The remedies overhang has not resolved. A December 2025 final judgment restricts Search distribution and requires data sharing, and structural remedies remain live in the ad-tech case, with $17.4 billion of accrued fines and settlements already on the balance sheet (FY2025 10-K; Q2 2026 10-Q).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="inversion">
+      <strong>Where the bet changes category:</strong> at an entry multiple of roughly <strong>~27x</strong> normalised after-tax operating earnings, with an exit at Alphabet's own ten-year median of ~29x, the 15% target would be covered by Alphabet's own demonstrated organic pace of ~13% a year in operating income over FY2021 to FY2025. At roughly ~27x this bet changes category from "requires the multiple to do the work" to "possible only if the past repeats at larger scale". Entry today is ~34x. That is arithmetic you can redo, not a level to buy at, and it says nothing about whether the shares will get there. Use the Simulator tab to see what happens when you set the levers yourself.
+    </div>
+  </div>
+
+  <!-- ==================== VIEW 2: THE SIMULATOR ==================== -->
+  <div class="view" id="viewSim">
+    <p style="margin-top:20px;">Move the four operating levers and the exit multiple. The page computes earnings growth, folds in the dividend, and shows the annualised return over 3 and 5 years, then splits it into its three sources. Read the case first; this is for pressure-testing it. Note that the multiple here is on normalised after-tax operating earnings (~$9.90 per share), not on Alphabet's reported EPS.</p>
+
+    <div class="presets">
+      <span style="align-self:center;color:var(--muted);font-size:16px;">Presets:</span>
+      <button data-p="bear">Bear</button>
+      <button data-p="base" class="onp">Base</button>
+      <button data-p="bull">Bull</button>
+    </div>
+
+    <div class="panel">
+      <div class="card">
+        <h3>Operating levers (build earnings growth)</h3>
+        <div class="sub">These four sum to the earnings CAGR. Ranges reflect Alphabet's own history.</div>
+        <div class="lev"><div class="row"><label>Volume</label><span class="val" id="vVol">0%</span></div>
+          <input type="range" id="sVol" min="0" max="14" step="0.5" value="8.5">
+          <div class="hint">Search paid clicks +6% in 2025, down from +62% in 2018; Cloud capacity-constrained against a $514B backlog (10-Ks; Q2 2026 call).</div></div>
+        <div class="lev"><div class="row"><label>Price</label><span class="val" id="vPr">0%</span></div>
+          <input type="range" id="sPr" min="-2" max="7" step="0.5" value="2">
+          <div class="hint">Search CPC was negative every year 2016 to 2020, then +7% in 2024 and 2025. Above ~3 assumes the recent pace is permanent (10-Ks).</div></div>
+        <div class="lev"><div class="row"><label>Mix</label><span class="val" id="vMx">0%</span></div>
+          <input type="range" id="sMx" min="0" max="3" step="0.5" value="0.5">
+          <div class="hint">Cloud from 7% of revenue in 2020 to ~21% in Q2 2026 at a 35.6% margin, offset by hardware mix and unallocated AI research (10-Ks; Q2 2026 call).</div></div>
+        <div class="lev"><div class="row"><label>Margin (earnings points/yr)</label><span class="val" id="vMg">0.0</span></div>
+          <input type="range" id="sMg" min="-4" max="4" step="0.5" value="-2">
+          <div class="hint">Currently a drag. Depreciation $21.1B in FY2025 and $13.6B in H1 2026 alone; ~$24B/yr added per $200B of capex on six-year server lives (10-K; Q2 2026 10-Q and call).</div></div>
+      </div>
+
+      <div class="card">
+        <h3>Market inputs <span style="font-size:16px;color:var(--muted);font-weight:400;">(what you assume the market does)</span></h3>
+        <div class="lev"><div class="row"><label>Exit multiple</label><span class="val" id="vEx">0x</span></div>
+          <input type="range" id="sEx" min="18" max="42" step="0.5" value="29">
+          <div class="hint">Today ~34x. Decade low ~19x (2022), median ~29x (approx.), peak ~35x (2020), on normalised after-tax operating earnings.</div></div>
+        <div class="lev"><div class="row"><label>Dividend yield</label><span class="val" id="vDy">0%</span></div>
+          <input type="range" id="sDy" min="0" max="2" step="0.1" value="0.3">
+          <div class="hint">~0.26% today, from $0.22 per quarter declared (Q2 2026 call). Set it to 0 if you think the capex programme consumes it.</div></div>
+
+        <div class="readout">
+          <div class="eg">Earnings growth (sum of levers)</div>
+          <div class="egval" id="egOut">0%/yr</div>
+          <div class="irrgrid">
+            <div class="irrbox"><div class="lbl">Return over 3 yr</div><div class="num" id="irr3">0%</div></div>
+            <div class="irrbox"><div class="lbl">Return over 5 yr</div><div class="num" id="irr5">0%</div></div>
+          </div>
+          <div class="verdictchip" id="chip">-</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bridge">
+      <h2>Where the return comes from (5-year, annualised)</h2>
+      <div class="bar" id="bar">
+        <span class="seg-eg" id="segEg">Earnings</span>
+        <span class="seg-div" id="segDiv">Dividend</span>
+        <span class="seg-rr" id="segRr">Re-rating</span>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--terracotta)"></i>Earnings growth <b id="lEg">0%</b></span>
+        <span><i style="background:var(--good)"></i>Dividend <b id="lDiv">0%</b></span>
+        <span><i style="background:var(--blue)"></i>Re-rating <b id="lRr">0%</b></span>
+        <span>= total ~<b id="lTot">0%</b>/yr</span>
+      </div>
+      <p class="note" id="rrNote"></p>
+    </div>
+
+    <h2>What each preset assumes</h2>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Vol</th><th>Price</th><th>Mix</th><th>Margin</th><th>Earnings CAGR</th><th>Exit mult.</th><th>5-yr return</th></tr></thead>
+      <tbody id="refBody"></tbody>
+    </table>
+    </div>
+    <p class="note">Bear holds Search volume at its current mid-single-digit pace, lets CPC fade back toward its long-run norm, and carries the full depreciation drag, with the multiple reverting toward the 2022 trough. Base is the memo's central case: strong volume, price fading only halfway, and roughly two points a year of margin compression, exiting at the ten-year median. Bull is the steelman: Cloud compounding faster than the backlog schedule implies, price holding near its recent pace, and the capex arriving alongside its revenue so margin turns positive again, with the multiple above today's. Only Bull clears 15%, and it needs both the business and the multiple to cooperate.</p>
+  </div>
+
+  <!-- shared footer -->
+  <h2>Method and sources</h2>
+  <p class="note">No DCF, no discount rate, no terminal value. Total return decomposes into earnings growth, multiple change, share count change, and dividends. Earnings are normalised to after-tax operating income throughout, because reported net income currently contains very large unrealised equity gains. Every figure is rounded on purpose and carries a source or is tagged approx., unverified. This page states the bet the price represents; whether to take it is your decision.</p>
+  <div class="sources">
+    <ul>
+      <li>Alphabet Inc. Form 10-K, FY2016 through FY2025 (filed 2017-02-03 to 2026-02-05): revenue, operating income and margin by year, segment revenue and operating income, paid clicks and cost-per-click by year, impressions and cost-per-impression, traffic acquisition cost, depreciation, capex, buybacks, dividends, share counts and diluted EPS.</li>
+      <li>Alphabet Inc. Form 10-Q, Q2 2026 (filed 2026-07-23): income statement and segment results for the quarter and half year, effective tax rate (Note 14), depreciation, capex, inventory, share count, mandatory convertible preferred and at-the-market programme, long-term debt, purchase commitments of $811.0 billion.</li>
+      <li>Alphabet Q2 2026 earnings call transcript (2026-07-22): capex guidance of $195 to $205 billion and the 60/40 server versus data-centre split, Cloud backlog of $514 billion and its 24-month conversion, Cloud margin, TPU system sales and 2027 revenue timing, third-party bridging capacity, AI Mode monthly active users, free cash flow, dividend declaration.</li>
+      <li>Web market data, 4 September 2026 close: share price ~$336, market capitalisation ~$4.1 trillion, reported trailing EPS ~$19.93 and reported P/E ~17x, shares outstanding ~12.23 billion (stockanalysis.com). Year-end share prices 2016 to 2025 used for the multiple history (macrotrends.net). Market data is not a company source.</li>
+      <li>Microsoft net income history for the precedent check (macrotrends.net), tagged approx., unverified.</li>
+      <li>Derived by the author and not taken from any source: the normalised after-tax earnings base, the ten-year multiple history on that basis, the requirement grid, the segment revenue build to 2030, and the depreciation-per-capex arithmetic. Capex beyond the 2026 guidance range is an extrapolation and is tagged approx., unverified wherever used.</li>
+    </ul>
+  </div>
+
+  <div class="footer">Compound With AI. IRR Reality Check. Not investment advice: this page states requirements and evidence, never a recommendation.</div>
+</div>
+
+<script>
+  function showView(v){
+    document.getElementById('viewCase').classList.toggle('on', v==='case');
+    document.getElementById('viewSim').classList.toggle('on', v==='sim');
+    document.getElementById('tabCase').classList.toggle('on', v==='case');
+    document.getElementById('tabSim').classList.toggle('on', v==='sim');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  var CUR=33.7;
+  var TARGET=0.15;
+  var presets={
+    bear:{vol:6,pr:1,mx:0,mg:-3.5,ex:24,dy:0},
+    base:{vol:8.5,pr:2,mx:0.5,mg:-2,ex:29,dy:0.3},
+    bull:{vol:11,pr:3.5,mx:1,mg:0.5,ex:36,dy:0.3}
+  };
+
+  function num(id){return parseFloat(document.getElementById(id).value);}
+  function irr(g,ex,dy,N){return (1+g)*Math.pow(ex/CUR,1/N)*(1+dy)-1;}
+  function fmt(x){return (x*100).toFixed(1).replace(/\.0$/,'')+'%';}
+  function fmt0(x){return Math.round(x*100)+'%';}
+
+  function update(){
+    var vol=num('sVol'),pr=num('sPr'),mx=num('sMx'),mg=num('sMg'),ex=num('sEx'),dy=num('sDy');
+    document.getElementById('vVol').textContent=vol.toFixed(1)+'%';
+    document.getElementById('vPr').textContent=pr.toFixed(1)+'%';
+    document.getElementById('vMx').textContent=mx.toFixed(1)+'%';
+    document.getElementById('vMg').textContent=(mg>=0?'+':'')+mg.toFixed(1);
+    document.getElementById('vEx').textContent=ex.toFixed(1).replace(/\.0$/,'')+'x';
+    document.getElementById('vDy').textContent=dy.toFixed(1)+'%';
+    var g=(vol+pr+mx+mg)/100, dyd=dy/100;
+    document.getElementById('egOut').textContent=(g*100).toFixed(1)+'%/yr';
+    var i3=irr(g,ex,dyd,3), i5=irr(g,ex,dyd,5);
+    var b3=document.getElementById('irr3'), b5=document.getElementById('irr5');
+    b3.textContent=fmt0(i3); b5.textContent=fmt0(i5);
+    function cls(el,v){el.className='num'+(v>=TARGET?' hit':(v>=TARGET-0.03?' near':''));}
+    cls(b3,i3); cls(b5,i5);
+    var chip=document.getElementById('chip');
+    if(i5>=TARGET) chip.textContent='Clears 15% a year over 5 years under these assumptions.';
+    else if(i5>=TARGET-0.03) chip.textContent='Close to 15% (within ~3 points). Nudge growth or the exit multiple.';
+    else chip.textContent='Below 15% a year over 5 years. The levers as set do not reach it.';
+    var rr5=Math.pow(ex/CUR,1/5)-1, eg=g, dv=dyd, tot=eg+dv+rr5;
+    var wEg=Math.max(eg,0),wDv=Math.max(dv,0),wRr=Math.max(rr5,0),wsum=(wEg+wDv+wRr)||1;
+    document.getElementById('segEg').style.width=(wEg/wsum*100)+'%';
+    document.getElementById('segDiv').style.width=(wDv/wsum*100)+'%';
+    document.getElementById('segRr').style.width=(wRr/wsum*100)+'%';
+    document.getElementById('segEg').textContent= eg>0.02?'Earnings '+fmt(eg):'';
+    document.getElementById('segDiv').textContent= dv>0.015?'Div '+fmt(dv):'';
+    document.getElementById('segRr').textContent= rr5>0.015?'Re-rate '+fmt(rr5):'';
+    document.getElementById('lEg').textContent=fmt(eg);
+    document.getElementById('lDiv').textContent=fmt(dv);
+    document.getElementById('lRr').textContent=fmt(rr5);
+    document.getElementById('lTot').textContent=fmt(tot);
+    var rn=document.getElementById('rrNote');
+    if(rr5<0) rn.textContent='Re-rating is negative here: the exit multiple is below the current ~34x, so a de-rating subtracts from the return (shown in the legend, not the bar).';
+    else if(rr5>0.03) rn.textContent='Re-rating is doing much of the work: the bar leans blue, so the return depends on the multiple, not the business.';
+    else rn.textContent='Re-rating is a minor contributor here: most of the return is earnings growth plus the dividend.';
+  }
+  function applyPreset(name){
+    var p=presets[name];
+    document.getElementById('sVol').value=p.vol; document.getElementById('sPr').value=p.pr;
+    document.getElementById('sMx').value=p.mx; document.getElementById('sMg').value=p.mg;
+    document.getElementById('sEx').value=p.ex; document.getElementById('sDy').value=p.dy;
+    document.querySelectorAll('.presets button').forEach(function(b){b.classList.toggle('onp', b.dataset.p===name);});
+    update();
+  }
+  document.querySelectorAll('.presets button').forEach(function(b){ if(b.dataset.p) b.addEventListener('click',function(){applyPreset(b.dataset.p);}); });
+  ['sVol','sPr','sMx','sMg','sEx','sDy'].forEach(function(id){
+    document.getElementById(id).addEventListener('input',function(){
+      document.querySelectorAll('.presets button').forEach(function(b){b.classList.remove('onp');});
+      update();
+    });
+  });
+  (function(){
+    var rows=[['Bear','bear'],['Base','base'],['Bull','bull']], body=document.getElementById('refBody'), html='';
+    rows.forEach(function(r){
+      var p=presets[r[1]], g=(p.vol+p.pr+p.mx+p.mg)/100, i5=irr(g,p.ex,p.dy/100,5);
+      html+='<tr><td>'+r[0]+'</td><td>'+p.vol+'%</td><td>'+p.pr+'%</td><td>'+p.mx+'%</td><td>'+(p.mg>=0?'+':'')+p.mg+'</td><td>'+(g*100).toFixed(1)+'%</td><td>'+p.ex+'x</td><td>'+Math.round(i5*100)+'%</td></tr>';
+    });
+    body.innerHTML=html;
+  })();
+  update();
+</script>
+</body>
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apple Business Overview</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+body{background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:var(--ink)}
+h1{font-size:38px;line-height:1.16;margin:6px 0 10px}
+h2{font-size:27px;line-height:1.22;margin:52px 0 14px}
+h3{font-size:21px;line-height:1.28;margin:30px 0 8px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;line-height:1.5;border-top:1px solid var(--line);
+  padding-top:14px;margin-top:18px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.45;border-left:5px solid var(--terracotta);
+  padding:6px 0 6px 20px;margin:30px 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:30px 0 34px}
+.engine .lab{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#C9A48F;font-weight:700}
+.engine .unit{font-family:Georgia,serif;font-size:30px;line-height:1.25;margin:10px 0 12px;color:#fff}
+.engine p{margin:0;color:#E6DFD4;font-size:17.5px;line-height:1.55}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi .v{font-family:Georgia,serif;font-size:29px;color:var(--terracotta);margin:6px 0 3px;
+  font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .s{font-size:14.5px;color:var(--muted);line-height:1.42}
+.lever{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:15px 20px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .h{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:4px 0 5px}
+.lever p{margin:0;font-size:17px;line-height:1.52}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:24px 26px;margin:30px 0}
+.pull q{font-family:Georgia,serif;font-size:21px;line-height:1.45;display:block;quotes:'“' '”'}
+.pull .attr{font-size:14.5px;color:var(--muted);margin-top:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.col{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.col h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px;font-weight:700}
+.col.d h4{color:var(--good)} .col.b h4{color:var(--terracotta)}
+.col ul{margin:0;padding-left:18px} .col li{margin-bottom:9px;font-size:16.5px;line-height:1.46}
+figure{margin:26px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 10px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:14.5px;color:var(--muted);margin-top:8px;line-height:1.45}
+.ax{font-size:12.5px;fill:var(--muted);font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-variant-numeric:tabular-nums}
+.lb{font-size:13.5px;font-weight:700;font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:16.5px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);
+  background:#F7F2E9}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+tbody tr.tot td{font-weight:700;background:#FBF7F0}
+.note{font-size:14.5px;color:var(--muted);line-height:1.5;margin:-8px 0 22px}
+.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:22px;font-size:15px;color:var(--muted);line-height:1.55}
+.foot h3{font-size:17px;margin:0 0 10px;color:var(--ink)}
+.foot ul{padding-left:18px;margin:0 0 14px}
+@media (max-width:720px){
+  body{font-size:17.5px}
+  h1{font-size:30px} h2{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  .engine .unit{font-size:24px}
+}
+</style>
+</head>
+<body style="margin:0">
+
+
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Apple Inc. <span style="color:var(--muted);font-weight:400">(NASDAQ: AAPL)</span></h1>
+<div class="srcline">
+5 September 2026. Built from Apple’s SEC filings held in the research folder — FY2021–FY2025 Forms 10-K,
+Forms 10-Q through the quarter ended 27 June 2026, proxies through January 2026 and Item 5.02 Forms 8-K
+through 1 September 2026 — with industry structure from IDC, Counterpoint, Omdia, TrendForce, the European
+Commission, US federal court records and the filings of Samsung, Xiaomi, Alphabet, Micron, SK hynix and TSMC.
+<strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Apple is an annuity business wearing hardware clothes: it sells a phone at roughly three-and-a-half times the
+industry’s average price, then earns a 76%-margin income stream from that device for as long as someone keeps
+using it.
+</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">One iPhone — sold once, then earning for three and a half years.</div>
+  <p>It sells for about <strong>$946</strong> (Counterpoint, Q2 2026) against a $400 industry average, throwing off
+  roughly <strong>$379 of gross profit</strong> on the sale. It then becomes one of more than <strong>2.5 billion
+  active Apple devices</strong>, each generating about <strong>$48 a year of Services revenue at a 75.6% gross
+  margin</strong> — around $37 of pure gross profit annually, for a replacement cycle that now runs 43 months.
+  The hardware sale is the customer-acquisition cost of an annuity Apple never has to pay to acquire.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">iPhone average price</div><div class="v">$946</div>
+    <div class="s">vs $400 industry, $270 Samsung. Counterpoint, Q2 2026</div></div>
+  <div class="kpi"><div class="k">Gross profit per unit</div><div class="v">~$379</div>
+    <div class="s">40.1% Products gross margin applied to ASP (inferred)</div></div>
+  <div class="kpi"><div class="k">Trailing net income</div><div class="v">$128.9bn</div>
+    <div class="s">On $466.8bn revenue; ~$8.72 diluted EPS. TTM to Jun-26</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">+$62.2bn</div>
+    <div class="s">Net cash: $146.5bn securities less $84.3bn debt, 27 Jun 2026</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak</div>
+    <div class="s">Record 50.1% gross margin — into a memory shock of +300% YoY</div></div>
+  <div class="kpi"><div class="k">Organic growth</div><div class="v">+16.1%</div>
+    <div class="s">All of it. No material acquisition disclosed since FY2022</div></div>
+</div>
+
+<h2>What the company does</h2>
+
+<p>The problem Apple solves is not a shortage of computing power. It is the cost of assembling computing power
+into something that works. A buyer who wants a phone, a laptop, a watch and headphones that share files, calls,
+passwords, payments and photographs without configuration has, in practice, one supplier who will sell all of it
+as a single designed system. Apple charges a very large premium for removing that assembly problem, and the
+premium is the business.</p>
+
+<p>Trace a single iPhone. Apple designs the processor and has TSMC fabricate it on a leading-edge node — TSMC
+earned a 67.7% gross margin in the June 2026 quarter with 77% of wafer revenue from 7nm and below, so this is
+expensive but contractually stable supply. Memory, displays, cameras and radios come from outside suppliers, many
+single-sourced: Apple’s FY2025 10-K notes that new products “often utilize custom components available from only
+one source.” Final assembly is done by partners located primarily in China mainland, India, Japan, South Korea,
+Taiwan and Vietnam. Sixty per cent of finished product moves through carriers, resellers and retailers; 40%
+through Apple’s own channels.</p>
+
+<p>Apple collects cash fast. At 27 June 2026 receivables were $31.4bn against $466.8bn of trailing revenue, while
+accounts payable of $69.9bn exceeded receivables outright. Suppliers finance the working capital, not Apple and
+not the customer.</p>
+
+<h3>The second sale is the more important one</h3>
+
+<p>The phone becomes an active device and stays one for about three and a half years. Apple says its installed
+base exceeds 2.5 billion active devices and that paid subscriptions passed 1.5 billion. Counterpoint
+independently estimates more than a billion active iPhones — nearly one in four active smartphones worldwide.
+Against that base Apple earned $120.5bn of Services revenue in the twelve months to June 2026 at a 75.6% gross
+margin.</p>
+
+<p>That is the whole architecture in one ratio: <strong>Services is 25.8% of revenue and 40.3% of gross
+profit.</strong> Services contains the App Store commission, advertising, iCloud, subscriptions, AppleCare,
+payments and licensing — chiefly the agreement under which Google pays for default search placement in Safari.
+Apple discloses none of them separately. Worth noting: the FY2025 10-K named “advertising, the App Store and
+cloud services” as Services growth drivers; the June 2026 10-Q names “advertising and cloud services” and drops
+the App Store. That omission is the only signal in the filings that the App Store may have stopped
+contributing.</p>
+
+<figure>
+<svg viewBox="0 0 830 330" role="img" preserveAspectRatio="xMidYMid meet">
+<line x1="62" y1="288.0" x2="796" y2="288.0" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="292.0" text-anchor="end" class="ax">$0bn</text>
+<line x1="62" y1="222.5" x2="796" y2="222.5" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="226.5" text-anchor="end" class="ax">$90bn</text>
+<line x1="62" y1="157.0" x2="796" y2="157.0" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="161.0" text-anchor="end" class="ax">$180bn</text>
+<line x1="62" y1="91.5" x2="796" y2="91.5" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="95.5" text-anchor="end" class="ax">$270bn</text>
+<line x1="62" y1="26.0" x2="796" y2="26.0" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="30.0" text-anchor="end" class="ax">$360bn</text>
+<text x="62.0" y="314" text-anchor="middle" class="ax">FY19</text>
+<text x="166.9" y="314" text-anchor="middle" class="ax">FY20</text>
+<text x="271.7" y="314" text-anchor="middle" class="ax">FY21</text>
+<text x="376.6" y="314" text-anchor="middle" class="ax">FY22</text>
+<text x="481.4" y="314" text-anchor="middle" class="ax">FY23</text>
+<text x="586.3" y="314" text-anchor="middle" class="ax">FY24</text>
+<text x="691.1" y="314" text-anchor="middle" class="ax">FY25</text>
+<text x="796.0" y="314" text-anchor="middle" class="ax">TTM</text>
+<polyline points="62.0,132.3 166.9,127.4 271.7,71.6 376.6,57.9 481.4,71.0 586.3,73.4 691.1,64.6 796.0,36.0" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="62.0" cy="132.3" r="3.1" fill="#C75B39"/>
+<circle cx="166.9" cy="127.4" r="3.1" fill="#C75B39"/>
+<circle cx="271.7" cy="71.6" r="3.1" fill="#C75B39"/>
+<circle cx="376.6" cy="57.9" r="3.1" fill="#C75B39"/>
+<circle cx="481.4" cy="71.0" r="3.1" fill="#C75B39"/>
+<circle cx="586.3" cy="73.4" r="3.1" fill="#C75B39"/>
+<circle cx="691.1" cy="64.6" r="3.1" fill="#C75B39"/>
+<circle cx="796.0" cy="36.0" r="3.1" fill="#C75B39"/>
+<text x="68.0" y="120.3" text-anchor="start" class="lb" fill="#C75B39">Products $213.9bn</text>
+<text x="790.0" y="24.0" text-anchor="end" class="lb" fill="#C75B39">$346.3bn</text>
+<polyline points="62.0,254.3 166.9,248.8 271.7,238.2 376.6,231.2 481.4,226.0 586.3,218.0 691.1,208.5 796.0,200.3" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="62.0" cy="254.3" r="3.1" fill="#3C6E8F"/>
+<circle cx="166.9" cy="248.8" r="3.1" fill="#3C6E8F"/>
+<circle cx="271.7" cy="238.2" r="3.1" fill="#3C6E8F"/>
+<circle cx="376.6" cy="231.2" r="3.1" fill="#3C6E8F"/>
+<circle cx="481.4" cy="226.0" r="3.1" fill="#3C6E8F"/>
+<circle cx="586.3" cy="218.0" r="3.1" fill="#3C6E8F"/>
+<circle cx="691.1" cy="208.5" r="3.1" fill="#3C6E8F"/>
+<circle cx="796.0" cy="200.3" r="3.1" fill="#3C6E8F"/>
+<text x="68.0" y="272.3" text-anchor="start" class="lb" fill="#3C6E8F">Services $46.3bn</text>
+<text x="790.0" y="218.3" text-anchor="end" class="lb" fill="#3C6E8F">$120.5bn</text>
+</svg>
+<figcaption>Products and Services net sales, FY2019 to the twelve months ended 27 June 2026 ($bn). Services has
+roughly tripled while Products grew about 60%. Source: FY2021, FY2022, FY2025 Forms 10-K and the FY2026 Q3 10-Q.
+FY2023 spanned 53 weeks against 52 for adjacent years.</figcaption>
+</figure>
+
+<h2>Industry structure and what actually protects the position</h2>
+
+<p>The smartphone industry inverted in 2026, and no assessment written on pre-2026 assumptions survives it. IDC
+forecasts global unit shipments down 16.7% this year to just over a billion — “the steepest annual contraction
+the industry has ever recorded” — while market value rises 6.3% to $613bn on a 27.6% increase in average selling
+price. Units are collapsing and revenue is growing. Any framing of Apple built on unit share now describes the
+wrong variable.</p>
+
+<p>Apple sold roughly 21% of the world’s smartphones in the June quarter and captured <strong>49% of the
+industry’s revenue</strong>, its highest-ever second-quarter share. In the premium tier — $600 wholesale and
+above, now 29% of the whole market — Apple holds 65% and Samsung 19%.</p>
+
+<p>The profit picture is starker, and it rests on competitors’ own filings rather than a tracker estimate.
+Samsung Electronics posted record group operating profit of KRW 89.5tn in Q2 2026 — and its Mobile eXperience
+division, the world’s largest smartphone business by units, <strong>lost KRW 0.7tn on KRW 33.2tn of
+revenue</strong>. Effectively all of Samsung’s record profit came from selling memory to the industry, not from
+selling phones. Xiaomi’s smartphone gross margin fell from 12.4% to 10.1% to 8.5% across three quarters. Against
+these, Apple’s 48.7% company gross margin is not an incremental advantage; it is a different order of
+business.</p>
+
+<h3>Which barriers actually bind</h3>
+
+<p>Several commonly cited barriers do not bind here. Manufacturing scale does not — Apple owns no fabrication and
+no assembly, and its long-lived assets outside the United States totalled just $9.6bn at FY2025 year-end. Brand
+alone does not — Samsung has one and lost money on handsets last quarter. Operating-system share does not —
+Android runs on roughly three-quarters of the world’s phones.</p>
+
+<p>What binds is holding silicon, operating system and distribution <em>simultaneously</em>, and 2026 showed the
+mechanism plainly. As memory prices rose, every Android vendor faced a choice between margin and price. Most
+raised prices: Xiaomi’s average selling price rose 25.9% year on year while its gross margin still fell to 8.5%.
+Apple and Huawei held price. IDC’s account of China in Q2 2026 is explicit — the two “both held prices steady
+while the rest of the Android field raised them.” Apple grew 24.4% in a market that shrank 4.3%.</p>
+
+<p>Apple could hold price because it had 40 points of product gross margin to spend and a Services annuity
+underneath it. Xiaomi, at 8.5%, had nothing to spend. A well-funded entrant could reproduce Apple’s hardware. It
+could not reproduce the 40-point buffer, because the buffer comes from an installed base that takes twenty years
+to accumulate rather than capital to buy.</p>
+
+<p>The kind of company that wins here is the one that captures the value it creates rather than the volume it
+ships — volume in consumer hardware is a commodity, and the profit pool sits with whoever owns the customer
+relationship after the sale. Apple is that kind of company to an unusual degree: 21% of units, 49% of revenue,
+and on the evidence of Samsung’s and Xiaomi’s own filings, very close to all of the industry’s positive handset
+profit.</p>
+
+<h2>The growth engine</h2>
+
+<p>Apple grew revenue 16.1% in the nine months to June 2026 — roughly three times its FY2021–FY2025 average, which
+requires explanation rather than acceptance. Unusually, reported growth <em>is</em> organic growth: across
+FY2021–FY2024 the 10-Ks disclose no business combination, no goodwill line and no named acquisition. Maximum
+disclosed acquisition spend in any year was $306m, under 0.08% of revenue, and the acquisitions line was removed
+from the cash flow statement entirely from FY2023.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Contribution to 9M FY2026 growth</th><th class="n">9M FY26</th><th class="n">9M FY25</th><th class="n">Share of growth</th></tr></thead>
+<tbody>
+<tr><td>iPhone</td><td class="n">196,515</td><td class="n">160,561</td><td class="n"><strong>71%</strong></td></tr>
+<tr><td>Services</td><td class="n">91,728</td><td class="n">80,408</td><td class="n"><strong>22%</strong></td></tr>
+<tr><td>Mac</td><td class="n">27,137</td><td class="n">24,982</td><td class="n">4%</td></tr>
+<tr><td>iPad</td><td class="n">21,700</td><td class="n">21,071</td><td class="n">1%</td></tr>
+<tr><td>Wearables, Home &amp; Accessories</td><td class="n">27,277</td><td class="n">26,673</td><td class="n">1%</td></tr>
+<tr class="tot"><td>Total net sales</td><td class="n">364,357</td><td class="n">313,695</td><td class="n">+16.1%</td></tr>
+</tbody></table>
+</div>
+<p class="note">$ millions, FY2026 Q3 10-Q. Growth shares computed from the disclosed figures. Acquisitions
+contributed nothing — none is disclosed. iPhone and Services together produced 93% of all growth.</p>
+
+<div class="lever structural">
+  <div class="tag">Structural — amplified</div>
+  <div class="h">iPhone price and mix</div>
+  <p>iPhone grew 22% on “higher net sales of Pro models,” with average selling price rising to $946 from $879.
+  Apple stopped disclosing unit volumes in FY2019, so price and volume cannot be separated from the filings — but
+  IDC forecasts Apple’s 2026 unit shipments <em>down</em> 1.3%, which makes this growth predominantly price and
+  mix.</p>
+</div>
+<div class="lever cyclical">
+  <div class="tag">Cyclical — and partly borrowed</div>
+  <div class="h">Greater China recovery</div>
+  <p>China contributed 30% of total revenue growth from 14% of the revenue base, growing 30% to $64.8bn in nine
+  months — already more than the whole of FY2025. IDC and Counterpoint corroborate the share gain, but IDC
+  attributes part of it to consumers “pulling purchases forward in anticipation of price increases.” Pulled-forward
+  demand is volume borrowed from later quarters.</p>
+</div>
+<div class="lever structural">
+  <div class="tag">Structural</div>
+  <div class="h">Services compounding on the installed base</div>
+  <p>Up 14% to $91.7bn in nine months, on advertising and cloud. The most durable line in the company, because it
+  grows with devices <em>in use</em> rather than devices sold — and the base is still expanding.</p>
+</div>
+<div class="lever cyclical">
+  <div class="tag">Cyclical</div>
+  <div class="h">Competitors’ cost distress</div>
+  <p>The pricing asymmetry above is a growth driver in its own right. It reverses when component prices normalise
+  and rivals can price competitively again.</p>
+</div>
+<div class="lever">
+  <div class="tag">Temporary</div>
+  <div class="h">Mac on a product cycle</div>
+  <p>Mac grew 28.7% in the June quarter on laptops. Omdia recorded Apple as the only major PC vendor with
+  significant growth in Q2 2026, up 16% in a market down 3.6%, on the MacBook Neo. IDC notes Apple did not
+  participate in the 2025 Windows 10 end-of-support refresh — this is a product cycle, and product cycles lap.</p>
+</div>
+
+<h2>Margin, cash and capital allocation</h2>
+
+<p>Apple’s gross margin has risen for seven consecutive years, from 37.8% in FY2019 to 48.7% trailing. Almost none
+of it came from making hardware more cheaply.</p>
+
+<p>Two mechanisms account for it. <strong>Mix:</strong> Services went from 17.8% of revenue to 25.8%, and carries a
+75.6% margin against 40.1% for Products — shifting eight points of revenue from a 40-point margin to a 76-point
+margin lifts the blended rate by roughly three points before anything else happens. <strong>Services margin
+itself:</strong> up from 63.7% to 76.3%, as the mix within Services moved toward advertising and licensing, lines
+with almost no incremental cost of delivery.</p>
+
+<figure>
+<svg viewBox="0 0 830 330" role="img" preserveAspectRatio="xMidYMid meet">
+<line x1="62" y1="264.2" x2="796" y2="264.2" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="268.2" text-anchor="end" class="ax">30%</text>
+<line x1="62" y1="216.5" x2="796" y2="216.5" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="220.5" text-anchor="end" class="ax">40%</text>
+<line x1="62" y1="168.9" x2="796" y2="168.9" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="172.9" text-anchor="end" class="ax">50%</text>
+<line x1="62" y1="121.3" x2="796" y2="121.3" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="125.3" text-anchor="end" class="ax">60%</text>
+<line x1="62" y1="73.6" x2="796" y2="73.6" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="77.6" text-anchor="end" class="ax">70%</text>
+<line x1="62" y1="26.0" x2="796" y2="26.0" stroke="var(--line)" stroke-width="1"/>
+<text x="52" y="30.0" text-anchor="end" class="ax">80%</text>
+<text x="62.0" y="314" text-anchor="middle" class="ax">FY19</text>
+<text x="166.9" y="314" text-anchor="middle" class="ax">FY20</text>
+<text x="271.7" y="314" text-anchor="middle" class="ax">FY21</text>
+<text x="376.6" y="314" text-anchor="middle" class="ax">FY22</text>
+<text x="481.4" y="314" text-anchor="middle" class="ax">FY23</text>
+<text x="586.3" y="314" text-anchor="middle" class="ax">FY24</text>
+<text x="691.1" y="314" text-anchor="middle" class="ax">FY25</text>
+<text x="796.0" y="314" text-anchor="middle" class="ax">TTM</text>
+<polyline points="62.0,103.6 166.9,92.7 271.7,75.1 376.6,65.5 481.4,69.8 586.3,55.1 691.1,47.9 796.0,45.1" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="62.0" cy="103.6" r="3.1" fill="#3C6E8F"/>
+<circle cx="166.9" cy="92.7" r="3.1" fill="#3C6E8F"/>
+<circle cx="271.7" cy="75.1" r="3.1" fill="#3C6E8F"/>
+<circle cx="376.6" cy="65.5" r="3.1" fill="#3C6E8F"/>
+<circle cx="481.4" cy="69.8" r="3.1" fill="#3C6E8F"/>
+<circle cx="586.3" cy="55.1" r="3.1" fill="#3C6E8F"/>
+<circle cx="691.1" cy="47.9" r="3.1" fill="#3C6E8F"/>
+<circle cx="796.0" cy="45.1" r="3.1" fill="#3C6E8F"/>
+<text x="68.0" y="91.6" text-anchor="start" class="lb" fill="#3C6E8F">Services 63.7%</text>
+<text x="790.0" y="33.1" text-anchor="end" class="lb" fill="#3C6E8F">76%</text>
+<polyline points="62.0,227.0 166.9,225.1 271.7,208.0 376.6,200.8 481.4,197.0 586.3,187.0 691.1,183.7 796.0,175.1" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="62.0" cy="227.0" r="3.1" fill="#C75B39"/>
+<circle cx="166.9" cy="225.1" r="3.1" fill="#C75B39"/>
+<circle cx="271.7" cy="208.0" r="3.1" fill="#C75B39"/>
+<circle cx="376.6" cy="200.8" r="3.1" fill="#C75B39"/>
+<circle cx="481.4" cy="197.0" r="3.1" fill="#C75B39"/>
+<circle cx="586.3" cy="187.0" r="3.1" fill="#C75B39"/>
+<circle cx="691.1" cy="183.7" r="3.1" fill="#C75B39"/>
+<circle cx="796.0" cy="175.1" r="3.1" fill="#C75B39"/>
+<text x="68.0" y="215.0" text-anchor="start" class="lb" fill="#C75B39">Total 37.8%</text>
+<text x="790.0" y="163.1" text-anchor="end" class="lb" fill="#C75B39">48.7%</text>
+<polyline points="62.0,253.7 166.9,257.0 271.7,238.9 376.6,234.2 481.4,233.2 586.3,229.9 691.1,231.8 796.0,220.8" fill="none" stroke="#C79A3A" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="62.0" cy="253.7" r="3.1" fill="#C79A3A"/>
+<circle cx="166.9" cy="257.0" r="3.1" fill="#C79A3A"/>
+<circle cx="271.7" cy="238.9" r="3.1" fill="#C79A3A"/>
+<circle cx="376.6" cy="234.2" r="3.1" fill="#C79A3A"/>
+<circle cx="481.4" cy="233.2" r="3.1" fill="#C79A3A"/>
+<circle cx="586.3" cy="229.9" r="3.1" fill="#C79A3A"/>
+<circle cx="691.1" cy="231.8" r="3.1" fill="#C79A3A"/>
+<circle cx="796.0" cy="220.8" r="3.1" fill="#C79A3A"/>
+<text x="68.0" y="271.7" text-anchor="start" class="lb" fill="#C79A3A">Products 32.2%</text>
+<text x="790.0" y="238.8" text-anchor="end" class="lb" fill="#C79A3A">39.1%</text>
+</svg>
+<figcaption>Gross margin by line, FY2019 to trailing twelve months. Services margin expansion and the mix shift
+toward it — not cheaper hardware — account for the consolidated increase. Products margin is the volatile
+component. Source: MD&amp;A gross-margin tables, FY2021/FY2022/FY2025 10-Ks and FY2026 Q3 10-Q.</figcaption>
+</figure>
+
+<p>The Products line is currently distorted, and this matters more than anything else on the page. It fell to
+36.8% in FY2025 “primarily due to a different mix of products and <strong>tariff costs</strong>,” then rose to
+40.1% in Q3 FY2026 “primarily due to a different mix of products and <strong>tariff refunds</strong>, partially
+offset by higher costs, including memory.” The refunds follow the US Supreme Court’s 20 February 2026 ruling
+striking down certain IEEPA tariffs; Apple applied for a refund and booked it as a reduction of products cost of
+sales. <strong>Apple does not disclose the amount.</strong> The record 50.1% consolidated gross margin in the June
+quarter therefore includes a recovery of prior-period costs that cannot recur and cannot be sized from
+outside.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th></th><th class="n">FY2019</th><th class="n">FY2022</th><th class="n">FY2025</th><th class="n">TTM Jun-26</th></tr></thead>
+<tbody>
+<tr><td>Net sales ($m)</td><td class="n">260,174</td><td class="n">394,328</td><td class="n">416,161</td><td class="n">466,823</td></tr>
+<tr><td>Gross margin</td><td class="n">37.8%</td><td class="n">43.3%</td><td class="n">46.9%</td><td class="n">48.7%</td></tr>
+<tr><td>Services % of revenue</td><td class="n">17.8%</td><td class="n">19.8%</td><td class="n">26.2%</td><td class="n">25.8%</td></tr>
+<tr><td>Operating income ($m)</td><td class="n">63,930</td><td class="n">119,437</td><td class="n">133,050</td><td class="n">154,859</td></tr>
+<tr><td>Diluted EPS ($)</td><td class="n">2.97</td><td class="n">6.11</td><td class="n">7.46</td><td class="n">~8.72</td></tr>
+<tr><td>Diluted shares (m)</td><td class="n">18,596</td><td class="n">16,326</td><td class="n">15,005</td><td class="n">14,715</td></tr>
+</tbody></table>
+</div>
+<p class="note"><strong>Comparability:</strong> FY2023 spanned 53 weeks against 52 for FY2022 and FY2024, so any
+growth rate crossing it is distorted. FY2019 figures are the comparative columns of the FY2021 10-K, not the
+original filing. The FY2023 and FY2024 10-Ks each state that “certain prior period amounts have been reclassified”
+without specifying which. Segment expense detail was disclosed for the first time in FY2025 under ASU 2023-07. The
+trailing gross margin includes an undisclosed tariff-refund benefit. Trailing EPS is a sum of period EPS, not a
+recomputation on a weighted share count.</p>
+
+<h3>Cash conversion, and where the AI money is hiding</h3>
+
+<p>Cash converts better than profit: trailing operating cash flow of $146.7bn against net income of $128.9bn, less
+$10.0bn of capital expenditure, leaves $136.7bn of free cash flow — 29% of revenue. Depreciation and share-based
+compensation exceed a capital base that barely grows, and working capital is negative.</p>
+
+<p>One line deserves attention. Capital expenditure in the nine months to June 2026 was $6.8bn, <em>down 28%</em>
+from $9.5bn — falling, while Alphabet guides to $195–205bn of 2026 capital spending, Amazon to approximately
+$220bn and Meta to $130–145bn. At the same time Apple’s gross intangible assets rose $12.1bn in nine months with
+no acquisition note explaining it, other purchase obligations roughly doubled to $29.3bn, R&amp;D rose 32% in the
+June quarter on “infrastructure-related costs, including investments in artificial intelligence,” and inventories
+nearly doubled to $11.1bn. Apple has said it uses “some third-party cloud and we do our own data centers,” and
+announced in January 2026 that its next-generation foundation models will be based on Google’s Gemini models and
+cloud, with no commercial terms disclosed. <strong>The conclusion is that Apple’s AI spending is real and rising
+but lands in operating expense, cost of sales, intangibles and purchase commitments rather than capex
+(inferred).</strong> Its capex line understates it and is not comparable to a hyperscaler’s.</p>
+
+<h3>Where the cash goes</h3>
+
+<p>Ranked over FY2019–FY2025: buybacks <strong>$577.8bn</strong>, dividends $103.2bn, capital expenditure $75.7bn,
+debt reduction, and acquisitions last at effectively nothing. Diluted share count fell 20.9%. Buybacks have run at
+roughly 5.6× capital expenditure and around 40× the entire disclosed acquisition programme.</p>
+
+<p>That ranking says something specific about how management thinks: this is a company that believes it already
+owns the assets it needs and treats its own equity as the best available use of surplus cash. It has never made a
+large acquisition, carries no goodwill, and has told shareholders only that it “intends to increase its dividend
+on an annual basis” — which it has, by roughly four cents a year, alongside a fresh $100bn repurchase
+authorisation each May. The balance sheet has quietly repaired: total debt down from $124.7bn at FY2021 year-end
+to $84.3bn, cash and securities at $146.5bn, a net cash position of $62.2bn against $33.8bn nine months earlier,
+and retained earnings back to a positive $11.3bn from an accumulated deficit. Apple is now buying back less than
+it earns.</p>
+
+<p>No transaction post-dates the reported figures. One material event does: <strong>John Ternus became Chief
+Executive Officer on 1 September 2026</strong>, with Tim Cook moving to Executive Chair — the first change in
+fifteen years. Ternus’s FY2027 equity award is set at $55m of target value, 75% in performance shares vesting on
+total shareholder return relative to the S&amp;P 500, the same structure and 55th-percentile target that governed
+Cook’s awards.</p>
+
+<h2>Cyclicality: where this business sits right now</h2>
+
+<p>On its own history, Apple is at a peak on every metric that matters. Revenue, gross margin, operating margin and
+Greater China segment profit are all at or near records; the June quarter’s 50.1% consolidated gross margin is the
+highest ever recorded, against 37.8% at the FY2019 trough. Greater China revenue of $64.8bn in nine months already
+exceeds the whole of FY2025.</p>
+
+<p>The industry is at the opposite point of a different cycle, and that is the central tension. TrendForce
+reported conventional DRAM contract prices up <strong>90–95% quarter-on-quarter in Q1 2026</strong> — “the
+steepest increases in their history” — then 58–63% in Q2 and 13–18% in Q3; mobile LPDDR5X rose 78–83% in Q2 alone.
+IDC states NAND and DRAM costs are up more than 300% year on year and expects prices to keep rising until at least
+2028. The supplier economics confirm where the profit went: Micron reported quarterly revenue of $41.5bn against
+$9.3bn a year earlier at an <strong>84.6% gross margin</strong>; SK hynix grew operating profit 557% to a 76%
+operating margin. Apple sits on the paying side of that transfer. Samsung manufactures memory; Apple buys it.</p>
+
+<div class="pull">
+<q>The Company is experiencing a period of supply constraints and increasing costs for components… including
+advanced semiconductors, storage (NAND) and memory (DRAM)… The Company expects these trends to intensify, which
+may materially adversely impact the Company’s revenue, costs, gross margin, results of operations and financial
+condition.</q>
+<div class="attr">Apple Inc., Form 10-Q for the quarter ended 27 June 2026, Item 1A. This language does not appear
+in the FY2025 10-K. The filing adds that mitigating price increases “may not effectively mitigate these negative
+impacts, and may also reduce demand.”</div>
+</div>
+
+<p>The downside case is therefore not a demand recession but a margin compression Apple has already described.
+Memory contracted at 2026 prices flows into cost of sales with a lag of several quarters as inventory turns; the
+tariff refunds currently offsetting it are non-recurring; the pre-purchased inventory cushion is finite at
+$11.1bn; and the options are to absorb the cost in Products margin or raise prices — which the 10-Q says “may also
+reduce demand,” and which would forfeit the share gains won by holding price. IDC expects Apple’s 2026 units down
+just 1.3% against 24.3% for Android, so the exposure is to margin, not volume.</p>
+
+<div class="two">
+<div class="col d">
+<h4>Durable — survives ten years</h4>
+<ul>
+<li>Installed base above 2.5bn active devices, 1bn+ active iPhones, compounding independently of any one product cycle</li>
+<li>Services at 75.6% gross margin — 26% of revenue, 40% of gross profit, growing with devices in use</li>
+<li>Control of silicon, OS and distribution together: the source of the 40-point margin buffer that let Apple hold price in 2026</li>
+<li>65% of the premium tier, itself now 29% of the market and growing</li>
+<li>Capital return machinery: $577.8bn repurchased FY2019–FY2025, share count down 20.9%, funded from operating cash flow</li>
+</ul>
+</div>
+<div class="col b">
+<h4>Borrowed — currently helping</h4>
+<ul>
+<li>Tariff refunds reducing FY2026 products cost of sales — a recovery of prior-period cost, undisclosed and non-recurring</li>
+<li>Greater China demand pulled forward ahead of expected price increases — volume borrowed from later quarters</li>
+<li>Memory purchased before the price shock; inventories nearly doubled to $11.1bn, a cushion that depletes as it turns</li>
+<li>Share gains from Android rivals raising prices under cost distress — reverses when component prices normalise</li>
+<li>Google search-default payments — near-100% margin, now limited to one-year terms and under DOJ cross-appeal to be banned outright</li>
+</ul>
+</div>
+</div>
+
+<h3>End-market exposure</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Segment</th><th class="n">9M FY26 sales</th><th class="n">% of total</th><th class="n">Growth</th><th class="n">Segment op. margin</th></tr></thead>
+<tbody>
+<tr><td>Americas</td><td class="n">149,403</td><td class="n">41%</td><td class="n">+11%</td><td class="n">43.5%</td></tr>
+<tr><td>Europe</td><td class="n">95,596</td><td class="n">26%</td><td class="n">+16%</td><td class="n">46.3%</td></tr>
+<tr><td>Greater China</td><td class="n">64,839</td><td class="n">18%</td><td class="n">+30%</td><td class="n">43.8%</td></tr>
+<tr><td>Japan</td><td class="n">24,368</td><td class="n">7%</td><td class="n">+10%</td><td class="n">47.0%</td></tr>
+<tr><td>Rest of Asia Pacific</td><td class="n">30,151</td><td class="n">8%</td><td class="n">+19%</td><td class="n">46.4%</td></tr>
+</tbody></table>
+</div>
+<p class="note">$ millions, FY2026 Q3 10-Q segment note. Segment operating margins computed from disclosed segment
+operating income and net sales; they exclude $40.7bn of corporate R&amp;D and G&amp;A and are therefore not
+comparable to the 33.6% company operating margin.</p>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Indicator</th><th>Where it is published</th></tr></thead>
+<tbody>
+<tr><td>DRAM and NAND contract prices</td><td>TrendForce price bulletins; Micron and SK hynix quarterly results</td></tr>
+<tr><td>Products gross margin, and the stated drivers beneath it</td><td>Apple 10-Q, MD&amp;A gross margin table — watch for “tariff refunds” leaving the driver list</td></tr>
+<tr><td>Inventory balance and manufacturing purchase obligations</td><td>Apple 10-Q balance sheet and contractual obligations note</td></tr>
+<tr><td>Greater China net sales and segment operating income</td><td>Apple 10-Q segment note; IDC and Counterpoint China trackers</td></tr>
+<tr><td>The commission rate set on US external App Store purchases</td><td>N.D. Cal. docket, <em>Epic Games v. Apple</em> on remand; US Supreme Court No. 25-1311</td></tr>
+<tr><td>Whether Google’s payments to Apple survive appeal</td><td>DC Circuit Nos. 26-5023, 26-5047, 26-5049; Google reply brief due 29 Sep 2026</td></tr>
+<tr><td>Uptake of the EU 5% Core Technology Commission from 1 Oct 2026</td><td>European Commission DMA decisions; Apple developer terms</td></tr>
+<tr><td>Apple unit share against a contracting Android market</td><td>IDC Worldwide Quarterly Mobile Phone Tracker; Counterpoint</td></tr>
+<tr><td>Where AI spending lands: capex, intangibles, purchase obligations, R&amp;D</td><td>Apple 10-Q cash flow statement, balance sheet and commitments note</td></tr>
+</tbody></table>
+</div>
+
+<h2>Risks beyond the cycle</h2>
+
+<p><strong>The Google search payment is a large, undisclosed, near-100%-margin revenue line under active appeal.</strong>
+The trial record in <em>United States v. Google</em> put Google’s 2022 payments to Apple at $20bn, and total
+distribution payments across all partners at $26.3bn in 2021. Judge Mehta declined to ban the payments in his
+2 September 2025 remedies opinion but limited agreements to one-year terms and prohibited exclusivity. The DOJ and
+co-plaintiff states are now cross-appealing precisely to have a payment ban reinstated. Because this revenue
+carries essentially no cost of delivery, it falls to Services gross profit roughly one-for-one — and Apple has
+never disclosed the amount, so an outside investor cannot size what is at stake. Apple’s own 10-K says the
+remedies the DOJ originally proposed “could materially adversely affect the Company’s ability to earn revenue from
+such licensing arrangements.”</p>
+
+<p><strong>The App Store’s commission architecture is being reset in three jurisdictions on three timetables, and
+it is already visible in the data.</strong> In the US, Apple has collected no commission on external-link purchases
+since April 2025 and has asked the District Court to approve 15%, 10% and 5% rates. In the EU, the Core Technology
+Fee and Initial Acquisition Fee are eliminated on 1 October 2026 and replaced by a flat 5% Core Technology
+Commission. Japan’s Mobile Software Competition Act came fully into force in December 2025. Independent trackers
+report Apple’s US App Store commission revenue down 18% in 2026 to date and US App Store consumer spending down 6%
+year on year in the June quarter — the first decline in a decade. The compounding risk is that each jurisdiction’s
+remedy becomes a template for the next.</p>
+
+<p><strong>The Digital Markets Act carries a penalty that is large relative to the business.</strong> The
+Commission fined Apple €500m in April 2025 for breaching the anti-steering obligation, under appeal; the separate
+Article 6(4) proceeding remains open, and Apple’s 10-K notes the Commission “may impose fines up to 10% of the
+Company’s annual worldwide net sales” — roughly $41.6bn on FY2025 revenue. The General Court dismissed Apple’s
+gatekeeper-designation challenge entirely on 8 July 2026. Separately, Apple announced in June 2026 that its new
+Siri will not ship in the EU on iPhone or iPad, with “no timeline” for availability — regulation removing a
+product from a market rather than changing its price.</p>
+
+<p><strong>Manufacturing geography concentrates the same counterparties the component shock is already
+stressing.</strong> Substantially all final assembly sits with partners primarily in Asia, many components are
+single-sourced, and a US Section 232 semiconductor investigation is open. A trade measure and a component shortage
+would arrive through the same supply chain at the same time — and Apple’s FY2025 10-K declines to quantify tariff
+exposure at all, saying only that “the ultimate impact remains uncertain.”</p>
+
+<p><strong>Every senior executive role turned over within twenty months.</strong> CEO on 1 September 2026, CFO in
+January 2025, COO in July 2025, General Counsel in March 2026, Principal Accounting Officer in January 2026. Each
+transition was planned and internal, and Apple’s succession record is good. The risk is timing rather than
+capability: a new leadership team is taking a margin decision on component costs, an AI platform transition and
+three concurrent regulatory resets, none of which it has faced before in these seats.</p>
+
+<p><strong>The AI position depends on a partner and has a two-year delivery record behind it.</strong> Apple
+announced a personalised Siri in June 2024, delayed it publicly in March 2025 to “the coming year,” and at WWDC in
+June 2026 was still describing it as a beta shipping “later this year.” Counterpoint’s assessment of whether AI is
+yet driving hardware upgrades is negative: the capability “has yet to give consumers a compelling reason to
+upgrade.”</p>
+
+<h3>What the sources could not answer</h3>
+<p>App Store revenue and gross billings, which Apple has never disclosed. The Google licensing payment, for which
+the only sourced figure is $20bn for 2022 from the trial record. The FY2026 tariff refund and residual tariff cost,
+both narrative-only — so the sustainable Products gross margin cannot be computed. The $12.1bn nine-month increase
+in gross intangible assets, for which the 10-Q offers no note. iPhone unit volumes, unreported since FY2019.
+Memory contract terms — how much of Apple’s 2027 requirement is contracted, at what price, for how long, which is
+the single most valuable disclosure that does not exist. And management’s own framing: the research folder holds
+no transcripts, investor-day materials or shareholder letters, and the Item 2.02 Forms 8-K contain only cover pages
+rather than the press-release exhibits, so analyst pushback and management candour were not assessable.</p>
+
+<h2>Takeaways</h2>
+<div class="lever structural"><div class="h">This is an annuity business wearing hardware clothes</div>
+<p>21% of the world’s smartphones, 49% of the industry’s revenue, then roughly $48 a year at a 76% margin from each
+of 2.5 billion active devices.</p></div>
+<div class="lever structural"><div class="h">The engine is the gap between a 40-point hardware margin and a 76-point services margin</div>
+<p>Services is a quarter of revenue and 40% of gross profit — which is why the gross margin has risen seven years
+running.</p></div>
+<div class="lever structural"><div class="h">The main growth lever is price and mix, not volume</div>
+<p>Average selling price reached $946 while unit shipments are forecast to fall slightly; iPhone and Services
+produced 93% of all growth in the nine months to June 2026.</p></div>
+<div class="lever"><div class="h">What could break the story is a cost shock Apple has already described, and a distribution layer being reset by courts</div>
+<p>Memory up more than 300% year on year with Apple’s own filing expecting the trend “to intensify,” while the two
+highest-margin Services lines are both in litigation.</p></div>
+<div class="lever mgmt"><div class="h">Watch Products gross margin — specifically, what disappears from the sentence explaining it</div>
+<p>When “tariff refunds” leaves the MD&amp;A driver list and memory remains, the borrowed part of the current margin
+has ended and the durable part becomes visible.</p></div>
+
+<div class="foot">
+<h3>Sources</h3>
+<p><strong>Company filings (analyst research folder):</strong> Apple Inc. Forms 10-K for FY2021, FY2022, FY2023,
+FY2024 and FY2025; Forms 10-Q through the quarter ended 27 June 2026 (FY2026 Q3, filed 31 July 2026); DEF 14A
+proxy statements through 8 January 2026; Forms 8-K, Item 5.02, through 1 September 2026. Note: the Item 2.02
+earnings-release 8-Ks in the folder contain cover pages only — the press-release exhibits are absent, so quarterly
+figures were taken from the 10-Qs and 10-K directly.</p>
+<p><strong>Industry and competitor sources:</strong> IDC Worldwide Quarterly Mobile Phone Tracker and 2026
+smartphone and PC forecasts; Counterpoint Research on revenue share, premium-tier share, average selling prices,
+replacement cycles, installed base and GenAI smartphones; Omdia; TrendForce DRAM and NAND contract-price
+bulletins; Samsung Electronics Q2 2026 results; Xiaomi Q1 and Q2 2026 results; Alphabet Q2 2026 results; Micron
+Q3 FY2026 results; SK hynix Q2 2026 results; TSMC Q2 2026 results; European Commission DMA decisions and
+implementation report COM(2026) 247; General Court of the EU, Joined Cases T-1079/23, T-1080/23, T-214/24
+(8 July 2026); US District Court for the District of Columbia remedies opinion and final judgment in
+<em>United States v. Google</em>; DOJ brief to the DC Circuit, 28 July 2026; Ninth Circuit No. 25-2935 and US
+Supreme Court No. 25-1311; UK CMA and Japan JFTC materials; Sensor Tower and Appfigures App Store data as
+reported by the Financial Times.</p>
+<p><strong>Post-dating the reported figures:</strong> John Ternus became Chief Executive Officer on 1 September
+2026, four days before this document. No financial period has yet been reported under his tenure, and Apple’s
+FY2026 fourth quarter closes in late September 2026.</p>
+<p style="margin-bottom:0"><em>Not a valuation. No price target, no rating, no recommendation. Figures marked
+“inferred” are conclusions reasoned from sourced facts; items the filings do not disclose are stated as such
+rather than estimated.</em></p>
+</div>
+
+</div>
+
+</body>
+</html>

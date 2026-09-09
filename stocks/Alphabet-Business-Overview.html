@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Alphabet Inc. (GOOG / GOOGL)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-size:19px; line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;margin:0}
+h1{font-size:38px;line-height:1.15;margin:6px 0 14px}
+h2{font-size:27px;line-height:1.2;margin:52px 0 14px}
+h3{font-size:21px;line-height:1.25;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-family:Georgia,serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);font-weight:700}
+.source-line{font-size:15px;color:var(--muted);line-height:1.5;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 0;margin:0 0 34px}
+.restate{
+  font-family:Georgia,serif;font-size:24px;line-height:1.45;
+  border-left:5px solid var(--terracotta);
+  padding:6px 0 6px 22px;margin:0 0 30px;
+}
+.engine{
+  background:var(--ink);color:var(--cream);border-radius:10px;
+  padding:28px 30px;margin:0 0 30px;
+}
+.engine .lbl{font-family:Georgia,serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:#C9BFAE;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:26px;line-height:1.3;margin-bottom:12px}
+.engine p{font-size:17.5px;line-height:1.55;margin:0;color:#EDE5D8}
+.engine em{color:#F0B49A;font-style:normal;font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;line-height:1.35;margin-bottom:8px}
+.kpi .v{font-family:Georgia,serif;font-size:29px;line-height:1.1;color:var(--terracotta);
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.kpi .s{font-size:14.5px;color:var(--muted);line-height:1.4;margin-top:7px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:0 0 22px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:16px 20px;margin:0 0 14px}
+.lever.s{border-left-color:var(--good)} .lever.m{border-left-color:var(--gold)}
+.lever.c{border-left-color:var(--blue)}
+.lever .h{font-family:Georgia,serif;font-size:19px;font-weight:700;margin-bottom:3px}
+.lever .tag{font-size:12px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;
+  color:var(--terracotta);margin-bottom:8px}
+.lever.s .tag{color:var(--good)} .lever.m .tag{color:var(--gold)} .lever.c .tag{color:var(--blue)}
+.lever p{margin:0;font-size:17.5px;line-height:1.55}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:24px 0}
+.pull q{font-family:Georgia,serif;font-size:21px;line-height:1.45;display:block;quotes:'\\201C' '\\201D'}
+.pull .attr{font-size:14.5px;color:var(--muted);margin-top:12px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;margin:0 0 10px;font-size:16.5px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#F5EFE4;font-family:Georgia,serif;font-size:15px;font-weight:700}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+tr:last-child td{border-bottom:none}
+.cap{font-size:14px;color:var(--muted);line-height:1.5;margin:0 0 26px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 12px}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.two .col h4{font-family:Georgia,serif;font-size:17px;margin:0 0 12px;font-weight:700}
+.two .col.d h4{color:var(--good)} .two .col.b h4{color:var(--terracotta)}
+.two ul{margin:0;padding-left:19px} .two li{margin-bottom:9px;font-size:16.5px;line-height:1.48}
+ul.plain{padding-left:20px;margin:0 0 16px} ul.plain li{margin-bottom:9px}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 8px;margin:0 0 10px}
+.chart svg{display:block;width:100%;height:auto}
+.gap{margin-top:34px}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:22px;
+  font-size:14.5px;color:var(--muted);line-height:1.6}
+footer strong{color:var(--ink)}
+@media (max-width:720px){
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  h1{font-size:31px} h2{font-size:23px} body{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Alphabet Inc. <span style="color:var(--muted);font-size:26px">(NASDAQ: GOOG / GOOGL)</span></h1>
+<div class="source-line">
+2 September 2026 · Evidence base: web research only — no documents were provided for this run.
+Primary sources are Alphabet's Form 10-Q for the quarter ended 30 June 2026, Form 10-K FY2025,
+quarterly earnings releases from Q1 2025 to Q2 2026 and Forms 8-K through 10 August 2026,
+together with competitor filings, Synergy Research, StatCounter, WPP Media, Pew Research and US court records.
+<strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Alphabet is an advertising auction of extraordinary quality being used to finance the construction
+of an AI infrastructure business — and as of 2026 the construction, not the auction, is what determines
+the reported numbers.
+</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">Two units: one paid click, and one contracted accelerator-hour.</div>
+  <p>Nothing is billed until a user clicks an ad. On the click, the advertiser pays the auction-clearing
+  price and Google pays a share away as traffic acquisition cost. In Q2 2026 that cost was
+  <em>19.8%</em> of Google advertising revenue — so roughly <em>80c of every advertising dollar is
+  retained</em>, and Google Services converted <em>41.8%</em> of its revenue into operating income.
+  The second unit is sold before it is delivered: <em>$513.9bn</em> of Google Cloud revenue backlog
+  sat under contract at 30 June 2026, about 6.6 times the segment's last twelve months of revenue,
+  converting at a <em>35.6%</em> margin.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Unit price &amp; volume</div><div class="v">+13% / +3%</div>
+    <div class="s">Paid clicks and cost-per-click, Q2 2026. Growth is roughly four parts volume to one part price.</div></div>
+  <div class="kpi"><div class="k">Unit profit</div><div class="v">41.8% / 35.6%</div>
+    <div class="s">Google Services and Google Cloud segment operating margins, Q2 2026.</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">$9.11</div>
+    <div class="s">Q2 2026 diluted EPS — of which $6.26 was a non-cash gain on equity securities.</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">$126.1bn</div>
+    <div class="s">Long-term debt face value after the 10 August 2026 issue, from $49.1bn at December 2025.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">−$5.9bn</div>
+    <div class="s">Q2 2026 free cash flow — the first negative quarter on record. Margin peaked one quarter earlier.</div></div>
+  <div class="kpi"><div class="k">Reported vs organic</div><div class="v">+24% / ~+23%</div>
+    <div class="s">Group revenue growth; acquisitions add well under one point (inferred — not disaggregated).</div></div>
+</div>
+
+<h2>1 · Executive snapshot</h2>
+<table>
+<tr><th style="width:27%">What the business is</th><td>Two businesses under one holding company: a global advertising auction built on Google Search and YouTube, and a hyperscale cloud and AI-infrastructure business. A third pot of assets — Waymo, venture stakes — sits outside both.</td></tr>
+<tr><th>Industry</th><td>Digital advertising (global ad revenue forecast at $1.3trn for 2026, WPP Media) and cloud infrastructure ($129bn of spend in Q1 2026 alone, +35%, Synergy Research).</td></tr>
+<tr><th>The unit of economics</th><td>Historically the paid click. Now also the contracted accelerator-hour, measured by a $513.9bn Cloud backlog.</td></tr>
+<tr><th>What protects it</th><td>A click-relevance feedback loop across more than five trillion queries a year; ~89–90% of conventional search (StatCounter); owned distribution through Android and Chrome; a self-designed accelerator that removes the merchant-silicon margin.</td></tr>
+<tr><th>What drives earnings</th><td>Search &amp; other (55.7% of FY2025 revenue), Google Cloud (14.6% and compounding at 73% LTM), and the depreciation schedule attaching to infrastructure being installed now.</td></tr>
+<tr><th>Cycle exposure</th><td>Medium on advertising. The newer and larger exposure is a capital cycle rather than an advertising cycle.</td></tr>
+</table>
+
+<h2>2 · What the company does</h2>
+<p>Alphabet solves two unrelated problems for two unrelated customers. For an advertiser, the problem is
+that most advertising is bought before anyone has expressed a want; Google sells the moment after the want
+is stated. For an enterprise, the problem is that training and serving AI models requires accelerators,
+power and floor space almost nobody can procure at scale; Google Cloud rents that stack out. The two
+businesses share an engineering base and almost nothing else economically.</p>
+
+<h3>Tracing one unit</h3>
+<p>An advertiser sets bids in an auction. A user types a query. Google ranks ads against it and serves them.
+Nothing is billed until the click. On the click the advertiser is charged the clearing price, and Google
+pays a share away — to the browser, handset maker or carrier that supplied the query, or to the third-party
+publisher that supplied the page. What remains converts at a very high rate, because the marginal cost of
+ranking one more query is close to nothing.</p>
+<p>In Q2 2026 Google advertising revenue was $81,629m against $16,179m of traffic acquisition cost, a rate
+of 19.8%. Alphabet discloses only percentage changes in clicks and price, never absolute counts, so revenue
+per click cannot be computed from the filings and no figure claiming to do so should be trusted.</p>
+
+<h3>Revenue exposure by line of business</h3>
+<table>
+<tr><th>Line of business</th><th class="n">FY2025 revenue</th><th class="n">% of total</th><th class="n">5-yr CAGR</th></tr>
+<tr><td>Google Search &amp; other</td><td class="n">$224,532m</td><td class="n">55.7%</td><td class="n">10.8%</td></tr>
+<tr><td>Google subscriptions, platforms, devices</td><td class="n">$48,030m</td><td class="n">11.9%</td><td class="n">14.4%</td></tr>
+<tr><td>YouTube ads</td><td class="n">$40,367m</td><td class="n">10.0%</td><td class="n">8.8%</td></tr>
+<tr><td>Google Network</td><td class="n">$29,792m</td><td class="n">7.4%</td><td class="n">(1.5%)</td></tr>
+<tr><td>Google Cloud</td><td class="n">$58,705m</td><td class="n">14.6%</td><td class="n">32.2%</td></tr>
+<tr><td>Other Bets</td><td class="n">$1,537m</td><td class="n">0.4%</td><td class="n">19.5%</td></tr>
+</table>
+<p class="cap">Source: Alphabet Form 10-K FY2025. Percentages of consolidated revenue of $402,836m; hedging
+gains and losses excluded, so the column does not sum to 100%.</p>
+
+<p>Search &amp; other is owned inventory — Google controls the surface, the auction and the user relationship.
+Google Network is the opposite: ads sold on other people's sites through AdSense, AdMob and Ad Manager,
+carrying a far higher traffic acquisition cost because most of the money is paid straight to the publisher.
+Network has now declined for sixteen consecutive quarters, from a $9,305m peak in Q4 2021 to $7,303m in
+Q2 2026, while group revenue roughly doubled.</p>
+<p>That decline is the most informative line in the disclosure. The shrinking part of the business is the part
+where Alphabet is an intermediary rather than a principal, and it is the low-margin part. Some of the
+Services margin expansion of the last three years is simply mix: the worse business got smaller.</p>
+
+<h3>A third unit, barely visible yet</h3>
+<p>The Q2 2026 10-Q rewrote Google Cloud's revenue policy to name "the sale of TPU systems" as the source of
+product revenue, and inventory rose from $2,439m at December 2025 to $9,991m at June 2026, $6.7bn of that in
+Q2 alone. Management said delivery to customer data centres began in the quarter and that most of the revenue
+lands in 2027. Alphabet is now building accelerators to sell, not only to run.</p>
+
+<h2>3 · Industry, competitive position &amp; moat</h2>
+<p>Global advertising revenue excluding US political spend is forecast to grow 8.9% in 2026 to $1.3 trillion,
+with the US up 11.9% (WPP Media, midyear forecast, June 2026). Dentsu's December 2025 forecast put growth at
+5.1% on a narrower definition; the gap is definitional rather than a dispute about direction. Profit in this
+industry accrues to whoever owns the surface where purchase intent is expressed, not to the intermediaries
+who move budget across surfaces — which is exactly what Alphabet's own segment margins demonstrate.</p>
+<p>Barriers to entry here are routinely misdescribed. Advertiser switching costs are close to zero: a media
+buyer can move budget between Google, Meta and Amazon within a day. The barrier that binds is on the user
+side — a click-relevance feedback loop trained on more than five trillion queries a year, coupled with owned
+distribution through Android and Chrome.</p>
+<p>On scale Alphabet is unmatched: roughly $315bn of last-twelve-months advertising revenue exceeds Meta's
+$201bn and Amazon's $68.6bn combined. But Amazon advertising grew 22.1% and Meta 22.2% against 17.9% for
+Alphabet's Search &amp; other line in H1 2026. Alphabet is losing share of a growing advertising pool while
+gaining share of cloud. The growth story has migrated from ads to infrastructure.</p>
+
+<h3>Cloud: third by size, first by rate of change</h3>
+<table>
+<tr><th>Hyperscaler segment</th><th class="n">Period</th><th class="n">Revenue</th><th class="n">Op. income</th><th class="n">Op. margin</th><th class="n">Growth</th></tr>
+<tr><td>Microsoft Intelligent Cloud</td><td class="n">FY6/26</td><td class="n">$137.8bn</td><td class="n">$57.0bn</td><td class="n">41.3%</td><td class="n">+29.7%</td></tr>
+<tr><td>Amazon Web Services</td><td class="n">FY12/25</td><td class="n">$128.7bn</td><td class="n">$45.6bn</td><td class="n">35.4%</td><td class="n">+19.7%</td></tr>
+<tr><td>Google Cloud</td><td class="n">LTM 6/26</td><td class="n">$77.6bn</td><td class="n">$24.3bn</td><td class="n">31.3%</td><td class="n">+73.2%</td></tr>
+</table>
+<p class="cap">Source: each company's own filings. Synergy Research put Q1 2026 infrastructure share at
+AWS 28%, Azure 21%, Google Cloud 14%, on a $129bn quarterly market growing 35%. Segment definitions differ;
+Microsoft's Intelligent Cloud includes enterprise services beyond Azure.</p>
+<p>Google Cloud is 60% of AWS's size and growing roughly 3.7 times as fast, with the margin gap to AWS now
+about four points and closing. That is the clearest competitive fact available, and it is measured against
+competitors' own reported figures rather than the company's characterisation of itself.</p>
+
+<h3>What a well-funded rival could not easily reproduce</h3>
+<p>Not the model, and not the data centre — both are being replicated with capital. What is hard is owning
+all four layers at once, because each layer owned removes both a supplier's margin and a supplier's queue.
+Alphabet has DeepMind and Gemini, the TPU, its own data centres, and after the $5.9bn Intersect acquisition
+in March 2026, a renewable energy developer. Microsoft rents its frontier model and buys merchant silicon;
+Amazon has custom silicon but no frontier model of its own; Meta has models but no cloud business through
+which to sell them. On the evidence available Alphabet is the only one of the four that owns every layer —
+and in an industry where accelerators, grid interconnects and land are the binding constraints, that is the
+kind of company that wins.</p>
+
+<h3>Testing the company's account against outside evidence</h3>
+<ul class="plain">
+<li><strong>"AI is not cannibalising Search" — partially supported.</strong> Paid clicks are up 13% and
+StatCounter puts Google at ~89–90% of conventional search, down from ~91% in 2023. But Pew Research Center
+clickstream data found users clicked a result on 15% of visits without an AI summary and 8% with one, and
+Apple testified in May 2025 that Safari searches fell for the first time in over 22 years. The query is safe;
+the click is the exposed variable.</li>
+<li><strong>"A differentiated full-stack cloud position" — supported</strong> by competitors' own numbers.</li>
+<li><strong>"Demand exceeds supply" — supported.</strong> The backlog series and management's repeated
+compute-constrained statements are disclosures against interest, not marketing.</li>
+<li><strong>"An unassailable advertising position" — contradicted at the margin.</strong> Alphabet earns more
+than Meta and Amazon combined but grew slower than both in the most recent comparable period.</li>
+</ul>
+
+<div class="pull">
+<q>Google will not be required to divest Chrome; nor will the court include a contingent divestiture of the
+Android operating system in the final judgment. Plaintiffs overreached.</q>
+<div class="attr">Judge Amit Mehta, remedies decision in <em>United States v. Google LLC</em>, 2 September 2025.
+Final judgment entered 5 December 2025; partly effective February 2026; both sides on appeal to the D.C. Circuit.</div>
+</div>
+<p>The practical effect on the moat is smaller than the headline. Google may still pay for placement — the
+Apple, Samsung and carrier payments continue. What it may not do is sign exclusive defaults, or condition
+revenue-share on placement for more than a year at a time; it must also license certain search index and
+user-interaction data, though not advertising data, to qualified competitors. The mechanism the court removed
+was exclusivity. The mechanism that actually holds the position — users choosing Google when offered a choice —
+was untouched, and the European choice-screen precedent suggests roughly 97% still do.</p>
+
+<h2>4 · Growth engine</h2>
+<p>Alphabet grew 24% year on year in Q2 2026, its twelfth consecutive quarter of double-digit growth. Revenue
+rose $23.4bn against the same quarter of 2025. Where it came from matters more than the headline, because two
+of the four contributors are structural and one is shrinking.</p>
+
+<table>
+<tr><th>Contributor</th><th class="n">Q2 2025</th><th class="n">Q2 2026</th><th class="n">Change</th><th class="n">Share of growth</th></tr>
+<tr><td>Google Cloud</td><td class="n">$13,624m</td><td class="n">$24,768m</td><td class="n">+$11,144m</td><td class="n">48%</td></tr>
+<tr><td>Google Search &amp; other</td><td class="n">$54,190m</td><td class="n">$63,271m</td><td class="n">+$9,081m</td><td class="n">39%</td></tr>
+<tr><td>Subscriptions, platforms, devices</td><td class="n">$11,203m</td><td class="n">$12,911m</td><td class="n">+$1,708m</td><td class="n">7%</td></tr>
+<tr><td>YouTube ads</td><td class="n">$9,796m</td><td class="n">$11,055m</td><td class="n">+$1,259m</td><td class="n">5%</td></tr>
+<tr><td>Google Network</td><td class="n">$7,354m</td><td class="n">$7,303m</td><td class="n">(51m)</td><td class="n">(0.2%)</td></tr>
+</table>
+<p class="cap">Source: Alphabet Form 10-Q Q2 2026. Shares calculated against the $23,368m increase in these
+five lines; Other Bets and hedging excluded.</p>
+
+<h3>Reported growth versus organic growth</h3>
+<p>Two acquisitions closed in March 2026 and both sit inside the reported rate. Wiz, bought for $29,467m and
+consolidated into Google Cloud from 11 March, had crossed $1bn of annual recurring revenue before close
+according to press reporting — a figure Alphabet does not disclose. At roughly $250–300m a quarter it accounts
+for perhaps two to three points of Cloud's 82% growth, leaving organic Cloud growth around 79–80% (inferred).
+Intersect adds power capacity and property, not revenue. At group level the acquisitions contribute well under
+one point of the 24%. This is overwhelmingly a grown number, not a bought one — but the split is an estimate,
+because Alphabet does not disaggregate it.</p>
+
+<div class="lever s"><div class="h">Cloud backlog conversion</div><div class="tag">Structural</div>
+<p>Growth accelerated from 32% in Q2 2025 to 48% in Q4 2025 to 82% in Q2 2026, while backlog went from $108.2bn
+a year ago to $513.9bn. Roughly half converts within 24 months on management's guidance, so near-term Cloud
+growth is largely already sold. The constraint is delivery, not demand.</p></div>
+
+<div class="lever s"><div class="h">Search query volume</div><div class="tag">Structural</div>
+<p>Search grew 17% in Q2 2026 on clicks up 13% and price up 3% — a volume story with a modest price tail, which
+is the healthier configuration: more queries are being monetised rather than existing queries repriced. It is
+also the driver the bear case says should already be failing, and it is not.</p></div>
+
+<div class="lever c"><div class="h">United States concentration</div><div class="tag">Cyclical</div>
+<p>The US supplied roughly 63% of the entire year-on-year increase and crossed 50% of group revenue for the
+first time. US growth went from 11.8% a year earlier to 32.1% while EMEA decelerated from a 21.4% peak to 15.0%.
+The concentration is partly circular: much of the incremental US demand is AI-sector capital spending, funded
+by the same cycle Alphabet is selling into.</p></div>
+
+<div class="lever m"><div class="h">Consumer subscriptions</div><div class="tag">Management-driven</div>
+<p>Paid subscriptions reached 350m by Q1 2026 from 325m at the end of 2025, led by Google One and YouTube
+Premium, and YouTube passed $60bn of combined advertising and subscription revenue in FY2025. The most
+predictable line in the company, and the least discussed.</p></div>
+
+<div class="lever m"><div class="h">TPU systems sold to third parties</div><div class="tag">Management-driven — not yet visible</div>
+<p>First deliveries occurred in Q2 2026 and management expects the majority of revenue in 2027, so this is
+almost entirely absent from current figures. Inventory building from $2.4bn to $10.0bn in six months is the
+leading indicator. Margins were explicitly refused: "We don't break out margins for any specific products."</p></div>
+
+<h2>5 · Margin, cash &amp; capital allocation</h2>
+<p>The consolidated 34.0% operating margin in Q2 2026 averages three very different things. Google Services
+earned $39,544m on $94,540m of revenue; Google Cloud earned $8,814m on $24,768m, up from a 20.7% margin a year
+earlier; Other Bets lost $1,799m. Against all of it sits $5,789m of unallocated Alphabet-level cost — shared AI
+research and development plus corporate fines — a line that has grown from $1,299m for the whole of FY2022 to
+$16,760m in FY2025 and $11,178m in the first half of 2026 alone.</p>
+<p>The advertising margin is being helped by mix, not pricing. Traffic acquisition cost fell from 20.6% of
+Google advertising revenue to 19.8% year on year, not because distribution partners accepted less but because
+Google Network, which pays away most of its revenue, keeps shrinking. That tailwind ends when Network stops
+shrinking or becomes too small to matter.</p>
+
+<div class="chart">
+<svg viewBox="0 0 860 360" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Segment operating margin, Google Services versus Google Cloud, FY2021 to LTM June 2026">
+  <text x="12" y="20" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#2B2B2B">Segment operating margin — two businesses travelling in opposite directions</text>
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="30" x2="810" y2="30"/><line x1="70" y1="90" x2="810" y2="90"/>
+    <line x1="70" y1="150" x2="810" y2="150"/><line x1="70" y1="270" x2="810" y2="270"/>
+  </g>
+  <line x1="70" y1="210" x2="810" y2="210" stroke="#6E675C" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C" text-anchor="end">
+    <text x="60" y="34">45%</text><text x="60" y="94">30%</text><text x="60" y="154">15%</text>
+    <text x="60" y="214">0%</text><text x="60" y="274">−15%</text>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="292">FY21</text><text x="218" y="292">FY22</text><text x="366" y="292">FY23</text>
+    <text x="514" y="292">FY24</text><text x="662" y="292">FY25</text><text x="810" y="292">LTM 6/26</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+    points="70,61.6 218,79.6 366,69.2 514,50.8 662,47.2 810,42.4"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"
+    points="70,257.6 218,239.2 366,189.2 514,153.6 662,115.2 810,84.8"/>
+  <g fill="#C75B39">
+    <circle cx="70" cy="61.6" r="3.4"/><circle cx="218" cy="79.6" r="3.4"/><circle cx="366" cy="69.2" r="3.4"/>
+    <circle cx="514" cy="50.8" r="3.4"/><circle cx="662" cy="47.2" r="3.4"/><circle cx="810" cy="42.4" r="3.4"/>
+  </g>
+  <g fill="#3C6E8F">
+    <circle cx="70" cy="257.6" r="3.4"/><circle cx="218" cy="239.2" r="3.4"/><circle cx="366" cy="189.2" r="3.4"/>
+    <circle cx="514" cy="153.6" r="3.4"/><circle cx="662" cy="115.2" r="3.4"/><circle cx="810" cy="84.8" r="3.4"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13" font-weight="700">
+    <text x="76" y="52" fill="#C75B39" text-anchor="start">Google Services 37.1%</text>
+    <text x="804" y="33" fill="#C75B39" text-anchor="end">41.9%</text>
+    <text x="76" y="273" fill="#3C6E8F" text-anchor="start">Google Cloud −11.9%</text>
+    <text x="804" y="76" fill="#3C6E8F" text-anchor="end">31.3%</text>
+  </g>
+  <text x="70" y="332" font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C">Source: Alphabet Forms 10-K FY2021–FY2025 and Form 10-Q Q2 2026, segment note.</text>
+</svg>
+</div>
+<p>Cloud's expansion is the clearest evidence of operating leverage in the business: in H1 2026 the segment
+added $10.4bn of operating income on $18.9bn of incremental revenue, an incremental margin of roughly 55%.
+Management has flagged one offset — leasing third-party capacity as a bridge to its own build "will put some
+pressure on operating margins for Cloud."</p>
+
+<table>
+<tr><th>&nbsp;</th><th class="n">FY2022</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">LTM 6/26</th></tr>
+<tr><td><strong>Revenue</strong></td><td class="n">$282,836m</td><td class="n">$350,018m</td><td class="n">$402,836m</td><td class="n">$445,866m</td></tr>
+<tr><td><strong>Operating income</strong></td><td class="n">$74,842m</td><td class="n">$112,390m</td><td class="n">$129,039m</td><td class="n">$147,628m</td></tr>
+<tr><td><strong>Operating margin</strong></td><td class="n">26.5%</td><td class="n">32.1%</td><td class="n">32.0%</td><td class="n">33.1%</td></tr>
+<tr><td><strong>Capital expenditure</strong></td><td class="n">$31,485m</td><td class="n">$52,535m</td><td class="n">$91,447m</td><td class="n">$132,402m</td></tr>
+<tr><td><strong>Capex as % of revenue</strong></td><td class="n">11.1%</td><td class="n">15.0%</td><td class="n">22.7%</td><td class="n">29.7%</td></tr>
+<tr><td><strong>Free cash flow</strong></td><td class="n">$60,010m</td><td class="n">$72,764m</td><td class="n">$73,266m</td><td class="n">$53,273m</td></tr>
+</table>
+<p class="cap">Source: Alphabet Forms 10-K FY2022, FY2024, FY2025 and Form 10-Q Q2 2026; free cash flow as the
+company defines it. Comparability: FY2025 includes a $3.5bn European Commission ad-tech fine in Q3 and a
+$2.1bn Waymo compensation charge in Q4; the LTM column includes Wiz from 11 March 2026 and an approximately
+$2.1bn PriceRunner damages accrual.</p>
+
+<div class="chart">
+<svg viewBox="0 0 860 360" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Capital expenditure versus free cash flow, FY2021 to LTM June 2026">
+  <text x="12" y="20" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#2B2B2B">Capital expenditure has crossed free cash flow ($m)</text>
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="70" y1="30" x2="810" y2="30"/><line x1="70" y1="90" x2="810" y2="90"/>
+    <line x1="70" y1="150" x2="810" y2="150"/><line x1="70" y1="210" x2="810" y2="210"/>
+    <line x1="70" y1="270" x2="810" y2="270"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C" text-anchor="end">
+    <text x="60" y="34">140k</text><text x="60" y="94">105k</text><text x="60" y="154">70k</text>
+    <text x="60" y="214">35k</text><text x="60" y="274">0</text>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C" text-anchor="middle">
+    <text x="70" y="292">FY21</text><text x="218" y="292">FY22</text><text x="366" y="292">FY23</text>
+    <text x="514" y="292">FY24</text><text x="662" y="292">FY25</text><text x="810" y="292">LTM 6/26</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+    points="70,227.8 218,216.0 366,214.7 514,179.9 662,113.2 810,43.0"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"
+    points="70,155.1 218,167.1 366,150.9 514,145.3 662,144.4 810,178.7"/>
+  <g fill="#C75B39">
+    <circle cx="70" cy="227.8" r="3.4"/><circle cx="218" cy="216" r="3.4"/><circle cx="366" cy="214.7" r="3.4"/>
+    <circle cx="514" cy="179.9" r="3.4"/><circle cx="662" cy="113.2" r="3.4"/><circle cx="810" cy="43" r="3.4"/>
+  </g>
+  <g fill="#3C6E8F">
+    <circle cx="70" cy="155.1" r="3.4"/><circle cx="218" cy="167.1" r="3.4"/><circle cx="366" cy="150.9" r="3.4"/>
+    <circle cx="514" cy="145.3" r="3.4"/><circle cx="662" cy="144.4" r="3.4"/><circle cx="810" cy="178.7" r="3.4"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13" font-weight="700">
+    <text x="76" y="245" fill="#C75B39" text-anchor="start">Capex $24,640m</text>
+    <text x="804" y="34" fill="#C75B39" text-anchor="end">$132,402m</text>
+    <text x="76" y="146" fill="#3C6E8F" text-anchor="start">Free cash flow $67,012m</text>
+    <text x="804" y="196" fill="#3C6E8F" text-anchor="end">$53,273m</text>
+  </g>
+  <text x="70" y="332" font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C">Source: Alphabet Forms 10-K FY2021–FY2025 and Form 10-Q Q2 2026, consolidated statements of cash flows.</text>
+</svg>
+</div>
+
+<h3>Cash conversion has inverted</h3>
+<p>Operating cash flow of $185,675m over the last twelve months is the highest in the company's history. Free
+cash flow of $53,273m is the lowest since before 2021. The quarterly path shows when it broke: $24.5bn in
+Q3 2025, $24.6bn in Q4, $10.1bn in Q1 2026 and −$5,855m in Q2 2026 — the first negative quarter on record.</p>
+<p>The reported figure also understates what has been committed. At 30 June 2026, $29,113m of property and
+equipment sat in payables rather than cash paid, $122,814m of assets were recorded as not yet in service, and
+contractual commitments stood at $707.0bn with a further $85.2bn of leases signed but not commenced.
+Depreciation, the mechanism that converts all of this into the profit and loss account, rose from $15,311m in
+FY2024 to $21,136m in FY2025 and $13,586m in H1 2026 alone — but capital expenditure is still running at
+5.25 times depreciation. The servers carry a six-year life adopted in 2023, unchanged in the Q2 2026 10-Q.</p>
+
+<h3>Who has first claim on the cash</h3>
+<p>Ranked over the last twelve months: capital expenditure $132.4bn, acquisitions $35.3bn, buybacks $17.4bn,
+dividends $10.3bn, and net debt repayment of nothing. Within H1 2026 the ranking is starker: repurchases were
+exactly zero against $28,306m a year earlier, with $69.5bn of the April 2025 authorisation unused.</p>
+<p>The funding side changed more than the spending side. In June 2026 Alphabet issued equity for cash for the
+first time in its history — 29m Class A and 29m Class C shares at roughly $353, a $10.0bn private placement to
+a Berkshire Hathaway affiliate, and 19m shares of 6.25% mandatory convertible preferred, for net proceeds of
+$49.6bn — and authorised a $40.0bn at-the-market programme, undrawn at 30 June. Long-term debt face value went
+from $49,085m to $101,085m across six currencies, and to roughly $126.1bn after a $25.0bn issue on
+10 August 2026 that post-dates the reported figures.</p>
+<p>What the ranking reveals is a deliberate reordering of claims. Internal reinvestment comes first and
+shareholders come last, to the point where the company is issuing stock at the same time as it has stopped
+buying it back. Diluted shares rose from 12,198m to 12,309m, and the stock plan reserve grew by 200m Class C
+shares in June. This is behaviour, not a verdict: management is buying an option on being the infrastructure
+provider of the next decade, and is willing to dilute existing holders to pay for it.</p>
+
+<h3>The other half of reported earnings</h3>
+<p>Diluted EPS of $9.11 is not an operating number. Alphabet booked a $99,031m gain on equity securities in the
+quarter and $135,946m in H1, and states directly that $6.26 of the $9.11 came from that gain along with $21.9bn
+of tax. Over the last twelve months these marks are close to half of pre-tax income. Roughly $94.1bn of the
+position is SpaceX stock, restricted from sale in tranches through Q3 2027; the rest is a non-marketable holding
+the filings identify only as "a private company," widely reported to be Anthropic though named in no filing
+(inferred). The same line was a $5,519m loss in FY2022.</p>
+
+<h2>6 · Cyclicality, constraints &amp; what to monitor</h2>
+<p>Alphabet has an advertising cycle it has already survived and a capital cycle it has never experienced. The
+advertising trough is documented: in Q4 2022 revenue growth fell to 1.0% and the operating margin to 23.9%, and
+revenue never actually declined. That is the downside case for the advertising business, drawn from its own
+record rather than a forecast, and it is survivable.</p>
+<p>Against that record the business today sits near the top on every measure — 24.2% growth, a 34.0% margin.
+But the margin peak has already passed: it reached 36.1% in Q1 2026 and fell 2.1 points sequentially, with
+operating income growing 2.7% quarter on quarter while revenue grew 9.0%. A record margin at a peak and a record
+margin at a trough are opposite facts, and this is the former, one quarter after the turn.</p>
+<p>The downside mechanism this business would actually feel is not an advertising recession. It is that
+depreciation on a six-year server life arrives on a fixed schedule while backlog conversion depends on delivery
+and utilisation. At 5.25 times depreciation the charge is effectively contracted for; the revenue that justifies
+it is not. If utilisation of the 2026–2028 vintages disappoints, the margin compresses on a timetable management
+can only alter by revisiting the useful-life assumption — an accounting judgement, not an operating fix. Server
+useful lives were not discussed on any of the last five earnings calls, and no analyst raised them.</p>
+
+<div class="two">
+<div class="col d"><h4>Durable — likely intact in ten years</h4>
+<ul>
+<li>The click-relevance feedback loop across five trillion-plus annual queries</li>
+<li>Owned distribution via Android and Chrome, unaffected by the search remedies</li>
+<li>$513.9bn of contracted Cloud backlog, roughly 6.6× LTM segment revenue</li>
+<li>Vertical integration from model to accelerator to data centre to power</li>
+<li>A ~42% operating margin in Google Services, sustained across a full ad cycle</li>
+</ul></div>
+<div class="col b"><h4>Borrowed — currently helping, will not persist</h4>
+<ul>
+<li>Equity-securities marks at roughly half of LTM pre-tax income; the same line was a $5.5bn loss in FY2022</li>
+<li>Depreciation running at one-fifth of capital expenditure; the charge is deferred, not avoided</li>
+<li>A falling TAC rate driven by Google Network's decay rather than renegotiation</li>
+<li>A US-led growth surge — 63% of Q2's increase — financed by the same AI capital cycle Alphabet sells into</li>
+<li>Interest expense not yet reflecting $126bn of debt; the August issue alone adds roughly $1.4bn a year</li>
+</ul></div>
+</div>
+
+<h3>Leading indicators, and where they are published</h3>
+<table>
+<tr><th style="width:33%">Indicator</th><th style="width:30%">Where published</th><th>Why it matters</th></tr>
+<tr><td>Quarterly Cloud backlog additions</td><td>Form 10-Q, Note 2 "Revenue Backlog"</td><td>Additions fell from roughly $220bn in Q1 2026 to $54bn in Q2 — the sharpest change in the disclosed series, visible before the revenue line reflects it.</td></tr>
+<tr><td>Paid clicks and cost-per-click</td><td>Form 10-Q, MD&amp;A monetisation metrics</td><td>The bear case on AI requires paid-click growth to turn negative. It has not.</td></tr>
+<tr><td>Depreciation as % of revenue, against capex guidance</td><td>Cash flow statement; each earnings call</td><td>Guidance has been raised at five consecutive calls, from $75bn for FY2025 to $195–205bn for FY2026.</td></tr>
+<tr><td>Server useful life</td><td>Form 10-K, significant accounting policies</td><td>Extension beyond six years would flatter reported margins without changing cash; shortening would do the reverse.</td></tr>
+<tr><td>Cloud market share</td><td>Synergy Research quarterly hyperscaler tracker</td><td>Independent check on whether the 73% LTM growth rate is share gain or market growth.</td></tr>
+<tr><td>Court dockets</td><td>D.C. Circuit; E.D. Virginia</td><td>The search appeal and the still-undecided ad-tech remedies judgment.</td></tr>
+</table>
+
+<h2>7 · Risks, unknowns &amp; questions for deeper work</h2>
+<p>Cyclicality and the depreciation schedule are above. What follows is what those do not capture, ordered by
+how much the risks compound one another.</p>
+<ul class="plain">
+<li><strong>The ad-tech remedy is undecided, and it is the one that could remove an asset.</strong> Judge
+Brinkema found in April 2025 that Google's publisher tools unlawfully excluded rivals. Remedies were argued in
+September 2025, closing arguments were heard in November, and no judgment had issued as of the Q2 2026 10-Q.
+The DOJ sought structural remedies and Alphabet states these "could have a material adverse effect." The honest
+read is two-sided: Google Network is $29.8bn of FY2025 revenue, so divestiture removes about 7% of revenue —
+but it is the lowest-margin 7%, and removing it would raise the group margin.</li>
+<li><strong>The click, not the query, is the billable event.</strong> Every query Gemini answers completely is a
+query that produced no auction. Pew's 15%-to-8% click-rate finding describes the mechanism precisely. Clicks are
+still growing 13%, so this has not happened — but the metric to watch is not query volume, which Alphabet
+emphasises, nor engine share, which is stable. It is paid clicks, reported only as a percentage change.</li>
+<li><strong>The equity marks can reverse, and Alphabet is now issuing equity against them.</strong> Non-marketable
+equity carried at $124.3bn was written up $87.9bn in a single quarter on third-party funding rounds, which are
+procyclical by construction. A reversal would not touch operating income but would hit reported earnings and
+shareholders' equity — and $20.0bn of contingent funding to the same counterparty runs through 2030.</li>
+<li><strong>Dilution and depreciation compound.</strong> The ATM removes the share shrinkage that net settlement
+of employee equity used to provide; the stock plan reserve grew 200m shares; diluted shares are already rising.
+Set that against a depreciation charge scheduled to grow faster than revenue and earnings per share can fall
+while revenue grows. Neither element alone is alarming; together they are the mechanism.</li>
+<li><strong>Backlog concentration is undisclosed.</strong> There is $513.9bn of Cloud backlog and $707.0bn of
+supply commitments, and no customer concentration disclosure for the Cloud segment at all. If a material share
+of the backlog sits with a few AI laboratories funded by the same capital cycle funding Alphabet's build, the
+asset and the obligation are correlated. Nothing in the filings establishes this; nothing rules it out.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<p>These are findings, not gaps in the research. Each would need resolving before an investor could form a thesis.</p>
+<ul class="plain">
+<li>Absolute paid clicks and revenue per click — only percentage changes are disclosed.</li>
+<li>Google Cloud customer concentration — no segment-level disclosure exists.</li>
+<li>The maintenance versus growth split of capital expenditure — not disclosed, so sustainable post-build free cash flow cannot be estimated.</li>
+<li>TPU system revenue and its gross margin — explicitly refused on the Q2 2026 call.</li>
+<li>Wiz's revenue contribution — not disaggregated, so organic Cloud growth is an estimate.</li>
+<li>The identity of the private company behind $124.3bn of non-marketable holdings — named in no filing.</li>
+<li>Whether a six-year server life still reflects AI-era hardware economics — no change disclosed, question never raised on a call.</li>
+<li>Segment revenue by geography — reported only at consolidated level, so the US surge cannot be attributed between advertising and cloud.</li>
+<li>The share of AI-assistant usage displacing search — published estimates range from under 1% of referral traffic to roughly 17% of digital queries; the spread is too wide for any figure to be usable.</li>
+</ul>
+
+<h2>8 · Investor takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is.</strong> No longer an advertising company that happens to own a cloud
+business, but an advertising business funding the construction of an AI infrastructure business — and the
+construction now determines the reported numbers.</li>
+<li><strong>The core economic engine.</strong> An auction that retains roughly 80c of every advertising dollar
+after distribution costs and converts 42c of every revenue dollar to operating profit, attached to a cloud
+business now converting 36c and growing at 82%.</li>
+<li><strong>The main growth lever.</strong> Conversion of $513.9bn of contracted Cloud backlog, roughly half of
+it scheduled within 24 months. Near-term cloud growth is largely already sold; the constraint is delivery.</li>
+<li><strong>What could break the story.</strong> Depreciation on a six-year life arriving faster than the
+utilisation that justifies it, while the buyback stays off and the share count rises — making falling earnings
+per share on rising revenue an arithmetic possibility rather than a bearish opinion.</li>
+<li><strong>What to monitor.</strong> Quarterly Cloud backlog additions, which fell from roughly $220bn to $54bn
+between Q1 and Q2 2026; paid-click growth, currently 13%; and depreciation as a percentage of revenue.</li>
+</ul>
+
+<footer>
+<p><strong>Sources.</strong> Alphabet Inc. Form 10-Q for the quarterly period ended 30 June 2026; Form 10-K for
+FY2025 and prior years FY2021–FY2024; quarterly earnings releases (Form 8-K, Exhibit 99.1) for Q1 2025 through
+Q2 2026; Forms 8-K through 10 August 2026 covering the June 2026 equity and preferred offerings and the August
+2026 senior note issue; earnings call remarks Q2 2025 – Q2 2026 as published at abc.xyz/investor. Competitor
+figures from Microsoft Form 10-K FY June 2026, Amazon Form 10-K FY2025 and Meta Form 10-K FY2025. Industry data
+from Synergy Research Group (cloud infrastructure share and spend, Q1 2026), WPP Media <em>This Year Next Year</em>
+midyear forecast (June 2026), Dentsu Global Ad Spend Forecasts (December 2025), StatCounter Global Stats and
+Pew Research Center clickstream analysis (July 2025). Legal matters from the Q2 2026 10-Q and the public record
+in <em>United States v. Google LLC</em> (D.D.C. and E.D. Va.).</p>
+<p><strong>Post-dating the reported figures.</strong> The $25.0bn senior note issue of 10 August 2026; the $40.0bn
+at-the-market equity programme, undrawn at 30 June 2026 and expected to begin in Q3; the $5.2bn cash payment of
+the European Commission Android fine in July 2026; the approximately $2.1bn PriceRunner damages award, under
+appeal; the pending contribution of Google Fiber to a new entity, expected to close late in 2026; and the
+still-awaited ad-tech remedies judgment in the Eastern District of Virginia.</p>
+<p>Prepared 2 September 2026 from web research only; no documents were supplied for this run.
+This is a business and industry primer. It is not a valuation and not a recommendation.</p>
+</footer>
+
+</div>
+</body>
+</html>

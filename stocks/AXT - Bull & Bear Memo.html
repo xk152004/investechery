@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AXT, Inc. — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#fbfaf8; --panel:#ffffff; --ink:#1a1c20; --muted:#666c78; --faint:#8b919c;
+  --line:#e2e0db; --line2:#efede8;
+  --bull:#0f6b52; --bull-bg:#eaf4f0; --bull-line:#bcdcd0;
+  --bear:#a03028; --bear-bg:#fbeeec; --bear-line:#eecac5;
+  --accent:#1f3864; --accent-bg:#eef1f8;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+ :root:not([data-theme="light"]){
+  --bg:#14161a; --panel:#1b1e23; --ink:#e8e6e1; --muted:#a2a8b4; --faint:#7d8493;
+  --line:#2c3037; --line2:#24272d;
+  --bull:#5fc7a4; --bull-bg:#152622; --bull-line:#28483e;
+  --bear:#f0897f; --bear-bg:#2a1a19; --bear-line:#4d2c29;
+  --accent:#8fb0e8; --accent-bg:#1a2233;
+ }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:236px minmax(0,1fr);gap:44px;max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* ---- nav ---- */
+nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:38px 0 40px;border-right:1px solid var(--line2)}
+nav .tick{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+nav .co{font-family:var(--serif);font-size:22px;line-height:1.2;margin:0 0 4px}
+nav .sub{font-size:12px;color:var(--muted);margin-bottom:26px}
+nav a{display:block;padding:7px 14px 7px 12px;margin-right:14px;color:var(--muted);text-decoration:none;font-size:13.5px;border-left:2px solid transparent;border-radius:0 5px 5px 0;transition:.15s}
+nav a:hover{color:var(--ink);background:var(--line2)}
+nav a.on{color:var(--ink);border-left-color:var(--accent);background:var(--accent-bg);font-weight:600}
+nav a .n{font-family:var(--mono);font-size:11px;color:var(--faint);margin-right:7px}
+nav a.on .n{color:var(--accent)}
+.navfoot{margin-top:26px;padding:12px 14px 0 12px;border-top:1px solid var(--line2);font-size:11.5px;color:var(--faint);line-height:1.5}
+
+/* ---- main ---- */
+main{padding:38px 0 120px;min-width:0}
+h1{font-family:var(--serif);font-size:38px;line-height:1.12;margin:0 0 10px;letter-spacing:-.01em}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+h2{font-family:var(--serif);font-size:25px;margin:0 0 4px;letter-spacing:-.005em}
+section{scroll-margin-top:24px;padding-top:46px}
+section+section{border-top:1px solid var(--line2);margin-top:44px}
+.secno{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:8px}
+p{margin:0 0 14px}
+.lead{font-family:var(--serif);font-size:19.5px;line-height:1.5;color:var(--ink);border-left:3px solid var(--accent);padding-left:16px;margin:18px 0 26px}
+.lead em{font-style:normal;color:var(--muted);display:block;font-size:13px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+
+/* header block */
+.hdr{border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--panel);margin:22px 0 8px}
+.hdr .row{display:grid;grid-template-columns:150px minmax(0,1fr);border-top:1px solid var(--line2)}
+.hdr .row:first-child{border-top:0}
+.hdr .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:11px 14px;background:var(--line2)}
+.hdr .v{padding:11px 15px;font-size:13.5px;color:var(--ink)}
+
+/* pills */
+.pill{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted);background:var(--panel)}
+.pill.type{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.pill.perm{border-color:var(--bear-line);color:var(--bear);background:var(--bear-bg)}
+.pill.fix{border-color:var(--line);color:var(--muted)}
+
+/* toggle */
+.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 22px;position:sticky;top:0;z-index:5;background:linear-gradient(var(--bg) 72%,transparent);padding:12px 0 14px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+.seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;padding:7px 15px;cursor:pointer;border-right:1px solid var(--line2)}
+.seg button:last-child{border-right:0}
+.seg button:hover{color:var(--ink);background:var(--line2)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:600}
+.hint{font-size:12.5px;color:var(--faint)}
+
+/* cards */
+.cards{display:flex;flex-direction:column;gap:14px}
+.pair{display:grid;grid-template-columns:1fr;gap:14px}
+body[data-view="paired"] .pair{grid-template-columns:1fr 1fr;align-items:start}
+body[data-view="paired"] .pair>.card.bear:only-child{grid-column:2}
+body[data-view="bull"] .card.bear,body[data-view="bear"] .card.bull{display:none}
+body[data-view="bull"] .pair:not(:has(.card.bull)),body[data-view="bear"] .pair:not(:has(.card.bear)){display:none}
+.card{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
+.card.bull{border-color:var(--bull-line)}
+.card.bear{border-color:var(--bear-line)}
+.card>summary{list-style:none;cursor:pointer;padding:14px 16px;display:block;position:relative;padding-right:42px}
+.card>summary::-webkit-details-marker{display:none}
+.card.bull>summary{background:var(--bull-bg)}
+.card.bear>summary{background:var(--bear-bg)}
+.card .tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:5px}
+.card.bull .tag{color:var(--bull)}
+.card.bear .tag{color:var(--bear)}
+.card .claim{font-weight:650;font-size:15px;line-height:1.4}
+.card>summary::after{content:"+";position:absolute;right:16px;top:13px;font-family:var(--mono);font-size:17px;color:var(--faint);transition:transform .18s}
+.card[open]>summary::after{content:"–"}
+.card .body{padding:4px 16px 16px}
+.fld{padding:11px 0;border-top:1px solid var(--line2)}
+.fld:first-child{border-top:0}
+.fld .lab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:4px}
+.fld .txt{font-size:14px;line-height:1.62;color:var(--ink)}
+.card .meta{padding:9px 16px;border-top:1px solid var(--line2);font-size:12px;color:var(--faint);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* signals */
+.sigs{display:grid;grid-template-columns:repeat(auto-fill,minmax(292px,1fr));gap:13px;margin-top:20px}
+.sig{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:14px 15px;display:flex;flex-direction:column;gap:9px}
+.sig h3{margin:0;font-size:14px;font-weight:650;line-height:1.35}
+.sig .val{font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--line2);border-radius:6px;padding:8px 10px;line-height:1.45}
+.sig .dir{font-size:13px;color:var(--muted);line-height:1.55}
+.sig .foot{margin-top:auto;padding-top:8px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.sig .src{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.trk{display:flex;gap:5px}
+.trk span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:2px 7px;border-radius:99px;white-space:nowrap}
+.trk .b{color:var(--bull);background:var(--bull-bg);border:1px solid var(--bull-line)}
+.trk .r{color:var(--bear);background:var(--bear-bg);border:1px solid var(--bear-line)}
+
+/* bottom line */
+.bl{counter-reset:s;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:6px 20px;margin-top:18px}
+.bl .s{counter-increment:s;padding:15px 0 15px 34px;border-top:1px solid var(--line2);position:relative;font-size:15px;line-height:1.62}
+.bl .s:first-child{border-top:0}
+.bl .s::before{content:counter(s);position:absolute;left:0;top:15px;font-family:var(--mono);font-size:11px;color:var(--faint);border:1px solid var(--line);border-radius:99px;width:21px;height:21px;display:grid;place-items:center}
+.bl .s b{font-weight:650}
+
+/* sources */
+.srcgrp{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin-top:14px;overflow:hidden}
+.srcgrp summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:13.5px;font-weight:600;position:relative;padding-right:40px}
+.srcgrp summary::-webkit-details-marker{display:none}
+.srcgrp summary::after{content:"+";position:absolute;right:16px;top:11px;font-family:var(--mono);color:var(--faint);font-size:16px}
+.srcgrp[open] summary::after{content:"–"}
+.srcgrp summary span{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-left:8px;font-weight:400}
+.srcgrp ul{margin:0;padding:2px 16px 14px 34px;border-top:1px solid var(--line2)}
+.srcgrp li{font-size:13px;color:var(--muted);padding:4px 0}
+.note{font-size:12.5px;color:var(--faint);font-style:italic;margin-top:14px}
+
+@media(max-width:900px){
+ .wrap{grid-template-columns:1fr;gap:0;padding:0 20px}
+ nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line2);padding-bottom:16px}
+ nav a{display:inline-block;margin:0 6px 6px 0;border-left:0;border:1px solid var(--line);border-radius:99px;padding:5px 12px}
+ nav a.on{border-color:var(--accent)}
+ body[data-view="paired"] .pair{grid-template-columns:1fr}
+ h1{font-size:29px}
+}
+</style>
+</head>
+<body data-view="paired">
+<div class="wrap">
+
+<nav>
+  <div class="tick">Nasdaq · AXTI</div>
+  <p class="co">AXT, Inc.</p>
+  <div class="sub">Bull &amp; Bear Memo · data through Q2 2026</div>
+  <a href="#s1" data-t="s1"><span class="n">01</span>Business in one line</a>
+  <a href="#s2" data-t="s2"><span class="n">02</span>Bull case</a>
+  <a href="#s3" data-t="s3"><span class="n">03</span>Bear case</a>
+  <a href="#s4" data-t="s4"><span class="n">04</span>Signals to monitor</a>
+  <a href="#s5" data-t="s5"><span class="n">05</span>External challenge</a>
+  <a href="#s6" data-t="s6"><span class="n">06</span>Bottom line</a>
+  <div class="navfoot">A thinking anchor, not a thesis or a valuation. Every figure comes from AXT's own filings; anything absent from them is marked “not in sources.”</div>
+</nav>
+
+<main>
+  <div class="kicker">Bull &amp; Bear Memo</div>
+  <h1>AXT, Inc.</h1>
+  <div class="hdr">
+    <div class="row"><div class="k">company</div><div class="v">AXT, Inc. (Nasdaq: AXTI)</div></div>
+    <div class="row"><div class="k">sources used</div><div class="v">FY2016–FY2025 10-Ks (chiefly FY2025, filed 2026-03-17); 10-Qs through Q2 FY2026 (filed 2026-08-13); 8-Ks of 2026-06-17 (Casela), 2026-07-02 (Coherent), 2026-07-08 (Tongmei STAR withdrawal), 2026-07-22; proxies through 2026-03-31.</div></div>
+    <div class="row"><div class="k">latest period</div><div class="v">Q2 2026 (quarter ended June 30, 2026)</div></div>
+    <div class="row"><div class="k">missing or stale data</div><div class="v">No earnings-call transcripts, shareholder letters, investor presentations or Form 4 data in the archive, so there is no management-voice evidence; the Q2 2026 earnings press release (Exhibit 99.1) was not captured, so no company guidance. AXT discloses one operating segment and two product lines only — there is no InP-specific revenue, no unit volumes, no ASPs and no utilization rate anywhere in the filings. Substrates vs. raw materials is the finest revenue cut available.</div></div>
+  </div>
+
+  <section id="s1">
+    <div class="secno">Section 01</div>
+    <h2>Business in one line</h2>
+    <p>AXT grows single-crystal ingots of indium phosphide, gallium arsenide and germanium in China using proprietary vertical gradient freeze technology, slices them into wafer substrates, and sells them to epitaxial-layer houses that sell on to chip fabs. Consolidated Chinese subsidiaries also make purified gallium, pBN crucibles and InP base material, consuming some internally and selling the rest. In FY2025 substrates were 67% of $88.3 million of revenue, raw materials 33%.</p>
+    <p><span class="pill type">Type · Cyclical</span> &nbsp;<span class="pill">policy-gated upcycle</span></p>
+    <p>For a cyclical the bear case lives in the cycle and in what gets bought at the top, not in a competitor taking share.</p>
+  </section>
+
+  <section id="s2">
+    <div class="secno">Sections 02 &amp; 03</div>
+    <h2>Bull case vs. Bear case</h2>
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="View">
+        <button data-v="bull" aria-pressed="false">Bull only</button>
+        <button data-v="paired" aria-pressed="true">Paired</button>
+        <button data-v="bear" aria-pressed="false">Bear only</button>
+      </div>
+      <span class="hint">Paired view puts each assumption beside the risk that attacks it. Click any card to expand.</span>
+    </div>
+
+    <p class="lead"><em>Peter Lynch pitch</em>The simple reason this stock could work is that AI data centers move data with light, light needs indium phosphide lasers, and AXT is one of a handful of firms that can grow low-defect InP crystals — and after eighteen months locked behind China's export-permit gate, the permits started flowing and the business went from losing money to a 44.9% gross margin in five quarters.</p>
+    <p class="lead" id="s3" style="border-left-color:var(--bear);scroll-margin-top:80px"><em>Munger invert</em>The most likely way I lose money is that the 44.9% margin quarter turns out to be the peak of a policy-driven catch-up — in a business whose revenue gate is held by a government with a stated interest in building the domestic industry its customers compete with.</p>
+
+    <div class="cards" id="argcards"></div>
+
+    <p class="note" id="marketmiss"><b>Why the market might be missing it:</b> AXT reports one operating segment and never discloses InP revenue, volumes or pricing, so the mix shift was invisible in the reported lines until it arrived all at once in consolidated gross margin — and the commitments underwriting 2027 sit in 8-Ks, not the P&amp;L. But the stock was sold at $12.25 in December 2025 and $64.25 four months later, so the argument is not that the market missed the cycle. It is about how long the margin lasts and what the capital earns.</p>
+  </section>
+
+  <section id="s4">
+    <div class="secno">Section 04</div>
+    <h2>Signals to monitor</h2>
+    <p>Each signal tracks a named assumption or risk. A signal that tracks nothing in this memo is noise.</p>
+    <div class="sigs" id="sigcards"></div>
+  </section>
+
+  <section id="s5">
+    <div class="secno">Section 05</div>
+    <h2>External challenge notes</h2>
+    <p class="note">Omitted — external search was not requested for this run. Ask for “external challenge” to add competitor, regulatory, litigation and short-seller findings here, kept separate from company-source evidence.</p>
+    <details class="srcgrp"><summary>Company filings used <span>10 · annual</span></summary>
+      <ul><li>FY2025 10-K, filed 2026-03-17 — business, competition, export controls, FY2023–25 P&amp;L, liquidity</li>
+      <li>FY2024 10-K, filed 2025-03-14</li>
+      <li>FY2016–FY2023 10-Ks — cycle history, margin range, restructuring precedent</li></ul></details>
+    <details class="srcgrp"><summary>Interim reports <span>31 · quarterly</span></summary>
+      <ul><li>Q2 FY2026 10-Q, filed 2026-08-13 — latest period; revenue, margin, balance sheet, Coherent and Tongmei disclosure</li>
+      <li>Q1 FY2026 10-Q, filed 2026-05-14</li>
+      <li>Q3 FY2025 10-Q, filed 2025-11-13 — quarterly revenue bridge</li></ul></details>
+    <details class="srcgrp"><summary>Material events <span>8-K</span></summary>
+      <ul><li>2026-06-17 — Casela long-term InP supply agreement, RMB 173.0m for calendar 2027</li>
+      <li>2026-07-02 — Coherent Master Development and Supply Agreement, 6-inch InP, $22,288,500 prepayment</li>
+      <li>2026-07-08 — Tongmei STAR Market withdrawal accepted; redemption right triggered</li>
+      <li>2026-07-22 — Board expanded to six; Jia-Bin Duh elected</li></ul></details>
+    <details class="srcgrp"><summary>Not available in the source set <span>gaps</span></summary>
+      <ul><li>Earnings-call transcripts — folder empty</li>
+      <li>Shareholder letters, investor-day and conference presentations — folders empty</li>
+      <li>Insider trading (Form 4) — CSVs header-only</li>
+      <li>Q2 2026 earnings press release (Exhibit 99.1) — not captured, so no management guidance</li>
+      <li>InP-specific revenue, unit volumes, ASPs, utilization — never disclosed by the company</li></ul></details>
+  </section>
+
+  <section id="s6">
+    <div class="secno">Section 06</div>
+    <h2>Bottom line</h2>
+    <div class="bl">
+      <div class="s"><b>Why it could work.</b> AI optical interconnect demand is pulling hard on indium phosphide, AXT is one of few qualified low-defect InP suppliers, and it now holds $748.8 million and two multi-year customer commitments with which to turn that demand into capacity.</div>
+      <div class="s"><b>What must go right.</b> The Q2 volume step-up proves to be end demand rather than a cleared permit backlog, gross margin holds well above FY2025's 12.7% as capacity ramps, and the $694 million raised earns a return in a business that lost money in each of the last three years.</div>
+      <div class="s"><b>How it breaks.</b> China's MOFCOM — under a Foreign Trade Law that explicitly contemplates restricting exports to build domestic industries — throttles InP permits by destination as Chinese customers scale, capping revenue at whatever is permitted and stranding capacity built for export.</div>
+      <div class="s"><b>What would change my mind.</b> North American revenue: $161 thousand last quarter, so a return toward the 8% it represented in FY2024 would mean the gate is genuinely open, while four more quarters near zero alongside a rising China mix would mean this is a Chinese domestic business with a US listing.</div>
+    </div>
+  </section>
+</main>
+</div>
+
+<script>
+const PAIRS=[
+ {bull:{id:"Bull 1",claim:"The InP volume step-up is real end demand, not a one-off release of a permit backlog.",
+   f:[["What must happen","InP volumes keep rising after the shipments deferred during 2025 have cleared."],
+      ["Why this company","AXT's InP line never left the original Beijing site or lost its process base, so when the gate opened it had ingots to ship while a new entrant would still be in qualification."],
+      ["Evidence","Q2 2026 substrate revenue of $37.6 million, up 232.7%, attributed in the 10-Q to InP for data-center and passive-optical-network applications. More persuasively, two forward commitments signed fifteen days apart: Casela's binding purchase of RMB 173.0 million (~$25.4 million) of InP for calendar 2027, with an 80% minimum and half the money prepaid; and Coherent's three-year agreement for 6-inch InP with a $22,288,500 prepayment against a 2026–2028 capacity commitment."],
+      ["What to monitor","Advances from customers ($0.1M to $12.1M in six months), and whether further such agreements appear."]],
+   meta:"Load-bearing: without volume growth after the backlog clears, nothing else matters."},
+  bear:{id:"Risk 2",claim:"This is a permit-release catch-up, and cyclicals mean-revert hardest right after a margin peak.",
+   perm:"Largely permanent — the capex gets spent at the top",
+   f:[["How it could fail","Deferred 2025 shipments clear while Sumitomo, JX, Freiberger, Umicore, CCTC and Vital Materials all add InP capacity into the same AI demand signal. Substrate ASPs have historically fallen 5–10% a year in ordinary conditions."],
+      ["What would confirm failure","AXT's own record — gross margin was 42.0% in Q3 2022 and 10.7% in Q3 2023 on $17.4 million of quarterly revenue. Germanium is the live example: AXT deliberately cut Ge sales in 2025 because input costs rose while “pricing remained competitive.” It could not pass the cost through."],
+      ["What it does to the economics","Price and utilization fall together, so any retrace happens on a bigger fixed-cost and depreciation base than in 2023. The margin is fixable; money spent building capacity into the peak is not."]],
+   meta:"Attacks Bull 1 and Bull 2"}},
+
+ {bull:{id:"Bull 2",claim:"Fixed-cost ingot growth converts incremental volume into margin at close to the Q2 rate.",
+   f:[["What must happen","Gross margin holds in the 40s at similar utilization rather than proving a single favorable-mix quarter."],
+      ["Why this company","Crystal growth is furnace time, depreciation and yield — the cost base barely moves with volume, so utilization is the margin. AXT's own explanation of the Q2 jump: “fixed costs being spread over more units and a favorable change in product mix.”"],
+      ["Evidence","Gross margin of −6.4%, 8.0%, 22.3% and then 44.9% across Q1 2025 to Q2 2026, as quarterly revenue went from roughly $18 million to $47.6 million. Q2 2026 net income attributable to AXT was $11.1 million, against a $23.2 million consolidated net loss for all of FY2025."],
+      ["What to monitor","Incremental gross margin, and whether it holds as the lower-margin raw-materials line (up 50% in Q2) grows in the mix."]],
+   meta:"Load-bearing: at FY2025's 12.7% margin the business loses money at any plausible volume."},
+  bear:{id:"Risk 4",claim:"The margin inflection has not become cash.",
+   perm:"Fixable — but it is the first place a false signal shows",
+   f:[["How it could fail","Inventories were $96.3 million at June 30, 2026 — up $14.7 million in six months, roughly two quarters of sales — while H1 operating cash flow was negative $0.9 million despite $11.5 million of pre-NCI net income. And $12.1 million of advances from customers is prepaid cash, not earned revenue."],
+      ["What would confirm failure","Inventory keeps growing faster than revenue and operating cash flow stays negative through 2026."],
+      ["What it does to the economics","Inventory built for permitted demand that does not arrive becomes a write-down, and AXT has taken such charges before."]],
+   meta:"Attacks Bull 1 and Bull 2"}},
+
+ {bull:{id:"Bull 3",claim:"AXT can add InP capacity faster than incumbents or new Chinese entrants can get qualified, and the balance sheet pays for it without further dilution.",
+   f:[["What must happen","The $748.8 million of cash and investments becomes qualified InP capacity on the schedule Coherent contracted for."],
+      ["Why this company","Epi houses keep at least two qualified suppliers and qualification is slow, so the incumbent holding capacity when demand arrives takes the share. AXT holds 198 VGF patents and claims to be one of few able to hit the low etch-pit densities high-end InP requires."],
+      ["Evidence","Coherent paid cash for a Beijing capacity commitment and can terminate and reclaim the unused prepayment if AXT misses it for six consecutive months — a customer underwriting the expansion rather than hedging away from it."],
+      ["What to monitor","Capital expenditure. H1 2026 capex was $8.6 million against $694 million raised."]],
+   meta:"Load-bearing: capacity is what converts permitted demand into revenue."},
+  bear:{id:"Risk 3",claim:"What changed most is the share count and the cash balance, not the operating business.",
+   perm:"Fixable — only by earning a return on capital not yet deployed",
+   f:[["How it could fail","AXT raised $93.9 million net in December 2025 and $600.1 million net in April 2026, taking weighted diluted shares from 43.7 million to 63.5 million — roughly 45% dilution in two quarters — and spent $8.6 million of capex in H1. At June 30, 2026, $748.8 million of $1,097 million of total assets is cash and securities, and $4.7 million of interest income is 36% of consolidated net income."],
+      ["What would confirm failure","Capex stays modest through 2027 while the cash sits, or accelerates into capacity that arrives after the cycle turns."],
+      ["What it does to the economics","Per-share value now turns on the ROIC AXT earns on money it has not yet spent — in a business that reported net losses in each of 2023, 2024 and 2025. Existing holders bought that optionality at 45% dilution."]],
+   meta:"Attacks Bull 3"}},
+
+ {bull:{id:"Bull 4",claim:"China's export-permit regime stays permissive enough for InP specifically.",
+   f:[["What must happen","MOFCOM keeps approving InP destinations, and eventually the United States."],
+      ["Why this company","AXT argues InP is rarely used in military applications — the stated basis of the control regime — and has been an approved applicant since June 11, 2025."],
+      ["Evidence","Europe revenue rose from $1.6 million to $9.2 million year over year in Q2 2026; Taiwan and Japan growth is explicitly attributed to additional export approvals."],
+      ["What to monitor","North American revenue — $161 thousand in Q2 2026 against 8% of revenue in FY2024. The cleanest read on whether the gate is open or merely ajar."]],
+   meta:"Load-bearing: without permits the wafers cannot leave China, whatever the demand."},
+  bear:{id:"Risk 1",claim:"The permit gate is owned by a party whose declared purpose includes building a rival industry.",
+   perm:"Permanent — capital cannot fix it",
+   f:[["How it could fail","The amended PRC Foreign Trade Law, effective March 1, 2026, expressly authorizes export restrictions “in order to establish or accelerate the establishment of specific domestic industries.” All three substrate families require MOFCOM permits, and permits can be throttled by destination as Chinese InP laser and PIC makers scale — without any announcement."],
+      ["What would confirm failure","North America stays near zero into 2027 while China's share keeps rising (56% of FY2024, 62% of FY2025, 66% of Q2 2026). Three years after the August 2023 regime began, no GaAs export permits to the United States have been approved at all."],
+      ["What it does to the economics","Revenue is capped at what one ministry permits, and export capacity built at Beijing — the city that ordered AXT to relocate its GaAs and Ge lines in 2015 — becomes stranded."]],
+   meta:"Attacks Bull 4 · most severe risk in this memo"}},
+
+ {bull:null,
+  bear:{id:"Risk 5",claim:"The Tongmei listing produced nothing in five years and now carries a live redemption claim.",
+   perm:"Fixable in dollars — telling as a track record",
+   f:[["How it could fail","The STAR Market application, filed December 2021 and approved by the Shanghai exchange in July 2022, was withdrawn — accepted July 8, 2026 — triggering each of ten PRC private-equity investors' right to redemption at original RMB cost without interest. Redeemable noncontrolling interests stand at $39.7 million; the plan restarts in Hong Kong."],
+      ["What would confirm failure","Investors take cash rather than roll into the HKEX plan, and no listing application is filed within twelve months."],
+      ["What it does to the economics","Small against $748.8 million of liquidity. The signal is not — five years of “unlock the China value” produced a withdrawal."]],
+   meta:"Standalone — no bull assumption depends on it"}},
+];
+
+const SIGNALS=[
+ {n:"North America revenue",sub:"the cleanest read on export permits",v:"$161K in Q2 2026 · 2% of FY2025 revenue · 8% in FY2024",s:"Q2 2026 10-Q",d:"Rising back toward the FY2024 level confirms the permit gate is genuinely open; flat near zero says it is only ajar.",t:[["b","Bull 4"],["r","Risk 1"]]},
+ {n:"China share of total revenue",sub:"is the growth trapped inside the wall?",v:"66% Q2 2026 · 62% FY2025 · 56% FY2024",s:"Q2 2026 10-Q; FY2025 10-K",d:"Falling supports the export thesis; rising means growth is concentrating inside the jurisdiction that controls the gate.",t:[["b","Bull 4"],["r","Risk 1"]]},
+ {n:"Consolidated gross margin",sub:"operating leverage, or one good quarter?",v:"44.9% Q2 2026 · 12.7% FY2025 · 10.7% Q3 2023",s:"Q2 2026 10-Q; FY2025 10-K",d:"Above roughly 30% for four straight quarters supports the fixed-cost leverage case; a retrace to the teens is the cycle reasserting itself.",t:[["b","Bull 2"],["r","Risk 2"]]},
+ {n:"Capital expenditure",sub:"is the raise becoming capacity?",v:"$8.6M in H1 2026 vs $694M net raised",s:"Q2 2026 10-Q",d:"A step-up consistent with the Coherent 2026–2028 capacity commitment supports the capacity case; continued low spend means the money is idle.",t:[["b","Bull 3"],["r","Risk 3"]]},
+ {n:"Advances from customers",sub:"forward commitment, in cash",v:"$12.1M at 6/30/26 vs $0.1M at 12/31/25",s:"Q2 2026 10-Q",d:"Rising as the Coherent prepayment lands and new agreements sign supports real end demand; flat says June 2026 was the peak of commitment.",t:[["b","Bull 1"]]},
+ {n:"Inventories vs revenue",sub:"real sell-through, or building for hope?",v:"$96.3M inventory vs $74.5M H1 2026 revenue",s:"Q2 2026 10-Q",d:"Inventory falling while revenue rises confirms sell-through; inventory outgrowing revenue is a write-down forming.",t:[["b","Bull 1"],["r","Risk 4"]]},
+ {n:"Operating cash flow",sub:"does the margin turn into money?",v:"−$0.9M in H1 2026 on $11.5M pre-NCI net income",s:"Q2 2026 10-Q",d:"Turning solidly positive validates the margin as cash; continued negative says the P&L is ahead of the business.",t:[["b","Bull 2"],["r","Risk 4"]]},
+ {n:"Redeemable noncontrolling interests",sub:"the Tongmei overhang",v:"$39.7M at 6/30/26 · redemption right triggered July 2026",s:"Q2 2026 10-Q; 8-K 2026-07-08",d:"Investors rolling into the Hong Kong plan neutralizes the overhang; cash redemption with no new filing confirms five lost years.",t:[["r","Risk 5"]]},
+];
+
+function card(d,side){
+  const el=document.createElement("details");
+  el.className="card "+side;
+  const perm=d.perm?`<span class="pill ${d.perm.startsWith("Permanent")?"perm":"fix"}">${d.perm}</span>`:"";
+  el.innerHTML=`<summary><span class="tag">${d.id}</span><span class="claim">${d.claim}</span></summary>
+  <div class="body">${d.f.map(([l,t])=>`<div class="fld"><span class="lab">${l}</span><div class="txt">${t}</div></div>`).join("")}</div>
+  <div class="meta">${perm}<span>${d.meta}</span></div>`;
+  return el;
+}
+const host=document.getElementById("argcards");
+PAIRS.forEach(p=>{
+  const row=document.createElement("div"); row.className="pair";
+  if(p.bull) row.appendChild(card(p.bull,"bull"));
+  if(p.bear) row.appendChild(card(p.bear,"bear"));
+  host.appendChild(row);
+});
+
+const sh=document.getElementById("sigcards");
+SIGNALS.forEach(s=>{
+  const el=document.createElement("div"); el.className="sig";
+  el.innerHTML=`<h3>${s.n}<br><span style="font-weight:400;color:var(--faint);font-size:12.5px">${s.sub}</span></h3>
+  <div class="val">${s.v}</div><div class="dir">${s.d}</div>
+  <div class="foot"><span class="src">${s.s}</span><span class="trk">${s.t.map(([k,v])=>`<span class="${k}">${v}</span>`).join("")}</span></div>`;
+  sh.appendChild(el);
+});
+
+document.querySelectorAll(".seg button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    document.body.dataset.view=b.dataset.v;
+  });
+});
+
+const links=[...document.querySelectorAll("nav a")];
+const secs=links.map(a=>document.getElementById(a.dataset.t)).filter(Boolean);
+function spy(){
+  let cur=secs[0];
+  for(const s of secs){ if(s.getBoundingClientRect().top<=200) cur=s; }
+  links.forEach(a=>a.classList.toggle("on",a.dataset.t===cur.id));
+}
+addEventListener("scroll",spy,{passive:true}); spy();
+</script>
+</body>
+</html>

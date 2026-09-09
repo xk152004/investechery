@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview: Amazon.com, Inc. (AMZN)</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:Calibri,'Segoe UI',Arial,sans-serif;
+    font-size:19px; line-height:1.58;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:var(--ink);}
+  h1{font-size:38px;line-height:1.16;margin:6px 0 14px;}
+  h2{font-size:27px;line-height:1.22;margin:52px 0 14px;}
+  h3{font-size:21px;line-height:1.3;margin:30px 0 10px;}
+  p{margin:0 0 16px;}
+  .kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700;}
+  .srcline{font-size:15px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px;}
+  .restate{
+    font-family:Georgia,'Times New Roman',serif;font-size:23px;line-height:1.5;
+    border-left:5px solid var(--terracotta);padding:6px 0 6px 20px;margin:0 0 30px;
+  }
+  .engine{
+    background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px;
+  }
+  .engine .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C7BFB2;font-weight:700;margin-bottom:8px;}
+  .engine .unit{font-family:Georgia,serif;font-size:26px;line-height:1.3;margin-bottom:10px;}
+  .engine .earns{font-size:17px;color:#E8E1D6;margin:0;}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px;}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+  .kpi .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .kpi .v{font-family:Georgia,serif;font-size:29px;color:var(--terracotta);line-height:1.15;margin:6px 0 4px;font-variant-numeric:tabular-nums;}
+  .kpi .s{font-size:14px;color:var(--muted);line-height:1.4;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 20px;}
+  .lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:16px 20px;margin:0 0 14px;}
+  .lever.structural{border-left-color:var(--good);}
+  .lever.mgmt{border-left-color:var(--gold);}
+  .lever.cyclical{border-left-color:var(--blue);}
+  .lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--terracotta);}
+  .lever.structural .tag{color:var(--good);}
+  .lever.mgmt .tag{color:var(--gold);}
+  .lever.cyclical .tag{color:var(--blue);}
+  .lever .hd{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:4px 0 6px;}
+  .lever p{margin:0;font-size:17px;}
+  .pull{
+    background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0;
+    font-family:Georgia,serif;font-size:21px;line-height:1.48;
+  }
+  .pull .attr{display:block;margin-top:12px;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--muted);font-style:normal;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 20px;}
+  .two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .two h3{margin:0 0 12px;font-size:18px;}
+  .two ul{margin:0;padding-left:18px;}
+  .two li{margin:0 0 10px;font-size:16px;line-height:1.45;}
+  .tw{overflow-x:auto;margin:0 0 10px;-webkit-overflow-scrolling:touch;}
+  table{border-collapse:collapse;width:100%;min-width:560px;background:#fff;font-size:16px;}
+  caption{caption-side:top;text-align:left;font-size:13px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:0 0 8px;}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;font-variant-numeric:tabular-nums;}
+  th{background:#F4EFE6;font-weight:700;}
+  td.n,th.n{text-align:right;}
+  .note{font-size:14px;color:var(--muted);margin:0 0 26px;line-height:1.45;}
+  figure{margin:26px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 18px 10px;}
+  figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.45;}
+  .fig-h{font-family:Georgia,serif;font-size:18px;font-weight:700;margin:0 0 4px;}
+  svg{display:block;width:100%;height:auto;}
+  .svgtxt{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:12px;fill:var(--muted);}
+  .svglbl{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;font-weight:700;}
+  ul.plain{padding-left:20px;}
+  ul.plain li{margin:0 0 10px;}
+  footer{border-top:1px solid var(--line);margin-top:52px;padding-top:22px;font-size:15px;color:var(--muted);}
+  footer h3{font-size:16px;margin:0 0 10px;}
+  @media (max-width:700px){
+    .kpis{grid-template-columns:1fr 1fr;}
+    .two{grid-template-columns:1fr;}
+    h1{font-size:30px;} h2{font-size:23px;} body{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Business Overview</div>
+  <h1>Amazon.com, Inc. &nbsp;<span style="color:var(--muted);font-weight:400;">NASDAQ: AMZN</span></h1>
+  <div class="srcline">
+    5 September 2026 · Built from Amazon's SEC filings — FY2021–FY2025 Forms 10-K, Forms 10-Q through Q2 2026 (filed 31 July 2026),
+    earnings releases through Q2 2026, the 2026 proxy and the 8-Ks of 27 February and 10 June 2026 — tested against independent sources:
+    competitors' own filings, the US Census Bureau, BLS, DOE/LBNL, PJM, the European Commission, the UK CMA and the federal court docket.
+    <strong>This is not a valuation and not a recommendation.</strong>
+  </div>
+
+  <p class="restate">Amazon is a capital-intensive compute utility earning 39% margins, funded by an ordinary-margin retailer that happens to own a near-full-margin advertising business — and, since March 2026, by the bond market.</p>
+
+  <div class="engine">
+    <div class="lbl">The economic engine</div>
+    <div class="unit">One contracted, energised megawatt of compute.</div>
+    <p class="earns">Amazon signs the demand before the capacity exists — approximately <strong>$496bn</strong> of customer obligations not yet recognised at 30 June 2026, with a weighted-average remaining life of <strong>6.4 years</strong> — then builds, energises and depreciates the asset over five to six years. AWS is 21% of revenue and <strong>61% of segment operating profit</strong>.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">Contracted book</div><div class="v">$496bn</div><div class="s">AWS obligations not yet recognised, 30 Jun 2026, at a 6.4-year weighted life — up from $195bn a year earlier</div></div>
+    <div class="kpi"><div class="k">What the unit earns</div><div class="v">39.4%</div><div class="s">AWS segment operating margin, Q2 2026 — a record; North America 7.9%, International 4.1%</div></div>
+    <div class="kpi"><div class="k">Headline earnings</div><div class="v">$27.5bn</div><div class="s">Q2 2026 operating income. Net income of $62.6bn is mostly unrealised investment marks</div></div>
+    <div class="kpi"><div class="k">Leverage</div><div class="v">$128.9bn</div><div class="s">Long-term debt at 30 Jun 2026, from $65.6bn six months earlier. No financial covenants</div></div>
+    <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak</div><div class="s">AWS growth 37% against a 12% trough; North America margin 7.9% against −0.9%</div></div>
+    <div class="kpi"><div class="k">Reported vs organic</div><div class="v">20% / 20%</div><div class="s">Q2 2026 consolidated growth, reported and ex-currency. No material acquisitions</div></div>
+  </div>
+
+  <h2>1. Executive snapshot</h2>
+  <div class="tw">
+  <table>
+    <tbody>
+      <tr><th style="width:32%">What the business is</th><td>Three businesses in one reporting entity: a first-party retailer, a third-party marketplace with an advertising network attached, and the largest public cloud infrastructure provider. FY2025 net sales $716.9bn; 1,576,000 employees.</td></tr>
+      <tr><th>Industry</th><td>US e-commerce — 17.1% of total US retail, growing at 1.8× the rate of total retail (Census, Q2 2026); and cloud infrastructure, estimated at $143.4bn worldwide in Q2 2026, +43% (Synergy Research, third-party estimate).</td></tr>
+      <tr><th>How it makes money</th><td>It rents metered computing capacity under multi-year contracts, charges third-party sellers roughly half of each dollar they transact for access to its demand and its delivery network, and sells advertising against the purchase intent both generate.</td></tr>
+      <tr><th>The unit of economics</th><td>AWS: one contracted, energised megawatt. Retail: one paid unit, 61% of which are sold by third parties. Paid units grew 17% in Q2 2026.</td></tr>
+      <tr><th>What protects it</th><td>$496bn contracted at a 6.4-year life; a delivery network carrying an estimated 28% of US parcels; a seller base that absorbed two fee increases without leaving; energised power secured years ahead of need.</td></tr>
+      <tr><th>What drives earnings</th><td>The rate at which contracted AWS capacity is energised; advertising (+26% y/y); fulfilment cost per unit.</td></tr>
+      <tr><th>What to watch</th><td>Depreciation converging on capex ($169.0bn trailing capex against AWS FY2025 revenue of $128.7bn); the counterparty mix inside the backlog; the FTC trial set for 29 March 2027.</td></tr>
+      <tr><th>Cycle exposure</th><td>Medium to high — and currently at a cycle high on both engines simultaneously.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>2. What the company does</h2>
+  <p>Amazon solves two unrelated problems for two unrelated customers and reports them in one income statement. For a consumer it removes the search-and-carry cost of buying a physical good. For an enterprise it removes the need to own computing capacity. The two meet only on the balance sheet, where retail cash once funded the cloud build-out and cloud profit now underwrites both.</p>
+
+  <h3>The AWS unit</h3>
+  <p>AWS discloses no megawatts, no revenue per megawatt and no customer count, so the unit has to be traced through what it does disclose. A customer signs a multi-year commitment; Amazon books it as a performance obligation not yet recognised — about $496bn at 30 June 2026. It then builds and energises the capacity, capitalises it into property and equipment ($446.0bn net at 30 June 2026, of which AWS held $190.1bn at end-FY2025), and depreciates it over five to six years. Revenue is recognised as the customer consumes.</p>
+  <p>The peer datapoints that exist price the unit at roughly $20–25m per megawatt on Nebius's Q2 2026 contracts, and CoreWeave's 1.5GW of active power against $2.6bn of quarterly revenue implies about $4.6m of annualised revenue per installed megawatt <em>(inferred)</em>. Neither is AWS. Both establish that the good being sold is power-shaped rather than software-shaped — which is why the industry's binding constraints are physical, and why cash leaves years before it returns. Amazon spent $128.3bn of net cash capex in FY2025 and $96.3bn in the first half of 2026 alone, against revenue that converts over 6.4 years.</p>
+
+  <div class="pull">
+    “On average, it takes a little less than three years to break even on that investment. The servers currently have a useful life of at least five to six years.”
+    <span class="attr">Andy Jassy, Q2 2026 earnings call. This is the load-bearing assumption behind a capital programme guided to approximately $220bn for 2026 — and no external party can verify it.</span>
+  </div>
+
+  <h3>The retail unit, and the third business</h3>
+  <p>Sixty-one per cent of paid units worldwide are sold by third parties, so the typical unit is not Amazon's inventory. On a third-party unit Amazon earns a referral commission, a fulfilment fee where FBA is used, storage, and increasingly advertising. Amazon has never disclosed gross merchandise value, so the combined take must be inferred: from disclosed first-party sales, third-party revenue and unit mix, third-party seller services alone run at roughly <strong>42–57% of implied third-party GMV</strong>. The FTC's 2023 complaint, drawing on Amazon's own produced documents, alleges Amazon takes “close to half of every dollar” from a typical FBA seller. Two independent derivations landing in the same band is the strongest available evidence on a number Amazon does not publish.</p>
+  <p>The first-party-to-third-party shift runs opposite to how it looks: a 1P sale books the full retail price as revenue and the full product cost as cost of sales, a 3P sale books only the fee. The shift therefore <em>suppresses</em> reported revenue growth while raising margin. It has now stopped — 3P units were 62% of the total in Q2 2025 and 61% in Q2 2026, the first sustained flat-to-down reading since 2021.</p>
+  <p>The third business is advertising, and it has no segment. Advertising services were $19.8bn in Q2 2026 (+26%) and $68.6bn in FY2025, reported inside North America and International. That is why those segments' margins cannot be read as retail margins: quarterly advertising revenue is <strong>1.8× the two retail segments' combined operating income</strong> of $10.8bn. Amazon does not disclose segment margin excluding advertising, so the underlying retail operation's profitability is unobservable from outside.</p>
+
+  <h2>3. Industry, competitive position and moat</h2>
+  <p>Amazon competes in two industries with opposite structures, so the moat question has to be asked twice.</p>
+  <p><strong>Cloud is an oligopoly sitting below the profit pool.</strong> On the most recent reported figures, SK hynix earned a 76% operating margin on memory in Q2 2026, Nvidia 66% on accelerators, TSMC 60% on leading-edge foundry. Hyperscaler cloud segments earned 35–41% — AWS 39.4%, Microsoft's Intelligent Cloud 40.6%, Google Cloud 35.5% — struck <em>after</em> depreciating the assets bought from the stages above. That is why the 2026 memory shortage transferred margin upstream visibly: Amazon raised 2026 capex guidance from roughly $200bn to $220bn on memory prices, Microsoft attributed about $25bn of its own to component pricing. Below the hyperscalers, colocation earned 25% (Equinix), server ODMs 7% (Wiwynn), and the best-funded neocloud, CoreWeave, ran a negative operating margin while paying a quarter of revenue in interest.</p>
+  <p>Structurally the market is a stable oligopoly whose leader is slipping. Synergy Research puts the worldwide market at $143.4bn in Q2 2026 with Amazon at 28%, Microsoft 20%, Google 15%; the big three have held 61–63% for two years while AWS went 29%→28% and Google 13%→15%. Two things are true of AWS at once: it grew 37% in Q2 2026, its fastest in eighteen quarters, and it is losing relative share, because Google Cloud grew 82% and Oracle's OCI 93% from smaller bases.</p>
+  <p>What protects a hyperscaler is not the service catalogue — neoclouds grew 112% to 454% with almost none of it — but three things money cannot buy inside a planning horizon: <strong>energised power</strong> (median interconnection-to-operation wait now over five years, per LBNL; PJM's 2027/28 auction cleared 6,623MW short of its reliability requirement with data centres accounting for roughly 5,100 of 5,250MW of forecast peak-load growth), <strong>advanced packaging</strong> (TSMC's chief executive: “our packaging capacity is so tight that now it's limiting my customers' growth”), and <strong>contracted demand secured before capacity exists</strong> — which is what the $496bn backlog is.</p>
+
+  <h3>Testing Amazon's account of itself</h3>
+  <div class="tw">
+  <table>
+    <caption>Company claim against independent evidence</caption>
+    <thead><tr><th style="width:26%">Amazon's claim</th><th style="width:19%">Verdict</th><th>Basis</th></tr></thead>
+    <tbody>
+      <tr><td>AWS is the market leader</td><td><strong style="color:var(--good)">Supports</strong></td><td>Synergy puts Amazon at 28% against Microsoft 20% and Google 15%. Qualification: leader, yes; gaining share, no.</td></tr>
+      <tr><td>AI demand is capacity- not demand-constrained</td><td><strong style="color:var(--good)">Supports</strong></td><td>Corroborated on all three sides — supplier (TSMC on packaging), competitor (Microsoft: “we expect to remain constrained at least through 2026”), and grid (PJM, LBNL).</td></tr>
+      <tr><td>Switching costs are high</td><td><strong style="color:var(--gold)">Partly</strong></td><td>The European Commission's 25 June 2026 preliminary DMA position cites “lock-in effects and high switching costs.” But the UK CMA, examining actual behaviour, found the egress evidence “inconclusive,” and EU Data Act Article 29 bans all switching charges from 12 January 2027. What survives is contractual and architectural, not tariff-based.</td></tr>
+      <tr><td>Custom silicon confers a price-performance advantage</td><td><strong style="color:var(--gold)">Partly</strong></td><td>Rests on Amazon's own benchmarks. The strongest independent evidence for custom silicon generally is Anthropic's public choice of up to one million Google TPUs “due to their price-performance” — validating the concept, not Trainium.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Where outside evidence could not settle a claim, it is marked unverified rather than accepted.</p>
+
+  <p><strong>Retail is the opposite structure.</strong> E-commerce was 17.1% of US retail in Q2 2026, so 83% remains physical and fragmented — which makes Amazon's “intensely competitive” framing defensible on its own terms. Within the channel it actually competes in, concentration is rising: eMarketer estimates Amazon and Walmart at 51.0% of US retail e-commerce in 2026 against 41.3% in 2019, the first reading above half.</p>
+  <p>Two natural experiments show which retail barriers bind. <strong>Walmart</strong> is growing faster than Amazon's retail on every comparable line — US e-commerce +24%, global advertising +38%, membership fee revenue +17% — and has reproduced delivery speed essentially for free, reaching 30 minutes or less in 33 US markets using stores it already owned. What it has not reproduced is accumulated scale: its advertising business is roughly a tenth of Amazon's, and its 5.0% consolidated operating margin sits below Amazon North America's 7.9%. <strong>Temu</strong> reproduced price rather than position, and the price advantage proved policy-dependent — the de minimis exemption ended for China and Hong Kong on 2 May 2025, globally on 29 August 2025, and was indefinitely suspended for all non-postal modes on 24 June 2026. Shein's US market share fell in 2025 for the first time since 2021.</p>
+  <p>The hardest single piece of evidence on Amazon's logistics position came from its own carrier. UPS disclosed that Amazon was 10.6% of its 2025 consolidated revenue and chose to cut that volume by more than half against 2024, completing the reduction by Q2 2026; its US average daily volume fell from 20.8m packages to 16.0m while revenue per piece rose 9.3%. Amazon absorbed the volume internally with no disclosed disruption. A peer-reviewed account of the US regionalisation programme quantifies why: in-region fulfilment 62%→76%, distance to customer −15%, middle-mile touchpoints −12%, savings above $0.45 per unit — the first reduction in cost-to-serve per unit since 2018.</p>
+  <p><strong>What kind of company wins here.</strong> The industry evidence gives a clear answer for cloud: one with a cash-generative business that is <em>not</em> the cloud business, contracted long-dated demand, control of energised megawatts years ahead of need, and custom silicon as a margin-recapture option. Amazon is that kind of company on three counts without qualification. The fourth is now in question — trailing free cash flow was −$7.6bn at 30 June 2026 against +$18.2bn a year earlier, so the retail engine no longer covers the cloud build on its own. The debt market does.</p>
+
+  <h2>4. Growth engine</h2>
+  <p>Reported growth is essentially organic. Amazon made no material acquisition in FY2025 — consideration was “immaterial” — and the last two of consequence, MGM ($6.1bn net, 2022) and One Medical ($3.5bn, 2023), together added under 2% to a $717bn base. What needs separating from the headline is currency and calendar. Currency added $4.4bn to FY2025 net sales and $3.0bn to first-half 2026, though it was immaterial within Q2 2026. Calendar matters more than it looks: the Q3 2026 guide of 9–12% carries the note that “excluding the impact of Prime Day in both 2025 and 2026, third quarter 2026 year-over-year growth would be nearly 400 basis points higher,” with a further 80bp of currency drag. A reader who takes the guided range as the underlying rate understates it by roughly five points.</p>
+
+  <div class="tw">
+  <table>
+    <caption>Reported growth against ex-currency growth</caption>
+    <thead><tr><th>Net sales growth</th><th class="n">Q2 2026 reported</th><th class="n">Q2 2026 ex-FX</th><th class="n">H1 2026 reported</th><th class="n">H1 2026 ex-FX</th></tr></thead>
+    <tbody>
+      <tr><td>North America</td><td class="n">16%</td><td class="n">16%</td><td class="n">14%</td><td class="n">14%</td></tr>
+      <tr><td>International</td><td class="n">15%</td><td class="n">15%</td><td class="n">17%</td><td class="n">13%</td></tr>
+      <tr><td>AWS</td><td class="n">37%</td><td class="n">37%</td><td class="n">33%</td><td class="n">33%</td></tr>
+      <tr><td><strong>Consolidated</strong></td><td class="n"><strong>20%</strong></td><td class="n"><strong>20%</strong></td><td class="n"><strong>18%</strong></td><td class="n"><strong>17%</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Source: Q2 2026 10-Q. Acquisitions contributed nothing material to any line, so reported growth is organic growth; the only meaningful reconciling items are currency and Prime Day timing.</p>
+
+  <h3>The drivers, ranked</h3>
+
+  <div class="lever structural">
+    <div class="tag">Structural · management-driven</div>
+    <div class="hd">AWS capacity conversion</div>
+    <p>AWS grew 37% in Q2 2026 to $42.2bn and contributed $16.6bn of operating income, 61% of the company's total. Growth is set by how fast contracted capacity is energised, not by selling effort: the backlog went $195bn (30 Jun 2025) → $364bn (31 Mar 2026) → $496bn (30 Jun 2026) while its weighted-average life lengthened from 4.0 to 6.4 years. Two disclosed expansions explain much of it — an OpenAI commitment increased by $100bn over eight years in Q1 2026, and an Anthropic collaboration increased by more than $100bn over ten years in Q2 2026.</p>
+  </div>
+
+  <div class="lever structural">
+    <div class="tag">Structural</div>
+    <div class="hd">Advertising</div>
+    <p>$19.8bn in Q2 2026, +26% — faster than Alphabet's advertising business (+14%) from roughly a quarter of its base. Incremental margin is close to complete because the inventory is a page Amazon was rendering anyway and the attribution data is a by-product of the order system it already operates. Growth now comes from new surfaces — Prime Video, live sport, off-site demand-side inventory — rather than more slots on the search page, which is itself the clearest signal that on-site ad load is near its practical ceiling.</p>
+  </div>
+
+  <div class="lever structural">
+    <div class="tag">Structural — but the mix lever has stopped</div>
+    <div class="hd">Third-party seller services</div>
+    <p>Up 16% in Q2 2026. The rate can rise even when the mix does not, because take-rate expansion across the sector comes from advertising rather than headline commissions. But third-party units have held at 61–62% since 2024 and ticked down over the last year, so the shift that drove a decade of margin improvement is substantially complete.</p>
+  </div>
+
+  <div class="lever cyclical">
+    <div class="tag">Structural with a cyclical overlay</div>
+    <div class="hd">Retail unit volume</div>
+    <p>Paid units grew 17% in Q2 2026. The underlying channel shift continues at roughly 0.55 percentage points of US retail share a year — about 55–60% of its pre-COVID pace. The COVID spike fully round-tripped before the trend resumed, which is the useful precedent for any step-change in online share.</p>
+  </div>
+
+  <div class="lever">
+    <div class="tag">Cyclical · temporary</div>
+    <div class="hd">Price, mix and currency</div>
+    <p>Currency, Prime Day timing and a $640m tariff refund under the International Emergency Economic Powers Act, booked to North America cost of sales in Q2 2026, all flatter the current period. Amazon stated the refund “represents the significant majority of refunds we expect to receive.”</p>
+  </div>
+
+  <div class="lever mgmt">
+    <div class="tag">Management-driven — unused</div>
+    <div class="hd">The Prime price</div>
+    <p>Subscription services grew 12% in Q2 2026 with the US Prime price unchanged at $139 since February 2022. Amazon has raised realised revenue per member instead through the Prime Video advertising tier, introduced January 2024 and repriced upward by $2 a month in March 2026. The headline price is an untested lever whose elasticity is unknown — Amazon has disclosed no member count since 2021 and has never disclosed a renewal rate.</p>
+  </div>
+
+  <h2>5. Margin, cash and capital allocation</h2>
+  <p>Consolidated operating margin was 11.2% in FY2025 and 13.7% in Q2 2026, but that blends three businesses with different physics. <strong>AWS converts through utilisation</strong> — depreciation, power and people are largely fixed once capacity is energised, so incremental revenue on installed capacity falls through at a high rate and idle capacity is expensive. <strong>Retail converts through density</strong> — fulfilment and shipping scale with units and cube rather than dollars, so profitability depends on packages per route and distance per package. Worldwide shipping costs rose 19% in Q2 2026 against 17% unit growth, cost per unit up roughly 1.7%; management attributed the gap to fuel and line-haul rates, stating that excluding those, shipping costs grew more slowly than units. The network is still deflating per unit; input prices are currently offsetting it. The relevant comparison is the third-party cost floor — UPS took 9.3% and FedEx 10% on revenue per piece over the same year.</p>
+
+  <figure>
+    <div class="fig-h">AWS revenue and its growth rate, FY2019–FY2025</div>
+    <svg viewBox="0 0 820 340" role="img" aria-label="AWS annual net sales rising from $35.0bn in FY2019 to $128.7bn in FY2025, with the growth rate falling from 37% in FY2021 to 13% in FY2023 and recovering to 20% in FY2025.">
+      <line x1="14" y1="296" x2="790" y2="296" stroke="#C7BFB2" stroke-width="1"/>
+      <!-- revenue bars -->
+      <g fill="#C75B39" opacity="0.82">
+        <rect x="21"  y="228" width="70" height="68"/>
+        <rect x="139" y="208" width="70" height="88"/>
+        <rect x="257" y="175" width="70" height="121"/>
+        <rect x="375" y="140" width="70" height="156"/>
+        <rect x="493" y="120" width="70" height="176"/>
+        <rect x="611" y="87"  width="70" height="209"/>
+        <rect x="712" y="46"  width="70" height="250"/>
+      </g>
+      <g class="svgtxt" text-anchor="middle" fill="#2B2B2B">
+        <text x="56"  y="221">35.0</text>
+        <text x="174" y="201">45.4</text>
+        <text x="292" y="168">62.2</text>
+        <text x="410" y="133">80.1</text>
+        <text x="528" y="113">90.8</text>
+        <text x="646" y="80">107.6</text>
+        <text x="747" y="39">128.7</text>
+      </g>
+      <!-- growth line -->
+      <polyline points="174,95 292,44 410,100 528,206 646,170 747,162" fill="none" stroke="#3C6E8F" stroke-width="2.5"/>
+      <g fill="#3C6E8F">
+        <circle cx="174" cy="95" r="3.5"/><circle cx="292" cy="44" r="3.5"/><circle cx="410" cy="100" r="3.5"/>
+        <circle cx="528" cy="206" r="3.5"/><circle cx="646" cy="170" r="3.5"/><circle cx="747" cy="162" r="3.5"/>
+      </g>
+      <text class="svglbl" x="292" y="33" fill="#3C6E8F" text-anchor="middle">37%</text>
+      <text class="svglbl" x="528" y="224" fill="#3C6E8F" text-anchor="middle">13%</text>
+      <text class="svglbl" x="762" y="158" fill="#3C6E8F" text-anchor="end">20% growth</text>
+      <text class="svglbl" x="14" y="34" fill="#C75B39" text-anchor="start">AWS net sales, $bn</text>
+      <g class="svgtxt" text-anchor="middle">
+        <text x="56"  y="314">FY19</text><text x="174" y="314">FY20</text><text x="292" y="314">FY21</text>
+        <text x="410" y="314">FY22</text><text x="528" y="314">FY23</text><text x="646" y="314">FY24</text><text x="747" y="314">FY25</text>
+      </g>
+    </svg>
+    <figcaption>Bars: AWS net sales, $bn, left. Line: year-over-year growth, right, on an independent scale. Sources: FY2021, FY2023 and FY2025 Forms 10-K. AWS grew 37% again in Q2 2026 — its fastest in eighteen quarters — so the right-hand end of this line has since turned back up steeply.</figcaption>
+  </figure>
+
+  <figure>
+    <div class="fig-h">Segment operating margin: both engines are at their own records</div>
+    <svg viewBox="0 0 820 340" role="img" aria-label="AWS segment operating margin ranges from 26.3% in FY2019 to a record 39.4% in Q2 2026, dipping to 27.1% in FY2023. North America segment margin runs from 4.1% in FY2019 to minus 0.9% in FY2022 and a record 7.9% in Q2 2026.">
+      <line x1="14" y1="296" x2="790" y2="296" stroke="#E5DDD0" stroke-width="1"/>
+      <line x1="14" y1="268.8" x2="790" y2="268.8" stroke="#C7BFB2" stroke-width="1" stroke-dasharray="3 3"/>
+      <text class="svgtxt" x="790" y="272" text-anchor="end" fill="#6E675C">0%</text>
+      <polyline points="56,126.4 157,106.9 258,106.9 360,113.8 461,121.5 562,67.5 663,76.2 764,54.4" fill="none" stroke="#C75B39" stroke-width="2.8"/>
+      <polyline points="56,246.5 157,248.7 258,254.6 360,273.7 461,246.0 562,234.0 663,231.3 764,225.9" fill="none" stroke="#3C6E8F" stroke-width="2.8"/>
+      <g fill="#C75B39"><circle cx="56" cy="126.4" r="3.5"/><circle cx="461" cy="121.5" r="3.5"/><circle cx="764" cy="54.4" r="4.5"/></g>
+      <g fill="#3C6E8F"><circle cx="56" cy="246.5" r="3.5"/><circle cx="360" cy="273.7" r="3.5"/><circle cx="764" cy="225.9" r="4.5"/></g>
+      <text class="svglbl" x="56" y="118" fill="#C75B39" text-anchor="start">AWS 26.3%</text>
+      <text class="svglbl" x="461" y="139" fill="#C75B39" text-anchor="middle">27.1%</text>
+      <text class="svglbl" x="770" y="45" fill="#C75B39" text-anchor="end">39.4%</text>
+      <text class="svglbl" x="56" y="238" fill="#3C6E8F" text-anchor="start">North America 4.1%</text>
+      <text class="svglbl" x="360" y="290" fill="#3C6E8F" text-anchor="middle">−0.9%</text>
+      <text class="svglbl" x="770" y="217" fill="#3C6E8F" text-anchor="end">7.9%</text>
+      <g class="svgtxt" text-anchor="middle">
+        <text x="56"  y="314">FY19</text><text x="157" y="314">FY20</text><text x="258" y="314">FY21</text><text x="360" y="314">FY22</text>
+        <text x="461" y="314">FY23</text><text x="562" y="314">FY24</text><text x="663" y="314">FY25</text><text x="764" y="314">Q2 26</text>
+      </g>
+    </svg>
+    <figcaption>Sources: FY2021, FY2023 and FY2025 Forms 10-K; Q2 2026 release (margins computed). The AWS line is not on a constant basis: server lives were lengthened effective January 2022 and again January 2024, then a subset was shortened effective January 2025 — three depreciation policies across seven points.</figcaption>
+  </figure>
+
+  <div class="tw">
+  <table>
+    <caption>The financial spine</caption>
+    <thead><tr><th>$bn</th><th class="n">FY2022</th><th class="n">FY2023</th><th class="n">FY2024</th><th class="n">FY2025</th></tr></thead>
+    <tbody>
+      <tr><td>Net sales</td><td class="n">514.0</td><td class="n">574.8</td><td class="n">638.0</td><td class="n">716.9</td></tr>
+      <tr><td>Operating income</td><td class="n">12.2</td><td class="n">36.9</td><td class="n">68.6</td><td class="n">80.0</td></tr>
+      <tr><td>AWS segment operating income</td><td class="n">22.8</td><td class="n">24.6</td><td class="n">39.8</td><td class="n">45.6</td></tr>
+      <tr><td>Cash capex, net of incentives</td><td class="n">(58.3)</td><td class="n">(48.1)</td><td class="n">(77.7)</td><td class="n">(128.3)</td></tr>
+      <tr><td>Operating cash flow</td><td class="n">46.8</td><td class="n">84.9</td><td class="n">115.9</td><td class="n">139.5</td></tr>
+      <tr><td><strong>Free cash flow (Amazon definition)</strong></td><td class="n"><strong>(11.6)</strong></td><td class="n"><strong>36.8</strong></td><td class="n"><strong>38.2</strong></td><td class="n"><strong>11.2</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Sources: FY2023 and FY2025 Forms 10-K. FY2024 and FY2025 free cash flow are as reconciled by Amazon; FY2022 and FY2023 are computed on the same definition because the FY2025 10-K reconciles only two years. Comparability: these four years are not on a constant depreciation basis, and FY2025 operating income absorbs $2.5bn for the FTC settlement and $2.7bn of severance.</p>
+
+  <p><strong>The depreciation record, plainly.</strong> Amazon lengthened server lives from four to five years effective January 2022, telling investors to expect roughly $3.1bn of benefit to 2022 operating income; lengthened them again from five to six years effective January 2024, with the same $3.1bn estimate; then shortened a subset from six back to five years effective January 2025 “due to the increased pace of technology development, particularly in the area of artificial intelligence and machine learning,” costing $1.4bn of extra depreciation and $1.0bn of net income in FY2025, primarily in AWS. Heavy equipment moved from ten to ten-to-thirteen years in January 2025 with no dollar effect quantified.</p>
+
+  <p><strong>Cash conversion has inverted.</strong> Operating cash flow rose 20% in FY2025 to $139.5bn and 33% in the twelve months to June 2026 to $161.4bn, while free cash flow on Amazon's own definition fell from $38.2bn (FY2024) to $11.2bn (FY2025) to −$7.6bn trailing at 30 June 2026. The entire gap is capital expenditure: $128.3bn net in FY2025, $169.0bn trailing, guided to about $220bn for calendar 2026. Reported operating cash flow is also being helped by payables — accounts payable reached $121.9bn at end-2025 and $147.4bn at June 2026, and $27.0bn of the 2025 balance was property and equipment acquired but not yet paid for, against $16.8bn a year earlier. Days payable on the headline balance moved 106→125; excluding unpaid capex, 87→97.</p>
+
+  <p><strong>Where the cash went, ranked.</strong> Across FY2019–FY2023: capital expenditure ($209.6bn net), finance-lease principal ($43.8bn), acquisitions and investments ($20.9bn), debt repayment ($9.2bn), buybacks ($6.0bn, 2022 only), dividends (none, ever). The concentration has since increased. FY2025 net capex alone was $128.3bn; there were no repurchases in 2023, 2024, 2025 or H1 2026, with $6.1bn still unused under a 2022 authorisation; no dividend has been declared. Diluted shares therefore rise about 1% a year on stock compensation, 10,492m (FY2023) → 10,903m (Q2 2026).</p>
+  <p><strong>The funding source changed in 2026.</strong> Long-term debt went from $65.6bn at 31 December 2025 to $128.9bn at 30 June 2026 across four currencies, with a further $25.0bn of notes issued in July 2026 and a $17.5bn undrawn delayed-draw term loan signed with Citibank on 8 June 2026 whose commitments expire 30 September 2026. Interest expense more than doubled year on year to $1.3bn in the quarter. Amazon states it is “not subject to any financial covenants under the Notes” and expects “to undertake additional financing activities in 2026.”</p>
+  <p><strong>Two commitments post-date the reported figures.</strong> On 27 February 2026 an Amazon subsidiary agreed to buy $35.0bn of OpenAI Series C preferred stock, guaranteed by Amazon, drawable at Amazon's discretion but mandatory on milestones or a listing, outside date 31 December 2028 — “separate from and in addition to” a $15.0bn purchase obligated on 31 March 2026, alongside an AWS supply arrangement carrying no disclosed value. Amazon had invested $28.7bn of the $50bn by 30 June 2026 and the remainder since. It also put $10.0bn into Anthropic preferred stock in Q2 2026 and extended a facility of up to $20.0bn that becomes drawable as compute-capacity milestones are met. Amazon is now supplier, equity holder and lender to the same two counterparties.</p>
+  <p>The pay structure is consistent with the capital behaviour: a $365,000 base salary for every named executive, no annual bonus, no performance-conditioned equity, no severance, and restricted stock vesting over five or more years on a back-end-weighted schedule. No equity was granted to any named executive in 2025. The proxy states directly that “the Company does not use any financial performance measures to link executive compensation to company performance.” Jeff Bezos holds 8.8% of a single-class share structure and has never taken stock compensation. Whatever else this produces, it does not produce pressure to defend a quarterly margin.</p>
+
+  <h2>6. Cyclicality, constraints and what to monitor</h2>
+  <p>Both engines are at or near their own cycle highs, which is the necessary context for every margin above. AWS growth troughed at 12% in Q2 and Q3 2023 and reached 37% in Q2 2026. AWS margin troughed at 27.1% in FY2023 and printed 39.4% in Q2 2026. North America was −0.9% in FY2022 and 7.9% in Q2 2026. A record margin at a trough and a record margin at a peak are opposite facts, and these are the second kind.</p>
+  <p><strong>The cloud precedent is specific.</strong> Between Q1 2022 and Q2 2023 AWS growth fell from 37% to 12% — two-thirds of the growth rate in five quarters — while sector producer prices on the BLS data-processing index actually rose. It was volume and configuration, not price: AWS operating income fell only 6% in the worst quarter and was up 29% a quarter later, because Amazon pulled the capex brake, with trailing purchases of property and equipment down 15% year on year by September 2023.</p>
+  <p><strong>That lever is materially weaker now.</strong> Total contractual commitments were $650.0bn at 30 June 2026, including $137.2bn of leases not yet commenced and $130.1bn of unconditional purchase obligations; energy contracts cover roughly 200 million megawatt-hours at a weighted-average remaining duration near sixteen years. A demand pause arriving while contracted depreciation is still ramping compresses margin on both blades at once — revenue growth falling into a cost base that cannot be withdrawn at the same speed. That is precisely what the 2022–23 episode does not cover, because that capex was discretionary and short-dated.</p>
+  <p><strong>The retail downside runs through mix, not volume.</strong> Consumers rotate from discretionary to consumable goods rather than stopping — Target's comparable sales still grew 3.3% in Q1 2022 while gross margin fell 430 basis points. Consumables are cheaper, heavier and bulkier per dollar and monetise less advertising, so units rise while merchandise value does not: the worst combination for a network whose costs scale with units and cube. North America went +2.6% → −0.9% in a single year on decelerating, not declining, volume. Advertising decelerates but has not historically declined — Amazon's ad growth troughed at 18% in Q2 2022 while Meta's advertising revenue fell 1% for that full year.</p>
+
+  <div class="tw">
+  <table>
+    <caption>End-market exposure, FY2025</caption>
+    <thead><tr><th>Exposure</th><th class="n">Net sales</th><th class="n">Share of sales</th><th class="n">Share of segment operating profit</th></tr></thead>
+    <tbody>
+      <tr><td>North America segment</td><td class="n">$426.3bn</td><td class="n">59%</td><td class="n">37%</td></tr>
+      <tr><td>International segment</td><td class="n">$161.9bn</td><td class="n">23%</td><td class="n">6%</td></tr>
+      <tr><td><strong>AWS segment</strong></td><td class="n"><strong>$128.7bn</strong></td><td class="n"><strong>18%</strong></td><td class="n"><strong>57%</strong></td></tr>
+      <tr><td>United States (by country of sale)</td><td class="n">$489.7bn</td><td class="n">68%</td><td class="n">not disclosed</td></tr>
+      <tr><td>Germany / UK / Japan</td><td class="n">$119.8bn</td><td class="n">17%</td><td class="n">not disclosed</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Source: FY2025 10-K segment and geography notes; profit shares computed. In Q2 2026 the AWS split had moved further, to 21% of revenue and 61% of segment operating profit. Amazon's earnings are far more exposed to enterprise IT and AI capital budgets than its revenue mix implies.</p>
+
+  <h3>Durable against borrowed</h3>
+  <div class="two">
+    <div class="col">
+      <h3 style="color:var(--good)">Durable — likely to survive ten years</h3>
+      <ul>
+        <li>The AWS installed base and its $496bn contracted book at a 6.4-year weighted life.</li>
+        <li>A marketplace network supplying 61% of paid units, whose sellers absorbed two fee increases without leaving.</li>
+        <li>Advertising inventory attached to purchase intent — $68.6bn in FY2025, at close to full incremental margin.</li>
+        <li>An owned delivery network carrying an estimated 28% of US parcels, with regionalisation worth over $0.45 per unit.</li>
+        <li>Prime, held at $139 since February 2022 — a pricing lever that has not been tested.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--terracotta)">Borrowed — currently helping</h3>
+      <ul>
+        <li>Capacity scarcity pricing in cloud: power and packaging shortages are a market condition, not a moat.</li>
+        <li>The January 2024 server-life extension, which Amazon estimated at roughly $3.1bn of FY2024 operating income.</li>
+        <li>$640m of IEEPA tariff refunds in Q2 2026 cost of sales, which Amazon says is most of what it expects.</li>
+        <li>Prime Day timing and currency — roughly 400bp and 80bp respectively in the Q3 2026 guide.</li>
+        <li>Below-the-line marks: $69.1bn of other income in H1 2026, $62.8bn of it unrealised private-company revaluation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tw">
+  <table>
+    <caption>Leading indicators, and where each is published</caption>
+    <thead><tr><th style="width:52%">What to monitor</th><th>Where it is published</th></tr></thead>
+    <tbody>
+      <tr><td>AWS remaining performance obligations and their weighted-average life — the cleanest read on contracted demand</td><td>Note 1 of each Form 10-Q and 10-K, quarterly</td></tr>
+      <tr><td>AWS segment operating margin against the depreciation ramp</td><td>Segment table in each quarterly earnings release</td></tr>
+      <tr><td>Cash capex against operating cash flow, and free cash flow on Amazon's definition</td><td>Consolidated statements of cash flows; non-GAAP reconciliation in the release</td></tr>
+      <tr><td>Shipping cost per paid unit — shipping-cost growth against paid-unit growth</td><td>Shipping costs in 10-Q MD&amp;A; paid-unit growth in the release</td></tr>
+      <tr><td>Third-party unit mix, and advertising services growth</td><td>Release supplemental data; revenue disaggregation note</td></tr>
+      <tr><td>Long-term debt, the $17.5bn term-loan draw, and interest expense</td><td>Debt note in the 10-Q; Item 2.03 of any 8-K</td></tr>
+      <tr><td>FTC and Plaintiff States v. Amazon.com — trial set for 29 March 2027</td><td>Docket 2:23-cv-01495, W.D. Washington</td></tr>
+      <tr><td>EU Data Act Article 29 switching-charge prohibition, effective 12 January 2027</td><td>European Commission; EU Official Journal</td></tr>
+      <tr><td>Power cost and availability: capacity auction clearing prices and interconnection queues</td><td>PJM capacity auction results; LBNL <em>Queued Up</em>; EIA</td></tr>
+      <tr><td>US e-commerce share of total retail — the channel-shift slope</td><td>US Census Bureau Quarterly E-Commerce Report</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>7. Risks, unknowns and questions for deeper work</h2>
+  <p>Cyclicality is covered above. What follows is what cyclicality does not capture.</p>
+  <ul class="plain">
+    <li><strong>The backlog and the balance sheet key off the same two counterparties.</strong> AWS's contracted obligations grew roughly $301bn in twelve months, and the two publicly identified expansions — OpenAI at $100bn over eight years, Anthropic at more than $100bn over ten — account for the majority. Amazon is simultaneously those customers' equity holder ($122.3bn of private-company investments at 30 June 2026) and Anthropic's lender of up to $20bn drawable as compute milestones are met. If either laboratory's funding fails, Amazon loses contracted revenue, writes down equity and holds purpose-built capacity — in the same quarter. No counterparty concentration inside the backlog is disclosed.</li>
+    <li><strong>Depreciation converges on capital expenditure, and the mechanism is arithmetic rather than competitive.</strong> Trailing capex of $169.0bn already exceeds AWS's entire FY2025 revenue of $128.7bn, and with five-to-six-year lives the annual depreciation charge tends toward the annual capex figure once the build is in service. AWS depreciation rose 61% in FY2025 to $21.5bn. If revenue growth decelerates while the asset base keeps ramping, margin compresses with no pricing action by anyone — the sign is already visible in the fall from 37.0% to 35.4% in FY2025 on 20% revenue growth.</li>
+    <li><strong>Net income has stopped describing the business.</strong> Other income was $69.1bn in H1 2026, of which $62.8bn was unrealised upward revaluation of privately held Anthropic stock priced off other investors' funding rounds, followed by $15.9bn of discrete tax expense. Reported first-half net income of $92.9bn sits on operating income of $51.3bn. These are Level 3 fair values, and Amazon states that “market sensitivities are not practicable” for them.</li>
+    <li><strong>The FTC case attacks the mechanism, not the conduct.</strong> Trial is set for 29 March 2027, with Sherman Act §2 counts and the Project Nessie claim having survived dismissal in September 2024. The two practices at issue — Buy Box eligibility and the conditioning of Prime on Fulfilment by Amazon — are the link that converts marketplace share into fulfilment volume, and therefore into route density, and therefore into cost per unit. A remedy touching them would work backwards through the cost structure rather than capping a fee.</li>
+    <li><strong>Financing risk here is structural, not covenant-driven.</strong> Debt doubled in six months and there are no financial covenants, so there is no tripwire — and equally no external constraint. The exposure is refinancing $132bn of notes at a 14.2-year weighted-average life into an unknown rate environment, against assets whose economics rest on a two-to-three-year break-even no outside party can verify.</li>
+    <li><strong>Seller economics are the quiet variable.</strong> Third-party unit mix has stopped rising for the first time since 2021 while the inferred take rate sits near half of seller revenue. If the mix reverses, Amazon books gross merchandise revenue and full product cost in place of a fee — raising reported revenue and lowering margin, inverting the last decade's trend. No independent data on Amazon seller profitability exists.</li>
+  </ul>
+
+  <h3>What the sources could not answer</h3>
+  <div class="card">
+    <ul class="plain" style="margin:0;">
+      <li><strong>Gross merchandise value</strong>, total or third-party — never disclosed, so the take rate must be inferred, and that inference drives any view of marketplace economics.</li>
+      <li><strong>Prime membership count and renewal rate</strong> — the last company figure was 200 million, in the shareholder letter published April 2021. Amazon now says only “double-digit growth,” with no base.</li>
+      <li><strong>Any AI-specific revenue, the training-versus-inference split, or their relative margins</strong> — no hyperscaler discloses these, and whether the $496bn backlog is an annuity or a project book turns on them.</li>
+      <li><strong>Segment operating margin excluding advertising</strong> — so the underlying retail operation's profitability is unobservable.</li>
+      <li><strong>Customer concentration</strong> — the FY2025 10-K contains none at all: no customer named at 10% of revenue, and no statement that none exists.</li>
+      <li><strong>The maintenance-versus-growth split of capital expenditure</strong>, and the dollar effect of the January 2025 heavy-equipment life extension.</li>
+      <li>Whether AWS's “over $25bn” chips run-rate and its “over $25bn” AI run-rate, both cited on the Q2 2026 call, describe the same pool.</li>
+      <li><strong>Full-year 2026 capital expenditure appears in no filing</strong> — the ~$220bn figure exists only in management's call commentary. No transcripts, shareholder letters or investor-day materials exist in the source folder, so management's framing here rests on releases and MD&amp;A.</li>
+    </ul>
+  </div>
+  <p>Resolving the first three would change the analysis most. Without a member count the consumer franchise cannot be sized; without AI revenue and margin the backlog cannot be valued as either annuity or project book; and without merchandise value the marketplace's pricing power can only be triangulated from a litigant's allegation and an inference.</p>
+
+  <h2>8. Investor takeaways</h2>
+  <ul class="plain">
+    <li><strong>What this business really is:</strong> a capital-intensive compute utility earning 39% margins, funded by a normal-margin retailer that happens to own a near-full-margin advertising business. AWS is 21% of revenue and 61% of segment profit.</li>
+    <li><strong>The core economic engine</strong> is a contracted, energised megawatt of compute. Amazon signs the demand first — $496bn at a 6.4-year weighted life — then builds, energises and depreciates over five to six years.</li>
+    <li><strong>The main growth lever</strong> is the speed at which contracted capacity is energised, not demand generation. Advertising is the second lever, and it now grows through new surfaces rather than higher ad load.</li>
+    <li><strong>What could break the story</strong> is a demand pause arriving while committed depreciation is still ramping. In 2022–23 AWS lost two-thirds of its growth rate in five quarters and defended margin by cutting capex; with $137.2bn of leases not yet commenced, that lever is weaker now.</li>
+    <li><strong>What to monitor:</strong> the AWS backlog and its weighted-average life, AWS margin against the depreciation ramp, free cash flow against a roughly $220bn capex year, and the March 2027 FTC trial.</li>
+  </ul>
+
+  <footer>
+    <h3>Sources</h3>
+    <p><strong>Company documents (source of truth):</strong> Amazon Forms 10-K for FY2021, FY2023 and FY2025 (filed 4 Feb 2022, 2 Feb 2024, 6 Feb 2026); Form 10-Q for Q2 2026 (filed 31 Jul 2026); earnings releases for Q4 2025, Q1 2026 and Q2 2026; DEF 14A filed 9 Apr 2026; Forms 8-K of 27 Feb 2026 (OpenAI equity commitment) and 10 Jun 2026 (delayed-draw term loan).</p>
+    <p><strong>Independent sources:</strong> US Census Bureau Quarterly E-Commerce Report (Q2 2026); BLS producer price index for data processing and hosting; DOE/LBNL data-centre energy and interconnection-queue reports; PJM 2027/2028 Base Residual Auction; European Commission (DMA, 25 Jun 2026) and EU Data Act Article 29; UK CMA cloud services market investigation; FTC and Plaintiff States v. Amazon.com, No. 2:23-cv-01495 (W.D. Wash.); the filings of Microsoft, Alphabet, Meta, Oracle, Nvidia, TSMC, SK hynix, Equinix, CoreWeave, Nebius, Walmart, Costco, Target, eBay, Etsy, Shopify, Instacart, PDD, UPS, FedEx and USPS; Synergy Research, Gartner, eMarketer, WPP Media and Pitney Bowes (named third-party estimates); Sinha et al., “Regionalize and Scale,” <em>INFORMS Journal on Applied Analytics</em>, 2026.</p>
+    <p><strong>What post-dates the reported figures:</strong> the $50bn of OpenAI equity commitments (Feb–Mar 2026, completed after 30 June 2026), the $10bn Anthropic investment and up to $20bn facility (Q2 2026), $25bn of notes issued in July 2026, and the $17.5bn term loan whose commitments expire 30 September 2026. Full-year 2026 capital expenditure of approximately $220bn is management call commentary, not a filed figure.</p>
+    <p style="margin-top:18px;"><em>Prepared 5 September 2026. Business and industry analysis only — not a valuation and not a recommendation.</em></p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview: Arm Holdings plc (ARM)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:var(--ink);margin:0}
+h1{font-size:38px;line-height:1.18;letter-spacing:-.01em}
+h2{font-size:27px;line-height:1.24;margin:52px 0 14px;padding-top:26px;border-top:1px solid var(--line)}
+h3{font-size:21px;line-height:1.3;margin:30px 0 8px}
+p{margin:0 0 16px}
+.kicker{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin:0 0 12px}
+.srcline{font-size:15px;color:var(--muted);margin:14px 0 0;line-height:1.5}
+.rule{height:1px;background:var(--line);margin:34px 0}
+.restate{font-family:Georgia,'Times New Roman',serif;font-size:23px;line-height:1.5;
+  border-left:5px solid var(--terracotta);padding:6px 0 6px 22px;margin:32px 0}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:30px 32px;margin:34px 0}
+.engine .lab{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#B9AE9C;margin:0 0 12px}
+.engine .unit{font-family:Georgia,serif;font-size:29px;line-height:1.3;margin:0 0 12px;color:#fff}
+.engine p{margin:0;color:#E6DFD3;font-size:17.5px;line-height:1.55}
+.engine .amt{color:#E9A183;font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 10px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 8px;line-height:1.35}
+.kpi .v{font-family:Georgia,serif;font-size:29px;font-weight:700;color:var(--terracotta);
+  line-height:1.1;font-variant-numeric:tabular-nums;margin:0 0 6px}
+.kpi .s{font-size:14.5px;color:var(--muted);line-height:1.42;margin:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:24px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:16px 20px;margin:12px 0}
+.lever.s{border-left-color:var(--good)} .lever.m{border-left-color:var(--gold)}
+.lever.c{border-left-color:var(--blue)}
+.lever .tag{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--terracotta);margin:0 0 5px}
+.lever.s .tag{color:var(--good)} .lever.m .tag{color:var(--gold)} .lever.c .tag{color:var(--blue)}
+.lever .lt{font-weight:700;margin:0 0 5px;font-size:19px}
+.lever p{margin:0;font-size:17.5px;line-height:1.5}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:24px 26px;margin:26px 0}
+.pull p{font-family:Georgia,serif;font-size:20.5px;line-height:1.5;margin:0 0 10px;font-style:italic}
+.pull .att{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-style:normal;font-size:14.5px;
+  color:var(--muted);margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.two .col h4{font-family:Georgia,serif;font-size:18px;margin:0 0 12px;padding-bottom:9px;
+  border-bottom:1px solid var(--line)}
+.two .col.dur h4{color:var(--good)} .two .col.bor h4{color:var(--gold)}
+.two ul{margin:0;padding-left:18px} .two li{font-size:16.5px;line-height:1.45;margin-bottom:9px}
+.tw{overflow-x:auto;margin:22px 0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:16.5px;
+  border:1px solid var(--line);border-radius:10px}
+th{background:var(--ink);color:var(--cream);text-align:left;padding:11px 13px;font-weight:700;
+  font-size:14px;letter-spacing:.03em}
+td{padding:10px 13px;border-top:1px solid var(--line);line-height:1.45;vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr:nth-child(even) td{background:#FCFAF6}
+td.em{font-weight:700}
+.cap{font-size:14.5px;color:var(--muted);line-height:1.5;margin:9px 0 0}
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 18px 12px;margin:26px 0}
+.chart h4{font-family:Georgia,serif;font-size:18.5px;margin:0 0 2px}
+.chart .cs{font-size:14.5px;color:var(--muted);margin:0 0 10px}
+svg{display:block;width:100%;height:auto}
+.mark{fill:var(--muted);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px}
+.mark.b{font-weight:700;fill:var(--ink)}
+.vlab{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;font-weight:700;
+  font-variant-numeric:tabular-nums}
+.slab{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13.5px;font-weight:700}
+.note{font-size:16.5px;color:var(--muted);background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:14px 18px;margin:20px 0;line-height:1.5}
+ul.body{padding-left:20px;margin:0 0 16px} ul.body li{margin-bottom:10px}
+footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:15px;
+  color:var(--muted);line-height:1.6}
+footer b{color:var(--ink)}
+@media(max-width:700px){
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr}
+  body{font-size:17.5px} h1{font-size:30px} h2{font-size:23px} .wrap{padding:32px 18px 60px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kicker">Business Overview</p>
+<h1>Arm Holdings plc <span style="color:var(--muted);font-weight:400">(Nasdaq: ARM)</span></h1>
+<p class="srcline">5 September 2026 &middot; Built from Arm&rsquo;s Form 20-F for fiscal 2026 (filed 26 May 2026) and fiscal 2025 and 2024, quarterly shareholder letters through Q1 FYE27 (quarter ended 30 June 2026), and the Q4 FYE26 investor presentation; industry structure from the UK CMA, Mercury Research, IDC, IPnest, SIA, CSIS and competitors&rsquo; filings. Fiscal year ends 31 March. <b>This is not a valuation and not a recommendation.</b></p>
+
+<p class="restate">Arm is a toll on the world&rsquo;s chip production. It designs CPU architectures, licenses them to everyone who builds chips, manufactures nothing, and collects a few cents on every unit shipped for as long as that chip is sold.</p>
+
+<div class="engine">
+  <p class="lab">The economic engine</p>
+  <p class="unit">One chip shipped.</p>
+  <p>Arm earned approximately <span class="amt">7.1 US cents</span> of royalty on each of the 30.6 billion chips shipped in fiscal 2025 — inferred from $2,168m of royalty revenue over disclosed unit volumes, because Arm publishes no royalty rate. At a <span class="amt">97.5% gross margin</span>, essentially all of it is gross profit. The chip itself might sell for a dollar or for four hundred. That gap is the entire design of the business: small enough that no licensee bothers to remove it, universal enough that it compounds with the whole industry&rsquo;s unit growth.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><p class="k">Price of the unit</p><p class="v">7.1&cent;</p><p class="s">Royalty per chip, FY2025 (inferred). Up 12% from 6.3&cent; in FY2024. Arm stopped disclosing annual unit volumes after FY2025.</p></div>
+  <div class="kpi"><p class="k">Gross profit per unit</p><p class="v">~7.0&cent;</p><p class="s">97.5% gross margin. No fab, no inventory, no capacity ceiling — the design file ships free.</p></div>
+  <div class="kpi"><p class="k">FY2026 earnings</p><p class="v">$0.85</p><p class="s">GAAP diluted EPS on $4,920m revenue. Non-GAAP $1.77. The $1,052m gap is share-based compensation.</p></div>
+  <div class="kpi"><p class="k">Leverage</p><p class="v">None</p><p class="s">$3,888m cash and short-term investments at 30 June 2026, no borrowings. But SoftBank has pledged 72% of Arm as loan collateral.</p></div>
+  <div class="kpi"><p class="k">Cycle position</p><p class="v">Peak</p><p class="s">Record royalties, but margin past its own peak and hyperscaler capex up ~77% to ~$725bn in 2026.</p></div>
+  <div class="kpi"><p class="k">Reported vs organic</p><p class="v">23% / 7%</p><p class="s">Total revenue growth versus growth from external customers. The gap is related-party revenue.</p></div>
+</div>
+
+<h2>1 &middot; What the company does</h2>
+<p>Every chip needs a processor, and designing one is expensive, slow and mostly undifferentiated. A company building a phone processor, a car&rsquo;s braking controller or a server CPU does not want to invent an instruction set, write a compiler for it, and persuade the world&rsquo;s software to target it. Arm solves that problem once and rents the answer to everyone.</p>
+<p>Revenue arrives in two forms that behave very differently. A <b>licence</b> grants the right to use Arm&rsquo;s technology — either an implementation licence for a ready-made core, or an architecture licence permitting the customer to design its own processor compatible with Arm&rsquo;s instruction set. That was $2,307m in fiscal 2026, up 25%. Then, for the commercial life of every chip built under that licence, Arm collects a <b>royalty</b>: $2,613m, up 21%. Total revenue was $4,920m, up 23%.</p>
+<p>Follow one unit. A handset maker licenses a core, pays a fee, and spends two to three years designing a system-on-chip around it. Production starts; every unit shipped generates a royalty, reported to Arm and collected in arrears. Arm captured roughly 1.7% of the total value of chips containing its technology at the time of its 2023 listing. Pricing power is exercised not by raising the rate but by putting more Arm content in each chip.</p>
+
+<div class="pull">
+<p>&ldquo;Royalties are generally either set as a percentage of the licensee&rsquo;s average selling price per chip or as a fixed amount per chip. The royalty rates per chip typically reduce over time as the total volume of chips incorporating our products shipped increases; notwithstanding such reductions&hellip; license agreements with component manufacturing customers typically include a minimum royalty percentage or fee per chip.&rdquo;</p>
+<p class="att">Arm Holdings plc, Form 20-F for fiscal 2026 — the full extent of what Arm discloses about its own pricing. No average rate, no royalty per chip, no percentage of ASP appears in any filing.</p>
+</div>
+
+<p>Two mechanisms raise the price of the unit. The first is architectural — moving customers from Armv8 to Armv9. Arm last quantified this in February 2024: the royalty rates for Armv9 products are &ldquo;typically at least double&rdquo; those for equivalent Armv8 products. It has not repeated that quantification since, and stopped disclosing Armv9&rsquo;s share of royalty revenue after it reached 25% in the December 2024 quarter. The second is scope — Compute Subsystems (CSS) bundle a validated multi-core cluster with interconnect and system IP rather than a single core, so Arm supplies more of the chip. Five customers were shipping CSS-based chips as of December 2025, including all four leading Android handset makers.</p>
+<p>A third line is being added. In March 2026 Arm announced the <b>Arm AGI CPU</b>, its first production silicon product, a data-centre processor co-developed with Meta as lead partner. Arm reports customer demand exceeding $2bn across fiscal 2027 and 2028 and expects fiscal 2028 to be &ldquo;the first year for meaningful Arm AGI CPU revenue.&rdquo; Nothing has been recognised yet. Arm&rsquo;s own filing warns that production silicon &ldquo;may have materially different margin profiles&rdquo; — a business that buys wafers cannot earn 97.5%.</p>
+
+<h2>2 &middot; Industry, competitive position and moat</h2>
+<p>Semiconductor design IP is a small industry attached to a very large one: an $8.5bn licensing market in 2024 (IPnest) sitting upstream of $792bn of semiconductor sales in 2025 (SIA). Arm alone held roughly 64% of design-IP revenue in 2022; the top four vendors took 75% of the 2024 market.</p>
+<p>Comparing operating margins across the value chain settles a common misconception about why Arm is profitable.</p>
+
+<div class="tw"><table>
+<tr><th>Layer of the value chain</th><th>Company, latest fiscal year</th><th class="n">Operating margin</th></tr>
+<tr><td>Foundry</td><td>TSMC, 2025</td><td class="n">53.6%</td></tr>
+<tr><td>Fabless, AI cycle leader</td><td>Nvidia, FY2026</td><td class="n">60.4%</td></tr>
+<tr><td>CPU IP</td><td class="em">Arm, FY2026</td><td class="n em">43.0% non-GAAP / 18.3% GAAP</td></tr>
+<tr><td>EDA and IP</td><td>Cadence, 2025</td><td class="n">28.2%</td></tr>
+<tr><td>EDA and IP</td><td>Synopsys, FY2025</td><td class="n">13.0%</td></tr>
+<tr><td>Packaging and test</td><td>Amkor, 2025</td><td class="n">7.0%</td></tr>
+<tr><td>Sub-scale CPU/DSP IP</td><td>Ceva, 2025</td><td class="n">&minus;10.3%</td></tr>
+</table></div>
+<p class="cap">Sources: company annual results for the years shown. Arm figures from the FY2026 Form 20-F.</p>
+
+<p>Arm and Ceva license processor IP under essentially the same model at essentially the same gross margin, and only one of them covers its research budget. <b>The licensing model does not confer profitability; installed base does.</b> Arm&rsquo;s protection is that an instruction set is a standard rather than a product, and standards are defended by the software written against them. Over 22 million developers write for Arm and more than 350 billion Arm-based chips have shipped cumulatively. Switching architecture means recompiling, revalidating and re-certifying an entire software stack — in regulated markets such as automotive, a multi-year exercise.</p>
+<p>Independent evidence supports this rather than merely repeating Arm&rsquo;s claim. Reviewing the proposed Nvidia acquisition in 2021, the UK Competition and Markets Authority found significant barriers to switching CPU IP licensor and concluded that &ldquo;the constraint posed by current or future alternative suppliers of CPU IP &hellip; (such as RISC-V and MIPS) is weak.&rdquo; It recorded third parties citing &ldquo;the lack of credible alternatives,&rdquo; and quoted Arm&rsquo;s <em>own internal documents</em> describing its ecosystem as &ldquo;difficult to replicate.&rdquo; The CMA put Arm at 30&ndash;40% of worldwide CPU IP by value but 70&ndash;80% of non-proprietary CPU IP — the distinction that matters, since the remainder is largely Intel and AMD designing for themselves.</p>
+
+<h3>Named competition, and what each actually threatens</h3>
+<ul class="body">
+<li><b>RISC-V.</b> The most-discussed threat and the most frequently misread. More than 2bn RISC-V chips exist and Omdia projects roughly 25% of the market by 2030 — but Nvidia has shipped around 1bn RISC-V cores and Qualcomm more than 650m <em>inside their Arm-based products</em>, as embedded controllers where no application software runs and switching cost is near zero. That is where RISC-V wins: microcontrollers, industrial, accelerator control, sovereignty-driven Chinese designs. CSIS assesses it &ldquo;won&rsquo;t be competitive with x86 and ARM in mainstream consumer electronics applications for at least 10 years.&rdquo; The near-term damage is to Arm&rsquo;s embedded royalty base, not its application-processor franchise.</li>
+<li><b>Customers designing their own cores.</b> Apple, Qualcomm, Nvidia and every major hyperscaler design custom CPUs. This looks existential and is not: they do it under architecture licences and still pay a per-unit royalty on substantially all chips shipped. Vertical integration converts a volume risk into a mix risk — Arm keeps the unit but captures less content on it. The threat is to the seven cents, not to the chip.</li>
+<li><b>x86.</b> Intel held 66.8% of server CPU units in Q1 2026 and AMD 34.5% in Q2 2026 (Mercury Research). AMD is taking share from Intel considerably faster than Arm is taking share from x86 in general-purpose servers.</li>
+<li><b>Arm itself.</b> The AGI CPU competes with the products its licensees sell. Arm&rsquo;s risk factors concede it: new products &ldquo;may be competitive with&hellip; products sold by our customers, which could cause existing customers to significantly reduce or terminate their relationships with us and could result in&hellip; customers electing to use alternative architectures such as x86 and RISC-V.&rdquo;</li>
+</ul>
+
+<div class="note"><b>The contested number.</b> Mercury Research put Arm at <b>13.6%</b> of server CPU shipments in Q2 2026, up 0.5 points, attributing the gain primarily to Nvidia&rsquo;s Grace CPU inside Blackwell NVL72 AI racks. Arm states it holds roughly <b>50%</b> of CPU compute among top hyperscalers. Both are correct — the denominators differ. Arm is close to universal where hyperscalers design their own silicon, and marginal in the general-purpose server market x86 still owns. For calibration: the CMA report cited Arm&rsquo;s internal projection of above 25% data-centre share by 2028 and above 70% by 2030. Those were Arm&rsquo;s forecasts, not CMA findings, and at 13.6% in mid-2026 they have materially undershot.</div>
+
+<p>On the evidence, businesses that sustain pricing power here own a standard rather than a product, monetise through a small royalty attached to a very large installed base, and stay indifferent to which downstream customer wins. Arm is the clearest example of that type in the industry. The question is whether it is choosing to remain that kind of business.</p>
+
+<h2>3 &middot; Growth engine</h2>
+<p>Arm reported 23% revenue growth in fiscal 2026. Decomposing it changes the picture materially — and the decomposition is disclosed rather than estimated, in Note 4 of the Form 20-F.</p>
+
+<div class="chart">
+<h4>Where the growth came from</h4>
+<p class="cs">Revenue by counterparty, US$ millions, fiscal years to 31 March</p>
+<svg viewBox="0 0 820 330" role="img" aria-label="Stacked bar chart of Arm revenue from external customers versus related parties, FY2024 to FY2026">
+  <line x1="95" y1="270" x2="790" y2="270" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="95" y1="40" x2="95" y2="270" stroke="#E5DDD0" stroke-width="1.5"/>
+  <g class="mark">
+    <text x="86" y="275" text-anchor="end">0</text>
+    <text x="86" y="229" text-anchor="end">1,000</text>
+    <text x="86" y="183" text-anchor="end">2,000</text>
+    <text x="86" y="137" text-anchor="end">3,000</text>
+    <text x="86" y="91" text-anchor="end">4,000</text>
+    <text x="86" y="45" text-anchor="end">5,000</text>
+  </g>
+  <line x1="95" y1="224" x2="790" y2="224" stroke="#F0EADF"/><line x1="95" y1="178" x2="790" y2="178" stroke="#F0EADF"/>
+  <line x1="95" y1="132" x2="790" y2="132" stroke="#F0EADF"/><line x1="95" y1="86" x2="790" y2="86" stroke="#F0EADF"/>
+  <line x1="95" y1="40" x2="790" y2="40" stroke="#F0EADF"/>
+  <!-- FY2024 -->
+  <rect x="175" y="154.6" width="110" height="115.4" fill="#C75B39"/>
+  <rect x="175" y="121.3" width="110" height="33.3" fill="#3C6E8F"/>
+  <text class="vlab" x="230" y="113" text-anchor="middle" fill="#2B2B2B">3,233</text>
+  <text class="mark b" x="230" y="292" text-anchor="middle">FY2024</text>
+  <text class="mark" x="230" y="309" text-anchor="middle">related 22%</text>
+  <!-- FY2025 -->
+  <rect x="380" y="123.5" width="110" height="146.5" fill="#C75B39"/>
+  <rect x="380" y="85.6" width="110" height="37.9" fill="#3C6E8F"/>
+  <text class="vlab" x="435" y="77" text-anchor="middle" fill="#2B2B2B">4,007</text>
+  <text class="mark b" x="435" y="292" text-anchor="middle">FY2025</text>
+  <text class="mark" x="435" y="309" text-anchor="middle">related 21%</text>
+  <!-- FY2026 -->
+  <rect x="585" y="112.6" width="110" height="157.4" fill="#C75B39"/>
+  <rect x="585" y="43.7" width="110" height="68.9" fill="#3C6E8F"/>
+  <text class="vlab" x="640" y="35" text-anchor="middle" fill="#2B2B2B">4,920</text>
+  <text class="mark b" x="640" y="292" text-anchor="middle">FY2026</text>
+  <text class="mark" x="640" y="309" text-anchor="middle" fill="#3C6E8F">related 30.5%</text>
+  <text class="slab" x="640" y="200" text-anchor="middle" fill="#FAF6EF">External customers</text>
+  <text class="slab" x="712" y="82" text-anchor="start" fill="#3C6E8F">Related parties</text>
+</svg>
+</div>
+<p class="cap">Source: Form 20-F FY2026, Note 4 &ldquo;Disaggregation of Revenue.&rdquo; Related parties comprise Arm China ($790.6m in FY2026), an unnamed affiliate of SoftBank Group ($704.4m) and Ampere ($3.6m).</p>
+
+<div class="tw"><table>
+<tr><th>US$ millions</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">Change</th></tr>
+<tr><td class="em">Total revenue, as reported</td><td class="n">4,007</td><td class="n">4,920</td><td class="n em">+22.8%</td></tr>
+<tr><td class="em">Revenue from external customers</td><td class="n">3,184</td><td class="n">3,421</td><td class="n em" style="color:var(--terracotta)">+7.4%</td></tr>
+<tr><td style="padding-left:28px">external royalty revenue</td><td class="n">1,763</td><td class="n">2,123</td><td class="n">+20.4%</td></tr>
+<tr><td style="padding-left:28px">external licence and other revenue</td><td class="n">1,421</td><td class="n">1,298</td><td class="n">&minus;8.7%</td></tr>
+<tr><td>Revenue from related parties</td><td class="n">823</td><td class="n">1,499</td><td class="n">+82.1%</td></tr>
+<tr><td style="padding-left:28px">of which a SoftBank Group affiliate</td><td class="n">145</td><td class="n">704</td><td class="n">+384%</td></tr>
+</table></div>
+
+<p>Three things follow. <b>First, the royalty engine is real and strong.</b> Royalty revenue from external customers grew 20.4%, driven by rate and content rather than volume. Arm&rsquo;s own illustration from the prior year is the cleanest statement of the mechanism — smartphone royalty revenue rose approximately 30% on less than 2% unit growth. Arm is not being paid more times; it is being paid more each time.</p>
+<p><b>Second, the third-party licensing book shrank.</b> Arm&rsquo;s management discussion records &ldquo;a $123 million, or 9%, decrease in license and other revenue&rdquo; from external customers. Point-in-time licence recognition fell for a second consecutive year, from $1,372m to $1,227m. Headline licence revenue nonetheless rose 25%, because related-party licence revenue increased &ldquo;$591 million, or 141%,&rdquo; to $1,009m — an increase larger than the entire growth in licence revenue.</p>
+<p><b>Third, almost all of that came from one arrangement.</b> Revenue from an unnamed SoftBank Group affiliate went from $145.5m to $704.4m under a consulting agreement covering &ldquo;certain technical consultancy and advisory services relating to potential transactions, strategic partnerships, licensing agreements, commercial arrangements or other arrangements involving SoftBank Group or its affiliates.&rdquo; Strip that single line out and revenue grew approximately 9% rather than 23%.</p>
+<p>Acquisitions are not the usual complication here. Arm bought DreamBig Semiconductor for $265m, completing 1 July 2026 — after the fiscal 2026 year end and immaterial to reported revenue. Ampere Computing, frequently associated with Arm, was acquired by <em>SoftBank Group</em> for $6.5bn and does not sit on Arm&rsquo;s balance sheet. Reported and acquired growth are the same thing in fiscal 2026; the distinction that matters at Arm is external versus related-party.</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever s"><p class="tag">Structural</p><p class="lt">Royalty rate per chip, through Armv9 and CSS adoption</p><p>The most important driver, and the one that compounds without needing unit growth. Each architectural generation roughly doubled the rate when Arm last quantified it; CSS raises Arm&rsquo;s content share further. It works in a flat unit market — which is exactly the market Arm faces.</p></div>
+<div class="lever s"><p class="tag">Structural, amplified by a cycle</p><p class="lt">Data-centre penetration</p><p>Data-centre royalty revenue more than doubled year on year in both fiscal 2026 and Q1 FYE27, and cumulative Neoverse cores passed 1.5bn with the most recent 500m shipping in nine months. The share gain is durable; its current growth rate depends on an AI capex boom.</p></div>
+<div class="lever"><p class="tag">Temporary</p><p class="lt">The SoftBank consulting arrangement</p><p>Contributed $559m of incremental revenue in fiscal 2026. One statement of work has been restructured into a fixed $300m payment falling in fiscal 2027. It is not a repeatable commercial franchise.</p></div>
+<div class="lever m"><p class="tag">Management-driven, decelerating</p><p class="lt">Licensing breadth</p><p>Annualised contract value grew 13% year on year in Q1 FYE27, down from 28% two quarters earlier. ACV measures the contracted base and is now growing at roughly half the rate of recognised licence revenue.</p></div>
+<div class="lever s"><p class="tag">Structural but small</p><p class="lt">Edge and automotive share gains</p><p>Share of automotive and robotics rose from 36% to 44% between fiscal 2022 and 2025, and edge from 12% to 15% — on a combined base of roughly a quarter of revenue.</p></div>
+<div class="lever c"><p class="tag">Cyclical &mdash; a headwind</p><p class="lt">Smartphone units</p><p>IDC forecasts global shipments to decline 0.9% in 2026, revised down from 1.2% growth on memory-cost inflation. Arm&rsquo;s largest end market contributes no volume growth at all.</p></div>
+
+<h2>4 &middot; Margin, cash and capital allocation</h2>
+<p>Arm&rsquo;s gross margin was 97.5% in fiscal 2026. There is no cost of goods to speak of: the product is a design file, and shipping it to the ten-millionth chip costs nothing. This has an important consequence — <b>gross margin tells you nothing useful about Arm, because it cannot move.</b> Every question about profitability is a question about operating expense.</p>
+
+<div class="chart">
+<h4>Margin is an operating-expense decision</h4>
+<p class="cs">Operating margin, %. The gap between the lines is share-based compensation.</p>
+<svg viewBox="0 0 820 330" role="img" aria-label="Line chart of Arm GAAP and non-GAAP operating margin from FY2024 to Q1 FYE27">
+  <line x1="95" y1="280" x2="790" y2="280" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="95" y1="50" x2="95" y2="280" stroke="#E5DDD0" stroke-width="1.5"/>
+  <g class="mark">
+    <text x="86" y="285" text-anchor="end">0%</text>
+    <text x="86" y="241" text-anchor="end">10%</text>
+    <text x="86" y="197" text-anchor="end">20%</text>
+    <text x="86" y="153" text-anchor="end">30%</text>
+    <text x="86" y="109" text-anchor="end">40%</text>
+    <text x="86" y="65" text-anchor="end">50%</text>
+  </g>
+  <line x1="95" y1="236" x2="790" y2="236" stroke="#F0EADF"/><line x1="95" y1="192" x2="790" y2="192" stroke="#F0EADF"/>
+  <line x1="95" y1="148" x2="790" y2="148" stroke="#F0EADF"/><line x1="95" y1="104" x2="790" y2="104" stroke="#F0EADF"/>
+  <line x1="95" y1="60" x2="790" y2="60" stroke="#F0EADF"/>
+  <polyline points="150,88.2 340,74.5 530,90.8 720,98.7" fill="none" stroke="#C75B39" stroke-width="3"/>
+  <polyline points="150,265.0 340,188.9 530,199.5 720,248.8" fill="none" stroke="#3C6E8F" stroke-width="3" stroke-dasharray="7 4"/>
+  <g fill="#C75B39"><circle cx="150" cy="88.2" r="5"/><circle cx="340" cy="74.5" r="5"/><circle cx="530" cy="90.8" r="5"/><circle cx="720" cy="98.7" r="5"/></g>
+  <g fill="#3C6E8F"><circle cx="150" cy="265.0" r="5"/><circle cx="340" cy="188.9" r="5"/><circle cx="530" cy="199.5" r="5"/><circle cx="720" cy="248.8" r="5"/></g>
+  <text class="slab" x="150" y="74" text-anchor="start" fill="#C75B39">Non-GAAP 43.6%</text>
+  <text class="vlab" x="340" y="61" text-anchor="middle" fill="#C75B39">46.7%</text>
+  <text class="vlab" x="530" y="77" text-anchor="middle" fill="#C75B39">43.0%</text>
+  <text class="slab" x="720" y="85" text-anchor="end" fill="#C75B39">41.2%</text>
+  <text class="slab" x="150" y="283" text-anchor="start" fill="#3C6E8F">GAAP 3.4%</text>
+  <text class="vlab" x="340" y="178" text-anchor="middle" fill="#3C6E8F">20.7%</text>
+  <text class="vlab" x="530" y="189" text-anchor="middle" fill="#3C6E8F">18.3%</text>
+  <text class="slab" x="720" y="267" text-anchor="end" fill="#3C6E8F">7.1%</text>
+  <g class="mark b">
+    <text x="150" y="305" text-anchor="middle">FY2024</text><text x="340" y="305" text-anchor="middle">FY2025</text>
+    <text x="530" y="305" text-anchor="middle">FY2026</text><text x="720" y="305" text-anchor="middle">Q1 FYE27</text>
+  </g>
+</svg>
+</div>
+<p class="cap">Sources: Form 20-F FY2026 and FY2025; Q1 FYE27 shareholder letter. FY2024&rsquo;s 3.4% GAAP margin reflects $1,037m of share-based compensation recognised on listing and is not comparable with later years as an operating result.</p>
+
+<div class="tw"><table>
+<tr><th>US$ millions unless stated</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">Q1 FYE27</th></tr>
+<tr><td class="em">Total revenue</td><td class="n">3,233</td><td class="n">4,007</td><td class="n">4,920</td><td class="n">1,289</td></tr>
+<tr><td style="padding-left:28px">of which royalty</td><td class="n">1,802</td><td class="n">2,168</td><td class="n">2,613</td><td class="n">715</td></tr>
+<tr><td>Revenue from external customers</td><td class="n">2,509</td><td class="n">3,184</td><td class="n">3,421</td><td class="n">n/d</td></tr>
+<tr><td>GAAP operating margin</td><td class="n">3.4%</td><td class="n">20.7%</td><td class="n">18.3%</td><td class="n">7.1%</td></tr>
+<tr><td>Non-GAAP operating margin</td><td class="n">43.6%</td><td class="n">46.7%</td><td class="n">43.0%</td><td class="n">41.2%</td></tr>
+<tr><td>Non-GAAP free cash flow</td><td class="n">n/d</td><td class="n">99</td><td class="n">882</td><td class="n">665</td></tr>
+</table></div>
+<p class="cap">Q1 FYE27 external-customer revenue is not disclosed — Arm gives that split annually only. Arm does not report adjusted EBITDA.</p>
+
+<p>The gap between the two margin lines is share-based compensation: $1,052m in fiscal 2026, equal to 21.4% of revenue. It is a real cost and it is not falling. Diluted share count rose from 1,068m to 1,078m between the fiscal year end and June 2026, and Arm has never repurchased a share, so the dilution is not offset.</p>
+<p>The GAAP trajectory deteriorates for a specific reason. In fiscal 2026 research and development rose 34% to $2,776m while revenue rose 23%, so GAAP operating income grew only 8% to $900m. In Q1 FYE27 operating expense grew 28% against 22% revenue growth and GAAP operating margin fell to 7.1% from 10.8%. Arm is deliberately spending ahead of revenue to build a silicon business, and with no variable cost to flex, that spending falls straight through to operating profit.</p>
+<p>Cash generation improved sharply: operating cash flow of $1,524m against $545m of capital expenditure gave non-GAAP free cash flow of $882m in fiscal 2026 versus $99m the prior year, reaching $1,397m on a trailing-twelve-month basis by June 2026. One caution on quality — <b>$645.8m of contract assets were outstanding against the SoftBank affiliate at 31 March 2026, meaning roughly 92% of that $704m of revenue had not been invoiced at the year end.</b> Arm China owed $276.2m, against which Arm carried a $28.3m expected-credit-loss allowance and charged $12.3m to earnings.</p>
+
+<h3>Where the cash goes</h3>
+<p>Ranked by fiscal 2026 outflow: research and development $2,776m; capital expenditure $545m; acquisitions $265m; dividends nil; buybacks nil. Arm holds $3,888m of cash and short-term investments and carries no borrowings — its only fixed obligations are $62m of finance leases and $549m of operating leases. Every dollar is being reinvested, overwhelmingly into engineering headcount (9,584 employees, 84% engineers, up 15% in a year), and none returned.</p>
+<p>Management has set fiscal 2031 targets of $10bn of revenue from the IP and CSS business and $15bn from the silicon business, with non-GAAP EPS above $9 and royalty revenue compounding at 20% a year (Q4 FYE26 investor presentation; these appear in a deck, not in the Form 20-F). <b>If that plan is delivered, roughly 60% of Arm&rsquo;s revenue in fiscal 2031 comes from selling chips</b> — a business targeted at above 30% operating margin against above 65% for IP. A company whose defining financial characteristic is a 97.5% gross margin is choosing to make most of its future revenue in a form that cannot carry one. That may be the right decision; the addressable revenue is far larger. But it is a deliberate exchange of margin quality for scale, and it is the most important thing about Arm today.</p>
+
+<h2>5 &middot; Cyclicality, constraints and what to monitor</h2>
+<p>Arm has no factories, no inventory and no capacity constraint, so it cannot suffer the classic semiconductor downturn of unsold stock and idle fabs. Its cyclicality is second-hand: it arrives through licensees&rsquo; unit shipments and through their willingness to start new design programmes. Royalty revenue tracks the former with a lag of a quarter; licence revenue tracks the latter with a lag of years, because a licence signed today produces royalties on chips shipping in 2029.</p>
+
+<div class="tw"><table>
+<tr><th>End market</th><th class="n">% of revenue</th><th>Position and current condition</th></tr>
+<tr><td class="em">Smartphone application processors</td><td class="n">40%</td><td>Above 99% share. Units forecast to fall 0.9% in 2026 (IDC), so all growth must come from rate and content.</td></tr>
+<tr><td class="em">IoT and embedded</td><td class="n">20%</td><td>Share 12% (FY2022) to 15% (FY2025). Distributor inventories below target and MCU lead times extending (STMicroelectronics, Q2 2026).</td></tr>
+<tr><td class="em">Consumer electronics</td><td class="n">15%</td><td>Included in the above-99% mobile and consumer share.</td></tr>
+<tr><td class="em">Cloud and networking</td><td class="n">10%</td><td>The growth engine. Cloud AI share rose from 9% (FY2022) to 20% (FY2025); near-100% of SmartNIC CPU IP (CMA).</td></tr>
+<tr><td class="em">Automotive</td><td class="n">8%</td><td>Share 36% to 44% between FY2022 and FY2025. Content per vehicle rising, from a small revenue base.</td></tr>
+<tr><td class="em">Other mobile</td><td class="n">7%</td><td>&mdash;</td></tr>
+</table></div>
+<p class="cap">Revenue mix is the most recent full disclosure, for fiscal 2024 (Q4 FYE25 investor presentation); Arm has not published an updated end-market revenue split since. Share figures use Arm&rsquo;s current segment definitions, redefined in fiscal 2026 and not comparable with the earlier categories.</p>
+
+<p>Three readings of where Arm sits in its cycle, pointing in different directions. Royalty revenue is at a record and rose 21%. Non-GAAP operating margin is <em>past</em> its own peak — 46.7%, then 43.0%, then 41.2% — because opex is growing faster than revenue by management&rsquo;s choice. And the end markets are at opposite extremes: smartphones, at roughly 47% of revenue including other mobile, face a forecast unit decline, while data centre is pulled by hyperscaler capital expenditure of ~$725bn in 2026 against ~$410bn in 2025.</p>
+<p>So Arm is earning record royalties, at a declining margin, with its largest market flat and its fastest-growing market at an all-time capex peak. A record royalty figure at a capex peak and the same figure at a trough are opposite facts, and this one is a peak reading. <b>The downside case is not that Arm loses share — it is that hyperscaler capex normalises.</b> A flat capex year would not reduce Arm&rsquo;s installed base, but it would remove the growth currently offsetting a shrinking third-party licence book and a flat handset market.</p>
+
+<div class="two">
+<div class="col dur"><h4>Durable &mdash; likely intact in ten years</h4><ul>
+<li>The instruction set as an industry standard, with 22m developers compiled against it</li>
+<li>A 350bn-chip installed base paying royalties for the life of each design</li>
+<li>Near-zero cost of goods: 97.5% gross margin, no fab, no inventory, no capacity ceiling</li>
+<li>Architecture licences that collect a royalty even when the customer designs its own core</li>
+<li>A debt-free balance sheet with $3.9bn of cash, so the chip pivot needs no outside capital</li>
+</ul></div>
+<div class="col bor"><h4>Borrowed &mdash; helping now, not permanent</h4><ul>
+<li>Hyperscaler AI capex, up ~77% in 2026 and the direct source of data-centre royalty growth</li>
+<li>Nvidia Grace attach inside AI racks, which drove most of the recent server-CPU share gain</li>
+<li>The SoftBank consulting arrangement: $704m in FY2026 against $145m in FY2025</li>
+<li>Smartphone ASP inflation lifting percentage-of-ASP royalties while units are flat</li>
+<li>Point-in-time licence recognition, which fell for a second year while headline licence revenue rose</li>
+</ul></div>
+</div>
+
+<div class="tw"><table>
+<tr><th>Leading indicator to monitor</th><th>Where it is published</th></tr>
+<tr><td>External versus related-party revenue split</td><td>Note 4, &ldquo;Disaggregation of Revenue,&rdquo; annual Form 20-F. Not given quarterly.</td></tr>
+<tr><td>Annualised contract value and its growth rate</td><td>Quarterly shareholder letter &mdash; now the only operating metric Arm still reports.</td></tr>
+<tr><td>Data-centre royalty growth; cumulative Neoverse cores</td><td>Quarterly shareholder letter and earnings call.</td></tr>
+<tr><td>Arm-based share of server CPU shipments</td><td>Mercury Research quarterly data, reported in the trade press.</td></tr>
+<tr><td>Smartphone unit shipments and ASPs</td><td>IDC Worldwide Quarterly Mobile Phone Tracker.</td></tr>
+<tr><td>Hyperscaler capital expenditure guidance</td><td>Microsoft, Alphabet, Amazon and Meta quarterly results.</td></tr>
+<tr><td>Operating-expense growth against revenue growth</td><td>Quarterly shareholder letter &mdash; the one lever that sets margin.</td></tr>
+<tr><td>First recognition of AGI CPU revenue and its margin</td><td>Quarterly shareholder letter; segment disclosure promised above 10% of revenue.</td></tr>
+</table></div>
+
+<h2>6 &middot; Risks and unknowns</h2>
+<p>Cyclicality is covered above. These are the risks a normal cycle does not describe, ordered by how badly they compound with one another.</p>
+<ul class="body">
+<li><b>Revenue quality is deteriorating beneath a growing headline.</b> Third-party licence revenue fell 9% while reported licence revenue rose 25%; ACV growth halved to 13%; point-in-time recognition declined a second year; and the gap was filled by a parent-affiliate arrangement 92% unbilled at the year end. Each is explicable alone. Together they mean every disclosed measure of the contracted third-party base points down while reported revenue accelerates — and an investor forming a view on royalty growth in 2029 is relying on a licence book that shrank in 2026.</li>
+<li><b>Arm does not control 16% of its revenue.</b> Arm China contributed $790.6m in fiscal 2026, and the risk factor is stated without hedging: &ldquo;Neither we nor SoftBank Group control the operations of Arm China, which operates independently of us.&rdquo; Arm transferred its entire equity interest in 2022 and holds an indirect 4.8% non-voting economic interest. Substantially all PRC revenue is earned through one licence agreement with an entity Arm cannot direct, cannot audit and would struggle to replace &mdash; in a jurisdiction actively promoting RISC-V as a sovereign alternative.</li>
+<li><b>Selling chips against the customers who pay the royalties.</b> The AGI CPU makes Arm a competitor to its licensees in the one market where they are investing most heavily. The mechanism of harm is not a lost sale but a lost renewal: a hyperscaler choosing an architecture for a 2030 product now has a reason to weight RISC-V more heavily. Arm&rsquo;s own filing names this outcome, and its long-range plan depends on the licensees whose business it is entering.</li>
+<li><b>The Qualcomm judgment narrows Arm&rsquo;s ability to reprice.</b> On 30 September 2025 the court ruled that Nuvia did not breach its architecture licence and that Qualcomm&rsquo;s acquired custom cores were licensed under Qualcomm&rsquo;s own agreement. Arm&rsquo;s Third Circuit appeal is pending; Qualcomm&rsquo;s counterclaim was consolidated in March 2026 with trial expected in Q4 2026. Qualcomm is separately disclosed at 9% of fiscal 2026 revenue. The precedent means a licensee can acquire a CPU design team and carry the resulting cores under existing terms &mdash; removing an acquisition as a moment for Arm to renegotiate rates.</li>
+<li><b>72% of the company is pledged collateral.</b> SoftBank beneficially owned 86.4% of Arm at 21 May 2026, and 769,029,000 shares &mdash; a 72.0% equity interest &mdash; are pledged as security under the SoftBank Group Facility, with prepayment triggers on a change of control <em>or if the ADS trading price falls below certain thresholds</em>. A parent financing structure that references Arm&rsquo;s own share price sits above a minority free float.</li>
+<li><b>The disclosure set is narrowing as the questions widen.</b> In eighteen months Arm stopped publishing annual chip shipments, quarterly headcount, remaining performance obligations, and Total Access and Flexible Access licensee counts; it last quantified the Armv9 premium in February 2024 and last gave Armv9&rsquo;s royalty share in December 2024. Management&rsquo;s stated reason is that these &ldquo;become less relevant to our growth with the extension of our business into production silicon.&rdquo; The effect is that the denominator behind royalty per chip, the forward book, and the architectural mix all became unobservable at once &mdash; and remaining performance obligations were declining 7% year on year when withdrawn.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<ul class="body">
+<li><b>Annual chips shipped in fiscal 2026</b> &mdash; not disclosed, so royalty per chip cannot be calculated for the most recent year.</li>
+<li><b>The average royalty rate</b>, or royalty as a percentage of chip ASP &mdash; never disclosed in any filing.</li>
+<li><b>Armv9&rsquo;s current royalty share and the CSS premium</b> &mdash; last given as 25% in December 2024; the CSS multiple appears in no filing.</li>
+<li><b>Royalty revenue in dollars by end market</b> &mdash; Arm publishes growth rates and percentage share only, so true exposure to smartphones versus data centre cannot be measured.</li>
+<li><b>The SoftBank affiliate counterparty, the agreement&rsquo;s duration, and whether the revenue recurs</b> beyond the fixed $300m falling in fiscal 2027.</li>
+<li><b>The commercial standing of the &ldquo;$2bn of customer demand&rdquo;</b> for the AGI CPU &mdash; binding orders, letters of intent or design wins &mdash; and the product&rsquo;s gross margin, on which the filings are silent.</li>
+<li><b>The outcome of Arm&rsquo;s Third Circuit appeal and Qualcomm&rsquo;s counterclaim trial</b>, both unresolved.</li>
+<li><b>Whether the fiscal 2031 slide maps the margin targets to segments as read here</b> &mdash; one rendering reverses the two figures; the mapping used is the economically coherent one, not an independently confirmed one.</li>
+</ul>
+
+<h2>7 &middot; Investor takeaways</h2>
+<ul class="body">
+<li><b>What this business really is:</b> a toll on the world&rsquo;s chip production, collected at roughly seven cents a unit across more than thirty billion units a year, protected not by patents but by the software written against its instruction set.</li>
+<li><b>The core economic engine:</b> raising the price of the unit rather than the number of units. Royalty revenue grew 20% from external customers in a year when its largest end market shipped no additional volume.</li>
+<li><b>The main growth lever:</b> data centre, where Arm is close to universal in hyperscalers&rsquo; own silicon and marginal in general-purpose servers &mdash; and where growth is presently levered to a 77% increase in hyperscaler capital expenditure.</li>
+<li><b>What could break the story:</b> not RISC-V displacing Arm in phones, but the combination of a shrinking third-party licence book, a headline flattered by parent-affiliate revenue, and a deliberate move into 30%-margin silicon that puts Arm in competition with the licensees who pay its royalties.</li>
+<li><b>What to monitor:</b> the external-versus-related-party split in each Form 20-F, ACV growth in each shareholder letter, and operating expense growth against revenue growth &mdash; the one lever that sets margin in a business with no cost of goods.</li>
+</ul>
+
+<footer>
+<p><b>Built from.</b> Arm Holdings plc Form 20-F for fiscal 2026 (filed 26 May 2026), and for fiscal 2025 and 2024 &mdash; principally Note 4 &ldquo;Disaggregation of Revenue,&rdquo; Note 20 &ldquo;Related Party Transactions,&rdquo; Item 7 and the risk factors. Quarterly shareholder letters and earnings releases from Q3 FYE24 through Q1 FYE27 (quarter ended 30 June 2026). Q4 FYE25 and Q4 FYE26 investor presentations. Form F-1 registration statement (2023).</p>
+<p><b>Independent sources.</b> UK Competition and Markets Authority, report to DCMS on the anticipated acquisition of Arm by Nvidia (November 2021). Mercury Research CPU share data, Q1 and Q2 2026. IDC Worldwide Quarterly Mobile Phone Tracker (December 2025). IPnest design-IP market rankings. Semiconductor Industry Association 2025 sales data. CSIS on RISC-V standards leadership (April 2025). Omdia RISC-V forecast. Annual results of TSMC, Nvidia, Cadence, Synopsys, Amkor, Ceva, STMicroelectronics and Qualcomm.</p>
+<p><b>Post-dating the reported figures.</b> Arm completed the acquisition of DreamBig Semiconductor for $265m in cash on 1 July 2026, after the fiscal 2026 year end; it is not reflected in any figure above. Qualcomm&rsquo;s counterclaim against Arm was consolidated in March 2026 with trial expected in the fourth calendar quarter of 2026, and Arm&rsquo;s appeal of the September 2025 judgment remains pending before the Third Circuit. No Arm AGI CPU revenue has been recognised in any period shown.</p>
+<p><b>Marked estimates.</b> Royalty per chip (7.1&cent; for FY2025, 6.3&cent; for FY2024) is inferred by dividing disclosed royalty revenue by disclosed annual unit volumes; Arm publishes no royalty rate and stopped disclosing annual unit volumes after fiscal 2025. Growth ex the SoftBank affiliate arrangement (~9%) is calculated from the disclosed related-party figures. All other figures are as reported.</p>
+<p style="margin-top:18px"><b>This document is a business and industry overview. It is not a valuation, not a forecast and not a recommendation.</b></p>
+</footer>
+
+</div>
+</body>
+</html>

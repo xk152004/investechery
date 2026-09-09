@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Meta Platforms, Inc. (META)</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif; font-weight:bold; margin:0;}
+  h1{font-size:38px; line-height:1.18; margin-bottom:10px;}
+  h2{font-size:27px; margin:52px 0 14px; line-height:1.24;}
+  h3{font-size:21px; margin:30px 0 10px;}
+  p{margin:0 0 16px;}
+  .kicker{
+    font-family:Georgia,serif; font-size:13px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--terracotta); margin-bottom:14px;
+  }
+  .sourceline{color:var(--muted); font-size:15px; line-height:1.5; margin-bottom:34px;}
+  .rule{height:1px; background:var(--line); border:0; margin:34px 0;}
+
+  .restate{
+    font-family:Georgia,serif; font-size:23px; line-height:1.5;
+    border-left:5px solid var(--terracotta); padding:4px 0 4px 20px; margin:0 0 32px;
+  }
+
+  .engine{
+    background:var(--ink); color:var(--cream); border-radius:10px;
+    padding:28px 30px; margin:0 0 30px;
+  }
+  .engine .lab{
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#B9B0A2; margin-bottom:10px;
+  }
+  .engine .unit{font-family:Georgia,serif; font-size:29px; line-height:1.3; margin-bottom:12px;}
+  .engine p{margin:0; font-size:17px; line-height:1.55; color:#E6DFD4;}
+  .engine .fig{color:#F0A585; font-variant-numeric:tabular-nums;}
+
+  .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 0 12px;}
+  .kpi{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px;}
+  .kpi .k{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; line-height:1.35;}
+  .kpi .v{font-family:Georgia,serif; font-size:27px; color:var(--terracotta); font-variant-numeric:tabular-nums; line-height:1.15;}
+  .kpi .s{font-size:14px; color:var(--muted); margin-top:6px; line-height:1.4; font-variant-numeric:tabular-nums;}
+  .kpinote{font-size:14px; color:var(--muted); margin:0 0 8px;}
+
+  .lever{background:#fff; border:1px solid var(--line); border-left:5px solid var(--terracotta);
+    border-radius:10px; padding:15px 18px; margin:0 0 12px;}
+  .lever.structural{border-left-color:var(--good);}
+  .lever.mgmt{border-left-color:var(--gold);}
+  .lever.cyclical{border-left-color:var(--blue);}
+  .lever .top{display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:5px;}
+  .lever .name{font-weight:bold; font-size:18px;}
+  .lever .tag{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--terracotta); white-space:nowrap;}
+  .lever.structural .tag{color:var(--good);}
+  .lever.mgmt .tag{color:var(--gold);}
+  .lever.cyclical .tag{color:var(--blue);}
+  .lever p{margin:0; font-size:17px; line-height:1.52;}
+
+  .pull{background:var(--terracotta-soft); border-radius:10px; padding:22px 26px; margin:26px 0;}
+  .pull q{font-family:Georgia,serif; font-size:21px; line-height:1.45; display:block; quotes:'\201C' '\201D';}
+  .pull .attr{font-size:14px; color:var(--muted); margin-top:11px;}
+
+  .cards2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0 8px;}
+  .card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px 20px;}
+  .card h4{margin:0 0 12px; font-family:Georgia,serif; font-size:19px;}
+  .card.dur h4{color:var(--good);}
+  .card.bor h4{color:var(--terracotta);}
+  .card ul{margin:0; padding-left:19px;}
+  .card li{margin-bottom:9px; font-size:16.5px; line-height:1.5;}
+
+  table{width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line);
+    border-radius:10px; overflow:hidden; margin:18px 0 8px; font-size:16.5px;}
+  caption{caption-side:top; text-align:left; font-size:14px; color:var(--muted); padding:0 0 8px;}
+  th,td{padding:10px 13px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top;}
+  th{background:#F5EFE5; font-weight:bold; font-size:14px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted);}
+  td.num,th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  tbody tr:last-child td{border-bottom:0;}
+  .tnote{font-size:14px; color:var(--muted); line-height:1.5; margin:6px 0 0;}
+
+  figure{margin:24px 0 8px;}
+  figcaption{font-size:14px; color:var(--muted); margin-top:8px; line-height:1.5;}
+  svg{width:100%; height:auto; display:block;}
+  .ax{font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:13px; fill:var(--muted);}
+  .dl{font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:13px; font-weight:bold; fill:var(--ink);}
+  .sl{font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:14px; font-weight:bold;}
+
+  footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line);
+    font-size:14.5px; color:var(--muted); line-height:1.6;}
+  footer strong{color:var(--ink);}
+  @media (max-width:700px){
+    .kpis{grid-template-columns:1fr 1fr;}
+    .cards2{grid-template-columns:1fr;}
+    h1{font-size:31px;} h2{font-size:23px;} body{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Business Overview</div>
+  <h1>Meta Platforms, Inc. <span style="color:var(--muted); font-size:0.62em;">(Nasdaq: META)</span></h1>
+  <p class="sourceline">
+    2 September 2026 · Built from web sources only: Meta’s FY2025 Form 10-K and results release (28 Jan 2026), the
+    Q2 2026 Form 10-Q, results release and earnings presentation (29 Jul 2026), the Q2 2026 earnings call, and
+    independent industry sources including WPP Media, dentsu, EMARKETER, court filings and competitors’ own filings.
+    <strong>Not a valuation and not a recommendation.</strong>
+  </p>
+
+  <p class="restate">
+    Meta is an attention auction. It gives four communication apps away to 3.60 billion people a day and sells the
+    right to interrupt them — by auction, priced per impression — to millions of advertisers who have no comparably
+    cheap way to reach those people.
+  </p>
+
+  <div class="engine">
+    <div class="lab">The unit and what it earns</div>
+    <div class="unit">One daily active person</div>
+    <p>
+      In Q2 2026 each of Meta’s <span class="fig">3.60 billion</span> daily active people generated
+      <span class="fig">$16.86</span> of Family of Apps revenue and <span class="fig">$6.53</span> of Family of Apps
+      operating profit. A year earlier the same person generated $13.65 of revenue and <span class="fig">$7.23</span>
+      of profit. Revenue per person rose 23%; profit per person fell 10%. That single divergence is the whole
+      investment question.
+    </p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">Unit price — ARPP</div><div class="v">$16.86</div><div class="s">per person, Q2 2026 · $13.65 a year earlier</div></div>
+    <div class="kpi"><div class="k">Unit profit</div><div class="v">$6.53</div><div class="s">FoA operating income per person · $7.23 a year earlier</div></div>
+    <div class="kpi"><div class="k">Headline earnings</div><div class="v">$6.18</div><div class="s">diluted EPS, Q2 2026 · $7.14 a year earlier</div></div>
+    <div class="kpi"><div class="k">Leverage</div><div class="v">$83.7bn</div><div class="s">long-term debt vs $90.3bn cash &amp; securities</div></div>
+    <div class="kpi"><div class="k">Cycle position</div><div class="v">31%</div><div class="s">operating margin vs 48% peak (Q4 2024)</div></div>
+    <div class="kpi"><div class="k">Reported vs organic</div><div class="v">28% / 28%</div><div class="s">no material M&amp;A: $474m of acquisitions in H1 2026</div></div>
+  </div>
+  <p class="kpinote">Profit per person is computed from Meta’s disclosed segment operating income and average DAP; every other figure is as reported.</p>
+
+  <hr class="rule">
+
+  <h2>1 · Executive snapshot</h2>
+  <table>
+    <tbody>
+      <tr><th style="width:31%">What the business is</th><td>A global advertising network wrapped around four free communication apps.</td></tr>
+      <tr><th>Industry</th><td>Digital advertising — worldwide ad revenue of roughly $1.3 trillion in 2026, of which digital is about 69%.</td></tr>
+      <tr><th>How it makes money</th><td>It ranks an ad against a user, bills the advertiser when the ad is delivered, and keeps the gap between the auction clearing price and the compute cost of serving the impression.</td></tr>
+      <tr><th>Unit of economics</th><td>One daily active person: $16.86 revenue, $6.53 Family of Apps operating profit per quarter.</td></tr>
+      <tr><th>What protects it</th><td>Owned distribution at a scale nobody can rent, first-party behavioural signal from four apps, and auction depth. Not patents, and not — per the November 2025 antitrust ruling — market power.</td></tr>
+      <tr><th>What drives earnings</th><td>Impressions delivered (+14%), average price per ad (+12%), and the cost of the compute that ranks both (capex 51% of revenue).</td></tr>
+      <tr><th>What to watch</th><td>Depreciation catching up to capex; whether ad pricing holds once the 2026 event calendar passes; the engagement effect of the August 2026 teen-usage remedies.</td></tr>
+      <tr><th>Cycle exposure</th><td>Medium — but rising, because the cost base has just been converted from variable to fixed.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>2 · What the company does</h2>
+  <p>
+    The problem Meta solves is not the one its users have. Users want to talk to people they know and be entertained
+    by people they do not; Meta gives them four apps that do this for free. The paying customer is an advertiser who
+    wants to reach a specific person at a specific moment and cannot do it economically any other way. Meta sits
+    between the two and is paid by the second to reach the first.
+  </p>
+  <p>
+    Trace one unit. A person opens Instagram. The ranking system assembles a feed and reserves slots for ads. For each
+    slot an auction runs in the time the screen takes to draw: advertisers hold standing bids expressed as an outcome
+    they want — a purchase, an install, a lead — and Meta’s models predict how likely <em>this</em> person is to deliver
+    it. Highest expected value wins. The advertiser is billed on credit and pays within weeks: receivables were
+    $21.75bn against $60.80bn of quarterly revenue, a collection cycle of about a month.
+  </p>
+  <p>
+    Two consequences follow. The revenue is transactional, not contracted — deferred revenue was only $1.16bn at
+    30 June 2026, so there is no backlog and no visibility beyond the quarter. And the marginal cost of one more
+    impression is the compute needed to rank it, which is why the entire economic argument now runs through the
+    infrastructure line.
+  </p>
+  <p>
+    Advertising was 97.6% of FY2025 revenue. Family of Apps produced $60.37bn of revenue and $23.39bn of operating
+    income in Q2 2026; Reality Labs produced $431m of revenue and a $4.62bn loss. Inside Family of Apps, a second and
+    much smaller line is compounding fast: <strong>other revenue passed $1bn in a quarter for the first time, up 73%</strong>,
+    on WhatsApp paid messaging and subscriptions. That matters out of proportion to its size, because it is the first
+    evidence that WhatsApp — a product that peaked at 30 million messages a second during the World Cup final, with
+    almost no monetisation history — can be charged for.
+  </p>
+  <p>
+    Reality Labs has changed character without changing name. Revenue grew 16% on AI glasses while Quest headset sales
+    fell, and management has said roughly 70% of the segment’s 2026 operating expenses go to wearables. It has lost
+    about $92bn cumulatively since 2020 and guides to a 2026 loss similar to 2025’s $19.19bn. Read it as a fixed
+    ~$19bn annual charge levied on the advertising business, currently buying an option on glasses rather than on
+    virtual reality.
+  </p>
+
+  <h2>3 · Industry, competitive position &amp; moat</h2>
+  <p>
+    Advertising exists because attention is scarce, perishable and impossible to store. What is actually sold is a
+    probability: the chance that showing this message to this person now changes what they buy. The chain runs from
+    advertiser through agencies and demand-side platforms to whoever owns the surface, and the profit pool has migrated
+    decisively to the surface owners, because they alone hold the identity data that makes the probability estimable.
+  </p>
+  <p>
+    Global ad revenue should reach roughly $1.3 trillion in 2026, growing 8.9% excluding US political spend — an upgrade
+    from the 7.1% WPP Media forecast in December, with US growth revised up to 11.9%. Digital is about 69% of the total.
+    Within digital, three companies take 62.3% of worldwide spend.
+  </p>
+  <p>
+    The structural event of 2026 is that Meta is forecast to pass Google. EMARKETER projected in April 2026 that Meta
+    will reach <strong>$243.46bn of net worldwide ad revenue against Google’s $239.54bn</strong> — a 26.8% share against
+    26.4%, the first time in the history of digital advertising that Google has not been first. The mechanism is growth
+    rate, not scale: Meta accelerating from 22.1% to 24.1% while Google holds at 11.9%. The quarter corroborates the
+    direction.
+  </p>
+
+  <table>
+    <caption>Advertising growth among the three platforms that take 62% of digital spend — Q2 2026</caption>
+    <thead><tr><th>Company</th><th class="num">Ad revenue, Q2 2026</th><th class="num">Growth YoY</th><th class="num">2026 capex guidance</th></tr></thead>
+    <tbody>
+      <tr><td>Meta — advertising</td><td class="num">$59.4bn</td><td class="num">+27%</td><td class="num">$130–145bn</td></tr>
+      <tr><td>Alphabet — Google Search &amp; other</td><td class="num">$63.3bn</td><td class="num">+17%</td><td class="num">$195–205bn</td></tr>
+      <tr><td>Amazon — advertising services</td><td class="num">$19.8bn</td><td class="num">+26%</td><td class="num">$220bn</td></tr>
+    </tbody>
+  </table>
+  <p class="tnote">Capex figures are each company’s own full-year 2026 guidance, not comparable segment spend. Meta is growing advertising fastest while committing the least capital of the three.</p>
+
+  <h3>Which barriers actually bind</h3>
+  <p>
+    Three do. <strong>Owned distribution:</strong> Meta reaches 3.60 billion people daily on surfaces it controls, so it
+    pays no traffic acquisition cost to a gatekeeper — a line Google carries and Meta does not. <strong>Auction depth:</strong>
+    an auction with millions of bidders clears higher than one with thousands, and every advertiser added raises the
+    price paid by every existing one at no incremental cost. <strong>First-party signal:</strong> four apps used as
+    communication infrastructure generate behavioural data no third-party broker can replicate.
+  </p>
+  <p>
+    Two commonly cited barriers do not bind. Advertiser switching costs are low — campaigns move platforms in days,
+    which is precisely why performance rather than lock-in determines share. And Meta does not hold market power in the
+    legal sense: on 18 November 2025 Judge James Boasberg ruled that the FTC had failed to prove a current monopoly,
+    widening the relevant market to include TikTok and YouTube. The ruling removed existential divestiture risk. It is
+    worth noticing what Meta had to argue to win it.
+  </p>
+
+  <div class="pull">
+    <q>The court’s decision today recognizes that Meta faces fierce competition.</q>
+    <div class="attr">Meta Chief Legal Officer, on the November 2025 FTC ruling. The company’s successful legal defence is the opposite of the moat story investors prefer — and the FTC is appealing.</div>
+  </div>
+
+  <p>
+    Among named rivals, Alphabet is the largest and is defending search economics against AI answers; Amazon is the
+    fastest-growing threat, sitting on purchase intent Meta must infer; retail media is the fastest-growing digital
+    channel of all. TikTok — identified by the court as Meta’s fiercest rival — resolved its US ownership question on
+    22 January 2026, when ByteDance closed the transfer of its US operations into a majority-American joint venture with
+    Oracle, Silver Lake and MGX. Meta spent two years benefiting from TikTok’s uncertainty. That benefit has ended.
+  </p>
+  <p>
+    The industry evidence points to a clear answer on what kind of company wins here: one that owns global-scale
+    distribution it does not rent, generates its own first-party signal, runs a self-serve auction deep enough to price
+    long-tail demand, and can fund continual improvement of its ranking models. <strong>Meta is the purest example of
+    that type in the market.</strong> The open question is not whether it is the right kind of company, but whether the
+    capital intensity now required to stay that way leaves an adequate return.
+  </p>
+
+  <h2>4 · Growth engine</h2>
+  <p>
+    Revenue grew 28% in Q2 2026 to $60.80bn, and 30% across the first half to $117.11bn. Almost all of it decomposes
+    into two published numbers: impressions delivered rose 14% and average price per ad rose 12%, compounding to the
+    27% advertising growth reported.
+  </p>
+
+  <table>
+    <caption>Reported versus organic growth — Q2 2026</caption>
+    <thead><tr><th>Component</th><th class="num">Contribution</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr><td>Reported total revenue growth</td><td class="num">+28%</td><td>$60.80bn vs $47.52bn</td></tr>
+      <tr><td>Currency</td><td class="num">≈ +1pt</td><td>+27% on a constant-currency basis; $685m FX effect</td></tr>
+      <tr><td>Acquired revenue</td><td class="num">nil</td><td>$474m of acquisitions of businesses and intangibles in all of H1 2026; goodwill fell over the period</td></tr>
+      <tr><td><strong>Organic, constant-currency</strong></td><td class="num"><strong>≈ +27%</strong></td><td>Volume (+14% impressions) × price (+12%)</td></tr>
+    </tbody>
+  </table>
+  <p class="tnote">Reported and organic growth are effectively identical here, which is unusual at this scale and worth stating plainly: none of the headline rate was bought.</p>
+
+  <h3>Drivers, ranked</h3>
+
+  <div class="lever structural">
+    <div class="top"><span class="name">Ad price, +12% year on year</span><span class="tag">Structural + cyclical</span></div>
+    <p>Price rises when the models predict outcomes better, because advertisers bid to a target return and better prediction lifts what a given bid is worth. But price also rises when the market is strong, and 2026 is strong. Both forces are operating; no public source separates them.</p>
+  </div>
+
+  <div class="lever mgmt">
+    <div class="top"><span class="name">Ad impressions, +14%</span><span class="tag">Management-driven, finite</span></div>
+    <p>Daily active people grew only 3%, so most impression growth came from engagement per person and from what Meta calls ad load optimisations. Engagement gains are durable; ad load has a floor set by user tolerance, and Meta discloses no headroom.</p>
+  </div>
+
+  <div class="lever structural">
+    <div class="top"><span class="name">Geographic mix</span><span class="tag">Structural</span></div>
+    <p>On a user-geography basis, revenue grew 32% in the US and Canada and 36% in Rest of World, against 19% in Asia-Pacific. Rest of World grows from a low revenue-per-person base, so it adds impressions faster than dollars; the US adds dollars.</p>
+  </div>
+
+  <div class="lever structural">
+    <div class="top"><span class="name">New paid surfaces, +73% to $1.01bn</span><span class="tag">Structural, immaterial today</span></div>
+    <p>WhatsApp paid messaging and subscriptions. At 1.7% of revenue this changes nothing in 2026. It is the main evidence for the claim that Meta owns surfaces it has not yet charged for.</p>
+  </div>
+
+  <div class="lever cyclical">
+    <div class="top"><span class="name">Reality Labs, +16% to $431m</span><span class="tag">Temporary as a driver</span></div>
+    <p>AI glasses are selling faster than management expected, but 0.7% of revenue against a $4.62bn quarterly segment loss makes this a cost centre with an option attached, not a growth engine.</p>
+  </div>
+
+  <p style="margin-top:20px">
+    What is conspicuously absent is user growth. Meta has effectively stopped adding people and is extracting more from
+    the people it has. That is a mature-network pattern, and it makes pricing the whole story: if average price per ad
+    stops compounding at low double digits, there is no volume lever large enough to replace it.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Average revenue per person by quarter, Q2 2024 to Q2 2026">
+      <g stroke="#E5DDD0" stroke-width="1">
+        <line x1="70" y1="260" x2="820" y2="260"/><line x1="70" y1="205" x2="820" y2="205"/>
+        <line x1="70" y1="150" x2="820" y2="150"/><line x1="70" y1="95" x2="820" y2="95"/>
+        <line x1="70" y1="40" x2="820" y2="40"/>
+      </g>
+      <g class="ax" text-anchor="end">
+        <text x="60" y="264">$10</text><text x="60" y="209">$12</text><text x="60" y="154">$14</text>
+        <text x="60" y="99">$16</text><text x="60" y="44">$18</text>
+      </g>
+      <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+        points="70,208.1 163.8,197.0 257.5,143.1 351.3,195.1 445,159.6 538.8,137.4 632.5,79.6 726.3,104.4 820,71.4"/>
+      <g fill="#C75B39">
+        <circle cx="70" cy="208.1" r="4"/><circle cx="163.8" cy="197.0" r="4"/><circle cx="257.5" cy="143.1" r="4"/>
+        <circle cx="351.3" cy="195.1" r="4"/><circle cx="445" cy="159.6" r="4"/><circle cx="538.8" cy="137.4" r="4"/>
+        <circle cx="632.5" cy="79.6" r="4"/><circle cx="726.3" cy="104.4" r="4"/><circle cx="820" cy="71.4" r="5.5"/>
+      </g>
+      <text class="dl" x="70" y="196" text-anchor="start">$11.89</text>
+      <text class="dl" x="820" y="59" text-anchor="end">$16.86</text>
+      <text class="sl" x="632.5" y="66" text-anchor="middle" fill="#C75B39">ARPP</text>
+      <g class="ax" text-anchor="middle">
+        <text x="70" y="282">Q2’24</text><text x="163.8" y="282">Q3’24</text><text x="257.5" y="282">Q4’24</text>
+        <text x="351.3" y="282">Q1’25</text><text x="445" y="282">Q2’25</text><text x="538.8" y="282">Q3’25</text>
+        <text x="632.5" y="282">Q4’25</text><text x="726.3" y="282">Q1’26</text><text x="820" y="282">Q2’26</text>
+      </g>
+      <text class="ax" x="70" y="306" text-anchor="start">Family of Apps revenue ÷ average daily active people. Fourth quarters are seasonally strongest.</text>
+    </svg>
+    <figcaption>The unit metric. Revenue per person has risen 42% in two years while the number of persons rose 10%. Source: Meta Q2 2026 earnings presentation.</figcaption>
+  </figure>
+
+  <h2>5 · Margin, cash &amp; capital allocation</h2>
+  <p>
+    Meta’s margin structure used to be simple. Serving an ad cost almost nothing once the network existed, so revenue
+    growth dropped through to operating income and the company earned a 41% operating margin on $201bn of FY2025
+    revenue. That arithmetic is being rewritten in real time.
+  </p>
+  <p>
+    In Q2 2026 the operating margin was 31%, down from 43%, on revenue that grew 28%. Total expenses grew 55%. Two items
+    were one-off — $2.40bn of legal charges and $1.18bn of severance for the May 2026 reduction of about 8,000 roles —
+    and excluding both, Meta states operating income would have risen 9%. That is the honest read of the quarter. But
+    9% operating income growth on 28% revenue growth is still severe operating deleverage, and its cause is not one-off.
+  </p>
+  <p>
+    R&amp;D was 36% of revenue against 27% a year earlier. The two fastest-growing cost lines are depreciation and
+    compensation: D&amp;A reached $6.36bn in the quarter (up 46%), with servers and network assets alone at $4.62bn
+    against $3.12bn; share-based compensation reached $7.66bn (up 58%) on AI hiring. Meta also disclosed a new category
+    on the Q2 call — third-party AI token costs — meaning it is buying inference from others while building its own.
+  </p>
+
+  <table>
+    <caption>Financial spine</caption>
+    <thead><tr><th>US$ billions</th><th class="num">FY2023</th><th class="num">FY2024</th><th class="num">FY2025</th><th class="num">H1 2026</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue</td><td class="num">134.9</td><td class="num">164.5</td><td class="num">201.0</td><td class="num">117.1</td></tr>
+      <tr><td>Operating margin</td><td class="num">35%</td><td class="num">42%</td><td class="num">41%</td><td class="num">36%</td></tr>
+      <tr><td>Reality Labs operating loss</td><td class="num">(16.1)</td><td class="num">(17.7)</td><td class="num">(19.2)</td><td class="num">(8.6)</td></tr>
+      <tr><td>Capex, incl. finance leases</td><td class="num">28.1</td><td class="num">39.2</td><td class="num">72.2</td><td class="num">50.9</td></tr>
+      <tr><td>Free cash flow</td><td class="num">43.0</td><td class="num">52.1</td><td class="num">43.6</td><td class="num">13.2</td></tr>
+      <tr><td>Share repurchases</td><td class="num">19.8</td><td class="num">30.1</td><td class="num">26.2</td><td class="num">nil</td></tr>
+    </tbody>
+  </table>
+  <p class="tnote">
+    Comparability: FY2025 net income and the effective tax rate are distorted by a one-time $15.93bn charge on enactment
+    of the One Big Beautiful Bill Act — excluding it the FY2025 rate would have been 13% rather than 30%. H1 2026 is a
+    six-month figure, not comparable in absolute terms to the annual columns, and contains an $8.03bn tax benefit booked
+    in Q1 2026 under CAMT transitional relief. The H1 2026 margin includes the Q2 legal and severance charges.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Operating margin versus capital expenditure as a share of revenue, by quarter">
+      <g stroke="#E5DDD0" stroke-width="1">
+        <line x1="70" y1="260" x2="820" y2="260"/><line x1="70" y1="220" x2="820" y2="220"/>
+        <line x1="70" y1="180" x2="820" y2="180"/><line x1="70" y1="140" x2="820" y2="140"/>
+        <line x1="70" y1="100" x2="820" y2="100"/><line x1="70" y1="60" x2="820" y2="60"/>
+      </g>
+      <g class="ax" text-anchor="end">
+        <text x="60" y="264">0%</text><text x="60" y="224">10%</text><text x="60" y="184">20%</text>
+        <text x="60" y="144">30%</text><text x="60" y="104">40%</text><text x="60" y="64">50%</text>
+      </g>
+      <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+        points="70,108 163.8,88 257.5,68 351.3,96 445,88 538.8,100 632.5,96 726.3,96 820,136"/>
+      <polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round" stroke-dasharray="7 4"
+        points="70,173.2 163.8,169.2 257.5,137.2 351.3,130.4 445,116.8 538.8,108.8 632.5,112 726.3,119.2 820,55.6"/>
+      <g fill="#C75B39">
+        <circle cx="70" cy="108" r="3.5"/><circle cx="257.5" cy="68" r="4"/><circle cx="820" cy="136" r="5.5"/>
+      </g>
+      <g fill="#3C6E8F">
+        <circle cx="70" cy="173.2" r="3.5"/><circle cx="820" cy="55.6" r="5.5"/>
+      </g>
+      <text class="dl" x="257.5" y="56" text-anchor="middle" fill="#C75B39">48%</text>
+      <text class="dl" x="820" y="152" text-anchor="end" fill="#C75B39">31%</text>
+      <text class="dl" x="70" y="188" text-anchor="start" fill="#3C6E8F">22%</text>
+      <text class="dl" x="820" y="44" text-anchor="end" fill="#3C6E8F">51%</text>
+      <text class="sl" x="445" y="80" text-anchor="middle" fill="#C75B39">Operating margin</text>
+      <text class="sl" x="500" y="103" text-anchor="middle" fill="#3C6E8F">Capex as % of revenue</text>
+      <g class="ax" text-anchor="middle">
+        <text x="70" y="282">Q2’24</text><text x="163.8" y="282">Q3’24</text><text x="257.5" y="282">Q4’24</text>
+        <text x="351.3" y="282">Q1’25</text><text x="445" y="282">Q2’25</text><text x="538.8" y="282">Q3’25</text>
+        <text x="632.5" y="282">Q4’25</text><text x="726.3" y="282">Q1’26</text><text x="820" y="282">Q2’26</text>
+      </g>
+      <text class="ax" x="70" y="306" text-anchor="start">Capex includes principal payments on finance leases. Q2 2026 margin includes $3.6bn of legal and severance charges.</text>
+    </svg>
+    <figcaption>The two lines crossed in Q2 2026 for the first time: Meta now spends more on infrastructure, as a share of revenue, than it earns in operating profit. Source: Meta quarterly results releases and earnings presentations.</figcaption>
+  </figure>
+
+  <h3>The cash picture</h3>
+  <p>
+    Free cash flow was $784m in Q2 2026 against $8.55bn a year earlier. Operating cash flow was healthy and rose 25% to
+    $31.86bn; the collapse is entirely on the investing side, where capex including finance leases hit $31.08bn — 51% of
+    revenue, against 22% in Q2 2024. Guidance is $130–145bn for full-year 2026, narrowed upward from $125–145bn, with
+    management citing higher component pricing.
+  </p>
+  <p>
+    A large part of that bill has not reached the income statement. <strong>Construction in progress stood at $80.35bn</strong>
+    at 30 June 2026, up from $50.52bn at year-end, and assets under construction do not depreciate. Reported margin
+    currently reflects a fraction of the capital already committed.
+  </p>
+  <p>
+    The commitments extend well past the balance sheet. Leases signed but not yet commenced totalled <strong>$278.99bn</strong>,
+    running to 2036 with terms up to 30 years, with more added in July. Meta holds 20% of a Louisiana data-centre venture
+    with roughly $27bn of estimated development cost, a $12.31bn lease commitment from 2029 and residual value guarantees
+    with a threshold near $28bn; its stated maximum exposure to loss on that venture alone is $46.03bn. A further $10.80bn
+    of cash sits in escrow under multi-year infrastructure purchase agreements, released between 2028 and 2030.
+  </p>
+  <p>
+    Where the cash went, ranked across FY2025 and H1 2026: capital expenditure ($72.22bn, then $50.92bn), buybacks
+    ($26.25bn, then nothing), non-marketable equity investments ($18.33bn in FY2025), dividends (~$1.35bn a quarter,
+    maintained). Debt went the other way — the face value of senior notes rose from $59.00bn to $84.00bn after a $25bn
+    six-series issue in May 2026 at coupons of 4.55% to 6.45%. The behaviour is clearer than any strategy statement:
+    <strong>a company that stops repurchasing its own equity and starts issuing 30-year paper is telling you it believes
+    the return on the next data centre exceeds the return on its own shares.</strong>
+  </p>
+
+  <h3>Post-period: the August 2026 settlement</h3>
+  <p>
+    On 26 August 2026, mid-trial in the multi-district youth-harm litigation before Judge Yvonne Gonzalez Rogers in the
+    Northern District of California, Meta settled with a bipartisan coalition of state attorneys general. Reported
+    headline values differ across accounts — between roughly $16.7bn and $18bn — with approximately $12bn payable
+    regardless and the remainder conditional on YouTube and TikTok adopting comparable safety measures, spread over ten
+    years. Meta expects to accrue about $10bn of legal expense in Q3 2026, states this was not contemplated in the July
+    guidance, and says all other guidance ranges are unchanged. This post-dates every reported figure above.
+  </p>
+
+  <h2>6 · Cyclicality, constraints &amp; what to monitor</h2>
+  <p>
+    Advertising is discretionary spend that can be cut within a quarter, which historically made Meta cyclical on the
+    revenue line but resilient on the cost line, because its costs were mostly people and its infrastructure was sized to
+    traffic it already had. That symmetry has gone. The revenue remains as cancellable as ever while the cost base has
+    been converted into depreciation schedules, 30-year leases and residual value guarantees that do not care what
+    advertisers do next quarter.
+  </p>
+  <p>
+    <strong>Where it sits in its cycle:</strong> on volume and price, at or near a high — revenue growth accelerated from
+    22% in FY2025 to 30% in H1 2026, price per ad has risen 12% in each of the last two quarters against 6% in Q4 2025,
+    and the market itself is accelerating. On margin, well below peak: 31% against 48% in Q4 2024. On free cash flow, at a
+    trough: $784m in the quarter against $52.10bn for all of FY2024. A record top line coinciding with margin and cash
+    flow at multi-year lows is unusual, and it is a function of deliberate spending, not of demand.
+  </p>
+  <p>
+    The downside case does not need an advertising recession; it needs advertising growth merely to normalise. If global
+    growth reverts from 8.9% toward the mid-single digits dentsu forecast in December, and price per ad decelerates with
+    it, revenue growth could halve while depreciation from the 2025–26 capex programme steps up regardless. Meta has never
+    operated with this cost structure in a weak ad market. There is no analogue in its own accounts.
+  </p>
+
+  <div class="cards2">
+    <div class="card dur">
+      <h4>Durable — likely still true in ten years</h4>
+      <ul>
+        <li>3.60 billion daily users across four apps people treat as communication infrastructure, not entertainment.</li>
+        <li>A self-serve auction with millions of bidders, where added demand lifts the clearing price at no added cost.</li>
+        <li>First-party behavioural signal generated by owned surfaces rather than bought from brokers.</li>
+        <li>A balance sheet able to fund a $130–145bn capex year without a rights issue.</li>
+        <li>WhatsApp as a barely-monetised surface — other revenue passed $1bn a quarter for the first time, up 73%.</li>
+      </ul>
+    </div>
+    <div class="card bor">
+      <h4>Borrowed — currently helping</h4>
+      <ul>
+        <li>A cyclical upswing: WPP Media raised its 2026 global forecast from +7.1% to +8.9% in June, US growth to +11.9%.</li>
+        <li>A 2026 event calendar — World Cup, Winter Olympics, US midterms — that inflates the 2027 comparison base.</li>
+        <li>Ad load increases, which drove +14% impressions against only +3% user growth and cannot repeat indefinitely.</li>
+        <li>A depreciation lag: $80.3bn of construction in progress is not yet being depreciated.</li>
+        <li>Tax noise, including the $8.03bn CAMT benefit booked in Q1 2026.</li>
+      </ul>
+    </div>
+  </div>
+
+  <table>
+    <caption>End-market exposure — Q2 2026 revenue by user geography</caption>
+    <thead><tr><th>Region</th><th class="num">Revenue</th><th class="num">Share</th><th class="num">Growth YoY</th></tr></thead>
+    <tbody>
+      <tr><td>US &amp; Canada</td><td class="num">$26.8bn</td><td class="num">44%</td><td class="num">+32%</td></tr>
+      <tr><td>Europe</td><td class="num">$14.3bn</td><td class="num">24%</td><td class="num">+24%</td></tr>
+      <tr><td>Asia-Pacific</td><td class="num">$11.2bn</td><td class="num">18%</td><td class="num">+19%</td></tr>
+      <tr><td>Rest of World</td><td class="num">$8.5bn</td><td class="num">14%</td><td class="num">+36%</td></tr>
+    </tbody>
+  </table>
+  <p class="tnote">Europe includes Russia and Turkey; Rest of World includes Africa, Latin America and the Middle East. Nearly a quarter of revenue sits in the jurisdiction now degrading Meta’s targeting signal.</p>
+
+  <table>
+    <caption>What to monitor, and where it is published</caption>
+    <thead><tr><th>Indicator</th><th>Where published</th><th>What it tells you</th></tr></thead>
+    <tbody>
+      <tr><td>Ad impressions and average price per ad</td><td>Quarterly earnings release, investor.atmeta.com</td><td>Separates volume from pricing. Price decelerating while impressions accelerate means ad load, not demand.</td></tr>
+      <tr><td>Depreciation of servers and network assets</td><td>Property and equipment note, 10-Q / 10-K</td><td>How much of the capex bill has reached the income statement. $4.62bn in Q2 2026.</td></tr>
+      <tr><td>Construction in progress</td><td>Property and equipment note, 10-Q / 10-K</td><td>What has been paid for but is not yet depreciating. $80.3bn at 30 June 2026.</td></tr>
+      <tr><td>Family daily active people and ARPP</td><td>Quarterly earnings presentation</td><td>Whether the teen-usage remedies show up in engagement from Q4 2026.</td></tr>
+      <tr><td>Leases not yet commenced</td><td>Commitments and contingencies note, 10-Q / 10-K</td><td>The fixed obligation building off balance sheet. $279.0bn at 30 June 2026.</td></tr>
+      <tr><td>Global and US ad revenue growth</td><td>WPP Media <em>This Year Next Year</em>; dentsu; Magna</td><td>Distinguishes Meta share gain from a rising market.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>7 · Risks, unknowns &amp; questions for deeper work</h2>
+  <p>
+    <strong>The teen-usage remedies reduce the input, not just the profit.</strong> The August 2026 settlement requires a
+    two-hour cumulative daily limit for teens across Facebook and Instagram, disableable only with parental permission;
+    blocked access between midnight and 6am; notifications muted during school hours; a non-algorithmic feed option;
+    autoplay disabling; and like counts hidden by default. Each of those reduces sessions or reduces the ranking signal
+    within a session. Impressions are 14 points of a 27-point ad growth rate, and this removes some of them by court
+    order rather than by competition.
+  </p>
+  <p>
+    <strong>Depreciation is a bill already paid, arriving later.</strong> Unlike headcount, depreciation cannot be cut in
+    response to weak revenue — the cash left years earlier. With $80.35bn in construction in progress and $130–145bn of
+    2026 capex, the depreciation line has years of programmed increases embedded in it. If revenue growth normalises
+    before that schedule matures, margin compresses on both blades at once.
+  </p>
+  <p>
+    <strong>Off-balance-sheet obligations convert a flexible business into a fixed one.</strong> $278.99bn of leases not
+    yet commenced, plus roughly $28bn of residual value guarantees on the Louisiana venture, are contractual regardless of
+    ad demand. That venture is deliberately non-consolidated because Meta is not the primary beneficiary, yet Meta
+    discloses maximum exposure to loss of $46.03bn on it. An investor reading only the consolidated balance sheet will
+    understate the fixed cost of this business.
+  </p>
+  <p>
+    <strong>Single-product concentration compounds everything else.</strong> Advertising was 97.6% of FY2025 revenue. Meta
+    is financing a multi-year infrastructure programme, servicing $84bn of debt and absorbing a $19bn annual Reality Labs
+    loss from one revenue line, sold to one buyer type, on a spot basis with no backlog.
+  </p>
+  <p>
+    <strong>European signal degradation is a slow leak on a quarter of revenue.</strong> Following the €200m DMA fine in
+    April 2025, Meta began rolling out its Less Personalized Ads option in January 2026 after the European Commission
+    acknowledged the revised model. Every user who takes it moves from behavioural to contextual targeting, which lowers
+    the predicted outcome rate and therefore what advertisers will bid.
+  </p>
+  <p>
+    <strong>The antitrust win is not final.</strong> The FTC has appealed the November 2025 ruling. A reversal would revive
+    divestiture exposure over Instagram and WhatsApp — and Instagram is the surface carrying the current growth.
+  </p>
+
+  <h3>What the sources could not answer</h3>
+  <p>These are findings, not gaps in the research. Each would need resolving before forming a thesis.</p>
+  <ul>
+    <li>The <strong>maintenance versus growth capex split</strong> is not disclosed, so no one outside the company can compute a maintenance free cash flow. On a $130–145bn programme this is the largest analytical hole.</li>
+    <li><strong>No return metric on AI infrastructure</strong> is disclosed — no revenue per unit of compute, no incremental margin on ranking improvements, no payback period. Management asserts the investment is working; no published number tests it.</li>
+    <li>The <strong>useful-life assumption for servers and network assets</strong> in 2026 was not established from the sources read. With that depreciation now $4.62bn a quarter and rising, a change would move reported margin materially.</li>
+    <li>No public source separates <strong>AI-driven performance gains from cyclical ad-market strength</strong>. Both are present; their relative weight determines whether 24% growth repeats in 2027.</li>
+    <li><strong>Advertiser concentration</strong> was not established — in particular whether AI-native companies, which WPP Media identifies as a major source of 2026 ad growth, exceed 10% of revenue.</li>
+    <li><strong>Current ad load and remaining headroom</strong> are not disclosed, so the durability of the impression lever cannot be assessed.</li>
+    <li>The <strong>allocation of the $2.40bn Q2 legal charge</strong> across matters is not disclosed, nor whether the ~$10bn Q3 charge will sit inside the Family of Apps segment.</li>
+  </ul>
+
+  <h2>8 · Investor takeaways</h2>
+  <ul>
+    <li>Meta is an attention auction with 3.60 billion daily participants, monetised at $16.86 per person per quarter, now carrying a construction programme roughly the size of a major utility.</li>
+    <li>The engine is price per impression, not people: users grew 3% while revenue per person grew 23%, so ad pricing carries the whole growth rate.</li>
+    <li>The main growth lever is better outcome prediction feeding a deeper auction — and, for the first time, forecasters expect Meta to end 2026 larger than Google in advertising.</li>
+    <li>What could break the story is not competition but arithmetic: capex at 51% of revenue, $279bn of uncommenced leases, and a depreciation schedule that keeps stepping up whether or not ad growth normalises from an unusually strong 2026.</li>
+    <li>Monitor price per ad against impressions, and servers-and-network depreciation against construction in progress. Those two pairs describe the entire investment case.</li>
+  </ul>
+
+  <footer>
+    <p>
+      <strong>Sources.</strong> Company: Meta Platforms FY2025 Form 10-K and Q4/FY2025 results release (28 January 2026);
+      Q2 2026 Form 10-Q, results release and earnings presentation (29 July 2026); Q2 2026 earnings call.
+      Industry: WPP Media <em>This Year Next Year</em> 2026 Global Midyear Forecast (16 June 2026); dentsu Global Ad Spend
+      Forecasts (3 December 2025); EMARKETER, “Meta to Surpass Google in Digital Ad Revenues for First Time Ever”
+      (13 April 2026); Alphabet and Amazon Q2 2026 results; <em>FTC v. Meta Platforms</em>, memorandum opinion of Judge
+      James E. Boasberg (18 November 2025); European Commission DMA decisions and Meta’s DMA compliance report
+      (6 March 2026); TikTok USDS Joint Venture closing disclosures (22 January 2026).
+    </p>
+    <p>
+      <strong>Post-dating the filings.</strong> The state attorneys general settlement announced 26 August 2026, and the
+      approximately $10 billion Q3 2026 legal accrual attached to it, post-date every Meta filing used here and are
+      reflected only in Sections 5 and 7. Reported headline values for that settlement differ across public accounts.
+    </p>
+    <p>Prepared 2 September 2026 · Not a valuation and not a recommendation.</p>
+  </footer>
+
+</div>
+</body>
+</html>
