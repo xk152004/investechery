@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Netflix — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#fbfaf8; --panel:#ffffff; --ink:#1c1b19; --mute:#6d6a65; --line:#e4e0da;
+  --green:#1f5c3a; --greenbg:#eef5f1; --red:#8a1f1f; --redbg:#faeeee; --accent:#8a1f1f;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141312; --panel:#1c1b1a; --ink:#eceae6; --mute:#9d9891; --line:#2f2d2a;
+  --green:#6fc79b; --greenbg:#16241d; --red:#e8817c; --redbg:#2a1a19; --accent:#e8817c;
+}}
+:root[data-theme="dark"]{
+  --bg:#141312; --panel:#1c1b1a; --ink:#eceae6; --mute:#9d9891; --line:#2f2d2a;
+  --green:#6fc79b; --greenbg:#16241d; --red:#e8817c; --redbg:#2a1a19; --accent:#e8817c;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0}
+.wrap{display:grid;grid-template-columns:212px minmax(0,1fr);gap:36px;max-width:1140px;margin:0 auto;padding:34px 22px 90px}
+nav{position:sticky;top:24px;align-self:start;font-size:13px}
+nav .navtitle{font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);font-size:11px;margin-bottom:12px}
+nav a{display:block;padding:6px 10px;color:var(--mute);text-decoration:none;border-left:2px solid transparent;border-radius:0 4px 4px 0}
+nav a:hover{color:var(--ink)}
+nav a.active{color:var(--ink);border-left-color:var(--accent);background:var(--panel);font-weight:600}
+h1{font-size:29px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+.kicker{color:var(--mute);font-size:13px;margin:0 0 22px}
+h2{font-size:20px;margin:0 0 14px;letter-spacing:-.01em}
+section{scroll-margin-top:20px;margin-bottom:46px}
+.hdrblock{display:grid;grid-template-columns:150px minmax(0,1fr);gap:0 14px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:13.2px;margin-bottom:34px}
+.hk{color:var(--mute);padding:5px 0;border-top:1px solid var(--line)}
+.hv{padding:5px 0;border-top:1px solid var(--line)}
+.hdrblock .hk:first-of-type,.hdrblock .hv:first-of-type{border-top:none}
+p{margin:0 0 12px}
+.lede{border-left:3px solid var(--accent);padding:2px 0 2px 15px;font-size:16px;margin-bottom:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-bottom:9px;overflow:hidden}
+.card summary{cursor:pointer;list-style:none;padding:11px 14px;font-weight:600;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.card summary::-webkit-details-marker{display:none}
+.card .body{padding:2px 16px 12px;border-top:1px solid var(--line);font-size:14px}
+.card .body p{margin:10px 0 0}
+.card .body b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:2px;font-weight:700}
+.chev{margin-left:auto;width:8px;height:8px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg);transition:transform .15s;flex:none}
+details[open] .chev{transform:rotate(225deg)}
+.tag{font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;padding:4px 6px;border-radius:4px;flex:none}
+.tag.green{color:var(--green);background:var(--greenbg)}
+.tag.red{color:var(--red);background:var(--redbg)}
+.atk{font-size:11.5px;color:var(--mute);font-weight:400}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-bottom:16px;background:var(--panel)}
+.toggle button{border:0;background:transparent;color:var(--mute);font:600 13px/1 inherit;padding:9px 15px;cursor:pointer}
+.toggle button.on{background:var(--ink);color:var(--bg)}
+.duel{display:grid;grid-template-columns:1fr 34px 1fr;gap:0;align-items:stretch;border:1px solid var(--line);border-radius:8px;background:var(--panel);margin-bottom:12px;overflow:hidden}
+.duel-side{padding:14px 16px;font-size:13.6px}
+.bullside{border-right:1px solid var(--line)}
+.bearside{border-left:1px solid var(--line)}
+.vs{display:flex;align-items:center;justify-content:center;font:700 11px/1 ui-monospace,monospace;color:var(--mute);background:var(--bg)}
+.duel-head{font-weight:700;display:flex;gap:8px;align-items:baseline;margin-bottom:8px}
+.lead{margin:0 0 8px}
+.sub{margin:0;color:var(--mute);font-size:12.8px}
+.sub b{color:var(--ink)}
+.muted{color:var(--mute)}
+hr.thin{border:0;border-top:1px solid var(--line);margin:12px 0}
+.hide{display:none}
+.sigs{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:10px}
+.sig{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:13px 14px;font-size:13.3px}
+.sig-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;margin-bottom:7px}
+.sig-name{font-weight:700;line-height:1.3}
+.sig-tags{display:flex;gap:4px;flex:none}
+.sig-val{font:600 13.5px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);background:var(--bg);border-radius:5px;padding:7px 9px;margin-bottom:9px}
+.sig-dir{color:var(--ink);margin-bottom:8px}
+.sig-src{color:var(--mute);font-size:11.6px;border-top:1px solid var(--line);padding-top:7px}
+ol.bottom{padding-left:20px;margin:0}
+ol.bottom li{margin-bottom:11px}
+.note{color:var(--mute);font-size:12.6px;background:var(--panel);border:1px dashed var(--line);border-radius:8px;padding:11px 14px}
+@media (max-width:860px){
+  .wrap{grid-template-columns:1fr;gap:0;padding-top:18px}
+  nav{position:static;margin-bottom:22px;display:flex;flex-wrap:wrap;gap:4px}
+  nav .navtitle{width:100%}
+  nav a{border-left:0;border-bottom:2px solid transparent;padding:5px 8px}
+  nav a.active{border-left:0;border-bottom-color:var(--accent)}
+  .duel{grid-template-columns:1fr}
+  .bullside{border-right:0;border-bottom:1px solid var(--line)}
+  .bearside{border-left:0}
+  .vs{padding:5px 0}
+  .hdrblock{grid-template-columns:1fr}
+  .hk{padding-bottom:0;border-top:1px solid var(--line)}
+  .hv{border-top:0;padding-top:1px}
+}
+</style></head><body>
+<div class="wrap">
+<nav>
+  <div class="navtitle">Sections</div>
+  <a href="#s1">1 · Business</a>
+  <a href="#s2">2 · Bull case</a>
+  <a href="#s3">3 · Bear case</a>
+  <a href="#s4">4 · Signals</a>
+  <a href="#s5">5 · Bottom line</a>
+  <a href="#s6">Sources</a>
+</nav>
+<main>
+  <h1>Netflix, Inc. (NFLX) — Bull &amp; Bear Memo</h1>
+  <p class="kicker">Fast thinking anchor — not a thesis, valuation, or recommendation. Prepared 9 September 2026.</p>
+  <div class="hdrblock"><div class="hk">company</div><div class="hv">Netflix, Inc. (NFLX) — Nasdaq</div><div class="hk">sources used</div><div class="hv">FY2025 10-K (2026-01-23); FY2026 Q2 10-Q (2026-07-17); Q2'26 and Q1'26 shareholder letters; WBD merger 8-Ks (2025-12-05, 2026-01-20); FY2024 10-K</div><div class="hk">latest period</div><div class="hv">Q2 2026 (quarter ended June 30, 2026)</div><div class="hk">missing or stale data</div><div class="hv">No membership counts and no revenue per membership — both discontinued during 2025. No reported ad revenue: the FY2025 10-K still calls non-membership revenue "not a material component"; the ~$3B figure is management's target. No churn, CAC or per-title economics. One operating segment, so regional disclosure is revenue only. No transcripts or investor presentations in the folder.</div></div>
+
+  <section id="s1"><h2>1. Business in one line</h2>
+    <p>Netflix sells one global streaming subscription, billed monthly in advance, against a library it both licenses and produces, and is now layering advertising onto that same content. FY2025 revenue was $45.2B (+16%), one segment across four regions: UCAN $20.0B, EMEA $14.5B, LATAM $5.4B, APAC $5.4B.</p><p>Type: fast grower, but a composite one. UCAN, 44% of revenue, already behaves like a stalwart whose growth must come from price rather than members; LATAM and APAC grow fastest at the lowest revenue per member; advertising is a start-up inside a $45B company. That split drives the rest of this memo.</p>
+  </section>
+
+  <section id="s2"><h2>2. Bull case — Peter Lynch pitch</h2>
+    <p class="lede">The simple reason this stock could work is that Netflix carries a content cost base that grows slower than revenue, so every dollar of price and every dollar of advertising lands on a cost structure that barely moves. Operating margin went 20.6% (2023) → 26.7% (2024) → 29.5% (2025), and management guides 31.5% for 2026 on 13–14% revenue growth — implying 20%+ operating income growth.</p>
+    <div class="toggle" role="group" aria-label="View mode">
+      <button id="btnList" class="on" type="button">Assumptions</button>
+      <button id="btnDuel" type="button">Assumption vs. attack</button>
+    </div>
+    <div id="listView">
+<details class="card bull" data-id="A1">
+  <summary><span class="tag green">A1</span>Price increases keep clearing in mature markets<span class="chev"></span></summary>
+  <div class="body">
+    <p><b>What must happen</b> Netflix keeps raising prices where penetration is high and loses less revenue to cancellations than it gains in revenue per member.</p>
+    <p><b>Why this company</b> The plan ladder runs from the dollar equivalent of $1 to $37 a month. A member facing an increase can trade down inside Netflix instead of out of it, so pricing converts into mix rather than churn.</p>
+    <p><b>Evidence</b> FY2025 revenue +16%, attributed to "growth in memberships, price increases, and increased advertising revenue"; UCAN +15%. Management calls the H1'26 US, Mexico and Spain changes "consistent with prior price changes."</p>
+    <p><b>Monitor</b> UCAN revenue growth in Q3'26 — the first full quarter carrying the recent US increase. Q2'26 was +10% on a partial quarter.</p>
+  </div>
+</details>
+<details class="card bull" data-id="A2">
+  <summary><span class="tag green">A2</span>Advertising becomes a real second revenue line<span class="chev"></span></summary>
+  <div class="body">
+    <p><b>What must happen</b> Ads revenue roughly doubles to about $3B in 2026 and compounds from there.</p>
+    <p><b>Why this company</b> Ads monetize view hours already paid for. Content is sunk and largely fixed, so an incremental impression carries near-total contribution margin — which is what lets Netflix hold a cheap entry tier without wrecking blended revenue per member.</p>
+    <p><b>Evidence</b> Management's ~$3B target and "rough doubling" language; a $149M rise in FY2025 sales-and-marketing personnel costs from ad-sales headcount.</p>
+    <p><b>Monitor</b> Whether the FY2026 10-K still calls non-membership revenue "not a material component of revenues" — the language used for 2023, 2024 and 2025.</p>
+  </div>
+</details>
+<details class="card bull" data-id="A3">
+  <summary><span class="tag green">A3</span>Content cost grows slower than revenue<span class="chev"></span></summary>
+  <div class="body">
+    <p><b>What must happen</b> Content amortization grows high single digits while revenue grows low-to-mid teens.</p>
+    <p><b>Why this company</b> A Korean series costs the same whether it plays in one market or ninety, and non-English titles drove more than a third of H1'26 viewing — the same asset is re-monetized across regions rather than re-bought.</p>
+    <p><b>Evidence</b> Cost of revenues fell from 58% of revenue (2023) to 54% (2024) to 52% (2025). Management guides content amortization +~10% in 2026 against revenue +13–14%.</p>
+    <p><b>Monitor</b> Amortization growth against revenue growth each quarter, and cash content spend to amortization — 1.04x in FY2025 ($17.1B added, $16.4B amortized), guided ~1.1x for 2026.</p>
+  </div>
+</details>
+<details class="card bull" data-id="A4">
+  <summary><span class="tag green">A4</span>Engagement holds while price rises<span class="chev"></span></summary>
+  <div class="body">
+    <p><b>What must happen</b> Hours per member stay flat to up, so each increase is experienced as still-good value rather than a reason to cancel.</p>
+    <p><b>Why this company</b> Variety is the mechanism, not spend. Live is guided to just over 5% of 2026 content spend and ~1% of view hours, yet produced six of the top ten new sign-up days of the past five years. Podcasts over-index on daytime and mobile viewing — engagement management reads as incremental.</p>
+    <p><b>Evidence</b> Members watched more than 97 billion hours in H1'26, +2% year over year against +1.5% in 2025, despite the Winter Olympics and World Cup.</p>
+    <p><b>Monitor</b> View-hours growth against revenue growth — noting the report moves to annual publication from 2027.</p>
+  </div>
+</details>
+<details class="card bull" data-id="A5">
+  <summary><span class="tag green">A5</span>Free cash flow goes to shareholders, not to empire-building<span class="chev"></span></summary>
+  <div class="body">
+    <p><b>What must happen</b> Netflix converts ~$12.5B of guided 2026 free cash flow into per-share value rather than into a levered acquisition.</p>
+    <p><b>Why this company</b> WBD is the cleanest test of price discipline available: Netflix signed at $27.75 a share in cash (~$82.7B enterprise value), then declined to raise and collected a $2.8B termination fee in Q1'26.</p>
+    <p><b>Evidence</b> FY2025 repurchases of 86.5M shares for $9.1B; $4.7B in Q2'26, the largest quarter on record; $27.1B of remaining authorization; diluted shares 4,261M in Q2'26 against 4,349M a year earlier.</p>
+    <p><b>Monitor</b> Repurchase pace against any new M&amp;A, and net debt (~$5.3B at 6/30/26: $14.4B gross debt, $9.1B cash).</p>
+  </div>
+</details></div>
+    <div id="duelView" class="hide">
+<div class="duel">
+  <div class="duel-side bullside">
+    <div class="duel-head"><span class="tag green">A1</span>Price increases keep clearing in mature markets</div>
+    <p class="lead">Netflix keeps raising prices where penetration is high and loses less revenue to cancellations than it gains in revenue per member.</p>
+    <p class="sub"><b>Evidence</b> FY2025 revenue +16%, attributed to "growth in memberships, price increases, and increased advertising revenue"; UCAN +15%. Management calls the H1'26 US, Mexico and Spain changes "consistent with prior price changes."</p>
+  </div>
+  <div class="vs">vs</div>
+  <div class="duel-side bearside">
+    
+      <div class="duel-head"><span class="tag red">B2</span>The thesis has been made hard to falsify</div>
+      <p class="lead">Netflix discontinued membership counts and revenue per membership during 2025, and from 2027 will publish view hours annually rather than semi-annually. Revenue is members times price; without the split, a quarter where price rose 12% and members fell 4% looks identical to one where both rose modestly.</p>
+      <p class="sub"><b>Confirms failure</b> Regional revenue decelerating right after a price change, with no disclosure able to attribute it to volume or price.</p><hr class="thin">
+      <div class="duel-head"><span class="tag red">B3</span>UCAN is at a price ceiling</div>
+      <p class="lead">UCAN — 44% of FY2025 revenue and the highest revenue-per-member region — grew 10% in Q2'26, the slowest of the four regions, even with a price increase landing mid-quarter. In a saturated market revenue growth is price growth: each increase lifts cancellations that must be refilled from a shrinking pool of never-members. Netflix is simultaneously re-testing free trials outside the US and UK and running "upgrade on us" offers — both lower realized revenue per member to defend volume.</p>
+      <p class="sub"><b>Confirms failure</b> UCAN below high single digits in Q3'26 with the full increase in effect, or free-trial and discount tests extended to the US.</p>
+  </div>
+</div>
+<div class="duel">
+  <div class="duel-side bullside">
+    <div class="duel-head"><span class="tag green">A2</span>Advertising becomes a real second revenue line</div>
+    <p class="lead">Ads revenue roughly doubles to about $3B in 2026 and compounds from there.</p>
+    <p class="sub"><b>Evidence</b> Management's ~$3B target and "rough doubling" language; a $149M rise in FY2025 sales-and-marketing personnel costs from ad-sales headcount.</p>
+  </div>
+  <div class="vs">vs</div>
+  <div class="duel-side bearside">
+    
+      <div class="duel-head"><span class="tag red">B4</span>Advertising under-delivers while cannibalizing</div>
+      <p class="lead">On ~$45B of revenue, non-membership revenue was still "not a material component" in the FY2025 10-K, and Netflix's own ads risk factor names "fluctuations in membership plan mix" among the drivers. The timing is asymmetric: a member trading down to the ad tier cuts revenue per member the day they switch, while the ad revenue depends on CPMs, fill and advertiser budgets that arrive later and are cyclical. The trade-down is certain; the offset is not.</p>
+      <p class="sub"><b>Confirms failure</b> 2026 ads revenue materially short of ~$3B, or deceleration concentrated where the ad tier is most penetrated.</p>
+  </div>
+</div>
+<div class="duel">
+  <div class="duel-side bullside">
+    <div class="duel-head"><span class="tag green">A3</span>Content cost grows slower than revenue</div>
+    <p class="lead">Content amortization grows high single digits while revenue grows low-to-mid teens.</p>
+    <p class="sub"><b>Evidence</b> Cost of revenues fell from 58% of revenue (2023) to 54% (2024) to 52% (2025). Management guides content amortization +~10% in 2026 against revenue +13–14%.</p>
+  </div>
+  <div class="vs">vs</div>
+  <div class="duel-side bearside">
+    
+      <div class="duel-head"><span class="tag red">B1</span>The content cost base is contractual, re-accelerating, and can never be written down</div>
+      <p class="lead">Content obligations were $24.0B at 12/31/25, $11.5B due within twelve months, plus $1–4B of unknown-title obligations over three years held off balance sheet. Netflix's own risk factor says that because these commitments are multi-year and largely fixed, margins may be impaired if performance disappoints and obligations cannot be cut near-term. Cash additions to content assets were $17.1B in FY2025 against $16.4B amortized (1.04x), guided to ~1.1x for 2026 — cash is committing ahead of the P&amp;L. And because content assets ($33.8B at 6/30/26) are monetized as a group with no impairment event ever identified, a slate that fails shows up only as slower revenue, never as a charge.</p>
+      <p class="sub"><b>Confirms failure</b> Cash-to-amortization sustained above ~1.15x, or amortization growth converging on revenue growth while revenue decelerates.</p>
+  </div>
+</div>
+<div class="duel">
+  <div class="duel-side bullside">
+    <div class="duel-head"><span class="tag green">A4</span>Engagement holds while price rises</div>
+    <p class="lead">Hours per member stay flat to up, so each increase is experienced as still-good value rather than a reason to cancel.</p>
+    <p class="sub"><b>Evidence</b> Members watched more than 97 billion hours in H1'26, +2% year over year against +1.5% in 2025, despite the Winter Olympics and World Cup.</p>
+  </div>
+  <div class="vs">vs</div>
+  <div class="duel-side bearside">
+    
+      <div class="duel-head"><span class="tag red">B2</span>The thesis has been made hard to falsify</div>
+      <p class="lead">Netflix discontinued membership counts and revenue per membership during 2025, and from 2027 will publish view hours annually rather than semi-annually. Revenue is members times price; without the split, a quarter where price rose 12% and members fell 4% looks identical to one where both rose modestly.</p>
+      <p class="sub"><b>Confirms failure</b> Regional revenue decelerating right after a price change, with no disclosure able to attribute it to volume or price.</p>
+  </div>
+</div>
+<div class="duel">
+  <div class="duel-side bullside">
+    <div class="duel-head"><span class="tag green">A5</span>Free cash flow goes to shareholders, not to empire-building</div>
+    <p class="lead">Netflix converts ~$12.5B of guided 2026 free cash flow into per-share value rather than into a levered acquisition.</p>
+    <p class="sub"><b>Evidence</b> FY2025 repurchases of 86.5M shares for $9.1B; $4.7B in Q2'26, the largest quarter on record; $27.1B of remaining authorization; diluted shares 4,261M in Q2'26 against 4,349M a year earlier.</p>
+  </div>
+  <div class="vs">vs</div>
+  <div class="duel-side bearside">
+    
+      <div class="duel-head"><span class="tag red">B5</span>The acquisition impulse is demonstrated, not theoretical</div>
+      <p class="lead">Netflix walked from WBD, but only after signing at ~$82.7B enterprise value, arranging $42.2B of senior unsecured bridge commitments (raised from $34B), and accepting a $5.8B reverse termination fee if antitrust approval failed. What was demonstrated is price discipline on one deal, not a policy against levering the balance sheet for content assets.</p>
+      <p class="sub"><b>Confirms failure</b> A new large cash acquisition, or repurchases pausing while authorization remains — they were already paused once, during the WBD process.</p>
+  </div>
+</div></div>
+    <p style="margin-top:16px">Why the market might be missing it: the two inputs most models were built on — memberships and revenue per membership — were withdrawn during 2025. A model that can no longer decompose growth extrapolates the aggregate, which understates a business whose mix is shifting toward price and advertising (high incremental margin) and away from unit adds (low incremental margin).</p>
+  </section>
+
+  <section id="s3"><h2>3. Bear case — Munger invert</h2>
+    <p class="lede">The most likely way I lose money is that price increases stop clearing in UCAN and advertising stays immaterial — and I do not find out for four to six quarters, because the disclosures that would have shown it were removed, while a $24.0B content commitment book keeps paying out on contractual schedule.</p>
+    
+<details class="card bear" data-id="B1">
+  <summary><span class="tag red">B1</span>The content cost base is contractual, re-accelerating, and can never be written down<span class="atk">attacks A3</span><span class="chev"></span></summary>
+  <div class="body">
+    <p><b>How it could fail</b> Content obligations were $24.0B at 12/31/25, $11.5B due within twelve months, plus $1–4B of unknown-title obligations over three years held off balance sheet. Netflix's own risk factor says that because these commitments are multi-year and largely fixed, margins may be impaired if performance disappoints and obligations cannot be cut near-term. Cash additions to content assets were $17.1B in FY2025 against $16.4B amortized (1.04x), guided to ~1.1x for 2026 — cash is committing ahead of the P&amp;L. And because content assets ($33.8B at 6/30/26) are monetized as a group with no impairment event ever identified, a slate that fails shows up only as slower revenue, never as a charge.</p>
+    <p><b>What confirms failure</b> Cash-to-amortization sustained above ~1.15x, or amortization growth converging on revenue growth while revenue decelerates.</p>
+    <p><b>What it does to the economics</b> Operating margin and free cash flow — and the guided ~$12.5B of 2026 FCF was itself raised from ~$11B mainly on the after-tax WBD fee, a one-off rather than operating cash.</p>
+    <p><b>Permanent or fixable</b> Semi-permanent: contractual over two to three years, and it does not flex down with revenue.</p>
+  </div>
+</details>
+<details class="card bear" data-id="B2">
+  <summary><span class="tag red">B2</span>The thesis has been made hard to falsify<span class="atk">attacks A1, A4</span><span class="chev"></span></summary>
+  <div class="body">
+    <p><b>How it could fail</b> Netflix discontinued membership counts and revenue per membership during 2025, and from 2027 will publish view hours annually rather than semi-annually. Revenue is members times price; without the split, a quarter where price rose 12% and members fell 4% looks identical to one where both rose modestly.</p>
+    <p><b>What confirms failure</b> Regional revenue decelerating right after a price change, with no disclosure able to attribute it to volume or price.</p>
+    <p><b>What it does to the economics</b> Not to economics directly, but the position becomes unmonitorable exactly when the pricing assumption is under most strain.</p>
+    <p><b>Permanent or fixable</b> Fixable only if disclosure is restored, which the company frames as a deliberate simplification.</p>
+  </div>
+</details>
+<details class="card bear" data-id="B3">
+  <summary><span class="tag red">B3</span>UCAN is at a price ceiling<span class="atk">attacks A1</span><span class="chev"></span></summary>
+  <div class="body">
+    <p><b>How it could fail</b> UCAN — 44% of FY2025 revenue and the highest revenue-per-member region — grew 10% in Q2'26, the slowest of the four regions, even with a price increase landing mid-quarter. In a saturated market revenue growth is price growth: each increase lifts cancellations that must be refilled from a shrinking pool of never-members. Netflix is simultaneously re-testing free trials outside the US and UK and running "upgrade on us" offers — both lower realized revenue per member to defend volume.</p>
+    <p><b>What confirms failure</b> UCAN below high single digits in Q3'26 with the full increase in effect, or free-trial and discount tests extended to the US.</p>
+    <p><b>What it does to the economics</b> UCAN carries the margin; a mature UCAN turns consolidated growth into an EMEA/LATAM/APAC story at structurally lower revenue per member — and those regions' reported growth is now flattered by currency (LATAM +21% reported, +16% constant currency in Q2'26).</p>
+    <p><b>Permanent or fixable</b> Permanent if it is saturation; recoverable if it is only the partial-quarter timing management describes.</p>
+  </div>
+</details>
+<details class="card bear" data-id="B4">
+  <summary><span class="tag red">B4</span>Advertising under-delivers while cannibalizing<span class="atk">attacks A2</span><span class="chev"></span></summary>
+  <div class="body">
+    <p><b>How it could fail</b> On ~$45B of revenue, non-membership revenue was still "not a material component" in the FY2025 10-K, and Netflix's own ads risk factor names "fluctuations in membership plan mix" among the drivers. The timing is asymmetric: a member trading down to the ad tier cuts revenue per member the day they switch, while the ad revenue depends on CPMs, fill and advertiser budgets that arrive later and are cyclical. The trade-down is certain; the offset is not.</p>
+    <p><b>What confirms failure</b> 2026 ads revenue materially short of ~$3B, or deceleration concentrated where the ad tier is most penetrated.</p>
+    <p><b>What it does to the economics</b> Removes the second growth leg and puts the full weight of the thesis back on the UCAN pricing question.</p>
+    <p><b>Permanent or fixable</b> Fixable — inventory does not expire — but a two-to-three-year delay materially changes the compounding.</p>
+  </div>
+</details>
+<details class="card bear" data-id="B5">
+  <summary><span class="tag red">B5</span>The acquisition impulse is demonstrated, not theoretical<span class="atk">attacks A5</span><span class="chev"></span></summary>
+  <div class="body">
+    <p><b>How it could fail</b> Netflix walked from WBD, but only after signing at ~$82.7B enterprise value, arranging $42.2B of senior unsecured bridge commitments (raised from $34B), and accepting a $5.8B reverse termination fee if antitrust approval failed. What was demonstrated is price discipline on one deal, not a policy against levering the balance sheet for content assets.</p>
+    <p><b>What confirms failure</b> A new large cash acquisition, or repurchases pausing while authorization remains — they were already paused once, during the WBD process.</p>
+    <p><b>What it does to the economics</b> A levered studio acquisition converts an asset-light business earning roughly 43% on about $26B of average equity into a leveraged content conglomerate with a different cost of capital and multiple.</p>
+    <p><b>Permanent or fixable</b> Permanent once done.</p>
+  </div>
+</details>
+  </section>
+
+  <section id="s4"><h2>4. Signals to monitor</h2>
+    <div class="sigs">
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">UCAN quarterly revenue growth</div>
+    <div class="sig-tags"><span class="tag green">A1</span><span class="tag red">B3</span></div>
+  </div>
+  <div class="sig-val">+10% (Q2'26); +15% (FY2025)</div>
+  <div class="sig-dir">must hold at or above high single digits in Q3'26 with the full price increase in effect.</div>
+  <div class="sig-src">Q2'26 letter; FY2025 10-K</div>
+</div>
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">Content amortization vs. revenue growth</div>
+    <div class="sig-tags"><span class="tag green">A3</span><span class="tag red">B1</span></div>
+  </div>
+  <div class="sig-val">~+10% guided 2026 vs. revenue +13–14%</div>
+  <div class="sig-dir">convergence kills the operating leverage behind the margin story.</div>
+  <div class="sig-src">Q2'26 letter</div>
+</div>
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">Cash content spend / amortization</div>
+    <div class="sig-tags"><span class="tag red">B1</span></div>
+  </div>
+  <div class="sig-val">1.04x FY2025 ($17.1B vs. $16.4B); ~1.1x guided 2026</div>
+  <div class="sig-dir">drift above ~1.15x means cash is committed well ahead of P&amp;L cost.</div>
+  <div class="sig-src">FY2025 10-K; Q2'26 letter</div>
+</div>
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">Ads revenue / materiality language</div>
+    <div class="sig-tags"><span class="tag green">A2</span><span class="tag red">B4</span></div>
+  </div>
+  <div class="sig-val">~$3B target 2026; "not a material component" in FY2025 10-K</div>
+  <div class="sig-dir">dropping that language in the FY2026 10-K is the first hard confirmation.</div>
+  <div class="sig-src">FY2025 10-K; Q2'26 letter</div>
+</div>
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">Full-year operating margin</div>
+    <div class="sig-tags"><span class="tag green">A3</span></div>
+  </div>
+  <div class="sig-val">29.5% FY2025; 31.5% guided 2026; H1'26 ran 32.8%, implying ~30% in H2'26</div>
+  <div class="sig-dir">the H2 step-down is expected from amortization phasing; a miss below it is not.</div>
+  <div class="sig-src">FY2025 10-K; Q2'26 letter</div>
+</div>
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">View hours growth</div>
+    <div class="sig-tags"><span class="tag green">A4</span><span class="tag red">B2</span></div>
+  </div>
+  <div class="sig-val">+2% H1'26 (97B+ hours) vs. +1.5% FY2025</div>
+  <div class="sig-dir">flat-to-up supports further price increases; publication moves to annual from 2027.</div>
+  <div class="sig-src">Q2'26 letter</div>
+</div>
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">Content obligations due within 12 months</div>
+    <div class="sig-tags"><span class="tag red">B1</span></div>
+  </div>
+  <div class="sig-val">$11.5B of $24.0B, plus $1–4B unknown-title over three years</div>
+  <div class="sig-dir">the part of the cost base that cannot be cut if revenue disappoints.</div>
+  <div class="sig-src">FY2025 10-K</div>
+</div>
+<div class="sig">
+  <div class="sig-top">
+    <div class="sig-name">Repurchase pace vs. M&amp;A; net debt</div>
+    <div class="sig-tags"><span class="tag green">A5</span><span class="tag red">B5</span></div>
+  </div>
+  <div class="sig-val">$4.7B repurchased Q2'26; $27.1B capacity; net debt ~$5.3B</div>
+  <div class="sig-dir">repurchases pausing while capacity remains is the tell that another deal is in progress.</div>
+  <div class="sig-src">Q2'26 letter; FY2025 10-K</div>
+</div></div>
+  </section>
+
+  <section id="s5"><h2>5. Bottom line</h2>
+    <ol class="bottom"><li>Netflix could work because content is a global fixed cost and both growth levers — price and advertising — land on that cost base at very high incremental margin, which is why operating margin has risen nine points across 2023–2025 while revenue compounded in the mid-teens.</li><li>What must go right is that price increases keep clearing in UCAN, already mature at 44% of revenue, while advertising scales from immaterial to roughly $3B and content amortization stays in the high single digits.</li><li>The thesis most likely breaks through the commitment book: $24.0B of content obligations with $11.5B due inside a year, and cash spend re-accelerating to ~1.1x of amortization, means the cost base cannot flex down for two to three years if pricing stops clearing.</li><li>The evidence that would change my mind is UCAN growth in Q3'26 with the full price increase in effect — high single digits or better keeps the pricing assumption alive, a step toward mid single digits says the ceiling is reached — with the FY2026 10-K's treatment of non-membership revenue as the matching test for advertising.</li></ol>
+    <p class="note">External challenge notes omitted — not requested. Run <b>external challenge</b> to search outside the filings for competitor, regulatory, litigation and short-seller arguments and add that section to both files.</p>
+  </section>
+
+  <section id="s6"><h2>Sources</h2>
+    <details class="card"><summary>Company filings used<span class="chev"></span></summary>
+      <div class="body">
+        <p style="margin-top:12px">FY2025 Form 10-K, filed 2026-01-23 — revenue and regional detail, margin history, content assets and amortization, content obligations, liquidity, buybacks, risk factors, discontinuation of membership reporting.</p>
+        <p>FY2026 Q2 Form 10-Q, filed 2026-07-17 — Q2 and H1 2026 results, content assets, equity, WBD termination fee accounting, Brazil non-income tax payments.</p>
+        <p>Q2'26 shareholder letter, 2026-07-16 — regional revenue, 2026 guidance, ads target, view hours, cash flow, repurchases, disclosure change.</p>
+        <p>Q1'26 shareholder letter, 2026-04-16 — $2.8B WBD termination fee, FCF guidance raise, repurchase resumption.</p>
+        <p>8-K 2025-12-05 and 8-K 2026-01-20 — original and amended WBD merger agreements, consideration, bridge financing, termination fees.</p>
+        <p>FY2024 Form 10-K — prior-year comparatives.</p>
+      </div>
+    </details>
+    <details class="card"><summary>Figures computed, not reported<span class="chev"></span></summary>
+      <div class="body">
+        <p style="margin-top:12px">Cash content spend to amortization 1.04x = $17,096.6M additions ÷ $16,422.2M amortization (FY2025).</p>
+        <p>UCAN 44% of revenue = $19,957M ÷ $45,183M (FY2025).</p>
+        <p>Return on equity ~43% = $10,981M net income ÷ average equity of $25,680M (FY2024 $24,744M, FY2025 $26,615M).</p>
+        <p>Net debt ~$5.3B = $14.4B gross debt − $9.1B cash (6/30/26).</p>
+        <p>H1'26 operating margin 32.8% = $8,150M ÷ $24,810M; implied H2'26 ~30% from full-year guidance of 31.5% on $51.2B revenue midpoint.</p>
+      </div>
+    </details>
+  </section>
+</main>
+</div>
+<script>
+(function(){
+  var L=document.getElementById('btnList'),D=document.getElementById('btnDuel'),
+      lv=document.getElementById('listView'),dv=document.getElementById('duelView');
+  function set(duel){
+    lv.classList.toggle('hide',duel); dv.classList.toggle('hide',!duel);
+    L.classList.toggle('on',!duel); D.classList.toggle('on',duel);
+  }
+  L.addEventListener('click',function(){set(false)});
+  D.addEventListener('click',function(){set(true)});
+
+  var links=[].slice.call(document.querySelectorAll('nav a')),
+      secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+  function mark(){
+    var cur=0;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=140) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+  }
+  var t=null;
+  window.addEventListener('scroll',function(){ if(t) return; t=setTimeout(function(){t=null;mark();},80); },{passive:true});
+  mark();
+})();
+</script>
+</body></html>

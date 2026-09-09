@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sandisk — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#fff; --ink:#1b1b1a; --muted:#6c6a66; --line:#e3e0da;
+  --bull:#1f6f4a; --bull-bg:#eef6f1; --bear:#a1332b; --bear-bg:#fbeeec;
+  --accent:#2c2a26; --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px -18px rgba(0,0,0,.35);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#131312; --panel:#1c1c1a; --ink:#eceae5; --muted:#a3a09a; --line:#31302d;
+  --bull:#63c496; --bull-bg:#16261f; --bear:#e88b80; --bear-bg:#2a1917; --accent:#eceae5;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+}}
+:root[data-theme=dark]{
+  --bg:#131312; --panel:#1c1c1a; --ink:#eceae5; --muted:#a3a09a; --line:#31302d;
+  --bull:#63c496; --bull-bg:#16261f; --bear:#e88b80; --bear-bg:#2a1917; --accent:#eceae5;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -18px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.62 ui-serif,Georgia,"Iowan Old Style",Cambria,serif;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);gap:48px;
+  max-width:1180px;margin:0 auto;padding:40px 28px 120px}
+nav{position:sticky;top:28px;align-self:start;max-height:calc(100vh - 56px);overflow:auto;
+  font:13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+nav .brand{font-weight:700;font-size:14px;letter-spacing:-.01em;margin-bottom:4px}
+nav .sub{color:var(--muted);font-size:11.5px;margin-bottom:18px}
+nav a{display:block;padding:7px 12px;color:var(--muted);text-decoration:none;
+  border-left:2px solid var(--line);transition:.15s}
+nav a:hover{color:var(--ink)}
+nav a.on{color:var(--ink);border-left-color:var(--accent);font-weight:600;background:var(--panel)}
+nav a small{display:block;font-size:10.5px;font-weight:400;color:var(--muted);letter-spacing:.02em}
+main{min-width:0}
+h1{font-size:30px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.kicker{font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+h2{font-size:21px;letter-spacing:-.01em;margin:52px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .num{color:var(--muted);font-weight:400;margin-right:8px}
+p{margin:0 0 14px}
+.lead{font-size:17.5px;line-height:1.55;padding:16px 18px;border-left:3px solid var(--accent);
+  background:var(--panel);border-radius:0 8px 8px 0;box-shadow:var(--shadow)}
+.meta{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;font-size:13.5px;box-shadow:var(--shadow)}
+.meta th{text-align:left;width:150px;padding:11px 14px;vertical-align:top;color:var(--muted);
+  font:600 11px/1.5 ui-sans-serif,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  border-bottom:1px solid var(--line);background:transparent}
+.meta td{padding:11px 14px;border-bottom:1px solid var(--line)}
+.meta tr:last-child th,.meta tr:last-child td{border-bottom:none}
+details.srcgroup{margin:14px 0 0}
+details.srcgroup>summary{cursor:pointer;list-style:none;font:600 12px/1 ui-sans-serif,system-ui,sans-serif;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 0}
+details.srcgroup>summary::-webkit-details-marker{display:none}
+details.srcgroup>summary::before{content:"▸";display:inline-block;margin-right:6px;transition:.2s}
+details.srcgroup[open]>summary::before{transform:rotate(90deg)}
+.type{display:inline-block;font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.1em;
+  text-transform:uppercase;padding:6px 11px;border-radius:99px;background:var(--bear-bg);
+  color:var(--bear);border:1px solid color-mix(in srgb,var(--bear) 30%,transparent);margin-bottom:6px}
+.modes{display:flex;gap:6px;margin:18px 0 20px;padding:4px;background:var(--panel);
+  border:1px solid var(--line);border-radius:99px;width:fit-content;box-shadow:var(--shadow)}
+.modes button{font:600 12.5px/1 ui-sans-serif,system-ui,sans-serif;padding:9px 16px;border:0;
+  border-radius:99px;background:transparent;color:var(--muted);cursor:pointer;transition:.15s}
+.modes button:hover{color:var(--ink)}
+.modes button.on{background:var(--accent);color:var(--bg)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:0 0 10px;
+  overflow:hidden;box-shadow:var(--shadow)}
+.card.bull{border-left:3px solid var(--bull)}
+.card.bear{border-left:3px solid var(--bear)}
+.card>summary{cursor:pointer;list-style:none;display:flex;align-items:flex-start;gap:10px;
+  padding:14px 16px;font:600 15px/1.4 ui-sans-serif,system-ui,sans-serif}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary:hover{background:color-mix(in srgb,var(--ink) 3%,transparent)}
+.ctitle{flex:1}
+.chev{width:9px;height:9px;margin-top:6px;border-right:1.8px solid var(--muted);
+  border-bottom:1.8px solid var(--muted);transform:rotate(45deg);transition:.2s;flex:none}
+.card[open]>summary .chev{transform:rotate(225deg)}
+.cbody{padding:2px 18px 16px;font-size:15px;border-top:1px solid var(--line)}
+.cbody p{margin:12px 0 0}
+.cbody b{font:600 13px/1.5 ui-sans-serif,system-ui,sans-serif;letter-spacing:.02em}
+.mon{padding-top:12px;border-top:1px dashed var(--line);color:var(--muted)}
+.attacks{font:600 12px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--bear);
+  background:var(--bear-bg);padding:8px 10px;border-radius:6px}
+.tag{display:inline-block;font:700 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.05em;
+  padding:5px 7px;border-radius:5px;flex:none;cursor:default}
+.t-bull{background:var(--bull-bg);color:var(--bull)}
+.t-bear{background:var(--bear-bg);color:var(--bear)}
+.duel{margin:0 0 26px;border:1px solid var(--line);border-radius:12px;background:var(--panel);
+  padding:14px;box-shadow:var(--shadow)}
+.duel-head{font:600 14px/1.4 ui-sans-serif,system-ui,sans-serif;display:flex;gap:10px;
+  align-items:baseline;margin-bottom:12px}
+.duel-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.duel-cols .card{margin:0 0 10px}
+.card.empty{padding:14px 16px;font:italic 14px/1.5 ui-serif,Georgia,serif;color:var(--muted)}
+.signals{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.signal{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 15px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.s-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.signal h4{margin:0;font:600 14px/1.35 ui-sans-serif,system-ui,sans-serif}
+.s-tracks{font:600 9.5px/1.6 ui-sans-serif,system-ui,sans-serif;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.06em;text-align:right;flex:none}
+.s-tracks .tag{margin-left:3px;font-size:10px;padding:3px 5px}
+.s-val{font:600 15px/1.4 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.01em}
+.s-dir{font-size:14px;color:var(--ink)}
+.s-src{margin-top:auto;padding-top:8px;border-top:1px solid var(--line);
+  font:11px/1 ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+.stub{padding:16px 18px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);
+  font-style:italic;background:var(--panel)}
+ol.bottom{counter-reset:b;list-style:none;padding:0;margin:0}
+ol.bottom li{counter-increment:b;position:relative;padding:14px 0 14px 44px;
+  border-bottom:1px solid var(--line);font-size:16.5px}
+ol.bottom li:last-child{border-bottom:none}
+ol.bottom li::before{content:counter(b);position:absolute;left:0;top:15px;width:26px;height:26px;
+  border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;
+  font:700 12px/1 ui-sans-serif,system-ui,sans-serif}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);
+  font:12.5px/1.6 ui-sans-serif,system-ui,sans-serif}
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0;padding:24px 18px 80px}
+  nav{position:static;max-height:none;margin-bottom:24px;
+    border-bottom:1px solid var(--line);padding-bottom:14px}
+  nav .navlinks{display:flex;flex-wrap:wrap;gap:4px}
+  nav a{border-left:0;border-bottom:2px solid var(--line);padding:6px 10px}
+  nav a small{display:none}
+  .duel-cols{grid-template-columns:1fr}
+}
+</style></head><body>
+<div class="wrap">
+<nav>
+  <div class="brand">Sandisk (SNDK)</div>
+  <div class="sub">Bull &amp; Bear Memo · FY2026</div>
+  <div class="navlinks">
+    <a href="#business" data-s="business">1 · Business<small>What it sells, how it earns</small></a>
+    <a href="#bull" data-s="bull">2 · Bull case<small>4 load-bearing assumptions</small></a>
+    <a href="#bear" data-s="bear">3 · Bear case<small>5 attacks, most permanent first</small></a>
+    <a href="#signals" data-s="signals">4 · Signals<small>8 things to watch</small></a>
+    <a href="#external" data-s="external">5 · External<small>Not run</small></a>
+    <a href="#bottom" data-s="bottom">6 · Bottom line<small>Four sentences</small></a>
+  </div>
+</nav>
+<main>
+  <div class="kicker">Bull &amp; Bear Memo · reading companion</div>
+  <h1>Sandisk Corporation</h1>
+  <p style="color:var(--muted);margin:0 0 18px">A fast thinking anchor, not a thesis, a valuation or a recommendation. Every figure is from the filings listed below.</p>
+  <table class="meta"><tr><th>company</th><td>Sandisk Corporation (Nasdaq: SNDK)</td></tr><tr><th>sources used</th><td>FY2026 Form 10-K (filed 17 Aug 2026, fiscal year ended 3 Jul 2026); Form 10-Q for the quarter ended 3 Apr 2026; Form 8-K 25 Mar 2026 (Nanya investment and DRAM supply); Form 8-K 5 Aug 2026 ($14.0bn repurchase authorization); Form 8-K 14 May 2026; DEF 14A 7 Oct 2025.</td></tr><tr><th>latest period</th><td>Fiscal year ended 3 July 2026 (53 weeks). Sandisk has existed as a standalone company only since 21 Feb 2025, so there are two full reported years of independent history and one of carve-out accounting.</td></tr><tr><th>missing or stale data</th><td>No earnings-call transcripts and no investor-day materials are in sources/. The earnings-release 8-Ks are cover pages only — Exhibit 99.1 is not in the folder — so management guidance, non-GAAP bridges and any bit/ASP outlook are unavailable. No Form 4 insider data (none filed). Quarterly figures for Q4 FY2026 marked (derived) are computed as full-year 10-K less the nine-month 10-Q, not separately reported.</td></tr></table>
+  <details class="srcgroup"><summary>Source documents used</summary>
+    <table class="meta">
+      <tr><th>Primary</th><td>FY2026 Form 10-K, filed 17 Aug 2026 — Item 1 Business, Item 1A Risk Factors, Item 7 MD&amp;A, Note 4 Revenue, Note 10 Related Parties and Related Commitments.</td></tr>
+      <tr><th>Interim</th><td>Form 10-Q for the quarter ended 3 Apr 2026 — quarterly income statement, end-market revenue, customer concentration, Note 4 Revenue.</td></tr>
+      <tr><th>Current reports</th><td>8-K 25 Mar 2026 (Nanya private placement and DRAM supply arrangement); 8-K 5 Aug 2026 ($14.0bn repurchase authorization); 8-K 14 May 2026; 8-K 18 Nov 2025 (annual meeting results); 8-K 30 Dec 2025 (board appointment).</td></tr>
+      <tr><th>Governance</th><td>DEF 14A filed 7 Oct 2025.</td></tr>
+      <tr><th>Not available</th><td>Earnings-call transcripts; investor-day and capital-markets materials; earnings-release exhibits (Exhibit 99.1); Form 4 insider filings (none filed).</td></tr>
+    </table>
+  </details>
+
+  <h2 id="business"><span class="num">1</span>Business in one line</h2>
+  <div class="type">Cyclical</div>
+  <p>Sandisk sells NAND flash storage into three end markets — enterprise SSDs (Datacenter, $5,153m of FY2026 revenue), OEM and embedded client storage (Edge, $12,160m) and retail cards and drives (Consumer, $2,935m). It buys 100% of its wafers from Flash Ventures, three joint ventures with Kioxia in which it holds 49.9% and pays cost plus a small markup, adding chip design, controllers, firmware, assembly and test. It earns the spread between the price of a gigabyte and a wafer bill it must absorb whether or not it wants the output.</p><p>Type: cyclical, and not as a judgement call. Gross margin was 16.1%, 30.1% and 71.5% across FY2024–FY2026 on net payments to Flash Ventures of $3.4bn, $3.4bn and $3.6bn. The cost of supply barely moved across three years in which the company went from a $672m net loss to $11,433m of net income.</p>
+
+  <h2 id="bull"><span class="num">2 · 3</span>Bull and bear</h2>
+  <div class="modes" role="tablist">
+    <button data-m="bull" class="on">Bull case</button>
+    <button data-m="bear">Bear case</button>
+    <button data-m="duel">Side by side</button>
+  </div>
+
+  <div id="pane-bull">
+    <p class="lead">The simple reason this stock could work is that AI has made NAND genuinely scarce for the first time in a decade, and Sandisk spent that scarcity buying multi-year customer commitments — $59.8bn of remaining performance obligations backed by $5.0bn of collateral — rather than fabs it would have to write down when the cycle turns.</p>
+    
+<details class="card bull" open>
+  <summary><span class="tag t-bull">A1</span><span class="ctitle">Industry bit supply keeps growing more slowly than AI-driven demand</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> NAND bit supply keeps growing more slowly than AI-driven demand for several more years, so pricing holds far above the FY2024–FY2025 range.</p>
+    <p><b>Why this company.</b> Sandisk could not flood the market if it wanted to: all wafers come from Flash Ventures&#x27; eight Japanese fabs, and while the ventures run it may not have flash fabricated by third parties or fabricate it itself — a restriction extended on 29 Jan 2026 to 31 Dec 2034.</p>
+    <p><b>Evidence.</b> FY2026 exabytes rose a mid-teens percentage while revenue rose 175%. Revenue per gigabyte rose almost 150% in Datacenter, almost 180% in Edge, a low-fifties percentage in Consumer. Sales incentives fell to 11% of gross revenue from 19%.</p>
+    <p class="mon"><b>What to monitor.</b> Revenue per gigabyte by end market, and exabytes shipped (10-K MD&amp;A).</p>
+  </div>
+</details>
+
+<details class="card bull">
+  <summary><span class="tag t-bull">A2</span><span class="ctitle">New Business Models convert spot exposure into contracted volume with real customer skin in the game</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> NBMs become the predominant way Sandisk sells, and customers honour them into a weaker market rather than walking.</p>
+    <p><b>Why this company.</b> Holding the scarce good is the only moment a memory supplier can demand cash up front. A year ago refund liabilities were $126m and contract liabilities $25m; they are now $1,500m of security deposits and $1,242m of advances, plus $5.0bn of collateral at third-party banks callable on default.</p>
+    <p><b>Evidence.</b> Remaining performance obligations were $59.8bn at 3 Jul 2026, entirely NBM-related and $58.7bn unbilled. NBMs began in fiscal 2026.</p>
+    <p class="mon"><b>What to monitor.</b> RPO, the share expected within twelve months (19%), and the collateral balance (Note 4).</p>
+  </div>
+</details>
+
+<details class="card bull">
+  <summary><span class="tag t-bull">A3</span><span class="ctitle">The Datacenter mix shift is volume, not just price, and qualification makes it sticky</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> Enterprise SSD stays a quarter or more of revenue through the next down-leg rather than proving to be a one-year allocation artefact.</p>
+    <p><b>Why this company.</b> This is the one line where bits, not price, did most of the work, and enterprise SSDs are qualified into platforms over long cycles — slower to lose than a retail shelf.</p>
+    <p><b>Evidence.</b> Datacenter revenue went $325m → $960m → $5,153m across FY2024–FY2026, from 4.9% of revenue to 25.4%, on exabytes up almost 120% against a mid-teens company-wide increase.</p>
+    <p class="mon"><b>What to monitor.</b> Datacenter exabytes versus revenue per gigabyte, separated.</p>
+  </div>
+</details>
+
+<details class="card bull">
+  <summary><span class="tag t-bull">A4</span><span class="ctitle">Capital intensity at the Sandisk line stays trivial, so the peak converts into distributable cash</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> Sandisk&#x27;s own capex stays immaterial against cash generation, with wafer capital staying inside Flash Ventures and its lease facilities.</p>
+    <p><b>Why this company.</b> In its reported accounts Sandisk is close to fabless: it does not consolidate Flash Ventures, having concluded that at 49.9% it lacks power to direct the activities that most affect the ventures&#x27; economics.</p>
+    <p><b>Evidence.</b> FY2026 capex was $177m on $20,248m of revenue against $11,671m of operating cash flow. The $2.0bn term loan was settled on 4 Mar 2026, leaving no long-term debt, $4,762m of cash and an undrawn $1.5bn revolver.</p>
+    <p class="mon"><b>What to monitor.</b> Capex, net payments to Flash Ventures, and any funding call under the 49.9%–50.0% capital commitment.</p>
+  </div>
+</details>
+    <p style="margin-top:20px">Why the market might be missing it: the economics sit across two sets of books. Screens see an almost fabless company with no debt and $11.7bn of operating cash flow, while the fab capital, the leases and the obligation to fund half of Flash Ventures&#x27; fixed costs sit outside the consolidation — and the $59.8bn backlog, roughly three times trailing revenue, is disclosed in a revenue footnote.</p>
+  </div>
+
+  <div id="pane-bear" hidden>
+    <p class="lead">The most likely way I lose money is paying a peak-cycle price for peak-cycle earnings made almost entirely of price, in a business whose cost base does not fall when price does — while management converts that peak cash into its own shares at the top.</p>
+    
+<details class="card bear" open>
+  <summary><span class="tag t-bear">B1</span><span class="ctitle">The entire earnings step-up is price, and the cost base is contractually fixed against it</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A1 — Industry bit supply keeps growing more slowly than AI-driven demand</p>
+    <p><b>How it could fail.</b> Revenue tripled while payments to Flash Ventures went from $3.4bn to $3.6bn, so gross profit is geared almost one-for-one to selling price in both directions. Put FY2025 pricing onto FY2026 volumes and margin does not settle in the middle — it falls toward the 16.1%–30.1% band, because Sandisk owes the variable cost of its share of output on a rolling three-month forecast and half of Flash Ventures&#x27; fixed costs regardless of what it takes.</p>
+    <p><b>What would confirm failure.</b> Revenue per gigabyte falling while exabytes hold, and underutilization charges returning to cost of revenue — $249m in FY2024 and $75m in FY2025 against $11m in FY2026. Watch inventory alongside: days in inventory rose to 178 from 135 on $2,698m of stock carried against an NRV estimated from today&#x27;s prices.</p>
+    <p><b>What it does to the economics.</b> Gross margin first, then the operating line: opex is a $2,083m base against $1,540m in FY2024, much of the increase performance-linked. Sandisk posted operating losses in FY2024 and FY2025 on a smaller cost base.</p>
+    <p class="mon"><b>Permanent or fixable.</b> The cycle is fixable and always has been. The price paid for peak earnings is not.</p>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag t-bear">B2</span><span class="ctitle">The asset-light appearance is an accounting artefact, and the obligation runs one way</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A4 — Capital intensity at the Sandisk line stays trivial, so the peak converts into distributable cash</p>
+    <p><b>How it could fail.</b> Non-consolidation removes the fabs from the balance sheet but not the commitments from the company. Sandisk must fund 49.9%–50.0% of each venture&#x27;s capital investment when venture cash flow falls short, guarantees half of Flash Ventures&#x27; equipment leases, and cannot source or fabricate elsewhere until the ventures expire on 31 Dec 2034.</p>
+    <p><b>What would confirm failure.</b> Flash Ventures commitments of $6,559m, $2,627m due in FY2027; $4,902m of further purchase obligations; $923m of lease guarantees; $1.2bn payable directly to Kioxia over 2026–2029; maximum estimable loss exposure $2,897m.</p>
+    <p><b>What it does to the economics.</b> The $177m of FY2026 capex is a deliberately under-invested trough, not a structural feature. The 10-K says FY2027 capital investment rises for node transitions — into a year when the corporate alternative minimum tax begins to apply, against a FY2026 effective rate of 12%.</p>
+    <p class="mon"><b>Permanent or fixable.</b> Structural until end-2034. The risk that does not go away with the cycle.</p>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag t-bear">B3</span><span class="ctitle">Peak cash is being spent on peak-priced stock</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A4 — Capital intensity at the Sandisk line stays trivial, so the peak converts into distributable cash</p>
+    <p><b>How it could fail.</b> Sandisk repurchased 3 million shares for $4,537m in FY2026 — roughly $1,512 a share — and on 5 Aug 2026, the day it reported the year, authorised a further $14.0bn on top of April&#x27;s $6.0bn, funded from operating cash flow that was $84m two years earlier.</p>
+    <p><b>What would confirm failure.</b> Repurchases continuing at pace through a quarter in which revenue per gigabyte declines, or alongside disclosed funding calls and higher capex.</p>
+    <p><b>What it does to the economics.</b> If FY2027 earnings normalise toward the FY2024–FY2025 range, $20.0bn of authorisation — $15.5bn unspent at year-end — will have been converted into shares priced off a 71.5% gross margin. No leverage argument remains: the term loan was retired in March.</p>
+    <p class="mon"><b>Permanent or fixable.</b> Permanent. The one place here where value is destroyed outright rather than swinging with the cycle.</p>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag t-bear">B4</span><span class="ctitle">The $59.8bn backlog is a price bet dressed as a floor</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A2 — New Business Models convert spot exposure into contracted volume with real customer skin in the game</p>
+    <p><b>How it could fail.</b> NBM pricing has fixed and variable components, and the variable ones were struck in the tightest NAND market in a decade. Only about 19% of the RPO — roughly $11.4bn — falls in the next twelve months against a Q4 FY2026 run-rate near $8,965m per quarter (derived), so most current revenue is still uncontracted spot. Collateral covers 8% of the RPO.</p>
+    <p><b>What would confirm failure.</b> RPO falling without a matching transfer into revenue; the twelve-month share declining; collateral drawn. The 10-K states a customer breach may leave Sandisk unable to resell affected volumes &#x27;at comparable prices, or at all.&#x27;</p>
+    <p><b>What it does to the economics.</b> Revenue, then worse: volumes committed to a defaulting customer become excess inventory or underutilisation exactly when spot is weak. NBMs also &#x27;constrain a portion of our available supply,&#x27; capping what a spike can earn.</p>
+    <p class="mon"><b>Permanent or fixable.</b> Fixable in principle — but a broken NBM destroys the argument that this cycle is different, which is the argument doing most of the work.</p>
+  </div>
+</details>
+
+<details class="card bear">
+  <summary><span class="tag t-bear">B5</span><span class="ctitle">Datacenter &#x27;volume growth&#x27; is largely reallocation of a fixed wafer supply, and it concentrates the customer base</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A3 — The Datacenter mix shift is volume, not just price, and qualification makes it sticky</p>
+    <p><b>How it could fail.</b> Total exabytes rose only a mid-teens percentage while Datacenter exabytes rose almost 120% and Consumer exabytes fell a mid-teens percentage — so much of the Datacenter volume story is the same constrained supply pointed at a better-paying customer, a trade available once. It also concentrates the book: top-10 customers were 46% of revenue in the quarter ended 3 Apr 2026 against 41% a year earlier, one above 10%.</p>
+    <p><b>What would confirm failure.</b> Datacenter exabytes growing while total exabytes stay flat; Consumer revenue falling absolutely — roughly $556m in Q4 FY2026 against $820m in Q3 (derived); concentration rising further in the 10-Q.</p>
+    <p><b>What it does to the economics.</b> A reallocated mix cannot repeat, so the FY2026 growth rate is not extrapolable — and it starves the retail brand and channel the 10-K names as a competitive strength while handing pricing power to a few hyperscalers as supply loosens.</p>
+    <p class="mon"><b>Permanent or fixable.</b> The mix shift is fixable; a vacated retail shelf and customers who have learned they are the marginal buyer are closer to permanent.</p>
+  </div>
+</details>
+  </div>
+
+  <div id="pane-duel" hidden>
+    <p style="color:var(--muted)">Each bull assumption with the bear risks that attack it. Open both sides and read across.</p>
+    
+<div class="duel">
+  <div class="duel-head"><span class="tag t-bull">A1</span> Industry bit supply keeps growing more slowly than AI-driven demand</div>
+  <div class="duel-cols">
+    <div class="col">
+<details class="card bull" open>
+  <summary><span class="tag t-bull">A1</span><span class="ctitle">Industry bit supply keeps growing more slowly than AI-driven demand</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> NAND bit supply keeps growing more slowly than AI-driven demand for several more years, so pricing holds far above the FY2024–FY2025 range.</p>
+    <p><b>Why this company.</b> Sandisk could not flood the market if it wanted to: all wafers come from Flash Ventures&#x27; eight Japanese fabs, and while the ventures run it may not have flash fabricated by third parties or fabricate it itself — a restriction extended on 29 Jan 2026 to 31 Dec 2034.</p>
+    <p><b>Evidence.</b> FY2026 exabytes rose a mid-teens percentage while revenue rose 175%. Revenue per gigabyte rose almost 150% in Datacenter, almost 180% in Edge, a low-fifties percentage in Consumer. Sales incentives fell to 11% of gross revenue from 19%.</p>
+    <p class="mon"><b>What to monitor.</b> Revenue per gigabyte by end market, and exabytes shipped (10-K MD&amp;A).</p>
+  </div>
+</details></div>
+    <div class="col">
+<details class="card bear" open>
+  <summary><span class="tag t-bear">B1</span><span class="ctitle">The entire earnings step-up is price, and the cost base is contractually fixed against it</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A1 — Industry bit supply keeps growing more slowly than AI-driven demand</p>
+    <p><b>How it could fail.</b> Revenue tripled while payments to Flash Ventures went from $3.4bn to $3.6bn, so gross profit is geared almost one-for-one to selling price in both directions. Put FY2025 pricing onto FY2026 volumes and margin does not settle in the middle — it falls toward the 16.1%–30.1% band, because Sandisk owes the variable cost of its share of output on a rolling three-month forecast and half of Flash Ventures&#x27; fixed costs regardless of what it takes.</p>
+    <p><b>What would confirm failure.</b> Revenue per gigabyte falling while exabytes hold, and underutilization charges returning to cost of revenue — $249m in FY2024 and $75m in FY2025 against $11m in FY2026. Watch inventory alongside: days in inventory rose to 178 from 135 on $2,698m of stock carried against an NRV estimated from today&#x27;s prices.</p>
+    <p><b>What it does to the economics.</b> Gross margin first, then the operating line: opex is a $2,083m base against $1,540m in FY2024, much of the increase performance-linked. Sandisk posted operating losses in FY2024 and FY2025 on a smaller cost base.</p>
+    <p class="mon"><b>Permanent or fixable.</b> The cycle is fixable and always has been. The price paid for peak earnings is not.</p>
+  </div>
+</details></div>
+  </div>
+</div>
+
+<div class="duel">
+  <div class="duel-head"><span class="tag t-bull">A2</span> New Business Models convert spot exposure into contracted volume with real customer skin in the game</div>
+  <div class="duel-cols">
+    <div class="col">
+<details class="card bull" open>
+  <summary><span class="tag t-bull">A2</span><span class="ctitle">New Business Models convert spot exposure into contracted volume with real customer skin in the game</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> NBMs become the predominant way Sandisk sells, and customers honour them into a weaker market rather than walking.</p>
+    <p><b>Why this company.</b> Holding the scarce good is the only moment a memory supplier can demand cash up front. A year ago refund liabilities were $126m and contract liabilities $25m; they are now $1,500m of security deposits and $1,242m of advances, plus $5.0bn of collateral at third-party banks callable on default.</p>
+    <p><b>Evidence.</b> Remaining performance obligations were $59.8bn at 3 Jul 2026, entirely NBM-related and $58.7bn unbilled. NBMs began in fiscal 2026.</p>
+    <p class="mon"><b>What to monitor.</b> RPO, the share expected within twelve months (19%), and the collateral balance (Note 4).</p>
+  </div>
+</details></div>
+    <div class="col">
+<details class="card bear" open>
+  <summary><span class="tag t-bear">B4</span><span class="ctitle">The $59.8bn backlog is a price bet dressed as a floor</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A2 — New Business Models convert spot exposure into contracted volume with real customer skin in the game</p>
+    <p><b>How it could fail.</b> NBM pricing has fixed and variable components, and the variable ones were struck in the tightest NAND market in a decade. Only about 19% of the RPO — roughly $11.4bn — falls in the next twelve months against a Q4 FY2026 run-rate near $8,965m per quarter (derived), so most current revenue is still uncontracted spot. Collateral covers 8% of the RPO.</p>
+    <p><b>What would confirm failure.</b> RPO falling without a matching transfer into revenue; the twelve-month share declining; collateral drawn. The 10-K states a customer breach may leave Sandisk unable to resell affected volumes &#x27;at comparable prices, or at all.&#x27;</p>
+    <p><b>What it does to the economics.</b> Revenue, then worse: volumes committed to a defaulting customer become excess inventory or underutilisation exactly when spot is weak. NBMs also &#x27;constrain a portion of our available supply,&#x27; capping what a spike can earn.</p>
+    <p class="mon"><b>Permanent or fixable.</b> Fixable in principle — but a broken NBM destroys the argument that this cycle is different, which is the argument doing most of the work.</p>
+  </div>
+</details></div>
+  </div>
+</div>
+
+<div class="duel">
+  <div class="duel-head"><span class="tag t-bull">A3</span> The Datacenter mix shift is volume, not just price, and qualification makes it sticky</div>
+  <div class="duel-cols">
+    <div class="col">
+<details class="card bull" open>
+  <summary><span class="tag t-bull">A3</span><span class="ctitle">The Datacenter mix shift is volume, not just price, and qualification makes it sticky</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> Enterprise SSD stays a quarter or more of revenue through the next down-leg rather than proving to be a one-year allocation artefact.</p>
+    <p><b>Why this company.</b> This is the one line where bits, not price, did most of the work, and enterprise SSDs are qualified into platforms over long cycles — slower to lose than a retail shelf.</p>
+    <p><b>Evidence.</b> Datacenter revenue went $325m → $960m → $5,153m across FY2024–FY2026, from 4.9% of revenue to 25.4%, on exabytes up almost 120% against a mid-teens company-wide increase.</p>
+    <p class="mon"><b>What to monitor.</b> Datacenter exabytes versus revenue per gigabyte, separated.</p>
+  </div>
+</details></div>
+    <div class="col">
+<details class="card bear" open>
+  <summary><span class="tag t-bear">B5</span><span class="ctitle">Datacenter &#x27;volume growth&#x27; is largely reallocation of a fixed wafer supply, and it concentrates the customer base</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A3 — The Datacenter mix shift is volume, not just price, and qualification makes it sticky</p>
+    <p><b>How it could fail.</b> Total exabytes rose only a mid-teens percentage while Datacenter exabytes rose almost 120% and Consumer exabytes fell a mid-teens percentage — so much of the Datacenter volume story is the same constrained supply pointed at a better-paying customer, a trade available once. It also concentrates the book: top-10 customers were 46% of revenue in the quarter ended 3 Apr 2026 against 41% a year earlier, one above 10%.</p>
+    <p><b>What would confirm failure.</b> Datacenter exabytes growing while total exabytes stay flat; Consumer revenue falling absolutely — roughly $556m in Q4 FY2026 against $820m in Q3 (derived); concentration rising further in the 10-Q.</p>
+    <p><b>What it does to the economics.</b> A reallocated mix cannot repeat, so the FY2026 growth rate is not extrapolable — and it starves the retail brand and channel the 10-K names as a competitive strength while handing pricing power to a few hyperscalers as supply loosens.</p>
+    <p class="mon"><b>Permanent or fixable.</b> The mix shift is fixable; a vacated retail shelf and customers who have learned they are the marginal buyer are closer to permanent.</p>
+  </div>
+</details></div>
+  </div>
+</div>
+
+<div class="duel">
+  <div class="duel-head"><span class="tag t-bull">A4</span> Capital intensity at the Sandisk line stays trivial, so the peak converts into distributable cash</div>
+  <div class="duel-cols">
+    <div class="col">
+<details class="card bull" open>
+  <summary><span class="tag t-bull">A4</span><span class="ctitle">Capital intensity at the Sandisk line stays trivial, so the peak converts into distributable cash</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p><b>What must happen.</b> Sandisk&#x27;s own capex stays immaterial against cash generation, with wafer capital staying inside Flash Ventures and its lease facilities.</p>
+    <p><b>Why this company.</b> In its reported accounts Sandisk is close to fabless: it does not consolidate Flash Ventures, having concluded that at 49.9% it lacks power to direct the activities that most affect the ventures&#x27; economics.</p>
+    <p><b>Evidence.</b> FY2026 capex was $177m on $20,248m of revenue against $11,671m of operating cash flow. The $2.0bn term loan was settled on 4 Mar 2026, leaving no long-term debt, $4,762m of cash and an undrawn $1.5bn revolver.</p>
+    <p class="mon"><b>What to monitor.</b> Capex, net payments to Flash Ventures, and any funding call under the 49.9%–50.0% capital commitment.</p>
+  </div>
+</details></div>
+    <div class="col">
+<details class="card bear" open>
+  <summary><span class="tag t-bear">B2</span><span class="ctitle">The asset-light appearance is an accounting artefact, and the obligation runs one way</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A4 — Capital intensity at the Sandisk line stays trivial, so the peak converts into distributable cash</p>
+    <p><b>How it could fail.</b> Non-consolidation removes the fabs from the balance sheet but not the commitments from the company. Sandisk must fund 49.9%–50.0% of each venture&#x27;s capital investment when venture cash flow falls short, guarantees half of Flash Ventures&#x27; equipment leases, and cannot source or fabricate elsewhere until the ventures expire on 31 Dec 2034.</p>
+    <p><b>What would confirm failure.</b> Flash Ventures commitments of $6,559m, $2,627m due in FY2027; $4,902m of further purchase obligations; $923m of lease guarantees; $1.2bn payable directly to Kioxia over 2026–2029; maximum estimable loss exposure $2,897m.</p>
+    <p><b>What it does to the economics.</b> The $177m of FY2026 capex is a deliberately under-invested trough, not a structural feature. The 10-K says FY2027 capital investment rises for node transitions — into a year when the corporate alternative minimum tax begins to apply, against a FY2026 effective rate of 12%.</p>
+    <p class="mon"><b>Permanent or fixable.</b> Structural until end-2034. The risk that does not go away with the cycle.</p>
+  </div>
+</details>
+
+<details class="card bear" open>
+  <summary><span class="tag t-bear">B3</span><span class="ctitle">Peak cash is being spent on peak-priced stock</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="attacks">Attacks A4 — Capital intensity at the Sandisk line stays trivial, so the peak converts into distributable cash</p>
+    <p><b>How it could fail.</b> Sandisk repurchased 3 million shares for $4,537m in FY2026 — roughly $1,512 a share — and on 5 Aug 2026, the day it reported the year, authorised a further $14.0bn on top of April&#x27;s $6.0bn, funded from operating cash flow that was $84m two years earlier.</p>
+    <p><b>What would confirm failure.</b> Repurchases continuing at pace through a quarter in which revenue per gigabyte declines, or alongside disclosed funding calls and higher capex.</p>
+    <p><b>What it does to the economics.</b> If FY2027 earnings normalise toward the FY2024–FY2025 range, $20.0bn of authorisation — $15.5bn unspent at year-end — will have been converted into shares priced off a 71.5% gross margin. No leverage argument remains: the term loan was retired in March.</p>
+    <p class="mon"><b>Permanent or fixable.</b> Permanent. The one place here where value is destroyed outright rather than swinging with the cycle.</p>
+  </div>
+</details></div>
+  </div>
+</div>
+  </div>
+
+  <span id="bear-anchor"></span>
+
+  <h2 id="signals"><span class="num">4</span>Signals to monitor</h2>
+  <p style="color:var(--muted)">Each signal traces to a named assumption or risk. Hover a tag for its title.</p>
+  <div class="signals">
+<div class="signal">
+  <div class="s-top"><h4>Revenue per gigabyte, by end market</h4><div class="s-tracks">tracks <span class="tag t-bull" title="Industry bit supply keeps growing more slowly than AI-driven demand">A1</span><span class="tag t-bear" title="The entire earnings step-up is price, and the cost base is contractually fixed against it">B1</span></div></div>
+  <div class="s-val">FY2026: Datacenter +~150%, Edge +~180%, Consumer +low-50s% y/y</div>
+  <div class="s-dir">Down = A1 breaking, B1 confirming. The single most important number in the memo.</div>
+  <div class="s-src">10-K MD&amp;A, Net Revenue</div>
+</div>
+
+<div class="signal">
+  <div class="s-top"><h4>Exabytes shipped, total and Datacenter</h4><div class="s-tracks">tracks <span class="tag t-bull" title="The Datacenter mix shift is volume, not just price, and qualification makes it sticky">A3</span><span class="tag t-bear" title="Datacenter &#x27;volume growth&#x27; is largely reallocation of a fixed wafer supply, and it concentrates the customer base">B5</span></div></div>
+  <div class="s-val">Total +mid-teens%; Datacenter +~120%; Consumer −mid-teens%</div>
+  <div class="s-dir">Datacenter volume holding while price falls supports A3. Both falling kills it; volume rising only as total exabytes stay flat is B5.</div>
+  <div class="s-src">10-K MD&amp;A, Net Revenue</div>
+</div>
+
+<div class="signal">
+  <div class="s-top"><h4>Net payments to Flash Ventures vs revenue</h4><div class="s-tracks">tracks <span class="tag t-bear" title="The entire earnings step-up is price, and the cost base is contractually fixed against it">B1</span><span class="tag t-bear" title="The asset-light appearance is an accounting artefact, and the obligation runs one way">B2</span></div></div>
+  <div class="s-val">$3.6bn on $20,248m revenue (FY2025: $3.4bn on $7,355m)</div>
+  <div class="s-dir">Wafer bill rising while revenue falls is B1 and B2 arriving together.</div>
+  <div class="s-src">10-K Note 10</div>
+</div>
+
+<div class="signal">
+  <div class="s-top"><h4>Underutilization charges in cost of revenue</h4><div class="s-tracks">tracks <span class="tag t-bear" title="The entire earnings step-up is price, and the cost base is contractually fixed against it">B1</span><span class="tag t-bear" title="The asset-light appearance is an accounting artefact, and the obligation runs one way">B2</span></div></div>
+  <div class="s-val">$11m (FY2026); $75m FY2025; $249m FY2024</div>
+  <div class="s-dir">Any return toward FY2024 levels means Sandisk is paying for wafers it will not take — B1/B2.</div>
+  <div class="s-src">10-K Note 10</div>
+</div>
+
+<div class="signal">
+  <div class="s-top"><h4>Remaining performance obligations and 12-month share</h4><div class="s-tracks">tracks <span class="tag t-bull" title="New Business Models convert spot exposure into contracted volume with real customer skin in the game">A2</span><span class="tag t-bear" title="The $59.8bn backlog is a price bet dressed as a floor">B4</span></div></div>
+  <div class="s-val">$59.8bn; ~19% within twelve months</div>
+  <div class="s-dir">Falling RPO without matching revenue recognition breaks A2 and confirms B4.</div>
+  <div class="s-src">10-K Note 4</div>
+</div>
+
+<div class="signal">
+  <div class="s-top"><h4>Customer cash held: deposits, advances, collateral</h4><div class="s-tracks">tracks <span class="tag t-bull" title="New Business Models convert spot exposure into contracted volume with real customer skin in the game">A2</span><span class="tag t-bear" title="The $59.8bn backlog is a price bet dressed as a floor">B4</span></div></div>
+  <div class="s-val">$1,500m refund liabilities; $1,242m contract liabilities; $5.0bn third-party collateral</div>
+  <div class="s-dir">Growing = A2 intact. Shrinking, or collateral drawn, = B4.</div>
+  <div class="s-src">10-K Note 4</div>
+</div>
+
+<div class="signal">
+  <div class="s-top"><h4>Days in inventory</h4><div class="s-tracks">tracks <span class="tag t-bear" title="The entire earnings step-up is price, and the cost base is contractually fixed against it">B1</span></div></div>
+  <div class="s-val">178 days (FY2025: 135)</div>
+  <div class="s-dir">Rising alongside falling revenue per gigabyte is the write-down setup inside B1.</div>
+  <div class="s-src">10-K MD&amp;A, cash conversion cycle</div>
+</div>
+
+<div class="signal">
+  <div class="s-top"><h4>Repurchases vs Flash Ventures commitments and capex</h4><div class="s-tracks">tracks <span class="tag t-bear" title="Peak cash is being spent on peak-priced stock">B3</span></div></div>
+  <div class="s-val">$4,537m repurchased at ~$1,512/share; $20.0bn authorised; $2,627m FV commitments due FY2027</div>
+  <div class="s-dir">Buying stock at pace into a falling price-per-gigabyte print is B3 in progress.</div>
+  <div class="s-src">10-K MD&amp;A; 8-K 5 Aug 2026</div>
+</div></div>
+
+  <h2 id="external"><span class="num">5</span>External challenge notes</h2>
+  <div class="stub">Not run. This memo is built only from the filings in sources/ — no competitor disclosures, industry supply data, regulatory developments or short-seller arguments have been consulted. Re-run this memo with &quot;external challenge&quot; to populate this section; the rest of the memo will be left unchanged.</div>
+
+  <h2 id="bottom"><span class="num">6</span>Bottom line</h2>
+  <ol class="bottom"><li>The stock could work because AI has made NAND scarce against a supply base that cannot respond quickly, and Sandisk converted that scarcity into $59.8bn of contracted obligations and $11.7bn of operating cash flow without owning the fabs.</li>
+<li>For that to hold, industry bit supply must keep lagging demand long enough for the NBM book to become the predominant way Sandisk sells, and Datacenter volume — not just Datacenter price — must keep compounding.</li>
+<li>It most likely breaks on the fact that the entire step-up was price against a wafer bill that moved only from $3.4bn to $3.6bn, so normalisation takes gross margin back toward the 16%–30% band while Sandisk still owes half of Flash Ventures&#x27; fixed costs and cannot source elsewhere before 2035 — with $20.0bn of buyback authorised at roughly $1,512 a share.</li>
+<li>I would change my mind after two or three quarters in which Datacenter exabytes keep growing while revenue per gigabyte falls and gross margin holds well above 40%, with RPO and collateral rising rather than draining — which would mean the contracted book, not the spot price, is setting the earnings.</li></ol>
+
+  <footer>Built from the filings in <code>sources/</code> only. Figures marked (derived) are computed as full-year 10-K less nine-month 10-Q. No price targets, no valuation, no recommendation.</footer>
+</main>
+</div>
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('.modes button'));
+  var panes={bull:document.getElementById('pane-bull'),bear:document.getElementById('pane-bear'),duel:document.getElementById('pane-duel')};
+  function setMode(m){
+    btns.forEach(function(b){b.classList.toggle('on',b.dataset.m===m);});
+    Object.keys(panes).forEach(function(k){panes[k].hidden=(k!==m);});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.m);});});
+
+  var links=[].slice.call(document.querySelectorAll('nav a'));
+  var map={}; links.forEach(function(a){map[a.dataset.s]=a;});
+  var ids=['business','bull','signals','external','bottom'];
+  function onScroll(){
+    var best='business',top=120;
+    ids.forEach(function(id){
+      var el=document.getElementById(id); if(!el) return;
+      var r=el.getBoundingClientRect();
+      if(r.top<=top) best=id;
+    });
+    // the bull/bear pane is one block; highlight bear once past its midpoint
+    var blk=document.getElementById('bull');
+    var anc=document.getElementById('bear-anchor');
+    if(best==='bull'&&blk&&anc){
+      var mid=(blk.getBoundingClientRect().top+anc.getBoundingClientRect().top)/2;
+      if(mid<top) best='bear';
+    }
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.s===best);});
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var s=a.dataset.s;
+      if(s==='bear'){e.preventDefault();setMode('bear');document.getElementById('bull').scrollIntoView({behavior:'smooth'});}
+      if(s==='bull'){setMode('bull');}
+    });
+  });
+  onScroll();
+})();
+</script>
+</body></html>

@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marvell Technology — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#fbfbfa; --panel:#ffffff; --ink:#1b1c1e; --ink-2:#4a4e55; --ink-3:#767c86;
+  --line:#e3e5e9; --line-2:#eceef1;
+  --bull:#1f6f4a; --bull-bg:#eaf4ee; --bull-line:#bcdcc9;
+  --bear:#9d2f2a; --bear-bg:#fbeeed; --bear-line:#eecac6;
+  --accent:#2c4a7c; --accent-bg:#eef2f8;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#151719; --panel:#1c1f22; --ink:#e8e9ec; --ink-2:#b3b8c0; --ink-3:#858c96;
+    --line:#2c3136; --line-2:#25292d;
+    --bull:#6cc294; --bull-bg:#182620; --bull-line:#2c4c3b;
+    --bear:#e2837c; --bear-bg:#271a19; --bear-line:#4d2f2c;
+    --accent:#8fb3e6; --accent-bg:#1a2130;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151719; --panel:#1c1f22; --ink:#e8e9ec; --ink-2:#b3b8c0; --ink-3:#858c96;
+  --line:#2c3136; --line-2:#25292d;
+  --bull:#6cc294; --bull-bg:#182620; --bull-line:#2c4c3b;
+  --bear:#e2837c; --bear-bg:#271a19; --bear-line:#4d2f2c;
+  --accent:#8fb3e6; --accent-bg:#1a2130;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+     font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+.wrap{display:grid;grid-template-columns:242px minmax(0,1fr);gap:0;max-width:1220px;margin:0 auto}
+
+/* ---------- sidebar ---------- */
+aside{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+      padding:34px 20px 40px 26px;border-right:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:19px;line-height:1.25;letter-spacing:-.01em;margin:0 0 3px}
+.brand small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.09em;
+             text-transform:uppercase;color:var(--ink-3);margin-top:7px;font-weight:600}
+.tick{display:inline-block;font-family:var(--mono);font-size:11px;color:var(--ink-3);
+      border:1px solid var(--line);border-radius:4px;padding:1px 6px;margin-top:10px}
+nav{margin-top:26px}
+nav a{display:block;text-decoration:none;color:var(--ink-2);font-size:13.5px;
+      padding:6px 10px;border-left:2px solid transparent;border-radius:0 4px 4px 0;
+      transition:background .12s,color .12s,border-color .12s}
+nav a:hover{background:var(--line-2);color:var(--ink)}
+nav a.on{color:var(--ink);border-left-color:var(--accent);background:var(--accent-bg);font-weight:600}
+nav a .n{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-right:7px}
+nav a.on .n{color:var(--accent)}
+.themebtn{margin-top:26px;background:none;border:1px solid var(--line);color:var(--ink-3);
+          font:inherit;font-size:12px;padding:5px 10px;border-radius:5px;cursor:pointer}
+.themebtn:hover{color:var(--ink);border-color:var(--ink-3)}
+
+/* ---------- main ---------- */
+main{padding:38px 46px 110px;min-width:0}
+h1{font-family:var(--serif);font-size:31px;line-height:1.18;letter-spacing:-.02em;
+   margin:0 0 6px;font-weight:600}
+.sub{color:var(--ink-3);font-size:13.5px;margin:0 0 26px}
+section{scroll-margin-top:24px;padding-top:14px}
+h2{font-family:var(--serif);font-size:22px;letter-spacing:-.01em;margin:38px 0 12px;font-weight:600;
+   padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .num{font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-right:10px;font-weight:400}
+p{margin:0 0 13px;color:var(--ink)}
+.lede{font-size:16.5px}
+strong{font-weight:650}
+
+/* header block */
+.hdr{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:0 0 30px;background:var(--panel)}
+.hdr .r{display:grid;grid-template-columns:158px minmax(0,1fr);border-top:1px solid var(--line-2)}
+.hdr .r:first-child{border-top:none}
+.hdr .k{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);padding:11px 14px;
+        background:var(--line-2);letter-spacing:.02em}
+.hdr .v{padding:11px 16px;font-size:13.5px;color:var(--ink-2)}
+.hdr .v b{color:var(--ink);font-weight:650}
+
+/* type pill */
+.pill{display:inline-block;font-size:12px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;
+      padding:3px 10px;border-radius:20px;background:var(--accent-bg);color:var(--accent);
+      border:1px solid var(--line)}
+
+/* thesis quote */
+.thesis{font-family:var(--serif);font-size:19px;line-height:1.5;font-style:italic;
+        padding:2px 0 2px 20px;margin:4px 0 24px;border-left:3px solid var(--line)}
+.thesis.bullq{border-left-color:var(--bull);color:var(--ink)}
+.thesis.bearq{border-left-color:var(--bear);color:var(--ink)}
+
+/* toggle */
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 20px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--panel)}
+.seg button{font:inherit;font-size:13px;font-weight:600;padding:7px 15px;border:none;cursor:pointer;
+            background:transparent;color:var(--ink-3);border-right:1px solid var(--line)}
+.seg button:last-child{border-right:none}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--accent-bg);color:var(--accent)}
+.hint{font-size:12.5px;color:var(--ink-3)}
+
+/* cards */
+.card{border:1px solid var(--line);border-radius:9px;background:var(--panel);margin:0 0 12px;overflow:hidden}
+.card > summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;gap:12px;align-items:flex-start}
+.card > summary::-webkit-details-marker{display:none}
+.card > summary:hover{background:var(--line-2)}
+.tagb{flex:none;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.05em;
+      padding:3px 7px;border-radius:4px;margin-top:2px;white-space:nowrap}
+.bull .tagb{background:var(--bull-bg);color:var(--bull);border:1px solid var(--bull-line)}
+.bear .tagb{background:var(--bear-bg);color:var(--bear);border:1px solid var(--bear-line)}
+.ttl{font-weight:650;font-size:15px;line-height:1.42;flex:1}
+.chev{flex:none;color:var(--ink-3);font-size:12px;margin-top:4px;transition:transform .16s}
+.card[open] .chev{transform:rotate(90deg)}
+.body{padding:2px 16px 15px;border-top:1px solid var(--line-2)}
+.f{display:grid;grid-template-columns:132px minmax(0,1fr);gap:0 16px;padding:11px 0;
+   border-bottom:1px solid var(--line-2)}
+.f:last-child{border-bottom:none}
+.f dt{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.02em;
+      text-transform:uppercase;padding-top:3px}
+.f dd{margin:0;font-size:14.2px;color:var(--ink-2)}
+.f dd b{color:var(--ink)}
+dl{margin:0}
+
+/* paired duel view */
+.duel{border:1px solid var(--line);border-radius:9px;background:var(--panel);margin:0 0 16px;overflow:hidden}
+.duel > h3{margin:0;font-size:13px;font-family:var(--mono);font-weight:600;letter-spacing:.03em;
+           color:var(--ink-3);padding:10px 16px;background:var(--line-2);border-bottom:1px solid var(--line)}
+.duelgrid{display:grid;grid-template-columns:1fr 1fr}
+.side{padding:15px 17px 17px}
+.side.b1{border-right:1px solid var(--line)}
+.side h4{margin:0 0 9px;font-size:11px;font-family:var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.side.b1 h4{color:var(--bull)}
+.side.b2 h4{color:var(--bear)}
+.side p{font-size:14px;color:var(--ink-2);margin:0 0 10px}
+.side p.claim{font-size:14.6px;color:var(--ink);font-weight:600;margin-bottom:11px}
+.side .mech{font-size:13.2px;padding:9px 11px;border-radius:6px;margin:0}
+.side.b1 .mech{background:var(--bull-bg);border:1px solid var(--bull-line)}
+.side.b2 .mech{background:var(--bear-bg);border:1px solid var(--bear-line)}
+.side .mech em{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+               text-transform:uppercase;display:block;margin-bottom:4px;opacity:.75}
+
+/* signals */
+.sigs{display:grid;grid-template-columns:repeat(auto-fill,minmax(266px,1fr));gap:12px;margin:6px 0 0}
+.sig{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:14px 15px;
+     display:flex;flex-direction:column;gap:8px}
+.sig .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.sig .name{font-weight:650;font-size:14px;line-height:1.36}
+.sig .val{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.sig .prev{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.sig .dir{font-size:13px;color:var(--ink-2);border-top:1px solid var(--line-2);padding-top:8px;margin-top:auto}
+.trk{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.05em;padding:2px 6px;
+     border-radius:4px;white-space:nowrap;flex:none}
+.trk.tb{background:var(--bull-bg);color:var(--bull);border:1px solid var(--bull-line)}
+.trk.tr{background:var(--bear-bg);color:var(--bear);border:1px solid var(--bear-line)}
+.sig .src{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+
+/* bottom line */
+.bottom{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;
+        background:var(--panel);padding:18px 22px;counter-reset:bl}
+.bottom p{position:relative;padding-left:30px;font-size:15px;margin:0 0 12px}
+.bottom p:last-child{margin-bottom:0}
+.bottom p::before{counter-increment:bl;content:counter(bl);position:absolute;left:0;top:1px;
+  font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--line);
+  width:19px;height:19px;line-height:17px;text-align:center;border-radius:50%;background:var(--accent-bg)}
+
+/* sources */
+details.srcgrp{border:1px solid var(--line);border-radius:8px;background:var(--panel);margin:0 0 10px}
+details.srcgrp > summary{cursor:pointer;list-style:none;padding:11px 15px;font-size:13.5px;font-weight:650;
+                         display:flex;justify-content:space-between;gap:10px}
+details.srcgrp > summary::-webkit-details-marker{display:none}
+details.srcgrp > summary:hover{background:var(--line-2)}
+details.srcgrp > summary .cnt{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
+details.srcgrp ul{margin:0;padding:4px 18px 14px 34px;border-top:1px solid var(--line-2)}
+details.srcgrp li{font-size:13.4px;color:var(--ink-2);margin:7px 0}
+details.srcgrp li code{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.gap{border:1px dashed var(--line);border-radius:8px;padding:13px 16px;font-size:13.4px;
+     color:var(--ink-2);background:transparent;margin-top:14px}
+.gap b{color:var(--ink)}
+footer{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);
+       font-size:12px;color:var(--ink-3)}
+
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:22px 22px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px;margin-top:16px}
+  nav a{border-left:none;border-bottom:2px solid transparent;border-radius:4px}
+  nav a.on{border-left-color:transparent;border-bottom-color:var(--accent)}
+  main{padding:24px 22px 80px}
+  .duelgrid{grid-template-columns:1fr}
+  .side.b1{border-right:none;border-bottom:1px solid var(--line)}
+  .f{grid-template-columns:1fr;gap:3px}
+  .hdr .r{grid-template-columns:1fr}
+  .hdr .k{background:transparent;padding-bottom:0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<aside>
+  <p class="brand">Marvell Technology<small>Bull &amp; Bear Memo</small></p>
+  <span class="tick">MRVL · Nasdaq</span>
+  <nav id="nav">
+    <a href="#s1"><span class="n">1</span>Business in one line</a>
+    <a href="#s2"><span class="n">2</span>Bull case</a>
+    <a href="#s3"><span class="n">3</span>Bear case</a>
+    <a href="#s4"><span class="n">4</span>Signals to monitor</a>
+    <a href="#s6"><span class="n">6</span>Bottom line</a>
+    <a href="#src"><span class="n">§</span>Sources &amp; gaps</a>
+  </nav>
+  <button class="themebtn" id="theme" type="button">Toggle theme</button>
+</aside>
+
+<main>
+  <h1>Marvell Technology — Bull &amp; Bear Memo</h1>
+  <p class="sub">A thinking anchor, not a thesis or a valuation. Every figure comes from Marvell SEC filings; nothing outside them was used.</p>
+
+  <div class="hdr">
+    <div class="r"><div class="k">company</div><div class="v"><b>Marvell Technology, Inc. (Nasdaq: MRVL)</b> — fabless data-infrastructure semiconductors; one reportable segment</div></div>
+    <div class="r"><div class="k">sources used</div><div class="v">FY2026 Form 10-K (year ended Jan 31, 2026); Forms 10-Q for Q1 FY2027 (May 2, 2026) and Q2 FY2027 (Aug 1, 2026); Forms 8-K dated Apr 15, Jun 11 and Aug 19, 2026; FY2022–FY2025 10-Ks for history</div></div>
+    <div class="r"><div class="k">latest period</div><div class="v"><b>Q2 fiscal 2027</b>, quarter ended August 1, 2026 (10-Q filed August 28, 2026)</div></div>
+    <div class="r"><div class="k">missing / stale</div><div class="v">No transcripts, investor presentations or management guidance in sources — the earnings 8-Ks hold only the cover page, not the press-release exhibit, so <b>no forward guidance appears anywhere in this memo</b>. Insider-trading file is empty. One segment reported: no custom-silicon vs. merchant split, no customer names, nothing below 10%. The Google warrant's grant-date fair value is not yet in any filing.</div></div>
+  </div>
+
+  <!-- 1 -->
+  <section id="s1">
+    <h2><span class="num">01</span>Business in one line</h2>
+    <p class="lede">Marvell is a fabless designer of data-infrastructure silicon selling two things into AI data centers: <b>custom accelerators and adjacent silicon built to one hyperscaler's specification</b> (custom ASICs and XPUs), and <b>merchant connectivity parts</b> — optical DSPs, retimers, co-packaged and linear optics, switching — that attach to racks whichever accelerator wins. It manufactures nothing: TSMC is sole source for all its advanced-node wafers.</p>
+    <p>Net revenue was <b>$8,194.6M</b> in fiscal 2026, 74% data center. Q2 fiscal 2027 revenue was <b>$2,739.3M</b>, 79% data center.</p>
+    <p><span class="pill">Type: fast grower on cyclical bones</span></p>
+    <p>Revenue grew 42.1% in fiscal 2026 and 36.5% year over year in Q2 fiscal 2027, but that demand sits inside a capital-spending cycle controlled by a handful of buyers. The classification drives the rest of this memo: the bear case is not slow decay, it is a step function — a socket re-bid and lost, or a capex budget cut.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <h2><span class="num">02</span>Bull case — Peter Lynch pitch</h2>
+    <p class="thesis bullq">The simple reason this stock could work is that several hyperscalers have decided they need someone other than Broadcom to build their custom AI silicon, and they are handing Marvell multi-year programs and helping fund them with their own capital.</p>
+
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="View mode">
+        <button type="button" id="mSep" aria-pressed="true">Assumptions</button>
+        <button type="button" id="mDuel" aria-pressed="false">Bull vs. bear, paired</button>
+      </div>
+      <span class="hint" id="hint">Click a card to open it. Switch views to see each assumption beside the attack on it.</span>
+    </div>
+
+    <div id="bullList"></div>
+    <div id="duelView" hidden></div>
+
+    <p id="missing"><b>Why the market might be missing it:</b> the reported profit line is noisy in both directions. Fiscal 2026 net income of $2,670.1M included a $1.8B pre-tax gain on the automotive ethernet sale, while first-half fiscal 2027 net income of $342.5M absorbed a $433.7M non-cash increase in the fair value of the Celestial earnout. Neither figure describes the operating business, which earned a <b>16.8% operating margin on $2.7B of revenue</b> last quarter.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <h2><span class="num">03</span>Bear case — Munger invert</h2>
+    <p class="thesis bearq">The most likely way I lose money is that Marvell is renting its growth from four customers who hold every lever — price, volume, second sourcing, and now Marvell's own equity — and one of them re-bids a socket at the next node.</p>
+    <p class="hint" style="margin-bottom:16px">Ordered by permanence of the damage, not to mirror the bull sequence.</p>
+    <div id="bearList"></div>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <h2><span class="num">04</span>Signals to monitor</h2>
+    <p>Each signal tracks a named assumption or risk above. Nothing here is a forecast — these are the observable values as last filed.</p>
+    <div class="sigs" id="sigs"></div>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <h2><span class="num">06</span>Bottom line</h2>
+    <div class="bottom">
+      <p>Marvell could work because several hyperscalers now need a credible second source for custom AI silicon and are committing multi-year programs, and in NVIDIA's case $2.0B of capital, to build one.</p>
+      <p>For that to pay, the sockets already won have to reach volume and be re-won at 2nm while R&amp;D falls back below the 25.3% of revenue it reached in fiscal 2026.</p>
+      <p>The thesis most likely breaks not through slow erosion but through a single re-bid lost at a customer that is currently 44% of revenue, against $8.5B of wafer commitments that do not disappear with the order.</p>
+      <p>I would change my mind if gross margin fell while data center revenue was still growing — evidence the volume is being bought with price — or, on the other side, if Marvell began disclosing custom-silicon revenue separately and it compounded across more than one named customer.</p>
+    </div>
+  </section>
+
+  <!-- sources -->
+  <section id="src">
+    <h2><span class="num">§</span>Sources &amp; gaps</h2>
+    <details class="srcgrp" open>
+      <summary>Periodic reports <span class="cnt">3 used</span></summary>
+      <ul>
+        <li><b>FY2026 Form 10-K</b>, year ended January 31, 2026 (filed Mar 11, 2026) — <code>business, competition, end-market revenue, customer concentration, warrants, financial statements</code></li>
+        <li><b>Form 10-Q, quarter ended August 1, 2026</b> (filed Aug 28, 2026) — <code>latest income statement, balance sheet, cash flow, Notes 3/4/7/9/10/15, MD&amp;A, risk factors</code></li>
+        <li><b>Form 10-Q, quarter ended May 2, 2026</b> — <code>Series A preferred issuance, Celestial and XConn purchase accounting</code></li>
+      </ul>
+    </details>
+    <details class="srcgrp">
+      <summary>Current reports (8-K) <span class="cnt">3 used</span></summary>
+      <ul>
+        <li><b>August 19, 2026</b> — Google commercial agreement dated July 29, 2026 and warrant for up to 58,970,907 shares at $206.58, vesting one tranche per $500M of custom-product revenue through fiscal 2033</li>
+        <li><b>June 11, 2026</b> — CFO transition: Willem Meintjes resigned effective June 15, 2026; Daniel Durn (previously Adobe, Applied Materials, NXP, GlobalFoundries) appointed CFO from the board</li>
+        <li><b>April 15, 2026</b> — $1.0B of 5.300% senior notes due 2036, proceeds to repay the 1.650% notes due 2026</li>
+      </ul>
+    </details>
+    <details class="srcgrp">
+      <summary>Historical comparison <span class="cnt">4 filings</span></summary>
+      <ul>
+        <li>FY2022–FY2025 Forms 10-K — <code>end-market mix history, gross-margin and R&amp;D trend, restructuring, prior-year revenue</code></li>
+      </ul>
+    </details>
+    <div class="gap">
+      <b>Known blind spots.</b> No earnings-call transcripts, investor presentations or management guidance were available, so nothing forward-looking from management appears in this memo. The earnings 8-Ks in the folder contain only cover pages, not the press-release exhibits. The insider-trading extract is empty. Marvell reports a single segment and discloses neither custom-silicon versus merchant revenue nor any customer name; "Customer A" and "Distributor A" are the filings' own labels. The grant-date fair value of the August 2026 warrant — the number that sizes its contra-revenue effect — should first appear in the Q3 fiscal 2027 10-Q.
+    </div>
+    <footer>Prepared for Kun Xia · latest source period Q2 fiscal 2027 (quarter ended August 1, 2026) · figures as filed, not restated · this is a research anchor, not investment advice.</footer>
+  </section>
+</main>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var BULL = [
+ {id:"B1", tag:"BULL 1",
+  title:"Design wins convert into multi-year production programs at more than one hyperscaler",
+  claim:"Custom sockets already won reach volume and are re-won at successive nodes — not merely taped out once.",
+  fields:[
+   ["What must happen","Sockets already won reach volume and are re-won at successive nodes (5nm to 3nm to 2nm to 1.4nm), not merely taped out once."],
+   ["Why this company","Its ASIC platform bundles Marvell's own SerDes, Arm compute, security, silicon photonics, custom HBM and advanced packaging, so the hyperscaler buys an integrated system rather than a design service. The 10-K names Alchip, GUC and Broadcom among competitors; on my read only Broadcom brings a comparable integrated stack rather than design services."],
+   ["Evidence","Data center revenue was <b>$6,100.3M in fiscal 2026, up 46%</b>, and <b>$2,171.5M in Q2 fiscal 2027, up 46%</b> year over year. On July 29, 2026 Marvell and Google entered a commercial agreement spanning custom silicon that attaches to the TPU ecosystem — inference accelerators, storage controllers, NICs, memory interface controllers, near-memory compute. The related warrant vests in <b>240 tranches, one per $500M of custom-product revenue</b>, so the parties framed a $120B cumulative-revenue ceiling."],
+   ["What to monitor","Whether custom silicon is ever broken out separately, and the pace at which Google warrant tranches vest — each vested tranche is $500M of revenue actually booked."]
+  ]},
+ {id:"B2", tag:"BULL 2",
+  title:"The connectivity franchise grows with AI racks regardless of whose accelerator wins",
+  claim:"Content attaches per port, so Marvell grows with bandwidth even where it loses the compute socket.",
+  fields:[
+   ["What must happen","Optical DSPs, retimers, CPO and LPO chipsets and the new scale-up switching (UALink, ESUN, PCIe and CXL) attach per port, so Marvell content grows with bandwidth even where it loses the compute socket."],
+   ["Why this company","It already ships PAM and coherent DSPs with matched TIAs, drivers and silicon photonics, and bought the two missing scale-up pieces: <b>Celestial AI's Photonic Fabric for $3.5B</b> (closed February 2, 2026) and <b>XConn's PCIe and CXL switches</b> (February 10, 2026)."],
+   ["Evidence","FY2026 10-K product description; Q2 FY2027 10-Q Note 4."],
+   ["What to monitor","Whether gross margin holds as mix shifts toward custom ASICs, which are structurally lower margin than merchant connectivity; and whether Celestial hits the revenue milestones its earnout is written against."]
+  ]},
+ {id:"B3", tag:"BULL 3",
+  title:"Revenue outgrows R&D, so the model levers",
+  claim:"Fixed design teams amortize across a larger revenue base once programs reach volume.",
+  fields:[
+   ["What must happen","R&amp;D grows more slowly than revenue. <b>It is currently not doing that.</b>"],
+   ["Why this company","The effect has shown once already: gross margin 41.3% (FY25) → 51.0% (FY26) → <b>53.1% (Q2 FY27)</b>, and R&amp;D from 33.9% to 25.3% of revenue."],
+   ["Evidence","FY2026 10-K and Q2 FY2027 10-Q MD&amp;A. But in Q2 fiscal 2027 R&amp;D rose <b>42.8%</b> year over year against <b>36.5%</b> revenue growth, taking it back to 27.0% of revenue."],
+   ["What to monitor","R&amp;D as a percentage of revenue, and operating margin (16.8% in Q2 FY27 against 16.1% for fiscal 2026)."]
+  ]},
+ {id:"B4", tag:"BULL 4",
+  title:"Customers and asset sales, not common shareholders, fund the ramp",
+  claim:"An R&D budget near $3B annualized is being financed without ordinary equity issuance.",
+  fields:[
+   ["What must happen","Marvell sustains an R&amp;D budget running near $3B annualized without ordinary equity issuance or leverage stress."],
+   ["Why this company","<b>NVIDIA paid $2.0B</b> for Series A convertible preferred on March 31, 2026 alongside a partnership connecting Marvell custom XPUs to NVIDIA's AI ecosystem; the automotive ethernet divestiture brought <b>$2.5B of cash</b>; $1.0B of 5.300% notes due 2036 refinanced the 2026 maturity."],
+   ["Evidence","Q2 FY2027 10-Q Notes 7 and 10; FY2026 10-K; Form 8-K, April 15, 2026."],
+   ["What to monitor","Operating cash flow less capital expenditure — $1,244.3M less $282.4M, about <b>$962M</b> in the first half of fiscal 2027 — against <b>$533.8M of stock-based compensation</b> in the same period."]
+  ]}
+];
+
+var BEAR = [
+ {id:"R1", tag:"BEAR 1",
+  title:"The customer base is not a base, and custom sockets are winner-take-all per program",
+  claim:"One distributor is 44% of revenue; a custom socket is re-competed at every node.",
+  fields:[
+   ["How it fails","One distributor was <b>44% of net revenue in Q2 fiscal 2027, up from 34%</b> a year earlier; a single direct customer was 16%; the ten largest customers were <b>82% of fiscal 2026 revenue</b>; four customers were 72% of gross receivables at August 1, 2026. Custom ASIC programs are designed to one specification and re-competed at each node."],
+   ["What confirms failure","Distributor A's share falling sharply with no replacement customer appearing, or a node transition passing without a follow-on award."],
+   ["Economic damage","The R&amp;D for a lost socket is already spent — 27% of revenue, incurred years before production. Revenue disappears at close to full contribution margin while the cost base does not move."],
+   ["Permanent or fixable","<b>Permanent</b> for that program. A hyperscaler that moves a workload to a rival's silicon or in-house does not come back mid-generation."]
+  ]},
+ {id:"R2", tag:"BEAR 2",
+  title:"Marvell is buying revenue with its own equity, and the price of doing so rose sharply in August 2026",
+  claim:"A warrant for up to 59.0M shares — about 6.6% of the share count — is attached to Google revenue.",
+  fields:[
+   ["How it fails","Customer warrants are recognized as a <b>reduction of revenue</b> as the qualifying revenue is booked. The fiscal 2025 warrant was 4.2M shares at $87.77, grant-date fair value $227.6M. The warrant issued August 18, 2026 is up to <b>58,970,907 shares at $206.58</b> — about <b>6.6% of the 897.4M</b> weighted-average shares outstanding last quarter, roughly fourteen times the earlier one. Each $500M of Google custom-product revenue vests a tranche of about 240,000 shares."],
+   ["What confirms failure","Reported revenue growth diverging from cash generation, and the warrant's grant-date fair value — due in the Q3 fiscal 2027 10-Q — coming in large relative to the revenue it is attached to."],
+   ["Economic damage","Whatever the accounting treatment, the economic content is that a slice of the AI revenue stream is being handed back to the customer in equity. Headline growth then overstates the growth in value per common share."],
+   ["Permanent or fixable","<b>Permanent</b> as to shares already committed. The terms of the next such agreement are what to watch."]
+  ]},
+ {id:"R3", tag:"BEAR 3",
+  title:"Fixed supply obligations against concentrated, cancellable demand",
+  claim:"$8.5B of unconditional wafer commitments behind a demand book held by four customers.",
+  fields:[
+   ["How it fails","At August 1, 2026 Marvell had <b>$8,518.9M of unconditional purchase commitments</b> — $1,829.3M for the remainder of fiscal 2027 and roughly $2.1B–$2.2B in each of fiscal 2028, 2029 and 2030 — plus <b>$487.0M of prepayments</b> on supply capacity reservation agreements and $351.6M of capital-expenditure commitments. The TSMC capacity reservation requires purchasing target wafer quantities or forfeiting a proportional share of the advance payments."],
+   ["What confirms failure","Inventory rising faster than revenue, prepayments written off, or gross margin falling while revenue is still growing."],
+   ["Economic damage","This converts a fabless model's supposedly variable cost structure into a fixed one for three to four years. A hyperscaler order deferral removes the revenue and leaves the wafer bill."],
+   ["Permanent or fixable","<b>Fixable</b> across a cycle, severe inside one."]
+  ]},
+ {id:"R4", tag:"BEAR 4",
+  title:"The competitor and the customer are the same people",
+  claim:"Pricing power in custom silicon is contractual, not structural — it resets at every re-bid.",
+  fields:[
+   ["How it fails","The FY2026 10-K names Broadcom, AMD, NVIDIA, Alchip, GUC, Astera Labs and Credo as direct competitors, says some customers have chosen to develop semiconductor products internally and the trend may continue, and says average selling prices will remain under significant pricing pressure."],
+   ["What confirms failure","Gross margin declining while data center revenue still grows — the signature of buying volume with price."],
+   ["Economic damage","In custom silicon the customer knows the cost structure, funds the engineering, and owns the alternative. Pricing power is contractual rather than structural, so it resets at every re-bid."],
+   ["Permanent or fixable","<b>Structural</b> to the business model."]
+  ]},
+ {id:"R5", tag:"BEAR 5",
+  title:"The balance sheet is mostly goodwill, and it is tested against the share price",
+  claim:"$13.9B of goodwill against $18.5B of equity, tested as one reporting unit off market cap.",
+  fields:[
+   ["How it fails","Goodwill was <b>$13,873.9M</b> and acquired intangibles $2,346.6M at August 1, 2026 against <b>$18,531.6M of equity</b> — roughly $2.3B of tangible equity against $4,962.9M of long-term debt. Goodwill is tested as a single reporting unit whose fair value is derived from Marvell's own market capitalization."],
+   ["What confirms failure","A sustained decline in the share price, or the Celestial contingent consideration reversing rather than accreting."],
+   ["Economic damage","An impairment consumes no cash, but the re-rating and the write-down arrive together, and the write-down confirms the acquisitions were overpriced."],
+   ["Permanent or fixable","<b>Non-cash</b> as an event, permanent as an admission."]
+  ]},
+ {id:"R6", tag:"BEAR 6",
+  title:"The non-AI half has stopped helping",
+  claim:"Communications and other grew 10% year over year — there is no second engine.",
+  fields:[
+   ["How it fails","Communications and other grew <b>10% year over year</b> in Q2 fiscal 2027 to $567.8M, against 46% for data center."],
+   ["What confirms failure","Sustained single-digit growth while data center decelerates at the same time."],
+   ["Economic damage","Fiscal 2024 revenue was 60% communications; that mix is gone, part of it divested with automotive ethernet in August 2025. There is no second engine to cushion an AI air pocket."],
+   ["Permanent or fixable","<b>Partly permanent</b> — the divested revenue is gone; the remainder is cyclical."]
+  ]}
+];
+
+// pairing: which bear risks attack which bull assumption
+var PAIRS = [
+ {bull:"B1", bears:["R1","R4"], head:"Programs at multiple hyperscalers  vs.  concentration and re-bid risk"},
+ {bull:"B2", bears:["R4","R6"], head:"Connectivity attaches regardless  vs.  price pressure and a stalled second engine"},
+ {bull:"B3", bears:["R3"],      head:"Operating leverage  vs.  a cost base that has stopped being variable"},
+ {bull:"B4", bears:["R2","R5"], head:"Customers fund the ramp  vs.  what the customers are being paid with"}
+];
+
+var SIGNALS = [
+ {name:"Distributor A share of net revenue", val:"44%", prev:"vs 34% (Q2 FY26)", src:"Q2 FY27 10-Q, MD&A", trk:"Bear 1", kind:"tr",
+  dir:"Rising = concentration compounding. A sharp fall with no replacement customer = a socket lost."},
+ {name:"Data center revenue, year over year", val:"$2,171.5M &nbsp;+46%", prev:"Q2 FY27", src:"Q2 FY27 10-Q, Note 3", trk:"Bull 1 · 2", kind:"tb",
+  dir:"Deceleration toward the low twenties questions whether the programs are actually ramping."},
+ {name:"Gross margin", val:"53.1%", prev:"vs 50.4% (Q2 FY26)", src:"Q2 FY27 10-Q, MD&A", trk:"Bull 3 · Bear 4", kind:"tb",
+  dir:"Falling while data center revenue still grows = the volume is being bought with price."},
+ {name:"R&D as % of net revenue", val:"27.0%", prev:"vs 25.9% (Q2 FY26); 25.3% FY26", src:"Q2 FY27 10-Q, MD&A", trk:"Bull 3", kind:"tb",
+  dir:"Must fall below the fiscal 2026 level for the operating-leverage claim to hold."},
+ {name:"Customer warrant shares vested", val:"1.2M of 4.2M", prev:"0 of 58,970,907 (Google warrant)", src:"Q2 FY27 10-Q, Notes 4 & 15", trk:"Bull 1 · Bear 2", kind:"tr",
+  dir:"Vesting confirms revenue milestones and simultaneously moves equity to the customer."},
+ {name:"Unconditional purchase commitments", val:"$8,518.9M", prev:"$1,829.3M due in rest of FY27", src:"Q2 FY27 10-Q, Note 9", trk:"Bear 3", kind:"tr",
+  dir:"Rising into a demand slowdown is the dangerous combination — the wafer bill outlives the order."},
+ {name:"Communications and other, year over year", val:"$567.8M &nbsp;+10%", prev:"Q2 FY27", src:"Q2 FY27 10-Q, Note 3", trk:"Bear 6", kind:"tr",
+  dir:"Sustained single digits means no cushion against an AI air pocket."},
+ {name:"Goodwill against total equity", val:"$13,873.9M", prev:"vs $18,531.6M equity", src:"Q2 FY27 balance sheet", trk:"Bear 5", kind:"tr",
+  dir:"A sustained share-price decline triggers the single-reporting-unit impairment test."}
+];
+
+function esc(s){return s;}
+
+function cardHTML(item, cls){
+  var f = item.fields.map(function(p){
+    return '<div class="f"><dt>'+p[0]+'</dt><dd>'+p[1]+'</dd></div>';
+  }).join("");
+  return '<details class="card '+cls+'" id="card-'+item.id+'">'
+    + '<summary><span class="tagb">'+item.tag+'</span>'
+    + '<span class="ttl">'+item.title+'</span><span class="chev">&#9654;</span></summary>'
+    + '<div class="body"><dl>'+f+'</dl></div></details>';
+}
+
+document.getElementById("bullList").innerHTML = BULL.map(function(b){return cardHTML(b,"bull");}).join("");
+document.getElementById("bearList").innerHTML = BEAR.map(function(b){return cardHTML(b,"bear");}).join("");
+
+// ---- paired duel view
+function byId(arr,id){for(var i=0;i<arr.length;i++){if(arr[i].id===id)return arr[i];}return null;}
+function fieldOf(item,label){
+  for(var i=0;i<item.fields.length;i++){ if(item.fields[i][0].indexOf(label)===0) return item.fields[i][1]; }
+  return "";
+}
+var duelHTML = PAIRS.map(function(p){
+  var b = byId(BULL, p.bull);
+  var attacks = p.bears.map(function(rid){
+    var r = byId(BEAR, rid);
+    return '<p class="claim">'+r.tag+' — '+r.title+'</p>'
+         + '<p>'+fieldOf(r,"How it fails")+'</p>'
+         + '<p class="mech"><em>Damage</em>'+fieldOf(r,"Economic damage")+' '+fieldOf(r,"Permanent")+'</p>';
+  }).join('<div style="height:14px"></div>');
+  return '<div class="duel"><h3>'+p.head+'</h3><div class="duelgrid">'
+    + '<div class="side b1"><h4>'+b.tag+'</h4>'
+    + '<p class="claim">'+b.title+'</p>'
+    + '<p>'+fieldOf(b,"What must happen")+'</p>'
+    + '<p class="mech"><em>Why Marvell specifically</em>'+fieldOf(b,"Why this company")+'</p></div>'
+    + '<div class="side b2"><h4>The attack</h4>'+attacks+'</div>'
+    + '</div></div>';
+}).join("");
+document.getElementById("duelView").innerHTML = duelHTML;
+
+var mSep = document.getElementById("mSep"), mDuel = document.getElementById("mDuel"),
+    bullList = document.getElementById("bullList"), duelView = document.getElementById("duelView"),
+    hint = document.getElementById("hint");
+function setMode(duel){
+  mSep.setAttribute("aria-pressed", duel ? "false" : "true");
+  mDuel.setAttribute("aria-pressed", duel ? "true" : "false");
+  bullList.hidden = duel; duelView.hidden = !duel;
+  hint.textContent = duel
+    ? "Each bull assumption sits beside the bear risk that attacks it. Full risk detail is in section 3."
+    : "Click a card to open it. Switch views to see each assumption beside the attack on it.";
+}
+mSep.addEventListener("click", function(){setMode(false);});
+mDuel.addEventListener("click", function(){setMode(true);});
+
+// ---- signals
+document.getElementById("sigs").innerHTML = SIGNALS.map(function(s){
+  return '<div class="sig">'
+   + '<div class="top"><span class="name">'+s.name+'</span><span class="trk '+s.kind+'">'+s.trk+'</span></div>'
+   + '<div><div class="val">'+s.val+'</div><div class="prev">'+s.prev+'</div></div>'
+   + '<div class="src">'+s.src+'</div>'
+   + '<div class="dir">'+s.dir+'</div></div>';
+}).join("");
+
+// ---- scroll spy
+var links = [].slice.call(document.querySelectorAll("#nav a"));
+var secs = links.map(function(a){return document.getElementById(a.getAttribute("href").slice(1));});
+function spy(){
+  var best = 0, y = window.scrollY || document.documentElement.scrollTop;
+  for(var i=0;i<secs.length;i++){
+    if(secs[i] && secs[i].getBoundingClientRect().top + y - 110 <= y) best = i;
+  }
+  var doc = document.documentElement;
+  if(y + window.innerHeight >= doc.scrollHeight - 4) best = secs.length - 1;
+  links.forEach(function(a,i){ a.classList.toggle("on", i===best); });
+}
+var ticking=false;
+window.addEventListener("scroll", function(){
+  if(!ticking){ ticking=true; window.requestAnimationFrame(function(){ spy(); ticking=false; }); }
+}, {passive:true});
+window.addEventListener("resize", spy);
+spy();
+
+// ---- theme
+var root = document.documentElement;
+document.getElementById("theme").addEventListener("click", function(){
+  var cur = root.getAttribute("data-theme");
+  if(!cur){
+    var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    cur = dark ? "dark" : "light";
+  }
+  root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+});
+})();
+</script>
+</body>
+</html>

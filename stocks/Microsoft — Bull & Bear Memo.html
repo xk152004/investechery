@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Microsoft — Bull &amp; Bear Memo</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#fbfbf9; --panel:#ffffff; --ink:#1a1a1a; --ink2:#4a4a4a; --ink3:#7c7c7c;
+  --line:#e3e1dc; --bull:#0f6b4f; --bull-bg:#eef6f2; --bear:#a03028; --bear-bg:#fbeeec;
+  --accent:#1f3864;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#151513; --panel:#1e1e1c; --ink:#eceae5; --ink2:#b9b6ae; --ink3:#8d8a83;
+  --line:#33322e; --bull:#5fd4a8; --bull-bg:#12251f; --bear:#f08a7e; --bear-bg:#2a1715;
+  --accent:#9db4de;
+}}
+:root[data-theme="dark"]{
+  --bg:#151513; --panel:#1e1e1c; --ink:#eceae5; --ink2:#b9b6ae; --ink3:#8d8a83;
+  --line:#33322e; --bull:#5fd4a8; --bull-bg:#12251f; --bear:#f08a7e; --bear-bg:#2a1715;
+  --accent:#9db4de;
+}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+ -webkit-font-smoothing:antialiased}
+.wrap{display:flex;gap:0;max-width:1240px;margin:0 auto;align-items:flex-start}
+/* sidebar */
+nav{position:sticky;top:0;flex:0 0 236px;height:100vh;padding:34px 20px 24px 26px;
+ border-right:1px solid var(--line);overflow-y:auto}
+nav .brand{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+nav h1{font-size:19px;line-height:1.3;margin:0 0 4px;font-weight:650}
+nav .sub{font-size:12.5px;color:var(--ink3);margin-bottom:22px}
+nav a{display:block;padding:7px 10px;margin:1px 0 1px -10px;border-radius:6px;text-decoration:none;
+ color:var(--ink2);font-size:13.5px;border-left:2px solid transparent;transition:.15s}
+nav a:hover{background:var(--panel);color:var(--ink)}
+nav a.on{color:var(--ink);font-weight:600;border-left-color:var(--accent);background:var(--panel)}
+nav a .n{color:var(--ink3);font-variant-numeric:tabular-nums;margin-right:7px;font-weight:500}
+nav a.on .n{color:var(--accent)}
+.themebtn{margin-top:22px;background:none;border:1px solid var(--line);color:var(--ink3);
+ border-radius:6px;padding:6px 11px;font:inherit;font-size:12px;cursor:pointer}
+.themebtn:hover{color:var(--ink)}
+/* main */
+main{flex:1 1 auto;min-width:0;padding:34px 40px 120px;max-width:840px}
+section{scroll-margin-top:26px;margin-bottom:52px}
+h2{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);
+ font-weight:650;margin:0 0 16px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+p{margin:0 0 13px}
+.hdr{display:grid;grid-template-columns:132px 1fr;gap:1px;background:var(--line);
+ border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:30px;font-size:13px}
+.hk{background:var(--panel);padding:9px 12px;color:var(--ink3);font-weight:600}
+.hv{background:var(--panel);padding:9px 12px;color:var(--ink2)}
+.lead{font-size:17px;line-height:1.55;color:var(--ink);border-left:3px solid var(--accent);
+ padding:2px 0 2px 16px;margin:0 0 22px;font-weight:450}
+.lead.bullead{border-left-color:var(--bull)}
+.lead.bearead{border-left-color:var(--bear)}
+.typepill{display:inline-block;background:var(--panel);border:1px solid var(--line);
+ border-radius:999px;padding:3px 12px;font-size:12px;color:var(--ink2);margin-bottom:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;
+ font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.tag-bull{background:var(--bull-bg);color:var(--bull)}
+.tag-bear{background:var(--bear-bg);color:var(--bear)}
+/* cards */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:9px;margin-bottom:10px;overflow:hidden}
+.card>summary{list-style:none;cursor:pointer;padding:13px 15px;display:flex;align-items:center;gap:10px}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary:hover{background:rgba(127,127,127,.05)}
+.cardname{font-weight:600;font-size:14.5px;flex:1 1 auto}
+.atk{font-size:11.5px;color:var(--ink3);white-space:nowrap}
+.chev{color:var(--ink3);transition:transform .18s;font-size:17px;line-height:1}
+.card[open]>summary .chev{transform:rotate(90deg)}
+.cardbody{padding:2px 15px 6px;border-top:1px solid var(--line)}
+.fld{padding:11px 0;border-bottom:1px dashed var(--line)}
+.fld:last-child{border-bottom:none}
+.lbl{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+ color:var(--ink3);font-weight:650;margin-bottom:4px}
+.fld p{margin:0;font-size:14px;color:var(--ink2)}
+/* duel */
+.toggle{display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+ margin-bottom:20px;width:fit-content;background:var(--panel)}
+.toggle button{background:none;border:none;padding:8px 17px;font:inherit;font-size:13px;
+ color:var(--ink3);cursor:pointer;transition:.15s}
+.toggle button.on{background:var(--accent);color:#fff;font-weight:600}
+:root[data-theme="dark"] .toggle button.on{color:#151513}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .toggle button.on{color:#151513}}
+.duel{border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-bottom:14px;background:var(--panel)}
+.duelhead{padding:11px 15px;font-weight:600;font-size:14.5px;border-bottom:1px solid var(--line);
+ display:flex;align-items:center;gap:9px}
+.duelgrid{display:grid;grid-template-columns:1fr 1fr}
+.side{padding:14px 15px;font-size:13.5px;color:var(--ink2)}
+.bullside{border-right:1px solid var(--line);background:linear-gradient(180deg,var(--bull-bg),transparent 62%)}
+.bearside{background:linear-gradient(180deg,var(--bear-bg),transparent 62%)}
+.sidelbl{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:650;margin-bottom:9px}
+.bullside .sidelbl{color:var(--bull)} .bearside .sidelbl{color:var(--bear)}
+.side p{margin:0 0 9px} .ev{font-size:12.5px;color:var(--ink3)}
+.atkname{font-weight:600;color:var(--ink)}
+.none{font-style:italic;color:var(--ink3)}
+/* signals */
+.sigs{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:11px}
+.sig{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:14px 15px;
+ display:flex;flex-direction:column}
+.signame{font-weight:600;font-size:13.5px;margin-bottom:7px}
+.sigval{font-size:15px;color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;
+ margin-bottom:9px;line-height:1.4}
+.sigdir{font-size:12.5px;color:var(--ink2);flex:1 1 auto;margin-bottom:11px}
+.sigfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;
+ padding-top:9px;border-top:1px solid var(--line)}
+.src{font-size:11px;color:var(--ink3)}
+.tracks{display:flex;gap:4px}
+/* bottom */
+ol.bl{list-style:none;padding:0;margin:0;counter-reset:b}
+ol.bl li{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}
+ol.bl li:last-child{border-bottom:none}
+ol.bl .num{flex:0 0 25px;height:25px;border-radius:50%;background:var(--panel);
+ border:1px solid var(--line);display:grid;place-items:center;font-size:12px;
+ font-weight:700;color:var(--accent)}
+ol.bl p{margin:0;font-size:14.5px}
+/* sources */
+details.srcs{border:1px solid var(--line);border-radius:9px;background:var(--panel);margin-top:8px}
+details.srcs summary{cursor:pointer;padding:12px 15px;font-size:13.5px;font-weight:600;list-style:none}
+details.srcs summary::-webkit-details-marker{display:none}
+details.srcs ul{margin:0;padding:0 15px 14px 32px;font-size:13px;color:var(--ink2)}
+details.srcs li{margin:5px 0}
+.foot{font-size:12px;color:var(--ink3);margin-top:26px;padding-top:14px;border-top:1px solid var(--line)}
+@media(max-width:900px){
+  .wrap{flex-direction:column} nav{position:static;height:auto;width:100%;flex:none;
+   border-right:none;border-bottom:1px solid var(--line);padding:22px 22px 14px}
+  nav a{display:inline-block;margin-right:4px} main{padding:24px 22px 80px}
+  .duelgrid{grid-template-columns:1fr} .bullside{border-right:none;border-bottom:1px solid var(--line)}
+  .hdr{grid-template-columns:1fr} .hk{padding-bottom:2px}
+}
+</style></head><body>
+<div class="wrap">
+<nav>
+  <div class="brand">Bull &amp; Bear Memo</div>
+  <h1>Microsoft Corporation</h1>
+  <div class="sub">Nasdaq: MSFT · FY2026 (ended 30 Jun 2026)</div>
+  <a href="#s1"><span class="n">1</span>Business in one line</a>
+  <a href="#s2"><span class="n">2</span>Bull case</a>
+  <a href="#s3"><span class="n">3</span>Bear case</a>
+  <a href="#s4"><span class="n">4</span>Signals to monitor</a>
+  <a href="#s5"><span class="n">5</span>Bottom line</a>
+  <a href="#s6"><span class="n">6</span>Sources</a>
+  <button class="themebtn" id="tb">Toggle theme</button>
+</nav>
+<main>
+  <div class="hdr"><div class="hk">company</div><div class="hv">Microsoft Corporation (Nasdaq: MSFT)</div><div class="hk">sources used</div><div class="hv">FY2026 Form 10-K (FY ended 30 Jun 2026, filed 29 Jul 2026); FY2025 10-K; FY2024 10-K; FY2026 Q1 10-Q (29 Oct 2025); FY2026 Q3 10-Q (29 Apr 2026).</div><div class="hk">latest period</div><div class="hv">FY2026, year ended June 30, 2026</div><div class="hk">missing or stale data</div><div class="hv">No earnings call transcripts, earnings presentations or investor day materials in sources — management's forward capex commentary is unavailable. Azure revenue is disclosed only as a growth rate, never in dollars. No customer concentration disclosure inside the $678B commercial RPO. No Copilot seat count. "Microsoft 365 Consumer subscribers" was removed as a disclosed metric in Q1 FY2026. Several DEFA14A proxy supplements failed to download.</div></div>
+
+  <section id="s1"><h2>1 · Business in one line</h2>
+    <p>Microsoft sells software and compute to enterprises on subscription and consumption contracts — Microsoft 365 and Dynamics per seat, Azure per unit consumed, LinkedIn and Search on advertising, Windows on OEM royalty, XBOX on content. FY2026 revenue was $331.8B at a 46.8% operating margin, of which Microsoft Cloud was $214.4B (FY2026 10-K, MD&amp;A).</p>
+    <div class="typepill">Type: stalwart + capital-intensive fast grower</div>
+    <p>It is a stalwart with a capital-intensive fast grower bolted onto it. Productivity and Business Processes still behaves like the old Microsoft — $140.0B revenue, 82% gross margin, 59.9% operating margin, +16% growth on almost no incremental capital. Intelligent Cloud no longer does: revenue grew 30% to $137.8B while its cost of revenue grew 44%, on $115.9B of property and equipment additions. The halves fail differently — PBP's risk is pricing and churn; Intelligent Cloud's is now the capital-cycle risk of a utility: sunk assets, fixed depreciation, uncertain utilization.</p>
+  </section>
+
+  <section id="s2"><h2>2 · Bull case — Peter Lynch pitch</h2>
+    <p class="lead bullead">The simple reason this stock could work is that Microsoft has already sold most of the AI revenue it needs — $678 billion of contracted commercial backlog against $331.8 billion of annual revenue — and it collects that revenue on an installed base it does not have to go out and buy.</p>
+    <div class="toggle" role="tablist">
+      <button class="on" data-view="cards">Assumptions</button>
+      <button data-view="duel">Bull vs Bear</button>
+    </div>
+    <div id="view-cards">
+<details class="card" open>
+  <summary><span class="tag tag-bull">A1</span><span class="cardname">The backlog is real demand and it converts</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">What must happen</span><p>Commercial remaining performance obligation converts to revenue on roughly its stated schedule.</p></div>
+    <div class="fld"><span class="lbl">Why this company</span><p>Microsoft sells multi-year enterprise agreements invoiced annually at the start of each contract period, so backlog is contracted and largely invoiced — not pipeline.</p></div>
+    <div class="fld"><span class="lbl">Evidence</span><p>Commercial RPO $678B at 30 Jun 2026, up 84% from $368B; weighted average duration 2.3 years; ~30% recognizable within 12 months (≈$203B). That is 2.0x annual revenue versus 1.3x a year earlier. (FY2026 and FY2025 10-K, Note 12)</p></div>
+    <div class="fld"><span class="lbl">What to monitor</span><p>RPO dollars AND the 12-month conversion share, read together.</p></div>
+  </div>
+</details>
+<details class="card" open>
+  <summary><span class="tag tag-bull">A2</span><span class="cardname">AI is sold as price on seats Microsoft already owns</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">What must happen</span><p>Microsoft 365 revenue per seat keeps rising materially faster than seat count.</p></div>
+    <div class="fld"><span class="lbl">Why this company</span><p>Copilot and E5 are upsells into an already-paying base: distribution cost is near zero and the incremental dollar lands in the 82%-gross-margin segment, not the one that needs GPUs to serve it.</p></div>
+    <div class="fld"><span class="lbl">Evidence</span><p>M365 Commercial cloud revenue grew 17% on 6% seat growth — roughly 10–11 points from revenue per user, which management attributes to M365 Copilot and E5. PBP gross margin percentage rose in FY2026 while total company gross margin percentage fell. (FY2026 10-K, MD&amp;A)</p></div>
+    <div class="fld"><span class="lbl">What to monitor</span><p>The spread between M365 Commercial cloud revenue growth and seat growth.</p></div>
+  </div>
+</details>
+<details class="card" open>
+  <summary><span class="tag tag-bull">A3</span><span class="cardname">The infrastructure earns back its depreciation</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">What must happen</span><p>Microsoft Cloud gross margin stops falling as newly built capacity fills.</p></div>
+    <div class="fld"><span class="lbl">Why this company</span><p>Microsoft can sell the same GPU-hour at three layers — raw Azure, platform services, and finished Copilot seats — so it recovers cost at whichever layer prices best. A pure infrastructure provider has only the first layer.</p></div>
+    <div class="fld"><span class="lbl">Evidence</span><p>Microsoft Cloud gross margin 66% in FY2026 versus 69% in FY2025, which management attributes to AI infrastructure investment and growing AI usage "offset in part by efficiency gains in Azure and Microsoft 365 Commercial cloud." Azure grew 41%. (FY2026 10-K, MD&amp;A)</p></div>
+    <div class="fld"><span class="lbl">What to monitor</span><p>Microsoft Cloud gross margin percentage; Intelligent Cloud cost-of-revenue growth against segment revenue growth.</p></div>
+  </div>
+</details>
+<details class="card" open>
+  <summary><span class="tag tag-bull">A4</span><span class="cardname">The build is self-funded and does not cost shareholders their capital return</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">What must happen</span><p>Operating cash flow keeps covering capex plus dividends and buybacks without material new leverage.</p></div>
+    <div class="fld"><span class="lbl">Why this company</span><p>The subscription model collects cash in advance of recognition — unearned revenue ended FY2026 at $75.7B — so the build is funded by customers as much as by the balance sheet.</p></div>
+    <div class="fld"><span class="lbl">Evidence</span><p>$182.9B of operating cash flow (up $46.8B) funded $115.9B of capex and still left $27.0B of declared dividends and $16.7B of repurchases; long-term debt fell to $31.1B from $40.2B. (FY2026 10-K, cash flow statement and MD&amp;A)</p></div>
+    <div class="fld"><span class="lbl">What to monitor</span><p>Additions to property and equipment as a share of operating cash flow.</p></div>
+  </div>
+</details></div>
+    <div id="view-duel" hidden>
+<div class="duel">
+  <div class="duelhead"><span class="tag tag-bull">A1</span> The backlog is real demand and it converts</div>
+  <div class="duelgrid">
+    <div class="side bullside">
+      <div class="sidelbl">The assumption</div>
+      <p><strong>Must happen.</strong> Commercial remaining performance obligation converts to revenue on roughly its stated schedule.</p>
+      <p><strong>Why Microsoft.</strong> Microsoft sells multi-year enterprise agreements invoiced annually at the start of each contract period, so backlog is contracted and largely invoiced — not pipeline.</p>
+      <p class="ev">Commercial RPO $678B at 30 Jun 2026, up 84% from $368B; weighted average duration 2.3 years; ~30% recognizable within 12 months (≈$203B). That is 2.0x annual revenue versus 1.3x a year earlier. (FY2026 and FY2025 10-K, Note 12)</p>
+    </div>
+    <div class="side bearside">
+      <div class="sidelbl">The attack</div>
+      
+        <p class="atkname"><span class="tag tag-bear">B2</span> The backlog's credit quality is undisclosed and partly circular</p>
+        <p>Commercial RPO nearly doubled, but the share converting within 12 months fell from 40% to 30% — the growth is in longer-dated commitments from counterparties Microsoft does not name. Separately, it discloses $24.1B of FY2026 revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments — 7.3% of total revenue — from an entity in which it holds an approximate 25% as-converted interest and has committed $13.0B of funding, $11.9B funded. Microsoft funds the counterparty, the counterparty buys Azure, Microsoft books the revenue and the backlog.</p>
+        <p class="ev"><strong>Damage.</strong> Revenue that reverses, plus impairment of the equity-method investment and of capacity built specifically to serve it. <em>The revenue is replaceable over time; capacity purpose-built for one counterparty is not.</em></p>
+    </div>
+  </div>
+</div>
+<div class="duel">
+  <div class="duelhead"><span class="tag tag-bull">A2</span> AI is sold as price on seats Microsoft already owns</div>
+  <div class="duelgrid">
+    <div class="side bullside">
+      <div class="sidelbl">The assumption</div>
+      <p><strong>Must happen.</strong> Microsoft 365 revenue per seat keeps rising materially faster than seat count.</p>
+      <p><strong>Why Microsoft.</strong> Copilot and E5 are upsells into an already-paying base: distribution cost is near zero and the incremental dollar lands in the 82%-gross-margin segment, not the one that needs GPUs to serve it.</p>
+      <p class="ev">M365 Commercial cloud revenue grew 17% on 6% seat growth — roughly 10–11 points from revenue per user, which management attributes to M365 Copilot and E5. PBP gross margin percentage rose in FY2026 while total company gross margin percentage fell. (FY2026 10-K, MD&amp;A)</p>
+    </div>
+    <div class="side bearside">
+      <div class="sidelbl">The attack</div>
+      
+        <p class="atkname"><span class="tag tag-bear">B5</span> There is no second engine</p>
+        <p>More Personal Computing revenue fell 1% to $54.1B: XBOX content and services −5%, XBOX hardware −29%, plus impairment and other related expenses in FY2026. Windows OEM grew 5% but management notes channel inventory "remained elevated," which is a pull-forward rather than demand. And M365's 6% seat growth came from small and medium business and frontline worker offerings — the lowest-ARPU cohorts.</p>
+        <p class="ev"><strong>Damage.</strong> Nothing absorbs an Intelligent Cloud margin reset. The AI leg has to carry the whole result. <em>Fixable in principle; nothing in FY2026 disclosure suggests it is being fixed.</em></p>
+    </div>
+  </div>
+</div>
+<div class="duel">
+  <div class="duelhead"><span class="tag tag-bull">A3</span> The infrastructure earns back its depreciation</div>
+  <div class="duelgrid">
+    <div class="side bullside">
+      <div class="sidelbl">The assumption</div>
+      <p><strong>Must happen.</strong> Microsoft Cloud gross margin stops falling as newly built capacity fills.</p>
+      <p><strong>Why Microsoft.</strong> Microsoft can sell the same GPU-hour at three layers — raw Azure, platform services, and finished Copilot seats — so it recovers cost at whichever layer prices best. A pure infrastructure provider has only the first layer.</p>
+      <p class="ev">Microsoft Cloud gross margin 66% in FY2026 versus 69% in FY2025, which management attributes to AI infrastructure investment and growing AI usage "offset in part by efficiency gains in Azure and Microsoft 365 Commercial cloud." Azure grew 41%. (FY2026 10-K, MD&amp;A)</p>
+    </div>
+    <div class="side bearside">
+      <div class="sidelbl">The attack</div>
+      
+        <p class="atkname"><span class="tag tag-bear">B1</span> The depreciation staircase</p>
+        <p>Depreciation expense was $34.3B in FY2026 on gross property and equipment of $431.8B. Servers, network equipment and software at cost went from $132.8B to $215.9B in one year, depreciated over two to six years. The FY2026 charge reflects assets in service for only part of the year; a full year of the current server base at a five-year life is roughly $43B on that line alone, before FY2027 additions. Depreciation runs whether or not the racks are utilized.</p>
+        <p class="ev"><strong>Damage.</strong> Intelligent Cloud gross margin was 58.0% in FY2026 versus 62.2% in FY2025. At current segment revenue each further point costs about $1.4B of gross profit, against a cost base that cannot be cut in the year the demand disappoints. <em>Largely permanent. The assets are sunk, and Microsoft's own risk factors state that overestimating demand "may result in underutilization of infrastructure and may lead to impairment of assets on our balance sheet."</em></p>
+    </div>
+  </div>
+</div>
+<div class="duel">
+  <div class="duelhead"><span class="tag tag-bull">A4</span> The build is self-funded and does not cost shareholders their capital return</div>
+  <div class="duelgrid">
+    <div class="side bullside">
+      <div class="sidelbl">The assumption</div>
+      <p><strong>Must happen.</strong> Operating cash flow keeps covering capex plus dividends and buybacks without material new leverage.</p>
+      <p><strong>Why Microsoft.</strong> The subscription model collects cash in advance of recognition — unearned revenue ended FY2026 at $75.7B — so the build is funded by customers as much as by the balance sheet.</p>
+      <p class="ev">$182.9B of operating cash flow (up $46.8B) funded $115.9B of capex and still left $27.0B of declared dividends and $16.7B of repurchases; long-term debt fell to $31.1B from $40.2B. (FY2026 10-K, cash flow statement and MD&amp;A)</p>
+    </div>
+    <div class="side bearside">
+      <div class="sidelbl">The attack</div>
+      
+        <p class="atkname"><span class="tag tag-bear">B1</span> The depreciation staircase</p>
+        <p>Depreciation expense was $34.3B in FY2026 on gross property and equipment of $431.8B. Servers, network equipment and software at cost went from $132.8B to $215.9B in one year, depreciated over two to six years. The FY2026 charge reflects assets in service for only part of the year; a full year of the current server base at a five-year life is roughly $43B on that line alone, before FY2027 additions. Depreciation runs whether or not the racks are utilized.</p>
+        <p class="ev"><strong>Damage.</strong> Intelligent Cloud gross margin was 58.0% in FY2026 versus 62.2% in FY2025. At current segment revenue each further point costs about $1.4B of gross profit, against a cost base that cannot be cut in the year the demand disappoints. <em>Largely permanent. The assets are sunk, and Microsoft's own risk factors state that overestimating demand "may result in underutilization of infrastructure and may lead to impairment of assets on our balance sheet."</em></p>
+        <p class="atkname"><span class="tag tag-bear">B3</span> The obligations now exceed the balance sheet and are not cancellable</p>
+        <p>Total contractual obligations were $743.8B at 30 Jun 2026 against total assets of $758.4B, with $241.9B due in FY2027 alone. Leases not yet commenced — primarily datacenters — rose from $92.7B to $329.1B; purchase commitments, described as datacenter open purchase orders and take-or-pay contracts, are $194.1B. Cash and short-term investments fell from $94.6B to $76.8B while finance lease liabilities rose to $66.6B from $46.2B.</p>
+        <p class="ev"><strong>Damage.</strong> It removes the option to simply stop spending. If demand disappoints the payments continue, and the flexibility comes out of the buyback first — which is already token: 36 million shares repurchased in FY2026 moved the diluted count only from 7,465 million to 7,453 million. <em>Fixable only over years, at the pace the commitments roll off.</em></p>
+        <p class="atkname"><span class="tag tag-bear">B4</span> Headline earnings are flattered by a non-cash mark</p>
+        <p>FY2026 net income rose 31% to $133.7B, but $5.0B of that — $0.67 of the $17.95 diluted EPS — was net gains on the OpenAI investment, primarily a dilution gain from the recapitalization: an accounting consequence of Microsoft's ownership shrinking, not cash earned. On the company's own adjusted basis net income rose 22%, not 31%.</p>
+        <p class="ev"><strong>Damage.</strong> No effect on cash, but the growth rate taken off the income statement overstates the operating result by nine percentage points — which matters if the position is underwritten on reported earnings momentum. <em>A measurement issue that will keep swinging both ways, not a value issue.</em></p>
+    </div>
+  </div>
+</div></div>
+    <p style="margin-top:20px">Why the market might be missing it: reported free cash flow has fallen three years running — roughly $74.1B in FY2024, $71.6B in FY2025, $67.0B in FY2026 — while net income rose from $88.1B to $133.7B. A reader anchored on free cash flow sees deterioration. A reader who checks the backlog sees the opposite: the 84% jump in RPO landed in the same year as the capex, which is the sequence you want if the spending is demand-led rather than speculative.</p>
+  </section>
+
+  <section id="s3"><h2>3 · Bear case — Munger invert</h2>
+    <p class="lead bearead">The most likely way I lose money is that the $115.9 billion Microsoft spent in FY2026 shows up as depreciation before it shows up as revenue, and Intelligent Cloud's margin structure resets permanently lower.</p>
+    <p style="font-size:13px;color:var(--ink3)">Ordered by how permanent the damage is, not by the order of the bull assumptions.</p>
+    
+<details class="card bear" open>
+  <summary><span class="tag tag-bear">B1</span><span class="cardname">The depreciation staircase</span><span class="atk">attacks A3, A4</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">How it could fail</span><p>Depreciation expense was $34.3B in FY2026 on gross property and equipment of $431.8B. Servers, network equipment and software at cost went from $132.8B to $215.9B in one year, depreciated over two to six years. The FY2026 charge reflects assets in service for only part of the year; a full year of the current server base at a five-year life is roughly $43B on that line alone, before FY2027 additions. Depreciation runs whether or not the racks are utilized.</p></div>
+    <div class="fld"><span class="lbl">What would confirm failure</span><p>Intelligent Cloud cost of revenue continuing to grow faster than segment revenue — it grew 44% against 30% in FY2026 — while Azure decelerates from 41%.</p></div>
+    <div class="fld"><span class="lbl">What it does to the economics</span><p>Intelligent Cloud gross margin was 58.0% in FY2026 versus 62.2% in FY2025. At current segment revenue each further point costs about $1.4B of gross profit, against a cost base that cannot be cut in the year the demand disappoints.</p></div>
+    <div class="fld"><span class="lbl">Permanent or fixable</span><p>Largely permanent. The assets are sunk, and Microsoft's own risk factors state that overestimating demand "may result in underutilization of infrastructure and may lead to impairment of assets on our balance sheet."</p></div>
+  </div>
+</details>
+<details class="card bear" open>
+  <summary><span class="tag tag-bear">B2</span><span class="cardname">The backlog's credit quality is undisclosed and partly circular</span><span class="atk">attacks A1</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">How it could fail</span><p>Commercial RPO nearly doubled, but the share converting within 12 months fell from 40% to 30% — the growth is in longer-dated commitments from counterparties Microsoft does not name. Separately, it discloses $24.1B of FY2026 revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments — 7.3% of total revenue — from an entity in which it holds an approximate 25% as-converted interest and has committed $13.0B of funding, $11.9B funded. Microsoft funds the counterparty, the counterparty buys Azure, Microsoft books the revenue and the backlog.</p></div>
+    <div class="fld"><span class="lbl">What would confirm failure</span><p>Accounts receivable from OpenAI growing faster than revenue from OpenAI — it stood at $6.0B against $24.1B at year end, roughly 91 days; RPO growth stalling; any disclosed renegotiation.</p></div>
+    <div class="fld"><span class="lbl">What it does to the economics</span><p>Revenue that reverses, plus impairment of the equity-method investment and of capacity built specifically to serve it.</p></div>
+    <div class="fld"><span class="lbl">Permanent or fixable</span><p>The revenue is replaceable over time; capacity purpose-built for one counterparty is not.</p></div>
+  </div>
+</details>
+<details class="card bear" open>
+  <summary><span class="tag tag-bear">B3</span><span class="cardname">The obligations now exceed the balance sheet and are not cancellable</span><span class="atk">attacks A4</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">How it could fail</span><p>Total contractual obligations were $743.8B at 30 Jun 2026 against total assets of $758.4B, with $241.9B due in FY2027 alone. Leases not yet commenced — primarily datacenters — rose from $92.7B to $329.1B; purchase commitments, described as datacenter open purchase orders and take-or-pay contracts, are $194.1B. Cash and short-term investments fell from $94.6B to $76.8B while finance lease liabilities rose to $66.6B from $46.2B.</p></div>
+    <div class="fld"><span class="lbl">What would confirm failure</span><p>Another step-up in leases not yet commenced without a matching step-up in RPO.</p></div>
+    <div class="fld"><span class="lbl">What it does to the economics</span><p>It removes the option to simply stop spending. If demand disappoints the payments continue, and the flexibility comes out of the buyback first — which is already token: 36 million shares repurchased in FY2026 moved the diluted count only from 7,465 million to 7,453 million.</p></div>
+    <div class="fld"><span class="lbl">Permanent or fixable</span><p>Fixable only over years, at the pace the commitments roll off.</p></div>
+  </div>
+</details>
+<details class="card bear" open>
+  <summary><span class="tag tag-bear">B4</span><span class="cardname">Headline earnings are flattered by a non-cash mark</span><span class="atk">attacks A4</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">How it could fail</span><p>FY2026 net income rose 31% to $133.7B, but $5.0B of that — $0.67 of the $17.95 diluted EPS — was net gains on the OpenAI investment, primarily a dilution gain from the recapitalization: an accounting consequence of Microsoft's ownership shrinking, not cash earned. On the company's own adjusted basis net income rose 22%, not 31%.</p></div>
+    <div class="fld"><span class="lbl">What would confirm failure</span><p>The same line reversing, as it did in FY2025 (−$3.6B) and FY2024 (−$1.1B).</p></div>
+    <div class="fld"><span class="lbl">What it does to the economics</span><p>No effect on cash, but the growth rate taken off the income statement overstates the operating result by nine percentage points — which matters if the position is underwritten on reported earnings momentum.</p></div>
+    <div class="fld"><span class="lbl">Permanent or fixable</span><p>A measurement issue that will keep swinging both ways, not a value issue.</p></div>
+  </div>
+</details>
+<details class="card bear" open>
+  <summary><span class="tag tag-bear">B5</span><span class="cardname">There is no second engine</span><span class="atk">attacks A2</span><span class="chev">›</span></summary>
+  <div class="cardbody">
+    <div class="fld"><span class="lbl">How it could fail</span><p>More Personal Computing revenue fell 1% to $54.1B: XBOX content and services −5%, XBOX hardware −29%, plus impairment and other related expenses in FY2026. Windows OEM grew 5% but management notes channel inventory "remained elevated," which is a pull-forward rather than demand. And M365's 6% seat growth came from small and medium business and frontline worker offerings — the lowest-ARPU cohorts.</p></div>
+    <div class="fld"><span class="lbl">What would confirm failure</span><p>M365 seat growth slowing further while the revenue-per-seat spread narrows, with MPC still declining.</p></div>
+    <div class="fld"><span class="lbl">What it does to the economics</span><p>Nothing absorbs an Intelligent Cloud margin reset. The AI leg has to carry the whole result.</p></div>
+    <div class="fld"><span class="lbl">Permanent or fixable</span><p>Fixable in principle; nothing in FY2026 disclosure suggests it is being fixed.</p></div>
+  </div>
+</details>
+  </section>
+
+  <section id="s4"><h2>4 · Signals to monitor</h2>
+    <p style="font-size:13px;color:var(--ink3)">Each signal carries the tag of the assumption or risk it tracks.</p>
+    <div class="sigs">
+<div class="sig">
+  <div class="signame">Microsoft Cloud gross margin %</div>
+  <div class="sigval">66% (FY2026), from 69% (FY2025)</div>
+  <div class="sigdir">Stabilising or rising confirms A3; another ~3pt fall confirms B1</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K MD&amp;A</span>
+    <span class="tracks"><span class="tag tag-bull">A3</span><span class="tag tag-bear">B1</span></span>
+  </div>
+</div>
+<div class="sig">
+  <div class="signame">Intelligent Cloud: cost-of-revenue growth vs revenue growth</div>
+  <div class="sigval">+44% vs +30% (FY2026)</div>
+  <div class="sigdir">Gap narrowing confirms A3; widening confirms B1</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K segment results</span>
+    <span class="tracks"><span class="tag tag-bull">A3</span><span class="tag tag-bear">B1</span></span>
+  </div>
+</div>
+<div class="sig">
+  <div class="signame">Commercial RPO and % due within 12 months</div>
+  <div class="sigval">$678B; ~30% within 12 months (was $368B; 40%)</div>
+  <div class="sigdir">Dollar growth with a stable 12-month share confirms A1; dollar growth with a falling share confirms B2</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K Note 12</span>
+    <span class="tracks"><span class="tag tag-bull">A1</span><span class="tag tag-bear">B2</span></span>
+  </div>
+</div>
+<div class="sig">
+  <div class="signame">Related-party revenue and receivable from OpenAI</div>
+  <div class="sigval">$24.1B revenue; $6.0B AR (≈91 days)</div>
+  <div class="sigdir">AR growing slower than revenue supports A1; faster confirms B2</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K Note 1</span>
+    <span class="tracks"><span class="tag tag-bull">A1</span><span class="tag tag-bear">B2</span></span>
+  </div>
+</div>
+<div class="sig">
+  <div class="signame">M365 Commercial cloud revenue growth less seat growth</div>
+  <div class="sigval">17% − 6% ≈ 11pt (FY2026)</div>
+  <div class="sigdir">Spread holding or widening confirms A2; compressing confirms B5</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K MD&amp;A</span>
+    <span class="tracks"><span class="tag tag-bull">A2</span><span class="tag tag-bear">B5</span></span>
+  </div>
+</div>
+<div class="sig">
+  <div class="signame">Additions to PP&amp;E as % of operating cash flow</div>
+  <div class="sigval">$115.9B / $182.9B = 63% (FY2026); 47% (FY2025)</div>
+  <div class="sigdir">Ratio falling while Azure growth holds confirms A4; rising with decelerating Azure confirms B1 and B3</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K cash flow statement</span>
+    <span class="tracks"><span class="tag tag-bull">A4</span><span class="tag tag-bear">B1</span><span class="tag tag-bear">B3</span></span>
+  </div>
+</div>
+<div class="sig">
+  <div class="signame">Leases not yet commenced</div>
+  <div class="sigval">$329.1B (FY2026), from $92.7B (FY2025)</div>
+  <div class="sigdir">Flattening means the capacity plan is matched to demand; another step-up without RPO growth confirms B3</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K Note 13</span>
+    <span class="tracks"><span class="tag tag-bear">B3</span></span>
+  </div>
+</div>
+<div class="sig">
+  <div class="signame">Depreciation expense vs Intelligent Cloud gross profit</div>
+  <div class="sigval">$34.3B vs $79.9B (FY2026)</div>
+  <div class="sigdir">Depreciation growing slower than IC gross profit confirms A3; faster confirms B1</div>
+  <div class="sigfoot">
+    <span class="src">FY2026 10-K Note 6 and segment results</span>
+    <span class="tracks"><span class="tag tag-bull">A3</span><span class="tag tag-bear">B1</span></span>
+  </div>
+</div></div>
+  </section>
+
+  <section id="s5"><h2>5 · Bottom line</h2>
+    <ol class="bl"><li><span class="num">1</span><p>The stock could work because Microsoft has $678B of contracted commercial backlog against $331.8B of revenue and monetises AI as a price increase on a seat base it already owns, where the incremental dollar carries an 82% gross margin.</p></li><li><span class="num">2</span><p>What must go right is that Microsoft Cloud gross margin troughs near 66% and recovers as the FY2026 capacity fills, so that the revenue from the backlog arrives faster than the depreciation on the $431.8B gross asset base that serves it.</p></li><li><span class="num">3</span><p>The thesis most likely breaks on the depreciation staircase: $115.9B of capex and a server base that went from $132.8B to $215.9B at cost create a fixed two-to-six-year charge that lands whether or not utilisation follows, against $743.8B of contractual obligations that cannot be cancelled if it does not.</p></li><li><span class="num">4</span><p>The evidence that would change my mind is two or three consecutive quarters in which Intelligent Cloud cost of revenue grows faster than its revenue while Azure decelerates and the 12-month share of commercial RPO keeps falling — that combination would mean the capacity was built ahead of demand rather than behind it.</p></li></ol>
+  </section>
+
+  <section id="s6"><h2>6 · Sources</h2>
+    <details class="srcs"><summary>Company filings used (all from the MSFT research folder)</summary>
+      <ul>
+        <li>FY2026 Form 10-K, year ended 30 June 2026, filed 29 July 2026 — primary source for all FY2026 and FY2025 comparatives</li>
+        <li>FY2025 Form 10-K, year ended 30 June 2025 — RPO, leases not yet commenced, Microsoft Cloud gross margin comparatives</li>
+        <li>FY2024 Form 10-K, year ended 30 June 2024 — FY2023/FY2024 cash flow and capex</li>
+        <li>FY2026 Q1 Form 10-Q, filed 29 October 2025 — intra-year RPO trajectory ($392B, +51%)</li>
+        <li>FY2026 Q3 Form 10-Q, filed 29 April 2026 — intra-year RPO trajectory ($627B, +99%); nine-month capex</li>
+      </ul>
+    </details>
+    <details class="srcs" style="margin-top:9px"><summary>Not available in sources — read the memo knowing this</summary>
+      <ul>
+        <li>No earnings call transcripts, earnings presentations or investor day materials — management's forward capex commentary is not in evidence</li>
+        <li>Azure revenue is disclosed only as a growth rate, never as a dollar figure</li>
+        <li>No customer concentration disclosure inside the $678B commercial RPO</li>
+        <li>No Copilot seat or attach-rate disclosure</li>
+        <li>"Microsoft 365 Consumer subscribers" was removed as a disclosed metric in Q1 FY2026</li>
+        <li>Several DEFA14A proxy supplements failed to download during collection</li>
+      </ul>
+    </details>
+    <p class="foot">Figures are as reported by Microsoft in the filings above. Interpretation, classification and the ordering of risks are the analyst's. This is a thinking anchor — not a valuation, a target or a recommendation.</p>
+  </section>
+</main>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function mark(){
+    var y=window.scrollY+130,idx=0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop<=y) idx=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll',mark,{passive:true});
+  window.addEventListener('resize',mark); mark();
+
+  var btns=[].slice.call(document.querySelectorAll('.toggle button'));
+  btns.forEach(function(b){ b.addEventListener('click',function(){
+    btns.forEach(function(x){x.classList.toggle('on',x===b);});
+    var v=b.getAttribute('data-view');
+    document.getElementById('view-cards').hidden = v!=='cards';
+    document.getElementById('view-duel').hidden  = v!=='duel';
+  });});
+
+  var tb=document.getElementById('tb');
+  try{ var st=localStorage.getItem('msft-memo-theme'); if(st) document.documentElement.setAttribute('data-theme',st);}catch(e){}
+  tb.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var isDark = cur ? cur==='dark' : window.matchMedia('(prefers-color-scheme:dark)').matches;
+    var next = isDark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('msft-memo-theme',next);}catch(e){}
+  });
+})();
+</script>
+</body></html>
