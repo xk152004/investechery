@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business Overview — KLA Corporation (KLAC)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:var(--ink);margin:0}
+h1{font-size:38px;line-height:1.16;letter-spacing:-.4px;margin:6px 0 14px}
+h2{font-size:27px;line-height:1.22;margin:52px 0 14px;padding-top:20px;border-top:1px solid var(--line)}
+h3{font-size:21px;line-height:1.3;margin:30px 0 10px}
+p{margin:0 0 17px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{font-size:15px;color:var(--muted);line-height:1.5;margin:0 0 6px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.48;border-left:5px solid var(--terracotta);
+  padding:4px 0 4px 22px;margin:30px 0 34px;color:var(--ink)}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:0 0 30px}
+.engine .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#B9AE9C;font-weight:700;margin-bottom:9px}
+.engine .unit{font-family:Georgia,serif;font-size:25px;line-height:1.32;margin-bottom:11px}
+.engine .earns{font-size:17px;line-height:1.55;color:#E4DCCE}
+.engine .earns b{color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 8px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px}
+.kpi .k{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.kpi .v{font-family:Georgia,serif;font-size:27px;color:var(--terracotta);line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:13.5px;color:var(--muted);line-height:1.4;margin-top:6px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.two .card{margin:0}
+.two h4{font-family:Georgia,serif;font-size:17px;margin:0 0 10px;font-weight:700}
+.two ul{margin:0;padding-left:19px}
+.two li{font-size:16px;line-height:1.5;margin-bottom:7px;color:#3D3A35}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:8px;
+  padding:15px 18px;margin:0 0 11px}
+.lever.structural{border-left-color:var(--good)} .lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--terracotta);margin-bottom:5px}
+.lever.structural .tag{color:var(--good)} .lever.mgmt .tag{color:var(--gold)} .lever.cyclical .tag{color:var(--blue)}
+.lever .lt{font-family:Georgia,serif;font-size:18px;font-weight:700;margin-bottom:5px}
+.lever p{font-size:16px;line-height:1.52;margin:0;color:#3D3A35}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;
+  font-family:Georgia,serif;font-size:19px;line-height:1.5;font-style:italic}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-style:normal;
+  font-size:14px;color:var(--muted);margin-top:10px}
+.tw{overflow-x:auto;margin:20px 0 6px;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:15.5px;font-variant-numeric:tabular-nums}
+th{background:#F4EEE4;text-align:right;font-weight:700;padding:11px 13px;border-bottom:1px solid var(--line);
+  font-size:13px;letter-spacing:.03em;color:#4A443B;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td{padding:10px 13px;border-bottom:1px solid #F0EAE0;text-align:right;color:#3D3A35}
+tbody tr:last-child td{border-bottom:none}
+tr.tot td{font-weight:700;background:#FBF8F3}
+.cap{font-size:13.5px;color:var(--muted);line-height:1.48;margin:0 0 22px}
+.figwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 18px 12px;margin:22px 0 6px}
+.figt{font-family:Georgia,serif;font-size:17px;font-weight:700;margin:0 0 3px}
+.figs{font-size:13.5px;color:var(--muted);margin:0 0 12px}
+.ax{font-size:11.5px;fill:var(--muted);font-family:Calibri,'Segoe UI',Arial,sans-serif}
+.axlab{font-size:11px;fill:var(--muted);font-family:Calibri,'Segoe UI',Arial,sans-serif}
+.slab{font-size:12.5px;font-weight:700;font-family:Calibri,'Segoe UI',Arial,sans-serif}
+.unk{background:#F4EEE4;border-radius:4px;padding:1px 6px;font-size:14px;color:#5D564B;white-space:nowrap}
+footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);line-height:1.6}
+footer h3{font-size:16px;margin:0 0 10px}
+@media(max-width:700px){
+  body{font-size:17px} h1{font-size:29px} h2{font-size:22px}
+  .kpis{grid-template-columns:1fr 1fr} .two{grid-template-columns:1fr} .wrap{padding:30px 16px 60px}
+  .restate{font-size:20px}
+}
+</style></head><body><div class="wrap">
+<div class="kicker">Business Overview</div>
+<h1>KLA Corporation <span style="color:var(--muted);font-weight:400">(NASDAQ: KLAC)</span></h1>
+<p class="srcline">5 September 2026 · Built from KLA's FY2022–FY2026 Forms 10-K and FY2026 Forms 10-Q, the FY2018/FY2019/FY2021 Forms 10-K via EDGAR, 38 quarterly earnings releases (8-K Exhibit 99.1) spanning FQ1 FY2017 to FQ4 FY2026, and the FQ4 FY2026 shareholder letter and slides of 28 July 2026; industry structure from SEMI, SIA and WSTS, from the filings of Applied Materials, ASML, Lam Research, Tokyo Electron, Onto Innovation, Nova, Camtek, Lasertec, Hitachi High-Tech and Skyverse, and from US Bureau of Industry and Security rule texts. <b>This is not a valuation and not a recommendation.</b></p>
+
+<div class="restate">KLA sells information, not transformation. Its tools remove no material, deposit nothing and print nothing — they find and measure the defects that would otherwise kill a chip, in fabs that now cost $17.5bn to tool at the 2-nanometre node.</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One process control tool, qualified into a customer's process of record.</div>
+  <div class="earns">KLA collects <b>70–90% of the contract value within 30–60 days of shipment</b>, the balance on acceptance. The tool then sits on that production line for its life, earning service revenue that scales with how hard the line runs. In FY2026 the installed base returned <b>$3.13bn of service revenue — 23.0% of total revenue</b>, and the process control segment earned a <b>44.8% segment margin</b> on 90.2% of revenue.</div>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Annuity yield on installed base</div><div class="v">5.0%</div><div class="s">FY2026 service revenue as a share of the $61.9bn of product shipped over FY2017–FY2026 (computed)</div></div>
+  <div class="kpi"><div class="k">Unit profit — segment margin</div><div class="v">44.8%</div><div class="s">Semiconductor Process Control segment profit margin, FY2026. The other two segments: 11.1% and 14.4%</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">$3.66</div><div class="s">FY2026 diluted EPS on $13.58bn revenue and a 41.7% operating margin — all three at record highs</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">0.53×</div><div class="s">Net leverage against a 3.25× covenant. $5.95bn gross debt, $4.90bn cash and securities, nothing due before 2029</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Peak</div><div class="s">Record on every reported metric; backlog +60% to $12.57bn. Last trough: −21% peak to trough, quarterly</div></div>
+  <div class="kpi"><div class="k">Organic vs reported growth</div><div class="v">+11.7%</div><div class="s">Identical — no acquisitions in FY2025 or FY2026. Contrast FY2019: +13.2% reported, +1.5% pro forma</div></div>
+</div>
+<p class="cap">Sources: FY2026 10-K; FQ4 FY2026 earnings release, 28 July 2026; FY2019 10-K pro forma disclosure. Annuity yield computed from reported product revenue FY2017–FY2026.</p>
+
+<h2>1 · What the business is</h2>
+<p>A modern logic chip is built by repeating one cycle — deposit a film, print a pattern, etch it away, clean the wafer — roughly a hundred times. Every repetition can introduce a particle, a misaligned layer, or a dimension a few nanometres out of tolerance, and one such flaw kills the die. The manufacturer cannot see any of it. KLA sells the instruments that look.</p>
+<p>They do three distinct jobs. <b>Inspection</b> scans a wafer or photomask for defects nobody knew were there and flags their coordinates. <b>Review</b> re-images a flagged defect at higher resolution so it can be classified and traced to the step that caused it. <b>Metrology</b> measures known quantities against specification — critical dimension, film thickness, layer-to-layer overlay, bump height on a packaged die. That three-way split is not KLA's marketing construct: the Chinese competitor Dongfang Jingyuan organises its own catalogue into exactly the same EBI, DR-SEM and CD-SEM lines.</p>
+<p>What a fab is really buying is the conversion of process uncertainty into yield, and what it has at risk has risen sharply. SEMI puts the tooling cost of 50,000 wafer starts per month at <b>$17.5bn at 2nm against $1.9bn at 90nm</b> — $350,000 of equipment per monthly wafer start versus $38,000, a 9.2-times increase before land, buildings or cleanroom (SEMI, 28 May 2025). That capital depreciates whether or not the die work, so fab profitability is dominated by the fraction that do.</p>
+<p>KLA does not disclose how many tools are installed, what one sells for, or what share of the base carries a service contract — all <span class="unk">NOT FOUND</span> across every filing reviewed, and a real limit on how precisely the unit can be quantified. What the filings do establish is the driver: service revenue is "typically a function of the number of systems installed at our customers' sites and the utilization of those systems," and of the rate of contract renewal. It is fee-for-usage on an installed base, not fee-for-access. KLA calls it "subscription-like"; the accurate description is a usage-linked annuity, which behaves similarly in a downturn but is not the same contract.</p>
+<p>Half of revenue sits in one product family. Wafer inspection was $6.63bn, or 49% of FY2026 revenue, with patterning 20% and services 23%. The 10-K names the concentration itself as a risk: "we derive a substantial percentage of our revenues from sales of inspection products." Outside process control, two small segments remain — Specialty Semiconductor Process ($584m) and PCB and Component Inspection ($750m) — and in March 2024 KLA ended manufacturing of most Display products, taking $289m of impairments in FY2024 and $239m more in FY2025. That exit is why PCB and Component Inspection swung from a $281m segment loss in FY2025 to a $108m profit in FY2026: the low-margin lines were destroying capital, not merely diluting the average.</p>
+
+<h2>2 · Industry structure, position and moat</h2>
+<p>Wafer fab equipment is a market of five buyers. SEMI's 2025 tally puts TSMC at $40.0bn of capital spending, Samsung $32.6bn, Intel $18.0bn, SK hynix $14.5bn and Micron $12.3bn — 75% of a $155.8bn total between them. Any vendor's revenue is a function of a handful of capital budgets.</p>
+<p>Those budgets are accelerating. SEMI records 2025 equipment billings of $135.1bn, up 15%, with WFE at $116.9bn, and its July 2026 forecast has WFE reaching <b>$143.9bn in 2026, up 23.1%</b>, DRAM equipment growing fastest at +39.0%. The revision matters as much as the level: seven months earlier SEMI had 2026 WFE at $126.2bn. A 14% upward revision to a year already under way is the clearest independent evidence that AI-driven demand hit the equipment market faster than the industry itself expected.</p>
+
+<h3>How concentrated process control actually is</h3>
+<p>No independent publisher sizes the sub-segment; SEMI's public segmentation stops at wafer processing, other front-end, test and assembly. The widely quoted figure — KLA at <b>58% of process control, roughly seven times its nearest competitor</b> — is KLA citing Gartner (KLA Q3 FY26 slides, April 2026), and should be read as company-cited third-party data, not published industry data.</p>
+<p>It can be bounded from competitors' own filings. Every identifiable rival's latest full-year revenue sums to roughly $4.2bn — Lasertec ~$1.5bn, Onto $1.01bn, Nova $0.88bn, Camtek $0.50bn, Skyverse ~$0.29bn — against KLA's $12.24bn process control segment. That alone puts KLA at 74% of identifiable revenue, an upper bound, because Applied Materials never breaks out its process control line, ASML discloses only the change in its metrology and inspection revenue and not the level, and Hitachi High-Tech buries CD-SEM inside a ¥821.7bn division. If 58% is right, the implied market is about $21bn and those three undisclosed businesses account for ~$4.5bn — internally consistent. The precise share cannot be verified; the order of magnitude can, and no disclosed competitor comes within eight times of KLA.</p>
+<p>Against the rest of WFE that leaves process control in the <em>second</em> tier of concentration. ASML is the sole supplier of EUV lithography anywhere. Tokyo Electron states share above 90% in coater/developer. Deposition and etch, by contrast, has three credible large suppliers competing across overlapping steps. Process control is more concentrated than deposition and etch, less than lithography or track.</p>
+
+<h3>What the peer margins reveal — the moat, identified</h3>
+<p>The industry contains a natural experiment: several companies doing substantially the same thing at very different scales.</p>
+<div class="tw"><table>
+<thead><tr><th>Company (latest FY)</th><th>Revenue</th><th>Gross margin</th><th>Operating margin</th><th>R&amp;D $m</th><th>R&amp;D % rev</th></tr></thead>
+<tbody>
+<tr class="tot"><td>KLA (FY2026)</td><td>$13.58bn</td><td>61.3%</td><td>41.7%</td><td>1,532</td><td>11.3%</td></tr>
+<tr><td>Lasertec (FY2026)</td><td>~$1.5bn</td><td>59.2%</td><td>45.7%</td><td>n/d</td><td>n/d</td></tr>
+<tr><td>ASML (CY2025)</td><td>€32.7bn</td><td>52.8%</td><td>34.6%</td><td>4,700</td><td>14.4%</td></tr>
+<tr><td>Lam Research (FY2026)</td><td>$23.23bn</td><td>50.5%</td><td>35.3%</td><td>2,370</td><td>10.2%</td></tr>
+<tr><td>Applied Materials (FY2025)</td><td>$28.37bn</td><td>48.7%</td><td>29.2%</td><td>3,575</td><td>12.6%</td></tr>
+<tr><td>Nova (CY2025)</td><td>$0.88bn</td><td>57.4%</td><td>28.8%</td><td>143</td><td>16.3%</td></tr>
+<tr><td>Camtek (CY2025)</td><td>$0.50bn</td><td>50.5%</td><td>25.8%</td><td>n/d</td><td>n/d</td></tr>
+<tr><td>Onto Innovation (CY2025)</td><td>$1.01bn</td><td>49.7%</td><td>13.2%</td><td>132</td><td>13.1%</td></tr>
+<tr><td>Skyverse (CY2025)</td><td>~$0.29bn</td><td>n/d</td><td>negative ex-items</td><td>~91</td><td>32.0%</td></tr>
+</tbody></table></div>
+<p class="cap">Each company's most recent results release or annual report. Operating margins computed where not presented as a subtotal; R&amp;D dollars for Lam, Applied Materials and ASML derived from reported revenue and reported R&amp;D intensity.</p>
+<p>Two things fall out, and the second is decisive. KLA's gross margin is the highest in wafer fab equipment, above even ASML's, because process control tools carry unusually little bought-in material relative to selling price. But <b>being in process control is not itself sufficient</b>: Onto Innovation, the closest pure-play comparator, earns a 13.2% operating margin on essentially the same product category — a third of KLA's — and its margin fell from 19.0% the year before, in a year its revenue still grew.</p>
+<p>The mechanism is that process control is a fixed-cost business whose fixed cost is R&amp;D, and that cost must be carried whatever the revenue base. KLA spends $1.53bn a year, more than the combined revenue of Nova and Camtek. Onto must spend 13.1% of revenue and Nova 16.3% — <em>higher</em> intensity than KLA's 11.3% — to fund an absolute budget roughly a tenth the size. Every node transition demands the same roadmap work from all of them; only one can spread it over $13.6bn of revenue. That is the whole margin gap, and it is self-reinforcing, because the largest R&amp;D budget is what wins the next generation of sockets.</p>
+
+<h3>Lock-in — corroborated from an unexpected direction</h3>
+<p>KLA claims that once a manufacturer selects a supplier's process control equipment it relies on that equipment for that line for an extended period. The claim is confirmed by a competitor's own SEC filing.</p>
+<div class="pull">"Once a manufacturer has selected a particular vendor's capital equipment, we believe that the manufacturer generally relies upon that equipment for the specific production line application… If a particular customer selects a competitor's capital equipment, we expect to experience difficulty in selling our solution to that customer for a significant period of time."<span class="attr">Nova Ltd, Form 20-F for FY2025 — a rival with every incentive to describe the market as contestable</span></div>
+<p>Each socket won is therefore a decade of product and service revenue, and each socket lost is lost for the life of that line. But lock-in binds <em>per line and per application</em>, which leaves new fabs and genuinely new applications open — and that is exactly where the smaller firms are winning. Onto disclosed a $240m volume purchase agreement with a leading HBM manufacturer for 2D inspection and 3D bump metrology running through 2027; Camtek and Nova both grew on advanced-packaging demand in 2025. Lock-in protects the installed base; it does not prevent share loss in emerging segments.</p>
+
+<h3>The Chinese entrants</h3>
+<p>The substitution question is best answered with the leading domestic challenger's own audited figures. Skyverse Technology reported 2025 revenue of RMB 2.05bn (~$286m), up 48.75%, with headline net income of RMB 58.7m that becomes a <b>loss of RMB 123m excluding non-recurring items</b>, on R&amp;D at 31.95% of revenue. Its own annual report describes coverage at "28nm and below." Dongfang Jingyuan's CD-SEM claims 0.25nm repeatability, which it states meets 28nm production requirements.</p>
+<p>Adding Jingce Electronics' semiconductor division (~$184m) puts identifiable Chinese domestic process control under $500m against KLA's $12.24bn — roughly <b>4%</b>, at 28nm rather than the leading edge, unprofitable on operations while spending three times KLA's R&amp;D intensity. The physics is plainly reproducible; the scale is not, yet. Domestic substitution is a credible multi-year threat to China's ~$49bn mature-node equipment market and is not currently a threat at the leading edge at all.</p>
+
+<h3>What kind of company wins here</h3>
+<p>Operating margin in this industry falls monotonically with scale, and R&amp;D intensity rises monotonically as scale falls. That is the signature of a business where the winner is whoever can spend the largest absolute R&amp;D number, amortise it over the largest installed base, and convert that base into an annuity that funds the roadmap through the trough. Breadth across inspection, review and metrology helps, because customers consolidate purchases with one vendor. Presence on the customer's R&amp;D and pilot lines helps more, because process control is bought during development, before capacity exists — which partly decouples demand from capacity capex.</p>
+<p>KLA is that kind of company, and on the disclosed evidence it is the only process control firm that is. Lasertec earns a higher operating margin but inside one narrow sub-segment, and its FY2026 revenue fell 8.3% — the cost of narrow scope. The honest qualification: KLA's advantage is not unique to process control as a category. It is the standard WFE playbook — dominant share in a technically deep segment, funded by R&amp;D scale, monetised through an installed base — executed in a segment that happens to have unusually low material content.</p>
+
+<h2>3 · Growth engine</h2>
+<p>Revenue grew 11.7% in FY2026 to $13.58bn, and 38% over the two years from the FY2024 trough. All of it is organic: KLA made no acquisitions in FY2025 or FY2026 and spent $3.7m in FY2024. Reported and organic growth are the same number, and reported growth in fact <em>understates</em> the underlying rate, because the FY2024 Display exit removed revenue from the base.</p>
+<p>That has not always been true. In FY2019 KLA reported growth of 13.2%. Its own unaudited pro forma — treating the Orbotech acquisition, which closed 20 February 2019 for $3.26bn, as owned in both years — puts like-for-like growth at <b>1.5%</b>, on pro forma revenue of $5,155m against $5,080m. Orbotech contributed $389m of revenue and a $62m net loss in four months. A reader taking the headline at face value would have concluded KLA sailed through the 2019 downcycle; in substance it was flat.</p>
+<p>The quarterly releases show how completely the acquisition masked it. Consolidated revenue fell only 2.0% from its December 2018 peak of $1,120m to $1,097m in March 2019 — but Orbotech closed on 20 February, inside the trough quarter. Read the Semiconductor Process Control segment alone and revenue fell from $1,094m to $914m: <b>−16.4% in a single quarter</b>. The legacy business contracted eight times more than the consolidated line suggests, and the divergence was largest exactly when it mattered most.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Growth decomposition</th><th>FY2019</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr></thead>
+<tbody>
+<tr><td>Reported revenue growth</td><td>+13.2%</td><td>−6.5%</td><td>+23.9%</td><td>+11.7%</td></tr>
+<tr><td>Acquisition contribution</td><td>+11.7 pts (Orbotech)</td><td>nil</td><td>nil</td><td>nil</td></tr>
+<tr class="tot"><td>Organic / pro forma growth</td><td>+1.5%</td><td>−6.5%</td><td>+23.9%</td><td>+11.7%</td></tr>
+<tr><td>— of which product</td><td>n/d</td><td>−11%</td><td>+27%</td><td>+10%</td></tr>
+<tr><td>— of which service</td><td>n/d</td><td>+10%</td><td>+15%</td><td>+16%</td></tr>
+</tbody></table></div>
+<p class="cap">FY2019 pro forma from the FY2019 10-K Business Combinations note; acquisition contribution derived as reported less pro forma. Product and service growth from the FY2024 and FY2026 Forms 10-K. Volume, price and mix cannot be separated — KLA discloses no unit volumes and no pricing mechanism (<span class="unk">NOT FOUND</span>).</p>
+
+<h3>The drivers, ranked</h3>
+<div class="lever structural"><div class="tag">Structural</div><div class="lt">Rising process control content per wafer at each node transition</div><p>Gate-all-around transistors replace a fin with stacked nanosheets, adding critical-dimension and thickness measurements that did not previously exist; backside power delivery adds a second interconnect stack on the wafer's reverse side, roughly duplicating the metal-layer inspection burden. TSMC put N2 into high-volume manufacturing in Q4 2025 and has A16, its backside-power node, on track for 2H 2026. Nova independently reports "record sales for Gate-All-Around" processes. The mechanism is well evidenced; the dollar uplift per wafer is published by no one — <span class="unk">(unknown)</span>.</p></div>
+<div class="lever cyclical"><div class="tag">Cyclical</div><div class="lt">Leading-edge foundry/logic and DRAM capital spending</div><p>TSMC guided 2026 capex to $52–56bn from $40.9bn in 2025, with 70–80% to advanced process technologies; SEMI has DRAM equipment growing 39.0% in 2026 to $38.8bn. This is the largest single contributor to FY2026 growth and the least durable. KLA's own 10-K says so: "while AI adoption is likely to continue and grow, the sustainability of such elevated investments cannot be assured."</p></div>
+<div class="lever structural"><div class="tag">Structural</div><div class="lt">Installed-base growth compounding into service</div><p>Service revenue rose 16% to $3.13bn, which KLA attributes directly to "growth in our installed base of tools." Every product sale mechanically enlarges next year's service base, so each product peak leaves a permanently higher annuity behind it. This is the one driver that ratchets.</p></div>
+<div class="lever structural"><div class="tag">Structural — but contested</div><div class="lt">Advanced packaging</div><p>HBM stacks twelve die on a logic base, so one bad die or bump scraps an assembly containing eleven good ones; defect cost multiplies with stack height, raising what a memory maker will pay to inspect every bond. KLA cites "strong customer adoption of our advanced packaging products," and PCB and Component Inspection grew 21% on the same demand. It is also where rivals are winning sockets — Onto's $240m HBM agreement is in exactly this application.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven, in part</div><div class="lt">Geographic mix shifting away from China</div><p>Taiwan revenue grew 13.7% to $3.64bn, Korea 26.2% to $1.83bn on high-bandwidth memory and advanced DRAM, and North America 29.0%, while China was flat in dollars. The shift toward leading-edge geographies is favourable for process control intensity — but it is the product of export controls as much as of commercial success.</p></div>
+<h3>How to read the guide</h3>
+<p>Guidance for the September 2026 quarter is revenue of $4.0bn ± $200m, 22.8% above the same quarter a year earlier at the midpoint. That number should not be read as a neutral forecast. Across the 24 quarters for which both a guide and the subsequent reported actual are on file, revenue landed above the guided midpoint <b>24 times</b>. It landed below zero times.</p>
+<div class="tw"><table>
+<thead><tr><th>Guided vs. delivered, 24 quarters</th><th>Above midpoint</th><th>At midpoint</th><th>Below midpoint</th><th>Outside range (high)</th></tr></thead>
+<tbody>
+<tr class="tot"><td>Total revenue</td><td>24</td><td>0</td><td>0</td><td>2</td></tr>
+<tr><td>Non-GAAP diluted EPS</td><td>23</td><td>1</td><td>0</td><td>3</td></tr>
+</tbody></table></div>
+<p class="cap">Guidance block and reported actuals in each 8-K Exhibit 99.1, FQ1 FY2020 and FQ2 FY2021 through FQ4 FY2026. The single at-midpoint result is FQ3 FY2024 non-GAAP EPS, which landed on $5.26 against a guided $5.26. Measured against the midpoint of the guided range.</p>
+<p>The average revenue beat is 3.1% and the median 2.7%, against a band roughly ±5% wide — so the typical outcome lands in the upper third of the range, quarter after quarter. Non-GAAP EPS beats average 5.8%. A distribution that tight and that one-sided is not forecasting error; it is a guide set at a level management expects to clear.</p>
+<p>The behaviour holds under stress, which is what makes it informative. Through the four quarters of the FY2024 downturn the revenue beat averaged 2.9% and the non-GAAP EPS beat 7.4% — <em>larger</em> earnings beats than in the recovery that followed. Management guided conservatively on the way down as reliably as on the way up. The practical consequence: $4.0bn is the number KLA expects to exceed, and on 24 quarters of precedent the realistic central case sits nearer $4.1bn. That is a behavioural regularity, not a commitment, and it would break the first time demand turned faster than the quarter it was guided in.</p>
+<p>Two qualifications. The pattern is only testable where guidance exists in the releases, and KLA did not print a numeric guide in the earnings release until October 2020 — so the FY2017–FY2020 quarters, including the whole 2019 downcycle, cannot be scored at all. And twice the guide being beaten had already been revised: the March 2019 quarter finished at the upper end of what the release calls "updated" guidance, and the March 2024 quarter is described as above "adjusted" guidance whose figures and rationale appear in no release. Against the original January 2024 guide, that quarter is the one that landed exactly on the midpoint.</p>
+<p>One counterweight on management's self-description: the FQ1 FY2023 release states revenue finished "above the respective guidance ranges." Revenue was $2,724.4m against a guided top end of $2,725m — inside the range by $0.6m. The EPS claims in the same sentence are correct. Small on a $2.7bn quarter, but it is the company describing a result marginally more favourably than the arithmetic supports.</p>
+
+<h2>4 · Margin, cash and capital allocation</h2>
+<p>Gross margin was 61.3% in FY2026 and operating margin 41.7%, both the highest in the comparable series — and the trend is secular, not a cyclical print that reverts. Gross margin has run 57.8, 59.9, 61.0, 59.8, 60.0, 60.9, 61.3 across FY2020–FY2026; operating margin 25.9, 36.0, 39.7, 38.1, 34.1, 39.3, 41.7. FY2026 exceeds the prior peak of 39.7% in FY2022 by 200 basis points.</p>
+
+<div class="figwrap">
+  <div class="figt">Revenue and operating margin, FY2017–FY2026</div>
+  <div class="figs">Operating margin is computed — KLA's income statement presents no operating income subtotal. FY2024, the last trough, is shaded lighter. FY2017–FY2019 from EDGAR filings; FY2020–FY2026 from the FY2022/FY2024/FY2026 Forms 10-K.</div>
+  <svg viewBox="0 0 820 340" width="100%" role="img" aria-label="KLA revenue and operating margin, FY2017 to FY2026"><line x1="54" y1="298.0" x2="766" y2="298.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="302.0" text-anchor="end" class="ax">0.0</text><line x1="54" y1="230.0" x2="766" y2="230.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="234.0" text-anchor="end" class="ax">3.5</text><line x1="54" y1="162.0" x2="766" y2="162.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="166.0" text-anchor="end" class="ax">7.0</text><line x1="54" y1="94.0" x2="766" y2="94.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="98.0" text-anchor="end" class="ax">10.5</text><line x1="54" y1="26.0" x2="766" y2="26.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="30.0" text-anchor="end" class="ax">14.0</text><text x="46" y="16" text-anchor="end" class="axlab">$bn</text><rect x="71.1" y="230.4" width="37.0" height="67.6" fill="var(--terracotta)" rx="2"/><text x="89.6" y="314" text-anchor="middle" class="ax">17</text><rect x="142.3" y="219.6" width="37.0" height="78.4" fill="var(--terracotta)" rx="2"/><text x="160.8" y="314" text-anchor="middle" class="ax">18</text><rect x="213.5" y="209.2" width="37.0" height="88.8" fill="var(--terracotta)" rx="2"/><text x="232.0" y="314" text-anchor="middle" class="ax">19</text><rect x="284.7" y="185.2" width="37.0" height="112.8" fill="var(--terracotta)" rx="2"/><text x="303.2" y="314" text-anchor="middle" class="ax">20</text><rect x="355.9" y="163.6" width="37.0" height="134.4" fill="var(--terracotta)" rx="2"/><text x="374.4" y="314" text-anchor="middle" class="ax">21</text><rect x="427.1" y="119.0" width="37.0" height="179.0" fill="var(--terracotta)" rx="2"/><text x="445.6" y="314" text-anchor="middle" class="ax">22</text><rect x="498.3" y="94.1" width="37.0" height="203.9" fill="var(--terracotta)" rx="2"/><text x="516.8" y="314" text-anchor="middle" class="ax">23</text><rect x="569.5" y="107.4" width="37.0" height="190.6" fill="#E0A38F" rx="2"/><text x="588.0" y="314" text-anchor="middle" class="ax">24</text><rect x="640.7" y="61.8" width="37.0" height="236.2" fill="var(--terracotta)" rx="2"/><text x="659.2" y="314" text-anchor="middle" class="ax">25</text><rect x="711.9" y="34.2" width="37.0" height="263.8" fill="var(--terracotta)" rx="2"/><text x="730.4" y="314" text-anchor="middle" class="ax">26</text><polyline points="89.6,116.3 160.8,101.1 232.0,184.8 303.2,233.8 374.4,123.9 445.6,83.7 516.8,101.1 588.0,144.6 659.2,88.0 730.4,61.9" fill="none" stroke="var(--blue)" stroke-width="2.4"/><circle cx="89.6" cy="116.3" r="3" fill="var(--blue)"/><circle cx="160.8" cy="101.1" r="3" fill="var(--blue)"/><circle cx="232.0" cy="184.8" r="3" fill="var(--blue)"/><circle cx="303.2" cy="233.8" r="3" fill="var(--blue)"/><circle cx="374.4" cy="123.9" r="3" fill="var(--blue)"/><circle cx="445.6" cy="83.7" r="3" fill="var(--blue)"/><circle cx="516.8" cy="101.1" r="3" fill="var(--blue)"/><circle cx="588.0" cy="144.6" r="3" fill="var(--blue)"/><circle cx="659.2" cy="88.0" r="3" fill="var(--blue)"/><circle cx="730.4" cy="61.9" r="3" fill="var(--blue)"/><text x="774" y="247.6" text-anchor="start" class="ax" fill="var(--blue)">25%</text><text x="774" y="138.8" text-anchor="start" class="ax" fill="var(--blue)">35%</text><text x="774" y="30.0" text-anchor="start" class="ax" fill="var(--blue)">45%</text><text x="85.6" y="102.3" text-anchor="start" class="slab" fill="var(--blue)">Operating margin (right)</text><text x="659.2" y="49.8" text-anchor="middle" class="slab" fill="var(--terracotta)">Revenue (left)</text></svg>
+</div>
+<p class="cap">The 2019 downcycle is invisible in reported revenue because Orbotech closed in February 2019 — but the margin damage is not: operating margin fell from 38.1% to 30.4% and then to 25.9%, and much of that decline is the mix effect of Orbotech's lower-margin lines rather than the cycle.</p>
+
+<p>Two things need stating before that series is used. First, KLA publishes no realised gross margin in its earnings releases — only guidance ranges — so every margin figure here is computed from reported revenue and cost of revenues. Second, GAAP earnings are repeatedly distorted by discrete items large enough to invert the comparison: a $394.5m one-time tax benefit in the September 2021 quarter lifted GAAP EPS above its own guided range, while impairments of $219.0m ($1.59/share) in December 2023 and $239.1m ($1.76/share) in December 2024 cut it. All three sit outside the operating business; the last two attach to the non-semiconductor segments.</p>
+<p>Orbotech also reset the margin base permanently downward, which is why pre-2019 margins are not comparable to today. KLA ran <b>63–65% gross margin through FY2017–FY2018</b>. Orbotech's lower-margin lines, plus roughly $40m a quarter of ongoing acquisition amortisation charged to cost of revenues, took the consolidated figure to about 60% — and it has taken seven years to work back to 61.3%. Measured against the pre-Orbotech base, FY2026's record margin is a recovery, not an all-time high.</p>
+<p>The FY2025-to-FY2026 gross margin bridge is unusually plain: 60.9% plus 0.5 points of revenue volume, minus 0.2 of mix, plus 0.2 of manufacturing efficiency, minus 0.1 of other service and manufacturing cost — the last including higher installation and warranty cost and "increased costs due to tariffs." The gain came from operating leverage on volume, not from price. Below the gross line, R&amp;D at 11.3% of revenue and SG&amp;A at 8.3% both fell as a percentage even as R&amp;D dollars rose 13%, which is where most of the 240 basis points of operating margin expansion came from.</p>
+
+<h3>Where the profit actually is</h3>
+<div class="tw"><table>
+<thead><tr><th>FY2026 segment</th><th>Revenue $m</th><th>% of revenue</th><th>Segment profit $m</th><th>Segment margin</th><th>% of profit</th></tr></thead>
+<tbody>
+<tr class="tot"><td>Semiconductor Process Control</td><td>12,245</td><td>90.2%</td><td>5,483</td><td>44.8%</td><td>96.9%</td></tr>
+<tr><td>Specialty Semiconductor Process</td><td>584</td><td>4.3%</td><td>65</td><td>11.1%</td><td>1.1%</td></tr>
+<tr><td>PCB and Component Inspection</td><td>750</td><td>5.5%</td><td>108</td><td>14.4%</td><td>1.9%</td></tr>
+<tr><td>Total</td><td>13,579</td><td>100%</td><td>5,655</td><td>—</td><td>100%</td></tr>
+</tbody></table></div>
+<p class="cap">FY2026 10-K, Note 17. Segment profit excludes interest, other income, restructuring, FX and corporate costs. Margins and profit shares computed.</p>
+<p>Process control is 90.2% of revenue and <b>96.9% of segment profit</b>. The two smaller segments contribute 9.8% of revenue and 3.1% of profit, and one of them lost $281m as recently as FY2025. Anyone modelling KLA as a diversified equipment company is modelling something that does not exist.</p>
+
+<h3>The financial spine</h3>
+<div class="tw"><table>
+<thead><tr><th></th><th>FY2019</th><th>FY2022</th><th>FY2024</th><th>FY2026</th></tr></thead>
+<tbody>
+<tr><td>Revenue ($m)</td><td>4,569</td><td>9,212</td><td>9,812</td><td>13,579</td></tr>
+<tr><td>Gross margin</td><td>59.1%</td><td>61.0%</td><td>60.0%</td><td>61.3%</td></tr>
+<tr><td>Operating margin</td><td>30.4%</td><td>39.7%</td><td>34.1%</td><td>41.7%</td></tr>
+<tr><td>Service % of revenue</td><td>25.8%</td><td>20.7%</td><td>23.7%</td><td>23.0%</td></tr>
+<tr><td>Diluted EPS (split-adjusted)</td><td>$0.75</td><td>$2.19</td><td>$2.03</td><td>$3.66</td></tr>
+<tr><td>Operating cash flow ($m)</td><td>1,153</td><td>3,313</td><td>3,309</td><td>4,143</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Comparability warnings.</b> FY2019 includes only four months of Orbotech (closed 20 February 2019) and carries the mix effect of its lower-margin lines. FY2024 and FY2026 exclude most Display products following the March 2024 exit. All per-share figures are restated for the ten-for-one stock split of 11 June 2026, so FY2019–FY2024 EPS above is one-tenth of the figure as originally reported. Years chosen to show the shape of the change, not every year available.</p>
+
+<p>Cash conversion is close to complete and barely cyclical: FY2026 operating cash flow of $4.14bn against $4.83bn of net income is 86% conversion, and capex is only $376m, 2.8% of revenue — because the capital-intensive step in this value chain is the customer's fab, not KLA's factory. Free cash flow was $3.77bn. The working-capital drag is visible and worth watching: receivables rose to $2.89bn from $2.26bn, taking days sales outstanding from 68 to 78 (computed; KLA does not disclose it), and inventory rose to $3.65bn. Cash generation held through the last downturn — $3.31bn of operating cash flow in FY2024, down only 9.8%, in the year revenue fell 6.5%.</p>
+
+<h3>Capital allocation, ranked</h3>
+<div class="tw"><table>
+<thead><tr><th>Use of cash, FY2024–FY2026</th><th>$m</th><th>What it says</th></tr></thead>
+<tbody>
+<tr><td>Share repurchases</td><td>6,175</td><td>The swing variable. Share count −16.5% since FY2020, ~2.9%/yr</td></tr>
+<tr><td>Dividends</td><td>2,735</td><td>17th consecutive annual increase, on a deliberately low 21.9% payout</td></tr>
+<tr><td>Capital expenditure</td><td>989</td><td>2.8% of FY2026 revenue — the business needs little reinvested capital</td></tr>
+<tr><td>Debt repayment</td><td>750</td><td>FY2025 only. Nothing matures before 2029</td></tr>
+<tr><td>Acquisitions</td><td>4</td><td>Effectively closed as a use of capital since Orbotech</td></tr>
+</tbody></table></div>
+<p class="cap">FY2024, FY2025 and FY2026 Consolidated Statements of Cash Flows, summed. Repurchase authorisation stood at $9.74bn at year end after a $7.00bn increase in March 2026; the 10-K notes "a portion of the remaining repurchases may be financed with new indebtedness."</p>
+<p>That ranking reads differently alongside what happened to the one large acquisition KLA has made. Orbotech closed in February 2019 for $3.26bn. In the March 2020 quarter — roughly thirteen months later — KLA took a <b>$256.6m goodwill impairment</b> against it, $1.63 per share, attributing the charge to "the downward revision of financial outlook for the acquired Orbotech business" as well as pandemic conditions. Further impairments of $289m in FY2024 and $239m in FY2025 fell on the same acquired PCB and Display businesses, and KLA exited most of Display in March 2024. The "meaningful cost synergies" promised at announcement were never quantified in any later release. The observable record: the acquired assets were written down repeatedly and partly divested, and no acquisition of consequence has been attempted since.</p>
+<p>At an Investor Day on 12 March 2026 KLA published a 2030 target model: revenue of $26bn ± $2.5bn, gross margin ~63.5%, operating margin 45–47%, diluted EPS of $8.40 ± $0.80 post-split, and more than 90% of free cash flow returned — resting on an ~11% semiconductor industry CAGR, wafer equipment growing a point faster to $215bn ± $20bn, KLA's share of wafer equipment rising more than 150 basis points, and services growing 13–15%. Against FY2026 actuals that implies roughly a 17% revenue CAGR and a 22% EPS CAGR. Its prior 2026 model called for $14bn ± $500m at 41–43% operating margin; FY2026 delivered $13.58bn at 41.7%, inside both bands, though GAAP gross margin of 61.3% fell short of the ~63% target. No transaction has been announced that post-dates the FY2026 figures.</p>
+
+<h2>5 · Cyclicality and where the business sits now</h2>
+<p>KLA is exposed to a capital cycle driven by five customers, and it has been through two recent downturns of very different character. The 2019 downcycle cut total equipment billings 7.3%, from $64.5bn to $59.8bn, and was regionally violent — Korea −44%, Japan −34%, Europe −46%, while Taiwan rose 68%. The 2023 downturn cut aggregate billings only 1.3%, but the composition was severe: assembly and packaging −30%, test −17%, while front-end wafer processing actually <em>grew</em> 1%. The front end has become the stable core of the equipment market, and process control sits in the front end.</p>
+<p>KLA's FY2024 is the clean measurement of the trough. Revenue fell 6.5% to $9.81bn, product revenue fell 11%, operating margin fell to 34.1%. Two comparisons give that meaning: <b>Lam Research, on an identical June fiscal year-end, saw revenue fall 14.5% over the same twelve months</b> — more than twice the decline — and KLA's own service revenue <b>rose 10% through the trough</b>.</p>
+<p>But the fiscal year is the wrong window, and using it alone understates what the business went through. The quarterly releases put the peak at $2,984m in December 2022 and the trough at $2,355m in June 2023 — <b>−21.1% in six months</b>, after which revenue sat between $2.36bn and $2.49bn for five consecutive quarters before recovering. A June year-end splits that contraction across FY2023 and FY2024 and reports neither year as worse than −6.5%. The honest statement: revenue fell about a fifth peak to trough and stayed down for over a year — while remaining comfortably profitable, with operating margin never below 34.1% and operating cash flow never below $3.3bn in any fiscal year.</p>
+
+<div class="figwrap">
+  <div class="figt">Product versus service revenue, FY2017–FY2026 ($bn)</div>
+  <div class="figs">The FY2024 divergence is the single most important structural fact about KLA's cyclicality: product revenue fell 11% while service revenue grew 10%.</div>
+  <svg viewBox="0 0 820 320" width="100%" role="img" aria-label="KLA product versus service revenue, FY2017 to FY2026"><line x1="54" y1="278.0" x2="756" y2="278.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="282.0" text-anchor="end" class="ax">0.0</text><line x1="54" y1="215.0" x2="756" y2="215.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="219.0" text-anchor="end" class="ax">2.8</text><line x1="54" y1="152.0" x2="756" y2="152.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="156.0" text-anchor="end" class="ax">5.5</text><line x1="54" y1="89.0" x2="756" y2="89.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="93.0" text-anchor="end" class="ax">8.2</text><line x1="54" y1="26.0" x2="756" y2="26.0" stroke="var(--line)" stroke-width="1"/><text x="46" y="30.0" text-anchor="end" class="ax">11.0</text><text x="46" y="16" text-anchor="end" class="axlab">$bn</text><text x="54.0" y="294" text-anchor="middle" class="ax">17</text><text x="132.0" y="294" text-anchor="middle" class="ax">18</text><text x="210.0" y="294" text-anchor="middle" class="ax">19</text><text x="288.0" y="294" text-anchor="middle" class="ax">20</text><text x="366.0" y="294" text-anchor="middle" class="ax">21</text><text x="444.0" y="294" text-anchor="middle" class="ax">22</text><text x="522.0" y="294" text-anchor="middle" class="ax">23</text><text x="600.0" y="294" text-anchor="middle" class="ax">24</text><text x="678.0" y="294" text-anchor="middle" class="ax">25</text><text x="756.0" y="294" text-anchor="middle" class="ax">26</text><polyline points="54.0,216.1 132.0,205.6 210.0,200.3 288.0,178.8 366.0,158.0 444.0,110.7 522.0,86.0 600.0,106.6 678.0,61.0 756.0,38.5" fill="none" stroke="var(--terracotta)" stroke-width="2.6"/><circle cx="54.0" cy="216.1" r="3" fill="var(--terracotta)"/><circle cx="132.0" cy="205.6" r="3" fill="var(--terracotta)"/><circle cx="210.0" cy="200.3" r="3" fill="var(--terracotta)"/><circle cx="288.0" cy="178.8" r="3" fill="var(--terracotta)"/><circle cx="366.0" cy="158.0" r="3" fill="var(--terracotta)"/><circle cx="444.0" cy="110.7" r="3" fill="var(--terracotta)"/><circle cx="522.0" cy="86.0" r="3" fill="var(--terracotta)"/><circle cx="600.0" cy="106.6" r="3" fill="var(--terracotta)"/><circle cx="678.0" cy="61.0" r="3" fill="var(--terracotta)"/><circle cx="756.0" cy="38.5" r="3" fill="var(--terracotta)"/><text x="756.0" y="24.5" text-anchor="end" class="slab" fill="var(--terracotta)">Product</text><polyline points="54.0,260.2 132.0,257.9 210.0,251.0 288.0,244.1 366.0,239.6 444.0,234.2 522.0,229.5 600.0,224.6 678.0,216.5 756.0,206.4" fill="none" stroke="var(--blue)" stroke-width="2.6"/><circle cx="54.0" cy="260.2" r="3" fill="var(--blue)"/><circle cx="132.0" cy="257.9" r="3" fill="var(--blue)"/><circle cx="210.0" cy="251.0" r="3" fill="var(--blue)"/><circle cx="288.0" cy="244.1" r="3" fill="var(--blue)"/><circle cx="366.0" cy="239.6" r="3" fill="var(--blue)"/><circle cx="444.0" cy="234.2" r="3" fill="var(--blue)"/><circle cx="522.0" cy="229.5" r="3" fill="var(--blue)"/><circle cx="600.0" cy="224.6" r="3" fill="var(--blue)"/><circle cx="678.0" cy="216.5" r="3" fill="var(--blue)"/><circle cx="756.0" cy="206.4" r="3" fill="var(--blue)"/><text x="756.0" y="192.4" text-anchor="end" class="slab" fill="var(--blue)">Service</text><line x1="600.0" y1="26" x2="600.0" y2="278" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/><text x="594.0" y="40" text-anchor="end" class="slab" fill="var(--muted)">FY24: product −11%, service +10%</text></svg>
+</div>
+<p class="cap">Reported product and service revenue, FY2018/FY2021/FY2022/FY2024/FY2026 Forms 10-K.</p>
+
+<p>The quarterly record makes the annuity claim much harder to argue with than the annual one does. Across the 21 quarters from September 2016 to June 2021, service revenue declined sequentially <b>exactly once, by 0.2%</b>. It grew through both of the last two downturns, and grew fastest precisely where product fell hardest: in the March 2019 quarter product revenue fell 6.9% sequentially while service rose 13.6%; in the March 2020 quarter product fell 8.2% while service rose 2.2%. Service as a share of revenue peaks when product troughs — 27.7% at the March 2019 low. That is the shock absorber working, visible twice, in two structurally different downturns.</p>
+<p>Nor is it unique to KLA — ASML's installed base management revenue is 25% of sales and grew 26% in 2025, Applied's services arm is 22.5% of revenue, and Lasertec's FY2026 service revenue rose 36.5% while its product sales fell 17.2%. A quarter of the equipment industry's revenue is now installed-base-driven rather than capex-driven, and that has flattened the cycle for everyone in it. The remaining caveat is about scale rather than the mechanism: Onto — process control <em>without</em> it — saw operating margin fall from 19.0% to 13.2% in a year revenue grew. Sub-scale process control is more cyclical, not less.</p>
+<p><b>Right now KLA sits at the peak on every metric it reports.</b> FY2026 revenue, gross margin, operating margin, net income, operating cash flow and EPS are all the highest in the observable series. Backlog rose 60% to $12.57bn, 0.93 times a year's revenue, "due to strong demand driven by the AI infrastructure buildout" — though KLA attaches an unusually direct caveat, that backlog "does not provide meaningful information about the timing of future revenue recognition" and could "result in order modifications, rescheduling or even cancellations." Its shareholder letter puts second-half calendar 2026 revenue about 20% above the first half and raised its wafer equipment view to "approximately the low $150 billion range in calendar 2026." This is a cycle-peak print with an accelerating order book behind it, not a mid-cycle one.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Exposure</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr></thead>
+<tbody>
+<tr class="tot"><td>China</td><td>42.8%</td><td>33.3%</td><td>29.8%</td></tr>
+<tr><td>Taiwan</td><td>17.7%</td><td>26.4%</td><td>26.8%</td></tr>
+<tr><td>Korea</td><td>9.2%</td><td>11.9%</td><td>13.5%</td></tr>
+<tr><td>North America</td><td>10.9%</td><td>11.2%</td><td>13.0%</td></tr>
+<tr><td>Japan</td><td>9.8%</td><td>9.3%</td><td>6.7%</td></tr>
+<tr><td>Europe, Israel and rest of Asia</td><td>9.6%</td><td>7.9%</td><td>10.2%</td></tr>
+<tr><td>Largest single customer (TSMC)</td><td>~13%</td><td>~19%</td><td>~19%</td></tr>
+</tbody></table></div>
+<p class="cap">FY2026 10-K, Note 17 and MD&amp;A. China's revenue was flat in dollars in FY2026 while the rest of the business grew. End-market mix is separately volatile: for process control systems, the June 2026 quarter was 79% foundry/logic and 21% memory, the March quarter 62%/38%, and KLA guided September back to roughly 73%/27% — do not annualise any single quarter.</p>
+
+<div class="pull">"While market conditions remain challenging in the near-term, with limited visibility regarding the timing of a resumption in sustainable demand, we believe our business has stabilized around current revenue levels."<span class="attr">Rick Wallace, January 2024 release — the bottom of the cycle. Three months later: "market conditions have stabilized and we expect our business levels to improve." Across the whole downturn the framing never described demand as deteriorating further; it moved directly from "challenging" to "stabilized." The calls were, in the event, correct.</span></div>
+
+<h3>A downside case, as a mechanism</h3>
+<p>China's equipment spending has already flatlined — roughly $49.3bn in 2025 against $49.6bn in 2024, while global spend grew 15% — and that plateaued spend sits at exactly the mature nodes where Skyverse is growing 48.75% a year. If domestic Chinese suppliers capture that market while export controls tighten what KLA may ship and service there, KLA's revenue base shrinks while its R&amp;D roadmap does not slow: GAA, backside power, High-NA and HBM stacking all continue. R&amp;D intensity rises from 11.3% toward the 13–16% the sub-scale peers carry, and operating margin compresses toward theirs. Onto's 2025 is the working example of that arithmetic — opex outran a stalled revenue base, and margins fell in a year revenue still grew.</p>
+
+<h3>Durable versus borrowed</h3>
+<div class="two">
+<div class="card"><h4 style="color:var(--good)">Durable — likely intact in ten years</h4><ul>
+<li>Process control share and the R&amp;D scale that funds it</li>
+<li>The service annuity: 23% of revenue, and only one sequential decline in 21 quarters</li>
+<li>Process-of-record lock-in, corroborated by a competitor's own 20-F</li>
+<li>Rising measurement steps per wafer as node architectures add dimensions</li>
+<li>Low capital intensity — capex 2.8% of revenue, ~86% cash conversion</li>
+</ul></div>
+<div class="card"><h4 style="color:var(--terracotta)">Borrowed — currently helping, will not repeat</h4><ul>
+<li>Peak AI-driven capital spending: WFE +23.1% in 2026, on a forecast revised up 14% mid-year</li>
+<li>Backlog at 0.93× revenue, which KLA itself says may be modified, rescheduled or cancelled</li>
+<li>A June-quarter foundry/logic mix of 79%, guided back to ~73%</li>
+<li>Absence of impairments: FY2024 and FY2025 carried $289m and $239m; FY2026 carried none</li>
+<li>A 13.8% effective tax rate resting on Singapore and Israel profits, with Pillar Two phasing in</li>
+</ul></div>
+</div>
+
+<h2>6 · Risks that cyclicality does not capture</h2>
+<div class="lever"><div class="tag">Compounds</div><div class="lt">The export-control ratchet has a feedback loop written into it</div><p>The October 2023 BIS rule sets a "presumption of approval" for licences where foreign-made alternatives exist performing equivalent functions (88 FR 73424) — so every increment of Chinese domestic capability <em>loosens</em> US licensing for non-US competitors. Separately, the October 2022 rule bars US persons from supporting production of controlled ICs in China, including "the shipment, transmission, or transfer of any item not subject to the EAR," which reaches field service engineers and so attacks the annuity rather than only new tool sales. And the Affiliates Rule, extending Entity List restrictions to any entity 50% or more owned by a listed party, was suspended in November 2025 for one year and <b>reimposes automatically on 10 November 2026</b> absent further action. Three mechanisms — licensing, servicing, counterparty scope — that reinforce rather than substitute for each other.</p></div>
+<div class="lever"><div class="tag">Already realised</div><div class="lt">Concrete damage from export controls, not merely threatened</div><p>The FY2026 10-K states that failure to obtain export licences "has harmed and could continue to harm our backlog, requiring us to return substantial deposits received from customers in China," and that products destined for China "have been held up by U.S. Customs and Border Protection." No dollar quantification of revenue foregone is given anywhere — <span class="unk">NOT FOUND</span> — which is itself a gap an investor would want closed.</p></div>
+<div class="lever"><div class="tag">Concentration</div><div class="lt">One customer at ~19%, with non-recoverable costs attached</div><p>TSMC was ~19% of revenue in FY2026 and FY2025, against 13% in FY2024. Because tools are configured to customer specification, the 10-K notes that "any changes, delays or cancellations of orders may result in significant, non-recoverable costs" — so one customer's deferral is both a revenue and a cost event. Consolidation among chipmakers gives survivors "greater commercial negotiating leverage."</p></div>
+<div class="lever"><div class="tag">Structural asymmetry</div><div class="lt">Customers can cut process control without cutting output</div><p>KLA's own risk factor names it: customers "could reduce their available budgets for process control equipment by reducing inspection and metrology sampling rates," and can reuse installed tools rather than buying new. Because process control is a sampling activity rather than a production step, it is the one WFE category a fab under cost pressure can dial back without cutting capacity.</p></div>
+<div class="lever"><div class="tag">Erosion from within</div><div class="lt">Integration by rivals, insourcing by customers</div><p>The 10-K flags "possible introduction of integrated products by our larger competitors that offer inspection and metrology functionality" — deposition and etch vendors embedding in-situ sensing so a separate measurement step becomes unnecessary — and warns that AI could "accelerate vertical integration or insourcing by customers." Neither has visibly happened; both would attack the number of tools sold rather than their price.</p></div>
+<div class="lever"><div class="tag">Named, quantified, FY2027</div><div class="lt">A DRAM chip shortage inside KLA's own bill of materials</div><p>Large suppliers have discontinued certain DRAM chips used in KLA's products, and the shortage "caused a dramatic increase in the prices" to acquire them. KLA states plainly: "We estimate that the additional costs to procure these DRAM chips will continue to have an adverse impact on our gross margin in fiscal 2027." Purchase commitments stand at $5.97bn, up partly on this. Separately, China's October 2025 rare-earth controls apply to foreign-made items containing Chinese-origin rare earths above 0.1% of item value and explicitly name permanent magnets and sputtering targets — both inputs to semiconductor capital equipment. No equipment maker has disclosed a quantified impact.</p></div>
+
+<h3>What the sources could not answer</h3>
+<p>These are findings, not omissions. Each would materially sharpen a view of the business.</p>
+<div class="card"><ul style="margin:0;padding-left:19px">
+<li style="margin-bottom:9px"><b>Installed base size, tool ASP, service attach rate and contract length</b> — none disclosed in any KLA filing. Without them the unit economics can be described but not quantified, and the annuity's durability cannot be tested against contracted versus transactional revenue.</li>
+<li style="margin-bottom:9px"><b>Process control as a share of WFE, over time.</b> No independent publisher produces this series. It is the one figure that would confirm or refute the central claim that process control intensity is rising — and on the crude available comparison, KLA's revenue grew ~38% from FY2024 to FY2026 while WFE grew ~42% from 2024 to 2026, which does not obviously demonstrate share gain, though the fiscal-calendar mismatch and China headwind make the comparison unreliable.</li>
+<li style="margin-bottom:9px"><b>The dollar size of the process control market</b> from any source other than KLA citing Gartner, and <b>Applied Materials' process control revenue</b>, which it has never broken out. Without them the 58% share and "seven times the nearest competitor" can be bounded but not verified.</li>
+<li style="margin-bottom:9px"><b>Process control dollars added per wafer</b> by gate-all-around, backside power delivery or High-NA EUV. The mechanism is clear; no source quantifies it.</li>
+<li style="margin-bottom:9px"><b>Revenue actually lost to export controls</b>, and how much China revenue is serviceable under current rules versus at risk if the Affiliates Rule reimposes.</li>
+<li style="margin-bottom:9px"><b>KLA's pricing mechanism</b> — how prices are set, how often they move, and what happened to price in the FY2024 volume decline. Neither the filings nor the earnings releases address it, so the volume/price/mix decomposition cannot be completed.</li>
+<li style="margin-bottom:9px"><b>The revised figures behind the "adjusted guidance"</b> KLA refers to for the March 2024 quarter, and the reason for the revision. Neither appears in any release, leaving the one quarter in 24 whose beat cannot be independently verified.</li>
+<li style="margin-bottom:9px"><b>Guidance history before October 2020</b>, when KLA began printing a numeric guide in the release itself. The entire 2019 downcycle therefore cannot be scored for guidance-versus-delivery from these documents.</li>
+<li><b>Four earnings releases still missing</b> from the archive — the FY2017, FY2018, FY2019 and FY2020 fourth-quarter releases, filed under a naming convention the collector did not match. They carry the full-year results and commentary for the prior cycle, including the June 2019 trough quarter.</li>
+</ul></div>
+
+<h3>What to monitor, and where it is published</h3>
+<div class="tw"><table>
+<thead><tr><th>Indicator</th><th>Why it matters</th><th>Where published</th></tr></thead>
+<tbody>
+<tr><td>China % of revenue</td><td>The clearest single reading of export-control and substitution pressure: 42.8% → 33.3% → 29.8%</td><td>10-K risk factors and MD&amp;A; quarterly shareholder letter</td></tr>
+<tr><td>Service growth in a down quarter</td><td>Tests the de-cyclicalisation argument, which rests on one observation</td><td>Quarterly earnings release</td></tr>
+<tr><td>R&amp;D % of revenue</td><td>Above 13% signals fixed cost spreading over a shrinking base</td><td>Quarterly earnings release</td></tr>
+<tr><td>Revenue vs. guided midpoint</td><td>24 consecutive quarters above it; the first that is not would say more about the demand turn than any single revenue figure</td><td>Quarterly earnings release</td></tr>
+<tr><td>Backlog at fiscal year end</td><td>The gap between $12.57bn and revenue recognised is where cancellation risk shows</td><td>Item 1 of the 10-K</td></tr>
+<tr><td>SEMI billings and forecast</td><td>The July 2026 revision showed how fast this series moves</td><td>semi.org — April actuals, December and July forecasts</td></tr>
+<tr><td>Skyverse revenue, node coverage, ex-items result</td><td>Profitability at scale would signal genuine rather than subsidised competitiveness</td><td>Annual report, Shanghai STAR board</td></tr>
+<tr><td>BIS Affiliates Rule extension</td><td>Reimposes automatically 10 November 2026</td><td>Federal Register</td></tr>
+</tbody></table></div>
+
+<h2>7 · Investor takeaways</h2>
+<div class="card"><ul style="margin:0;padding-left:19px">
+<li style="margin-bottom:10px"><b>What this business really is.</b> The dominant supplier of information about defects, sold to five buyers whose fabs now cost $17.5bn to tool at 2nm — not a diversified equipment company, but a process control business with two small appendages contributing 3% of profit.</li>
+<li style="margin-bottom:10px"><b>The core economic engine.</b> R&amp;D scale amortised over an installed base. A $1.53bn budget at 11.3% of revenue against pure-play rivals spending 13–32% of much smaller revenue is the entire explanation for a 41.7% operating margin against Onto's 13.2%.</li>
+<li style="margin-bottom:10px"><b>The main growth lever.</b> Rising measurement content per wafer as node architectures add dimensions — structural — riding on a leading-edge capital cycle that is at a peak and is not.</li>
+<li style="margin-bottom:10px"><b>What could break the story.</b> Not a better tool from a rival, but erosion of the base that funds the roadmap: China at 29.8% of revenue and falling, domestic substitution advancing at 28nm, and a licensing rule that makes rival capability self-reinforcing.</li>
+<li style="margin-bottom:10px"><b>Management guides to be beaten.</b> Revenue has landed above the guided midpoint in all 24 quarters on file, by an average of 3.1%, and beat by more during the downturn than the recovery. Read the September 2026 guide of $4.0bn accordingly.</li>
+<li><b>What to monitor.</b> China revenue percentage, service growth in the next down quarter, R&amp;D as a percentage of revenue, and whether the Affiliates Rule is extended before 9 November 2026.</li>
+</ul></div>
+
+<footer>
+<h3>Sources</h3>
+<p><b>Company.</b> KLA Forms 10-K for FY2022–FY2026 and Forms 10-Q for FY2026 (local research folder); Forms 10-K for FY2018, FY2019 and FY2021 via SEC EDGAR (CIK 0000319201); 38 quarterly earnings releases filed as 8-K Exhibit 99.1, FQ1 FY2017 through FQ4 FY2026 — the FY2017, FY2018, FY2019 and FY2020 fourth-quarter releases are absent from the archive and their absence is noted wherever it constrains a conclusion; FQ4 FY2026 shareholder letter and slide presentation, 28 July 2026; Investor Day release, 12 March 2026.</p>
+<p><b>Industry.</b> SEMI equipment billings (April 2020, 2024, 2025, 2026) and equipment forecasts (December 2024, December 2025, July 2026); SEMI capex presentation, 28 May 2025; SEMI 300mm fab outlook, 1 April 2026; SIA, February 2026; WSTS Spring 2026.</p>
+<p><b>Competitors.</b> Applied Materials FY2025 results; ASML 2025 Annual Report; Lam Research FY2026 and FY2024 results; Tokyo Electron FY2026 results; Onto Innovation, Nova and Camtek FY2025 results; Nova Ltd Form 20-F FY2025; Lasertec FY2026 tanshin, 6 August 2026; Hitachi High-Tech FY2025 results; Skyverse 2025 Annual Report, 24 April 2026; Jingce Electronics 2025 results; Dongfang Jingyuan product disclosures. Customer capital spending from TSMC's Q4 2025 earnings transcript and Micron's FQ3 2026 prepared remarks.</p>
+<p><b>Regulation.</b> US Bureau of Industry and Security rules at 87 FR 62186 (13 October 2022), 88 FR 73424 (25 October 2023), the Foreign-Produced Direct Product Rule additions of 5 December 2024, the Affiliates Rule of 30 September 2025 and its one-year suspension of 12 November 2025; China MOFCOM Notice 2025 No. 61.</p>
+<p style="margin-top:16px"><b>No transaction has been announced that post-dates the FY2026 figures.</b> The most recent KLA earnings release is FQ4 FY2026, 28 July 2026; FQ1 FY2027 would be expected in late October 2026. Figures marked as computed are the author's arithmetic on reported data; items marked <span class="unk">NOT FOUND</span> or <span class="unk">(unknown)</span> could not be established from any source in scope and are reported as gaps rather than estimated. Prepared 5 September 2026. Not a valuation and not a recommendation.</p>
+</footer>
+</div></body></html>
