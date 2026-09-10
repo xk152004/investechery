@@ -9,6 +9,7 @@
   --bg:#fbfbfa; --panel:#ffffff; --ink:#16191d; --mute:#6b7280; --line:#e4e6e9;
   --bull:#0f766e; --bull-bg:#edf7f5; --bull-line:#a7d8d1;
   --bear:#a4322a; --bear-bg:#fbf0ef; --bear-line:#e8bdb8;
+  --ext:#7c5b16; --ext-bg:#faf4e6; --ext-line:#e0cfa4;
   --accent:#1f2937; --radius:10px;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
@@ -16,7 +17,8 @@
 @media (prefers-color-scheme:dark){
   :root{--bg:#111315;--panel:#181b1e;--ink:#e6e8ea;--mute:#9aa1a9;--line:#2a2e33;
         --bull:#5fd3c4;--bull-bg:#12211f;--bull-line:#255049;
-        --bear:#f0938a;--bear-bg:#241614;--bear-line:#5b2f2a;--accent:#e6e8ea;}
+        --bear:#f0938a;--bear-bg:#241614;--bear-line:#5b2f2a;
+        --ext:#e0bd6a;--ext-bg:#221c0f;--ext-line:#4d3f1e;--accent:#e6e8ea;}
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -59,6 +61,7 @@ p{margin:0 0 13px}
      border-radius:5px;vertical-align:middle}
 .t-bull{color:var(--bull);background:var(--bull-bg);border:1px solid var(--bull-line)}
 .t-bear{color:var(--bear);background:var(--bear-bg);border:1px solid var(--bear-line)}
+.t-ext{color:var(--ext);background:var(--ext-bg);border:1px solid var(--ext-line)}
 /* toggle */
 .switch{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;
         background:var(--panel);margin:0 0 20px}
@@ -72,6 +75,7 @@ p{margin:0 0 13px}
       margin:0 0 11px;overflow:hidden}
 .card.bull{border-left:3px solid var(--bull)}
 .card.bear{border-left:3px solid var(--bear)}
+.card.ext{border-left:3px solid var(--ext)}
 .card summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
       padding:13px 15px;user-select:none}
 .card summary::-webkit-details-marker{display:none}
@@ -157,14 +161,14 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:v
     <li><a href="#s6" data-t="s6">6 · Bottom line</a></li>
     <li><a href="#s7" data-t="s7">Sources</a></li>
   </ol>
-  <div class="note">Latest period: Q1 FY2027 (quarter ended 30 June 2026). Built only from Arm's own filings and letters.</div>
+  <div class="note">Latest period: Q1 FY2027 (quarter ended 30 June 2026). Sections 1-4 and 6 from Arm's filings only; section 5 from outside sources, run 10 Sep 2026.</div>
 </nav>
 
 <main>
   <div class="kicker">Fast anchor · not a valuation</div>
   <h1>Arm Holdings — Bull &amp; Bear Memo</h1>
   <p class="sub">Why this could work, how I lose money, and what to watch — in a form I can reopen in six months.</p>
-  <div class="hdr"><div class="hk">company</div><div class="hv">Arm Holdings plc (Nasdaq: ARM)</div><div class="hk">sources used</div><div class="hv">FY2026 20-F (year ended 31 Mar 2026); FY2027 Q1 interim 6-K (quarter ended 30 Jun 2026); shareholder letters of 6 May 2026 and 29 Jul 2026; press release of 24 Mar 2026 (Arm AGI CPU launch)</div><div class="hk">latest period</div><div class="hv">Q1 FY2027 — quarter ended 30 June 2026</div><div class="hk">missing or stale data</div><div class="hv">No earnings-call transcripts, investor-day materials or usable insider-trading data in the source set. Armv9 share of royalty, royalty per chip, AGI CPU pricing, gross margin and wafer commitments are not disclosed. Nothing after 29 July 2026.</div></div>
+  <div class="hdr"><div class="hk">company</div><div class="hv">Arm Holdings plc (Nasdaq: ARM)</div><div class="hk">sources used</div><div class="hv">Company: FY2026 20-F (year ended 31 Mar 2026); FY2027 Q1 interim 6-K (quarter ended 30 Jun 2026); shareholder letters of 6 May 2026 and 29 Jul 2026; press release of 24 Mar 2026 (Arm AGI CPU launch). Outside sources are used only in section 5 and listed there.</div><div class="hk">latest period</div><div class="hv">Q1 FY2027 — quarter ended 30 June 2026</div><div class="hk">missing or stale data</div><div class="hv">No earnings-call transcripts, investor-day materials or usable insider-trading data in the source set. Armv9 share of royalty, royalty per chip, AGI CPU pricing, gross margin and wafer commitments are not disclosed. Company sources stop at 29 July 2026; external challenge run 10 September 2026.</div></div>
 
   <section id="s1"><h2>1 · Business in one line</h2>
     <p class="lede">Arm licenses CPU architecture and processor designs to chipmakers for an upfront fee, then collects a per-chip royalty — a percentage of the chip's selling price, or a fixed fee per unit — on substantially every chip shipped, for as long as it ships. Since March 2026 it also sells a data-center CPU of its own. FY2026 revenue: $4,920m — $2,613m royalty, $2,307m license and other, at a 98% gross margin.</p><p>Type: fast grower — three consecutive years above 20% revenue growth since the IPO — sitting on a cyclical royalty base whose units track the semiconductor cycle. The classification matters because Arm has no unit share left to win in its largest market: the bull case must be a pricing story, not a volume story.</p>
@@ -424,7 +428,53 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:v
   </section>
 
   <section id="s5"><h2>5 · External challenge notes</h2>
-    <div class="callout">Not run. This memo is built only from Arm's own filings and shareholder letters. Ask for <b>external challenge</b> to add competitor, regulatory, litigation and short-seller findings from outside the source set — kept in this section so company evidence and outside evidence stay separable.</div>
+    <div class="callout" style="margin-bottom:14px">Run 10 September 2026. Everything below comes from <b>outside Arm's filings</b> and is kept separate from the sections above, so the reader can tell later which claims came from Arm and which came from its critics, competitors and regulators.</div>
+    
+  <details class="card ext" open>
+    <summary><span class="tag t-ext">E1</span><span class="ct">US FTC opened an antitrust probe into Arm's licensing, reported May 2026.</span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="cbody">
+      <div class="field"><dt>External point</dt><dd>US FTC opened an antitrust probe into Arm's licensing, reported May 2026. Regulators are examining whether Arm would refuse or degrade its CPU blueprints for third-party licensees while accelerating its own chip business. It follows scrutiny in Europe and South Korea.</dd></div>
+      <div class="field"><dt>How it affects the economics</dt><dd>Turns R1 from a commercial risk into a regulatory one, and cuts both ways. A remedy that forces Arm to license on non-discriminatory terms would cap the pricing power B1 rests on; the investigation alone gives large licensees leverage in renewal negotiations, and constrains how far Arm can favour its own silicon.</dd></div>
+      <div class="field"><dt>What would confirm it</dt><dd>A formal complaint or consent decree; licensing-term concessions disclosed in a renewal; the probe appearing as a named legal proceeding in the next 20-F.</dd></div>
+      <div class="field"><dt>Source (outside the filings)</dt><dd>Bloomberg via Investing.com, 15 May 2026</dd></div>
+    </div>
+  </details>
+  <details class="card ext">
+    <summary><span class="tag t-ext">E2</span><span class="ct">Qualcomm is developing RISC-V CPU cores with Ventana for high-core-count, datacentre-class chiplets, alongside its Arm-based Oryon line; Meta is expanding RISC-V work around its MTIA accelerators.</span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="cbody">
+      <div class="field"><dt>External point</dt><dd>Qualcomm is developing RISC-V CPU cores with Ventana for high-core-count, datacentre-class chiplets, alongside its Arm-based Oryon line; Meta is expanding RISC-V work around its MTIA accelerators. RISC-V penetration is put near 25% by units and about 10% by revenue (SHD Group).</dd></div>
+      <div class="field"><dt>How it affects the economics</dt><dd>This is R1's confirmation signal arriving early, and from the two names most exposed to Arm's move into silicon — Qualcomm is in litigation with Arm, Meta is the AGI CPU's lead partner. A shipping RISC-V server CPU from a current architecture licensee removes royalty-bearing sockets permanently.</dd></div>
+      <div class="field"><dt>What would confirm it</dt><dd>A RISC-V server CPU shipping in volume from a current Arm architecture licensee; RISC-V share rising in revenue terms, not only in unit terms.</dd></div>
+      <div class="field"><dt>Source (outside the filings)</dt><dd>eeNews Europe, Jan 2026; EE Times Asia; RISC-V International</dd></div>
+    </div>
+  </details>
+  <details class="card ext">
+    <summary><span class="tag t-ext">E3</span><span class="ct">Morgan Stanley cut Arm to Equal-Weight on 7 April 2026, arguing merchant silicon carries 40-50% gross margins against Arm's historic 95%+, and that the R&amp;D surge behind the AI CPU will weigh on operating income for at least eight quarters.</span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="cbody">
+      <div class="field"><dt>External point</dt><dd>Morgan Stanley cut Arm to Equal-Weight on 7 April 2026, arguing merchant silicon carries 40-50% gross margins against Arm's historic 95%+, and that the R&amp;D surge behind the AI CPU will weigh on operating income for at least eight quarters. DRAM supply constraints were cited as a possible cap on FY2027 growth.</dd></div>
+      <div class="field"><dt>How it affects the economics</dt><dd>Puts an outside number on R4 and R5. If AGI CPU revenue carries a 40-50% gross margin, then roughly $2bn of silicon against ~$5bn of IP revenue pulls consolidated gross margin from ~97% toward the low 80s — before any inventory or warranty cost. That is the mix arithmetic the memo flags, quantified.</dd></div>
+      <div class="field"><dt>What would confirm it</dt><dd>The first disclosed gross margin on the silicon line landing in the 40-50% band; consolidated gross margin falling below the mid-90s as AGI ships.</dd></div>
+      <div class="field"><dt>Source (outside the filings)</dt><dd>Morgan Stanley via Benzinga, Seeking Alpha and Investing.com, 7 Apr 2026</dd></div>
+    </div>
+  </details>
+  <details class="card ext">
+    <summary><span class="tag t-ext">E4</span><span class="ct">SoftBank has been reported in talks for a roughly $5bn margin loan secured on its Arm shares to fund its OpenAI investment, and separately secured a $10bn margin loan against its OpenAI stake in August 2026.</span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="cbody">
+      <div class="field"><dt>External point</dt><dd>SoftBank has been reported in talks for a roughly $5bn margin loan secured on its Arm shares to fund its OpenAI investment, and separately secured a $10bn margin loan against its OpenAI stake in August 2026.</dd></div>
+      <div class="field"><dt>How it affects the economics</dt><dd>A structural overhang the 20-F does not carry. Arm's share price becomes collateral in SoftBank's unrelated leverage: a fall in ARM can trigger margin calls at the 86.4% holder, and the cheapest way to raise cash against a controlled asset is to sell some of it. Minority holders bear a forced-seller risk created outside the business.</dd></div>
+      <div class="field"><dt>What would confirm it</dt><dd>Disclosure of pledged share counts or margin-call thresholds; a registered secondary offering; SoftBank's own filings showing Arm shares encumbered.</dd></div>
+      <div class="field"><dt>Source (outside the filings)</dt><dd>Bloomberg via Seeking Alpha, 2026; Bloomberg, 6 Aug 2026</dd></div>
+    </div>
+  </details>
+  <details class="card ext">
+    <summary><span class="tag t-ext">E5</span><span class="ct">NVIDIA sold its remaining Arm shares in February 2026 — about 1.1 million shares, roughly $140m — while deepening the technical partnership through Vera.</span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="cbody">
+      <div class="field"><dt>External point</dt><dd>NVIDIA sold its remaining Arm shares in February 2026 — about 1.1 million shares, roughly $140m — while deepening the technical partnership through Vera.</dd></div>
+      <div class="field"><dt>How it affects the economics</dt><dd>Minor in dollars and not a thesis input on its own. It matters only as evidence that ownership and partnership have decoupled: Arm's most important ecosystem partner has no equity reason to protect it, which is worth remembering when reading partnership announcements as if they were commitments.</dd></div>
+      <div class="field"><dt>What would confirm it</dt><dd>Nothing to confirm — treat as context, not a signal.</dd></div>
+      <div class="field"><dt>Source (outside the filings)</dt><dd>Bloomberg, CNBC and Tom's Hardware, 17-18 Feb 2026</dd></div>
+    </div>
+  </details>
   </section>
 
   <section id="s6"><h2>6 · Bottom line</h2>
@@ -447,6 +497,10 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:v
   <details class="src-group">
     <summary>Press release <span class="count">1</span></summary>
     <ul><li>24 March 2026 — Arm AGI CPU launch: specifications, Meta as lead partner, ecosystem list</li></ul>
+  </details>
+  <details class="src-group">
+    <summary>Outside the filings — section 5 only <span class="count">5</span></summary>
+    <ul><li>Bloomberg via Investing.com, 15 May 2026 — FTC antitrust probe into Arm licensing</li><li>eeNews Europe (Jan 2026), EE Times Asia, RISC-V International — Qualcomm/Ventana and Meta RISC-V programmes, RISC-V penetration estimates</li><li>Morgan Stanley via Benzinga, Seeking Alpha and Investing.com, 7 Apr 2026 — downgrade to Equal-Weight on merchant-silicon margins and R&amp;D</li><li>Bloomberg via Seeking Alpha (2026) and Bloomberg, 6 Aug 2026 — SoftBank margin loans secured on Arm and OpenAI shares</li><li>Bloomberg, CNBC and Tom's Hardware, 17-18 Feb 2026 — NVIDIA exits its remaining Arm stake</li></ul>
   </details></section>
 
   <footer>Figures are taken from the documents listed above; where a number is an arithmetic derivation rather than a disclosed figure, the memo says so. Nothing here is a valuation or a recommendation.</footer>
