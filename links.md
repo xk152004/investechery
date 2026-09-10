@@ -9,6 +9,7 @@
 - [Alphabet Business Overview](https://xk152004.github.io/investechery/stocks/Alphabet-Business-Overview.html)
 - [Alphabet Earnings Q2 FY2026 (PDF)](https://xk152004.github.io/investechery/stocks/Alphabet_Earnings_Q2_FY2026.pdf)
 - [Apple Business Overview](https://xk152004.github.io/investechery/stocks/Apple-Business-Overview.html)
+- [Arm Holdings — Bull & Bear Memo](https://xk152004.github.io/investechery/stocks/Arm%20Holdings%20%E2%80%94%20Bull%20%26%20Bear%20Memo.html)
 - [Arm Business Overview](https://xk152004.github.io/investechery/stocks/Arm-Business-Overview.html)
 - [Astera Labs Business Overview](https://xk152004.github.io/investechery/stocks/Astera-Labs-Business-Overview.html)
 - [Atlassian Business Overview](https://xk152004.github.io/investechery/stocks/Atlassian-Business-Overview.html)

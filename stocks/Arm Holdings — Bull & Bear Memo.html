@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arm Holdings — Bull &amp; Bear Memo</title>
+<style>
+:root{
+  --bg:#fbfbfa; --panel:#ffffff; --ink:#16191d; --mute:#6b7280; --line:#e4e6e9;
+  --bull:#0f766e; --bull-bg:#edf7f5; --bull-line:#a7d8d1;
+  --bear:#a4322a; --bear-bg:#fbf0ef; --bear-line:#e8bdb8;
+  --accent:#1f2937; --radius:10px;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#111315;--panel:#181b1e;--ink:#e6e8ea;--mute:#9aa1a9;--line:#2a2e33;
+        --bull:#5fd3c4;--bull-bg:#12211f;--bull-line:#255049;
+        --bear:#f0938a;--bear-bg:#241614;--bear-line:#5b2f2a;--accent:#e6e8ea;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 var(--sans);
+     -webkit-font-smoothing:antialiased;}
+.wrap{display:grid;grid-template-columns:236px minmax(0,1fr);gap:44px;
+      max-width:1160px;margin:0 auto;padding:0 28px}
+/* ---- sidebar ---- */
+nav{position:sticky;top:0;align-self:start;height:100vh;padding:38px 0 30px;overflow:auto}
+nav .brand{font:600 12px/1.3 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+nav .tk{font-size:21px;font-weight:680;letter-spacing:-.01em;margin-bottom:22px}
+nav ol{list-style:none;margin:0;padding:0}
+nav li{margin:0}
+nav a{display:block;padding:7px 12px;border-left:2px solid var(--line);color:var(--mute);
+      text-decoration:none;font-size:13.5px;transition:.15s}
+nav a:hover{color:var(--ink)}
+nav a.on{color:var(--ink);border-left-color:var(--accent);font-weight:600;background:var(--panel)}
+nav .note{margin-top:24px;padding:11px 12px;border:1px solid var(--line);border-radius:8px;
+          font-size:11.5px;line-height:1.5;color:var(--mute)}
+/* ---- main ---- */
+main{padding:38px 0 110px;min-width:0}
+h1{font-size:34px;line-height:1.14;letter-spacing:-.022em;margin:6px 0 6px;font-weight:700}
+.sub{color:var(--mute);font-size:14px;margin:0 0 26px}
+h2{font-size:12px;font-family:var(--mono);letter-spacing:.13em;text-transform:uppercase;
+   color:var(--mute);margin:52px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--line);font-weight:600}
+h3{font-size:20px;letter-spacing:-.012em;margin:0 0 10px;font-weight:660}
+p{margin:0 0 13px}
+.lede{font-size:17.5px;line-height:1.56;border-left:3px solid var(--accent);padding-left:16px;
+      margin:0 0 20px;color:var(--ink)}
+.kicker{font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+/* header block */
+.hdr{display:grid;grid-template-columns:150px minmax(0,1fr);border:1px solid var(--line);
+     border-radius:var(--radius);overflow:hidden;background:var(--panel);margin:0 0 30px;font-size:13.5px}
+.hk{padding:10px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--mute);border-bottom:1px solid var(--line);background:linear-gradient(0deg,transparent,transparent)}
+.hv{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--ink)}
+.hdr>div:nth-last-child(-n+2){border-bottom:0}
+/* tags */
+.tag{display:inline-block;font:700 10.5px/1 var(--mono);letter-spacing:.06em;padding:4px 6px;
+     border-radius:5px;vertical-align:middle}
+.t-bull{color:var(--bull);background:var(--bull-bg);border:1px solid var(--bull-line)}
+.t-bear{color:var(--bear);background:var(--bear-bg);border:1px solid var(--bear-line)}
+/* toggle */
+.switch{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;
+        background:var(--panel);margin:0 0 20px}
+.switch button{appearance:none;border:0;background:transparent;color:var(--mute);cursor:pointer;
+        font:600 13px var(--sans);padding:8px 15px;transition:.15s}
+.switch button+button{border-left:1px solid var(--line)}
+.switch button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+@media (prefers-color-scheme:dark){.switch button[aria-pressed="true"]{color:#111315}}
+/* cards */
+.card{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);
+      margin:0 0 11px;overflow:hidden}
+.card.bull{border-left:3px solid var(--bull)}
+.card.bear{border-left:3px solid var(--bear)}
+.card summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
+      padding:13px 15px;user-select:none}
+.card summary::-webkit-details-marker{display:none}
+.card summary:hover .ct{color:var(--mute)}
+.ct{flex:1;font-size:16px;font-weight:640;letter-spacing:-.008em}
+.chev{width:9px;height:9px;border-right:1.8px solid var(--mute);border-bottom:1.8px solid var(--mute);
+      transform:rotate(45deg);margin:-4px 4px 0 0;transition:transform .18s;flex:none}
+.card[open] .chev{transform:rotate(-135deg);margin-top:2px}
+.cbody{padding:0 15px 14px 15px;border-top:1px solid var(--line);margin-top:0;padding-top:13px}
+.field{margin:0 0 11px}
+.field dt{font:700 10.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.field dd{margin:0;font-size:14.6px;line-height:1.58}
+.meta{font:600 12px var(--mono);color:var(--bear);margin:0 0 12px}
+/* duel */
+#duel{display:none}
+.duel{display:grid;grid-template-columns:1fr 30px 1fr;gap:0;align-items:stretch;
+      border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:0 0 14px;background:var(--panel)}
+.side{padding:16px 17px}
+.s-bull{background:var(--bull-bg)}
+.stick{position:sticky;top:22px}
+.s-bear{background:var(--bear-bg)}
+.side .sh{font:700 10.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--mute);margin-bottom:9px}
+.side h4{margin:0 0 7px;font-size:15.5px;font-weight:660;line-height:1.35}
+.side p{font-size:14.2px;line-height:1.55;margin:0 0 9px}
+.side .ev{color:var(--mute);font-size:13.4px}
+.side .none{font-style:italic;color:var(--mute)}
+.vs{display:flex;align-items:center;justify-content:center;font:700 11px var(--mono);
+    color:var(--mute);background:var(--panel);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+/* signals */
+.sigs{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:11px}
+.sig{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:13px 14px}
+.sig-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px}
+.sig-name{font-size:14px;font-weight:640;line-height:1.32}
+.sig-val{font:700 14px var(--mono);text-align:right;white-space:normal;flex:none;max-width:46%}
+.sig-dir{font-size:13.2px;line-height:1.5;color:var(--ink);margin-bottom:11px}
+.sig-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;
+          padding-top:9px;border-top:1px solid var(--line)}
+.src{font-size:11px;color:var(--mute);line-height:1.35}
+.links{display:flex;gap:4px;flex:none}
+/* bottom line */
+.bl{counter-reset:bl;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:6px 18px}
+.bl p{counter-increment:bl;position:relative;padding:14px 0 14px 34px;margin:0;font-size:15.4px;line-height:1.6}
+.bl p+p{border-top:1px solid var(--line)}
+.bl p::before{content:counter(bl);position:absolute;left:0;top:15px;font:700 11px var(--mono);
+              color:var(--mute);border:1px solid var(--line);border-radius:50%;width:20px;height:20px;
+              display:grid;place-items:center}
+/* external + sources */
+.callout{border:1px dashed var(--line);border-radius:var(--radius);padding:15px 17px;color:var(--mute);font-size:14.4px}
+.src-group{border:1px solid var(--line);border-radius:8px;background:var(--panel);margin-bottom:8px}
+.src-group summary{cursor:pointer;padding:10px 14px;font-size:14px;font-weight:600;list-style:none;display:flex;gap:8px;align-items:center}
+.src-group summary::-webkit-details-marker{display:none}
+.src-group .count{font:700 10px var(--mono);color:var(--mute);border:1px solid var(--line);border-radius:20px;padding:2px 7px}
+.src-group ul{margin:0;padding:0 18px 13px 32px;font-size:13.4px;color:var(--mute);line-height:1.55}
+.src-group li{margin-bottom:6px}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:var(--mute);font-size:12px}
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0;padding:0 18px}
+  nav{position:static;height:auto;padding:26px 0 4px}
+  nav ol{display:flex;flex-wrap:wrap;gap:6px}
+  nav a{border:1px solid var(--line);border-radius:20px;padding:6px 11px;font-size:12.5px}
+  nav a.on{border-color:var(--accent)}
+  nav .note{display:none}
+  .duel{grid-template-columns:1fr}
+  .stick{position:static}
+  .vs{border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:5px}
+  .hdr{grid-template-columns:1fr}
+  .hk{border-bottom:0;padding-bottom:2px}
+  h1{font-size:27px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <div class="brand">Bull &amp; Bear Memo</div>
+  <div class="tk">Arm Holdings</div>
+  <ol>
+    <li><a href="#s1" data-t="s1">1 · Business in one line</a></li>
+    <li><a href="#s2" data-t="s2">2 · Bull case</a></li>
+    <li><a href="#s3" data-t="s3">3 · Bear case</a></li>
+    <li><a href="#s4" data-t="s4">4 · Signals to monitor</a></li>
+    <li><a href="#s5" data-t="s5">5 · External challenge</a></li>
+    <li><a href="#s6" data-t="s6">6 · Bottom line</a></li>
+    <li><a href="#s7" data-t="s7">Sources</a></li>
+  </ol>
+  <div class="note">Latest period: Q1 FY2027 (quarter ended 30 June 2026). Built only from Arm's own filings and letters.</div>
+</nav>
+
+<main>
+  <div class="kicker">Fast anchor · not a valuation</div>
+  <h1>Arm Holdings — Bull &amp; Bear Memo</h1>
+  <p class="sub">Why this could work, how I lose money, and what to watch — in a form I can reopen in six months.</p>
+  <div class="hdr"><div class="hk">company</div><div class="hv">Arm Holdings plc (Nasdaq: ARM)</div><div class="hk">sources used</div><div class="hv">FY2026 20-F (year ended 31 Mar 2026); FY2027 Q1 interim 6-K (quarter ended 30 Jun 2026); shareholder letters of 6 May 2026 and 29 Jul 2026; press release of 24 Mar 2026 (Arm AGI CPU launch)</div><div class="hk">latest period</div><div class="hv">Q1 FY2027 — quarter ended 30 June 2026</div><div class="hk">missing or stale data</div><div class="hv">No earnings-call transcripts, investor-day materials or usable insider-trading data in the source set. Armv9 share of royalty, royalty per chip, AGI CPU pricing, gross margin and wafer commitments are not disclosed. Nothing after 29 July 2026.</div></div>
+
+  <section id="s1"><h2>1 · Business in one line</h2>
+    <p class="lede">Arm licenses CPU architecture and processor designs to chipmakers for an upfront fee, then collects a per-chip royalty — a percentage of the chip's selling price, or a fixed fee per unit — on substantially every chip shipped, for as long as it ships. Since March 2026 it also sells a data-center CPU of its own. FY2026 revenue: $4,920m — $2,613m royalty, $2,307m license and other, at a 98% gross margin.</p><p>Type: fast grower — three consecutive years above 20% revenue growth since the IPO — sitting on a cyclical royalty base whose units track the semiconductor cycle. The classification matters because Arm has no unit share left to win in its largest market: the bull case must be a pricing story, not a volume story.</p>
+  </section>
+
+  <section id="s2"><h2>2 · Bull case — Peter Lynch pitch</h2>
+    <div class="switch" role="group" aria-label="View mode">
+      <button id="bSep" aria-pressed="true">Cases apart</button>
+      <button id="bDuel" aria-pressed="false">Face-off</button>
+    </div>
+    <div id="sep">
+      <p class="lede">The simple reason this stock could work is that Arm gets paid more each year for the same chip, and has just opened two new ways to get paid for chips it previously only rented cores to.</p>
+      
+<details class="card bull" open>
+  <summary><span class="tag t-bull">B1</span><span class="ct">Royalty per chip rises faster than the unit base decays</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <div class="field"><dt>What must happen</dt><dd>Mix shift toward Armv9 and Arm Compute Subsystems lifts average royalty per chip fast enough that royalty compounds above 20% on a roughly flat unit base.</dd></div>
+    <div class="field"><dt>Why Arm specifically</dt><dd>Royalty rates step up with how much Arm content sits in the chip, and every key mobile operating system depends on Arm cores. A customer who wants a cheaper royalty has to move a software ecosystem, not swap a core — the switching cost sits with the customer, the price increase with Arm.</dd></div>
+    <div class="field"><dt>Evidence</dt><dd>Royalty of $2,613m in FY2026, +21%, attributed in the 20-F to “an improved mix of products with higher royalty rates per chip, such as Armv9 technology”; +22% to $715m in Q1 FY2027. Mobile applications processors, where Arm has held above 99% share for years, are still 43% of royalty — that share cannot grow, so the growth is rate.</dd></div>
+    <div class="field"><dt>What to monitor</dt><dd>Royalty growth versus industry unit growth; mobile's falling share of total royalty.</dd></div>
+  </div>
+</details>
+<details class="card bull">
+  <summary><span class="tag t-bull">B2</span><span class="ct">The data center becomes a second royalty pool of comparable size</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <div class="field"><dt>What must happen</dt><dd>Hyperscaler in-house Arm CPUs keep displacing x86 sockets, each carrying a far larger royalty than a phone.</dd></div>
+    <div class="field"><dt>Why Arm specifically</dt><dd>Royalty is a percentage of chip ASP or a fee that scales with content, so a 100-core server CPU pays a multiple of a smartphone SoC — and every AI accelerator still needs a host CPU.</dd></div>
+    <div class="field"><dt>Evidence</dt><dd>Data-center royalties more than doubled year over year in Q1 FY2027. Cumulative Neoverse shipments passed 1.5 billion cores — the most recent 500 million in nine months, against six years for the first billion. Named programs: NVIDIA Vera in full production, Google Axion hosting its TPU systems, AWS Graviton5 under a multi-year Meta agreement, Azure Cobalt 200, Qualcomm Dragonfly C1000.</dd></div>
+    <div class="field"><dt>What to monitor</dt><dd>Data-center royalty growth rate; Neoverse cumulative-core milestones; any named hyperscaler program slipping.</dd></div>
+  </div>
+</details>
+<details class="card bull">
+  <summary><span class="tag t-bull">B3</span><span class="ct">Arm AGI CPU converts dollars of royalty into thousands of dollars of silicon revenue</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <div class="field"><dt>What must happen</dt><dd>The chip launched in March 2026 ships in volume from end-calendar-2026 and holds its multi-generation roadmap with Meta and the other named customers.</dd></div>
+    <div class="field"><dt>Why Arm specifically</dt><dd>Arm already owns the cores, interconnect and software stack, so the incremental cost of selling the whole chip is physical design and wafers, not architecture — chip-level revenue in a socket that previously paid only a royalty.</dd></div>
+    <div class="field"><dt>Evidence</dt><dd>Committed demand rose from a stated “$1 billion opportunity” across FY2027–28 to “exceeds $2 billion” within one quarter, capacity secured for the $1bn case, initial product delivered to multiple customers. Meta is lead partner and co-developer across multiple generations. Claimed more than 2x performance per rack versus x86.</dd></div>
+    <div class="field"><dt>What to monitor</dt><dd>Conversion of the &gt;$2bn demand into recognized revenue; the first disclosed gross margin on the silicon line; inventory and wafer commitments appearing on the balance sheet.</dd></div>
+  </div>
+</details>
+<details class="card bull">
+  <summary><span class="tag t-bull">B4</span><span class="ct">Today's spending is an investment phase that ends</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <div class="field"><dt>What must happen</dt><dd>R&amp;D growth falls below revenue growth and GAAP operating margin recovers from single digits.</dd></div>
+    <div class="field"><dt>Why Arm specifically</dt><dd>Arm funds one core design and amortizes it across every licensee, so a fixed R&amp;D base spread over a rising royalty stream is the operating leverage — nothing in the licensing model requires cost to scale with revenue.</dd></div>
+    <div class="field"><dt>Evidence</dt><dd>R&amp;D was $2,776m in FY2026 — 56% of revenue — up 34% while revenue grew 23%. GAAP operating margin was 18% for FY2026 and fell to 7.1% in Q1 FY2027 from 10.8%, even as non-GAAP operating margin rose to 41.2%.</dd></div>
+    <div class="field"><dt>What to monitor</dt><dd>R&amp;D growth versus revenue growth; GAAP — not non-GAAP — operating margin.</dd></div>
+  </div>
+</details>
+      <p style="color:var(--mute);font-size:14.4px;margin-top:16px">Why the market might be missing it: royalty is recognized a quarter in arrears on estimated shipments, so a data-center inflection reaches Arm's reported numbers materially later than it happens in its customers' fabs.</p>
+    </div>
+    <div id="duel">
+      <p style="color:var(--mute);font-size:14.4px;margin-bottom:16px">Each assumption beside the risk that tries to kill it. If an attack reads weaker than the assumption, that is where the thesis actually rests.</p>
+      <div class="duel">
+    <div class="side s-bull"><div class="stick">
+      <div class="sh"><span class="tag t-bull">B1</span> The assumption</div>
+      <h4>Royalty per chip rises faster than the unit base decays</h4>
+      <p>Mix shift toward Armv9 and Arm Compute Subsystems lifts average royalty per chip fast enough that royalty compounds above 20% on a roughly flat unit base.</p>
+      <p class="ev"><b>Evidence.</b> Royalty of $2,613m in FY2026, +21%, attributed in the 20-F to “an improved mix of products with higher royalty rates per chip, such as Armv9 technology”; +22% to $715m in Q1 FY2027. Mobile applications processors, where Arm has held above 99% share for years, are still 43% of royalty — that share cannot grow, so the growth is rate.</p>
+    </div></div>
+    <div class="vs" aria-hidden="true">vs</div>
+    <div class="side s-bear">
+      <div class="sh">The attacks</div>
+      <h4><span class="tag t-bear">R1</span> Arm now competes with the customers who pay its royalties</h4><p>The AGI CPU and Arm's direct hyperscaler relationships put it in the same socket as Broadcom, Marvell, Qualcomm and other licensees. Arm's own 20-F says these customers may “seek alternative architectures”, “withhold sensitive roadmap information” or “demand more favorable commercial terms”. A licensee cannot punish Arm this quarter — it starts a RISC-V program that removes a socket in five years.</p><p class="ev"><b>Damage.</b> Permanent: the royalty base is the entire durable asset, and an architecture that leaves does not come back.</p><h4><span class="tag t-bear">R2</span> Arm cannot enforce the licence terms that make architecture licensing safe</h4><p>Arm sued Qualcomm and Nuvia to force destruction of cores developed under a terminated architecture licence. The jury found the technology licensed under Qualcomm's own ALA, and in September 2025 the court granted Qualcomm judgment as a matter of law that Nuvia had not breached. Arm's appeal is pending; Qualcomm's counter-suit goes to trial in Q4 CY2026. If that stands, an architecture licence becomes a cheap option: acquire a design house, keep the cores, pay the architecture rate rather than the implementation rate.</p><p class="ev"><b>Damage.</b> Qualcomm alone was 9% of FY2026 revenue; the larger loss is the price ceiling — implementation royalties hold only if the cheaper route stays legally closed.</p><h4><span class="tag t-bear">R6</span> The two largest revenue concentrations are entities Arm does not control</h4><p>Arm China — an independent distributor Arm neither owns nor manages — is Arm's single largest customer at 16% of FY2026 revenue. Arm depends on Arm China's own reported figures to determine what it is owed, and recognized $12.3m of expected credit losses against it in FY2026, taking the allowance to $28.3m. PRC revenue was 18% of total; the top five customers, including Arm China and SoftBank Group, were 57%.</p><p class="ev"><b>Damage.</b> A sixth of revenue reaches Arm through a counterparty it cannot audit and a government that can close the channel.</p>
+    </div>
+  </div><div class="duel">
+    <div class="side s-bull"><div class="stick">
+      <div class="sh"><span class="tag t-bull">B2</span> The assumption</div>
+      <h4>The data center becomes a second royalty pool of comparable size</h4>
+      <p>Hyperscaler in-house Arm CPUs keep displacing x86 sockets, each carrying a far larger royalty than a phone.</p>
+      <p class="ev"><b>Evidence.</b> Data-center royalties more than doubled year over year in Q1 FY2027. Cumulative Neoverse shipments passed 1.5 billion cores — the most recent 500 million in nine months, against six years for the first billion. Named programs: NVIDIA Vera in full production, Google Axion hosting its TPU systems, AWS Graviton5 under a multi-year Meta agreement, Azure Cobalt 200, Qualcomm Dragonfly C1000.</p>
+    </div></div>
+    <div class="vs" aria-hidden="true">vs</div>
+    <div class="side s-bear">
+      <div class="sh">The attack</div>
+      <h4><span class="tag t-bear">R1</span> Arm now competes with the customers who pay its royalties</h4><p>The AGI CPU and Arm's direct hyperscaler relationships put it in the same socket as Broadcom, Marvell, Qualcomm and other licensees. Arm's own 20-F says these customers may “seek alternative architectures”, “withhold sensitive roadmap information” or “demand more favorable commercial terms”. A licensee cannot punish Arm this quarter — it starts a RISC-V program that removes a socket in five years.</p><p class="ev"><b>Damage.</b> Permanent: the royalty base is the entire durable asset, and an architecture that leaves does not come back.</p>
+    </div>
+  </div><div class="duel">
+    <div class="side s-bull"><div class="stick">
+      <div class="sh"><span class="tag t-bull">B3</span> The assumption</div>
+      <h4>Arm AGI CPU converts dollars of royalty into thousands of dollars of silicon revenue</h4>
+      <p>The chip launched in March 2026 ships in volume from end-calendar-2026 and holds its multi-generation roadmap with Meta and the other named customers.</p>
+      <p class="ev"><b>Evidence.</b> Committed demand rose from a stated “$1 billion opportunity” across FY2027–28 to “exceeds $2 billion” within one quarter, capacity secured for the $1bn case, initial product delivered to multiple customers. Meta is lead partner and co-developer across multiple generations. Claimed more than 2x performance per rack versus x86.</p>
+    </div></div>
+    <div class="vs" aria-hidden="true">vs</div>
+    <div class="side s-bear">
+      <div class="sh">The attacks</div>
+      <h4><span class="tag t-bear">R1</span> Arm now competes with the customers who pay its royalties</h4><p>The AGI CPU and Arm's direct hyperscaler relationships put it in the same socket as Broadcom, Marvell, Qualcomm and other licensees. Arm's own 20-F says these customers may “seek alternative architectures”, “withhold sensitive roadmap information” or “demand more favorable commercial terms”. A licensee cannot punish Arm this quarter — it starts a RISC-V program that removes a socket in five years.</p><p class="ev"><b>Damage.</b> Permanent: the royalty base is the entire durable asset, and an architecture that leaves does not come back.</p><h4><span class="tag t-bear">R4</span> Production silicon destroys the financial model the multiple is paid for</h4><p>Arm's 98% gross margin exists because it ships files, not wafers. The 20-F warns the silicon business brings “margin compression, greater quarter-to-quarter revenue volatility, increased capital intensity and working capital requirements”, plus foundry commitments that cannot flex, inventory obsolescence and a longer cash conversion cycle. At $2bn of silicon against roughly $5bn of IP revenue, blended gross margin falls mechanically however well Arm executes.</p><p class="ev"><b>Damage.</b> Structural, and realized by the bull case working rather than failing — which is why it is the easiest risk to underwrite away.</p>
+    </div>
+  </div><div class="duel">
+    <div class="side s-bull"><div class="stick">
+      <div class="sh"><span class="tag t-bull">B4</span> The assumption</div>
+      <h4>Today's spending is an investment phase that ends</h4>
+      <p>R&amp;D growth falls below revenue growth and GAAP operating margin recovers from single digits.</p>
+      <p class="ev"><b>Evidence.</b> R&amp;D was $2,776m in FY2026 — 56% of revenue — up 34% while revenue grew 23%. GAAP operating margin was 18% for FY2026 and fell to 7.1% in Q1 FY2027 from 10.8%, even as non-GAAP operating margin rose to 41.2%.</p>
+    </div></div>
+    <div class="vs" aria-hidden="true">vs</div>
+    <div class="side s-bear">
+      <div class="sh">The attacks</div>
+      <h4><span class="tag t-bear">R3</span> Most of FY2026's growth came from the controlling shareholder</h4><p>Revenue under the consulting agreement with a SoftBank Group affiliate was $704.4m in FY2026 against $145.5m in FY2025 — $559m of the $913m total revenue increase, and 14% of FY2026 revenue, from an entity controlled by the shareholder that owns 86.4% of Arm. Strip it out and FY2026 revenue grew about 9%, with license and other revenue down about 5% (arithmetic from the disclosed figures, not a disclosed number). $645.8m sat unbilled at 31 March 2026 — roughly two-thirds of all contract assets.</p><p class="ev"><b>Damage.</b> Less to cash flow than to the multiple: the market has been capitalizing a 23% grower whose arm's-length business grew about 9%.</p><h4><span class="tag t-bear">R5</span> Stock compensation already consumes the operating profit</h4><p>Equity-settled share-based compensation was $1,052m in FY2026 against GAAP operating income of $900m; with employer taxes, $1,212m, or 25% of revenue. The 41.2% non-GAAP operating margin quoted in Q1 FY2027 was a 7.1% GAAP margin. Diluted shares rose only from 1,044m to 1,068m over two years — the cost lands in the income statement rather than the share count, real in either place.</p><p class="ev"><b>Damage.</b> Caps the operating leverage in B4 — R&amp;D can decelerate and GAAP margin still not recover if equity comp scales with engineering headcount.</p>
+    </div>
+  </div>
+    </div>
+  </section>
+
+  <section id="s3"><h2>3 · Bear case — Munger invert</h2>
+    <p class="lede">The most likely way I lose money is that Arm's reported growth turns out to have been bought from its own parent, while the licensees it now competes with quietly fund the alternative.</p>
+    <p style="color:var(--mute);font-size:13.6px;margin:-8px 0 16px">Ordered by permanence, not by mirroring the bull sequence.</p>
+    
+<details class="card bear" open>
+  <summary><span class="tag t-bear">R1</span><span class="ct">Arm now competes with the customers who pay its royalties</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="meta">Attacks B1, B2, B3 &middot; Permanent</p>
+    <div class="field"><dt>How it could fail</dt><dd>The AGI CPU and Arm's direct hyperscaler relationships put it in the same socket as Broadcom, Marvell, Qualcomm and other licensees. Arm's own 20-F says these customers may “seek alternative architectures”, “withhold sensitive roadmap information” or “demand more favorable commercial terms”. A licensee cannot punish Arm this quarter — it starts a RISC-V program that removes a socket in five years.</dd></div>
+    <div class="field"><dt>What would confirm failure</dt><dd>An architecture licensee announcing a non-Arm core for a segment where it currently ships Arm; licence renewals on visibly worse terms.</dd></div>
+    <div class="field"><dt>Damage</dt><dd>Permanent: the royalty base is the entire durable asset, and an architecture that leaves does not come back.</dd></div>
+  </div>
+</details>
+<details class="card bear">
+  <summary><span class="tag t-bear">R2</span><span class="ct">Arm cannot enforce the licence terms that make architecture licensing safe</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="meta">Attacks B1 &middot; Largely permanent</p>
+    <div class="field"><dt>How it could fail</dt><dd>Arm sued Qualcomm and Nuvia to force destruction of cores developed under a terminated architecture licence. The jury found the technology licensed under Qualcomm's own ALA, and in September 2025 the court granted Qualcomm judgment as a matter of law that Nuvia had not breached. Arm's appeal is pending; Qualcomm's counter-suit goes to trial in Q4 CY2026. If that stands, an architecture licence becomes a cheap option: acquire a design house, keep the cores, pay the architecture rate rather than the implementation rate.</dd></div>
+    <div class="field"><dt>What would confirm failure</dt><dd>The Third Circuit affirming; an adverse Q4 CY2026 verdict; other licensees restructuring toward architecture-only terms.</dd></div>
+    <div class="field"><dt>Damage</dt><dd>Qualcomm alone was 9% of FY2026 revenue; the larger loss is the price ceiling — implementation royalties hold only if the cheaper route stays legally closed.</dd></div>
+  </div>
+</details>
+<details class="card bear">
+  <summary><span class="tag t-bear">R3</span><span class="ct">Most of FY2026's growth came from the controlling shareholder</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="meta">Attacks B4 and the headline growth rate &middot; Fixable, but it has already repriced the growth rate</p>
+    <div class="field"><dt>How it could fail</dt><dd>Revenue under the consulting agreement with a SoftBank Group affiliate was $704.4m in FY2026 against $145.5m in FY2025 — $559m of the $913m total revenue increase, and 14% of FY2026 revenue, from an entity controlled by the shareholder that owns 86.4% of Arm. Strip it out and FY2026 revenue grew about 9%, with license and other revenue down about 5% (arithmetic from the disclosed figures, not a disclosed number). $645.8m sat unbilled at 31 March 2026 — roughly two-thirds of all contract assets.</dd></div>
+    <div class="field"><dt>What would confirm failure</dt><dd>The consulting line flattening while ACV growth stays in the low teens — ACV, Arm's own normalized licensing metric, already decelerated from +22% at March 2026 to +13% at June 2026.</dd></div>
+    <div class="field"><dt>Damage</dt><dd>Less to cash flow than to the multiple: the market has been capitalizing a 23% grower whose arm's-length business grew about 9%.</dd></div>
+  </div>
+</details>
+<details class="card bear">
+  <summary><span class="tag t-bear">R4</span><span class="ct">Production silicon destroys the financial model the multiple is paid for</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="meta">Attacks B3 &middot; Permanent if the silicon business succeeds</p>
+    <div class="field"><dt>How it could fail</dt><dd>Arm's 98% gross margin exists because it ships files, not wafers. The 20-F warns the silicon business brings “margin compression, greater quarter-to-quarter revenue volatility, increased capital intensity and working capital requirements”, plus foundry commitments that cannot flex, inventory obsolescence and a longer cash conversion cycle. At $2bn of silicon against roughly $5bn of IP revenue, blended gross margin falls mechanically however well Arm executes.</dd></div>
+    <div class="field"><dt>What would confirm failure</dt><dd>The first quarter reporting inventory, wafer purchase commitments and a gross margin below the mid-90s.</dd></div>
+    <div class="field"><dt>Damage</dt><dd>Structural, and realized by the bull case working rather than failing — which is why it is the easiest risk to underwrite away.</dd></div>
+  </div>
+</details>
+<details class="card bear">
+  <summary><span class="tag t-bear">R5</span><span class="ct">Stock compensation already consumes the operating profit</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="meta">Attacks B4 &middot; Ongoing; fixable only by slowing hiring</p>
+    <div class="field"><dt>How it could fail</dt><dd>Equity-settled share-based compensation was $1,052m in FY2026 against GAAP operating income of $900m; with employer taxes, $1,212m, or 25% of revenue. The 41.2% non-GAAP operating margin quoted in Q1 FY2027 was a 7.1% GAAP margin. Diluted shares rose only from 1,044m to 1,068m over two years — the cost lands in the income statement rather than the share count, real in either place.</dd></div>
+    <div class="field"><dt>What would confirm failure</dt><dd>GAAP operating margin staying in single digits as silicon cost of sales lands on top.</dd></div>
+    <div class="field"><dt>Damage</dt><dd>Caps the operating leverage in B4 — R&amp;D can decelerate and GAAP margin still not recover if equity comp scales with engineering headcount.</dd></div>
+  </div>
+</details>
+<details class="card bear">
+  <summary><span class="tag t-bear">R6</span><span class="ct">The two largest revenue concentrations are entities Arm does not control</span><span class="chev" aria-hidden="true"></span></summary>
+  <div class="cbody">
+    <p class="meta">Attacks B1 &middot; Structural, outside Arm's control</p>
+    <div class="field"><dt>How it could fail</dt><dd>Arm China — an independent distributor Arm neither owns nor manages — is Arm's single largest customer at 16% of FY2026 revenue. Arm depends on Arm China's own reported figures to determine what it is owed, and recognized $12.3m of expected credit losses against it in FY2026, taking the allowance to $28.3m. PRC revenue was 18% of total; the top five customers, including Arm China and SoftBank Group, were 57%.</dd></div>
+    <div class="field"><dt>What would confirm failure</dt><dd>A China export-control or end-use change touching the IPLA; a widening credit allowance against Arm China; PRC revenue turning negative after +17% in FY2026.</dd></div>
+    <div class="field"><dt>Damage</dt><dd>A sixth of revenue reaches Arm through a counterparty it cannot audit and a government that can close the channel.</dd></div>
+  </div>
+</details>
+  </section>
+
+  <section id="s4"><h2>4 · Signals to monitor</h2>
+    <p style="color:var(--mute);font-size:14.2px">Every signal carries the assumption or risk it tracks. Values are as of the latest source listed.</p>
+    <div class="sigs">
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">Royalty revenue growth, year over year</span>
+      <span class="sig-val">+22% ($715m)</span>
+    </div>
+    <div class="sig-dir">Sustained above ~20% supports B1; a drop toward unit growth breaks it</div>
+    <div class="sig-foot">
+      <span class="src">Shareholder letter, 29 Jul 2026</span>
+      <span class="links"><span class="tag t-bull">B1</span></span>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">Data-center royalty growth and Neoverse cores shipped</span>
+      <span class="sig-val">More than doubled y/y; 1.5bn cores (last 500m in 9 months)</span>
+    </div>
+    <div class="sig-dir">Data-center royalty must stay well above total royalty growth, and the interval per 500m cores must keep shortening, for B2</div>
+    <div class="sig-foot">
+      <span class="src">Shareholder letter, 29 Jul 2026</span>
+      <span class="links"><span class="tag t-bull">B2</span></span>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">Arm AGI CPU committed demand, FY2027-28</span>
+      <span class="sig-val">Exceeds $2bn (was $1bn)</span>
+    </div>
+    <div class="sig-dir">Conversion into recognized revenue confirms B3; a flat or cut figure kills it</div>
+    <div class="sig-foot">
+      <span class="src">Shareholder letter, 29 Jul 2026</span>
+      <span class="links"><span class="tag t-bull">B3</span></span>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">ACV, and the SoftBank consulting line behind it</span>
+      <span class="sig-val">ACV $1,732m, +13% y/y (was +22%); consulting $192.9m in Q1, $577m unbilled</span>
+    </div>
+    <div class="sig-dir">ACV stuck in the low teens while the consulting line flattens confirms R3 - organic growth nearer 9% than 22%</div>
+    <div class="sig-foot">
+      <span class="src">Shareholder letters 6 May and 29 Jul 2026; FY2027 Q1 6-K</span>
+      <span class="links"><span class="tag t-bear">R3</span></span>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">GAAP operating margin</span>
+      <span class="sig-val">7.1% (vs 10.8% a year earlier)</span>
+    </div>
+    <div class="sig-dir">Recovery supports B4; further decline as headcount and equity comp scale confirms R5</div>
+    <div class="sig-foot">
+      <span class="src">Shareholder letter, 29 Jul 2026</span>
+      <span class="links"><span class="tag t-bull">B4</span><span class="tag t-bear">R5</span></span>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">Consolidated gross margin</span>
+      <span class="sig-val">97.2% GAAP</span>
+    </div>
+    <div class="sig-dir">The first move below the mid-90s, alongside inventory and wafer commitments, marks R4 arriving</div>
+    <div class="sig-foot">
+      <span class="src">Shareholder letter, 29 Jul 2026</span>
+      <span class="links"><span class="tag t-bear">R4</span></span>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">Qualcomm litigation</span>
+      <span class="sig-val">Appeal pending; trial Q4 CY2026</span>
+    </div>
+    <div class="sig-dir">Judgment as a matter of law went to Qualcomm in Sep 2025; an adverse appeal or verdict confirms R2. Qualcomm was 9% of FY2026 revenue</div>
+    <div class="sig-foot">
+      <span class="src">FY2026 20-F</span>
+      <span class="links"><span class="tag t-bear">R2</span></span>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="sig-top">
+      <span class="sig-name">Top-five customer concentration</span>
+      <span class="sig-val">57% of FY2026 revenue (Arm China 16%)</span>
+    </div>
+    <div class="sig-dir">A licensee responding to Arm as a competitor, or a China channel disruption, shows up here first - R1 and R6</div>
+    <div class="sig-foot">
+      <span class="src">FY2026 20-F</span>
+      <span class="links"><span class="tag t-bear">R1</span><span class="tag t-bear">R6</span></span>
+    </div>
+  </div></div>
+  </section>
+
+  <section id="s5"><h2>5 · External challenge notes</h2>
+    <div class="callout">Not run. This memo is built only from Arm's own filings and shareholder letters. Ask for <b>external challenge</b> to add competitor, regulatory, litigation and short-seller findings from outside the source set — kept in this section so company evidence and outside evidence stay separable.</div>
+  </section>
+
+  <section id="s6"><h2>6 · Bottom line</h2>
+    <div class="bl"><p>The stock could work because Arm is repricing a socket it already owns — royalty per chip rising above 20% a year on a flat unit base — while the data center adds a structurally higher-value royalty pool and the AGI CPU turns some sockets from a royalty into a whole chip sale.</p><p>For that, Armv9 and CSS mix must keep lifting royalty per chip, Neoverse adoption at AWS, Google, Microsoft, NVIDIA and Qualcomm must keep compounding, the &gt;$2bn of AGI CPU demand must convert to shipped revenue from end-2026, and R&amp;D growth must eventually fall below revenue growth.</p><p>The thesis most likely breaks not in a bad quarter but through licensees responding to Arm becoming their competitor — funding RISC-V or in-house architectures for sockets they currently pay royalties on — a decision invisible for years and irreversible once made.</p><p>I would change my mind if the SoftBank consulting line flattened while ACV growth stayed in the low teens — putting organic growth nearer 9% than 22% — if a major architecture licensee announced a non-Arm core in a segment it ships Arm in today, or if the AGI ramp reset consolidated gross margin below the mid-80s.</p></div>
+  </section>
+
+  <section id="s7"><h2>Sources</h2>
+  <details class="src-group">
+    <summary>Annual report <span class="count">1</span></summary>
+    <ul><li>FY2026 20-F, year ended 31 March 2026 (filed 26 May 2026) — revenue split, customer concentration, Arm China and SoftBank related-party notes, Qualcomm litigation, production-silicon risk factors, R&amp;D and share-based compensation</li></ul>
+  </details>
+  <details class="src-group">
+    <summary>Interim report <span class="count">1</span></summary>
+    <ul><li>FY2027 Q1 interim 6-K, quarter ended 30 June 2026 — Q1 revenue split, SoftBank consulting revenue and contract assets, segment costs</li></ul>
+  </details>
+  <details class="src-group">
+    <summary>Shareholder letters <span class="count">2</span></summary>
+    <ul><li>6 May 2026 (Q4 FY2026) — full-year revenue, ACV $1,660m +22%</li><li>29 Jul 2026 (Q1 FY2027) — Q1 metrics, ACV $1,732m +13%, data-center royalties, Neoverse cores, AGI CPU demand</li></ul>
+  </details>
+  <details class="src-group">
+    <summary>Press release <span class="count">1</span></summary>
+    <ul><li>24 March 2026 — Arm AGI CPU launch: specifications, Meta as lead partner, ecosystem list</li></ul>
+  </details></section>
+
+  <footer>Figures are taken from the documents listed above; where a number is an arithmetic derivation rather than a disclosed figure, the memo says so. Nothing here is a valuation or a recommendation.</footer>
+</main>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav a'));
+  var map={};links.forEach(function(a){map[a.dataset.t]=a;});
+  var secs=[].slice.call(document.querySelectorAll('main section'));
+  function mark(id){links.forEach(function(a){a.classList.toggle('on',a.dataset.t===id);});}
+  if('IntersectionObserver' in window){
+    var vis={};
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){vis[e.target.id]=e.isIntersecting?e.intersectionRatio:0;});
+      var best=null,bv=0;
+      secs.forEach(function(s){var v=vis[s.id]||0;if(v>bv){bv=v;best=s.id;}});
+      if(best)mark(best);
+    },{rootMargin:'-10% 0px -55% 0px',threshold:[0,.15,.4,.8,1]});
+    secs.forEach(function(s){io.observe(s);});
+  }
+  mark('s1');
+  var sep=document.getElementById('sep'),duel=document.getElementById('duel'),
+      bSep=document.getElementById('bSep'),bDuel=document.getElementById('bDuel');
+  function mode(d){
+    sep.style.display=d?'none':'block';
+    duel.style.display=d?'block':'none';
+    bSep.setAttribute('aria-pressed',String(!d));
+    bDuel.setAttribute('aria-pressed',String(d));
+  }
+  bSep.addEventListener('click',function(){mode(false);});
+  bDuel.addEventListener('click',function(){mode(true);});
+})();
+</script>
+</body>
+</html>
