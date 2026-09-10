@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Money Thesis Scanner — Arm Holdings plc (ARM)</title>
+<style>
+:root {
+  --bg: #fafafa;
+  --panel: #fff;
+  --ink: #1a1a1a;
+  --ink-soft: #555;
+  --rule: #e5e5e5;
+  --accent: #1f4e79;
+  --accent-soft: #e8f0f8;
+  --green: #2f7a44;
+  --amber: #b07a18;
+  --red: #b94a48;
+  --grey: #8a8a8a;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+       background: var(--bg); color: var(--ink); line-height: 1.55; }
+.hero { background: linear-gradient(180deg, #1f4e79, #2a6396); color: #fff; padding: 48px 32px; }
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.hero .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; opacity: .85; }
+.hero h1 { margin: 8px 0 4px; font-size: 32px; }
+.hero .ticker { font-weight: 400; opacity: .85; }
+.hero .meta { font-size: 13px; opacity: .8; }
+main { max-width: 1200px; margin: 0 auto; padding: 32px; }
+section { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px;
+          padding: 24px 28px; margin-bottom: 24px; }
+h2 { margin-top: 0; font-size: 22px; color: var(--accent); }
+h3 { font-size: 16px; margin-top: 20px; }
+.lede { color: var(--ink-soft); margin-top: -4px; }
+.empty { color: var(--ink-soft); font-style: italic; padding: 12px 0; }
+.table-wrap, .heatmap-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+th { background: #f3f4f6; cursor: pointer; user-select: none; font-weight: 600; }
+th:hover { background: #e9eaee; }
+.fund { font-weight: 600; }
+.pm { font-size: 12px; color: var(--ink-soft); }
+.as-of { font-size: 12px; color: var(--ink-soft); }
+.notes { font-size: 12px; color: var(--ink-soft); max-width: 240px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.status-current { background: #e6f4ea; color: var(--green); }
+.status-historical { background: #fff4d6; color: var(--amber); }
+.status-mentioned { background: #f0f0f0; color: var(--grey); }
+.status-excluded { background: #f8e1e0; color: var(--red); }
+.conf { font-weight: 600; font-size: 12px; }
+.conf-high { color: var(--green); }
+.conf-medium { color: var(--amber); }
+.conf-low { color: var(--red); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+a:hover { border-bottom-style: solid; }
+.cards { display: flex; flex-direction: column; gap: 12px; }
+.card { background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 0; }
+.card[open] { box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+.card summary { list-style: none; cursor: pointer; padding: 16px 20px; }
+.card summary::-webkit-details-marker { display: none; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.card-title .fund { font-size: 16px; font-weight: 700; margin-right: 8px; }
+.card-title .pm { font-size: 13px; color: var(--ink-soft); }
+.card-tags { display: flex; gap: 8px; align-items: center; }
+.card-sub { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+.card-body { padding: 4px 20px 20px; border-top: 1px solid var(--rule); margin-top: 12px; }
+.field { padding: 10px 0; border-bottom: 1px dashed var(--rule); }
+.field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); margin-bottom: 4px; }
+.field-val { font-size: 14px; white-space: pre-wrap; }
+.card-stub .card-body { font-style: italic; color: var(--ink-soft); }
+.stub-note { padding: 12px 0; }
+.heatmap th.rot { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+                  height: 140px; padding: 8px 4px; min-width: 28px; }
+.heatmap th.rot span { font-size: 12px; }
+.heatmap td.cell { width: 28px; min-width: 28px; text-align: center; }
+.heatmap td.cell.on { background: var(--accent); }
+.heatmap td.cell.off { background: #f5f5f5; }
+.heatmap .driver-name { min-width: 260px; }
+.heatmap .d-name { font-weight: 600; }
+.heatmap .d-why { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.divergence { background: #fafbfc; padding: 12px 14px; border-radius: 6px;
+              border-left: 3px solid var(--accent); margin-bottom: 10px; }
+.div-framing { font-weight: 600; }
+.div-investors { font-size: 12px; color: var(--ink-soft); margin: 2px 0 6px; }
+.missing-item { background: #fff7e6; padding: 12px 14px; border-radius: 6px;
+                border-left: 3px solid var(--amber); margin-bottom: 10px; }
+.m-element { font-weight: 600; }
+.m-investors { font-size: 12px; color: var(--ink-soft); }
+.m-quote { font-style: italic; margin: 6px 0; }
+.m-strength { font-size: 12px; color: var(--ink-soft); }
+.questions { padding-left: 20px; }
+.questions li { margin-bottom: 8px; }
+.audit { font-size: 13px; color: var(--ink-soft); padding-left: 20px; }
+.sources { padding-left: 18px; font-size: 13px; }
+.src-meta { color: var(--ink-soft); font-size: 11px; }
+</style>
+</head>
+<body>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="kicker">Smart Money Thesis Scanner</div>
+        <h1>Arm Holdings plc <span class="ticker">(ARM)</span></h1>
+        <div class="meta">Scan run: 2026-09-10</div>
+      </div>
+    </header>
+    
+<main>
+  
+    <section id="ownership">
+      <h2>1. Ownership Verification</h2>
+      <p class="lede">Buy-side investors with verified current or historical ownership. Click any column header to sort. Each evidence link opens the underlying source.</p>
+      <div class="table-wrap">
+        <table class="sortable" id="ownership-table">
+          
+      <thead>
+        <tr>
+          <th data-key="investor">Investor / Fund</th>
+          <th data-key="status">Status</th>
+          <th data-key="evidence">Evidence</th>
+          <th data-key="date">Source Date</th>
+          <th data-key="size">Position</th>
+          <th data-key="tier">Tier / Freshness</th>
+          <th data-key="conf">Confidence</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+    
+          <tbody>
+            
+          <tr class="status-current">
+            <td>
+              <div class="fund">Lansdowne Partners (UK) LLP</div>
+              <div class="pm">Lansdowne Partners &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000091957426005378-lansdowne-partners-uk-llp-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>1,072,493 sh · $380.3M · 15.6% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">Largest weight among active filers; added +15% in Q2 (7.6% → 15.6% of 13F incl. price move). No public commentary on Arm found. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Tran Capital Midcap / Multi-Cap Growth</div>
+              <div class="pm">Tran Capital Management (Quoc Tran) &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://www.sec.gov/Archives/edgar/data/1009262/000110465926083830/infotable.xml" target="_blank" rel="noopener">13F-HR + fund letter</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>241,540 sh · $85.6M · ~9.9% of 13F (largest holding)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-high">High</span></td>
+            <td class="notes">Trimmed −11% in Q2. Largest line in the 13F. Introduced ~Q4 2025/Q1 2026. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Dock Street Asset Management</div>
+              <div class="pm">Dock Street Asset Management &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000117277926000003-dock-street-asset-management-inc-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08</td>
+            <td>
+              <div>210,605 sh · $74.7M · ~6.9% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Share count roughly flat (−2%). One Apr-2026 blog post describes the AGI CPU launch; no thesis. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Mark Asset Management LP</div>
+              <div class="pm">Mark Asset Management &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000121465926010288-mark-asset-management-lp-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08</td>
+            <td>
+              <div>275,310 sh · $97.6M · ~6.6% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Trimmed −22% (Q1 also held 18,800 calls). No public commentary. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Altimeter Capital Management</div>
+              <div class="pm">Altimeter Capital (Brad Gerstner) &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000154161726000008-altimeter-capital-management-lp-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08-14</td>
+            <td>
+              <div>1,641,972 sh · $582.2M · ~5.9% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">New in Q1 2026 (1.72M sh), trimmed −4% in Q2. 20-stock 13F book. No Gerstner statement on Arm found. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Evergreen Quality Fund GP Ltd (Cayman)</div>
+              <div class="pm">Evergreen Quality Fund GP &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000091957426005572-evergreen-quality-fund-gp-ltd-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08</td>
+            <td>
+              <div>981,449 sh · $348.0M · ~5.6% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Likely new in Q2 (unverified). Manager identity unclear; top holdings MU, INTC, TSM, GLW, ARM. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Hyperion Global Growth Companies Fund</div>
+              <div class="pm">Hyperion Asset Management (Mark Arnold, Jason Orthman) &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000117266126002565-hyperion-asset-management-ltd-q2-2026" target="_blank" rel="noopener">13F-HR + fund update</a></td>
+            <td>2026-07-10</td>
+            <td>
+              <div>531,331 sh · $188.4M · ~5.0% of 13F; HGGCF 12-mo avg weight 6.1%</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">Cut −67% in Q2 (7.7% of 13F in Q1; 8.5% of HGGCF at Apr-2026). No stated reason for the cut. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Tensor Edge Capital LLC</div>
+              <div class="pm">Tensor Edge Capital &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000090445426000407-tensor-edge-capital-llc-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08</td>
+            <td>
+              <div>154,141 sh · $54.7M · ~3.6% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Trimmed −47% (7.5% in Q1). No public commentary. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Pacific Heights Asset Management LLC</div>
+              <div class="pm">Pacific Heights Asset Management &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000119312526353582-pacific-heights-asset-management-llc-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08</td>
+            <td>
+              <div>325,000 sh · $115.2M · ~3.6% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Share count unchanged; weight rose with price (1.6% in Q1). No public commentary. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Oriental Harbor Investment Master Fund (HK)</div>
+              <div class="pm">Oriental Harbor &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000204633326000003-oriental-harbor-investment-master-fund-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08</td>
+            <td>
+              <div>150,573 sh · $53.4M · ~3.2% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Likely new in Q2 (unverified). No public commentary. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">NZS Capital Growth Equity</div>
+              <div class="pm">Brad Slingerlend, Brinton Johns &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://13f.info/13f/000181661626000004-nzs-capital-llc-q2-2026" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-08</td>
+            <td>
+              <div>229,378 sh · $81.3M · ~2.1% of 13F</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">Trimmed −51% in Q2 &#x27;back to optionality&#x27; (per reprint of Q2 letter). [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Artisan Developing World Fund</div>
+              <div class="pm">Lewis Kaufman &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://www.artisanpartners.com/content/dam/documents/quarterly-commentary/vr/2026/2q/ARTYX-APDYX-APHYX-QCommentary-2Q26-vR.pdf" target="_blank" rel="noopener">Quarterly commentary (holdings table)</a></td>
+            <td>2026-06-30</td>
+            <td>
+              <div>3.0% of fund</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-high">High</span></td>
+            <td class="notes">Held since 2024 (2.6% Dec-24 → 3.2% Dec-25/Mar-26 → 3.0% Jun-26). Deliberately capped at ~3.2%, excess recycled into Micron.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Baillie Gifford Positive Change</div>
+              <div class="pm">Kate Fox, Lee Qian &amp; team &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://media.bailliegifford.com/mws/1wkeba2g/20260902145007-baillie-gifford-positive-change-quarterly-update-q226.pdf" target="_blank" rel="noopener">Quarterly update</a></td>
+            <td>2026-06-30</td>
+            <td>
+              <div>~3% of fund (halved from ~6% in Jun-2026)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-high">High</span></td>
+            <td class="notes">Bought mid-2025. Other BG vehicles (Scottish Mortgage, American) show no Arm holding; firm-wide BG 13F weight is sub-1%.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Sands Capital Global Growth / Technology Innovators</div>
+              <div class="pm">Sands Capital &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://sandscapital.com/docs/global-growth-sands-capital-quarterly-commentary-report.pdf/?inline=true" target="_blank" rel="noopener">Quarterly report</a></td>
+            <td>2026-06-30</td>
+            <td>
+              <div>size not disclosed (outside top 10; new position)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">Qualifies under exception (b): newly initiated in Q2 2026 and discussed in the most recent letter.</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">Liontrust Global Technology / Global Innovation</div>
+              <div class="pm">Storm Uru, Clare Pleydell-Bouverie &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://www.liontrust.com/insights/monthly-comms/2026/07/liontrust-global-technology-fund-q2-2026-review" target="_blank" rel="noopener">Quarterly review</a></td>
+            <td>2026-07-13</td>
+            <td>
+              <div>size not disclosed (&lt;2.7%; outside top 10 at 31-Aug-2026)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">JUDGMENT CALL: 2% threshold unverified after ~60% unit cut in Q2 2026; retained because the PMs have written on Arm across five reviews (2025–26).</td>
+          </tr>
+        
+          <tr class="status-historical">
+            <td>
+              <div class="fund">SGA U.S. Large Cap Growth / Global Growth</div>
+              <div class="pm">Sustainable Growth Advisers &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-historical">Confirmed historical owner</span></td>
+            <td><a href="https://www.sgadvisers.com/assets/files/6s/sga-q2-2026-u.s.-lcg-commentary.pdf" target="_blank" rel="noopener">Quarterly commentary</a></td>
+            <td>2026-06-30</td>
+            <td>
+              <div>1.7% avg weight Q2-26 (was 2.1% Q1-26; 2.9% of 13F)</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-medium">Medium</span></td>
+            <td class="notes">Still owns, but trimmed below the 2% conviction bar in Q2 &#x27;due to valuation&#x27;. Shown as historical ≥2% holder. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-historical">
+            <td>
+              <div class="fund">Analog Century Management</div>
+              <div class="pm">Analog Century Management &middot; ADR (Nasdaq: ARM) — 1 ADS = 1 ordinary share</div>
+            </td>
+            <td><span class="badge status-historical">Confirmed historical owner</span></td>
+            <td><a href="https://13f.info/cusip/042068205/2026/1" target="_blank" rel="noopener">13F-HR</a></td>
+            <td>2026-05</td>
+            <td>
+              <div>691,364 sh · $104.6M · ~5.0% of 13F (Q1-26); exited Q2-26</div>
+              <div class="as-of">as of 2026-03-31</div>
+            </td>
+            <td>T2 / Fresh</td>
+            <td><span class="conf conf-low">Low</span></td>
+            <td class="notes">No ARM line in the Q2-2026 SEC info table (sec.gov/Archives/edgar/data/1753384/000142050626001828). Full exit. [% of 13F computed: ARM value ÷ total reported 13F value; ARM ADR $354.57 at 30-Jun-26.]</td>
+          </tr>
+        
+          <tr class="status-current">
+            <td>
+              <div class="fund">SoftBank Group Corp.</div>
+              <div class="pm">Masayoshi Son &middot; Ordinary shares (held directly)</div>
+            </td>
+            <td><span class="badge status-current">Confirmed current owner</span></td>
+            <td><a href="https://group.softbank/media/Project/sbg/sbg/pdf/ir/presentations/2026/investor-presentation_q1fy2026_01_en.pdf" target="_blank" rel="noopener">Investor presentation (T1)</a></td>
+            <td>2026-08-06</td>
+            <td>
+              <div>923M shares (~86–87% of Arm; press figure); ~$19.8B margin loan secured on Arm shares</div>
+              <div class="as-of">as of 2026-06-30</div>
+            </td>
+            <td>T1 / Fresh</td>
+            <td><span class="conf conf-high">High</span></td>
+            <td class="notes">CONTROLLING PARENT — strategic, not a portfolio &#x27;vote&#x27;. Shown because its strategy (ASI, Ampere, own-silicon) shapes Arm&#x27;s governance and float.</td>
+          </tr>
+        
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+  
+    <section id="theses">
+      <h2>2. Investor Theses</h2>
+      <p class="lede">Click any card to expand. Direct quotes are in quotation marks; paraphrases are tagged inline.</p>
+      <div class="cards">
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Artisan Developing World Fund</span>
+                <span class="pm">Lewis Kaufman</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-high">High</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.artisanpartners.com/content/dam/documents/quarterly-commentary/vr/2026/2q/ARTYX-APDYX-APHYX-QCommentary-2Q26-vR.pdf" target="_blank" rel="noopener">2Q26 quarterly commentary</a> &middot; 2026-06-30 &middot; Position: 3.0% of fund as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;NVIDIA was harvested in part to seed an investment in ARM Holdings in 2024, which we believed could play a critical role in custom chip development and AI chip proliferation.&quot; — 2Q26 commentary. Arm is framed as an AI exposure that is &quot;not overly dependent on the current cycle of AI capital formation&quot; (4Q25).</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">&quot;ARM&#x27;s royalty-based business model limits its revenue variability&quot; — 4Q25 commentary (cited as both the defensive attraction and the reason it lagged).</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">&quot;ARM benefited from rising interest in CPUs which are set to take on a larger role with agentic AI, and from expectations about the adoption of ARM&#x27;s own AGI CPU chip which would allow the company to capture improved economics.&quot; — 2Q26. 1Q26 cites a &quot;burgeoning royalty revenue stream in the data center.&quot;</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Custom-silicon proliferation (royalty base) · data-centre CPU royalties · own-silicon (AGI CPU) economics — all per quotes above.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">not addressed by this investor</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">not addressed by this investor</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">Position-sizing discipline rather than a valuation call: &quot;We leveraged this pathway to retain our ~3.2% investment in ARM, while redeploying proceeds above this weight into a new investment in memory supplier Micron.&quot; — 1Q26. Added in 4Q25 &quot;as [it] came under pressure.&quot;</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">Low revenue leverage to the AI build-out and timing of own silicon: &quot;its own-silicon initiatives are still a year or two away.&quot; — 4Q25.</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long — held since 2024; &quot;disproportionate equity outcomes are seldom linear (and our investment in ARM certainly has not been)&quot; — 2Q26.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Fresh. Three primary commentaries (4Q25, 1Q26, 2Q26); weight series from each quarter&#x27;s holdings table. EM fund owning a UK-domiciled ADR — Arm is used as an AI-infrastructure satellite.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.artisanpartners.com/content/dam/documents/quarterly-commentary/vr/2026/2q/ARTYX-APDYX-APHYX-QCommentary-2Q26-vR.pdf" target="_blank" rel="noopener">Artisan 2Q26 commentary</a> <span class="src-meta">2026-06-30 &middot; T1</span></li><li><a href="https://www.artisanpartners.com/content/dam/documents/quarterly-commentary/vr/2026/1q/ARTYX-APDYX-APHYX-QCommentary-1Q26-vR.pdf" target="_blank" rel="noopener">Artisan 1Q26 commentary</a> <span class="src-meta">2026-03-31 &middot; T1</span></li><li><a href="https://www.artisanpartners.com/content/dam/documents/quarterly-commentary/vr/2025/4q/ARTYX-APDYX-APHYX-QCommentary-4Q25-vR.pdf" target="_blank" rel="noopener">Artisan 4Q25 commentary</a> <span class="src-meta">2025-12-31 &middot; T1</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Baillie Gifford Positive Change</span>
+                <span class="pm">Kate Fox, Lee Qian &amp; team</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-high">High</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://media.bailliegifford.com/mws/1wkeba2g/20260902145007-baillie-gifford-positive-change-quarterly-update-q226.pdf" target="_blank" rel="noopener">Q2 2026 quarterly update</a> &middot; 2026-06-30 &middot; Position: ~3% (halved in Jun-2026) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;We took a holding in mid-2025, recognising that the company&#x27;s high-performance, low-power processor architectures would benefit from rising demand and higher margins as their products extend from smartphones into datacentres and other compute-intensive applications.&quot; — Q2 2026 update. Held under an energy-efficiency impact lens.</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">&quot;Our new position in compute platform ARM also provides exposure to the energy efficiency demands of advanced compute – its technology is optimized for low power draw.&quot; — Looking back at 2025 (Jan-2026).</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">Datacentre/compute expansion (quote above). &quot;The company&#x27;s recent announcement that it will design and sell its own chips for the first time opens a significant new chapter, positioning it to capture more value across the computing stack.&quot; — Q1 2026 report.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Energy efficiency per watt · datacentre mix shift · value capture up the stack (own silicon). [Paraphrased from Q2 2026 update] CFO meeting covered demand, customer response (incl. new interest from Oracle and ByteDance), supply and gross-margin progression.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">Low-power architecture advantage — per quotes above.</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">[Paraphrased from Q2 2026 update, 30-Jun-2026] Team met the CFO and IR on the shift to adding silicon above CSS/IP; came away with increased conviction that the strategic rationale was sound and customer concerns less severe than feared.</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">&quot;We still have conviction in Arm but recognise that market expectation is also now very high, so in June we took the opportunity to take profit, halving our position to a more moderate 3%.&quot; — Q2 2026.</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">[Paraphrased from Q2 2026 update] Supply-chain constraints, gross-margin progression on own silicon, and licensee (customer) reaction to Arm competing with them.</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long (Baillie Gifford 5–10yr house horizon [inferred]); position managed down on valuation.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Fresh, three primary sources. Only BG vehicle with a confirmed Arm position; Scottish Mortgage and American do not hold it. Top contributor over the quarter and year.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://media.bailliegifford.com/mws/1wkeba2g/20260902145007-baillie-gifford-positive-change-quarterly-update-q226.pdf" target="_blank" rel="noopener">BG Positive Change Q2 2026 update</a> <span class="src-meta">2026-06-30 &middot; T1</span></li><li><a href="https://media.bailliegifford.com/mws/vjplr5ti/639123851297136222baillie20gifford20positive20change20strategy20quarterly20report20q12026.pdf" target="_blank" rel="noopener">BG Positive Change Q1 2026 report</a> <span class="src-meta">2026-03-31 &middot; T1</span></li><li><a href="https://www.bailliegifford.com/en/ireland/professional-investor/insights/ic-article/2025-q4-positive-change-looking-back-at-2025-10059773/" target="_blank" rel="noopener">Positive Change: looking back at 2025</a> <span class="src-meta">2026-01 &middot; T1</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-historical">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">SGA U.S. Large Cap Growth / Global Growth</span>
+                <span class="pm">Sustainable Growth Advisers</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-historical">Confirmed historical owner</span>
+                <span class="conf conf-medium">Medium</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.sgadvisers.com/assets/files/6s/sga-q2-2026-u.s.-lcg-commentary.pdf" target="_blank" rel="noopener">Q2 2026 commentary</a> &middot; 2026-06-30 &middot; Position: 1.7% avg weight (trimmed from 2.1%) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;With strong pricing power, highly recurring revenues, and expanding royalty rates as Arm captures more value across the compute stack, we continue to view the company as a high-quality, long-term compounder well-positioned to benefit from the proliferation of AI and power efficient computing.&quot; — Q2 2026.</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">&quot;Highly recurring revenues&quot; and &quot;strong pricing power&quot; — Q2 2026 (quote above).</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">&quot;Management guidance reinforced confidence in maintaining roughly 20% revenue growth, supported by increasing demand for Arm-based CPUs and expanding adoption across data center and AI workloads, which helped offset expected weakness in handset markets.&quot; — Q2 2026.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Royalty rate per unit: &quot;Arm&#x27;s royalty economics are increasingly skewed toward high end devices, where royalties per unit are significantly higher, allowing royalty growth even in a declining unit environment.&quot; — Q1 2026. Share vs x86: &quot;improving share gains versus x86 architectures&quot; — Q2 2026.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">Pricing power and ecosystem — &quot;strong pricing power&quot; (Q2 2026).</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">[Paraphrased from Q1 2026 commentary] Management reiterated confidence in ~20% long-term royalty growth; SGA treats this as credible.</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">&quot;We trimmed the position to a below-average weight due to valuation considerations following the stock&#x27;s strong performance.&quot; — Q2 2026.</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">Handset unit weakness (&quot;expected weakness in handset markets&quot;) and valuation.</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long — &quot;long-term compounder&quot; (Q2 2026).</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Fresh, primary. Status 2 because the ≥2% conviction position is historical: average weight cut to 1.7% in Q2 2026 (13F weight 2.9% → 1.3%).</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.sgadvisers.com/assets/files/6s/sga-q2-2026-u.s.-lcg-commentary.pdf" target="_blank" rel="noopener">SGA Q2 2026 U.S. LCG commentary</a> <span class="src-meta">2026-06-30 &middot; T1</span></li><li><a href="https://www.sgadvisers.com/assets/files/6t/sga-q2-2026-global-growth-commentary.pdf" target="_blank" rel="noopener">SGA Q2 2026 Global Growth commentary</a> <span class="src-meta">2026-06-30 &middot; T1</span></li><li><a href="https://www.sgadvisers.com/assets/files/6e/sga-q1-2026-u.s.-lcg-commentary.pdf" target="_blank" rel="noopener">SGA Q1 2026 U.S. LCG commentary</a> <span class="src-meta">2026-03-31 &middot; T1</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Sands Capital Global Growth / Technology Innovators</span>
+                <span class="pm">Sands Capital</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-medium">Medium</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://sandscapital.com/docs/global-growth-sands-capital-quarterly-commentary-report.pdf/?inline=true" target="_blank" rel="noopener">Q2 2026 quarterly report</a> &middot; 2026-06-30 &middot; Position: new position; size not disclosed as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;The crux of our investment case is that Arm stands to benefit from rising central processing unit (CPU) demand driven by agentic AI.&quot; — Global Growth Q2 2026. &quot;CPUs effectively function as the operating system for agentic AI workflows.&quot;</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">not addressed by this investor</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">&quot;We expect agentic AI adoption to drive an inflection in CPU demand, increasing Arm&#x27;s CPU royalties from approximately 10 percent of revenue in 2026 to more than 30 percent by 2031.&quot; — Global Growth Q2 2026.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Data-centre CPU royalty mix (10% → 30%+ of revenue by 2031) · smartphone share retention (&gt;90%) · SoftBank ecosystem demand.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">&quot;Arm&#x27;s energy-efficient architecture provides what we view as a competitive advantage in selling AI CPUs to cloud hyperscaler customers while also helping preserve its more than 90 percent share within smartphones.&quot; — Global Growth Q2 2026.</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">not addressed by this investor</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">Optionality from the parent: &quot;SoftBank&#x27;s majority ownership of Arm could provide additional upside potential, as SoftBank seeks to expand AI adoption across its broader investment ecosystem using Arm-based chips.&quot; — Global Growth Q2 2026.</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">no risks explicitly mentioned</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long — the stated model runs to 2031.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Fresh, primary (sandscapital.com). Technology Innovators pairs Arm with AMD and Intel as CPU exposure: &quot;AMD and Arm provide exposure to supplier diversity, open standards, and more efficient compute architectures.&quot; Qualifies under the new-position exception.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://sandscapital.com/docs/global-growth-sands-capital-quarterly-commentary-report.pdf/?inline=true" target="_blank" rel="noopener">Sands Global Growth Q2 2026</a> <span class="src-meta">2026-06-30 &middot; T1</span></li><li><a href="https://sandscapital.com/docs/technology-innovators-sands-capital-quarterly-commentary-report.pdf/?inline=true" target="_blank" rel="noopener">Sands Technology Innovators Q2 2026</a> <span class="src-meta">2026-06-30 &middot; T1</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Tran Capital Midcap / Multi-Cap Growth</span>
+                <span class="pm">Quoc K. Tran, Michael Im, Eric Winterhalter</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-high">High</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.trancapital.com/wp-content/uploads/2026/07/TCM-Midcap-Letter_Q2-2026.pdf" target="_blank" rel="noopener">Q2 2026 Midcap letter</a> &middot; 2026-07 &middot; Position: ~9.9% of 13F (largest holding) as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;We were attracted to Arm&#x27;s business model due to its high degree of revenue visibility and its ability to grow as customers adopted higher-value-added IP over time.&quot; — Multi-Cap Q1 2026. &quot;ARM Holdings is early in their AI-driven growth cycle.&quot; — Midcap Q2 2026.</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">&quot;The company earns royalties for its instruction sets and compute platforms that serve as the foundation for a large portion of global semiconductor designs.&quot; — Q1 2026.</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">&quot;The rise of AI agents from services such as Claude, OpenAI, OpenClaw/NemoClaw, etc. are increasing the needs of CPUs for data centers, and we believe Arm is one of the best positioned companies to serve this need through its leading CPU platform.&quot; — Q2 2026. &quot;Arm has a meaningful opportunity to expand its addressable market by moving further downstream and designing more complete, specialized chips&quot; — Q1 2026.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Higher-value IP adoption (royalty per chip) · data-centre CPU demand · AGI CPU / downstream chips (EPS lever).</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">[Paraphrased from Q1 2026 letter] Energy-efficient architecture heritage makes Arm CPUs suited to power-constrained agentic AI data centres.</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">not addressed by this investor</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">Earnings-power step-up: the AGI CPU &quot;could materially increase Arm&#x27;s earnings power, increasing EPS fourfold from ~$2 per share in fiscal 2027 to over $9 per share in fiscal 2031.&quot; — Q1 2026.</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">no risks explicitly mentioned</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long — &quot;We believe Arm is positioned for many years of attractive growth from here.&quot; — Q1 2026.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Fresh, primary letters + SEC info table. Arm is the fund&#x27;s largest 13F line; trimmed −11% in Q2. The Q4 2025 &#x27;introduction&#x27; letter was not found.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.trancapital.com/wp-content/uploads/2026/07/TCM-Midcap-Letter_Q2-2026.pdf" target="_blank" rel="noopener">Tran Midcap Q2 2026 letter</a> <span class="src-meta">2026-07 &middot; T1</span></li><li><a href="https://www.trancapital.com/wp-content/uploads/2026/04/TCM-Multi-Cap-Letter_Q1-2026.pdf" target="_blank" rel="noopener">Tran Multi-Cap Q1 2026 letter</a> <span class="src-meta">2026-04 &middot; T1</span></li><li><a href="https://www.sec.gov/Archives/edgar/data/1009262/000110465926083830/infotable.xml" target="_blank" rel="noopener">SEC 13F info table Q2 2026</a> <span class="src-meta">2026-08 &middot; T1</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Liontrust Global Technology / Global Innovation</span>
+                <span class="pm">Storm Uru, Clare Pleydell-Bouverie</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-medium">Medium</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.liontrust.com/insights/monthly-comms/2026/07/liontrust-global-technology-fund-q2-2026-review" target="_blank" rel="noopener">Q2 2026 review</a> &middot; 2026-07-13 &middot; Position: size not disclosed (&lt;2.7%) as of 2026-08-31
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;With three key growth vectors driving upside – more complexity per chip, more chips shipped, and more Arm per device as AI proliferates – the company sits at the centre of a multi-year runway for outsized royalty and licensing growth&quot; — May 2025 review. &quot;Arm (+133%) is the quiet compounder of the same shift&quot; — Global Innovation Q2 2026.</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">&quot;Smartphone royalties jumped 30% year-on-year on only 2% unit growth, demonstrating that value per device is rising rapidly as AI capabilities expand.&quot; — May 2025 review.</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">&quot;Arm (+133%) collects royalties on the CPU side of the buildout, where agentic computing multiplies core counts (AWS&#x27;s Graviton is Arm based)&quot; — Global Technology Q2 2026. &quot;agentic AI is hungry for CPU capacity, roughly 120 million CPU cores per gigawatt, four times traditional workloads.&quot; — Global Innovation Q2 2026.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Core-count growth (&quot;Data-centre chips that shipped with eight cores in 2016 now feature almost two hundred cores, with Arm&#x27;s share of that complexity – and therefore its royalty pool – expanding with every design win.&quot;) · v9 royalty uplift · hyperscaler custom CPUs.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">&quot;Arm v9 core which delivers approximately 65% better price-performance than current-generation x86 alternatives&quot; and &quot;more than 22 million developers now building on the platform&quot; — May 2025 review.</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">not addressed by this investor</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">Trades around price: re-entered &quot;after the Q3 2024 selloff below $100 per share&quot; (May 2025); added in Q3 2025 as &quot;valuation has become more attractive&quot;; &quot;Unit holdings in Arm, Astera Labs, Credo and Elite Material were each cut by around 60%.&quot; (Q2 2026).</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">no risks explicitly mentioned</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Medium–long; actively trades the position around valuation.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Fresh (Jul-2026) plus aging (May-2025) primary reviews. Judgment call: weight undisclosed and likely near/below 2% after the Q2 cut; retained for the depth of the written thesis.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.liontrust.com/insights/monthly-comms/2026/07/liontrust-global-technology-fund-q2-2026-review" target="_blank" rel="noopener">Liontrust Global Technology Q2 2026 review</a> <span class="src-meta">2026-07-13 &middot; T1</span></li><li><a href="https://www.liontrust.com/insights/monthly-comms/2026/07/liontrust-global-innovation-fund-q2-2026-review" target="_blank" rel="noopener">Liontrust Global Innovation Q2 2026 review</a> <span class="src-meta">2026-07-13 &middot; T1</span></li><li><a href="https://www.liontrust.com/insights/monthly-comms/2025/10/liontrust-global-technology-fund-q3-2025-review" target="_blank" rel="noopener">Liontrust Global Technology Q3 2025 review</a> <span class="src-meta">2025-10-23 &middot; T1</span></li><li><a href="https://www.liontrust.com/insights/monthly-comms/2025/06/liontrust-global-technology-fund-may-2025-review" target="_blank" rel="noopener">Liontrust Global Technology May 2025 review</a> <span class="src-meta">2025-06-10 &middot; T1</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">SoftBank Group Corp.</span>
+                <span class="pm">Masayoshi Son</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-high">High</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://group.softbank/media/Project/sbg/sbg/pdf/ir/presentations/2026/investor-presentation_q1fy2026_01_en.pdf" target="_blank" rel="noopener">Q1 FY2026 investor presentation</a> &middot; 2026-08-06 &middot; Position: 923M shares (~86–87%); $19.8B margin loan on Arm shares as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;I see Arm and OpenAI as the two essential engines—together, they are indispensable to our ambition of becoming the No.1 platform provider in the age of ASI.&quot; — Son, SoftBank Group Report 2025 (Jun-2025).</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">&quot;Among them is Arm, a cornerstone of our platform strategy.&quot; — Group Report 2025.</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">&quot;In 2025, up to 50% of new server chips adopted by leading hyperscalers are expected to be Arm-based.&quot; — Group Report 2025. [Paraphrased from AGM coverage, 24-Jun-2026] Son said Arm is positioned to become one of the world&#x27;s most important CPU suppliers as AI computing needs shift, and floated a &gt;10x value path (paraphrase only).</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Data-centre CPU share · vertical integration via the &quot;AI Computing Segment&quot; (Arm + Ampere + Graphcore) [Paraphrased from Feb-2026 SoftBank briefing].</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">not addressed by this investor</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">Controlling holder; Son is Arm&#x27;s chairman. [Paraphrased from Telegraph, 31-Aug-2026 — T3] ISS/Glass Lewis opposed Rene Haas&#x27;s ~$800M VCP pay plan and ISS recommended against Son&#x27;s re-election citing board independence.</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">Strategic value, not price-based; Arm is SoftBank&#x27;s largest asset and loan collateral.</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">Not stated by SoftBank. [analyst synthesis] Pledged-share margin loan ($19.8B, non-recourse to SBG) and own-silicon strategy create float-overhang and channel-conflict risk for minority holders.</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Permanent/strategic.</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Parent, not a portfolio manager — read its view as the controlling shareholder&#x27;s agenda. Group Report is aging (Jun-2025); AGM quotes only via press paraphrase.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://group.softbank/media/Project/sbg/sbg/pdf/ir/presentations/2026/investor-presentation_q1fy2026_01_en.pdf" target="_blank" rel="noopener">SoftBank Q1 FY2026 investor presentation</a> <span class="src-meta">2026-08-06 &middot; T1</span></li><li><a href="https://group.softbank/en/ir/financials/annual_reports/2025/message/son" target="_blank" rel="noopener">SoftBank Group Report 2025 — CEO message</a> <span class="src-meta">2025-06-27 &middot; T1</span></li><li><a href="https://stocktwits.com/news-articles/markets/equity/masayoshi-son-arm-valuation-10-fold-intel-investment/cZKy4RwR7fc" target="_blank" rel="noopener">AGM coverage (Stocktwits)</a> <span class="src-meta">2026-06-24 &middot; T3</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Hyperion Global Growth Companies Fund</span>
+                <span class="pm">Mark Arnold, Jason Orthman</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-medium">Medium</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.hyperion.com.au/app/uploads/HGGCF-Fund-Update-July-2026.pdf" target="_blank" rel="noopener">July 2026 fund update</a> &middot; 2026-07 &middot; Position: ~5.0% of 13F; 6.1% 12-mo avg in HGGCF as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;Ultimately, AI will move from the data centres onto our edge devices, into our cars, into humanoid robots, and this is where ARM will really benefit.&quot; — Jason Orthman, quoted in Livewire (Dec-2025, T3).</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">Physical/edge AI: &quot;As we move to physical AI, we expect the number of GPUs, tokens and watts to increase multiples over the next 10 to 20 years&quot; — Orthman, Livewire.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Edge-device and physical-AI unit growth (per quote above).</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">no risks explicitly mentioned</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">Long — &quot;next 10 to 20 years&quot; (Orthman).</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Monthly fund updates (T1) give only performance lines; the one thesis quote is press (T3). Cut −67% in Q2 2026 with no stated reason — a notable divergence from its 8.5% April weight.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.hyperion.com.au/app/uploads/HGGCF-Fund-Update-July-2026.pdf" target="_blank" rel="noopener">HGGCF July 2026 fund update</a> <span class="src-meta">2026-07 &middot; T1</span></li><li><a href="https://www.listcorp.com/asx/hygg/hyperion-global-growth-companies-fund-managed-fund/news/april-2026-investment-update-3354920.html" target="_blank" rel="noopener">HYGG April 2026 update (8.5% weight)</a> <span class="src-meta">2026-05-20 &middot; T1</span></li><li><a href="https://www.livewiremarkets.com/wires/hyperion-dismisses-ai-bubble-fears-backs-25-earnings-growth" target="_blank" rel="noopener">Livewire interview with J. Orthman</a> <span class="src-meta">2025-12-05 &middot; T3</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">NZS Capital Growth Equity</span>
+                <span class="pm">Brad Slingerlend, Brinton Johns</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://www.buysidedigest.com/funds/nzs-capital-growth/" target="_blank" rel="noopener">Q2 2026 letter (reprint)</a> &middot; 2026-07/08 &middot; Position: ~2.1% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="field"><div class="field-label">Thesis summary</div><div class="field-val">&quot;In the cases of ARM Holdings, Marvell, Lattice Semiconductor, and Snowflake, we trimmed the positions back to optionality.&quot; — Q2 2026 letter via Buyside Digest (T2).</div></div><div class="field"><div class="field-label">Business quality</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Growth drivers</div><div class="field-val">&quot;Arm Holdings plc (NASDAQ:ARM) shares were further lifted by the company&#x27;s announced plan to develop its first in house chip, a CPU for AI workloads.&quot; — Q2 2026 letter via Insider Monkey reprint.</div></div><div class="field"><div class="field-label">Fundamental drivers</div><div class="field-val">Own-silicon (AI CPU) — per reprint quote.</div></div><div class="field"><div class="field-label">Moat / competitive advantage</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Management</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Valuation angle</div><div class="field-val">Sizing framework: trimmed to an &#x27;optionality&#x27; position after the run (per quote).</div></div><div class="field"><div class="field-label">Risks mentioned</div><div class="field-val">unknown</div></div><div class="field"><div class="field-label">Time horizon</div><div class="field-val">unknown</div></div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Letter body not retrievable from nzscapital.com; reprint dates conflict (16-Jul / 21-Jul / 11-Aug). Treat as Low confidence.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://www.buysidedigest.com/funds/nzs-capital-growth/" target="_blank" rel="noopener">Buyside Digest — NZS Q2 2026</a> <span class="src-meta">2026-07 &middot; T2</span></li><li><a href="https://finance.yahoo.com/markets/stocks/articles/bullish-arm-holdings-plc-arm-142114589.html" target="_blank" rel="noopener">Insider Monkey reprint (Yahoo)</a> <span class="src-meta">2026-07-21 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Lansdowne Partners (UK) LLP</span>
+                <span class="pm">Lansdowne Partners</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000091957426005378-lansdowne-partners-uk-llp-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08-14 &middot; Position: 1,072,493 sh · $380.3M · 15.6% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000091957426005378-lansdowne-partners-uk-llp-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08-14 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Dock Street Asset Management</span>
+                <span class="pm"></span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000117277926000003-dock-street-asset-management-inc-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08 &middot; Position: 210,605 sh · $74.7M · ~6.9% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only. One blog post (&quot;Computational Intensity is a One-Way Door&quot;, 10-Apr-2026) describes the AGI CPU launch but states no thesis.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000117277926000003-dock-street-asset-management-inc-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Mark Asset Management LP</span>
+                <span class="pm">Mark Asset Management</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000121465926010288-mark-asset-management-lp-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08 &middot; Position: 275,310 sh · $97.6M · ~6.6% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000121465926010288-mark-asset-management-lp-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Altimeter Capital Management</span>
+                <span class="pm">Altimeter Capital (Brad Gerstner)</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000154161726000008-altimeter-capital-management-lp-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08-14 &middot; Position: 1,641,972 sh · $582.2M · ~5.9% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000154161726000008-altimeter-capital-management-lp-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08-14 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Evergreen Quality Fund GP Ltd (Cayman)</span>
+                <span class="pm">Evergreen Quality Fund GP</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000091957426005572-evergreen-quality-fund-gp-ltd-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08 &middot; Position: 981,449 sh · $348.0M · ~5.6% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000091957426005572-evergreen-quality-fund-gp-ltd-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Tensor Edge Capital LLC</span>
+                <span class="pm">Tensor Edge Capital</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000090445426000407-tensor-edge-capital-llc-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08 &middot; Position: 154,141 sh · $54.7M · ~3.6% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000090445426000407-tensor-edge-capital-llc-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Pacific Heights Asset Management LLC</span>
+                <span class="pm">Pacific Heights Asset Management</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000119312526353582-pacific-heights-asset-management-llc-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08 &middot; Position: 325,000 sh · $115.2M · ~3.6% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000119312526353582-pacific-heights-asset-management-llc-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-current card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Oriental Harbor Investment Master Fund (HK)</span>
+                <span class="pm">Oriental Harbor</span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-current">Confirmed current owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/13f/000204633326000003-oriental-harbor-investment-master-fund-q2-2026" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-08 &middot; Position: 150,573 sh · $53.4M · ~3.2% of 13F as of 2026-06-30
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/13f/000204633326000003-oriental-harbor-investment-master-fund-q2-2026" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-08 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+        <details class="card status-historical card-stub">
+          <summary>
+            <div class="card-head">
+              <div class="card-title">
+                <span class="fund">Analog Century Management</span>
+                <span class="pm"></span>
+              </div>
+              <div class="card-tags">
+                <span class="badge status-historical">Confirmed historical owner</span>
+                <span class="conf conf-low">Low</span>
+              </div>
+            </div>
+            <div class="card-sub">
+              <a href="https://13f.info/cusip/042068205/2026/1" target="_blank" rel="noopener">13F-HR</a> &middot; 2026-05 &middot; Position: 691,364 sh · $104.6M · ~5.0% of 13F (Q1-26); exited Q2-26 as of 2026-03-31
+            </div>
+          </summary>
+          <div class="card-body">
+            <div class="stub-note">This fund discloses the position but does not publish substantive commentary on it.</div>
+            <div class="ev-notes"><div class="field-label">Evidence notes</div><div class="field-val">Discloses the position via 13F but publishes no thesis on Arm. Ownership alone is not an investable insight — treat as momentum/sizing signal only.</div></div>
+            <div class="sources-block"><div class="field-label">Sources</div><ul class="sources"><li><a href="https://13f.info/cusip/042068205/2026/1" target="_blank" rel="noopener">13F-HR</a> <span class="src-meta">2026-05 &middot; T2</span></li></ul></div>
+          </div>
+        </details>
+        
+      </div>
+    </section>
+    
+  
+    <section id="drivers">
+      <h2>3. Fundamental Driver Map</h2>
+      <p class="lede">Drivers cited by verified holders. A filled cell means the driver appears in that investor's card (quoted or paraphrased). Drivers added by the model with no investor citation do not appear.</p>
+      <div class="heatmap-wrap">
+        <table class="heatmap">
+          <thead>
+            <tr>
+              <th class="driver-col">Driver</th>
+              <th class="rot"><span>Artisan Developing World Fund</span></th><th class="rot"><span>Baillie Gifford Positive Change</span></th><th class="rot"><span>SGA U.S. Large Cap Growth / Global Growth</span></th><th class="rot"><span>Sands Capital Global Growth / Technology Innovators</span></th><th class="rot"><span>Tran Capital Midcap / Multi-Cap Growth</span></th><th class="rot"><span>Liontrust Global Technology / Global Innovation</span></th><th class="rot"><span>SoftBank Group Corp.</span></th><th class="rot"><span>Hyperion Global Growth Companies Fund</span></th><th class="rot"><span>NZS Capital Growth Equity</span></th>
+              <th>Evidence</th>
+              <th>Consensus</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Agentic-AI / data-centre CPU demand</div>
+              <div class="d-why">&quot;CPUs effectively function as the operating system for agentic AI workflows&quot; — Sands Q2-26; &quot;roughly 120 million CPU cores per gigawatt, four times traditional workloads&quot; — Liontrust Q2-26</div>
+            </td>
+            <td class="cell on"></td><td class="cell on"></td><td class="cell on"></td><td class="cell on"></td><td class="cell on"></td><td class="cell on"></td><td class="cell on"></td><td class="cell off"></td><td class="cell off"></td>
+            <td class="strength">High</td>
+            <td class="consensus">Consensus</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Own silicon (AGI CPU) — value capture up the stack</div>
+              <div class="d-why">&quot;would allow the company to capture improved economics&quot; — Artisan 2Q26; &quot;could materially increase Arm&#x27;s earnings power, increasing EPS fourfold&quot; — Tran Q1-26</div>
+            </td>
+            <td class="cell on"></td><td class="cell on"></td><td class="cell off"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell on"></td>
+            <td class="strength">High</td>
+            <td class="consensus">Consensus</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Low-power architecture as competitive edge</div>
+              <div class="d-why">&quot;competitive advantage in selling AI CPUs to cloud hyperscaler customers&quot; — Sands Q2-26; v9 &quot;approximately 65% better price-performance than current-generation x86&quot; — Liontrust May-25</div>
+            </td>
+            <td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell on"></td><td class="cell on"></td><td class="cell on"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td>
+            <td class="strength">High</td>
+            <td class="consensus">Common</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Royalty rate per chip (v9 / CSS / higher-value IP)</div>
+              <div class="d-why">&quot;royalty growth even in a declining unit environment&quot; — SGA Q1-26; &quot;Smartphone royalties jumped 30% year-on-year on only 2% unit growth&quot; — Liontrust May-25</div>
+            </td>
+            <td class="cell off"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell on"></td><td class="cell on"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td>
+            <td class="strength">High</td>
+            <td class="consensus">Common</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Recurring, visible royalty revenue + pricing power</div>
+              <div class="d-why">&quot;strong pricing power, highly recurring revenues&quot; — SGA Q2-26; &quot;high degree of revenue visibility&quot; — Tran Q1-26</div>
+            </td>
+            <td class="cell on"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td>
+            <td class="strength">High</td>
+            <td class="consensus">Common</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Smartphone share &amp; developer ecosystem</div>
+              <div class="d-why">&quot;preserve its more than 90 percent share within smartphones&quot; — Sands Q2-26; &quot;more than 22 million developers&quot; — Liontrust May-25</div>
+            </td>
+            <td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">Edge / physical AI unit growth</div>
+              <div class="d-why">&quot;AI will move from the data centres onto our edge devices, into our cars, into humanoid robots, and this is where ARM will really benefit&quot; — Hyperion (Orthman, press)</div>
+            </td>
+            <td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          <tr>
+            <td class="driver-name">
+              <div class="d-name">SoftBank ecosystem pull-through</div>
+              <div class="d-why">&quot;SoftBank&#x27;s majority ownership of Arm could provide additional upside potential&quot; — Sands Q2-26</div>
+            </td>
+            <td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell on"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td><td class="cell off"></td>
+            <td class="strength">Medium</td>
+            <td class="consensus">Single view</td>
+          </tr>
+        
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+  
+    <section id="consensus">
+      <h2>4. Consensus & Divergence</h2>
+      <h3>Where investors agree</h3>
+      <p>Seven of nine substantive cards (Artisan, Baillie Gifford, SGA, Sands, Tran, Liontrust, SoftBank) own Arm for the same reason: agentic AI is pushing up data-centre CPU demand, and Arm&#x27;s low-power architecture wins that share. Five (Artisan, Baillie Gifford, Tran, NZS, SoftBank) add the 2026 own-silicon (AGI CPU) launch as a step-change in value capture. Almost every fund that writes about Arm trimmed or capped the position in Q2 2026 after the ~+133% quarter: Baillie Gifford halved it, SGA cut to below-average weight, Liontrust cut ~60%, NZS went &#x27;back to optionality&#x27;, and Artisan held at ~3%.</p>
+      <h3>Where investors split</h3>
+      
+        <div class="divergence">
+          <div class="div-framing">Royalty compounder (2025-vintage thesis)</div>
+          <div class="div-investors">SGA U.S. Large Cap Growth / Global Growth, Liontrust Global Technology / Global Innovation, Tran Capital Midcap / Multi-Cap Growth</div>
+          <div class="div-summary">Value per device rises through v9/CSS royalty rates, recurring revenue and pricing power. SGA calls Arm &#x27;a high-quality, long-term compounder&#x27;; Liontrust&#x27;s 2025 case is &#x27;more complexity per chip, more chips shipped, and more Arm per device&#x27;.</div>
+        </div>
+        
+        <div class="divergence">
+          <div class="div-framing">Own-silicon step-change (2026-vintage thesis)</div>
+          <div class="div-investors">Artisan Developing World Fund, Tran Capital Midcap / Multi-Cap Growth, Baillie Gifford Positive Change, NZS Capital Growth Equity, SoftBank Group Corp.</div>
+          <div class="div-summary">Arm selling its own AGI CPU changes its economics. Tran models EPS rising from ~$2 (FY27) to $9+ (FY31); Artisan says it &#x27;would allow the company to capture improved economics&#x27;. Baillie Gifford is the only one to probe the flip side: supply, gross margin and licensee reaction (paraphrased from its CFO meeting).</div>
+        </div>
+        
+        <div class="divergence">
+          <div class="div-framing">Sellers on valuation vs new buyers</div>
+          <div class="div-investors">Baillie Gifford Positive Change, SGA U.S. Large Cap Growth / Global Growth, Liontrust Global Technology / Global Innovation, NZS Capital Growth Equity, Hyperion Global Growth Companies Fund, Sands Capital Global Growth / Technology Innovators, Lansdowne Partners (UK) LLP, Altimeter Capital Management</div>
+          <div class="div-summary">Baillie Gifford (&#x27;market expectation is also now very high&#x27;), SGA, Liontrust, NZS and Hyperion (−67%, no reason given) cut in Q2 2026. Sands initiated in Q2, Lansdowne added +15% to a 15.6% 13F weight, and Altimeter opened in Q1 2026 — though Lansdowne and Altimeter publish no rationale.</div>
+        </div>
+        
+        <div class="divergence">
+          <div class="div-framing">Data-centre CPU vs edge/physical AI</div>
+          <div class="div-investors">Hyperion Global Growth Companies Fund, Sands Capital Global Growth / Technology Innovators, Liontrust Global Technology / Global Innovation</div>
+          <div class="div-summary">Most cards centre on hyperscaler CPUs. Hyperion (Orthman) instead puts the payoff at the edge (&#x27;cars ... humanoid robots&#x27;), over a 10–20 year horizon.</div>
+        </div>
+        
+        <div class="divergence">
+          <div class="div-framing">Controlling parent vs minority holders</div>
+          <div class="div-investors">SoftBank Group Corp.</div>
+          <div class="div-summary">SoftBank treats Arm as a strategic &#x27;cornerstone&#x27; of its ASI platform and has borrowed ~$19.8B against Arm shares. Its agenda (Ampere, own silicon, the CEO&#x27;s VCP pay plan) is set apart from minority economics — ISS opposed both the pay plan and Son&#x27;s re-election (press, T3).</div>
+        </div>
+        
+    </section>
+    
+  
+    <section id="missing">
+      <h2>5. What the Market May Be Missing</h2>
+      <p class="lede">Only mispricings investors explicitly framed as such. The model does not add its own.</p>
+      
+        <div class="missing-item">
+          <div class="m-element">How much CPU demand agentic AI creates</div>
+          <div class="m-investors">Sands Capital Global Growth / Technology Innovators, Artisan Developing World Fund</div>
+          <div class="m-quote">Sands: &quot;we believe the need to coordinate, feed, and manage accelerated compute could drive stronger CPU demand than investors previously expected&quot; (Technology Innovators Q2-26). Artisan: Arm rose &quot;as the role of CPUs in the datacenter was reassessed and revalued&quot; (2Q26) — i.e. already partly corrected.</div>
+          <div class="m-strength">Evidence: Medium</div>
+        </div>
+        
+        <div class="missing-item">
+          <div class="m-element">Market punishing the royalty model&#x27;s low revenue leverage</div>
+          <div class="m-investors">Artisan Developing World Fund</div>
+          <div class="m-quote">Artisan 4Q25: &quot;ARM declined as investors seek revenue leverage (i.e., volume and pricing upside) to the current AI buildout, whereas ARM&#x27;s royalty-based business model limits its revenue variability&quot; — and it added to the position on that weakness.</div>
+          <div class="m-strength">Evidence: Medium</div>
+        </div>
+        
+    </section>
+    
+  
+    <section id="questions">
+      <h2>6. Research Questions</h2>
+      <ol class="questions"><li>Channel conflict: does selling the AGI CPU cost Arm licensing/royalty share with hyperscaler custom-CPU teams (Graviton, Axion, Cobalt)? Only Baillie Gifford raised it.</li><li>Test Sands&#x27; claim that CPU royalties go from ~10% of revenue (2026) to &gt;30% (2031) against the data-centre royalty disclosures in the FY2026 20-F and Q1 FY27 6-K.</li><li>Stress-test Tran&#x27;s EPS path (~$2 FY27 → $9+ FY31): what own-silicon revenue, gross margin and opex does it imply?</li><li>Royalty rate per chip: SGA and Liontrust lean on v9/CSS rate uplift — is the blended rate still rising once own-silicon mix is included?</li><li>SoftBank overhang: $19.8B non-recourse margin loan on pledged Arm shares plus ~13–14% free float — what happens to float and governance in a drawdown?</li><li>Why did Hyperion cut 67% and Tensor Edge 47% in Q2 2026 with no public rationale, while Lansdowne added to a 15.6% weight?</li><li>Governance: outcome of the 9-Sep-2026 AGM vote on Rene Haas&#x27;s VCP and Son&#x27;s re-election.</li></ol>
+    </section>
+    
+</main>
+<script>
+document.querySelectorAll('table.sortable').forEach(function(table){
+  var headers = table.querySelectorAll('thead th');
+  headers.forEach(function(h, idx){
+    if (!h.dataset.key) return;
+    h.addEventListener('click', function(){
+      var body = table.querySelector('tbody');
+      var rows = Array.from(body.querySelectorAll('tr'));
+      var asc = h.dataset.dir !== 'asc';
+      headers.forEach(function(x){ x.removeAttribute('data-dir'); });
+      h.dataset.dir = asc ? 'asc' : 'desc';
+      rows.sort(function(a, b){
+        var av = a.children[idx].innerText.trim().toLowerCase();
+        var bv = b.children[idx].innerText.trim().toLowerCase();
+        if (!isNaN(parseFloat(av)) && !isNaN(parseFloat(bv))) {
+          return (parseFloat(av) - parseFloat(bv)) * (asc ? 1 : -1);
+        }
+        return av.localeCompare(bv) * (asc ? 1 : -1);
+      });
+      rows.forEach(function(r){ body.appendChild(r); });
+    });
+  });
+});
+</script>
+</body>
+</html>
