@@ -2,6 +2,7 @@
 - [AAPL Smart Money](https://xk152004.github.io/investechery/stocks/AAPL_smart_money.html)
 - [AMZN Business Overview](https://xk152004.github.io/investechery/stocks/AMZN-Business-Overview.html)
 - [AMZN Coverage File](https://xk152004.github.io/investechery/stocks/AMZN_Coverage_File.html)
+- [ARM Coverage File](https://xk152004.github.io/investechery/stocks/ARM_Coverage_File.html)
 - [AXT Bull & Bear Memo](https://xk152004.github.io/investechery/stocks/AXT%20-%20Bull%20%26%20Bear%20Memo.html)
 - [AXT Business Overview](https://xk152004.github.io/investechery/stocks/AXT-Business-Overview.html)
 - [Alibaba Business Overview](https://xk152004.github.io/investechery/stocks/Alibaba-Business-Overview.html)
