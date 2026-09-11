@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spotify's Podcast Business — SPOT Research Note</title>
+<style>
+:root{--cream:#FAF6EF;--ink:#2B2B2B;--terracotta:#C75B39;--terracotta-soft:#F3E2DA;
+  --line:#E5DDD0;--muted:#6E675C;--good:#3E6B4F;--gold:#C79A3A;--blue:#3C6E8F;}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-size:19px;line-height:1.58;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;margin:0}
+h1{font-size:38px;line-height:1.18;margin:6px 0 10px}
+h2{font-size:27px;line-height:1.25;margin:52px 0 14px}
+h3{font-size:21px;line-height:1.3;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.sub{font-size:21px;color:var(--muted);font-family:Georgia,serif;margin:0 0 16px}
+.srcline{font-size:15px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;border-left:5px solid var(--terracotta);
+  padding:6px 0 6px 22px;margin:32px 0 34px}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:34px 0}
+.engine .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C9BFAF;font-weight:700}
+.engine .unit{font-family:Georgia,serif;font-size:29px;margin:8px 0 10px;color:#fff}
+.engine p{margin:0;font-size:18px;color:#EDE5D8;line-height:1.55}
+.engine .big{color:var(--terracotta-soft);font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 8px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi .v{font-family:Georgia,serif;font-size:29px;color:var(--terracotta);margin:6px 0 2px;
+  font-variant-numeric:tabular-nums}
+.kpi .s{font-size:14.5px;color:var(--muted);line-height:1.42}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:14px 18px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)}.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .hd{font-weight:700;margin:3px 0 5px;font-size:19px}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.5}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;
+  color:var(--muted);margin-top:10px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.card h4{margin:0 0 12px;font-family:Georgia,serif;font-size:18px}
+.card ul{margin:0;padding-left:18px}.card li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+.card.dur h4{color:var(--good)}.card.bor h4{color:var(--terracotta)}
+.tw{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;font-variant-numeric:tabular-nums}
+caption{caption-side:top;text-align:left;font-size:14px;color:var(--muted);padding-bottom:8px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+thead th{background:var(--ink);color:var(--cream);font-weight:700;font-size:14.5px;border-color:#4a4a4a}
+td.n,th.n{text-align:right}
+tbody tr:nth-child(odd){background:#FCFAF6}
+th[scope=row]{font-weight:700;background:#FCFAF6}
+.note{font-size:14.5px;color:var(--muted);margin:-8px 0 22px;line-height:1.45}
+figure{margin:26px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 10px}
+figcaption{font-size:14.5px;color:var(--muted);padding:8px 6px 0;line-height:1.45}
+svg{display:block;width:100%;height:auto}
+ul.plain{margin:0 0 18px;padding-left:20px}ul.plain li{margin-bottom:10px}
+.foot{border-top:1px solid var(--line);margin-top:54px;padding-top:20px;font-size:15px;color:var(--muted)}
+.foot h3{font-size:17px;margin:0 0 10px;color:var(--ink)}
+.foot p{margin:0 0 10px;line-height:1.5}
+@media(max-width:720px){.kpis{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}
+  h1{font-size:30px}h2{font-size:23px}body{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">SPOT · Research Note</div>
+<h1>Spotify's Podcast Business</h1>
+<p class="sub">Business model and growth prospects, compared with music</p>
+<div class="srcline">11 September 2026 &nbsp;·&nbsp; Company evidence from Spotify's FY2021–FY2025 Forms 20-F and interim 6-Ks through the quarter ended 30 June 2026, held in the SPOT research folder. Market data from IAB/PwC, RIAA, IFPI, Edison Research, Signal Hill/Cumulus and MIDiA. Company statements made outside the filings are identified as such. &nbsp;·&nbsp; <strong>Not a valuation and not a recommendation.</strong></div>
+
+<div class="restate">Spotify spent roughly €0.9bn building a podcast business, unwound it, and has since rebuilt it as a variable cost it can switch off. That was the right decision — and it has left podcasts as a cost line the company no longer reports on, in a market growing 17.6% a year that Spotify is losing to YouTube.</div>
+
+<div class="engine">
+  <div class="lbl">The central fact</div>
+  <div class="unit">Spotify has never disclosed a single podcast figure</div>
+  <p>No podcast revenue, no podcast users, no share of the <span class="big">211bn hours</span> streamed, no Partner Program cost — in any filing, in any year. The only recurring podcast metric ever published is a title count. Podcast advertising was a named revenue contributor for three consecutive years; in the 2026 interims the word does not appear in the revenue discussion at all.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Market growth, 2025</div><div class="v">+17.6%</div><div class="s">US podcast advertising, to $2.86bn (IAB/PwC).</div></div>
+  <div class="kpi"><div class="k">Spotify ad revenue</div><div class="v">−1%</div><div class="s">FY2025 Ad-Supported revenue, €1,836m. A further −2% in H1 2026.</div></div>
+  <div class="kpi"><div class="k">Content assets left</div><div class="v">€28m</div><div class="s">At 31 Dec 2025, from a €187m peak in 2022 — an 85% run-off.</div></div>
+  <div class="kpi"><div class="k">Share of US listening</div><div class="v">14%</div><div class="s">Named "use most" by weekly podcast consumers, from 21% in Apr 2024.</div></div>
+  <div class="kpi"><div class="k">Segment weight</div><div class="v">9% / 4%</div><div class="s">Ad-Supported share of H1 2026 revenue and of gross profit.</div></div>
+  <div class="kpi"><div class="k">Disclosed programme cost</div><div class="v">None</div><div class="s">Partner Program cost, payout rate and creator count: never published.</div></div>
+</div>
+
+<h2>1 · Start with what is not there</h2>
+<p>The natural first step in sizing a business line is to find its revenue. Here that step fails, and the failure is the most informative fact available. Podcast revenue, podcast advertising revenue, and any music-versus-podcast split of Ad-Supported revenue have never appeared in any filing. The KPI section has contained exactly three metrics since the 2018 direct listing — monthly active users, Premium subscribers, ad-supported monthly active users. A podcast metric has never been among them.</p>
+
+<p>Nor are there podcast users, podcast hours, a podcast share of the 211bn hours streamed in FY2025, a creator count, a video consumption figure, or any Partner Program economics. The only recurring podcast operating disclosure is a catalogue count: 3.6m titles (FY2021), 5m (FY2022), 5m (FY2023 — unchanged for a full year), 6.5m (FY2024), 7m (FY2025).</p>
+
+<h3>What was disclosed, and then withdrawn</h3>
+<div class="tw">
+<table>
+<caption>Podcast advertising was a named contributor to Ad-Supported revenue growth for three consecutive years. Then it stopped being one.</caption>
+<thead><tr><th>Year</th><th>How the filing described podcast advertising in the revenue discussion</th></tr></thead>
+<tbody>
+<tr><th scope="row">FY2022</th><td>"Ad sales from podcasts, supported by growth in podcast impressions sold and CPM, and our self-serve platform also contributed <strong>€123 million</strong>."</td></tr>
+<tr><th scope="row">FY2023</th><td>"Ad sales from podcasts, partially offset by our self-serve platform, also increased by <strong>€64 million</strong>."</td></tr>
+<tr><th scope="row">FY2024</th><td>"Ad sales from podcasts, and growth in marketplace programs, also increased revenue by <strong>€58 million</strong>."</td></tr>
+<tr><th scope="row">FY2025</th><td>Folded into a <em>decline</em>: "a decrease in our direct music channels <strong>and ad sales from podcasts</strong> of €116 million due to a decrease in fixed-CPM rates as well as a decrease in music impressions sold." No separate podcast figure.</td></tr>
+<tr><th scope="row">H1 2026</th><td>The word "podcast" <strong>does not appear in the Ad-Supported revenue discussion at all</strong>. Only "direct music channel" and "automated sales channels" are named. Podcast now appears solely as a cost item.</td></tr>
+</tbody></table>
+</div>
+
+<div class="tw">
+<table>
+<caption>Six separate deletions across the FY2021→FY2025 filings, each quoted from the filing that dropped it.</caption>
+<thead><tr><th>Disclosure</th><th>FY2021</th><th>FY2025</th></tr></thead>
+<tbody>
+<tr><th scope="row">Content-investment sentence</th><td>"investing in <strong>podcasts</strong> and other forms of alternative and <strong>spoken word</strong> content"</td><td>"investing in <strong>other forms of content</strong>… <strong>including video</strong>" — podcast and spoken word removed</td></tr>
+<tr><th scope="row">Exclusivity rationale</th><td>"To the extent such content is made <strong>exclusive</strong> to our platform through direct ownership… we believe these investments help differentiate our Service"</td><td><strong>Deleted</strong> from FY2023 onward</td></tr>
+<tr><th scope="row">Fixed-cost risk</th><td>"Given the multiple-year duration and <strong>largely fixed-cost nature</strong> of such commitments… our margins may be adversely impacted"</td><td><strong>Deleted</strong></td></tr>
+<tr><th scope="row">Purchase obligations</th><td>"a service agreement with Google… and certain <strong>podcast</strong> commitments"</td><td>"…and certain <strong>content and marketing</strong> commitments"</td></tr>
+<tr><th scope="row">Framing sentence</th><td>"Spotify is more than an audio streaming service. <strong>We are in the discovery business.</strong>"</td><td><strong>Deleted</strong></td></tr>
+<tr><th scope="row">Critical accounting estimates</th><td>Podcast content assets listed — "Determining these estimates requires significant judgment by management"</td><td><strong>Removed after FY2023</strong>; only music royalty accruals remain</td></tr>
+</tbody></table>
+</div>
+<p class="note">"Spoken word" appears once in each of FY2021, FY2022 and FY2023, and zero times in FY2024 and FY2025.</p>
+
+<p>Two readings are available. The charitable one: podcasts have been absorbed into a general content strategy and no longer warrant separate treatment. The less charitable one: a line management was proud to quantify while it grew has become one it prefers not to quantify. The FY2024 and FY2025 filings support the second — they narrate podcasts in the past tense ("<em>Since 2019, we expanded our podcast offerings and helped advance the growth of the podcast industry</em>") while the forward-looking sentence names audiobooks and video instead.</p>
+
+<h2>2 · Three business models in six years</h2>
+
+<h3>2019–2022: own the content</h3>
+<p>Spotify acquired roughly €0.9bn of podcast assets — Anchor (€136m), Gimlet (€172m), Parcast (€49m), The Ringer (€170m), Megaphone (€195m), Betty Labs (€57m), Podz (€45m), Podsights and Chartable (€83m combined) — and layered exclusives on top, of which the Joe Rogan deal was the largest. The rationale was stated plainly: exclusivity would "differentiate our Service, attract incremental users, and enhance engagement."</p>
+<p>Owned content is a fixed cost, and the same filing said so: "Given the multiple-year duration and largely fixed-cost nature of such commitments, if our user growth and retention do not meet our expectations, our margins may be adversely impacted." This is the structural opposite of the music model, where cost is a percentage of revenue. Spotify had swapped a variable cost it could not escape for a fixed cost it could.</p>
+
+<h3>2023–2024: unwind it</h3>
+<p>A strategic realignment in Q2 2023 took €29m of content-asset write-offs, €12m of severance and €8m of contract terminations, all inside Ad-Supported cost of revenue. Gimlet and Parcast were consolidated into a single studio operation. The Rogan agreement was renewed in February 2024 on a <em>non-exclusive</em> basis, with the show subsequently distributed on YouTube, Apple Podcasts and Amazon Music; the reported terms have never been confirmed by Spotify.</p>
+
+<figure>
+<svg viewBox="0 0 860 340" role="img" aria-label="Podcast content assets and amortisation, 2020 to 2025">
+  <line x1="70" y1="285" x2="830" y2="285" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="70" y1="40" x2="70" y2="285" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="70" y1="236" x2="830" y2="236" stroke="#EFE9DE"/><line x1="70" y1="187" x2="830" y2="187" stroke="#EFE9DE"/>
+  <line x1="70" y1="138" x2="830" y2="138" stroke="#EFE9DE"/><line x1="70" y1="89" x2="830" y2="89" stroke="#EFE9DE"/>
+  <text x="60" y="290" text-anchor="end" font-size="13" fill="#6E675C">0</text>
+  <text x="60" y="241" text-anchor="end" font-size="13" fill="#6E675C">50</text>
+  <text x="60" y="192" text-anchor="end" font-size="13" fill="#6E675C">100</text>
+  <text x="60" y="143" text-anchor="end" font-size="13" fill="#6E675C">150</text>
+  <text x="60" y="94" text-anchor="end" font-size="13" fill="#6E675C">200</text>
+  <!-- y = 285 - v*0.98 ; groups centred at 130,250,370,490,610,730 -->
+  <g fill="#C75B39">
+    <rect x="98" y="238" width="46" height="47"/><rect x="218" y="165" width="46" height="120"/>
+    <rect x="338" y="96" width="46" height="189"/><rect x="458" y="81" width="46" height="204"/>
+    <rect x="578" y="101" width="46" height="184"/><rect x="698" y="163" width="46" height="122"/>
+  </g>
+  <g fill="#3C6E8F">
+    <rect x="148" y="195" width="46" height="90"/><rect x="268" y="127" width="46" height="158"/>
+    <rect x="388" y="102" width="46" height="183"/><rect x="508" y="192" width="46" height="93"/>
+    <rect x="628" y="239" width="46" height="46"/><rect x="748" y="258" width="46" height="27"/>
+  </g>
+  <rect x="90" y="46" width="13" height="13" fill="#C75B39"/>
+  <text x="110" y="57" font-size="13.5" fill="#2B2B2B">Amortisation of podcast content assets (in cost of revenue)</text>
+  <rect x="90" y="68" width="13" height="13" fill="#3C6E8F"/>
+  <text x="110" y="79" font-size="13.5" fill="#2B2B2B">Podcast content assets, balance at 31 December</text>
+  <text x="500" y="57" font-size="13" fill="#6E675C" font-style="italic">Balance −85% from the 2022 peak;</text>
+  <text x="500" y="75" font-size="13" fill="#6E675C" font-style="italic">amortisation −40% from the 2023 peak</text>
+  <g font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="146" y="307">2020</text><text x="266" y="307">2021</text><text x="386" y="307">2022</text>
+    <text x="506" y="307">2023</text><text x="626" y="307">2024</text><text x="746" y="307">2025</text>
+  </g>
+  <text x="20" y="170" font-size="13" fill="#6E675C" transform="rotate(-90 20 170)" text-anchor="middle">€ millions</text>
+</svg>
+<figcaption><strong>The balance sheet records the retreat more precisely than any announcement did.</strong> Source: FY2021, FY2023 and FY2025 Forms 20-F — content assets within other current assets, and the related amortisation in cost of revenue. Note that goodwill from the podcast acquisitions, carried within the Ad-Supported segment, has <em>never been impaired in any year</em>.</figcaption>
+</figure>
+
+<p><strong>The distinction matters.</strong> Spotify wrote off €29m of produced content and let €159m of capitalised assets amortise away, but the roughly €0.9bn of goodwill paid for the studios and technology remains on the balance sheet in full. The cost of the strategy was recognised through the income statement as amortisation over four years rather than as an impairment — defensible under the policy, which amortises podcast assets over a life "generally expected to be consumed in less than three years" on an accelerated basis — but it means the P&amp;L never carried a single visible charge for the strategy being abandoned.</p>
+
+<h3>2025 onward: rent it from creators</h3>
+<p>The Spotify Partner Program launched on 2 January 2025 in the US, UK, Canada and Australia, reached thirteen markets in April 2025 and nineteen by the FY2025 filing. It pays "podcast creators audience-driven payouts for eligible video streaming," and Premium subscribers watch those video podcasts without dynamically inserted advertising.</p>
+
+<div class="pull">
+  "Amounts are recognized based on a number of factors including <em>qualifying consumption time attributable to eligible video episodes and financial participations in excess of minimum guarantees</em>."
+  <span class="attr">FY2025 20-F, Note 2(g) — the entire disclosed economics of the Partner Program. No revenue-share percentage, no eligibility threshold, no payout rate, no creator count, no programme cost.</span>
+</div>
+
+<p>Spotify said in an April 2025 press release — not a filing — that it paid more than $100m to podcast publishers and podcasters in Q1 2025; the January 2026 anniversary release contained no figure at all. Neither the Q1 nor the Q2 2026 interim mentions the programme outside the cost discussion, and neither gives a market count.</p>
+
+<p>The direction of travel is coherent: from owning content, to licensing it exclusively, to paying for it only when it is consumed. Each step lowered risk. Each step also moved Spotify closer to the model YouTube already runs, and further from any claim of differentiation.</p>
+
+<h2>3 · How the two models differ</h2>
+<div class="tw">
+<table>
+<thead><tr><th></th><th>Music</th><th>Podcasts</th></tr></thead>
+<tbody>
+<tr><th scope="row">Supplier structure</th><td>Four counterparties supply ~72% of streams of audio content delivered by record labels</td><td>Fragmented. Largest US publisher (iHeartMedia) booked $563.7m of podcast revenue in FY2025 against a $2.86bn market — ~a fifth, and of advertising it sells rather than content it controls</td></tr>
+<tr><th scope="row">Licence regime</th><td>Negotiated multi-year agreements plus a US compulsory licence for publishing mechanicals set by federal judges</td><td><strong>None.</strong> No compulsory licence exists for podcast content and none is needed — no supplier can withhold a must-have catalogue</td></tr>
+<tr><th scope="row">Cost behaviour</th><td>A contractual share of revenue with per-user floors. Does not fall with volume. Senior to every platform cost</td><td>Revenue share or consumption-linked payout. <strong>Variable, and exitable</strong></td></tr>
+<tr><th scope="row">Can the platform walk away?</th><td><strong>No.</strong> Without a major's catalogue there is no consumer product</td><td><strong>Yes</strong> — and Spotify has, three times: cancelled originals (2022), consolidated studios (2023), dropped exclusivity (2024)</td></tr>
+<tr><th scope="row">Revenue model</th><td>Subscription. €4.89 per account per month in Q2 2026, prepaid, recurring</td><td>Advertising. CPM-priced, cyclical, sold against all other digital inventory</td></tr>
+<tr><th scope="row">Reported gross margin</th><td>Premium <strong>35%</strong> in Q2 2026 (33% in Q2 2025)</td><td>Ad-Supported <strong>19%</strong> in Q2 2026 — blended with music advertising, and not comparable across years (§5)</td></tr>
+<tr><th scope="row">Scale position</th><td><strong>31.4%</strong> of the world's 921.6m music subscribers, 2.3× the next largest (MIDiA, Q4 2025)</td><td><strong>14%</strong> of US weekly podcast consumers name Spotify the platform they use most — down from 21% in Apr 2024, against YouTube's 44%</td></tr>
+</tbody></table>
+</div>
+
+<p>On the first four rows, podcasting is unambiguously the better business to be a platform in. Music's defining problem is that cost of goods is contractual, senior and does not scale, and that the supplier can walk away while the platform cannot. None of that is true in podcasting. That is a real structural advantage, and it is the reason the podcast reset worked: Spotify could simply stop paying — an option no music platform has ever had.</p>
+
+<p>On the last three rows the advantage reverses. Music gives Spotify a recurring, prepaid, price-escalating revenue stream and the largest share position in its industry. Podcasting gives it a cyclical advertising stream in a market where it is losing share to the largest advertising platform in the world, and where only 26% of US monthly podcast consumers use a single application — so there is no lock-in to accumulate.</p>
+
+<h2>4 · Growth prospects</h2>
+<p>The market is growing quickly. US podcast advertising revenue rose from $1.45bn in 2021 to <strong>$2.86bn in 2025</strong>, an 18.6% compound rate, and grew 17.6% in the most recent year (IAB/PwC). Recorded music grew 6.4% globally and 3.1% in the US over the same year (IFPI; RIAA). Podcasting is now <strong>1.6× the size of the entire US ad-supported music streaming market</strong>, which shrank 0.6% in 2025.</p>
+<p>Spotify has not captured that growth.</p>
+
+<figure>
+<svg viewBox="0 0 860 330" role="img" aria-label="Spotify Ad-Supported revenue versus the US podcast advertising market, indexed to 2021">
+  <line x1="80" y1="275" x2="820" y2="275" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="80" y1="40" x2="80" y2="275" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="80" y1="228" x2="820" y2="228" stroke="#EFE9DE"/><line x1="80" y1="181" x2="820" y2="181" stroke="#EFE9DE"/>
+  <line x1="80" y1="134" x2="820" y2="134" stroke="#EFE9DE"/><line x1="80" y1="87" x2="820" y2="87" stroke="#EFE9DE"/>
+  <text x="70" y="280" text-anchor="end" font-size="13" fill="#6E675C">100</text>
+  <text x="70" y="233" text-anchor="end" font-size="13" fill="#6E675C">120</text>
+  <text x="70" y="186" text-anchor="end" font-size="13" fill="#6E675C">140</text>
+  <text x="70" y="139" text-anchor="end" font-size="13" fill="#6E675C">160</text>
+  <text x="70" y="92" text-anchor="end" font-size="13" fill="#6E675C">180</text>
+  <text x="70" y="45" text-anchor="end" font-size="13" fill="#6E675C">200</text>
+  <!-- x: 130,290,450,610,770 ; y = 275 - (idx-100)*2.35 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round"
+    points="130,275 290,214 450,198 610,120 770,46"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round"
+    points="130,275 290,223 450,183 610,149 770,153"/>
+  <g fill="#C75B39"><circle cx="130" cy="275" r="4.5"/><circle cx="290" cy="214" r="4.5"/><circle cx="450" cy="198" r="4.5"/><circle cx="610" cy="120" r="4.5"/><circle cx="770" cy="46" r="5.5"/></g>
+  <g fill="#3C6E8F"><circle cx="130" cy="275" r="4.5"/><circle cx="290" cy="223" r="4.5"/><circle cx="450" cy="183" r="4.5"/><circle cx="610" cy="149" r="4.5"/><circle cx="770" cy="153" r="5.5"/></g>
+  <text x="784" y="50" font-size="14" font-weight="700" fill="#C75B39">198</text>
+  <text x="784" y="157" font-size="14" font-weight="700" fill="#3C6E8F">152</text>
+  <text x="630" y="88" font-size="13" fill="#C75B39" font-style="italic">+17.6% in 2025</text>
+  <text x="630" y="186" font-size="13" fill="#3C6E8F" font-style="italic">−1% in 2025</text>
+  <rect x="100" y="48" width="13" height="13" fill="#C75B39"/>
+  <text x="120" y="59" font-size="13.5" fill="#2B2B2B">US podcast advertising market (IAB/PwC)</text>
+  <rect x="100" y="70" width="13" height="13" fill="#3C6E8F"/>
+  <text x="120" y="81" font-size="13.5" fill="#2B2B2B">Spotify Ad-Supported revenue (20-F)</text>
+  <g font-size="13" fill="#6E675C" text-anchor="middle">
+    <text x="130" y="297">2021</text><text x="290" y="297">2022</text><text x="450" y="297">2023</text>
+    <text x="610" y="297">2024</text><text x="770" y="297">2025</text>
+  </g>
+  <text x="24" y="158" font-size="13" fill="#6E675C" transform="rotate(-90 24 158)" text-anchor="middle">Indexed, 2021 = 100</text>
+</svg>
+<figcaption>The two series are <em>not</em> like-for-like — Spotify's Ad-Supported segment is global and the majority of it is music advertising, not podcast advertising — so this shows direction, not share. The direction is the point: the segment containing Spotify's podcast advertising has been flat for two years while the podcast advertising market compounded at 18%.</figcaption>
+</figure>
+
+<p>Spotify's Ad-Supported revenue fell 1% in FY2025 and 2% in H1 2026. Three mechanisms explain it, and none is cyclical.</p>
+
+<div class="lever structural"><div class="tag">Structural</div><div class="hd">1 · Share is going to YouTube</div>
+<p>Two independent measurement traditions disagree about the magnitude, and the disagreement is itself informative. On stated preference Spotify has fallen by a third in two years; on time spent it is flat and still narrowly ahead.</p></div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Platform named "use most" by US weekly podcast consumers</th><th class="n">Apr 2024</th><th class="n">Oct 2024</th><th class="n">Apr 2026</th><th class="n">Time spent, Q3 2025</th></tr></thead>
+<tbody>
+<tr><th scope="row">YouTube</th><td class="n">31%</td><td class="n">34%</td><td class="n"><strong>44%</strong></td><td class="n">28%</td></tr>
+<tr><th scope="row">Spotify</th><td class="n">21%</td><td class="n">17%</td><td class="n"><strong>14%</strong></td><td class="n">29%</td></tr>
+<tr><th scope="row">Apple</th><td class="n">12%</td><td class="n">11%</td><td class="n">5%</td><td class="n">18%</td></tr>
+</tbody></table>
+</div>
+<p class="note">Sources: Signal Hill Insights / Cumulus Media "Podcast Download", n≈600 US weekly podcast consumers per wave, for the "use most" columns; Edison Research "Share of Ear" Q3 2025 for share of podcast listening time. Signal Hill cautions that "use most" is a preference ranking rather than exclusive usage, and that only 26% of monthly US podcast consumers use a single application.</p>
+
+<p>The reconciliation is that Spotify retains heavy audio listeners, who generate disproportionate hours, while YouTube captures almost every incremental and lighter listener, who each count once in a preference survey. A platform can lose the popularity contest and still hold the inventory — for a while. But preference leads consumption, and the preference trend has been one-directional for two years.</p>
+
+<div class="lever structural"><div class="tag">Structural</div><div class="hd">2 · Consumption is moving to video, and to the television</div>
+<p>Stated preference for actively <em>watching</em> a podcast rather than listening went from 30% (Apr 2022) to 49% (Apr 2026), and smart-TV podcast consumption rose 19% year on year. Edison reported in 2026 that video podcast consumption had overtaken audio for the first time — while cautioning that video is "expanding the tent" rather than replacing audio, since 92% of weekly consumers still say they listen.</p></div>
+
+<p>This is the structural problem. YouTube reports more than <strong>one billion monthly podcast viewers</strong> globally and more than 400 million hours a month consumed on living-room devices. It monetises podcasts through the same auction as all its other inventory — no separate sales force, no separate ad server — and pays a published, standing <strong>55%</strong> of advertising and subscription revenue to creators with no minimum guarantees, so its content cost scales perfectly with realised revenue and carries no downside. Amazon named the same shift when it merged Wondery's narrative studio into Audible in August 2025, citing "the rise of video-forward, creator-led content."</p>
+
+<div class="lever cyclical"><div class="tag">Structural, self-inflicted</div><div class="hd">3 · Podcast advertising is commoditising</div>
+<p>Dynamically inserted advertising rose from 48% of US podcast ad revenue in 2019 to more than 90% in 2023, and programmatic buying from 1.7% (2021) to 11% (2023) — against ~87% for other digital media (IAB). Each step prices a podcast impression against all other digital inventory rather than against podcast scarcity. Spotify has accelerated this itself: the Spotify Ad Exchange launched April 2025, and inventory was opened to the Amazon and Yahoo demand-side platforms in October 2025.</p></div>
+
+<div class="tw">
+<table>
+<caption>The effect in Spotify's own numbers — close to a one-for-one substitution rather than growth.</caption>
+<thead><tr><th>Ad-Supported revenue movement (€m)</th><th class="n">FY2025</th><th class="n">Q1 2026</th><th class="n">Q2 2026</th><th class="n">H1 2026</th></tr></thead>
+<tbody>
+<tr><th scope="row">Direct / fixed-CPM channels</th><td class="n">(116)</td><td class="n">(58)</td><td class="n">(66)</td><td class="n">(124)</td></tr>
+<tr><th scope="row">Automated / biddable channels</th><td class="n">103</td><td class="n">45</td><td class="n">75</td><td class="n">120</td></tr>
+<tr><th scope="row"><strong>Net change in segment revenue</strong></th><td class="n"><strong>(18)</strong></td><td class="n"><strong>(22)</strong></td><td class="n"><strong>6</strong></td><td class="n"><strong>(16)</strong></td></tr>
+</tbody></table>
+</div>
+<p class="note">Source: FY2025 20-F and Q1/Q2 2026 interim 6-Ks. The FY2025 direct-channel decline is the only line in which podcast advertising is named — and it is not split between music and podcast.</p>
+
+<h2>5 · Where the cost actually sits now</h2>
+<p>The single most important accounting fact in this note is that <strong>podcast costs no longer sit where the revenue they support is reported</strong>.</p>
+
+<p>Through FY2024 the segment note read: "All podcast content costs are recorded in the Ad-Supported segment." From FY2025 it reads: "All podcast content costs <em>were</em> recorded in the Ad-Supported segment <em>prior to 2025</em>. Beginning in 2025, as part of the Spotify Partner Program initiative… Podcast content costs attributable to this new experience for subscribers to our Premium Service are recorded in the <strong>Premium</strong> segment." Prior years were not restated, and the amount transferred has never been disclosed.</p>
+
+<p>Management acknowledges the direction in both segments. Ad-Supported cost of revenue fell €119m in FY2025, of which "a reduction in podcast costs of €83 million due primarily to our optimization of podcast inventory <em>as well as</em> costs attributable to the new video podcast experience… now recorded to the Premium segment" — the two causes are not separated. Premium gross margin rose "partially offset by costs associated with the launch of the Spotify Partner Program, <em>inclusive of certain costs previously attributable to the Ad-Supported segment</em>." In Q3 2025 those costs pushed Premium gross margin <em>down</em> from 34% to 33%.</p>
+
+<div class="two">
+<div class="card bor"><h4>What the segment table appears to show</h4><ul>
+<li>Ad-Supported gross margin 4% (FY2023) → 12% (FY2024) → <strong>18% (FY2025)</strong></li>
+<li>Read as evidence the podcast reset worked</li>
+<li>Ad-Supported gross profit +€101m in FY2025</li>
+</ul></div>
+<div class="card dur"><h4>Why it is not a clean series</h4><ul>
+<li><strong>FY2025:</strong> podcast video costs moved Ad-Supported → Premium, prior years <em>not</em> restated, amount never quantified</li>
+<li><strong>1 Jan 2026:</strong> certain revenue-generating activities also moved Ad-Supported → Premium, this time <em>with</em> restatement — H1 2025 Ad-Supported revenue restated €872m → €847m, gross profit €147m → €133m</li>
+<li>Two definitional changes in two consecutive years, both moving items out of Ad-Supported</li>
+</ul></div>
+</div>
+
+<p>Read economically rather than by segment, what has happened is that <strong>Spotify now funds video podcasts out of subscription margin</strong>. The advertising business could not carry them — it was shrinking — so the cost was moved to the business that could. That is a defensible commercial decision if video podcasts retain Premium subscribers. It is not what a growing advertising franchise looks like, and the filings offer no evidence either way, because no retention or engagement metric for video podcasts has ever been published.</p>
+
+<h2>6 · What this means for the investment case</h2>
+
+<div class="lever"><div class="hd">Podcasts are a cost line, not a growth engine — model them that way</div>
+<p>The reasonable expectation is that Ad-Supported grows at low single digits at best, with mix shifting to lower-yield programmatic inventory, and that podcast content cost keeps falling in absolute terms. Anyone carrying a podcast revenue ramp in a Spotify model is modelling something the company has declined to quantify for six years.</p></div>
+
+<div class="lever"><div class="hd">The de-risking was real — and is largely complete</div>
+<p>Capitalised content assets of €28m and amortisation of €125m are what remains of a €0.9bn build. There is little left to unwind, which also means little further margin relief to come from this source. The FY2025 €83m reduction in podcast costs is unlikely to repeat at that scale.</p></div>
+
+<div class="lever"><div class="hd">The segment table cannot settle whether it worked</div>
+<p>Two unquantified reclassifications sit inside the three-year Ad-Supported margin series. Until Spotify quantifies the transfer, the honest position is that the improvement is partly real — podcast inventory was genuinely optimised — and partly geography, in unknown proportion.</p></div>
+
+<div class="lever"><div class="hd">Advertising remains the weak leg of the two-sided model</div>
+<p>Ad-Supported is 9% of revenue and 4% of gross profit in H1 2026, down from 13% of revenue in FY2023. Spotify's stated rationale for the free tier is that it funnels subscribers rather than earns a return — but the funnel is not converting better either: Premium subscribers were 38.6% of monthly users in June 2026 against 39.0% a year earlier.</p></div>
+
+<div class="lever"><div class="hd">The strategic question is narrower than it looks</div>
+<p>It is not whether podcasting is a good business — structurally it is better than music. It is whether Spotify can hold a position in it against a competitor that owns the video surface, monetises through the largest ad auction in existence, and pays creators a published share with no guarantees. On the evidence of the last two years it is not winning that contest, and it has stopped reporting the scoreboard.</p></div>
+
+<div class="tw">
+<table>
+<caption>What to monitor, and where each is published.</caption>
+<thead><tr><th>Indicator</th><th>Where it is published</th></tr></thead>
+<tbody>
+<tr><th scope="row">Whether "podcast" is ever named again in the Ad-Supported revenue discussion</th><td>Quarterly interim 6-K, MD&amp;A — its return would signal growth, its continued absence the opposite</td></tr>
+<tr><th scope="row">Ad-Supported revenue and segment gross margin</th><td>Quarterly interim 6-K, segment information note</td></tr>
+<tr><th scope="row">Podcast content assets and amortisation</th><td>Annual 20-F — the run-off is nearly complete at €28m</td></tr>
+<tr><th scope="row">Any quantification of the Partner Program cost or the segment transfer</th><td>Annual 20-F, segment note and Premium cost-of-revenue discussion</td></tr>
+<tr><th scope="row">Podcast title count</th><td>Annual 20-F, business section — the only recurring podcast metric</td></tr>
+<tr><th scope="row">US podcast ad market size and programmatic share</th><td>IAB/PwC US Podcast Advertising Revenue Study, each spring</td></tr>
+<tr><th scope="row">Platform share of podcast listening</th><td>Edison "Share of Ear" and Podcast Metrics; Signal Hill / Cumulus "Podcast Download", twice yearly</td></tr>
+<tr><th scope="row">YouTube podcast scale</th><td>YouTube blog disclosures — Alphabet does not break out podcast or music revenue</td></tr>
+</tbody></table>
+</div>
+
+<h2>7 · What the sources could not answer</h2>
+<p>Each item is a finding. In most cases Spotify has chosen not to disclose it; in the remainder no independent source publishes it.</p>
+<ul class="plain">
+<li><strong>Podcast revenue</strong>, podcast advertising revenue, or any music-versus-podcast split of Ad-Supported revenue — never disclosed, in any filing, in any year.</li>
+<li><strong>Podcast listeners, hours, or share</strong> of the 211bn hours streamed. Only a combined content-hours figure is given.</li>
+<li><strong>Partner Program economics</strong>: revenue-share percentage, eligibility criteria, payout rates, total cost, participating creators. The April 2025 ">$100m in a quarter" figure came from a press release and has not been repeated.</li>
+<li><strong>The split of the FY2025 €83m podcast cost reduction</strong> between genuine inventory optimisation and the Premium reclassification.</li>
+<li><strong>The identity and amount</strong> of the "certain revenue-generating activities" moved from Ad-Supported to Premium on 1 January 2026.</li>
+<li><strong>Any video podcast metric</strong> — consumption, retention, subscriber attach — and any separately identified video content cost.</li>
+<li><strong>Megaphone's share</strong> of podcast hosting and ad insertion. No independent source publishes hosting-platform share.</li>
+<li><strong>Podcast CPMs</strong>, host-read versus dynamically inserted, from any independent source. IAB does not publish them; available figures come from vendor and agency material and were excluded.</li>
+<li><strong>Programmatic share after 2023, and video's share of podcast ad revenue.</strong> IAB's last published figures are 11% and "less than 10%", both 2023; a more recent third-party estimate of 41% for video uses a materially broader revenue definition.</li>
+<li><strong>Platform take rates in podcasting.</strong> Only YouTube's is public (45% retained). Spotify's is unknown — so the central claim that a podcast platform keeps more of each revenue dollar is <em>verified for YouTube and unverified for Spotify</em>.</li>
+</ul>
+<p>Three of these would settle most of the argument: the euro value of the segment transfer, the Partner Program's cost, and any measure of whether video podcasts retain Premium subscribers. Until they exist, the podcast business can be assessed by its cost behaviour — which is well disclosed — but not by its returns, which are not disclosed at all.</p>
+
+<div class="foot">
+<h3>Sources</h3>
+<p><strong>Company.</strong> Spotify Technology S.A. Forms 20-F for FY2021 (filed 3 Feb 2022), FY2022, FY2023, FY2024 and FY2025 (filed 10 Feb 2026); interim reports on Form 6-K for the quarters ended 31 March 2026 and 30 June 2026, and prior quarters. All from SEC EDGAR and held in the SPOT research folder. Company statements outside the filings, identified as such in the text: Spotify Newsroom, 28 April 2025 (Partner Program payouts) and 8 January 2026 (Partner Program anniversary).</p>
+<p><strong>Market and industry.</strong> IAB/PwC US Podcast Advertising Revenue Study, FY2021, FY2023, FY2024 and FY2025 editions. RIAA 2025 Year-End Music Industry Revenue Report. IFPI Global Music Report 2026. Edison Research: Share of Ear Q3 2025, Podcast Consumer 2025 and 2026, Infinite Dial 2026. Signal Hill Insights / Cumulus Media Podcast Download, Spring 2024 through Spring 2026. MIDiA Research music subscriber shares, Q4 2025. Audio Publishers Association audiobook survey, June 2026.</p>
+<p><strong>Competitors.</strong> YouTube "How YouTube Works — Creator Economy" for the 55% revenue share, and the YouTube blog of February 2025 for podcast viewership. iHeartMedia FY2025 results for podcast revenue. Amazon's August 2025 restructuring of Wondery as reported contemporaneously. Reported terms of the Joe Rogan agreements are press-sourced and have never been confirmed by Spotify; they are identified as reported wherever used.</p>
+<p style="margin-top:16px"><em>Prepared 11 September 2026 as a companion to the SPOT Business Overview of 6 September 2026. Every figure in this page also appears in the accompanying memo. Not a valuation and not a recommendation.</em></p>
+</div>
+
+</div>
+</body>
+</html>

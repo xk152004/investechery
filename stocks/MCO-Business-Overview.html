@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Moody's Corporation (MCO)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px;}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2;}
+h1{font-size:38px;margin:6px 0 10px;}
+h2{font-size:27px;margin:52px 0 14px;padding-top:18px;border-top:1px solid var(--line);}
+h3{font-size:21px;margin:30px 0 10px;}
+p{margin:0 0 16px;}
+.kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);font-weight:700;}
+.srcline{color:var(--muted);font-size:15px;margin:0 0 26px;}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.45;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 20px;margin:26px 0 30px;}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:28px 0;}
+.engine .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#BDB6A8;font-weight:700;}
+.engine .unit{font-family:Georgia,serif;font-size:29px;margin:6px 0 10px;}
+.engine p{margin:0;font-size:17px;color:#EDE6DA;}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 8px;}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px;}
+.kpi .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+.kpi .v{font-family:Georgia,serif;font-size:27px;color:var(--terracotta);margin:5px 0 3px;
+  font-variant-numeric:tabular-nums;}
+.kpi .s{font-size:14px;color:var(--muted);line-height:1.35;}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:22px 0;}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);
+  border-radius:10px;padding:15px 18px;margin:12px 0;}
+.lever.structural{border-left-color:var(--good)} .lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--terracotta);}
+.lever.structural .tag{color:var(--good)} .lever.mgmt .tag{color:var(--gold)} .lever.cyclical .tag{color:var(--blue)}
+.lever .nm{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:3px 0 6px;}
+.lever p{margin:0;font-size:17px;}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;
+  font-family:Georgia,serif;font-size:20px;line-height:1.45;}
+.pull .attrib{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;
+  color:var(--muted);margin-top:10px;font-style:normal;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0;}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+.two h4{margin:0 0 10px;font-family:Georgia,serif;font-size:17px;}
+.two ul{margin:0;padding-left:18px;} .two li{font-size:16px;margin-bottom:8px;line-height:1.42;}
+.tw{overflow-x:auto;margin:20px 0 6px;}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;min-width:520px;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+th{background:#F4EEE4;font-weight:700;font-size:15px;}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+caption{caption-side:bottom;text-align:left;font-size:14px;color:var(--muted);padding-top:9px;line-height:1.4;}
+figure{margin:26px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 18px 10px;}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.4;}
+.ax{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:13px;fill:var(--muted);}
+.lbl{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;font-weight:700;}
+.ann{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:12.5px;fill:var(--muted);}
+ul.plain{padding-left:20px;} ul.plain li{margin-bottom:10px;}
+.foot{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);font-size:15px;color:var(--muted);}
+@media(max-width:680px){.kpis{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}h1{font-size:30px}h2{font-size:23px}body{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>Moody's Corporation <span style="color:var(--muted);font-weight:400">(NYSE: MCO)</span></h1>
+<p class="srcline">8 September 2026 · Built from Moody's SEC filings — FY2016–FY2025 10-Ks, 10-Qs through Q2 2026, the 2026 proxy — with industry structure from SEC, ESMA, BIS, EBA, FSB, Federal Reserve and SIFMA, and competitor economics from those companies' own filings. This is not a valuation and not a recommendation.</p>
+
+<div class="restate">Moody's is a licensed toll on debt issuance: borrowers pay a small fee to have each new bond rated and a smaller annual fee to keep that rating alive, and a second, lower-margin subscription business sells the data and research that surrounds it.</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">One rated debt transaction</div>
+  <p>It pays twice: a fee at issuance and an annual monitoring fee for as long as the debt is outstanding. In FY2025 that produced <strong>$2,741M of transaction revenue and $1,378M of recurring revenue</strong> at a <strong>63.6% adjusted operating margin</strong>. The recurring half is an annuity on debt already issued and is the floor; the transaction half is the entire cycle.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Fee per unit</div><div class="v">~4 bp</div><div class="s">Of the debt financed (inferred, FY2025 transaction revenue against ~$6.5tn of rated issuance)</div></div>
+  <div class="kpi"><div class="k">Unit profitability</div><div class="v">63.6%</div><div class="s">MIS adjusted operating margin, FY2025; 68.3% in Q2 2026</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">$14.94</div><div class="s">Adjusted diluted EPS FY2025, +20%; guided $16.50–17.00 for FY2026</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">$7.1bn</div><div class="s">Total debt against $3.0bn equity at 30 Jun 2026; covenant 4.0x debt/EBITDA</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">Above peak</div><div class="s">MIS margin 68.3% vs 62.2% prior peak (FY21) and 51.8% trough (FY22)</div></div>
+  <div class="kpi"><div class="k">Organic vs reported</div><div class="v">+11% / +12%</div><div class="s">H1 2026 organic constant-currency vs reported revenue growth</div></div>
+</div>
+
+<h2>1. What the business is</h2>
+<p>Two businesses share one roof. <strong>Moody's Ratings (MIS)</strong> earned $4,119M in FY2025 rating debt for the issuers of that debt. <strong>Moody's Analytics (MA)</strong> earned $3,599M selling credit and economic research, company and credit data feeds, and workflow software for banking, insurance and know-your-customer compliance. Group revenue was $7,718M, up 9%.</p>
+<p>The unusual feature of the ratings half is who pays. The reader of a rating gets it free; the borrower buys it, because a rating widens the pool of investors permitted to hold the paper and narrows the spread the borrower pays. The fee is therefore set against a benefit the issuer captures, not against the cost of producing the opinion — which is why it can be very small in absolute terms and still extremely profitable.</p>
+<p>Moody's Analytics is 96% recurring revenue and is run on annualized recurring revenue, $3,661M at 30 June 2026, growing 9% organically. Growth is uneven inside it: know-your-customer ARR grew 13%, data and information 8%, and Research and Insights — the analyst-written credit research line — only 6%.</p>
+<p>Management has been shrinking MA deliberately. Learning Solutions was sold in Q4 2025 and the Regulatory and ALM Solutions business closed to Regnology on 5 May 2026 for a $179M pre-tax gain. Both came out of the Banking line, whose reported revenue fell 10% in H1 2026 while its ARR grew 10%. That gap is the clearest available measure of how much of the Banking line was being carried rather than compounding.</p>
+
+<h2>2. Industry, position and moat</h2>
+<p>The structure has barely moved in two decades. The three largest agencies held <strong>93.4% of all outstanding US credit ratings</strong> at 31 December 2024, against 94.2% a year earlier and 98.8% in 2007, the first year the SEC collected the data. In the EU the same three took 91.9% of registered CRA turnover on 2024 revenue against 92.2% on 2020 revenue. ESMA puts the market's Herfindahl-Hirschman index at 3,815 — far above the 2,500 high-concentration threshold — and states that concentration "has not evolved since the introduction of the CRAR", the regulation written specifically to increase competition.</p>
+<p>Share by count and share by revenue tell different stories, and the gap is where Moody's actually sits. On the SEC's count basis S&P held 43.5% of outstanding corporate issuer ratings against Moody's 26.1%; on revenue, MIS earned $4,119M in FY2025 against S&P Global's Ratings division at $4,724M. Moody's is at roughly 87% of S&P's ratings scale by revenue while holding around 60% of its corporate rating count, because the count is dominated by government and municipal ratings — over three-quarters of all outstanding ratings — which are numerous and individually small.</p>
+<p>What keeps entrants out is mandate-driven rather than technological. The SEC's own staff report names the binding barriers: investment guidelines requiring ratings from specified agencies, index-inclusion rules doing the same, a three-year qualified-institutional-buyer certification requirement before an applicant can even register, and post-Dodd-Frank compliance cost. ESMA found small European agencies confined to single-rating local mandates, with the multi-rating market "shared almost exclusively among the large CRAs". A new entrant can produce a competent opinion; it cannot produce a twenty-year default history or mandate eligibility.</p>
+<p>One widely cited barrier is weaker than advertised. Bank capital rules are often said to force demand for external ratings, but the European Banking Authority found external ratings drive under 10% of Standardised Approach risk-weighted exposure and around 4% of total credit-risk RWEA, with no member state creating mechanistic reliance. The regulatory-capital channel is real but narrow; the mandate and index conventions are doing most of the work — private contractual conventions, which are stickier in practice than statute but also not protected by it.</p>
+
+<figure>
+<svg viewBox="0 0 860 320" width="100%" role="img">
+<line x1="64" y1="280" x2="832" y2="280" stroke="var(--line)" stroke-width="1"/><text x="54" y="284" text-anchor="end" class="ax">0</text><line x1="64" y1="220.5" x2="832" y2="220.5" stroke="var(--line)" stroke-width="1"/><text x="54" y="224.5" text-anchor="end" class="ax">$1bn</text><line x1="64" y1="160.9" x2="832" y2="160.9" stroke="var(--line)" stroke-width="1"/><text x="54" y="164.9" text-anchor="end" class="ax">$2bn</text><line x1="64" y1="101.4" x2="832" y2="101.4" stroke="var(--line)" stroke-width="1"/><text x="54" y="105.4" text-anchor="end" class="ax">$3bn</text><line x1="64" y1="41.8" x2="832" y2="41.8" stroke="var(--line)" stroke-width="1"/><text x="54" y="45.8" text-anchor="end" class="ax">$4bn</text>
+<text x="64" y="302" text-anchor="middle" class="ax">FY16</text><text x="192" y="302" text-anchor="middle" class="ax">FY20</text><text x="320" y="302" text-anchor="middle" class="ax">FY21</text><text x="448" y="302" text-anchor="middle" class="ax">FY22</text><text x="576" y="302" text-anchor="middle" class="ax">FY23</text><text x="704" y="302" text-anchor="middle" class="ax">FY24</text><text x="832" y="302" text-anchor="middle" class="ax">FY25</text>
+<path d="M64 138.8 L192 84 L320 53 L448 119.3 L576 109.7 L704 54.1 L832 34.7" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M64 206.6 L192 156.2 L320 136.7 L448 115.1 L576 98 L704 83.8 L832 65.7" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="64" cy="138.8" r="3.5" fill="var(--terracotta)"/><circle cx="192" cy="84" r="3.5" fill="var(--terracotta)"/><circle cx="320" cy="53" r="3.5" fill="var(--terracotta)"/><circle cx="448" cy="119.3" r="3.5" fill="var(--terracotta)"/><circle cx="576" cy="109.7" r="3.5" fill="var(--terracotta)"/><circle cx="704" cy="54.1" r="3.5" fill="var(--terracotta)"/><circle cx="832" cy="34.7" r="3.5" fill="var(--terracotta)"/><circle cx="64" cy="206.6" r="3.5" fill="var(--blue)"/><circle cx="192" cy="156.2" r="3.5" fill="var(--blue)"/><circle cx="320" cy="136.7" r="3.5" fill="var(--blue)"/><circle cx="448" cy="115.1" r="3.5" fill="var(--blue)"/><circle cx="576" cy="98" r="3.5" fill="var(--blue)"/><circle cx="704" cy="83.8" r="3.5" fill="var(--blue)"/><circle cx="832" cy="65.7" r="3.5" fill="var(--blue)"/>
+<text x="64" y="126.80000000000001" text-anchor="start" class="lbl" fill="var(--terracotta)">Moody's Ratings (MIS)</text>
+<text x="832" y="87.7" text-anchor="end" class="lbl" fill="var(--blue)">Moody's Analytics (MA)</text>
+<text x="448" y="143.3" text-anchor="middle" class="ann">FY22: −29%</text>
+</svg>
+<figcaption>Segment revenue, $M. Sources: FY2016, FY2020, FY2022 and FY2025 10-Ks (FY2021, FY2023 and FY2024 as presented in the later filings). The ratings line collapsed 29% in FY2022 and took three years to exceed its FY2021 peak; the analytics line grew through the same downturn.</figcaption>
+</figure>
+
+<h3>Against the closest comparable</h3>
+<p>S&P Global's Ratings division ran a 65% adjusted operating margin in FY2025 against MIS at 63.6% — similar economics. The difference is mix. S&P split its ratings revenue 52/48 between transaction and non-transaction where MIS ran 67/33, and Ratings was 31% of S&P Global's revenue where MIS was 53% of Moody's. Moody's has a smaller annuity behind a larger swing factor, and is the more issuance-levered of the two. Fitch, the third member of the oligopoly, is owned privately within Hearst and publishes no financials at all, so a material share of the industry's economics is permanently unobservable.</p>
+<p>Moody's Analytics is in a weaker competitive position, and the peer set Moody's itself uses to benchmark pay makes the point:</p>
+
+<div class="tw">
+<table>
+<caption>Sources: each company's own FY2025 results release. Margin definitions differ across companies and are not strictly comparable; they are shown as each company reports them.</caption>
+<thead><tr><th>Subscription-data business</th><th class="n">FY2025 revenue</th><th class="n">Margin</th><th class="n">Organic growth</th><th>Retention</th></tr></thead>
+<tbody>
+<tr><td><strong>Moody's Analytics</strong></td><td class="n">$3,599M</td><td class="n">33.1% adj. op.</td><td class="n">+9% ARR</td><td>Not disclosed</td></tr>
+<tr><td>MSCI</td><td class="n">$3,135M</td><td class="n">60.8% adj. EBITDA</td><td class="n">+9.3%</td><td>94.4%</td></tr>
+<tr><td>Verisk</td><td class="n">$3,073M</td><td class="n">56.2% adj. EBITDA</td><td class="n">+6.6%</td><td>Not disclosed FY25</td></tr>
+<tr><td>ICE Fixed Income &amp; Data</td><td class="n">$2,419M</td><td class="n">45% adj. op.</td><td class="n">Not disclosed</td><td>Not disclosed</td></tr>
+<tr><td>Thomson Reuters</td><td class="n">$7,476M</td><td class="n">39.2% adj. EBITDA</td><td class="n">+7%</td><td>Not disclosed</td></tr>
+</tbody>
+</table>
+</div>
+<p>MA's growth is competitive; its margin is not. Management targets mid-to-high 30s by end-2027, which would still leave it below the businesses it is benchmarked against. The industry rewards scale, regulatory standing and an accumulated back-book. Moody's Ratings has all three and fifteen years of deliberate pro-competition regulation failed to dislodge it. Moody's Analytics has none of them yet, and the margin gap is the honest measure of how much of the group's quality is the ratings business alone.</p>
+
+<h2>3. Growth engine</h2>
+<p>Revenue grew 9% in FY2025 and 12% in H1 2026, with MIS up 16% and MA up 6%. Almost none of it is bought. Cash paid for acquisitions was $23M in H1 2026, $227M in FY2025, $221M in FY2024 and $3M in FY2023 — against $1,927M for RMS alone in 2021. In MA, reported growth actually understates the underlying rate, because two divested businesses remain in the prior-year base.</p>
+
+<div class="tw">
+<table>
+<caption>Sources: FY2026 Q2 10-Q; FY2025 10-K. Organic constant-currency excludes acquisitions and divestitures completed within the trailing twelve months and currency effects.</caption>
+<thead><tr><th>H1 2026 revenue growth</th><th class="n">Reported</th><th class="n">Organic const. ccy</th><th class="n">Gap</th></tr></thead>
+<tbody>
+<tr><td>Moody's group</td><td class="n">+12%</td><td class="n">+11%</td><td class="n">−1pt</td></tr>
+<tr><td>Moody's Ratings (MIS)</td><td class="n">+16%</td><td class="n">+15%</td><td class="n">−1pt</td></tr>
+<tr><td>Moody's Analytics (MA)</td><td class="n">+6%</td><td class="n">+7%</td><td class="n">+1pt</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>The drivers, ranked</h3>
+<div class="lever cyclical"><div class="tag">Cyclical</div><div class="nm">Rated issuance volume</div><p>Everything else is secondary. Corporate Finance revenue grew 19% and Public, Project and Infrastructure Finance 23% in H1 2026, and the 10-Q attributes both to identifiable sources: leveraged finance and M&amp;A loan financing on tight spreads, AI-related financing by hyperscalers, and data-centre build-out. Moody's raised its own 2026 issuance assumption from low- to mid-single-digit growth between February and July.</p></div>
+<div class="lever structural"><div class="tag">Structural</div><div class="nm">Moody's Analytics ARR</div><p>$3,661M at 30 June 2026, growing 9%, 96% recurring. At roughly 47% of group revenue this is what turned a 29% collapse in MIS revenue into a 12% decline at group level in 2022.</p></div>
+<div class="lever structural"><div class="tag">Structural</div><div class="nm">Annual price increases on the monitoring book</div><p>Disclosed rather than assumed: FIG recurring revenue rose in H1 2026 "primarily reflecting the impact of annual price increases and higher monitored credits". Because monitored credits accumulate, this line grows even in a year when nothing new is issued.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="nm">Cost programme</div><p>The Strategic and Operational Efficiency programme was expanded in July 2026 to target $300–350M of annualized savings, up from $250–300M, at a cost of $285–330M and completion by end-2027.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="nm">Share count</div><p>Diluted shares fell from 195.4M in FY2016 to 179.9M in FY2025 to 175.9M on average in H1 2026 — roughly a 10% reduction, so about a tenth of long-run EPS growth is arithmetic rather than operating.</p></div>
+<div class="lever structural"><div class="tag">Structural, unquantified</div><div class="nm">Private credit ratings</div><p>Over 40% growth in private-credit-related transactions year on year and more than 110 new first-time mandates in Q2 2026, plus a dedicated global head of private credit. No revenue, no ratings count and no pricing are disclosed for any of it.</p></div>
+
+<div class="pull">"Investment-grade issuance related to continued AI-related financing by hyperscalers."
+<span class="attrib">Moody's Corporation, Form 10-Q for the quarter ended 30 June 2026 — the company's own explanation of what is driving its fastest-growing ratings line.</span></div>
+
+<p>Guidance history shows which driver management can and cannot see. Entering 2025 it guided MIS revenue growth in the low-single-digit range on a low-single-digit issuance assumption and delivered 9%; adjusted diluted EPS guided at $14.00–14.50 came in at $14.94. In 2026 the issuance assumption was raised mid-year while the margin and revenue-growth ranges were held. Management forecasts its costs, its ARR and its buyback; it does not forecast the bond market.</p>
+
+<h2>4. Margin, cash and capital allocation</h2>
+<p>The marginal rating costs almost nothing to produce. Between FY2022 and FY2025 MIS revenue rose $1,420M and MIS adjusted operating income rose $1,258M — an incremental margin near <strong>89%</strong>. The analysts, methodologies, committees and compliance apparatus are in place regardless of deal flow, so incremental issuance drops through to profit nearly intact.</p>
+<p>The arithmetic runs backwards too, and it did. From FY2021 to FY2022 MIS revenue fell $1,113M and adjusted operating income fell $838M — a decremental margin of about <strong>75%</strong>. Compensation, the largest cost at 33.3% of revenue, has an incentive portion that flexes with performance, but not enough to stop three-quarters of a revenue decline reaching operating income. Any margin quoted for this business is a statement about where issuance is, not about how well it is run.</p>
+
+<figure>
+<svg viewBox="0 0 860 320" width="100%" role="img">
+<line x1="64" y1="256.2" x2="832" y2="256.2" stroke="var(--line)" stroke-width="1"/><text x="54" y="260.2" text-anchor="end" class="ax">50%</text><line x1="64" y1="196.6" x2="832" y2="196.6" stroke="var(--line)" stroke-width="1"/><text x="54" y="200.6" text-anchor="end" class="ax">55%</text><line x1="64" y1="137.1" x2="832" y2="137.1" stroke="var(--line)" stroke-width="1"/><text x="54" y="141.1" text-anchor="end" class="ax">60%</text><line x1="64" y1="77.5" x2="832" y2="77.5" stroke="var(--line)" stroke-width="1"/><text x="54" y="81.5" text-anchor="end" class="ax">65%</text><line x1="64" y1="18" x2="832" y2="18" stroke="var(--line)" stroke-width="1"/><text x="54" y="22" text-anchor="end" class="ax">70%</text>
+<text x="64" y="302" text-anchor="middle" class="ax">FY16</text><text x="173.71428571428572" y="302" text-anchor="middle" class="ax">FY20</text><text x="283.42857142857144" y="302" text-anchor="middle" class="ax">FY21</text><text x="393.1428571428571" y="302" text-anchor="middle" class="ax">FY22</text><text x="502.85714285714283" y="302" text-anchor="middle" class="ax">FY23</text><text x="612.5714285714286" y="302" text-anchor="middle" class="ax">FY24</text><text x="722.2857142857142" y="302" text-anchor="middle" class="ax">FY25</text><text x="832" y="302" text-anchor="middle" class="ax">Q2 26</text>
+<path d="M64 197.8 L173.7 140.7 L283.4 110.9 L393.1 234.7 L502.9 202.6 L612.6 135.9 L722.3 94.2 L832 38.2" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="64" cy="197.8" r="3.5" fill="var(--terracotta)"/><circle cx="173.7" cy="140.7" r="3.5" fill="var(--terracotta)"/><circle cx="283.4" cy="110.9" r="3.5" fill="var(--terracotta)"/><circle cx="393.1" cy="234.7" r="3.5" fill="var(--terracotta)"/><circle cx="502.9" cy="202.6" r="3.5" fill="var(--terracotta)"/><circle cx="612.6" cy="135.9" r="3.5" fill="var(--terracotta)"/><circle cx="722.3" cy="94.2" r="3.5" fill="var(--terracotta)"/><circle cx="832" cy="38.2" r="3.5" fill="var(--terracotta)"/>
+<text x="64" y="223.8" text-anchor="start" class="lbl" fill="var(--terracotta)">MIS adjusted operating margin</text>
+<text x="393.1" y="258.7" text-anchor="middle" class="ann">FY22 trough 51.8%</text>
+<text x="832" y="24.200000000000003" text-anchor="end" class="ann">Q2 26: 68.3%</text>
+<text x="283.4" y="96.9" text-anchor="middle" class="ann">FY21 peak 62.2%</text>
+</svg>
+<figcaption>MIS adjusted operating margin, %. Sources: FY2016, FY2020, FY2022 and FY2025 10-Ks; FY2021 and FY2023 as presented in later filings; Q2 2026 10-Q. Note the y-axis starts at 48%.</figcaption>
+</figure>
+
+<div class="tw">
+<table>
+<caption>Sources: FY2016, FY2022 and FY2025 10-Ks; FY2024 as presented in the FY2025 10-K. Years chosen to show the pre-Bureau van Dijk base, the FY2022 trough and the recovery. <strong>Not fully comparable:</strong> adjusted EPS began excluding amortization of acquired intangibles from FY2020, widening the GAAP-to-adjusted gap after FY2016; MA's revenue sub-lines were redefined in FY2022 with no one-to-one mapping to the prior categories.</caption>
+<thead><tr><th>Financial spine</th><th class="n">FY2016</th><th class="n">FY2022</th><th class="n">FY2024</th><th class="n">FY2025</th></tr></thead>
+<tbody>
+<tr><td>Total revenue ($M)</td><td class="n">3,604</td><td class="n">5,468</td><td class="n">7,088</td><td class="n">7,718</td></tr>
+<tr><td>MIS revenue ($M)</td><td class="n">2,371</td><td class="n">2,699</td><td class="n">3,793</td><td class="n">4,119</td></tr>
+<tr><td>MA revenue ($M)</td><td class="n">1,233</td><td class="n">2,769</td><td class="n">3,295</td><td class="n">3,599</td></tr>
+<tr><td>Adjusted operating margin</td><td class="n">45.5%</td><td class="n">42.6%</td><td class="n">48.1%</td><td class="n">51.1%</td></tr>
+<tr><td>Adjusted diluted EPS</td><td class="n">$4.81</td><td class="n">$8.57</td><td class="n">$12.47</td><td class="n">$14.94</td></tr>
+<tr><td>Diluted shares (M)</td><td class="n">195.4</td><td class="n">184.7</td><td class="n">182.7</td><td class="n">179.9</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Cash conversion is close to complete and capital intensity is minimal: FY2025 operating cash flow of $2,901M against $326M of capex left $2,575M of free cash flow, roughly 33% of revenue. Capex has never exceeded $326M in any year examined, and no maintenance-versus-growth split is disclosed, so the sustaining requirement cannot be separated from the discretionary one.</p>
+<p>Where the cash went over FY2023 through H1 2026, ranked: <strong>buybacks $5,554M · dividends $2,250M · capex $1,100M · acquisitions $474M</strong> · modest net debt reduction. The ranking is the finding. This is the company that paid roughly $3.3bn for Bureau van Dijk in 2017 and $1,927M for RMS in 2021; over the last three and a half years it has spent less on acquisitions than on capex and more than eleven times as much on its own shares. The revealed preference is that management currently sees more value in the existing business than in another one.</p>
+<p>The pace has moved beyond what the business generates. H1 2026 returned $2,165M of repurchases plus $365M of dividends against $1,532M of free cash flow — about <strong>165% of it</strong> — funded by drawing cash from $2,448M to $1,496M while shareholders' equity fell from $4,054M to $3,025M. Debt was unchanged at roughly $7.1bn with no new issuance. Nothing here is stressed; the covenant is 4.0x debt to EBITDA and Moody's is nowhere near it. But the buffer is being spent at a cyclical high, which is when it is cheapest to spend and least available later.</p>
+<p>How management is paid shows what it optimizes. The 2025 annual incentive was two-thirds financial, weighted MIS operating income 50%, MA operating income 25% and MA ARR 25%. The three-year performance shares weight adjusted EPS 50%, a proprietary MIS ratings measure 25% and MA cumulative revenue 25%, with no relative total-shareholder-return metric at all. The 2023–2025 cycle vested at 159% of target with adjusted EPS effectively at maximum and MA cumulative revenue of $9,995M below its $10,357M target. The plan is levered to the most cyclical line in the company, and the metric that maxed out is the one buybacks mechanically assist.</p>
+
+<h2>5. Cyclicality and where the cycle sits</h2>
+<p>Two severe downturns are on the record. In 2008 MIS revenue fell <strong>32.3%</strong> from its 2007 peak and was still 21% below it in 2010 — three years without recovery. In 2022 rated issuance fell 31%, MIS revenue fell <strong>29%</strong>, transaction revenue fell $1,128M, MIS adjusted operating margin fell 1,040 basis points from 62.2% to 51.8%, and group diluted EPS fell 37%. Corporate Finance alone fell 39%. Recovery to above the FY2021 peak again took three years.</p>
+<p>Two features of 2022 matter. The group fell far less than the segment — total revenue declined 12% against MIS's 29%, because MA grew 15% in the same year, which is the strategic case for owning MA at all. And Moody's fell harder than its closest peer: S&P Global's Ratings revenue declined 25.5% and its margin about 700 basis points, for the structural reasons above — a larger ratings share of group revenue sitting on a smaller recurring base.</p>
+<p>The kind of shock matters more than its severity. In 2020, a genuine economic crisis, MIS revenue <em>rose</em> 15% as issuers rushed to raise liquidity; only structured finance fell. What hurts this business is not a growth shock but a rate and spread shock that closes the primary market — which means the usual recession framing points the wrong way.</p>
+<p><strong>Where the cycle sits now is unambiguous.</strong> MIS adjusted operating margin reached 68.3% in Q2 2026 against a 62.2% prior peak and a 51.8% trough. MIS revenue in H1 2026 annualizes to roughly $4.8bn against the FY2021 peak of $3,812M. Volume, price and margin are simultaneously at or above their previous highs, and management raised its issuance assumption mid-year rather than trimming it. Every forward figure in the guidance rests on issuance continuing at this level.</p>
+<p>The downside mechanism specific to this setup is what is driving the issuance. The 10-Q names AI-related hyperscaler financing and data-centre build-out as the source of investment-grade and infrastructure strength, and tight credit spreads as the enabling condition across all four ratings lines. Both are financing conditions rather than business conditions. A spread-widening episode that closes the primary market takes the transaction line down at roughly 75% decremental margin against a recurring floor that was $1,378M in MIS and $3,462M in MA in FY2025 — large and real, but about 63% of group revenue, not all of it.</p>
+
+<div class="two">
+<div class="col"><h4 style="color:var(--good)">Durable — likely to survive ten years</h4>
+<ul>
+<li>93.4% Big Three share of outstanding US ratings, essentially unchanged for a decade (SEC)</li>
+<li>NRSRO and ESMA registration, plus mandate and index rules naming specific agencies</li>
+<li>$1,378M of MIS recurring monitoring revenue on debt already issued</li>
+<li>MA at 96% recurring and $3,661M of ARR growing 9%</li>
+<li>Annual price increases absorbed at roughly 4bp of proceeds financed</li>
+</ul></div>
+<div class="col"><h4 style="color:var(--terracotta)">Borrowed — currently helping</h4>
+<ul>
+<li>AI-hyperscaler and data-centre financing, named in the 10-Q as the driver of IG and infrastructure issuance</li>
+<li>Tight credit spreads, cited across all four MIS ratings lines</li>
+<li>MIS adjusted operating margin of 68.3%, above the 62.2% prior peak</li>
+<li>$179M pre-tax divestiture gain inside Q2 2026 GAAP earnings</li>
+<li>$300–350M of restructuring savings not yet fully banked</li>
+</ul></div>
+</div>
+
+<div class="tw">
+<table>
+<caption>Where each figure is published. The first four are the ones that move first.</caption>
+<thead><tr><th>What to monitor</th><th>Where it is published</th></tr></thead>
+<tbody>
+<tr><td>Global rated issuance and the MIS transaction/recurring split (70/30 in H1 2026 vs 56/44 at the FY2022 trough)</td><td>Moody's quarterly release and the revenue note of each 10-Q</td></tr>
+<tr><td>MA ARR by line — Decision Solutions, Research and Insights, Data and Information</td><td>Same 10-Q, MD&amp;A</td></tr>
+<tr><td>MIS adjusted operating margin against its 51.8% trough</td><td>Same 10-Q, segment results</td></tr>
+<tr><td>Buyback spend against free cash flow</td><td>10-Q cash flow statement and equity roll-forward</td></tr>
+<tr><td>US fixed income issuance by category</td><td>SIFMA quarterly fixed income statistics</td></tr>
+<tr><td>Leveraged loans outstanding ($1.38tn, +12.6% at Q4 2025)</td><td>Federal Reserve Financial Stability Report</td></tr>
+<tr><td>Private credit market size and rating status</td><td>Financial Stability Board and IMF Global Financial Stability Report</td></tr>
+<tr><td>NRSRO and EU CRA market shares</td><td>SEC Office of Credit Ratings annual staff report; ESMA annual Article 8d calculation</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>6. Risks beyond the cycle</h2>
+<div class="card">
+<ul class="plain">
+<li><strong>Private credit disintermediates the fee, not just the volume.</strong> The FSB sizes private credit at $1.5–2.0 trillion at end-2024, with the US market roughly tripled since 2019, and states that borrowers predominantly in private credit "typically lack public ratings" — where assessed at all, through unpublished private ratings or "credit estimates", a lighter-touch product involving relatively less detailed analysis. The mechanism is not that debt disappears but that a dollar financed privately generates no transaction fee or a smaller one. Moody's discloses over 40% growth in these transactions and no revenue for them, so whether the channel is additive or dilutive per dollar of debt cannot be determined.</li>
+<li><strong>Generative AI attacks the weakest part of Moody's Analytics.</strong> The FY2025 10-K names the risk itself. Exposure concentrates in Research and Insights — $1,037M of ARR growing 6%, the slowest MA line — because it sells analyst-written credit research over public filings, precisely the task large language models do adequately at near-zero marginal cost. A repricing there hits the segment whose margin is already the group's weak point.</li>
+<li><strong>Price regulation is the lever that has not been pulled.</strong> EU supervision already extends to CRA pricing conduct, and ESMA's own data show an HHI of 3,815 with no deconcentration since the CRA Regulation. A supervisor concluding that fifteen years of pro-competition rules failed has few tools left other than price. The consequence lands on the annual increases applied to the $1,378M monitoring book — the one lever that keeps working when issuance stops, and therefore the one whose loss removes the cushion exactly when it is needed.</li>
+<li><strong>Litigation follows defaults with a lag, and the precedent is expensive.</strong> Moody's charged $863.8M in Q4 2016 to settle with the DOJ and 21 state attorneys general over crisis-era structured finance ratings, cutting FY2016 diluted EPS to $1.36 from $4.63. The FY2025 10-K identifies private credit as an emerging area of regulatory and legal attention. Ratings litigation arrives years after the ratings are assigned, once defaults reveal them.</li>
+<li><strong>These compound rather than sit independently.</strong> A private-credit default cycle would close the primary market, expose the ratings assigned during the current expansion to litigation, and arrive after the equity base has been cut from $4,054M to $3,025M in six months. Each is survivable alone; the sequence is what would matter.</li>
+</ul>
+</div>
+
+<h3>What the sources could not answer</h3>
+<div class="card">
+<ul class="plain">
+<li><strong>Private credit is entirely unquantified</strong> — no revenue, no ratings count, no disclosure of how a credit estimate is priced against a full rating. Given it is management's most-cited growth theme, this is the largest single gap.</li>
+<li><strong>No MA retention rate is disclosed</strong>, only qualitative language. MSCI publishes 94.4%; without a figure, MA's ARR growth cannot be decomposed into pricing, expansion and churn.</li>
+<li><strong>No revenue or spend is attributed to AI products</strong> anywhere in the FY2025 10-K, despite AI being named both as a growth driver and as a competitive threat.</li>
+<li><strong>The 10-K names no competitor and discloses no market share.</strong> All competitive positioning here is built from outside sources — the correct treatment, but it means the company's own view is unstated rather than testable.</li>
+<li><strong>Capex is not split between maintenance and growth</strong>, so the sustaining capital requirement is unknown.</li>
+<li><strong>Fitch publishes no financials at all</strong>, so roughly a sixth of the industry's economics is permanently unobservable.</li>
+<li><strong>The MA Regulatory Solutions sale price was not disclosed</strong>, and up to $119M of contingent consideration is unresolved until H2 2026.</li>
+<li><strong>Whether the February 2022 medium-term outlook still stands</strong> — at least 10% average annual revenue growth and a low-50s adjusted operating margin — could not be established; no 2025 or 2026 source affirms or withdraws it.</li>
+</ul>
+</div>
+
+<h2>7. Takeaways</h2>
+<div class="card">
+<ul class="plain">
+<li>This is one exceptional business and one adequate one, sold together: a regulated oligopolist earning 63.6% on a fee worth roughly four basis points of the debt it rates, and a subscription data business earning 33.1% against peers at 45–61%.</li>
+<li>The engine is the rated transaction, which pays a fee at issuance and an annuity thereafter. The annuity is the floor; everything above it moves with the bond market at roughly 89% incremental and 75% decremental margin.</li>
+<li>The main growth lever is rated issuance volume, which management explicitly does not forecast well — it guided low-single-digit issuance growth for 2025, delivered 9% MIS revenue growth, then raised its 2026 assumption mid-year.</li>
+<li>What could break the story is private credit moving debt into a channel that pays a smaller fee or none, compounded by generative AI repricing the research half of Moody's Analytics, with a litigation tail from today's expansion arriving years later.</li>
+<li>Watch the transaction-versus-recurring mix — 70/30 now against 56/44 at the FY2022 trough — and the buyback against free cash flow, which ran at 165% in H1 2026 with margins at a cyclical peak.</li>
+</ul>
+</div>
+
+<div class="foot">
+<p><strong>Built from:</strong> Moody's Corporation Forms 10-K for FY2016, FY2020, FY2022 and FY2025; Forms 10-Q through the quarter ended 30 June 2026; the DEF 14A filed 4 March 2026. Industry structure from the SEC Office of Credit Ratings annual staff reports on NRSROs, ESMA's Article 8d market share calculations and TRV study on small CRAs, the BIS Basel framework CRE21, the EBA 2021 report on reliance on external credit ratings, the Financial Stability Board's report on private credit vulnerabilities (6 May 2026), the Federal Reserve Financial Stability Report (May 2026) and SIFMA statistics. Competitor economics from the FY2025 results releases of S&amp;P Global, MSCI, Verisk, Thomson Reuters, ICE, RELX, LSEG and FICO.</p>
+<p><strong>Post-dating the filings:</strong> the sale of the MA Regulatory and ALM Solutions business closed 5 May 2026 with up to $119M of contingent consideration outstanding into H2 2026; Christina Kosmowski was announced as CEO of Moody's Analytics in April 2026, effective June 2026, filling the seat vacant since September 2025; Keith Demmings was elected to the board on 12 August 2026, effective 1 November 2026. FY2026 guidance as of the 22 July 2026 release: revenue growth high-single-digit, adjusted operating margin 52–53%, adjusted diluted EPS $16.50–17.00, free cash flow $2.7–2.9bn, repurchases up to $3.0bn.</p>
+<p>This is a business analysis. It is not a valuation and not a recommendation.</p>
+</div>
+
+</div>
+</body>
+</html>

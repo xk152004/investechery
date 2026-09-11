@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify vs Netflix: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.10);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.10);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+.tablewrap{overflow-x:auto;}.sources li,.source{overflow-wrap:anywhere;}.rubric span{white-space:normal !important;}
+@media(max-width:600px){.leanrow{grid-template-columns:1fr;gap:4px}.leanrow .lbl{text-align:left}.lean .marker{font-size:13px;padding:0 8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Spotify vs Netflix: who wins the next decade?</h1>
+  <p class="source">Subscription streaming media (audio vs video). SPOT / NFLX. Run 11 September 2026. Built from Spotify 20-F FY2023 and FY2025, Q2 2026 interim 6-K and 2026 6-Ks; Netflix 10-K FY2023 to FY2025, Q2 2026 10-Q and shareholder letters; 2026 earnings calls, Spotify Investor Day (21 May 2026) and Goldman Sachs Communacopia (9 Sep 2026); cited web sources for pricing and one regional mix. Events swept through 11 September 2026; most recent events checked: Spotify co-CEO at Goldman Sachs Communacopia (9 Sep 2026) and board change 6-K (3 Sep 2026); Netflix board change 8-K (30 Jul 2026) after the Warner Bros. deal termination (27 Feb 2026). Absolute figures in USD; Spotify reports in EUR, converted at an FY2025 average of 1.13 USD per EUR (approx., unverified). Ratios and growth rates are in each company's reporting currency. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Spotify (A)</span><span class="chip b">Netflix (B)</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Netflix is the stronger business for the next 5 to 10 years; Spotify is the faster-improving one, and the gap between them sits almost entirely in who owns the content cost.</div>
+    <div class="why">Netflix keeps 48.5 cents of gross profit per revenue dollar against Spotify's 32.0, a gap of 15.9 to 16.5 points in each of the last three years, because Netflix amortizes content it largely owns over a growing base while Spotify pays a revenue-linked royalty to four licensors that supply about 72% of its streams (10-K FY25; 20-F FY25).</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Cost structure: Netflix content cost grows slower than revenue by design (amortization about +10% in 2026 vs revenue +13% to 14%); Spotify royalties are the greater of a revenue share and a per-user floor, so labels share every price increase (Q2'26 letter; Q2'26 6-K).</div>
+    <div class="col"><span class="n">2</span><br>Second engine: Netflix ads went from zero to over $1.5B in three years and are guided to about $3B in 2026; Spotify's ad segment shrank 1% in FY25 and grew 1% in Q2'26 (Q4'25 letter; 20-F FY25; Q2'26 6-K).</div>
+    <div class="col"><span class="n">3</span><br>Spotify's counterweight is real: faster growth (mid-teens revenue CAGR target to 2030), a larger funnel (777m MAU, 300m subs) and a capital-light model that already converts 16.7% of revenue to free cash flow vs Netflix 21.0% (Investor Day 2026; 20-F FY25; Q4'25 letter).</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:26%">Spotify, narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">Netflix, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">Netflix breaks last, narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors Spotify, right lean favors Netflix; marker position shows how decisive.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip a">Spotify, narrowly</span></div>
+    <p>Spotify's next five years are carried by two cells Netflix cannot match on runway. First, subscription outside North America, where the free tier acts as a conversion pipeline: Rest of World is 37% of MAU but only 15% of subscribers, and Brazil shows the path (paid conversion 22% in 2016 to 44% today) (20-F FY25; Q2'26 release via MBW; Investor Day 2026). Second, ARPU layering in developed markets: price rises added EUR0.49 to Q2'26 ARPU, and add-ons (Audiobooks+, an AI add-on already at EUR100m ARR) lift ARPU without touching the headline price (Q2'26 6-K; Goldman 9 Sep 2026). Netflix's forward drivers are price (US Standard $17.99 to $19.99, March 2026), ads doubling to about $3B, and membership growth in APAC and LATAM, which guides to about 12% FX-neutral in 2026 against Spotify's mid-teens 2030 target (Q2'26 letter; TechCrunch). The lead is narrow because Netflix adds about $6B of revenue a year, more than twice Spotify's absolute increment, and has a new engine (ads) scaling from a small base.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 240" role="img" aria-label="Indexed revenue paths">
+<line x1="60" x2="640" y1="187.0" y2="187.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="192.0" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">100</text>
+<line x1="60" x2="640" y1="142.0" y2="142.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="147.0" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">125</text>
+<line x1="60" x2="640" y1="97.0" y2="97.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="102.0" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">150</text>
+<line x1="60" x2="640" y1="52.0" y2="52.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="57.0" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">175</text>
+<text x="60.0" y="229" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2021</text>
+<text x="205.0" y="229" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2022</text>
+<text x="350.0" y="229" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2023</text>
+<text x="495.0" y="229" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2024</text>
+<text x="640.0" y="229" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2025</text>
+<polyline points="60.0,187.0 205.0,149.2 350.0,120.4 495.0,75.4 640.0,46.6" fill="none" stroke="#C75B39" stroke-width="3"/>
+<circle cx="60.0" cy="187.0" r="4" fill="#C75B39"/>
+<circle cx="205.0" cy="149.2" r="4" fill="#C75B39"/>
+<circle cx="350.0" cy="120.4" r="4" fill="#C75B39"/>
+<circle cx="495.0" cy="75.4" r="4" fill="#C75B39"/>
+<circle cx="640.0" cy="46.6" r="4" fill="#C75B39"/>
+<text x="650.0" y="51.599999999999994" text-anchor="start" font-size="15" fill="#C75B39" font-weight="bold">Spotify 178</text>
+<polyline points="60.0,187.0 205.0,176.2 350.0,161.8 495.0,131.2 640.0,93.4" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+<circle cx="60.0" cy="187.0" r="4" fill="#3C6E8F"/>
+<circle cx="205.0" cy="176.2" r="4" fill="#3C6E8F"/>
+<circle cx="350.0" cy="161.8" r="4" fill="#3C6E8F"/>
+<circle cx="495.0" cy="131.2" r="4" fill="#3C6E8F"/>
+<circle cx="640.0" cy="93.4" r="4" fill="#3C6E8F"/>
+<text x="650.0" y="98.4" text-anchor="start" font-size="15" fill="#3C6E8F" font-weight="bold">Netflix 152</text>
+</svg>
+      <div class="cap">Revenue indexed to 100 in FY2021, each in reporting currency (Spotify EUR, Netflix USD). Spotify: 9,668 / 11,727 / 13,247 / 15,673 / 17,186 EURm (20-F FY23, FY25). Netflix: 29,698 / 31,616 / 33,723 / 39,001 / 45,183 USDm (10-K FY23, FY25). Spotify's EUR path understates its constant-currency growth (management: 18% CC CAGR 2022 to 2025, Investor Day 2026).</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip b">Netflix, clearly</span></div>
+    <p>This is the tension of the duel: the growth winner is not the margin winner. Netflix converts through a fixed-cost content model: content amortization of $16.4B in FY25 is spread across every region, so each price increase in UCAN or EMEA drops largely to operating income, and management guides amortization to grow about 10% against revenue of 13% to 14% in 2026 (10-K FY25; Q2'26 letter). Spotify converts through mix rather than price: its gross margin rose from 25.6% to 32.0% in two years on label renegotiations, the Marketplace (gross profit 4x 2021), podcasts turning profitable and audiobook bundling, not on keeping price rises (Investor Day 2026). The Cost Engine tab shows opex ratios are now nearly identical (SG&amp;A 11.1% vs 11.5%, R&amp;D 8.1% vs 7.5% in FY25), so almost all of the 16.7-point EBIT gap is gross margin (16.5 points). The honest offset: on cash, the gap shrinks to 4.3 points, because Netflix spends about 1.1x its amortization in content cash while Spotify pays royalties as it goes and collects subscriptions up front.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 246" role="img" aria-label="Margin dumbbells">
+<text x="190.0" y="236" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">0%</text>
+<text x="366.66666666666663" y="236" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">20%</text>
+<text x="543.3333333333333" y="236" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">40%</text>
+<text x="720.0" y="236" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">60%</text>
+<text x="0" y="45" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">Gross margin FY25</text>
+<line x1="190" x2="720" y1="40" y2="40" stroke="#E5DDD0" stroke-width="2"/>
+<line x1="472.7" x2="618.4" y1="40" y2="40" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="472.7" cy="40" r="8" fill="#C75B39"/><circle cx="618.4" cy="40" r="8" fill="#3C6E8F"/>
+<text x="472.6666666666667" y="26" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="bold">Spotify 32.0%</text>
+<text x="618.4166666666667" y="26" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="bold">Netflix 48.5%</text>
+<text x="545.5416666666667" y="62" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">gap 16.5 pts</text>
+<text x="0" y="107" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">EBIT margin FY25</text>
+<line x1="190" x2="720" y1="102" y2="102" stroke="#E5DDD0" stroke-width="2"/>
+<line x1="303.1" x2="450.6" y1="102" y2="102" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="303.1" cy="102" r="8" fill="#C75B39"/><circle cx="450.6" cy="102" r="8" fill="#3C6E8F"/>
+<text x="303.06666666666666" y="88" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="bold">Spotify 12.8%</text>
+<text x="450.5833333333333" y="88" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="bold">Netflix 29.5%</text>
+<text x="376.825" y="124" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">gap 16.7 pts</text>
+<text x="0" y="169" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">FCF margin FY25</text>
+<line x1="190" x2="720" y1="164" y2="164" stroke="#E5DDD0" stroke-width="2"/>
+<line x1="337.5" x2="375.5" y1="164" y2="164" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="337.5" cy="164" r="8" fill="#C75B39"/><circle cx="375.5" cy="164" r="8" fill="#3C6E8F"/>
+<text x="323.51666666666665" y="169" text-anchor="end" font-size="14" fill="#C75B39" font-weight="bold">Spotify 16.7%</text>
+<text x="389.5" y="169" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="bold">Netflix 21.0%</text>
+<text x="356.5083333333333" y="186" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">gap 4.3 pts</text>
+</svg>
+      <div class="cap">FY2025. Gross and EBIT margin from consolidated income statements (20-F FY25; 10-K FY25). FCF margin: Spotify EUR2,874m / EUR17,186m (20-F FY25); Netflix $9.5B / $45.2B (Q4'25 letter). Netflix FY25 includes a $619m Brazil non-income tax charge (ex-charge: GM 49.9%, EBIT 30.9%).</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip a">Spotify breaks first, narrowly</span></div>
+    <p>Spotify's worst exposure is a supplier shock: UMG, Sony, Warner and Merlin supply about 72% of streams on non-exclusive terms, so the gross-margin gains of the last three years sit inside contracts the same four counterparties renegotiate, and a single hostile renewal or an AI-music dispute can move gross margin several points within a year (20-F FY25). Netflix's worst exposure is engagement share: view hours grew only 1.5% in 2025 and 2% in H1'26 while it claims about 5% of global TV viewing, against $24.1B of content obligations that do not flex quickly if YouTube keeps taking time (10-K FY25; Q2'26 letter and call). Spotify breaks first because its shock arrives through a negotiation with a date on it; Netflix's erodes through a trend it can see and fund against. In a plain consumer recession the order reverses slightly: Spotify's royalties fall with revenue, while Netflix's amortization does not.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These five cells carry essentially all of both companies' revenue; every score is argued in the tabs below. Spotify does not disclose revenue by region outside the US, so its regional scores rest on subscriber mix, MAU growth and management disclosure.</p>
+  <div class="tablewrap"><table>
+<tr><th>Cell (product x region)</th><th class="ca">Spotify</th><th class="cb">Netflix</th><th>Why (sourced)</th></tr>
+<tr><td>Subscription, North America</td><td class="ca" style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb" style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Netflix: UCAN $20.0B, +15% in FY25 and two price rises in 15 months (10-K FY25; TechCrunch). Spotify: 60% of US and Canada users pay and it price-leads, but labels share each increase (Investor Day 2026; Q2'26 6-K).</td></tr>
+<tr><td>Subscription, Europe / EMEA</td><td class="ca" style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb" style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Spotify: largest subscriber region at 36% of subs, MAU +6% (MBW; 20-F FY25). Netflix: EMEA $14.5B, +17% reported, +16% cc, with local partners such as TF1 (10-K FY25; Q2'26 call).</td></tr>
+<tr><td>Subscription, Latin America</td><td class="ca" style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb" style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Spotify: Brazil paid conversion 22% to 44% since 2016 (Investor Day 2026). Netflix: +23% FX-neutral in FY25, +21% reported in Q2'26 (10-K FY25; Q2'26 letter).</td></tr>
+<tr><td>Subscription, APAC / Rest of world</td><td class="ca" style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb" style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Spotify: 37% of MAU but 15% of subs; 20-F calls monetization here more challenging. Netflix: APAC +21% in FY25 on 57.5m members at end-FY24 (10-K FY24, FY25).</td></tr>
+<tr><td>Advertising (all regions)</td><td class="ca" style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb" style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Spotify: -1% in FY25, +1% in Q2'26 on pricing softness (20-F FY25; 6-K). Netflix: over 2.5x to above $1.5B in FY25, about $3B guided for FY26 (Q4'25 and Q2'26 letters).</td></tr>
+</table></div>
+
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs. Scores are per cell and are not summed; the three lenses get their verdicts in the Three Answers above, not here.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Netflix's revenue is a four-region subscription engine already at scale; Spotify's is a global funnel still converting users into payers, with North America as the only region it discloses.</div>
+    <p>The two companies cut their reporting differently, which is itself a finding. Netflix reports one segment and revenue by four regions (and stopped reporting memberships and ARM in 2025). Spotify reports two segments, Premium and Ad-Supported, and revenue by country only for the US; the UK dropped out of its FY25 country table. The normalized cells are therefore subscription by region, plus advertising as a cut across all regions. Spotify's regional revenue outside the US is ND; its regional subscriber mix (Europe 36%, North America 25%, Latin America 24%, Rest of World 15% in Q2'26) is the best available proxy.</p>
+    <p>The headline contrast: Netflix earns 44% of revenue in UCAN and grew it 12.3% a year from FY22 to FY25; Spotify earns 38% in the US and 62% elsewhere, and grows fastest outside North America (15.2% CAGR in EUR). Netflix's fastest cells are EMEA and APAC (14% CAGR each); its LATAM cell grew 9.6% reported but 23% FX-neutral in FY25, so currency, not demand, is the drag there.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 296" role="img" aria-label="Butterfly cell chart">
+<text x="329" y="24" text-anchor="end" font-size="16" fill="#C75B39" font-weight="bold">Spotify (FY25, USD)</text>
+<text x="571" y="24" text-anchor="start" font-size="16" fill="#3C6E8F" font-weight="bold">Netflix (FY25, USD)</text>
+<text x="450" y="66" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">North America</text>
+<rect x="285.8" y="52" width="49.2" height="20" fill="#C75B39"/>
+<text x="279.75396825396825" y="67" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">$7.3B | +11% CAGR</text>
+<rect x="565" y="52" width="134.9" height="20" fill="#3C6E8F"/>
+<text x="705.9206349206349" y="67" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">$20.0B | +12% CAGR</text>
+<text x="450" y="106" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">Europe / EMEA</text>
+<rect x="295" y="92" width="40" height="20" fill="none" stroke="#C75B39" stroke-dasharray="4 3"/>
+<text x="289" y="107" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">ND (36% of subs)</text>
+<rect x="565" y="92" width="97.8" height="20" fill="#3C6E8F"/>
+<text x="668.8174603174604" y="107" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">$14.5B | +14% CAGR</text>
+<text x="450" y="146" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">Latin America</text>
+<rect x="295" y="132" width="40" height="20" fill="none" stroke="#C75B39" stroke-dasharray="4 3"/>
+<text x="289" y="147" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">ND (24% of subs)</text>
+<rect x="565" y="132" width="36.4" height="20" fill="#3C6E8F"/>
+<text x="607.4285714285714" y="147" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">$5.4B | +10% CAGR</text>
+<text x="450" y="186" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">APAC / Rest of world</text>
+<rect x="295" y="172" width="40" height="20" fill="none" stroke="#C75B39" stroke-dasharray="4 3"/>
+<text x="289" y="187" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">ND (15% of subs)</text>
+<rect x="565" y="172" width="36.4" height="20" fill="#3C6E8F"/>
+<text x="607.4285714285714" y="187" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">$5.4B | +14% CAGR</text>
+<line x1="20" x2="880" y1="204" y2="204" stroke="#E5DDD0" stroke-width="1"/>
+<text x="450" y="226" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">All outside North America</text>
+<rect x="253.4" y="212" width="81.6" height="20" fill="#C75B39"/>
+<text x="247.37301587301587" y="227" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">$12.1B | +15% CAGR</text>
+<rect x="565" y="212" width="170.0" height="20" fill="#3C6E8F"/>
+<text x="741.0" y="227" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">$25.2B | +13% CAGR</text>
+<text x="450" y="266" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">Advertising (cut across)</text>
+<rect x="320.8" y="252" width="14.2" height="20" fill="#C75B39"/>
+<text x="314.8333333333333" y="267" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">$2.1B | +7% CAGR</text>
+<rect x="565" y="252" width="10.1" height="20" fill="#3C6E8F"/>
+<text x="581.1190476190476" y="267" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">>$1.5B | >2.5x in FY25</text>
+</svg>
+      <div class="cap">FY2025 revenue in USD billions; CAGR FY22 to FY25 in reporting currency. Spotify North America = US only, including US ad revenue (20-F FY25, revenue by country). Spotify regional revenue outside the US is not disclosed (dashed ND boxes; subscriber share from Q2'26 release via MBW). The advertising row cuts across the geographic rows and is not additive. Netflix from 10-K FY25 regional table; Netflix ad revenue "over $1.5B" (Q4'25 letter).</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Cell</th><th class="num ca">Spotify rev (% of total)</th><th class="num ca">Spotify growth</th><th class="num cb">Netflix rev (% of total)</th><th class="num cb">Netflix growth</th><th>Margin signal / leader</th></tr>
+      <tr><td>Subscription, North America</td><td class="num ca">$7.3B (38%), US incl. ads</td><td class="num ca">+5% EUR FY25; 11.1% CAGR</td><td class="num cb">$20.0B (44%)</td><td class="num cb">+15%; 12.3% CAGR</td><td>Netflix: ARM $17.20 (FY24) vs Spotify ARPU EUR4.63 group-wide</td></tr>
+      <tr><td>Subscription, Europe / EMEA</td><td class="num ca">ND (36% of subs)</td><td class="num ca">MAU +6% FY25</td><td class="num cb">$14.5B (32%)</td><td class="num cb">+17% (+16% cc); 14.2%</td><td>Netflix on revenue; Spotify's largest subscriber region</td></tr>
+      <tr><td>Subscription, Latin America</td><td class="num ca">ND (24% of subs)</td><td class="num ca">MAU +10% FY25</td><td class="num cb">$5.4B (12%)</td><td class="num cb">+11% (+23% cc); 9.6%</td><td>Even: both convert well; Brazil 44% paid (Spotify)</td></tr>
+      <tr><td>Subscription, APAC / Rest of world</td><td class="num ca">ND (15% of subs; 37% of MAU)</td><td class="num ca">MAU +21% FY25</td><td class="num cb">$5.4B (12%)</td><td class="num cb">+21%; 14.5%</td><td>Netflix monetizes; Spotify still building the funnel</td></tr>
+      <tr><td>Advertising (all regions)</td><td class="num ca">$2.1B (11%), segment GM 18%</td><td class="num ca">-1% FY25; +1% Q2'26</td><td class="num cb">&gt;$1.5B (about 3%)</td><td class="num cb">&gt;2.5x FY25; about $3B FY26 guide</td><td>Netflix gaining; Spotify re-platforming</td></tr>
+    </table></div>
+    <p class="score-note">Sources: 20-F FY25 (segment and country tables, MAU commentary); Q2'26 6-K; 10-K FY25 and FY24 (regional revenue, ARM); Q4'25 and Q2'26 letters. Spotify premium GM 34%, ad-supported 18% (20-F FY25). Netflix regional margins ND.</p>
+    <div class="iik"><b>Insight:</b> Netflix's revenue is already monetized in every region; Spotify's is half-built outside North America and Europe, with the largest user pool (Rest of World) the least monetized. <b>Implication:</b> Spotify's growth runway is longer but depends on conversion and ARPU in low-price markets, where each new subscriber is worth a fraction of a US one. <span class="kpi">KPI: Spotify subscriber growth at or above 8% year on year through Q2'27 while emerging-market free-tier friction is applied (6-K quarterly).</span></div>
+
+    <h3>Segment growth engines</h3>
+    <p><b>North America.</b> Netflix: price is the engine; the March 2026 increase (Standard to $19.99, ads plan to $8.99) is only partly in Q2'26 UCAN growth of 10%, so H2'26 carries more of it (TechCrunch 26 Mar 2026; Q2'26 letter). Spotify: US Individual went from $11.99 to $12.99 in January 2026 and 60% of US and Canada users now pay, up from 32% a decade ago, so growth shifts from conversion to ARPU layers such as add-ons and Live Nation ticket access (TechCrunch 15 Jan 2026; Investor Day 2026; Q2'26 call). Durability favors Netflix, because its price rises reach operating income almost intact.</p>
+    <p><b>Outside North America.</b> Netflix: membership growth plus local content (non-English titles over a third of viewing) and local live events such as the World Baseball Classic in Japan (Q2'26 letter and call). Spotify: free-user growth in Asia, the Middle East and Africa feeds a conversion cycle that takes years; in Q3'26 management is deliberately adding friction to the free tier in select emerging markets to pull conversion forward (Q2'26 call). Both are organic; neither company's growth over FY22 to FY25 is acquired.</p>
+    <p><b>Advertising.</b> Netflix built its own ad tech across 12 markets and extends programmatic access to Pause Ads and live inventory; Spotify rebuilt its stack, lifted automated channels to nearly 40% of ad revenue and active advertisers 60% to 33,000, but pricing softness still offsets impression growth (Q4'25 call; Q2'26 letter; Q2'26 Spotify call).</p>
+    <div class="iik"><b>Insight:</b> Netflix's ad cell is compounding from a small base on premium CPMs; Spotify's ad cell is volume without price. <b>Implication:</b> Netflix gains a second high-incremental-margin engine; Spotify's ad segment stays a funnel cost center unless pricing turns. <span class="kpi">KPI: Spotify Ad-Supported revenue growth of 10% or more at constant currency by Q2'27 (management says the ramp starts H2'26).</span></div>
+
+    <h3>Price control and route-to-market</h3>
+    <p>Both sell direct to consumers, mostly through their own apps and websites, with partner bundles (telcos for Spotify; MVPDs, CE makers and ISPs as marketing partners for Netflix) and no customer above 10% of revenue for either (20-F FY25; 10-K FY25). Both exercise price: Spotify says it is more expensive than competitors in all markets and sees no churn at price events, and Netflix says its first-half 2026 price changes performed consistently with prior ones (Goldman 9 Sep 2026; Q2'26 call). The difference is where the price lands. Spotify's royalty is the greater of a percentage of revenue and a per-user amount, so part of every increase goes to rights holders before gross profit; Netflix pays for content up front and keeps the increase (Q2'26 6-K).</p>
+    <div class="iik"><b>Insight:</b> Equal pricing power at the consumer, unequal net-price capture. <b>Implication:</b> for the same percentage price rise, Netflix's gross profit grows faster than Spotify's. <span class="kpi">KPI: Spotify Premium gross margin moving from 34% (FY25) toward the 35% to 40% 2030 target in the annual 20-F.</span></div>
+
+    <h3>Supply resilience</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Input</th><th class="ca">Spotify</th><th class="cb">Netflix</th></tr>
+      <tr><td>Core content</td><td class="ca">Licensed, non-exclusive; four licensors about 72% of streams (74% FY23)</td><td class="cb">Mostly owned originals plus licensed titles from many studios (Sony, Universal, Paramount deals)</td></tr>
+      <tr><td>Commitment type</td><td class="ca">Royalty as % of revenue with per-user floors</td><td class="cb">$24.1B content obligations, fixed</td></tr>
+      <tr><td>Delivery</td><td class="ca">Cloud (streaming delivery in cost of revenue)</td><td class="cb">Own CDN (Open Connect)</td></tr>
+      <tr><td>Distribution gatekeepers</td><td class="ca">App stores for in-app sign-up</td><td class="cb">App stores and TV device makers</td></tr>
+    </table></div>
+    <p class="score-note">Sources: 20-F FY25 and FY23 risk factors; 10-K FY25 (content obligations, Open Connect); Netflix Q4'25 call (licensing deals).</p>
+    <div class="iik"><b>Insight:</b> Spotify's supply is concentrated and shared with every rival; Netflix's is owned but rigid. <b>Implication:</b> Spotify faces continuity and price risk at renewals; Netflix faces cost rigidity if demand slows. <span class="kpi">KPI: disclosed share of streams from the four largest licensors in the next 20-F (below 70% would signal diluting label leverage).</span></div>
+
+    <h3>Competitive context</h3>
+    <p>In audio, Spotify competes with Apple Music, YouTube Music and Amazon Music on the same catalog, and says only it and YouTube have scaled video podcasts (Goldman 9 Sep 2026). In video, Netflix names YouTube as the rival taking TV time, alongside Amazon, Disney and Paramount; YouTube has overtaken the BBC in UK monthly reach per BARB, as cited by Netflix (Q4'25 call). Market shares for either cell are not in the sources (ND). Both claim to be share-takers in their core cells; Netflix's claim rests on revenue growth outpacing a 5% TV view share, Spotify's on MAU growth of 11% to 12%.</p>
+
+    <h3>Risks by segment</h3>
+    <p>North America: Netflix is exposed to YouTube time share eroding pricing power; Spotify is exposed to price increases landing partly with labels. Europe: Spotify's home market is its most monetized pool outside the US, so a label dispute bites hardest here; Netflix's EMEA growth relies on continued price rises against local broadcasters, which it is partly co-opting (TF1 partnership). Latin America: both face currency; Netflix also a Brazil tax regime that cost $619m in FY25. Advertising: Spotify is more exposed, because ads are 11% of its revenue on an 18% gross margin that falls first in an ad recession.</p>
+    <div class="pull">On cells alone, Spotify has the higher-growth path because its monetization is least complete; Netflix has the higher-probability path because every region already pays and ads are additive.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In streaming, the company that owns what is being streamed sets the terms; the one that licenses it negotiates them.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">Netflix, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:26%">Spotify, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:2%">Netflix, clear</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever; each call argued below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Spotify</h3><p>Habit and personalization at scale: 777m MAU, subscribers using the app more than 28 days a month rising, and what it calls the largest licensed audio-and-taste dataset (Q2'26 6-K; Investor Day 2026). Proof: it price-leads in every market without churn (Goldman 9 Sep 2026). Freemium funnel: US and Canada paid share up from 32% to 60% in a decade. Durability High for habit, Low for content, which every rival licenses on the same terms.</p></div>
+      <div class="col b"><h3>Netflix</h3><p>Owned content amortized across 325m+ paid memberships: $17.1B of content additions in FY25, a global production base, and hits that travel (non-English titles over a third of viewing) (10-K FY25; Q4'25 and Q2'26 letters). Proof: operating margin up from 20.6% to 29.5% in two years while spending more on content. Durability High: replicating the library and production system takes years, not only money.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Spotify's moat is behavioral, Netflix's is behavioral plus owned supply. <b>Implication:</b> Netflix can differentiate on what it offers; Spotify must differentiate on how it serves the same catalog. <span class="kpi">KPI: Netflix operating margin reaching 31.5% in FY26 while view hours hold growth at 0% or better (What We Watched, early 2027).</span></div>
+    <h3>Customers: who controls net price and access</h3>
+    <p>Spotify: direct relationship with 777m users, 476m of them on a free tier that doubles as an acquisition channel Netflix does not have (Netflix says it has no near-term plan for a free tier) (20-F FY25; Netflix Q2'26 call). Price rises in Q2'26 added EUR0.49 to ARPU, and family and duo plans let it price-discriminate. Netflix: direct relationship with 325m+ paid memberships, prices from $1 to $37 a month by country, and repeated increases absorbed with churn in line with expectations (10-K FY25; Q2'26 call). Neither has customer concentration.</p>
+    <div class="iik"><b>Insight:</b> Spotify controls a wider access point (free plus paid); Netflix a richer one (ARM in UCAN of $17.20 vs Spotify group ARPU of EUR4.63). <b>Implication:</b> Spotify wins the access lever narrowly, but because labels share net price, that access converts to less gross profit. <span class="kpi">KPI: Spotify Premium ARPU growth at constant currency of 4% or more in FY26 (20-F FY26).</span></div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Spotify: UMG, Sony, Warner and Merlin about 72% of streams; dual-sourcing is impossible because each owns unique recordings; pass-through is Partial, because royalties rise with price (20-F FY25). Its margin gains came from renegotiating these same contracts twice since 2022 and building income labels pay into, such as Marketplace promotion tools (Investor Day 2026). Netflix: many content suppliers, originals owned; pass-through is Strong on price but costs are fixed ($24.1B of obligations) (10-K FY25). When it wanted the Warner Bros. library, it bid; when outbid, it collected a $2.8B termination fee rather than overpay (10-Q Q2'26).</p>
+    <div class="iik"><b>Insight:</b> Spotify's suppliers are also its competitors' suppliers and can take back margin at renewal; Netflix's are replaceable. <b>Implication:</b> Netflix keeps supplying at stable net price through a shock; Spotify's gross margin is a negotiated number. <span class="kpi">KPI: any multi-year major-label renewal disclosed by Spotify, and its quarterly gross margin in the two quarters after it.</span></div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>Subscription, North America</td><td>Both direct</td><td>Both price-lead in their category (Spotify $12.99 Individual; Netflix $19.99 Standard)</td><td>Spotify needs label licences; Netflix owns most content</td><td>Netflix share flat, margin up; Spotify share flat, margin up less</td><td>Netflix UCAN growth at 12% or more in FY27; Spotify US revenue growth in USD</td></tr>
+      <tr><td>Subscription, Europe</td><td>Both direct; Netflix adds local partners (TF1)</td><td>Spotify at or above rivals; Netflix raising</td><td>Same as above</td><td>Both up; Spotify's most exposed cell in a label dispute</td><td>Netflix EMEA growth vs Spotify Europe subscriber share</td></tr>
+      <tr><td>Advertising</td><td>Netflix own ad tech in 12 markets; Spotify automated about 40%</td><td>Netflix premium CPMs; Spotify price softness</td><td>Both own inventory</td><td>Netflix share up, margin up; Spotify flat</td><td>Netflix FY26 ads about $3B; Spotify ad growth 10% or more</td></tr>
+    </table></div>
+    <p class="score-note">Sources: pricing from TechCrunch (15 Jan and 26 Mar 2026); other rows from the 20-F FY25, Q2'26 6-K and call, 10-K FY25, Q4'25 call and Q2'26 letter.</p>
+    <h3>The causal gap</h3>
+    <p>Three causes explain most of the difference. First and Major: who owns content cost. Spotify's cost of revenue is 68% of revenue because royalties scale with revenue; Netflix's is 51.5% because amortization scales with its own choices. Spotify cannot close this with money, because the recordings are owned by others; it can only shrink the royalty-bearing share of revenue (podcasts, audiobooks, Marketplace, add-ons), which is a five-plus-year project already under way. Second and Moderate: the ad engine; Spotify could close this in two to three years if its rebuilt stack lifts price. Third and Moderate: exclusivity; Spotify has none in music and is building it in podcasts and AI remix tools (UMG signed up, per Goldman 9 Sep 2026), which is slow and uncertain.</p>
+    <div class="pull">Netflix holds the stronger power position because it owns what it sells; Spotify's edge in access is real but is taxed at the source by four licensors.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">Below gross profit the two companies now run the same cost engine; above it, they run different businesses.</div>
+    <p>Both present costs by function, so the mapping is direct: Netflix's "technology and development" is R&amp;D, and SG&amp;A is sales and marketing plus general and administrative for both. Three reconciliation notes. Spotify reports under IFRS in EUR and books social costs on share-based compensation in opex (EUR125m in FY25 vs EUR291m in FY24, swinging with its share price). Spotify FY23 includes EUR212m of severance and EUR123m of real-estate impairment (EBIT ex-items about -0.8%). Netflix FY25 cost of revenue includes a $619m Brazil non-income tax charge. The biggest caveat is structural: Netflix capitalizes content and expenses it through amortization, paying about 1.1x amortization in cash, while Spotify expenses royalties as incurred, so Netflix's gross margin flatters its cash economics relative to Spotify's.</p>
+    <h3>Three years, five ratios</h3>
+    <div class="tablewrap"><table>
+      <tr><th>% of sales, 3y avg FY23-FY25</th><th class="num ca">Spotify</th><th class="num cb">Netflix</th><th class="num">Gap (pts)</th><th>What drives it</th></tr>
+      <tr><td>COGS</td><td class="num ca">70.8</td><td class="num cb">54.6</td><td class="num">+16.2</td><td>Revenue-linked royalties vs amortization of owned content</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">10.2</td><td class="num cb">7.6</td><td class="num">+2.6</td><td>Spotify's 2023 restructuring; gap now 0.6 pts</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">13.0</td><td class="num cb">12.1</td><td class="num">+0.9</td><td>Converged: 11.1% vs 11.5% in FY25</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">29.2</td><td class="num cb">45.4</td><td class="num">-16.2</td><td>Who owns the content cost</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">6.0</td><td class="num cb">25.6</td><td class="num">-19.6</td><td>Gross-margin gap plus Spotify's 2023 loss</td></tr>
+    </table></div>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 280" role="img" aria-label="Cost engine grouped bars">
+<line x1="40" x2="750" y1="235" y2="235" stroke="#2B2B2B" stroke-width="1"/>
+<rect x="66.0" y="53.6" width="42" height="181.4" fill="#C75B39"/>
+<text x="87.0" y="47.57499999999999" text-anchor="middle" font-size="13" fill="#C75B39" font-weight="bold">70.8%</text>
+<rect x="112.0" y="95.1" width="42" height="139.9" fill="#3C6E8F"/>
+<text x="133.0" y="89.0875" text-anchor="middle" font-size="13" fill="#3C6E8F" font-weight="bold">54.6%</text>
+<text x="110.0" y="257" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">COGS</text>
+<rect x="206.0" y="208.9" width="42" height="26.1" fill="#C75B39"/>
+<text x="227.0" y="202.8625" text-anchor="middle" font-size="13" fill="#C75B39" font-weight="bold">10.2%</text>
+<rect x="252.0" y="215.5" width="42" height="19.5" fill="#3C6E8F"/>
+<text x="273.0" y="209.525" text-anchor="middle" font-size="13" fill="#3C6E8F" font-weight="bold">7.6%</text>
+<text x="250.0" y="257" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">R&amp;D</text>
+<rect x="346.0" y="201.7" width="42" height="33.3" fill="#C75B39"/>
+<text x="367.0" y="195.6875" text-anchor="middle" font-size="13" fill="#C75B39" font-weight="bold">13.0%</text>
+<rect x="392.0" y="204.0" width="42" height="31.0" fill="#3C6E8F"/>
+<text x="413.0" y="197.99375" text-anchor="middle" font-size="13" fill="#3C6E8F" font-weight="bold">12.1%</text>
+<text x="390.0" y="257" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">SG&amp;A</text>
+<rect x="486.0" y="160.2" width="42" height="74.8" fill="#C75B39"/>
+<text x="507.0" y="154.175" text-anchor="middle" font-size="13" fill="#C75B39" font-weight="bold">29.2%</text>
+<rect x="532.0" y="118.7" width="42" height="116.3" fill="#3C6E8F"/>
+<text x="553.0" y="112.6625" text-anchor="middle" font-size="13" fill="#3C6E8F" font-weight="bold">45.4%</text>
+<text x="530.0" y="257" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">Gross margin</text>
+<rect x="626.0" y="219.6" width="42" height="15.4" fill="#C75B39"/>
+<text x="647.0" y="213.625" text-anchor="middle" font-size="13" fill="#C75B39" font-weight="bold">6.0%</text>
+<rect x="672.0" y="169.4" width="42" height="65.6" fill="#3C6E8F"/>
+<text x="693.0" y="163.4" text-anchor="middle" font-size="13" fill="#3C6E8F" font-weight="bold">25.6%</text>
+<text x="670.0" y="257" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">EBIT margin</text>
+<text x="40" y="18" text-anchor="start" font-size="13" fill="#6E675C" font-weight="normal">3-year average, % of revenue, FY23-FY25</text>
+<rect x="530" y="6" width="12" height="12" fill="#C75B39"/><text x="547" y="17" text-anchor="start" font-size="13" fill="#C75B39" font-weight="bold">Spotify</text>
+<rect x="620" y="6" width="12" height="12" fill="#3C6E8F"/><text x="637" y="17" text-anchor="start" font-size="13" fill="#3C6E8F" font-weight="bold">Netflix</text>
+</svg>
+      <div class="cap">Computed from consolidated income statements: 20-F FY25 (Spotify, EUR) and 10-K FY25 (Netflix, USD). Both fiscal years end 31 December.</div>
+    </div>
+    <div class="tablewrap"><table>
+      <tr><th>Year</th><th class="num ca">SPOT COGS</th><th class="num ca">SPOT R&amp;D</th><th class="num ca">SPOT SG&amp;A</th><th class="num ca">SPOT GM</th><th class="num ca">SPOT EBIT</th><th class="num cb">NFLX COGS</th><th class="num cb">NFLX R&amp;D</th><th class="num cb">NFLX SG&amp;A</th><th class="num cb">NFLX GM</th><th class="num cb">NFLX EBIT</th></tr>
+      <tr><td>FY23</td><td class="num ca">74.4</td><td class="num ca">13.0</td><td class="num ca">16.0</td><td class="num ca">25.6</td><td class="num ca">-3.4</td><td class="num cb">58.5</td><td class="num cb">7.9</td><td class="num cb">13.0</td><td class="num cb">41.5</td><td class="num cb">20.6</td></tr>
+      <tr><td>FY24</td><td class="num ca">69.9</td><td class="num ca">9.5</td><td class="num ca">12.0</td><td class="num ca">30.1</td><td class="num ca">8.7</td><td class="num cb">53.9</td><td class="num cb">7.5</td><td class="num cb">11.8</td><td class="num cb">46.1</td><td class="num cb">26.7</td></tr>
+      <tr><td>FY25</td><td class="num ca">68.0</td><td class="num ca">8.1</td><td class="num ca">11.1</td><td class="num ca">32.0</td><td class="num ca">12.8</td><td class="num cb">51.5</td><td class="num cb">7.5</td><td class="num cb">11.5</td><td class="num cb">48.5</td><td class="num cb">29.5</td></tr>
+    </table></div>
+    <p class="score-note">Raw values (millions): Spotify revenue 13,247 / 15,673 / 17,186 EUR, cost of revenue 9,850 / 10,949 / 11,690, EBIT -446 / 1,365 / 2,198. Netflix revenue 33,723 / 39,001 / 45,183 USD, cost of revenue 19,715 / 21,038 / 23,275, EBIT 6,954 / 10,418 / 13,327.</p>
+    <h3>The structural gap</h3>
+    <p>Gross margin is the persistent gap: 15.9 points in FY23, 16.0 in FY24 and 16.5 in FY25. It did not close even though Spotify added 6.4 points of gross margin over the period, because Netflix added 7.0. The mechanism is the one in the Power Map: Netflix's content cost is a fixed investment it amortizes over a growing base, Spotify's is a revenue share paid to concentrated licensors. The cross-check confirms the power map: the company that owns its supply shows it in gross margin, and Spotify's opex discipline since the 2023 restructuring (opex from 29% to 19% of revenue) has already been harvested, so further EBIT gains must come from gross margin. That puts Spotify's 2030 targets (gross margin 35% to 40%, operating margin above 20%) squarely on the royalty-bearing mix question. The one contradiction is cash: on free cash flow the gap is only 4.3 points, a reminder that Netflix's lead is smaller in cash than in accounting.</p>
+    <div class="pull">Netflix runs the leaner engine by 16 points of gross margin, and the gap is structural; Spotify now matches it on every line it controls.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li>Spotify reaches the low end of its 2030 gross-margin range years early because non-royalty revenue (podcasts, audiobooks, Marketplace, add-ons) outgrows music, shrinking the share of revenue the labels tax. <span style="color:var(--good);font-weight:700;">Early warning: Spotify quarterly gross margin at 34.5% or above in two quarters of FY27 without a label dispute (6-K).</span></li>
+      <li>Netflix's engagement share erodes to YouTube and creator video, so price rises start to cost members while $24.1B of commitments stay fixed. <span style="color:var(--good);font-weight:700;">Early warning: negative year-on-year view-hour growth in the H2'26 What We Watched report (early 2027), or FY27 revenue guidance below 10% FX-neutral (January 2027 letter).</span></li>
+      <li>Netflix returns to transformative M&amp;A after the failed $82.7B Warner Bros. bid, levering a clean balance sheet into a studio with a legacy cost base. <span style="color:var(--good);font-weight:700;">Early warning: an 8-K with a definitive agreement above $20B, or new bridge financing (Netflix 8-K).</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12-24 months</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>Spotify gross margin</td><td>34.5% or above for two quarters</td><td>Q4 2027</td><td>Spotify</td><td>6-K quarterly results</td></tr>
+    <tr><td>Spotify Ad-Supported revenue growth</td><td>10% or more at constant currency</td><td>Q2 2027</td><td>Spotify</td><td>6-K; earnings call</td></tr>
+    <tr><td>Netflix ad revenue</td><td>About $3B in FY26 (below $2.5B would be a miss)</td><td>January 2027</td><td>Netflix</td><td>Q4'26 shareholder letter</td></tr>
+    <tr><td>Netflix operating margin</td><td>31.5% in FY26 and FY27 guide of 33% or more</td><td>January 2027</td><td>Netflix</td><td>Q4'26 shareholder letter</td></tr>
+    <tr><td>Netflix view hours</td><td>Growth of 0% or better, H2'26 vs H2'25</td><td>Early 2027</td><td>Netflix (negative favors Spotify)</td><td>What We Watched report</td></tr>
+  </table></div>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Netflix is the business that deserves the deep-dive hours first. Because your Netflix model already exists, the single most valuable next hour is on the question that could flip this call: read Spotify's royalty and label-concentration disclosures in the FY25 20-F against its 35% to 40% gross-margin target for 2030.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> The duel compares the two companies through three lenses: where growth and margin come from by product x geography, who holds power over customers and suppliers, and whose cost engine runs leaner, using three years of consolidated statements. Cells were normalized to subscription by region plus advertising; Spotify's non-US regional revenue is not disclosed (ND), and (inferred) marks reasoned conclusions. This is a business-strength comparison, not a valuation, and says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Spotify Technology S.A., Form 20-F FY2025 (filed 10 Feb 2026) and FY2023 (8 Feb 2024), SEC EDGAR; local copies in sources/Annual_Reports.</li>
+      <li>Spotify, Q2 2026 interim report on Form 6-K (period ended 30 Jun 2026); 6-Ks of 25 Mar, 20 Aug and 3 Sep 2026.</li>
+      <li>Spotify transcripts: Investor Day (21 May 2026); Q2 FY2026 earnings call (4 Aug 2026); Goldman Sachs Communacopia (9 Sep 2026).</li>
+      <li>Netflix, Inc., Form 10-K FY2025 (23 Jan 2026), FY2024 (27 Jan 2025) and FY2023 (26 Jan 2024); Form 10-Q Q2 2026 (17 Jul 2026); 8-K of 30 Jul 2026.</li>
+      <li>Netflix shareholder letters Q4 2025 (20 Jan 2026) and Q2 2026 (16 Jul 2026); earnings interviews Q4 2025 (20 Jan 2026) and Q2 2026 (16 Jul 2026).</li>
+      <li>Music Business Worldwide, "Spotify hits 300 million Premium subscribers in Q2 2026" (Aug 2026), regional subscriber mix: https://www.musicbusinessworldwide.com/spotify-hits-300-million-premium-subscribers-in-q2-202/</li>
+      <li>TechCrunch, "Netflix confirms it's raising prices again" (26 Mar 2026): https://techcrunch.com/2026/03/26/netflix-confirms-its-raising-prices-again/</li>
+      <li>TechCrunch, "Spotify raises its subscription prices in the U.S. again" (15 Jan 2026): https://techcrunch.com/2026/01/15/spotify-raises-its-subscription-prices-in-the-u-s-again/</li>
+      <li>Netflix, "Netflix to Acquire Warner Bros." (5 Dec 2025): http://about.netflix.com/en/news/netflix-to-acquire-warner-bros</li>
+      <li>Motley Fool, Radford Studio Center purchase, about $400m (21 Jun 2026), approx., unverified: https://www.fool.com/investing/2026/06/21/netflix-finally-makes-an-acquisition-that-wall-str/</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
