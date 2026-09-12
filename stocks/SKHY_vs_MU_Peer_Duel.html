@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK hynix vs Micron Peer Duel</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.08);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.08);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;overflow-wrap:anywhere;} .sources ul{padding-left:20px;}
+
+.wrap ul li{margin-bottom:6px;}
+.answer p+p{margin-top:10px;}
+.tw{overflow-x:auto;margin:8px 0 2px;}
+.tw table{margin:0;min-width:560px;}
+@media(max-width:600px){.leanrow{grid-template-columns:1fr;gap:4px;}.leanrow .lbl{text-align:left;}.wrap{padding:28px 16px 60px;}h1{font-size:30px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>SK hynix vs Micron: who wins the next decade?</h1>
+  <p class="source">Memory semiconductors (DRAM, HBM, NAND). SKHY (KRX 000660) / MU. Run 11 September 2026. Built from SK hynix's 424B4 prospectus (audited CY2023 to 2025, Q1 2026), Q2 2026 6-Ks and earnings call; Micron's FY2025 10-K, FY2026 Q1 to Q3 results releases and call transcripts; TrendForce, Counterpoint, IDC and Gartner share data. Events swept September 2025 to 11 September 2026; most recent events checked: SK hynix 6-K of 4 September 2026 (Solidigm pre-IPO raise still under review) and TrendForce's 2Q26 DRAM ranking of 7 September 2026; Micron leadership changes of 26 August 2026, with FQ4 results due 30 September 2026. Figures in US$; SK hynix won converted at annual average Fed noon buying rates printed in the 424B4 (1,306.8 / 1,363.4 / 1,421.4 per US$ for 2023 / 2024 / 2025). SK hynix reports calendar years; Micron's fiscal year ends in late August, about four months earlier. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">SK hynix</span><span class="chip b">Micron</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">SK hynix is the stronger business for the next five to ten years, but only narrowly: it runs the leaner cost engine through the cycle, while Micron now has the broader growth path and the firmer contract floor.</div>
+    <div class="why">The load-bearing fact: SK hynix's gross margin beat Micron's in every year of the last cycle, including the 2023 trough (minus 1.6% vs minus 9.1%), and in a price-taking industry that is what compounds (424B4; Micron FY2023 to 2025 releases).</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Three-year average gross margin 35.6% vs 17.7%, and EBIT margin 20.2% vs minus 1.9%. The gap is HBM premium plus DRAM scale, not a one-off (Cost Engine tab).</div>
+    <div class="col"><span class="n">2</span><br>SK hynix held 50% to 58% of HBM revenue through the last four quarters against Micron's 18% to 21% (Counterpoint). HBM sells at more than 5x conventional DRAM per GB (Gartner, via 424B4).</div>
+    <div class="col"><span class="n">3</span><br>The call is narrow because the lead is shrinking. SK hynix's DRAM share fell from 33.2% to 24.9% in three quarters, and Micron is at 23.3% (TrendForce). Its HBM share fell 8 points in one quarter, to Samsung.</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">Micron: narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:2%">SK hynix: clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:26%">SK hynix breaks last: narrow</div></div></div>
+    <div class="cap">The three answers, argued below. A lean to the left favors SK hynix and a lean to the right favors Micron. The marker's position shows how decisive each answer is.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip b">Micron, narrow</span></div>
+    <p>Micron's next five years rest on three cells, not one.</p>
+    <ul style="padding-left:20px;margin:6px 0 10px;font-size:18px;">
+      <li><b>Conventional server DRAM.</b> Micron is deliberately putting its constrained bits here. Its DRAM share rose from 22.4% to 23.3% in 2Q26, while SK hynix's fell from 28.8% to 24.9%. HBM takes roughly three times the wafer area per bit, so SK hynix's HBM-heavy mix holds back its conventional bits (TrendForce; Micron FQ2 FY26).</li>
+      <li><b>NAND and eSSD.</b> Micron's NAND revenue rose 99% quarter on quarter in 2Q26 (TrendForce).</li>
+      <li><b>Contracted volume.</b> Micron has 16 customer agreements carrying about $100bn of minimum revenue over 2026 to 2030 (June 2026 call, approx., unverified).</li>
+    </ul>
+    <p>New capacity feeds all three: Idaho ID1 and Taiwan Tongluo in mid-2027, then Singapore HBM packaging, Hiroshima and Idaho ID2 through 2028. Part of the cost is covered by up to $6.4bn of US CHIPS grants. SK hynix still owns the single most valuable cell, HBM, and it has matching capacity coming: M15X pulled forward and Yongin phase 1 cleanroom in early 2027 (Q2 2026 call). But that cell is being redistributed. Its HBM share went from 58% to 50% in Q2 2026, with Samsung rising from 21% to 33% (Counterpoint). SK hynix did grow faster over 2023 to 2025 (index 273 vs 241 below). That is evidence of the last cycle, not the reason for the call.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 640 240" role="img" aria-label="Revenue indexed to 100 in 2023"><line x1="60" y1="183.6" x2="490" y2="183.6" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="188.6" font-size="14" fill="#6E675C" text-anchor="end">100</text><line x1="60" y1="101.8" x2="490" y2="101.8" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="106.8" font-size="14" fill="#6E675C" text-anchor="end">200</text><line x1="60" y1="20.0" x2="490" y2="20.0" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="25.0" font-size="14" fill="#6E675C" text-anchor="end">300</text><text x="60.0" y="228" font-size="14" fill="#6E675C" text-anchor="middle">2023</text><text x="275.0" y="228" font-size="14" fill="#6E675C" text-anchor="middle">2024</text><text x="490.0" y="228" font-size="14" fill="#6E675C" text-anchor="middle">2025</text><polyline points="60.0,183.6 275.0,106.7 490.0,42.1" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="60.0" cy="183.6" r="4.5" fill="#C75B39"/><circle cx="275.0" cy="106.7" r="4.5" fill="#C75B39"/><circle cx="490.0" cy="42.1" r="4.5" fill="#C75B39"/><text x="275.0" y="98.7" font-size="14" fill="#C75B39" text-anchor="middle">194</text><text x="502.0" y="47.1" font-size="16" font-weight="700" fill="#C75B39" text-anchor="start">SK hynix 273</text><polyline points="60.0,183.6 275.0,132.9 490.0,68.3" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="60.0" cy="183.6" r="4.5" fill="#3C6E8F"/><circle cx="275.0" cy="132.9" r="4.5" fill="#3C6E8F"/><circle cx="490.0" cy="68.3" r="4.5" fill="#3C6E8F"/><text x="275.0" y="150.9" font-size="14" fill="#3C6E8F" text-anchor="middle">162</text><text x="502.0" y="73.3" font-size="16" font-weight="700" fill="#3C6E8F" text-anchor="start">Micron 241</text></svg>
+      <div class="cap">Revenue indexed to 100 in 2023, US$. SK hynix: ₩32.8tn, ₩66.2tn and ₩97.1tn (424B4 note 24) at annual average FX; in won its index is 296. Micron: $15.5bn, $25.1bn and $37.4bn for FY2023 to 2025 (Q4 FY24 and FY25 releases). The fiscal years are offset by about four months.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip a">SK hynix, clear through the cycle</span></div>
+    <p>SK hynix turns revenue into margin better, and the reason is structural:</p>
+    <ul style="padding-left:20px;margin:6px 0 10px;font-size:18px;">
+      <li><b>Mix.</b> It sold roughly 2.8x Micron's HBM revenue in 2025 (inferred from share x Gartner's more than $30bn HBM market), and HBM earns a premium of more than 5x per GB.</li>
+      <li><b>Scale.</b> Its DRAM revenue was 1.8x Micron's ($52.7bn vs $28.6bn).</li>
+      <li><b>R&amp;D leverage.</b> It spends more on R&amp;D in dollars ($4.5bn vs $3.8bn) at half the intensity (6.7% vs 10.2% of sales).</li>
+      <li><b>Lighter asset base.</b> It carries less depreciation per revenue dollar (14.3% vs 22.3% in 2025).</li>
+    </ul>
+    <p>Here is the tension. In the latest overlapping quarter, Micron's margins are higher: gross 84.6% vs 83.2%, EBIT 80.4% vs 76.3%. There are two reasons. Micron's mix is heavier in commodity DRAM, which reprices every quarter, while HBM is priced once a year. And SK hynix pays 10% of operating profit into employee profit-sharing (424B4). So the growth winner and the margin winner are different companies. Micron is the faster repricer with the thinner engine; SK hynix is the fortress whose edge shows at the trough, not the peak.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 640 278" role="img" aria-label="Margin dumbbells"><text x="234.5" y="16" font-size="13" fill="#6E675C" text-anchor="middle">0%</text><line x1="234.5" y1="22" x2="234.5" y2="274" stroke="#E5DDD0" stroke-width="1"/><text x="407.3" y="16" font-size="13" fill="#6E675C" text-anchor="middle">50%</text><line x1="407.3" y1="22" x2="407.3" y2="274" stroke="#E5DDD0" stroke-width="1"/><text x="580.0" y="16" font-size="13" fill="#6E675C" text-anchor="middle">100%</text><line x1="580.0" y1="22" x2="580.0" y2="274" stroke="#E5DDD0" stroke-width="1"/><text x="188" y="65" font-size="15" fill="#2B2B2B" text-anchor="end">Gross margin, 3y avg</text><line x1="200.0" y1="60" x2="580.0" y2="60" stroke="#E5DDD0" stroke-width="2"/><line x1="357.5" y1="60" x2="295.7" y2="60" stroke="#2B2B2B" stroke-width="2"/><text x="326.6" y="47" font-size="14" fill="#2B2B2B" text-anchor="middle" font-weight="700">+17.9 pts</text><circle cx="357.5" cy="60" r="7" fill="#C75B39"/><circle cx="295.7" cy="60" r="7" fill="#3C6E8F"/><text x="402.5" y="84" font-size="14" fill="#C75B39" text-anchor="middle">SKHY 35.6%</text><text x="250.7" y="84" font-size="14" fill="#3C6E8F" text-anchor="middle">MU 17.7%</text><text x="188" y="127" font-size="15" fill="#2B2B2B" text-anchor="end">EBIT margin, 3y avg</text><line x1="200.0" y1="122" x2="580.0" y2="122" stroke="#E5DDD0" stroke-width="2"/><line x1="304.3" y1="122" x2="228.0" y2="122" stroke="#2B2B2B" stroke-width="2"/><text x="266.2" y="109" font-size="14" fill="#2B2B2B" text-anchor="middle" font-weight="700">+22.1 pts</text><circle cx="304.3" cy="122" r="7" fill="#C75B39"/><circle cx="228.0" cy="122" r="7" fill="#3C6E8F"/><text x="349.3" y="146" font-size="14" fill="#C75B39" text-anchor="middle">SKHY 20.2%</text><text x="183.0" y="146" font-size="14" fill="#3C6E8F" text-anchor="middle">MU -1.9%</text><text x="188" y="189" font-size="15" fill="#2B2B2B" text-anchor="end">Gross margin, latest quarter</text><line x1="200.0" y1="184" x2="580.0" y2="184" stroke="#E5DDD0" stroke-width="2"/><line x1="522.0" y1="184" x2="526.8" y2="184" stroke="#2B2B2B" stroke-width="2"/><text x="524.4" y="171" font-size="14" fill="#2B2B2B" text-anchor="middle" font-weight="700">-1.4 pts</text><circle cx="522.0" cy="184" r="7" fill="#C75B39"/><circle cx="526.8" cy="184" r="7" fill="#3C6E8F"/><text x="477.0" y="208" font-size="14" fill="#C75B39" text-anchor="middle">SKHY 83.2%</text><text x="571.8" y="208" font-size="14" fill="#3C6E8F" text-anchor="middle">MU 84.6%</text><text x="188" y="251" font-size="15" fill="#2B2B2B" text-anchor="end">EBIT margin, latest quarter</text><line x1="200.0" y1="246" x2="580.0" y2="246" stroke="#E5DDD0" stroke-width="2"/><line x1="498.1" y1="246" x2="512.3" y2="246" stroke="#2B2B2B" stroke-width="2"/><text x="505.2" y="233" font-size="14" fill="#2B2B2B" text-anchor="middle" font-weight="700">-4.1 pts</text><circle cx="498.1" cy="246" r="7" fill="#C75B39"/><circle cx="512.3" cy="246" r="7" fill="#3C6E8F"/><text x="453.1" y="270" font-size="14" fill="#C75B39" text-anchor="middle">SKHY 76.3%</text><text x="557.3" y="270" font-size="14" fill="#3C6E8F" text-anchor="middle">MU 80.4%</text></svg>
+      <div class="cap">The three-year averages cover CY2023 to 2025 for SK hynix (424B4) and FY2023 to 2025 for Micron (10-K and Q4 releases). The latest quarter is SK hynix Q2 2026, April to June (6-K of 18 August 2026), against Micron FQ3 2026, March to May (8-K of 24 June 2026).</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip b">Micron breaks first in a price downturn</span> <span class="chip a">SK hynix breaks first in an HBM or China shock</span></div>
+    <p>Micron's exposure is the price cycle. About 60% of its revenue is conventional DRAM (inferred), and its cost engine is thinner: in FY2023 it posted a minus 9.1% gross margin and a minus 37.0% EBIT margin. The untested cushion is its customer agreements, which put price floors under about 20% of DRAM volume and a third of NAND.</p>
+    <p>SK hynix's exposure is concentration. One customer was 23.9% of 2025 revenue, and by inference that is an AI accelerator maker buying HBM. Its HBM share is sliding to Samsung. Its Wuxi DRAM and Dalian NAND fabs now need an annual US licence, after its Validated End-User status was revoked on 31 December 2025 (424B4).</p>
+    <p>In an ordinary downturn, Micron breaks first. In a disruption aimed at HBM or China, SK hynix does. Both face the June 2026 US class action alleging DRAM supply restriction.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These are the product x end-market x region cells that carry more than 80% of the combined economics. Every score is argued in the tabs below.</p>
+  <div class="tw"><table>
+    <tr><th>Cell (product x region)</th><th class="ca">SK hynix</th><th class="cb">Micron</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>HBM x US AI accelerators</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>SK hynix is dominant at 50% (Q2 2026) but ceding share to Samsung, so it scores 4 rather than 5. Micron holds 18% to 21% and targets a share close to its DRAM share (Counterpoint; June 2026 call).</td></tr>
+    <tr><td>Conventional DRAM x global, US-booked majority</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Micron is gaining share with a server-weighted mix. SK hynix is holding bits back for HBM, and its DRAM share fell from 28.8% to 24.9% (TrendForce 1Q to 2Q26).</td></tr>
+    <tr><td>NAND and eSSD x global cloud and OEM</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>SK hynix is number 2 in NAND at 18.5%, and its eSSD revenue doubled quarter on quarter (IDC via 424B4; Q2 2026 call). Micron is number 3 after a fast 2Q26 gain (TrendForce).</td></tr>
+    <tr><td>Mobile and PC x China and Asia OEMs</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>SK hynix books 19.7% of revenue in China and runs fabs there. Micron's China and Hong Kong share fell to 10.1% after the 2023 CAC ban and its exit from China server DRAM (10-K; Reuters via TrendForce).</td></tr>
+    <tr><td>Auto and embedded x global</td><td class="ca">ND</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Micron's auto and embedded unit made $4.75bn at a 12% operating margin, with 3-year customer agreements (10-K). SK hynix discloses no figure.</td></tr>
+  </table></div>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Each score is anchored to an exhibit in the three tabs; no score ships without one. Scores are per cell and are not summed. The three lenses get their verdicts in the Three Answers above, not here. ND means not disclosed, not zero.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">SK hynix's engine is one very large, very profitable cell. Micron's is three medium cells that are all growing.</div>
+    <p><b>Normalization.</b> Both companies report DRAM, NAND and other, and both bury HBM inside DRAM without a separate revenue line. Micron adds end-market business units (hyperscale cloud, OEM data center, mobile and client, auto and embedded); SK hynix discloses no end-market split. The regional bases differ too. SK hynix books revenue by the location of its selling entity, Micron by customer headquarters. Both put about two-thirds in the US: 68.8% vs 64.5%. Neither basis shows where the chips are actually used, and the two cannot be reconciled below that coarse level.</p>
+    <p><b>How the HBM cells were sized.</b> They are inferred: each company's HBM revenue share (Counterpoint) multiplied by Gartner's estimate of a more than $30bn HBM market in 2025. The results cross-check. SK hynix's largest customer was $16.4bn, 23.9% of revenue, against about $17.5bn inferred. Micron's 17% customer, "primarily" in its cloud memory unit, was $6.4bn, against about $6.3bn inferred.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 274" role="img" aria-label="Butterfly chart of product cells"><text x="327.0" y="22" font-size="18" font-weight="700" fill="#C75B39" text-anchor="end">SK hynix, CY2025</text><text x="573.0" y="22" font-size="17" font-weight="700" fill="#3C6E8F" text-anchor="start">Micron, FY2025</text><text x="450.0" y="58" font-size="17" font-weight="700" fill="#2B2B2B" text-anchor="middle">Conventional DRAM</text><text x="450.0" y="74" font-size="15" fill="#6E675C" text-anchor="middle">global, US-booked majority</text><rect x="178.6" y="46" width="156.4" height="26" fill="#C75B39" fill-opacity="0.55"/><text x="172.6" y="59" font-size="17" font-weight="700" fill="#C75B39" text-anchor="end">$35.2bn (inferred)</text><text x="172.6" y="75" font-size="15" fill="#6E675C" text-anchor="end">+82% (DRAM)</text><rect x="565.0" y="46" width="99.1" height="26" fill="#3C6E8F" fill-opacity="0.55"/><text x="670.1" y="59" font-size="17" font-weight="700" fill="#3C6E8F" text-anchor="start">$22.3bn (inferred)</text><text x="670.1" y="75" font-size="15" fill="#6E675C" text-anchor="start">+61% (DRAM)</text><text x="450.0" y="114" font-size="17" font-weight="700" fill="#2B2B2B" text-anchor="middle">HBM</text><text x="450.0" y="130" font-size="15" fill="#6E675C" text-anchor="middle">US AI accelerators</text><rect x="257.2" y="102" width="77.8" height="26" fill="#C75B39" fill-opacity="0.55"/><text x="251.2" y="115" font-size="17" font-weight="700" fill="#C75B39" text-anchor="end">$17.5bn (inferred)</text><text x="251.2" y="131" font-size="15" fill="#6E675C" text-anchor="end">more than 2x in 2025</text><rect x="565.0" y="102" width="28.0" height="26" fill="#3C6E8F" fill-opacity="0.55"/><text x="599.0" y="115" font-size="17" font-weight="700" fill="#3C6E8F" text-anchor="start">$6.3bn (inferred)</text><text x="599.0" y="131" font-size="15" fill="#6E675C" text-anchor="start">new since FY24</text><text x="450.0" y="170" font-size="17" font-weight="700" fill="#2B2B2B" text-anchor="middle">NAND and eSSD</text><text x="450.0" y="186" font-size="15" fill="#6E675C" text-anchor="middle">global cloud and OEM</text><rect x="270.1" y="158" width="64.9" height="26" fill="#C75B39"/><text x="264.1" y="171" font-size="17" font-weight="700" fill="#C75B39" text-anchor="end">$14.6bn</text><text x="264.1" y="187" font-size="15" fill="#6E675C" text-anchor="end">+40%</text><rect x="565.0" y="158" width="37.8" height="26" fill="#3C6E8F"/><text x="608.8" y="171" font-size="17" font-weight="700" fill="#3C6E8F" text-anchor="start">$8.5bn</text><text x="608.8" y="187" font-size="15" fill="#6E675C" text-anchor="start">+42%</text><text x="450.0" y="226" font-size="17" font-weight="700" fill="#2B2B2B" text-anchor="middle">Auto and embedded</text><text x="450.0" y="242" font-size="15" fill="#6E675C" text-anchor="middle">global</text><text x="329.0" y="232" font-size="15" fill="#6E675C" text-anchor="end">ND, not disclosed</text><rect x="565.0" y="214" width="21.1" height="26" fill="#3C6E8F"/><text x="592.1" y="227" font-size="17" font-weight="700" fill="#3C6E8F" text-anchor="start">$4.75bn</text><text x="592.1" y="243" font-size="15" fill="#6E675C" text-anchor="start">+7%</text></svg>
+      <div class="cap">Cell revenue in US$bn, SK hynix CY2025 (424B4 note 24, at ₩1,421.4 per US$) and Micron FY2025 (10-K). The HBM and conventional DRAM splits are inferred and drawn lighter. Micron's auto and embedded unit overlaps its DRAM and NAND rows. Growth rates are 2023 to 2025 CAGRs in US$ for the whole technology line, except SK hynix HBM, which "more than doubled" in 2025 (Q4 2025 call).</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <div class="tw"><table>
+      <tr><th>Cell</th><th class="num ca">SK hynix rev (% of total)</th><th class="num ca">Growth</th><th class="num cb">Micron rev (% of total)</th><th class="num cb">Growth</th><th>Margin signal / leader</th></tr>
+      <tr><td>Conventional DRAM x global</td><td class="num ca">~$35.2bn (51%) (inferred)</td><td class="num ca">DRAM +82% CAGR</td><td class="num cb">~$22.3bn (60%) (inferred)</td><td class="num cb">DRAM +61% CAGR</td><td>Micron is gaining: its DRAM revenue grew 65.5% quarter on quarter in 2Q26, against 37.9% for SK hynix (TrendForce)</td></tr>
+      <tr><td>HBM x US AI accelerators</td><td class="num ca">~$17.5bn (26%) (inferred)</td><td class="num ca">more than 2x in 2025</td><td class="num cb">~$6.3bn (17%) (inferred)</td><td class="num cb">new since FY2024</td><td>SK hynix: 56.4% share (IDC, Q1 2026); premium of more than 5x per GB</td></tr>
+      <tr><td>NAND and eSSD x global</td><td class="num ca">$14.6bn (21%)</td><td class="num ca">+40% CAGR</td><td class="num cb">$8.5bn (23%)</td><td class="num cb">+42% CAGR</td><td>SK hynix leads in high-capacity eSSD through Solidigm, which it acquired from Intel for $8.8bn</td></tr>
+      <tr><td>Auto and embedded x global</td><td class="num ca">ND</td><td class="num ca">ND</td><td class="num cb">$4.75bn (13%)</td><td class="num cb">+7% CAGR</td><td>Micron only; 12% operating margin in FY2025</td></tr>
+      <tr><td>All other</td><td class="num ca">$1.1bn (2%)</td><td class="num ca"></td><td class="num cb">$0.3bn (1%)</td><td class="num cb"></td><td>Foundry and other</td></tr>
+    </table></div>
+    <div class="tw"><table>
+      <tr><th>Region</th><th class="num ca">SK hynix 2025 (selling entity)</th><th class="num cb">Micron FY2025 (customer HQ)</th></tr>
+      <tr><td>United States</td><td class="num ca">$47.1bn, 68.8%</td><td class="num cb">$24.1bn, 64.5%</td></tr>
+      <tr><td>China (Micron includes Hong Kong)</td><td class="num ca">$13.5bn, 19.7%</td><td class="num cb">$3.8bn, 10.1%</td></tr>
+      <tr><td>Other Asia (Korea, Taiwan, Japan, rest)</td><td class="num ca">$6.4bn, 9.4%</td><td class="num cb">$8.5bn, 22.7%</td></tr>
+      <tr><td>Europe and other</td><td class="num ca">$1.4bn, 2.0%</td><td class="num cb">$1.0bn, 2.7%</td></tr>
+    </table></div>
+    <div class="iik"><b>Insight:</b> About a quarter of SK hynix's revenue, and more of its profit, sits in one cell where it holds about 2.8x Micron's revenue. Micron's revenue is spread across conventional DRAM, NAND and auto. <b>Implication:</b> SK hynix's next five years depend on HBM share and HBM pricing; Micron's depend on broad bit growth and price. <span class="kpi">KPI: quarterly HBM revenue share (Counterpoint). SK hynix at or above 50% by 2Q27 confirms its cell; below 40% breaks it.</span> [Sources: 424B4 notes 4 and 24; Micron FY2025 10-K; Counterpoint; Gartner, January 2026]</div>
+
+    <h3>Segment growth engines</h3>
+    <p><b>HBM.</b> Growth here comes from accelerator volume, stack height and the premium each new generation commands.</p>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li><b>SK hynix:</b> HBM4 has been in mass production since Q2 2026 with yields near those of the mature HBM3E, and HBM4E samples have shipped (Q2 2026 call). It reportedly supplies about two-thirds of NVIDIA's HBM4 (TrendForce news, January 2026, approx., unverified).</li>
+      <li><b>Micron:</b> HBM4 is in high-volume shipment, ramping twice as fast as HBM3E 12-high, with more than $1bn shipped (June 2026 call). But it has chosen a share "close to our DRAM share", so it is not trying to lead this cell.</li>
+      <li><b>Cost of growth:</b> HBM needs about 3x the wafer area per bit, plus stacking and packaging capacity. SK hynix is spending ₩7.09tn on its P&amp;T7 packaging plant (6-K, 22 July 2026); Micron's Singapore HBM packaging plant contributes from 2027.</li>
+    </ul>
+    <p><b>Conventional DRAM.</b> Growth in 2026 has been almost all price. SK hynix's DRAM prices rose by about 65% in Q1 2026 and about 30% in Q2, on flat and then high-single-digit bit growth. Micron's rose by about 65% and then about 60%, on low-to-mid single-digit bit growth (Q2 2026 call; Micron via secondary transcripts, approx., unverified). TrendForce says SK hynix's price growth was "relatively limited" because HBM makes up the largest share of its bits, while Micron "prioritized higher-priced server DRAM".</p>
+    <p><b>NAND.</b> Part of SK hynix's NAND growth was bought: Solidigm came from Intel for $8.8bn, paid in 2021 and 2025. Micron's is all organic.</p>
+    <div class="iik"><b>Insight:</b> In memory, the forward growth driver is cleanroom capacity. Both companies land major capacity in 2027 and 2028: SK hynix at M15X, Yongin phase 1 and M17, Micron at Idaho, Tongluo, Singapore and Hiroshima. <b>Implication:</b> Growth will be decided by which cells that capacity feeds. SK hynix is aiming at HBM, Micron at server DRAM and NAND. <span class="kpi">KPI: bit shipment growth in 2H26 and 1H27, now that price gains are slowing (TrendForce expects conventional DRAM contract prices up 13% to 18% in 3Q26). The faster bit grower wins the growth answer.</span> [Sources: Q2 2026 call; Micron June 2026 call; TrendForce, 7 September 2026]</div>
+
+    <h3>Price control and route-to-market</h3>
+    <p>Both companies sell direct to hyperscalers, OEMs and accelerator makers, so the channel is not the difference; the form of the contract is.</p>
+    <p><b>SK hynix:</b> its prospectus says quantities and prices are "typically determined through mutual agreement at the time of purchase" (424B4). It has now signed long-term agreements with about 10 customers, typically around five years, with deposits and pricing mechanisms "designed to address price volatility". It declines to say how much volume they cover (Q2 2026 call).</p>
+    <p><b>Micron</b> has disclosed 16 agreements with the following terms (June 2026 call, approx., unverified):</p>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li>About $100bn of minimum revenue.</li>
+      <li>Take-or-pay commitments.</li>
+      <li>About 20% of DRAM volume and a third of NAND.</li>
+      <li>$22bn of deposits and letters of credit.</li>
+      <li>Price bands with a floor and a ceiling, reset quarterly.</li>
+    </ul>
+    <div class="iik"><b>Insight:</b> Micron's net-price protection is quantified; SK hynix's is asserted. <b>Implication:</b> In the next downturn, Micron's floor can be measured and SK hynix's cannot, which is why the customer lever goes to Micron. <span class="kpi">KPI: SK hynix quantifying its long-term agreement coverage and deposits by its FY2026 20-F (about April 2027).</span> [Sources: 424B4; Q2 2026 call; Micron June 2026 call via Tom's Hardware and Investing.com]</div>
+
+    <h3>Supply resilience</h3>
+    <div class="tw"><table>
+      <tr><th></th><th class="ca">SK hynix</th><th class="cb">Micron</th></tr>
+      <tr><td>Wafer fabs</td><td>Icheon and Cheongju in Korea; Wuxi (DRAM) and Dalian (NAND) in China (424B4)</td><td>Taiwan (the majority of 2025 DRAM output), Japan, Singapore, US (10-K)</td></tr>
+      <tr><td>China equipment access</td><td>Validated End-User status revoked 31 December 2025; annual US licence granted for 2026</td><td>No China wafer fab; Xi'an does back-end only</td></tr>
+      <tr><td>State co-funding</td><td>Not in sources</td><td>US CHIPS grants of up to $6.4bn; Japanese and Indian subsidies (approx., unverified)</td></tr>
+      <tr><td>Behaviour in the 2023 shock</td><td>Gross margin minus 1.6%; capex cut by more than 50%</td><td>Gross margin minus 9.1%</td></tr>
+    </table></div>
+    <div class="iik"><b>Insight:</b> SK hynix absorbs price shocks better; Micron carries less political licence risk but concentrates its DRAM output in Taiwan. <b>Implication:</b> The two are exposed to different tail events. Neither wins this outright. <span class="kpi">KPI: the US licence for SK hynix's China fabs for 2027, due by December 2026 (6-K).</span> [Sources: 424B4; Micron FY2025 10-K]</div>
+
+    <h3>Competitive context</h3>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li><b>DRAM, 2Q26 (TrendForce):</b> Samsung 39.4%, SK hynix 24.9%, Micron 23.3%. CXMT was at about 10% (Counterpoint).</li>
+      <li><b>HBM, Q2 2026 (Counterpoint):</b> SK hynix 50%, Samsung 33%, Micron 18%.</li>
+      <li><b>NAND, 2Q26 (TrendForce):</b> Samsung $23.1bn, SK Group $14.3bn, Micron $11.9bn, Kioxia $10.7bn, SanDisk $9.0bn.</li>
+    </ul>
+    <p>Over the last three quarters SK hynix has been the share donor in DRAM and HBM. Micron has taken share in conventional DRAM and NAND and given up a little in HBM. The share SK hynix lost in HBM went to Samsung, not Micron.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 720 250" role="img" aria-label="DRAM and HBM share trend"><text x="30" y="18" font-size="15" font-weight="700" fill="#2B2B2B">DRAM revenue share</text><text x="50.0" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q3 25</text><text x="126.7" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q4 25</text><text x="203.3" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q1 26</text><text x="280.0" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q2 26</text><polyline points="50.0,85.8 126.7,93.0 203.3,114.3 280.0,142.8" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="50.0" cy="85.8" r="4" fill="#C75B39"/><circle cx="126.7" cy="93.0" r="4" fill="#C75B39"/><circle cx="203.3" cy="114.3" r="4" fill="#C75B39"/><circle cx="280.0" cy="142.8" r="4" fill="#C75B39"/><text x="50.0" y="76.8" font-size="13" fill="#C75B39" text-anchor="start">33%</text><text x="290.0" y="136.8" font-size="14" font-weight="700" fill="#C75B39" text-anchor="start">SKHY 25%</text><polyline points="50.0,135.7 126.7,164.2 203.3,164.2 280.0,149.9" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="50.0" cy="135.7" r="4" fill="#3C6E8F"/><circle cx="126.7" cy="164.2" r="4" fill="#3C6E8F"/><circle cx="203.3" cy="164.2" r="4" fill="#3C6E8F"/><circle cx="280.0" cy="149.9" r="4" fill="#3C6E8F"/><text x="50.0" y="153.7" font-size="13" fill="#3C6E8F" text-anchor="start">26%</text><text x="290.0" y="165.9" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="start">MU 24%</text><text x="410" y="18" font-size="15" font-weight="700" fill="#2B2B2B">HBM revenue share</text><text x="430.0" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q3 25</text><text x="506.7" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q4 25</text><text x="583.3" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q1 26</text><text x="660.0" y="238" font-size="13" fill="#6E675C" text-anchor="middle">Q2 26</text><polyline points="430.0,65.1 506.7,61.9 583.3,58.7 660.0,84.5" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="430.0" cy="65.1" r="4" fill="#C75B39"/><circle cx="506.7" cy="61.9" r="4" fill="#C75B39"/><circle cx="583.3" cy="58.7" r="4" fill="#C75B39"/><circle cx="660.0" cy="84.5" r="4" fill="#C75B39"/><text x="430.0" y="56.1" font-size="13" fill="#C75B39" text-anchor="start">56%</text><text x="670.0" y="89.5" font-size="14" font-weight="700" fill="#C75B39" text-anchor="start">SKHY 50%</text><polyline points="430.0,178.4 506.7,178.4 583.3,178.4 660.0,188.1" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="430.0" cy="178.4" r="4" fill="#3C6E8F"/><circle cx="506.7" cy="178.4" r="4" fill="#3C6E8F"/><circle cx="583.3" cy="178.4" r="4" fill="#3C6E8F"/><circle cx="660.0" cy="188.1" r="4" fill="#3C6E8F"/><text x="430.0" y="196.4" font-size="13" fill="#3C6E8F" text-anchor="start">21%</text><text x="670.0" y="193.1" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="start">MU 18%</text></svg>
+      <div class="cap">Revenue shares by quarter, Counterpoint (global DRAM and HBM market share tracker, retrieved 11 September 2026). TrendForce's 2Q26 DRAM figures are 24.9% for SK hynix and 23.3% for Micron.</div>
+    </div>
+
+    <h3>Risks by segment</h3>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li><b>HBM:</b> Samsung qualifying HBM4 at scale turns a two-supplier premium market into a three-way price negotiation. SK hynix is more exposed, with about 26% of revenue in HBM (inferred) against Micron's 17%.</li>
+      <li><b>Conventional DRAM:</b> the risk is prices reverting. Micron is more exposed, both through mix (60% vs 51%, inferred) and through its thinner margin.</li>
+      <li><b>NAND:</b> the risk is a capex wave landing in 2H28, with SK hynix's M17 and Micron's $24bn Singapore fab. Both are roughly equally exposed.</li>
+      <li><b>China:</b> SK hynix is exposed through its fabs and the 19.7% of revenue it books there. Micron has already largely exited.</li>
+    </ul>
+    <div class="pull">On cells alone, Micron has the broader growth path and SK hynix the more valuable single cell. The HBM share trend is what decides which matters more.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In memory, the market sets the price. Power is the ability to be the supplier a customer cannot requalify away from, and to be the last one still earning money in the trough.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:26%">SK hynix: narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">Micron: narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:45%">Even</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Each call is argued in the sections below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>SK hynix</h3><p><b>HBM stacking know-how</b> (TSV and MR-MUF). It was first to mass-produce HBM3 and HBM3E, and its HBM4 yields are near HBM3E levels (424B4; Q2 2026 call). The proof is a 56.4% share (IDC, Q1 2026). Durability: medium, because Samsung gained 12 points in one quarter.</p><p><b>DRAM scale and node cost.</b> Its 2025 DRAM revenue was $52.7bn against Micron's $28.6bn, and 1c-nm DDR5 is in full production. Durability: medium to high, and it shows in the gross margin.</p></div>
+      <div class="col b"><h3>Micron</h3><p><b>US-anchored, state-funded capacity:</b> up to $6.4bn in CHIPS grants and a plan to make 40% of its DRAM in the US (Micron release, 12 June 2025). Durability: medium to high, as a policy position.</p><p><b>Contract architecture:</b> 16 take-or-pay agreements carrying about $100bn (approx., unverified). Durability: medium, since they have not yet been tested in a downturn.</p><p><b>Auto and embedded franchise</b> ($4.75bn). Durability: high, but small.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> SK hynix's moat is in manufacturing; Micron's is contractual and geopolitical. <b>Implication:</b> SK hynix's moat erodes if Samsung matches its HBM yields. Micron's holds whoever leads HBM, but it earns less per bit. <span class="kpi">KPI: HBM share (quarterly), and the definition of Micron's customer agreements in its FY2026 10-K (October 2026).</span> [Sources: 424B4; Counterpoint; Micron releases]</div>
+    <h3>Customers: who controls net price and access</h3>
+    <p><b>SK hynix</b> is the more concentrated of the two:</p>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li>Its largest customer was 23.9% of 2025 revenue, up from 16.5% in 2024. No customer passed 10% in 2023 (424B4 note 4).</li>
+      <li>Its two largest customers were 14.8% and 12.4% in Q1 2026.</li>
+    </ul>
+    <p><b>Micron</b> is less concentrated but broadly exposed:</p>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li>One customer was 17% of FY2025 revenue, "primarily" in its cloud memory unit.</li>
+      <li>Its top ten customers account for about half of revenue (10-K).</li>
+    </ul>
+    <p>Both raised prices by 30% to 85% quarter on quarter in the first half of 2026. HBM is priced once a year at both. SK hynix says conventional DRAM strength "may also have some influence" on its 2027 HBM talks (Q2 2026 call).</p>
+    <div class="iik"><b>Insight:</b> SK hynix depends more on one AI buyer, while Micron has the contractual floor. <b>Implication:</b> When demand softens, pricing pressure falls first on the supplier with the least-covered volume. Today that is SK hynix, unless its long-term agreements turn out to be comparable to Micron's. <span class="kpi">KPI: SK hynix's top-customer share in its 2026 20-F, and whether any Micron customer seeks a price reset at the floor.</span> [Sources: 424B4; Micron FY2025 10-K; June 2026 call]</div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Both depend on ASML EUV scanners. SK hynix is buying ₩11.9tn of them for delivery by December 2027 (424B4), and Micron's 1-gamma is its first EUV node (10-K). Both also rely on US equipment and Japanese materials.</p>
+    <p>The asymmetry is political versus geographic. SK hynix's China fabs depend on an annual US licence. Micron's DRAM output is concentrated in Taiwan. On passing through a shock, the 2023 downturn is the clearest test: SK hynix's gross margin fell to minus 1.6%, Micron's to minus 9.1%.</p>
+    <div class="iik"><b>Insight:</b> SK hynix keeps supplying at a lower cost when prices collapse; Micron is less exposed to US export policy. <b>Implication:</b> This lever is even; it comes down to which tail event arrives. <span class="kpi">KPI: the US licence for SK hynix's China fabs for 2027, by December 2026.</span> [Sources: 424B4; Micron 10-K]</div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <div class="tw"><table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>HBM x US AI accelerators</td><td>Both sell direct on annual contracts. SK hynix reportedly holds about two-thirds of NVIDIA HBM4.</td><td>SK hynix at or above Micron (inferred)</td><td>SK hynix has the yield record; Micron is ramping faster</td><td>SK hynix: share down, margin holds. Micron: share flat, margin up.</td><td>Counterpoint HBM share</td></tr>
+      <tr><td>Conventional DRAM x global</td><td>Both direct. Micron has floors on about 20% of volume.</td><td>Micron above SK hynix in 2Q26, on server mix</td><td>Both constrained by cleanroom space</td><td>Micron: share and margin up. SK hynix: share down.</td><td>TrendForce DRAM share</td></tr>
+      <tr><td>NAND and eSSD x cloud</td><td>SK hynix through Solidigm; Micron direct</td><td>ND</td><td>SK hynix ramping 321-layer; Micron on G9</td><td>Both up; SK hynix leads eSSD</td><td>TrendForce NAND ranking</td></tr>
+    </table></div>
+    <p>The tension: Micron is growing fastest in conventional DRAM, the cell with the least structural pricing power. SK hynix holds its power in HBM, the cell where its share is now falling.</p>
+    <h3>The causal gap</h3>
+    <p><b>1. The HBM process and yield lead</b> (50% to 58% share vs 18% to 21%). Impact: major. Micron has chosen not to chase it. Closing it would take at least two product generations plus packaging capacity that arrives in 2027, so money alone cannot close it in 18 months.</p>
+    <p><b>2. DRAM scale</b> (1.8x in 2025). Impact: moderate, and already closing. SK hynix's and Micron's 2Q26 DRAM revenue was $38.6bn vs $36.0bn (TrendForce), because Micron repriced faster.</p>
+    <p><b>3. Contract disclosure.</b> Impact: moderate but untested. SK hynix could close this within a year simply by disclosing its terms, if they match Micron's.</p>
+    <div class="pull">SK hynix holds the stronger power position, narrowly. It has a real manufacturing moat of medium durability, while Micron holds the better customer terms. Early warnings: for SK hynix, HBM share below 45% for two quarters; for Micron, customers pressing for resets at the price floor.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">SK hynix runs the leaner engine through the cycle. Micron converts the peak slightly better.</div>
+    <p><b>Basis.</b> Both companies present costs by function, so no by-nature reconstruction was needed. SK hynix's operating profit is gross profit minus S&amp;A minus R&amp;D. That matches its reported 48.6% operating margin for 2025. Micron's operating income includes restructuring and other operating items: $295m in FY2023 and $100m in FY2025. These were not stripped out, because SK hynix has no matching itemised line. Two further differences:</p>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li>SK hynix's S&amp;A includes accruals for its profit-sharing pool, which pays out 10% of operating profit. Micron discloses no formula pool.</li>
+      <li>SK hynix capitalises a small amount of development cost (₩227bn in the first half of 2026); Micron expenses all of it.</li>
+    </ul>
+    <p>The windows are CY2023 to 2025 for SK hynix and FY2023 to 2025 for Micron, offset by about four months.</p>
+    <h3>Three years, five ratios</h3>
+    <div class="tw"><table>
+      <tr><th>% of sales, 3y avg</th><th class="num ca">SK hynix</th><th class="num cb">Micron</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS</td><td class="num ca">64.4</td><td class="num cb">82.3</td><td class="num">-17.9</td><td>HBM premium and DRAM scale</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">8.3</td><td class="num cb">14.6</td><td class="num">-6.3</td><td>Scale: SK hynix spends more in dollars on a bigger base</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">7.2</td><td class="num cb">4.5</td><td class="num">+2.7</td><td>SK hynix's S&amp;A carries profit-share accruals and commissions</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">35.6</td><td class="num cb">17.7</td><td class="num">+17.9</td><td>Present in all three years: +7.5, +25.7 and +20.6 points</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">20.2</td><td class="num cb">-1.9</td><td class="num">+22.1</td><td>Gross margin gap, partly offset by S&amp;A</td></tr>
+    </table></div>
+    <div class="chartbox">
+      <svg viewBox="0 0 720 300" role="img" aria-label="Cost engine grouped bars"><line x1="40" y1="232.8" x2="700" y2="232.8" stroke="#2B2B2B" stroke-width="1"/><rect x="65.0" y="83.4" width="38" height="149.4" fill="#C75B39"/><text x="84.0" y="77.4" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">64.4</text><rect x="109.0" y="41.9" width="38" height="190.9" fill="#3C6E8F"/><text x="128.0" y="35.9" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">82.3</text><text x="106.0" y="286" font-size="15" fill="#2B2B2B" text-anchor="middle">COGS</text><rect x="197.0" y="213.5" width="38" height="19.3" fill="#C75B39"/><text x="216.0" y="207.5" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">8.3</text><rect x="241.0" y="198.9" width="38" height="33.9" fill="#3C6E8F"/><text x="260.0" y="192.9" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">14.6</text><text x="238.0" y="286" font-size="15" fill="#2B2B2B" text-anchor="middle">R&amp;D</text><rect x="329.0" y="216.1" width="38" height="16.7" fill="#C75B39"/><text x="348.0" y="210.1" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">7.2</text><rect x="373.0" y="222.4" width="38" height="10.4" fill="#3C6E8F"/><text x="392.0" y="216.4" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">4.5</text><text x="370.0" y="286" font-size="15" fill="#2B2B2B" text-anchor="middle">SG&amp;A</text><rect x="461.0" y="150.2" width="38" height="82.6" fill="#C75B39"/><text x="480.0" y="144.2" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">35.6</text><rect x="505.0" y="191.7" width="38" height="41.1" fill="#3C6E8F"/><text x="524.0" y="185.7" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">17.7</text><text x="502.0" y="286" font-size="15" fill="#2B2B2B" text-anchor="middle">Gross margin</text><rect x="593.0" y="185.9" width="38" height="46.9" fill="#C75B39"/><text x="612.0" y="179.9" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">20.2</text><rect x="637.0" y="232.8" width="38" height="4.4" fill="#3C6E8F"/><text x="656.0" y="253.2" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">-1.9</text><text x="634.0" y="286" font-size="15" fill="#2B2B2B" text-anchor="middle">EBIT margin</text><text x="700" y="18" font-size="14" fill="#C75B39" text-anchor="end" font-weight="700">SK hynix CY23-25</text><text x="550" y="18" font-size="14" fill="#3C6E8F" text-anchor="end" font-weight="700">Micron FY23-25</text></svg>
+      <div class="cap">Three-year averages, % of sales. Sources: SK hynix 424B4 consolidated statements for CY2023 to 2025; Micron Q4 FY2024 and Q4 FY2025 releases for FY2023 to 2025.</div>
+    </div>
+    <div class="tw"><table>
+      <tr><th>Year</th><th class="num ca">SKHY COGS</th><th class="num ca">R&amp;D</th><th class="num ca">S&amp;A</th><th class="num ca">GM</th><th class="num ca">EBIT</th><th class="num cb">MU COGS</th><th class="num cb">R&amp;D</th><th class="num cb">SG&amp;A</th><th class="num cb">GM</th><th class="num cb">EBIT</th></tr>
+      <tr><td>2023 / FY23</td><td class="num ca">101.6</td><td class="num ca">11.4</td><td class="num ca">10.5</td><td class="num ca">-1.6</td><td class="num ca">-23.6</td><td class="num cb">109.1</td><td class="num cb">20.0</td><td class="num cb">5.9</td><td class="num cb">-9.1</td><td class="num cb">-37.0</td></tr>
+      <tr><td>2024 / FY24</td><td class="num ca">51.9</td><td class="num ca">6.7</td><td class="num ca">5.9</td><td class="num ca">48.1</td><td class="num ca">35.5</td><td class="num cb">77.6</td><td class="num cb">13.7</td><td class="num cb">4.5</td><td class="num cb">22.4</td><td class="num cb">5.2</td></tr>
+      <tr><td>2025 / FY25</td><td class="num ca">39.6</td><td class="num ca">6.7</td><td class="num ca">5.2</td><td class="num ca">60.4</td><td class="num ca">48.6</td><td class="num cb">60.2</td><td class="num cb">10.2</td><td class="num cb">3.2</td><td class="num cb">39.8</td><td class="num cb">26.1</td></tr>
+      <tr><td>Latest quarter</td><td class="num ca">16.8</td><td class="num ca">4.2</td><td class="num ca">2.6</td><td class="num ca">83.2</td><td class="num ca">76.3</td><td class="num cb">15.4</td><td class="num cb">3.2</td><td class="num cb">1.0</td><td class="num cb">84.6</td><td class="num cb">80.4</td></tr>
+    </table></div>
+    <p class="score-note">Latest quarter: SK hynix Q2 2026, April to June (6-K of 18 August 2026, with R&amp;D split out from note 22), against Micron FQ3 2026, March to May (8-K of 24 June 2026). Micron guides to a gross margin of about 86% for FQ4. Capex as a share of revenue over the three years: SK hynix 25.4%, 24.1% and 28.3%; Micron (net) 45.1%, 32.3% and 36.9%.</p>
+    <h3>The structural gap</h3>
+    <p>Gross margin is the persistent gap. SK hynix led by 7.5 points in 2023, 25.7 in 2024 and 20.6 in 2025. The mechanism has three parts:</p>
+    <ul style="padding-left:20px;margin:0 0 15px;">
+      <li>HBM carries a premium of more than 5x per GB, and SK hynix sold roughly 2.8x Micron's HBM revenue (inferred).</li>
+      <li>That sat on a DRAM base 1.8x larger, spreading fixed fab and R&amp;D cost.</li>
+      <li>SK hynix needed less capex and depreciation per revenue dollar: D&amp;A was 14.3% of sales vs 22.3% in 2025.</li>
+    </ul>
+    <p>This confirms the power map: the company with the HBM moat shows it in gross margin, and the 2023 trough shows the advantage survives a downturn.</p>
+    <p>The latest quarter points the other way. Micron's margin is ahead by 1.4 points because its commodity-heavier mix reprices faster than SK hynix's annually priced HBM, and SK hynix pays profit-share. So the evidence reads as a through-cycle cost edge for SK hynix, not a peak-price edge. That lowers confidence in the verdict without reversing it.</p>
+    <div class="pull">Through the cycle, SK hynix runs the leaner engine. Its gross margin lead held in every year of the last cycle, averaging about 18 points and including the 2023 trough.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>Samsung's HBM4 reaches scale.</b> If SK hynix's HBM share falls below 40% and HBM's premium over conventional DRAM compresses, the mechanism behind its gross margin gap loses its engine and the margin answer moves toward Micron. <span style="color:var(--good);font-weight:700;">Early warning: two consecutive quarters of HBM share below 45% (Counterpoint), or SK hynix describing 2027 HBM pricing as following conventional DRAM (Q4 2026 call, January 2027).</span></li>
+      <li><b>Micron's agreements hold their floors in the first down-quarter and SK hynix's do not.</b> The trough gap would then close, and Micron's broader growth would carry the call. <span style="color:var(--good);font-weight:700;">Early warning: SK hynix's gross margin lead narrowing to 5 points or less in the first quarter of falling DRAM prices.</span></li>
+      <li><b>The US licence for 2027 is delayed or narrowed.</b> Wuxi DRAM and Dalian NAND could not be upgraded, so cost per bit would rise on part of SK hynix's capacity while its revenue booked in China (19.7%) came under pressure. <span style="color:var(--good);font-weight:700;">Early warning: no 6-K confirming the 2027 licence by 31 December 2026.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <div class="tw"><table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>HBM revenue share</td><td>SK hynix at or above 50% (below 40% flips)</td><td>2Q27 data, about September 2027</td><td>SK hynix (Micron if below 40%)</td><td>Counterpoint and TrendForce, quarterly</td></tr>
+    <tr><td>DRAM revenue share</td><td>Micron at or above SK hynix in any quarter</td><td>Through 2Q27</td><td>Micron: confirms the growth answer</td><td>TrendForce DRAM ranking</td></tr>
+    <tr><td>Gross margin gap in the first quarter of falling DRAM prices</td><td>SK hynix lead of 10 points or more (5 or less flips)</td><td>First down-quarter, likely 2027</td><td>SK hynix (Micron if 5 or less)</td><td>SK hynix 6-K and Micron 8-K</td></tr>
+    <tr><td>Disclosure of long-term agreement coverage</td><td>SK hynix quantifies volume covered and deposits (Micron: about 20% of DRAM, $22bn)</td><td>FY2026 20-F, about April 2027</td><td>SK hynix if disclosed and comparable; otherwise Micron</td><td>SK hynix 20-F; Micron FY2026 10-K</td></tr>
+    <tr><td>US licence for SK hynix's China fabs</td><td>2027 licence granted</td><td>31 December 2026</td><td>SK hynix (Micron if delayed)</td><td>SK hynix 6-K</td></tr>
+  </table></div>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the hours on SK hynix first. It is the stronger business, and the question that decides this call is answered in its own disclosures: does the HBM margin engine survive Samsung's HBM4, and do its long-term agreements put a floor under price? The next read is its Q3 2026 results in late October. Use Micron's 30 September FQ4 results and its FY2026 10-K description of its customer agreements as the yardstick.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> The duel compares the two companies through three lenses: growth by product x end-market x region cell, power (moats, customers, suppliers), and the cost engine (five ratios over three years). Cells were filtered so that the analysis covers more than 80% of combined revenue. HBM revenue is not reported by either company, so the HBM cells are inferred from third-party share multiplied by Gartner's market size, and tagged as such. SK hynix figures are converted at annual average rates; ratios are currency-neutral. ND means not disclosed; (inferred) marks a conclusion reasoned from sourced facts; "approx., unverified" marks figures from secondary transcripts or press. This is a comparison of business strength, not a valuation, and it says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>SK hynix Inc., Form 424B4 prospectus, 10 July 2026 (audited CY2023 to 2025 statements, Q1 2026 interim, notes 4 and 24, risk factors, business). Local copy: sources/Other_Key_Documents.</li>
+      <li>SK hynix Q2 2026 earnings call transcript, 29 July 2026; Q4 2025 call, 29 January 2026; Q1 2026 call, 23 April 2026 (sources/Transcripts).</li>
+      <li>SK hynix Form 6-K filings: preliminary Q2 2026 results (29 July 2026); semi-annual report (18 August 2026); P&amp;T7 investment (22 July 2026); treasury share cancellation of ₩40.0tn (19 August 2026); rumour clarifications (6, 10 and 21 August, 4 September 2026).</li>
+      <li>Micron FY2025 Form 10-K and XBRL segment, geographic and concentration notes: https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm</li>
+      <li>Micron results releases: Q4 FY2024 (25 September 2024), Q4 FY2025 (23 September 2025), Q1 FY2026 (17 December 2025), Q2 FY2026 (18 March 2026), Q3 FY2026 (24 June 2026): https://www.sec.gov/Archives/edgar/data/723125/000072312526000013/a2026q3ex991-pressrelease.htm</li>
+      <li>Micron Q3 FY2026 call via Investing.com and Tom's Hardware (strategic customer agreements), June 2026: https://www.tomshardware.com/pc-components/dram/micron-inks-long-term-supply-agreements-worth-usd100-billion-says-it-has-no-idea-when-ram-crisis-will-end</li>
+      <li>Micron releases: exit from the Crucial consumer business (3 December 2025); Tongluo P5 acquisition closed (15 March 2026); $200bn US plan (12 June 2025); leadership appointments and FQ4 results date (26 August 2026).</li>
+      <li>TrendForce, 2Q26 DRAM revenue ranking, 7 September 2026: https://www.trendforce.com/presscenter/news/20260907-13219.html</li>
+      <li>TrendForce, 2Q26 NAND revenue ranking, 18 August 2026: https://www.trendforce.com/presscenter/news/20260818-13186.html</li>
+      <li>Counterpoint Research, global DRAM and HBM market share tracker: https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share</li>
+      <li>Gartner, 2025 semiconductor revenue, 12 January 2026: https://www.gartner.com/en/newsroom/press-releases/2026-01-12-gartner-says-worldwide-semiconductor-revenue-grew-21-percent-in-2025</li>
+      <li>TrendForce news: SK hynix reportedly to supply about two-thirds of NVIDIA HBM4, 28 January 2026; Micron exits China server chips (Reuters), 17 October 2025; US class action against Samsung, SK hynix and Micron, 29 June 2026.</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+
+</body>
+</html>

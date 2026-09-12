@@ -2,11 +2,10 @@
 """Walk a folder and emit a Markdown link for every HTML / PDF file.
 
 Usage:
-    python3 make_links.py [FOLDER] [-o OUTPUT.md] [--prefix URL_PREFIX]
-                         [--sort {path,created}] [--all]
+    python3 make_links.py [FOLDER] [-o OUTPUT.md] [--prefix URL_PREFIX] [--all]
 
 Each line of the output looks like:
-    - [Meta Platforms Business Overview](https://xk152004.github.io/investechery/stocks/Meta-Platforms-Business-Overview.html)
+    - [Meta Platforms Business Overview](https://xk152004.github.io/investechery/archive/Meta-Platforms-Business-Overview.html)
 """
 
 import argparse
@@ -65,22 +64,7 @@ def url_for(rel_path: str, prefix: str) -> str:
     return prefix.rstrip("/") + "/" + "/".join(quote(p) for p in parts)
 
 
-def created_time(path: str) -> float:
-    """Best available creation time.
-
-    macOS (and other BSDs) expose a true birth time via st_birthtime. Where it
-    is missing — most Linux filesystems, and network/virtual mounts — fall back
-    to st_ctime (inode change time), then st_mtime.
-    """
-    st = os.stat(path)
-    for attr in ("st_birthtime", "st_ctime", "st_mtime"):
-        value = getattr(st, attr, None)
-        if value:
-            return float(value)
-    return 0.0
-
-
-def collect(root: str, prefix: str, include_hidden: bool, sort: str):
+def collect(root: str, prefix: str, include_hidden: bool):
     rows = []
     for dirpath, dirnames, filenames in os.walk(root):
         if not include_hidden:
@@ -92,21 +76,11 @@ def collect(root: str, prefix: str, include_hidden: bool, sort: str):
             ext = os.path.splitext(name)[1].lower()
             if ext not in EXTENSIONS:
                 continue
-            full = os.path.join(dirpath, name)
-            rel = os.path.relpath(full, root)
+            rel = os.path.relpath(os.path.join(dirpath, name), root)
             title = titleize(os.path.splitext(name)[0])
             if ext == ".pdf":
                 title += " (PDF)"
-            rows.append({
-                "rel": rel,
-                "title": title,
-                "url": url_for(rel, prefix),
-                "created": created_time(full),
-            })
-
-    if sort == "created":
-        # Newest first; same-timestamp files fall back to path order.
-        rows.sort(key=lambda r: (-r["created"], r["rel"].lower()))
+            rows.append((rel, title, url_for(rel, prefix)))
     return rows
 
 
@@ -116,9 +90,6 @@ def main(argv=None):
     ap.add_argument("folder", nargs="?", default=".", help="folder to walk (default: .)")
     ap.add_argument("-o", "--output", default="links.md", help="output Markdown file (default: links.md)")
     ap.add_argument("--prefix", default=DEFAULT_PREFIX, help="URL prefix (default: %(default)s)")
-    ap.add_argument("--sort", choices=("path", "created"), default="path",
-                    help="link order: 'path' (folder then file name, default) or "
-                         "'created' (file creation time, newest first)")
     ap.add_argument("--all", action="store_true", help="include hidden files and folders")
     args = ap.parse_args(argv)
 
@@ -126,13 +97,12 @@ def main(argv=None):
     if not os.path.isdir(root):
         sys.exit(f"error: not a folder: {root}")
 
-    rows = collect(root, args.prefix, args.all, args.sort)
+    rows = collect(root, args.prefix, args.all)
     with open(args.output, "w", encoding="utf-8") as fh:
-        for row in rows:
-            fh.write(f"- [{row['title']}]({row['url']})\n")
+        for _rel, title, url in rows:
+            fh.write(f"- [{title}]({url})\n")
 
-    print(f"{len(rows)} link(s) written to {os.path.abspath(args.output)} "
-          f"(sorted by {args.sort})")
+    print(f"{len(rows)} link(s) written to {os.path.abspath(args.output)}")
     return 0
 
 

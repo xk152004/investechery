@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — Lumentum Holdings (LITE)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  font-size:19px; line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;margin:0}
+h1{font-size:38px;line-height:1.18;letter-spacing:-.01em;margin:6px 0 10px}
+h2{font-size:27px;line-height:1.24;margin:54px 0 14px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:21px;line-height:1.3;margin:30px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{
+  font-family:Calibri,'Segoe UI',Arial,sans-serif;
+  text-transform:uppercase;letter-spacing:.16em;font-size:13px;font-weight:700;
+  color:var(--terracotta);margin:0;
+}
+.sourceline{font-size:15px;color:var(--muted);margin:0 0 34px;line-height:1.5}
+
+/* restate */
+.restate{
+  font-family:Georgia,'Times New Roman',serif;font-size:23px;line-height:1.45;
+  border-left:5px solid var(--terracotta);padding:4px 0 4px 22px;margin:0 0 34px;
+}
+/* engine banner */
+.engine{
+  background:var(--ink);color:var(--cream);border-radius:10px;
+  padding:26px 28px;margin:0 0 30px;
+}
+.engine .lbl{
+  text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;
+  color:#C9A08C;margin:0 0 10px;
+}
+.engine .unit{font-family:Georgia,serif;font-size:26px;line-height:1.3;margin:0 0 12px}
+.engine p{margin:0 0 10px;font-size:17px;line-height:1.55;color:#EDE6DB}
+.engine p:last-child{margin-bottom:0}
+
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 40px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{text-transform:uppercase;letter-spacing:.1em;font-size:11px;font-weight:700;color:var(--muted);margin:0 0 6px;line-height:1.3}
+.kpi .v{font-family:Georgia,serif;font-size:29px;line-height:1.1;color:var(--terracotta);font-variant-numeric:tabular-nums;margin:0 0 5px}
+.kpi .s{font-size:14px;color:var(--muted);line-height:1.4;margin:0}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:31px}body{font-size:18px}}
+@media(max-width:470px){.kpis{grid-template-columns:1fr}}
+
+/* cards, levers */
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 18px}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:15px 20px;margin:0 0 12px}
+.lever .tag{text-transform:uppercase;letter-spacing:.11em;font-size:11px;font-weight:700;color:var(--terracotta);margin:0 0 4px}
+.lever .nm{font-weight:700;margin:0 0 5px}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.lever.structural{border-left-color:var(--good)} .lever.structural .tag{color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)} .lever.mgmt .tag{color:#9A7620}
+.lever.cyclical{border-left-color:var(--blue)} .lever.cyclical .tag{color:var(--blue)}
+
+/* pull quote */
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:24px 0}
+.pull q{font-family:Georgia,serif;font-size:21px;line-height:1.42;display:block;quotes:'“' '”'}
+.pull .attr{font-size:14px;color:#7C4A34;margin:12px 0 0;letter-spacing:.03em}
+
+/* two column */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media(max-width:700px){.two{grid-template-columns:1fr}}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 12px}
+.two ul{margin:0;padding-left:20px}
+.two li{margin:0 0 9px;font-size:16.5px;line-height:1.45}
+.two .dur h4{color:var(--good)} .two .bor h4{color:var(--terracotta)}
+
+/* tables */
+.tw{overflow-x:auto;margin:18px 0 8px;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:16px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.42}
+thead th{background:#F5EFE5;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;white-space:nowrap}
+tbody tr.hl td{background:#FBF4EF;font-weight:700}
+caption{caption-side:bottom;text-align:left;font-size:14px;color:var(--muted);padding:12px 14px;line-height:1.45}
+
+/* charts */
+figure{margin:24px 0 8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 12px}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:14px;color:var(--muted);padding:10px 6px 0;line-height:1.45}
+.chart-title{font-family:Georgia,serif;font-size:18px;font-weight:700;margin:0 0 4px;padding:0 6px}
+
+.note{font-size:15px;color:var(--muted);line-height:1.5;margin:10px 0 18px}
+.gap{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:18px 22px;margin:18px 0}
+.gap ul{margin:0;padding-left:20px} .gap li{margin:0 0 8px;font-size:16.5px;line-height:1.45}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);line-height:1.55}
+footer strong{color:var(--ink)}
+ul.plain{padding-left:22px} ul.plain li{margin:0 0 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kicker">Business Overview</p>
+<h1>Lumentum Holdings Inc. <span style="color:var(--muted);font-weight:400">· NASDAQ: LITE</span></h1>
+<p class="sourceline">
+7 September 2026 · Built from Lumentum’s SEC filings FY2016–FY2026 held in the LITE research folder — annual reports through the FY2026 Form 10-K filed 17 August 2026 (fiscal year ended 27 June 2026), quarterly reports through Q3 FY2026, proxies and current reports — supplemented for industry structure by competitors’ own filings, standards bodies, named research firms, and Lumentum’s FY2026 earnings releases and call transcripts, which the folder does not contain.
+<strong>This is not a valuation and not a recommendation.</strong>
+</p>
+
+<p class="restate">Lumentum is a compound-semiconductor manufacturer that spent a decade buying indium-phosphide wafer-fab capacity, and arrived at the moment that capacity became the scarcest input in the AI build-out.</p>
+
+<div class="engine">
+  <p class="lbl">The economic engine</p>
+  <p class="unit">One indium-phosphide laser die — and the qualified wafer capacity behind it.</p>
+  <p>A die is grown by epitaxy on an InP substrate in one of Lumentum’s own fabs, tested at wafer level, singulated, and packaged with a lens, an isolator and — for an electro-absorption modulated laser — an integrated modulator. It then goes one of two ways: shipped to a module maker as a component, or built into a Lumentum transceiver and sold as a finished system. Either way it is invoiced on a purchase order and collected in about 63 days. No subscription, no recurring revenue, no annuity anywhere.</p>
+  <p><strong style="color:#F3E2DA">What it earns is unverifiable from outside.</strong> Lumentum has never disclosed units shipped, average selling price, wafer starts, capacity or factory utilization — not in FY2026 and not in any prior year. Management attributes roughly 54% of the FY2026 gross-margin dollar gain to “higher internal factory utilization,” and no reader can check it.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><p class="k">FY2026 revenue</p><p class="v">$3,014m</p><p class="s">+83.2% year on year, and essentially all organic</p></div>
+  <div class="kpi"><p class="k">Gross margin</p><p class="v">41.7%</p><p class="s">Up from 18.5% in FY2024 — still 4.3 pts below the FY2022 peak</p></div>
+  <div class="kpi"><p class="k">Non-GAAP operating margin</p><p class="v">29.8%</p><p class="s">Full year; 36.6% in the June 2026 quarter alone</p></div>
+  <div class="kpi"><p class="k">Net cash</p><p class="v">$1,091m</p><p class="s">From net debt of $1,705m a year earlier</p></div>
+  <div class="kpi"><p class="k">Top-two customers</p><p class="v">41.6%</p><p class="s">Of revenue, up from 31.4%; neither is named</p></div>
+  <div class="kpi"><p class="k">Cycle position</p><p class="v">Peak</p><p class="s">Revenue 70.6% above its prior high; margin only just back to FY2022 levels</p></div>
+</div>
+
+<h2>1 · What the company does</h2>
+
+<p>An AI training cluster is thousands of accelerators that have to exchange data as if they were one machine. Copper stops working as a link medium beyond roughly two to three metres once each electrical lane runs at 200 gigabits per second, so above that distance every connection becomes a light path. Something has to make the light: a semiconductor laser, modulated at the line rate, launched down a fibre and recovered at the far end. Lumentum makes those lasers, and increasingly the assemblies and modules built around them. The same physics has been selling into telecom networks for twenty-five years — hundreds of kilometres instead of hundreds of metres, a carrier instead of a hyperscaler — but that market is now roughly a quarter the size of the data-centre market, and it is not where the change in this company came from.</p>
+
+<p>From FY2026 the company reports a <strong>single segment</strong> and splits revenue only two ways. <strong>Components</strong> — laser chips, laser sub-assemblies, line subsystems and wavelength-management systems sold to companies that integrate them — were $2,005.6m, 66.5% of revenue. <strong>Systems</strong> — finished optical modules, optical circuit switches and industrial lasers — were $1,008.4m, 33.5%. That means Lumentum sells at two levels of the same value chain and therefore supplies its own competitors. The FY2026 10-K says so outright: it offers “both its own coherent pluggable transceivers and the underlying ultra-narrow linewidth laser and coherent components used by transceiver customers.”</p>
+
+<h3>The reversal that explains the economics</h3>
+<p>The product-line history says more than any strategy statement. In FY2019 Lumentum <em>left</em> the datacom transceiver module business, selling product lines to Cambridge Industries Group for $25.5m net and taking $35.0m of impairments across two years. The stated reason was blunt.</p>
+
+<div class="pull">
+  <q>The market at the transceiver level is gross margin challenged due to extreme competition.</q>
+  <p class="attr">Lumentum FY2019 Form 10-K, explaining the exit from datacom transceiver modules</p>
+</div>
+
+<p>Four years later it paid $728.5m for Cloud Light Technology and re-entered exactly that business. In between, in FY2024, it wrote off $29.1m of in-process R&amp;D and stopped developing coherent DSPs and RFICs in-house, ceding that layer to Broadcom and Marvell. Modules were unattractive when the buyer was a telecom equipment vendor grinding on price; they became attractive when the buyer was a hyperscaler paying for supply. Meanwhile the other half of the company has been disappearing: industrial lasers and consumer 3D sensing fell from $703.9m of revenue in FY2022 to $234.2m in FY2025, with segment profit collapsing from $373.5m to $12.1m. In FY2022 that business earned <em>more</em> segment profit than the networking business did ($373.5m against $266.9m). FY2026 gives no figure for it at all.</p>
+
+<h2>2 · Industry structure and where the profit sits</h2>
+
+<p>This industry converts scarce compound-semiconductor process capability into bandwidth, and it is priced off cost per bit — which falls every generation by construction. An IEEE 802.3df working-group contribution shows that moving from a 400G LR4-10 module to an 800G LR4 module on the same architecture raises component cost only about 1.2×: a doubling of capacity for a fifth more cost. Structural price decline is the normal state. Cignal AI’s June 2026 note that “component shortages are slowing the usual price declines” confirms both halves — decline is the norm, and the present is an exception created by supply, not by product differentiation.</p>
+
+<p>The chain runs substrate → epitaxy → laser chip or silicon-photonics circuit → optical sub-assembly → transceiver module → line card → operator, with the digital signal processor arriving from an entirely separate CMOS supply chain. Capital intensity sits at the fab end; assembly is labour and working capital. The reported margins at each layer are the most useful outside evidence available:</p>
+
+<div class="tw">
+<table>
+<caption>Company-reported figures from each company’s own results release for the period shown. Chinese figures come from financial data aggregators rather than Shenzhen-filed reports and are directional. Lumentum’s GAAP equivalents for FY2026 are 41.7% gross margin and 17.4% operating margin.</caption>
+<thead><tr><th>Layer</th><th>Company</th><th>Period</th><th class="n">Gross margin</th><th class="n">Operating margin</th></tr></thead>
+<tbody>
+<tr><td>Optical DSP &amp; custom silicon</td><td>Marvell</td><td>FY2026 (Jan)</td><td class="n">59.5%</td><td class="n">35.3%</td></tr>
+<tr><td>Module assembly (China)</td><td>Eoptolink</td><td>FY2025 (Dec)</td><td class="n">47.0%</td><td class="n">42.3%</td></tr>
+<tr><td>Module assembly (China)</td><td>Innolight</td><td>FY2025 (Dec)</td><td class="n">42.6%</td><td class="n">n/d</td></tr>
+<tr class="hl"><td>Integrated chip + module</td><td>Lumentum</td><td>FY2026 (Jun)</td><td class="n">46.0%</td><td class="n">29.8%</td></tr>
+<tr><td>Integrated chip + module</td><td>Coherent</td><td>FY2026 (Jun)</td><td class="n">39.4%</td><td class="n">20.5%</td></tr>
+<tr><td>Sub-scale integrated</td><td>Applied Optoelectronics</td><td>Q2 2026 (Jun)</td><td class="n">29.8%</td><td class="n">GAAP loss</td></tr>
+<tr><td>Contract assembly</td><td>Fabrinet</td><td>FY2026 (Jun)</td><td class="n">12.2%</td><td class="n">10.8%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Two things fall out. First, <strong>assembly on its own is worth very little</strong>: Fabrinet earns 12.2% gross margin doing exactly this at $4.6bn of revenue, which is the market price of building modules without owning the chips, and therefore the level a module-only strategy converges toward. Second, and against the standard narrative, <strong>the Chinese module assemblers currently out-earn the Western vertically integrated component makers</strong> on both gross and operating margin. The claim that owning the chip layer means capturing the profit is a forward expectation, not a present fact. The likeliest explanation is that assemblers earn scarcity rent on finished modules while their own input costs are contractually fixed — in which case those margins compress when supply loosens. The direct test is whether Innolight’s and Eoptolink’s gross margins hold through 2027.</p>
+
+<h3>Which barriers actually bind</h3>
+<p>Three are evidenced rather than asserted. <strong>Indium-phosphide epitaxy capacity and yield</strong> is the binding one — Coherent’s management called InP “our primary constraint” in August 2026, and Lumentum’s chief executive put its own supply-demand gap at “somewhere greater than 30%” in May 2026. <strong>Substrate access</strong> is second: three merchant InP suppliers globally, China added indium phosphide to its export control list in February 2025, and China holds roughly 70% of refined indium production. Third is <strong>hyperscaler qualification</strong>, and the strongest evidence for it is behavioural — NVIDIA paid $2.0bn each to Lumentum and Coherent in March 2026, with purchase commitments and capacity access rights attached, rather than qualify a new supplier.</p>
+<p>Two barriers that sound impressive do not bind. Assembly skill, for the reason above. And fab ownership as such: Applied Optoelectronics owns fabs, ran 29.8% non-GAAP gross margin in the June 2026 quarter, and still posted a GAAP operating loss in the strongest demand environment this industry has seen. Fab ownership below scale is a fixed-cost liability, not a moat.</p>
+
+<h3>Lumentum’s position, and how it could weaken</h3>
+<p>Lumentum owns five InP wafer fabs and is converting a sixth — the Greensboro, North Carolina plant bought for $38.0m in March 2026 and being switched from gallium arsenide to six-inch InP, with first revenue guided to early 2028 and further investment described as “hundreds of millions of dollars over the next several years.” The most valuable feature of that position right now is not the capacity but what the other holder does with it: Coherent said in August 2026 that “every bit of capacity… we have and then some” goes to its own internal datacom modules. It is not a merchant EML supplier. Lumentum is. That leaves it the merchant supplier of record at the exact moment the merchant market is short — and what a well-funded competitor would find hardest to reproduce is not the design but qualified epitaxy capacity plus years of hyperscaler qualification behind it.</p>
+<p>Three things could weaken it, none speculative. NVIDIA wrote the identical $2.0bn cheque to Coherent the same day, so Lumentum is one of two, not the one. Coherent is 2.4× larger ($7,118.2m of FY2026 revenue against $3,014.0m) and on stated plans is expanding InP faster, with six-inch lines already running in Texas and Sweden. And Broadcom’s stated optical portfolio now spans DSPs, silicon photonics, co-packaged optics, EMLs, VCSELs and continuous-wave lasers — the switch-silicon monopolist, targeting roughly 66% non-GAAP operating margin, has entered the laser layer.</p>
+<p>The outside evidence points to a specific winner profile: <em>own III-V fab capacity, at enough scale to absorb fab fixed cost through a downturn, and sell merchant chips rather than only finished modules.</em> Lumentum matches on asset type and on merchant position, which is why FY2026 looks the way it does. It does not match on scale — and scale is precisely the clause that determines what happens on the way down.</p>
+
+<h2>3 · The growth engine</h2>
+
+<figure>
+<p class="chart-title">Revenue, FY2016–FY2026</p>
+<svg viewBox="0 0 820 330" role="img" aria-label="Lumentum revenue by fiscal year, 2016 to 2026, rising from $903 million to $3,014 million">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="60" y1="280" x2="790" y2="280"/>
+    <line x1="60" y1="201.9" x2="790" y2="201.9"/>
+    <line x1="60" y1="123.7" x2="790" y2="123.7"/>
+    <line x1="60" y1="45.6" x2="790" y2="45.6"/>
+  </g>
+  <g fill="#6E675C" font-family="Calibri,Arial,sans-serif" font-size="13" text-anchor="end">
+    <text x="52" y="285">0</text><text x="52" y="206">1,000</text>
+    <text x="52" y="128">2,000</text><text x="52" y="50">3,000</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.8" stroke-linejoin="round"
+    points="60,209.5 133,201.7 206,182.5 279,157.7 352,148.9 425,143.8 498,146.2 571,142.0 644,173.8 717,151.5 790,44.5"/>
+  <g fill="#C75B39">
+    <circle cx="60" cy="209.5" r="3.6"/><circle cx="133" cy="201.7" r="3.6"/><circle cx="206" cy="182.5" r="3.6"/>
+    <circle cx="279" cy="157.7" r="3.6"/><circle cx="352" cy="148.9" r="3.6"/><circle cx="425" cy="143.8" r="3.6"/>
+    <circle cx="498" cy="146.2" r="3.6"/><circle cx="571" cy="142.0" r="4.6"/><circle cx="644" cy="173.8" r="4.6"/>
+    <circle cx="717" cy="151.5" r="3.6"/><circle cx="790" cy="44.5" r="5"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13.5" fill="#C75B39" font-weight="bold">
+    <text x="60" y="228" text-anchor="start">903</text>
+    <text x="790" y="34" text-anchor="end">3,014</text>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C">
+    <text x="571" y="132" text-anchor="middle">prior peak 1,767</text>
+    <text x="644" y="192" text-anchor="middle">trough 1,359</text>
+  </g>
+  <g fill="#6E675C" font-family="Calibri,Arial,sans-serif" font-size="12.5" text-anchor="middle">
+    <text x="60" y="302">FY16</text><text x="133" y="302">17</text><text x="206" y="302">18</text>
+    <text x="279" y="302">19</text><text x="352" y="302">20</text><text x="425" y="302">21</text>
+    <text x="498" y="302">22</text><text x="571" y="302">23</text><text x="644" y="302">24</text>
+    <text x="717" y="302">25</text><text x="790" y="302">FY26</text>
+  </g>
+</svg>
+<figcaption>$ millions, GAAP net revenue. Source: Lumentum Forms 10-K, FY2016–FY2026. The FY2019 and FY2023 steps include acquired revenue (Oclaro $250.1m, NeoPhotonics $340.4m); the FY2026 step does not.</figcaption>
+</figure>
+
+<p>FY2026 revenue was $3,014.0m, up 83.2%. The first question with a number like that is how much of it was bought — and for once the answer is clean, which the history makes more interesting rather than less. The last material acquisition, Cloud Light, closed in November 2023 and was fully lapped by FY2025. The only FY2026 acquisition was the $38.0m Greensboro fab, whose revenue contribution is not disclosed and whose attached supply agreement is recognised net, as agent, contributing $2.3m. FY2026 growth is therefore essentially all organic. That was not true of the preceding decade.</p>
+
+<div class="tw">
+<table>
+<caption>Reported growth against acquired revenue, where the filings disclose the split. Source: Lumentum Forms 10-K FY2019, FY2023, FY2024, FY2026. The company does not disclose acquired revenue separately for FY2020, FY2025 or FY2026, so those years cannot be decomposed at all.</caption>
+<thead><tr><th>Fiscal year</th><th class="n">Reported growth</th><th class="n">Acquired revenue</th><th class="n">Implied organic</th><th>Acquisition</th></tr></thead>
+<tbody>
+<tr><td>FY2019</td><td class="n">+25.5%</td><td class="n">$250.1m</td><td class="n">≈ +5%</td><td>Oclaro (Dec 2018)</td></tr>
+<tr><td>FY2023</td><td class="n">+3.2%</td><td class="n">$340.4m</td><td class="n">≈ −16%</td><td>NeoPhotonics (Aug 2022)</td></tr>
+<tr><td>FY2024</td><td class="n">−23.1%</td><td class="n">$199.5m</td><td class="n">≈ −45%</td><td>Cloud Light (Nov 2023)</td></tr>
+<tr class="hl"><td>FY2026</td><td class="n">+83.2%</td><td class="n">none disclosed</td><td class="n">≈ +83%</td><td>Greensboro fab, $2.3m as agent</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The pattern through FY2019–FY2024 was acquisitions masking organic contraction. FY2026 is the first year in which the reported number and the underlying number are the same number. Within it, Components grew $889.3m (+79.7%) and Systems grew $479.7m (+90.7%). Ranked by contribution, and labelled by what each driver actually is:</p>
+
+<div class="lever structural">
+  <p class="tag">Structural, with a cyclical overlay</p>
+  <p class="nm">Laser chip and assembly volume into AI clusters — ≈$694m of the increase</p>
+  <p>78% of the Components growth, on volume plus a “slight” ASP increase from the shift to 200G lane speeds. Structural because cluster architecture converts copper to optical above two to three metres and every speed generation adds channels; cyclical because the volume is a direct function of hyperscaler capital budgets, set annually.</p>
+</div>
+<div class="lever mgmt">
+  <p class="tag">Management-driven</p>
+  <p class="nm">Factory utilization and the capacity ramp</p>
+  <p>Not a revenue driver but the largest earnings driver: management attributes ~54% of the gross-margin dollar increase to “higher internal factory utilization.” Total headcount went from 7,257 in FY2024 to 13,757 in FY2026, 11,916 of them in manufacturing.</p>
+</div>
+<div class="lever cyclical">
+  <p class="tag">Cyclical</p>
+  <p class="nm">Cloud transceiver volume — more than +173%</p>
+  <p>Growth entirely on units, with ASPs falling. This is the layer where Fabrinet earns 12.2% gross margin and Chinese assemblers compete head-on; the growth is real and the pricing is not defensible on its own.</p>
+</div>
+<div class="lever mgmt">
+  <p class="tag">Structural and management-driven</p>
+  <p class="nm">Optical circuit switches — more than $90.0m in year one</p>
+  <p>Against a multi-year, multi-billion-dollar purchase agreement described on the May 2026 call, with the first triple-digit revenue quarter guided for Q1 FY2027. Management also noted the customer retains an internal version of the product, which caps how much of it Lumentum can own.</p>
+</div>
+<div class="lever">
+  <p class="tag">Temporary</p>
+  <p class="nm">Scarcity pricing</p>
+  <p>Management said in August 2026 that it “did reprice a little bit,” with “some benefit… on the gross margin line on pricing” that “still has some room to play through.” Price increases in a structurally deflationary industry are rent on a shortage, and they last as long as the shortage.</p>
+</div>
+<div class="lever cyclical">
+  <p class="tag">Cyclical</p>
+  <p class="nm">Telecom and network-equipment recovery</p>
+  <p>Long-haul and undersea data transport volume grew. Independently, Dell’Oro reported carrier inventory correction complete in late 2025 after the worst telecom equipment downturn in 22 years, and forecasts optical transport up 16% in 2026.</p>
+</div>
+<div class="lever" style="border-left-color:#8A8175">
+  <p class="tag" style="color:#8A8175">Structural decline</p>
+  <p class="nm">Industrial and consumer lasers — the only driver working against the total</p>
+  <p>Down from $703.9m in FY2022 to $234.2m in FY2025. Not disclosed for FY2026, because the segment that carried it no longer exists in the reporting.</p>
+</div>
+
+<p class="note">One caution on the geography table: shipping destination is where a contract manufacturer’s factory is, not where demand originates — the FY2026 10-K says so explicitly. Mexico rising from 9.0% to 14.7% of shipments and Thailand from 17.7% to 20.8% tells you where modules are assembled, not who bought them.</p>
+
+<h2>4 · Margin, cash and capital allocation</h2>
+
+<figure>
+<p class="chart-title">Gross margin and operating margin, FY2016–FY2026</p>
+<svg viewBox="0 0 820 330" role="img" aria-label="Lumentum gross margin and operating margin by fiscal year 2016 to 2026">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="60" y1="30" x2="790" y2="30"/>
+    <line x1="60" y1="103.5" x2="790" y2="103.5"/>
+    <line x1="60" y1="250.6" x2="790" y2="250.6"/>
+  </g>
+  <line x1="60" y1="177.1" x2="790" y2="177.1" stroke="#B8AF9F" stroke-width="1.2"/>
+  <g fill="#6E675C" font-family="Calibri,Arial,sans-serif" font-size="13" text-anchor="end">
+    <text x="52" y="35">50%</text><text x="52" y="108">25%</text>
+    <text x="52" y="182">0</text><text x="52" y="255">−25%</text>
+  </g>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.8" stroke-linejoin="round"
+    points="60,86.8 133,83.5 206,75.3 279,97.0 352,63.2 425,45.0 498,41.8 571,82.3 644,122.6 717,94.7 790,54.4"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.8" stroke-linejoin="round" stroke-dasharray="0"
+    points="60,173.2 133,162.9 206,144.1 279,181.2 352,141.2 425,123.2 498,125.0 571,196.2 644,270.9 717,209.1 790,125.9"/>
+  <g fill="#C75B39">
+    <circle cx="498" cy="41.8" r="4.6"/><circle cx="644" cy="122.6" r="4.6"/><circle cx="790" cy="54.4" r="5"/>
+  </g>
+  <g fill="#3C6E8F">
+    <circle cx="644" cy="270.9" r="4.6"/><circle cx="790" cy="125.9" r="5"/>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="13.5" font-weight="bold">
+    <text x="60" y="78" fill="#C75B39" text-anchor="start">Gross margin</text>
+    <text x="60" y="192" fill="#3C6E8F" text-anchor="start">Operating margin</text>
+    <text x="790" y="45" fill="#C75B39" text-anchor="end">41.7%</text>
+    <text x="790" y="117" fill="#3C6E8F" text-anchor="end">17.4%</text>
+  </g>
+  <g font-family="Calibri,Arial,sans-serif" font-size="12.5" fill="#6E675C">
+    <text x="498" y="31" text-anchor="middle">peak 46.0%</text>
+    <text x="644" y="113" text-anchor="middle">18.5%</text>
+    <text x="644" y="288" text-anchor="middle">−31.9%</text>
+  </g>
+  <g fill="#6E675C" font-family="Calibri,Arial,sans-serif" font-size="12.5" text-anchor="middle">
+    <text x="60" y="312">FY16</text><text x="133" y="312">17</text><text x="206" y="312">18</text>
+    <text x="279" y="312">19</text><text x="352" y="312">20</text><text x="425" y="312">21</text>
+    <text x="498" y="312">22</text><text x="571" y="312">23</text><text x="644" y="312">24</text>
+    <text x="717" y="312">25</text><text x="790" y="312">FY26</text>
+  </g>
+</svg>
+<figcaption>GAAP, as reported. Source: Lumentum Forms 10-K, FY2016–FY2026. FY2021 operating margin is shown as 18.3%, excluding the $207.5m merger termination fee from the abandoned Coherent transaction; as reported it was 30.2%.</figcaption>
+</figure>
+
+<p>The shape of that second chart is the whole point. Revenue is at an emphatic all-time high; <strong>margin is not</strong>. Gross margin of 41.7% remains 4.3 points below the 46.0% reached in FY2022 on 76% less revenue, and the 17.4% operating margin is marginally below FY2022’s clean 17.7%. The margin peak arrived only in the final quarter — the June 2026 quarter ran a 47.4% GAAP gross margin, above the prior full-year peak, and 50.4% on the non-GAAP basis.</p>
+
+<p>Management’s attribution of the FY2026 gross-margin step is unusually specific and should be taken at face value: approximately <strong>54% from “higher internal factory utilization,” 29% from mix, and 17% from lower amortization of acquired intangibles</strong>. That composition matters more than the level, because the largest component is operating leverage on a fixed manufacturing base, and operating leverage is symmetric. Only the 29% from mix is both durable and demand-dependent; the 17% from amortization is durable and shrinking as the Oclaro, NeoPhotonics and Cloud Light intangibles run off. Below gross margin the leverage is starker: R&amp;D fell from 22.2% of revenue in FY2024 to 11.8% while rising only 17.3% in dollars, and SG&amp;A from 22.9% to 12.1% while rising 4.3%.</p>
+
+<div class="card">
+<h3 style="margin-top:0">The GAAP net loss is not what it looks like</h3>
+<p style="margin-bottom:0">FY2026 GAAP net loss was $6,935.1m, or $92.96 per share — an accounting consequence of the share price, not of the business. In April and May 2026 the company issued about 10.6m shares to retire $1,124.9m of convertible principal, and the applicable standard required the conversion value in excess of principal, $7,755.1m, to be expensed. It is non-cash, substantially non-deductible, and will not recur. Operating income of $524.8m is the meaningful line. The same year also carries two one-off credits: a $236.3m release of the US deferred-tax valuation allowance in the June quarter, and a $27.5m Cloud Light escrow settlement in other income.</p>
+</div>
+
+<div class="tw">
+<table>
+<caption>Source: Lumentum Forms 10-K. Net cash is cash plus short-term investments less total debt principal. <strong>Comparability breaks across these columns:</strong> reportable segments were redefined in FY2024 and eliminated in FY2026, so no continuous segment series exists; ASU 2020-06 was adopted at the start of FY2023 on a modified retrospective basis, breaking the interest-expense and debt-carrying-value series before that year; and the non-GAAP methodology was refined in Q1 FY2025, breaking the non-GAAP series before FY2024. FY2025 operating income includes a $34.9m gain on sale of a facility.</caption>
+<thead><tr><th>$ millions unless stated</th><th class="n">FY2022</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">FY2026</th></tr></thead>
+<tbody>
+<tr><td>Net revenue</td><td class="n">1,712.6</td><td class="n">1,359.2</td><td class="n">1,645.0</td><td class="n"><strong>3,014.0</strong></td></tr>
+<tr><td>Gross margin</td><td class="n">46.0%</td><td class="n">18.5%</td><td class="n">28.0%</td><td class="n"><strong>41.7%</strong></td></tr>
+<tr><td>Operating income (loss)</td><td class="n">303.3</td><td class="n">(434.0)</td><td class="n">(180.1)</td><td class="n"><strong>524.8</strong></td></tr>
+<tr><td>Capital expenditure (% of revenue)</td><td class="n">91.2 (5.3%)</td><td class="n">133.0 (9.8%)</td><td class="n">231.0 (14.0%)</td><td class="n"><strong>451.3 (15.0%)</strong></td></tr>
+<tr><td>Operating cash flow</td><td class="n">459.3</td><td class="n">24.7</td><td class="n">126.3</td><td class="n"><strong>751.4</strong></td></tr>
+<tr><td>Net cash / (net debt)</td><td class="n">190</td><td class="n">(1,628)</td><td class="n">(1,705)</td><td class="n"><strong>1,091</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Free cash flow was $300.1m after two consecutive negative years, but working capital absorbed $292.0m of the operating inflow — receivables up 108.1% with days sales outstanding going from 55.5 to 63.0, inventory up 47.1%. And capex understates the commitment: $181.4m of unpaid property and equipment sat in payables at year end against $43.4m a year earlier, and construction in progress rose from $152.3m to $377.4m, all of which management expects to place in service within twelve months. Depreciation was $128.8m against $451.3m of capex — a ratio of 3.5× — so the depreciation line steps up materially in FY2027 whether or not revenue does.</p>
+
+<h3>Where the cash went, FY2022–FY2026</h3>
+<ul class="plain">
+<li><strong>Debt repayment and settlement — about $1,848.8m</strong>, of which $1,377.1m in FY2026 alone. Most of that is cash settlement of convertible notes that were deep in the money, not deleveraging by choice.</li>
+<li><strong>Acquisitions net of cash — about $1,600.5m</strong>: NeoPhotonics and the IPG telecom lines in FY2023, Cloud Light in FY2024, Greensboro in FY2026.</li>
+<li><strong>Capital expenditure — $1,035.0m</strong>, of which 43.6% fell in FY2026.</li>
+<li><strong>Share repurchases — $719.5m</strong>, all in FY2022 and FY2023 at an average of $81.66. Nothing since; the $1.2bn authorization expired in May 2025 with $569.6m unused.</li>
+<li><strong>Withholding tax on net share settlement of restricted stock — $422.9m</strong>, economically a share retirement, $281.0m of it in FY2026.</li>
+<li><strong>Dividends — none.</strong> Lumentum has never paid one and states it does not expect to.</li>
+</ul>
+<p>The behaviour that ranking describes is a company that bought assets aggressively into a downturn — $1.6bn for NeoPhotonics and Cloud Light while its own revenue was falling 23% and gross margin sat at 18.5% — bought back stock while it was leveraged, then stopped entirely and let the authorization lapse. It then funded the capacity build with $2.0bn of convertible preferred sold to NVIDIA at $695.31 a share in March 2026, rather than with debt or its own cash flow. Across the period the convertible structure turned coupons of 0.375%–1.50% into substantial equity: shares outstanding went from 69.8m at June 2025 to 89.7m by August 2026, plus 2.9m of preferred.</p>
+<p class="note"><strong>What post-dates the reported figures.</strong> By 14 August 2026 the company had received early conversion requests for $757.8m of note principal, which must be settled in cash; the remaining converts carry $1,544.6m at cost against an estimated fair value of $7,607.2m — a roughly $6.1bn equity claim that is not on the balance sheet. On 11 August 2026 management guided Q1 FY2027 to revenue of $1.225–1.275bn and a non-GAAP operating margin of 39.5–40.5%, saying the guide meant “reaching our target model more than a quarter ahead of schedule”; the target model itself is not quantified. No acquisition or divestiture is announced and unclosed.</p>
+
+<h2>5 · Cyclicality, and the downside as a mechanism</h2>
+
+<div class="tw">
+<table>
+<caption>Source: Lumentum Forms 10-K, FY2016–FY2026. FY2021 reported a 30.2% operating margin but included a $207.5m merger termination fee from the abandoned Coherent transaction; excluding it, FY2021 was 18.3%, and FY2022’s 17.7% is the cleanest prior peak.</caption>
+<thead><tr><th>Measure</th><th class="n">Prior peak</th><th class="n">Prior trough</th><th class="n">FY2026</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td class="n">$1,767.0m (FY2023)</td><td class="n">$1,359.2m (FY2024)</td><td class="n"><strong>$3,014.0m</strong><br>70.6% above the prior peak</td></tr>
+<tr><td>Gross margin</td><td class="n">46.0% (FY2022)</td><td class="n">18.5% (FY2024)</td><td class="n"><strong>41.7%</strong><br>4.3 pts below the prior peak</td></tr>
+<tr><td>Operating margin</td><td class="n">17.7% (FY2022, clean)</td><td class="n">(31.9)% (FY2024)</td><td class="n"><strong>17.4%</strong><br>marginally below the prior peak</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The fixed-cost base has grown faster than either revenue or margin. Headcount went from 7,257 in FY2024 to 13,757 in FY2026. Net property and equipment rose 60% to $1,159.1m, with Thailand doubling to $450.6m. Construction in progress of $377.4m enters the depreciable base within twelve months. Purchase obligations stand at $2,354.4m, of which $2,112.5m falls due within a year — 1.3× FY2026 cost of sales — and while the terms allow rescheduling, they are described as legally binding. Against all of that, roughly 54% of the gross-margin improvement came from utilization.</p>
+
+<p>The downside is therefore not a demand forecast but an arithmetic one. <strong>Every announced capacity expansion in this industry lands in the same two-year window</strong>: Coherent more than doubling InP output again by end-2027, Lumentum’s Greensboro fab first revenue in early 2028 and full pitch by 2029, JX Advanced Metals expanding substrate capacity seven- to ten-fold over four years. If AI order rates flatten while that capacity arrives, the utilization that produced 54% of the margin gain reverses through exactly the same channel — into a cost base 90% larger than two years ago.</p>
+
+<p>There are two precedents, one of them the company’s own. In FY2024 revenue fell 23.1%, gross margin to 18.5% and operating margin to −31.9%, with $20.7m of excess-capacity charges inside the gross margin. Further back, the corporate ancestor is the cleaner warning: JDS Uniphase’s quarterly revenue fell from $920.1m in the March 2001 quarter to $261.8m in the March 2002 quarter — a 71.5% decline — with gross margin guided to 15–18%. Management’s own explanation at the time is the sentence to keep.</p>
+
+<div class="pull">
+  <q>Much of the forecasted revenue decline is in components, typically among the Company’s highest margin product lines.</q>
+  <p class="attr">JDS Uniphase, April 2002 — the predecessor company, in the last true downturn</p>
+</div>
+
+<p>The fabs that are the moat at the top of the cycle are the fixed cost at the bottom of it. On the constraint side today the pressure runs the other way: Lumentum’s chief executive put the supply-demand gap at “somewhere greater than 30%” in May 2026 and said in August 2026 that “we are way behind… on high-powered lasers,” with EML unit output targeted to grow more than 50% year on year by the December 2026 quarter and pump laser shipments to rise fourfold. Regulation compounds the physics: China added indium phosphide to its export control list in February 2025 and holds ~70% of refined indium, and the FY2026 10-K states that “China restricted exports to Japan, which affected our substrate supply chain globally.” Tariffs run through cost of sales as a period cost and are nowhere quantified.</p>
+
+<div class="two">
+  <div class="col dur">
+    <h4>Durable — likely intact in ten years</h4>
+    <ul>
+      <li>Five owned InP wafer fabs, plus Greensboro converting to six-inch InP</li>
+      <li>Merchant laser-chip position while Coherent consumes all its own output internally</li>
+      <li>200G-per-lane EML qualification with hyperscalers and NVIDIA</li>
+      <li>Three-year take-or-pay customer agreements offsetting planned capex (per the August 2026 call)</li>
+      <li>Net cash of $1,091m after equitizing $1.12bn of convertible principal</li>
+    </ul>
+  </div>
+  <div class="col bor">
+    <h4>Borrowed — currently helping, will fade</h4>
+    <ul>
+      <li>~54% of the FY2026 gross-margin gain came from factory utilization, which is symmetric</li>
+      <li>Scarcity pricing — management “did reprice a little bit” in a structurally deflationary industry</li>
+      <li>$236.3m valuation-allowance release and $27.5m escrow settlement, both FY2026 only</li>
+      <li>$60.2m of interest and investment income on the $2.0bn NVIDIA proceeds, which capex will consume</li>
+      <li>Greensboro below-market supply contract amortized into revenue — $7.6m left, ends around mid-FY2027</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Leading indicators, and where each is published</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Indicator</th><th>Where it is published</th></tr></thead>
+<tbody>
+<tr><td>Non-GAAP gross margin against the 50.4% June-2026 quarter level</td><td>Lumentum quarterly earnings release (8-K, Item 2.02 exhibit)</td></tr>
+<tr><td>Top-two customer concentration against 41.6%; receivable concentration against 30.4%</td><td>Lumentum 10-K Note 17 and 10-Q MD&amp;A</td></tr>
+<tr><td>Whether Coherent begins merchant EML sales, and its InP output doubling schedule</td><td>Coherent quarterly call, Datacenter &amp; Communications commentary</td></tr>
+<tr><td>Innolight (300308.SZ) and Eoptolink (300502.SZ) gross margin — the direct test of scarcity rent</td><td>Shenzhen-filed annual and quarterly reports</td></tr>
+<tr><td>External-laser (ELSFP) module market revenue — whether CPO laser content is materialising</td><td>Cignal AI optical components service, quarterly</td></tr>
+<tr><td>Hyperscaler capital expenditure and the stated binding constraint on it</td><td>Microsoft, Alphabet, Amazon and Meta Forms 10-Q and 10-K</td></tr>
+<tr><td>Lumentum capex, construction in progress and purchase obligations against $2,354.4m</td><td>Lumentum 10-Q balance sheet; 10-K contractual obligations table</td></tr>
+<tr><td>Greensboro ramp against the guided early-2028 first revenue</td><td>Lumentum quarterly earnings calls</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>6 · Risks that cyclicality does not capture</h2>
+
+<div class="lever">
+  <p class="tag">Concentration</p>
+  <p class="nm">Two customers, 41.6% of revenue, and almost no contractual commitment behind it</p>
+  <p>Concentration rose from 31.4% to 41.6% in a single year, and one customer is 30.4% of gross receivables. The 10-K states that the majority of customers buy under orders “that do not contain volume or long-term purchase commitments,” then spells out the transmission: if forecast orders do not materialize the company may “fail to optimize our manufacturing capacity and incur charges for such underutilization” and “incur liabilities with our suppliers for reimbursement of capital expenditures.” Against $2.35bn of purchase obligations and 11,916 manufacturing employees, one customer changing its build plan is a fixed-cost event, not a revenue event. Management referenced three-year take-or-pay agreements in August 2026; no counterparty, volume or term appears in any filing.</p>
+</div>
+<div class="lever">
+  <p class="tag">Architecture</p>
+  <p class="nm">Silicon photonics and co-packaged optics cut laser die per port — even where Lumentum participates</p>
+  <p>Silicon photonics does not remove the laser (silicon cannot emit light) but it changes the count: a 1.6T module built from discrete EMLs uses eight modulated die; the silicon-photonics equivalent uses two continuous-wave sources. Co-packaged optics goes further and replaces the pluggable module with an external light source — Cignal AI forecasts that external-laser market above $1.5bn by 2030 against a datacom optical component market already running $7.7bn per quarter. Lumentum has shipped ultra-high-power CPO lasers and taken a first ELS module order, and says those carry meaningfully higher selling prices than the lasers alone, but the pool it participates in shrinks per port. The offsetting case — that CPO converts copper intra-rack links to optical and multiplies port count — is real and currently unproven.</p>
+</div>
+<div class="lever">
+  <p class="tag">Competition</p>
+  <p class="nm">The switch-silicon monopolist has entered the laser layer</p>
+  <p>Broadcom’s stated optical portfolio now spans optical DSPs, silicon photonics, co-packaged optics, EMLs, VCSELs and continuous-wave lasers, funded from a business targeting roughly 66% non-GAAP operating margin. A competitor able to price lasers as an attachment to the switch it already sells is structurally different from Coherent — and the constraint that protects Lumentum, fab capacity, is one Broadcom can buy.</p>
+</div>
+<div class="lever">
+  <p class="tag">Regulatory</p>
+  <p class="nm">The export-control investigation is an operational exposure, not a financial one</p>
+  <p>A voluntary self-disclosure to the Bureau of Industry and Security in December 2023, supplemented April 2024; a BIS administrative subpoena and a related DOJ subpoena in August 2024. Both remain open, the company is “unable to predict the likely outcome,” and no accrual is carried. Named potential consequences include “denial of export privileges.” For a company that already lists export licensing among its capacity bottlenecks and ships 79.2% of revenue outside the United States, that is a supply-chain risk with a legal trigger, and it compounds with the China substrate restrictions rather than sitting beside them.</p>
+</div>
+<div class="lever">
+  <p class="tag">Liquidity sequencing</p>
+  <p class="nm">The convertible overhang competes with the capacity programme for the same cash</p>
+  <p>All four note series were convertible at holder option entering FY2027 and are classified current at $1,596.9m; principal must be settled in cash. By 14 August 2026 the company had received early conversion requests for $757.8m. New language appears in the FY2026 risk factors that is absent from FY2025: if holders convert a significant portion within a short period, liquidity “could adversely impact our ability to continue as a going concern.” With $2,738.4m of cash and short-term investments this is a sequencing problem rather than a solvency one — but the same dollars are earmarked for a fab conversion and a capacity ramp.</p>
+</div>
+<div class="lever">
+  <p class="tag">Disclosure</p>
+  <p class="nm">Reporting moved backwards in the year the business became most complex</p>
+  <p>In the year revenue nearly doubled, the company collapsed two reportable segments into one, stopped disclosing segment profitability, stopped disclosing the end-market split, and continued to disclose no units, no ASPs, no utilization rate, no backlog figure, no customer names and no competitor names. The utilization claim carrying 54% of the margin improvement is therefore unverifiable from outside, and so is the durability of the mix shift carrying another 29%.</p>
+</div>
+
+<h2>7 · What the sources could not answer</h2>
+<div class="gap">
+<ul>
+<li><strong>Unit volumes, ASPs, wafer starts, capacity or utilization rate</strong> — not disclosed in any fiscal year, so the central margin attribution cannot be checked.</li>
+<li><strong>The FY2026 end-market split</strong> and any segment-level profitability — removed with the single-segment reorganization.</li>
+<li><strong>Backlog or remaining performance obligation in dollars</strong> — defined in the filings, expressly disclaimed as an indicator, never quantified.</li>
+<li><strong>The identity of Customer A (26.6%) and Customer B (15.0%)</strong>, and whether NVIDIA is either of them.</li>
+<li><strong>The size and term of NVIDIA’s “multibillion purchase commitment and future capacity access rights”</strong>, which appears only in NVIDIA’s press release and in neither company’s securities filing.</li>
+<li><strong>Counterparties, volumes and terms of the three-year take-or-pay agreements</strong> management referenced in August 2026.</li>
+<li><strong>FY2027 capex guidance</strong>, or any dollar figure for the capacity programme beyond “hundreds of millions of dollars over the next several years” for Greensboro.</li>
+<li><strong>Quantified tariff cost</strong>, and quantified revenue lost to the Huawei restriction.</li>
+<li><strong>Whether Greensboro is 148,000 sq ft</strong> (FY2026 10-K, Item 2) <strong>or 240,000 sq ft</strong> (Lumentum press release, 26 March 2026) — two of the company’s own primary sources conflict and neither states the basis.</li>
+<li><strong>A published annual ASP erosion rate</strong> for optical transceivers — no reliable public figure found, only qualitative confirmation that price decline is the industry’s normal state.</li>
+</ul>
+</div>
+<p><strong>What would need resolving before forming a thesis:</strong> how FY2026 gross margin divides between volume-driven utilization, which persists while volume does, and scarcity pricing, which does not; whether the take-or-pay agreements cover enough of the capital programme to change the shape of a downturn; whether Coherent begins selling EMLs on the merchant market, which would remove the clearest structural advantage Lumentum currently holds; and revenue per port under co-packaged optics against pluggable modules, which determines whether participation in the next architecture is worth as much as participation in this one.</p>
+
+<h2>8 · Takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is:</strong> a compound-semiconductor manufacturer that spent a decade assembling indium-phosphide fab capacity through acquisitions — Oclaro, NeoPhotonics, Cloud Light — and arrived at the moment that capacity became the scarcest input in the AI build-out.</li>
+<li><strong>The core economic engine:</strong> laser die produced in owned fabs and sold both as merchant chips and inside its own modules. Roughly 54% of the FY2026 gross-margin improvement came from filling those fabs — operating leverage rather than price.</li>
+<li><strong>The main growth lever:</strong> EML and high-power laser volume into AI clusters, running more than 30% behind demand as of May 2026, with unit output targeted to grow more than 50% year on year into December 2026 and a sixth fab producing from early 2028.</li>
+<li><strong>What could break the story:</strong> the industry’s new capacity all lands in 2027–28, and the next architecture cuts laser die per port even where Lumentum participates. The predecessor company took its component gross margin from boom levels to 15–18% in four quarters when demand turned.</li>
+<li><strong>What to monitor:</strong> non-GAAP gross margin against the 50.4% June-2026 quarter, top-two customer concentration against 41.6%, and whether Coherent starts selling EMLs on the merchant market.</li>
+</ul>
+
+<footer>
+<p><strong>Built from</strong> — Lumentum Forms 10-K FY2016 through FY2026 (the FY2026 report filed 17 August 2026 for the year ended 27 June 2026), Forms 10-Q through Q3 FY2026, Forms DEF 14A 2016–2025 and Forms 8-K 2016–2026, all held in the LITE research folder. The earnings-release exhibits and call transcripts are <em>not</em> in the folder; Q4 FY2026 results, Q1 FY2027 guidance and management call commentary were taken from Lumentum’s own investor-relations release of 11 August 2026, its SEC-filed Exhibit 99.1, and published transcripts of the Q3 and Q4 FY2026 calls.</p>
+<p><strong>Industry evidence</strong> — Coherent, Fabrinet, Marvell, Applied Optoelectronics and Broadcom results releases for their most recent fiscal periods; Innolight and Eoptolink figures via financial data aggregators (directional only); Cignal AI and Dell’Oro published commentary; IEEE 802.3df and OIF standards material; AXT Form 10-K on indium-phosphide export controls; JDS Uniphase Form 8-K exhibit, April 2002.</p>
+<p><strong>Post-dating the filings</strong> — NVIDIA’s $2.0bn purchase of 2,876,415 Series A convertible preferred shares at $695.31 (2 March 2026) and the identically sized investment in Coherent the same day; the Greensboro fab purchase (17 March 2026, announced 26 March 2026); $757.8m of early convertible-note conversion requests received as of 14 August 2026; and Q1 FY2027 guidance issued 11 August 2026. No acquisition or divestiture is announced and unclosed.</p>
+<p style="margin-bottom:0"><em>Not a valuation and not a recommendation. Prepared 7 September 2026.</em></p>
+</footer>
+
+</div>
+</body>
+</html>

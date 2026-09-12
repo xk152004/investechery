@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview: The Coca-Cola Company (NYSE: KO)</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:1.58;
+  font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:32px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;line-height:1.5;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+
+.restate{
+  font-family:Georgia,'Times New Roman',serif; font-size:23px; line-height:1.5;
+  border-left:5px solid var(--terracotta); padding:4px 0 4px 20px; margin:0 0 34px;
+}
+
+.engine{
+  background:var(--ink); color:var(--cream); border-radius:10px; padding:28px 30px; margin:0 0 30px;
+}
+.engine .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#B9B1A4;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:27px;font-weight:700;margin-bottom:12px;line-height:1.25}
+.engine p{margin:0;font-size:17.5px;line-height:1.55;color:#EDE6DA}
+.engine .split{display:flex;flex-wrap:wrap;gap:26px;margin-top:20px;padding-top:18px;border-top:1px solid #4A4741}
+.engine .split div{flex:1 1 180px}
+.engine .split .n{font-family:Georgia,serif;font-size:26px;color:#E8A487;font-weight:700}
+.engine .split .t{font-size:14px;color:#B9B1A4;line-height:1.4}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:0 0 12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .v{font-family:Georgia,serif;font-size:29px;font-weight:700;color:var(--terracotta);line-height:1.1}
+.kpi .k{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:7px;font-weight:600}
+.kpi .s{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.4}
+.note{font-size:14px;color:var(--muted);line-height:1.5;margin:10px 0 0}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:24px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:16px 20px;margin:12px 0}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .h{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:3px 0 6px}
+.lever p{margin:0;font-size:17px;line-height:1.52}
+
+.pull{
+  background:var(--terracotta-soft); border-radius:10px; padding:22px 26px; margin:26px 0;
+  font-family:Georgia,serif; font-size:20px; line-height:1.45;
+}
+.pull .attr{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;color:var(--muted);margin-top:12px;font-style:normal}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.two .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.two .col h4{font-family:Georgia,serif;font-size:17px;margin:0 0 12px;font-weight:700}
+.two .col.dur h4{color:var(--good)}
+.two .col.bor h4{color:var(--terracotta)}
+.two ul{margin:0;padding-left:19px}
+.two li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+
+.tw{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:560px;background:#fff;font-size:16px}
+caption{caption-side:top;text-align:left;font-size:14px;color:var(--muted);padding-bottom:9px;line-height:1.45}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:#F2EBDF;font-weight:700;font-size:14.5px;letter-spacing:.02em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:700;background:#FBF7F0}
+
+.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 16px 10px;margin:24px 0}
+.chart svg{width:100%;height:auto;display:block}
+.chart .cap{font-size:14px;color:var(--muted);padding:6px 6px 6px;line-height:1.45}
+.chart h3{margin:0 6px 8px;font-size:18px}
+
+ul.body{padding-left:20px;margin:0 0 16px}
+ul.body li{margin-bottom:10px}
+.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:22px;font-size:14.5px;color:var(--muted);line-height:1.6}
+.foot strong{color:var(--ink)}
+.unk{color:var(--muted);font-style:italic}
+@media(max-width:620px){
+  h1{font-size:30px} h2{font-size:23px} body{font-size:17.5px}
+  .two{grid-template-columns:1fr}
+  .restate{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>The Coca-Cola Company <span style="color:var(--muted);font-weight:400">· NYSE: KO</span></h1>
+<div class="srcline">
+7 September 2026 · Built from The Coca-Cola Company's SEC filings — Forms 10-K for FY2016 through FY2025 (the latter filed 20 February 2026) and Forms 10-Q through the quarter ended 3 July 2026 — supplemented by company investor-relations releases, the filings of named competitors and bottlers, and independent government and peer-reviewed sources for industry structure.
+<strong>This is not a valuation and not a recommendation.</strong>
+</div>
+
+<div class="restate">
+Coca-Cola is not a drinks manufacturer. It is a trademark owner that sells concentrate to bottlers who are contractually required to buy it exclusively — and who carry the trucks, plants and coolers that make the whole thing work.
+</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">One unit case — 192 fluid ounces, or 24 eight-ounce servings</div>
+  <p>The Coca-Cola system sold 33.8 billion unit cases in 2025. What Coca-Cola earns on one depends entirely on whether it franchised the bottling or kept it — and the gap is the reason the last decade of corporate strategy looks the way it does.</p>
+  <div class="split">
+    <div><div class="n">~$0.98</div><div class="t">Revenue per case, franchised concentrate model</div></div>
+    <div><div class="n">~$0.53</div><div class="t">Segment operating profit per case, franchised</div></div>
+    <div><div class="n">~$3.88</div><div class="t">Revenue per case, company-owned bottling</div></div>
+    <div><div class="n">~$0.08</div><div class="t">Operating profit per case, company-owned bottling</div></div>
+  </div>
+</div>
+<p class="note">Computed from FY2025 10-K disclosures: net operating revenues $47,941m; worldwide unit case volume 33.8bn; concentrate operations 59% of revenue on 85% of volume, finished product operations 41% on 15%; segment operating income of $15,152m across the four geographic segments against $426m for Bottling Investments. Approximate — the geographic segments contain some finished-product activity.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">$47.9bn</div><div class="k">FY2025 revenue</div><div class="s">+2% reported, +5% organic</div></div>
+  <div class="kpi"><div class="v">31.2%</div><div class="k">Comparable op. margin</div><div class="s">28.7% reported; 30.0% comparable in FY2024</div></div>
+  <div class="kpi"><div class="v">$3.00</div><div class="k">FY2025 comparable EPS</div><div class="s">$3.04 reported, +23%</div></div>
+  <div class="kpi"><div class="v">$30.0bn</div><div class="k">Net debt, 3 July 2026</div><div class="s">Rated A+ / A1; no leverage ratio disclosed</div></div>
+  <div class="kpi"><div class="v">Flat</div><div class="k">FY2025 unit case volume</div><div class="s">Volume near trough, margin at a ten-year peak</div></div>
+  <div class="kpi"><div class="v">+5% / +2%</div><div class="k">Organic vs reported</div><div class="s">FY2025 — currency and divestitures took three points</div></div>
+</div>
+
+<h2>1 · What the company does</h2>
+
+<p>The customer problem is trivial to state and hard to serve: a person wants a cold drink, now, within arm's reach, at a price they will pay without thinking. Satisfying that demand profitably has almost nothing to do with making the beverage and almost everything to do with getting it chilled, stocked and priced in several million separate retail locations every day. Coca-Cola resolved this by splitting the problem in two and keeping only half of it.</p>
+
+<p>Trace one unit case through the business and the model becomes visible. Coca-Cola manufactures concentrate and sells it to a bottler holding an exclusive territory. The bottler adds sweetener, water and carbonation, packages the drink, loads it onto its own trucks, delivers it to retailers, and in many cases owns the cooler it sits in. The bottler collects the retail price and pays Coca-Cola for concentrate. Coca-Cola never touches the can, the truck or the shelf — and never funds them.</p>
+
+<p>Where it has not franchised — India, until recently Nigeria and the Philippines, and the rest of the Bottling Investments segment — the company performs the whole chain itself and books the full retail-facing revenue at a fraction of the margin. Both models sit inside one income statement, and the 10-K reports their proportions directly: concentrate operations generated 59% of net operating revenues on 85% of unit case volume in 2025; finished product operations, 41% on 15%.</p>
+
+<h3>What the bottler contract actually says</h3>
+
+<p>The commercial power sits in the contract. The bottler receives an exclusive territory in which Coca-Cola "agrees to refrain from selling or distributing" its trademark beverages, and in exchange "is obligated to purchase its entire requirement of concentrates or syrups for the designated Company Trademark Beverages from the Company or Company-authorized suppliers." The bottler cannot dual-source and cannot buy the input anywhere else.</p>
+
+<div class="pull">
+  "Under this model, the concentrate price we charge is impacted by a number of factors, including, but not limited to, bottler pricing, the channels in which the finished products produced from the concentrates are sold, and package mix."
+  <div class="attr">FY2025 Form 10-K, describing the incidence-based concentrate pricing model used in most markets.</div>
+</div>
+
+<p>That single sentence is the mechanism behind most of what follows. Coca-Cola's concentrate revenue moves with what the bottler charges the retailer, not with a fixed fee per gallon. When a bottler raises prices to recover aluminium or freight inflation, part of that increase flows back to Coca-Cola as revenue — without Coca-Cola having absorbed the cost that prompted it. In the United States, the Comprehensive Beverage Agreements run ten years and are "renewable indefinitely for successive additional 10-year terms" at the bottler's election, with mandatory incidence pricing embedded.</p>
+
+<h3>Who pays, and what is in the bottle</h3>
+
+<p>Coca-Cola's direct customers are bottlers, and there are not many that matter. Five partners — Coca-Cola FEMSA, Coca-Cola Europacific Partners, Coca-Cola HBC, Arca Continental and Swire Coca-Cola — "combined represented 44% of our total worldwide unit case volume" in 2025, up from 40% in 2020. One bottler alone accounted for 10% of net operating revenues.</p>
+
+<p>The portfolio is also more concentrated than the "total beverage company" framing implies: sparkling soft drinks were 69% of worldwide unit case volume in both 2025 and 2024, and Trademark Coca-Cola alone 47%.</p>
+
+<div class="tw">
+<table>
+<caption>Segment revenue and profit, FY2025. Third-party net operating revenues, $m. Percentages of segment profit exclude Corporate, a $1,816m cost in 2025. Source: FY2025 Form 10-K.</caption>
+<thead><tr><th>Segment</th><th class="n">Revenue</th><th class="n">Op. income</th><th class="n">Op. margin</th><th class="n">% of revenue</th><th class="n">% of segment profit</th></tr></thead>
+<tbody>
+<tr><td>North America</td><td class="n">19,579</td><td class="n">5,070</td><td class="n">25.9%</td><td class="n">40.8%</td><td class="n">36.8%</td></tr>
+<tr><td>EMEA</td><td class="n">10,833</td><td class="n">4,298</td><td class="n">39.7%</td><td class="n">22.6%</td><td class="n">31.2%</td></tr>
+<tr><td>Latin America</td><td class="n">6,331</td><td class="n">3,742</td><td class="n">59.1%</td><td class="n">13.2%</td><td class="n">27.2%</td></tr>
+<tr><td>Asia Pacific</td><td class="n">5,328</td><td class="n">2,042</td><td class="n">38.3%</td><td class="n">11.1%</td><td class="n">14.9%</td></tr>
+<tr><td>Bottling Investments</td><td class="n">5,726</td><td class="n">426</td><td class="n">7.4%</td><td class="n">12.0%</td><td class="n">3.1%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Latin America is the row to hold on to. It produces 13.2% of revenue and 27.2% of segment operating profit at a 59.1% margin, because it is almost entirely franchised concentrate. North America produces three times the revenue at 25.9%, because it carries fountain, Costa, dairy and other finished-goods activity alongside concentrate. The margin difference reflects what the company chose to own, not how well each region is run.</p>
+
+<h2>2 · Industry structure, competitive position and moat</h2>
+
+<p>The non-alcoholic ready-to-drink industry exists to solve a distribution problem dressed as a product problem. Making flavoured sugar water is not difficult and confers no advantage. Placing it, cold, in a hundred thousand outlets across a country every week at a landed cost that leaves a margin is extremely difficult and confers a durable one. The value chain splits along exactly that line — and so does its profit.</p>
+
+<div class="tw">
+<table>
+<caption>Where the margin sits, FY2025. Sources: KO Q4/FY2025 earnings release (10 Feb 2026); Coca-Cola FEMSA FY2025 results, Form 6-K; CCEP FY2025 results release (17 Feb 2026), margin computed from €2.8bn operating profit on €20.9bn revenue; Coca-Cola Consolidated FY2025, $950.7m on $7,228.1m; PepsiCo Q4/FY2025 release, $11,498m on $93,925m; Keurig Dr Pepper Q4/FY2025 release, $3,575m on $16,603m.</caption>
+<thead><tr><th>Company</th><th>Position in the chain</th><th class="n">FY2025 operating margin</th></tr></thead>
+<tbody>
+<tr class="tot"><td>The Coca-Cola Company</td><td>Brand owner, concentrate</td><td class="n">28.7% reported · 31.2% comparable</td></tr>
+<tr><td>Keurig Dr Pepper</td><td>Mixed model</td><td class="n">21.5% reported · 25.0% adjusted</td></tr>
+<tr><td>Coca-Cola FEMSA</td><td>Bottler, Latin America</td><td class="n">14.7%</td></tr>
+<tr><td>Coca-Cola Europacific Partners</td><td>Bottler, Europe and Asia-Pacific</td><td class="n">~13.4% (computed)</td></tr>
+<tr><td>Coca-Cola Consolidated</td><td>Bottler, United States</td><td class="n">13.2%</td></tr>
+<tr><td>PepsiCo (whole company)</td><td>Vertically integrated</td><td class="n">12.2% (computed)</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Coca-Cola earns roughly twice the operating margin of the bottlers that carry its product, on a fraction of their fixed assets. This is not evidence that Coca-Cola is better managed than Coca-Cola FEMSA. It is evidence that the two firms occupy different positions in the same chain, and that the position matters more than the operator. The bottlers own the trucks, plants and coolers, absorb aluminium and freight inflation, and clear 13% to 15%. Coca-Cola owns the trademark and the formula and clears 31%.</p>
+
+<p>PepsiCo makes the same point from the opposite direction. Its PepsiCo Beverages North America segment reported $1,089m of operating profit on $28,197m of revenue in FY2025 — a figure that included a $1,589m Rockstar brand impairment, putting the underlying margin nearer 9.5% (computed). PepsiCo owns its own North American bottling. Its beverage business is roughly the size of Coca-Cola's North America segment and earns a fraction of the margin, because it consolidates the part of the chain Coca-Cola gave away. Keurig Dr Pepper is currently rearranging itself around the same logic: it closed the €15.7bn acquisition of JDE Peet's in April 2026 and intends to separate into a global coffee company and a North American beverage company, with operational readiness targeted for the end of 2026.</p>
+
+<h3>The market is local, whatever the share statistics say</h3>
+
+<p>Bottling territories are legally exclusive and geographically defined. Within any one territory there is one Coca-Cola bottler and one Pepsi bottler, and they compete for shelf space, cooler placement and delivery frequency at individual retailers. A global market-share figure is therefore an index rather than a competitive fact — the contest is won store by store, on route density, and the entity that wins it is the bottler. Coca-Cola's advantage is that in most territories it has the bottler with the denser network: an asset accumulated over decades of capital spending by parties other than Coca-Cola.</p>
+
+<h3>Which barriers actually bind</h3>
+
+<ul class="body">
+<li><strong>Route density and territory exclusivity — binds hardest.</strong> A new entrant must either build a national direct-store-delivery network at negative returns for years, or accept a distributor already carrying a competing portfolio. The bottler margin data above shows what that network earns even at scale: 13% to 15%. Nobody builds it to sell a new cola.</li>
+<li><strong>Advertising scale — binds, though the comparison is incomplete.</strong> Coca-Cola spent $5.4bn on advertising in 2025, about 11.3% of revenue, up from $5,146m in 2024 and $5,010m in 2023. Equivalent line items for PepsiCo and Keurig Dr Pepper were <span class="unk">not found</span> in their FY2025 disclosures, so the relative comparison is unverified.</li>
+<li><strong>Trademarks — the one asset unavailable at any price.</strong> The company states that beverages bearing its trademarks account for 2.2 billion of an estimated 65 billion daily servings of all beverages consumed worldwide, against 1.9 billion of 62 billion in 2020 — a claim, but one whose numerator has grown faster than its denominator.</li>
+<li><strong>Concentrate manufacturing scale — sounds impressive, binds least.</strong> Concentrate production is comparatively low-capital. The protection is the formula and the trademark, not the plant.</li>
+</ul>
+
+<h3>Regulation: what the evidence actually shows</h3>
+
+<p>Sugar taxation is the industry's most-cited regulatory threat, and enough jurisdictions have run the experiment for the effect to be measured rather than assumed. The results are more reassuring for Coca-Cola than the headlines suggest: taxes reliably change what is in the bottle, and much less reliably change how many bottles are sold.</p>
+
+<div class="tw">
+<table>
+<caption>Measured effects of sugar-sweetened beverage taxes. Sources: Health Affairs (2017) for Mexico; interrupted time-series analysis 2017–2020 for the UK levy; PLOS Medicine for Chile; Lancet Planetary Health via UNC Carolina Population Center for South Africa.</caption>
+<thead><tr><th>Jurisdiction</th><th>Measured effect on volume</th><th>Dominant response</th></tr></thead>
+<tbody>
+<tr><td>Mexico, 2014</td><td class="n">−4% rural, −6.3% urban in year one</td><td>Purchase reduction, concentrated in mid-priced products</td></tr>
+<tr><td>United Kingdom, 2018</td><td class="n">No measurable volume decline</td><td>Reformulation — ~45% of top-tier drinks reformulated below the threshold; sugar purchased fell ~30%</td></tr>
+<tr><td>Chile, 2014</td><td class="n">−3.4% relative to trend</td><td>Modest purchase reduction</td></tr>
+<tr><td>South Africa, 2018</td><td class="n">−29% of taxed beverages per person per day</td><td>Reformulation plus real volume loss; sugar intake from them fell 51%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The design matters more than the average. Where a tax is tiered by sugar content, as in the United Kingdom and South Africa, manufacturers reformulate and volume largely survives. Where it is levied on the category regardless of content, volume takes more of the hit. Coca-Cola's zero-sugar portfolio is the direct commercial answer to the first design, and it has been building it for a decade.</p>
+
+<p><strong>What kind of company wins here.</strong> The evidence points to a single position: own the brand and the formula, franchise the trucks. Every margin figure above supports it, and both large competitors are moving toward that position rather than away from it. Coca-Cola occupies it more completely than anyone else in the industry. The qualification is that the position is not the same as the operator — the structural advantage is largely inherited, and what remains contestable is whether the company can keep growing servings inside a portfolio still 69% sparkling, and whether the bottlers who carry it stay healthy enough to keep investing in the route networks the whole arrangement depends on.</p>
+
+<h2>3 · Growth engine</h2>
+
+<p>Coca-Cola's reported revenue and its underlying revenue have diverged consistently and in the same direction. In FY2025 net operating revenues rose 2%; organic revenue grew 5%. The gap is not noise — it is the last five years of currency and divestiture compressed into three percentage points.</p>
+
+<div class="tw">
+<table>
+<caption>Reported versus organic revenue growth. Components do not always sum because of rounding. Organic revenue growth is a non-GAAP measure the company defines as reported growth excluding currency and structural items. Sources: FY2025 Form 10-K; Form 10-Q for the quarter ended 3 July 2026; Q2 2026 earnings release (28 July 2026).</caption>
+<thead><tr><th>Contribution to revenue growth</th><th class="n">FY2025</th><th class="n">Q2 2026</th><th class="n">FY2025 Latin America</th><th class="n">FY2025 EMEA</th></tr></thead>
+<tbody>
+<tr><td>Concentrate volume</td><td class="n">+1%</td><td class="n">+4%</td><td class="n">(1)%</td><td class="n">+4%</td></tr>
+<tr><td>Price / mix</td><td class="n">+4%</td><td class="n">+2%</td><td class="n">+11%</td><td class="n">+2%</td></tr>
+<tr class="tot"><td>Organic revenue growth</td><td class="n">+5%</td><td class="n">+6%</td><td class="n">n/d</td><td class="n">n/d</td></tr>
+<tr><td>Currency</td><td class="n">(2)%</td><td class="n">+2%</td><td class="n">(12)%</td><td class="n">0%</td></tr>
+<tr><td>Acquisitions and divestitures</td><td class="n">(1)%</td><td class="n">(1)%</td><td class="n">0%</td><td class="n">(1)%</td></tr>
+<tr class="tot"><td>Reported revenue growth</td><td class="n">+2%</td><td class="n">+7%</td><td class="n">(2)%</td><td class="n">+5%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The Latin America column deserves a second look. Price/mix contributed eleven percentage points and currency took away twelve, leaving reported revenue down 2%. That is not pricing power in the sense an investor usually means it — it is inflation passed through in local currency and then translated away in dollars, a company recovering its position rather than improving it. Distinguishing that from the genuine pricing seen in North America, where price/mix added 5% in a low-inflation market, is the single most useful discipline when reading this revenue line.</p>
+
+<div class="lever structural">
+  <div class="tag">Structural, with a cyclical component</div>
+  <div class="h">Price and mix</div>
+  <p>Four points of FY2025 growth against one from volume. The structural part is incidence pricing, which mechanically links Coca-Cola's revenue to the bottler's realised price, plus package and channel mix shifting toward smaller, higher-margin formats. The cyclical part is inflation pass-through in high-inflation markets, which reverses when inflation does. Revenue growth is therefore more durable than volume growth suggests — and less durable than the headline organic rate implies in any year Latin America runs double-digit price/mix.</p>
+</div>
+
+<div class="lever structural">
+  <div class="tag">Structural</div>
+  <div class="h">Emerging-market unit case volume</div>
+  <p>In the quarter ended 3 July 2026, Asia Pacific unit case volume grew 8% and India specifically 13%; Latin America grew 3%, with Colombia up 20% and Peru up 16%. These are markets where per-capita consumption is a fraction of the developed-world level and the constraint is distribution reach rather than demand. The catch: the volume growth that exists is concentrated in the geographies generating the least revenue per case, so system volume translates into dollar revenue at a discount.</p>
+</div>
+
+<div class="lever mgmt">
+  <div class="tag">Management-driven</div>
+  <div class="h">Portfolio shift beyond sparkling</div>
+  <p>Water, sports, coffee and tea grew 2% in EMEA and 3% in Asia Pacific in FY2025, while juice, dairy and plant-based fell in three of four geographic segments. The 2020 portfolio review cut the brand count roughly in half, from about 400 master brands to about 200, discontinuing Odwalla among others. The portfolio is being narrowed toward brands that can carry advertising scale — which supports margin but limits how fast the 69% sparkling concentration can fall.</p>
+</div>
+
+<div class="lever cyclical">
+  <div class="tag">Cyclical</div>
+  <div class="h">Currency</div>
+  <p>Currency subtracted two points from FY2025 revenue and twelve from operating income, then added two points to revenue in the first half of 2026 as the dollar weakened against the Mexican peso, Brazilian real and euro. FY2026 guidance for comparable EPS growth of 9% to 10% assumes roughly three points of currency benefit — so close to a third of guided earnings growth is a translation effect rather than an operating one.</p>
+</div>
+
+<div class="lever">
+  <div class="tag">Temporary</div>
+  <div class="h">Calendar effects</div>
+  <p>The company disclosed that "the first quarter of 2026 had six additional days when compared to the first quarter of 2025." First-half 2026 concentrate volume growth is flattered by a shipping-day count that reverses later in the year, making the underlying demand trend weaker than the printed 6% organic growth suggests.</p>
+</div>
+
+<p>Management raised FY2026 guidance alongside second-quarter results to organic revenue growth of approximately 5%, comparable currency-neutral EPS growth of 7% to 8%, and comparable EPS growth of 9% to 10% including the currency benefit and about a point of drag from divestitures. Stripped of currency, that is mid-single-digit revenue growth and high-single-digit earnings growth — roughly what the price/mix-plus-modest-volume engine has delivered through the cycle.</p>
+
+<h2>4 · Margin, cash and capital allocation</h2>
+
+<p>Coca-Cola converts revenue into profit through two mechanisms that are easy to confuse. The first is genuine: selling a concentrate whose cost of goods is a small fraction of its price, into a fixed advertising and overhead base. The second is compositional: over ten years the company sold the low-margin half of its own business, so the average margin of what remains rose without anything inside it improving. Both are real. Only one of them can happen twice.</p>
+
+<div class="chart">
+<h3>Net operating revenues, FY2016–FY2025</h3>
+<svg viewBox="0 0 820 300" role="img" aria-label="Net operating revenues fell from $41.9bn in 2016 to $33.0bn in 2020 during bottler refranchising, then recovered to $47.9bn in 2025">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="60" y1="250" x2="790" y2="250"/><line x1="60" y1="195" x2="790" y2="195"/>
+    <line x1="60" y1="140" x2="790" y2="140"/><line x1="60" y1="85" x2="790" y2="85"/>
+    <line x1="60" y1="30" x2="790" y2="30"/>
+  </g>
+  <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="end">
+    <text x="52" y="254">$30bn</text><text x="52" y="199">$35bn</text><text x="52" y="144">$40bn</text>
+    <text x="52" y="89">$45bn</text><text x="52" y="34">$50bn</text>
+  </g>
+  <rect x="60" y="30" width="243" height="220" fill="#C75B39" opacity="0.055"/>
+  <text x="70" y="46" fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif">Bottler refranchising, 2016–2019</text>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+    points="60,119.5 141,190.5 222,202.7 303,170.1 384,216.8 466,154.8 547,107.0 628,76.7 709,62.3 790,52.6"/>
+  <g fill="#C75B39">
+    <circle cx="60" cy="119.5" r="4"/><circle cx="141" cy="190.5" r="3"/><circle cx="222" cy="202.7" r="3"/>
+    <circle cx="303" cy="170.1" r="3"/><circle cx="384" cy="216.8" r="4"/><circle cx="466" cy="154.8" r="3"/>
+    <circle cx="547" cy="107.0" r="3"/><circle cx="628" cy="76.7" r="3"/><circle cx="709" cy="62.3" r="3"/>
+    <circle cx="790" cy="52.6" r="4"/>
+  </g>
+  <g fill="#2B2B2B" font-size="13.5" font-weight="700" font-family="Georgia,serif">
+    <text x="64" y="112" text-anchor="start">$41.9bn</text>
+    <text x="384" y="235" text-anchor="middle">$33.0bn</text>
+    <text x="786" y="44" text-anchor="end">$47.9bn</text>
+  </g>
+  <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="middle">
+    <text x="60" y="270">2016</text><text x="141" y="270">2017</text><text x="222" y="270">2018</text>
+    <text x="303" y="270">2019</text><text x="384" y="270">2020</text><text x="466" y="270">2021</text>
+    <text x="547" y="270">2022</text><text x="628" y="270">2023</text><text x="709" y="270">2024</text>
+    <text x="790" y="270">2025</text>
+  </g>
+</svg>
+<div class="cap">Revenue fell 18% between 2016 and 2018 as the company refranchised its North American, Canadian and Chinese bottling operations — deliberately selling the low-margin half of its own business. The 2020 dip is the pandemic. Source: Forms 10-K, FY2016 through FY2025.</div>
+</div>
+
+<div class="chart">
+<h3>Gross margin versus operating margin, FY2016–FY2025</h3>
+<svg viewBox="0 0 820 300" role="img" aria-label="Gross margin stayed between 58 and 63 percent across the decade while operating margin swung from 20.6 percent to 28.7 percent">
+  <g stroke="#E5DDD0" stroke-width="1">
+    <line x1="60" y1="228" x2="790" y2="228"/><line x1="60" y1="184" x2="790" y2="184"/>
+    <line x1="60" y1="140" x2="790" y2="140"/><line x1="60" y1="96" x2="790" y2="96"/>
+    <line x1="60" y1="52" x2="790" y2="52"/>
+  </g>
+  <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="end">
+    <text x="52" y="232">20%</text><text x="52" y="188">30%</text><text x="52" y="144">40%</text>
+    <text x="52" y="100">50%</text><text x="52" y="56">60%</text>
+  </g>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"
+    points="60,48.9 141,40.6 222,43.6 303,48.5 384,55.1 466,50.7 547,60.4 628,54.2 709,47.2 790,45.0"/>
+  <polyline fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"
+    points="60,225.4 141,222.7 222,198.5 303,196.8 384,195.9 466,198.5 547,204.2 628,207.3 709,222.7 790,189.7"/>
+  <g fill="#3C6E8F"><circle cx="60" cy="48.9" r="3.5"/><circle cx="790" cy="45.0" r="3.5"/></g>
+  <g fill="#C75B39"><circle cx="60" cy="225.4" r="3.5"/><circle cx="709" cy="222.7" r="3.5"/><circle cx="790" cy="189.7" r="4"/></g>
+  <g font-size="13" font-weight="700" font-family="Georgia,serif">
+    <text x="66" y="38" fill="#3C6E8F" text-anchor="start">Gross margin 60.7%</text>
+    <text x="784" y="36" fill="#3C6E8F" text-anchor="end">61.6%</text>
+    <text x="66" y="245" fill="#C75B39" text-anchor="start">Operating margin 20.6%</text>
+    <text x="784" y="182" fill="#C75B39" text-anchor="end">28.7%</text>
+  </g>
+  <text x="709" y="240" fill="#6E675C" font-size="11.5" font-family="Calibri,Arial,sans-serif" text-anchor="middle">21.2% — fairlife charge</text>
+  <g fill="#6E675C" font-size="12" font-family="Calibri,Arial,sans-serif" text-anchor="middle">
+    <text x="60" y="286">2016</text><text x="141" y="286">2017</text><text x="222" y="286">2018</text>
+    <text x="303" y="286">2019</text><text x="384" y="286">2020</text><text x="466" y="286">2021</text>
+    <text x="547" y="286">2022</text><text x="628" y="286">2023</text><text x="709" y="286">2024</text>
+    <text x="790" y="286">2025</text>
+  </g>
+</svg>
+<div class="cap">The honest number is the blue line. Gross margin has moved between 58.1% and 62.6% across a decade in which reported operating margin swung eight percentage points — because the operating line absorbs refranchising mix and non-cash charges that never touch product economics. FY2024's 21.2% is depressed by $3,109m of fairlife contingent-consideration remeasurement and a $760m BodyArmor impairment; on a comparable basis the company reported 30.0% in FY2024 and 31.2% in FY2025. Source: Forms 10-K, FY2016 through FY2025; margins computed.</div>
+</div>
+
+<div class="tw">
+<table>
+<caption>The financial spine. $m except margins. These four years are <strong>not</strong> comparable like-for-like: FY2016 precedes North American refranchising; FY2020 is a pandemic year; FY2024's operating margin is depressed by $3,109m of fairlife remeasurement and a $760m BodyArmor impairment. Source: Forms 10-K for FY2016, FY2020, FY2024 and FY2025; margins computed.</caption>
+<thead><tr><th>&nbsp;</th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2024</th><th class="n">FY2025</th></tr></thead>
+<tbody>
+<tr><td>Net operating revenues</td><td class="n">41,863</td><td class="n">33,014</td><td class="n">47,061</td><td class="n">47,941</td></tr>
+<tr><td>Gross margin</td><td class="n">60.7%</td><td class="n">59.3%</td><td class="n">61.1%</td><td class="n">61.6%</td></tr>
+<tr><td>Operating income</td><td class="n">8,626</td><td class="n">8,997</td><td class="n">9,992</td><td class="n">13,762</td></tr>
+<tr><td>Operating margin</td><td class="n">20.6%</td><td class="n">27.3%</td><td class="n">21.2%</td><td class="n">28.7%</td></tr>
+<tr><td>Cash from operations</td><td class="n">8,796</td><td class="n">9,844</td><td class="n">6,805</td><td class="n">7,408</td></tr>
+<tr><td>Capital expenditure</td><td class="n">2,262</td><td class="n">1,177</td><td class="n">2,064</td><td class="n">2,112</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Where the cash went</h3>
+
+<div class="tw">
+<table>
+<caption>Cumulative uses of cash, FY2022–FY2025, $m. FY2021 is not covered by the filings in the evidence base, so the period is four years rather than five. Source: FY2024 and FY2025 Forms 10-K, cash flow statements.</caption>
+<thead><tr><th>Use of cash</th><th class="n">Cumulative</th><th>What it indicates</th></tr></thead>
+<tbody>
+<tr><td>Dividends paid</td><td class="n">32,706</td><td>The primary claim on cash, by a factor of four over any other use</td></tr>
+<tr><td>Capital expenditure</td><td class="n">7,512</td><td>About 4% of revenue — the franchise model's defining feature</td></tr>
+<tr><td>Share repurchases, gross</td><td class="n">6,248</td><td>Largely offsets stock compensation rather than reducing the count</td></tr>
+<tr><td>Acquisitions and investments</td><td class="n">911</td><td>No material bolt-on since BodyArmor in November 2021</td></tr>
+<tr><td>Debt repaid, gross</td><td class="n">24,464</td><td>Against $27,904m issued — refinancing, not deleveraging</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The ranking has been stable for years: the dividend comes first, capital expenditure is deliberately small, buybacks are residual, and acquisitions have essentially stopped. At $2.12 per share for 2026 — a 64th consecutive annual increase — the dividend absorbs roughly 68% of comparable earnings.</p>
+
+<div class="card">
+<h3 style="margin-top:0">The share count does not shrink</h3>
+<p>This is the finding most likely to differ from a reader's prior. Coca-Cola's shares outstanding were 4,288m at the end of FY2016 and 4,302m at the end of FY2025 — fourteen million <em>higher</em> after a decade of continuous repurchases. Gross buybacks are offset almost dollar for dollar by stock compensation issuance: $746m repurchased against $313m issued in FY2025, $1,795m against $747m in FY2024, and in FY2020 the company was a net issuer.</p>
+<p style="margin-bottom:0">Management now states the purpose without euphemism: "we expect to repurchase shares to offset dilution resulting from employee stock-based compensation plans." For an owner, per-share growth must come entirely from growth in earnings, with no arithmetic assistance from a shrinking denominator. Total return is dividend plus operating growth, and nothing else.</p>
+</div>
+
+<h3>The two acquisitions that mattered</h3>
+
+<p>fairlife and BodyArmor were bought within two years of each other and produced opposite results. Coca-Cola acquired the remaining 57.5% of fairlife in January 2020 for $979m in cash, booking an initial contingent-consideration liability of $270m against an uncapped earnout. The brand outperformed so far beyond the model that the liability was remeasured upward every year — $1,702m of charges in 2023, $3,109m in 2024 — and settled at $6,173m, paid in March 2025. The company paid roughly six billion dollars more than it expected, because the asset was worth it.</p>
+
+<p>BodyArmor went the other way. Coca-Cola paid $5.6bn for the remaining 85% in November 2021, allocating $4.2bn to the trademark, then impaired it by $760m in 2024 citing operating results "lower than expected," and by a further $960m in 2025 — $1.72bn of the original allocation written off within four years. Together the two outcomes suggest a brand-building machine that works better on products the company develops or nurtures than on positions it buys into an already-contested category.</p>
+
+<h3>Cash-flow distortions, and what post-dates the filings</h3>
+
+<p>Reported free cash flow is uninterpretable in these two years without adjustment. The company paid $6.0bn to the IRS in September 2024 as a litigation deposit, and $6.1bn of the fairlife earnout ran through operating cash flow in March 2025. Reported free cash flow was $5.3bn in FY2025; excluding the fairlife payment the company put it at $11.4bn. Guidance for FY2026 is approximately $12.4bn — about $14.6bn of operating cash flow less about $2.2bn of capital expenditure. Underlying cash generation moved far less than the reported line did.</p>
+
+<p>Two transactions are pending rather than done. In October 2025 the company agreed to sell 41.52 percentage points of its 66.52% interest in Coca-Cola Beverages Africa to Coca-Cola HBC at a valuation of $3.4bn for 100% of the equity, retaining 25% with a six-year option for HBC to acquire the remainder; closing is expected by the end of 2026 subject to regulatory approval, and a $1,274m charge has already been recorded on reclassification to held for sale. In June 2026 the company said it was exploring a public listing of Hindustan Coca-Cola Holdings, its largest India bottler, targeted for 2027 — exploratory, with no stake size or value disclosed. Both continue the refranchising logic that has run since 2014. Separately, Henrique Braun succeeded James Quincey as chief executive on 31 March 2026, with Quincey becoming executive chairman; the transition is too recent for a capital-allocation record to exist.</p>
+
+<h2>5 · Cyclicality, constraints and what to monitor</h2>
+
+<p>Coca-Cola is about as close to non-cyclical as a consumer business gets, and the record contains one clean test. In FY2020, with restaurants, stadiums and cinemas closed across most of the world, net operating revenues fell 11% — from $37,266m to $33,014m — and operating margin held at 27.3%. Revenue exceeded the prior peak within two years. A demand shock of that severity producing an eleven-percent revenue decline and no margin damage is better evidence on cyclicality than any qualitative claim in the filings. The mechanism is channel mix and asset ownership: away-from-home consumption collapsed, at-home partly replaced it, and the fixed costs of manufacturing and delivery sat on the bottlers' income statements.</p>
+
+<p><strong>Where the business sits now.</strong> FY2025 was closer to a trough than a peak on volume and closer to a peak on margin. Worldwide unit case volume was flat; North America fell 1% and Mexico 4%; the company noted that certain markets "experienced high rates of inflation throughout 2025, which may continue in 2026." Comparable operating margin of 31.2% was the highest in the ten-year record. The first half of 2026 shows a broad volume recovery — unit case volume up 5% in the second quarter, North America back to +3%, Mexico from −4% to flat, Asia Pacific +8%, India +13% — but the six extra shipping days in the first quarter inflate the half-year figure, and currency swung from a two-point headwind to a two-point tailwind. The recovery appears real; its printed magnitude does not.</p>
+
+<p><strong>Input costs, and who actually pays them.</strong> The US Section 232 tariff on aluminium rose to 50% effective 4 June 2025, and LME aluminium traded around $3,292.50 per tonne on 4 September 2026, 26.3% higher than a year earlier; sugar futures were roughly 16% higher year on year. Those costs land on the bottlers' income statements, not Coca-Cola's, except inside the shrinking Bottling Investments segment — and because concentrate is priced on an incidence basis that moves with the bottler's realised price, a bottler raising prices to recover aluminium inflation increases Coca-Cola's concentrate revenue at the same time. Coca-Cola participates in the price increase without funding the cost that caused it. The second-order risk — bottler margin compression eventually starving route investment — is real, and sits in the next section.</p>
+
+<div class="two">
+  <div class="col dur">
+    <h4>Likely intact in ten years</h4>
+    <ul>
+      <li>Trademark portfolio and 2.2bn daily servings</li>
+      <li>Incidence pricing linking concentrate revenue to bottler price</li>
+      <li>Exclusive bottler territories and route density</li>
+      <li>Advertising scale of roughly $5.4bn a year</li>
+      <li>Emerging-market per-capita consumption headroom</li>
+    </ul>
+  </div>
+  <div class="col bor">
+    <h4>Currently helping, and will stop</h4>
+    <ul>
+      <li>Currency: a two-point revenue tailwind in H1 2026 after a two-point headwind in FY2025</li>
+      <li>The six extra shipping days in Q1 2026</li>
+      <li>The FY2024 comparison base, depressed by $3.1bn of fairlife remeasurement</li>
+      <li>Latin American price/mix of +11%, driven by inflation pass-through</li>
+      <li>Interest income on the $6.0bn IRS deposit — $217m in 2025 — and divestiture gains including $1,952m on Coca-Cola Consolidated</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tw">
+<table>
+<caption>Leading indicators, and where each is published.</caption>
+<thead><tr><th>What to watch</th><th>Where it is published</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>Price/mix versus concentrate volume split</td><td>KO quarterly earnings release</td><td>Price/mix carrying more than three of every four points of organic growth means the volume engine has stalled</td></tr>
+<tr><td>North America unit case volume</td><td>KO quarterly earnings release</td><td>Largest revenue segment; price/mix cannot mask a volume problem there for long</td></tr>
+<tr><td>Concentrate volume versus unit case volume gap</td><td>Form 10-Q, MD&amp;A</td><td>Concentrate persistently ahead of unit cases means bottlers are building inventory, which reverses</td></tr>
+<tr><td>Bottler operating margins</td><td>Results releases of Coca-Cola FEMSA, CCEP, Coca-Cola Consolidated</td><td>Sustained compression is the leading indicator for pressure on concentrate pricing</td></tr>
+<tr><td>Eleventh Circuit ruling</td><td>Docket, <em>Coca-Cola v. Commissioner</em> No. 24-13470; tax note in each 10-Q</td><td>Determines whether the disputed methodology raises the tax rate permanently</td></tr>
+<tr><td>Advertising expense as % of revenue</td><td>Form 10-K, selling and administrative note</td><td>A sustained fall is the clearest early sign of the moat being harvested rather than maintained</td></tr>
+<tr><td>Shares outstanding</td><td>Form 10-Q cover page, against the cash flow statement</td><td>Confirms whether buybacks are reducing the count or only offsetting compensation</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>6 · Risks, unknowns and questions for deeper work</h2>
+
+<p>These are the risks cyclicality does not capture, ordered by how much they compound rather than by likelihood.</p>
+
+<ul class="body">
+<li><strong>The IRS transfer-pricing dispute is a recurring tax-rate risk, not a one-off payment.</strong> The Tax Court entered a decision in August 2024 requiring $2.7bn of additional federal income tax for 2007–2009, and Coca-Cola paid $6.0bn including interest in September 2024 while appealing. The company discloses that the potential aggregate remaining incremental tax and interest liability for 2010 through 2025 "could be approximately $14 billion" as of 31 December 2025, against a reserve of $512m. The mechanism that matters is prospective: the disputed methodology reallocates income from foreign licensees to the US parent, so an adverse ruling would raise the effective tax rate permanently, not merely trigger a settlement. Oral argument was heard by the Eleventh Circuit on 25 June 2026; no ruling had issued as of early September 2026.</li>
+<li><strong>Bottler concentration transmits through three channels at once.</strong> Five bottlers carry 44% of worldwide unit case volume and one alone represents 10% of net operating revenues. Distress at a major bottler would reduce concentrate revenue, reduce equity income and potentially force impairment of the equity-method investment simultaneously. The company also notes that rating agencies "consider financial information of certain of our major bottling partners" in assessing Coca-Cola itself, so a bottler credit event raises Coca-Cola's own borrowing cost. The same counterparties negotiate incidence pricing — meaning the pricing mechanism and the largest credit exposure are the same set of relationships.</li>
+<li><strong>Packaging regulation cannot be reformulated away, unlike sugar.</strong> Extended producer responsibility rules, deposit return schemes and restrictions on plastic formats act on the container and the distribution model rather than the liquid; the company frames the mechanism as one that "could affect our costs or require changes in our distribution model." A sugar tax can be answered by reformulating to zero sugar, a capability built over a decade. A mandated reuse or deposit system changes the economics of the route network itself — precisely the asset the moat rests on. Quantified compliance costs were <span class="unk">not found</span> in any primary source reviewed.</li>
+<li><strong>Portfolio concentration exceeds the "total beverage company" framing.</strong> Sparkling soft drinks are 69% of worldwide unit case volume and Trademark Coca-Cola alone 47% — proportions unchanged in two years. Any structural break in carbonated consumption hits close to half the volume base immediately, and the categories meant to replace it are where the acquisition record is weakest.</li>
+<li><strong>Acquisition execution in growth categories is unproven.</strong> BodyArmor cost $5.6bn in 2021 and $1.72bn of its trademark value has been impaired since. If organic volume growth in developed markets stays near zero, the company must buy its way into adjacent categories — and this is the evidence available on how well it does that.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+
+<ul class="body">
+<li><strong>The proportion of the portfolio that is low- or no-calorie.</strong> The company markets "numerous low- and no-calorie products" but discloses no percentage in any filing reviewed — a striking omission given that sugar regulation is the most-cited threat to the category.</li>
+<li><strong>An independent series for global or US carbonated soft drink volume.</strong> Government and trade-association sources do not publish one, and the quantified series sit behind proprietary market-research paywalls. The direction of the core category could not be verified outside the company's own disclosures.</li>
+<li><strong>Competitor advertising spend.</strong> PepsiCo's and Keurig Dr Pepper's FY2025 advertising line items were not located in their primary filings, so the claim that $5.4bn constitutes a scale barrier is directionally reasonable but unverified.</li>
+<li><strong>Any measured effect of GLP-1 medication on carbonated beverage purchase volumes.</strong> Projections exist; measured purchase data comparing users to non-users does not, in any primary source reviewed.</li>
+<li><strong>The underlying demand trend in H1 2026</strong>, stripped of the six-day calendar effect and the currency tailwind. The company discloses both effects but does not isolate the residual.</li>
+<li><strong>The water use ratio.</strong> Water scarcity is named as a risk, but no litres-per-litre efficiency figure appears in any of the four 10-Ks examined.</li>
+<li><strong>Deal economics for the pending Africa disposal</strong> beyond the $3.4bn headline valuation, and any terms at all for the exploratory India listing. Research and development expense is likewise never broken out.</li>
+</ul>
+
+<h2>7 · Investor takeaways</h2>
+
+<ul class="body">
+<li><strong>This is a trademark and pricing business wrapped around someone else's distribution network.</strong> It sells concentrate to bottlers who must buy exclusively from it, and lets those bottlers carry the trucks, plants and coolers — which is why it earns roughly 31% operating margins while they earn 13% to 15%.</li>
+<li><strong>The economic engine is the unit case sold through a franchised bottler:</strong> about $0.98 of revenue and $0.53 of segment operating profit, against $3.88 and $0.08 where the company owns the bottling itself. Ten years of divestitures are that arithmetic being acted on.</li>
+<li><strong>Growth comes from price and mix rather than volume</strong> — four points against one in FY2025 — with the volume that does exist concentrated in the emerging markets that generate the least revenue per case.</li>
+<li><strong>The story breaks</strong> if bottlers stop being able to fund their route networks, if the Eleventh Circuit affirms a transfer-pricing methodology that permanently raises the tax rate, or if packaging regulation forces a distribution model the franchise system was not built for.</li>
+<li><strong>Watch</strong> the price/mix-versus-volume split each quarter, North America unit case volume, and the share count — which has not fallen in a decade, so per-share growth must come entirely from the business.</li>
+</ul>
+
+<div class="foot">
+<strong>Sources.</strong> The Coca-Cola Company Forms 10-K for FY2016 through FY2025 (the latter filed 20 February 2026) and Forms 10-Q through the quarter ended 3 July 2026, filed with the SEC. Company investor-relations releases: Q4/FY2025 results (10 February 2026), Q2 2026 results (28 July 2026), dividend increase (19 February 2026), Coca-Cola Beverages Africa agreement (21 October 2025), Hindustan Coca-Cola Holdings listing exploration (1 June 2026), CEO succession (10 December 2025 and 14 January 2026).<br><br>
+<strong>Peer and bottler filings.</strong> PepsiCo Q4/FY2025 earnings release; Keurig Dr Pepper Q4/FY2025 earnings release and press releases of 25 August 2025 and 1 April 2026; Coca-Cola Europacific Partners FY2025 results release; Coca-Cola FEMSA FY2025 results, Form 6-K; Coca-Cola Consolidated FY2025 results.<br><br>
+<strong>Independent sources.</strong> Health Affairs (2017) on the Mexican tax; interrupted time-series analysis 2017–2020 on the UK Soft Drinks Industry Levy; PLOS Medicine on Chile; Lancet Planetary Health via UNC Carolina Population Center on South Africa; White House fact sheet (June 2025) on Section 232 aluminium tariffs; LME aluminium and ICE sugar reference prices as at 4 September 2026.<br><br>
+<strong>Post-dating the filings.</strong> The Coca-Cola Beverages Africa disposal and the Hindustan Coca-Cola Holdings listing are announced but not closed. The Eleventh Circuit appeal in <em>Coca-Cola v. Commissioner</em> (No. 24-13470) was argued on 25 June 2026 and remained undecided as of early September 2026.<br><br>
+Figures marked <em>computed</em> are derived from filed line items. Items marked <em>not found</em> are gaps in the evidence, not judgements. This document explains how the business works; it is not a valuation and not a recommendation.
+</div>
+
+</div>
+</body>
+</html>

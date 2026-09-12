@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tencent — Bull & Bear Memo</title>
+<style>
+:root{--bg:#f7f6f2;--panel:#ffffff;--ink:#1c1e21;--muted:#6a6f76;--line:#e3e1da;--bull:#1f7a4d;--bull-bg:#e8f4ee;--bear:#b3362b;--bear-bg:#fbecea;--accent:#2f5fa7;--chip:#efeee9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141518;--panel:#1c1e22;--ink:#e8e6e1;--muted:#9aa0a6;--line:#2e3136;--bull:#5cc493;--bull-bg:#16271f;--bear:#ef7b70;--bear-bg:#2c1a19;--accent:#7fa8e6;--chip:#26292e}}
+:root[data-theme="dark"]{--bg:#141518;--panel:#1c1e22;--ink:#e8e6e1;--muted:#9aa0a6;--line:#2e3136;--bull:#5cc493;--bull-bg:#16271f;--bear:#ef7b70;--bear-bg:#2c1a19;--accent:#7fa8e6;--chip:#26292e}
+*{box-sizing:border-box}
+main,nav{min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding:32px 24px 80px}
+nav{position:sticky;top:24px;align-self:start}
+nav .brand{font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+nav a{display:block;padding:7px 12px;border-left:2px solid var(--line);color:var(--muted);text-decoration:none;font-size:14px}
+nav a.active{border-left-color:var(--accent);color:var(--ink);font-weight:600}
+nav a:hover{color:var(--ink)}
+h1{font-size:30px;line-height:1.2;margin:18px 0 4px}
+h2{font-size:21px;margin:0 0 14px}
+section{padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+.date{color:var(--muted);font-size:13px}
+.hdr{display:grid;grid-template-columns:170px 1fr;border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;font-size:13.5px}
+.hdr div{padding:9px 14px;border-bottom:1px solid var(--line)}
+.hdr div:nth-last-child(-n+2){border-bottom:0}
+.hdr .k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--chip)}
+.type{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--chip);font-weight:600;font-size:13px;margin-right:8px}
+.lede{font-size:16.5px;padding:14px 18px;border-radius:10px;margin:0 0 18px}
+.lede.bull{background:var(--bull-bg);border-left:4px solid var(--bull)}
+.lede.bear{background:var(--bear-bg);border-left:4px solid var(--bear)}
+details.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:10px 0;overflow:hidden}
+details.card>summary{cursor:pointer;list-style:none;padding:13px 16px;display:flex;gap:12px;align-items:baseline}
+details.card>summary::-webkit-details-marker{display:none}
+details.card>summary::after{content:"+";margin-left:auto;color:var(--muted);font-size:18px;line-height:1}
+details.card[open]>summary::after{content:"–"}
+.tag{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;padding:2px 7px;border-radius:5px;flex:none}
+.tag.a{background:var(--bull-bg);color:var(--bull)}
+.tag.b{background:var(--bear-bg);color:var(--bear)}
+.card .body{padding:0 16px 14px 16px}
+.card dl{margin:0;display:grid;grid-template-columns:150px 1fr;gap:8px 16px}
+.card dt{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-top:3px}
+.card dd{margin:0}
+.sev{font-size:12px;color:var(--muted);margin-left:6px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;align-items:center}
+.seg{display:inline-flex;flex-wrap:wrap;max-width:100%;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+.seg button{border:0;background:none;color:var(--muted);padding:7px 14px;font:inherit;font-size:13.5px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.pair .col{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.pair .col.bull{border-top:3px solid var(--bull)}
+.pair .col.bear{border-top:3px solid var(--bear)}
+.pair h4{margin:0 0 6px;font-size:15px}
+.pair p{margin:6px 0;font-size:14px}
+.pair .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.none{color:var(--muted);font-style:italic}
+.signals{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.sig{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.sig .name{font-weight:600;font-size:14px}
+.sig .val{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.3}
+.sig .dir{font-size:13.5px}
+.sig .src{font-size:12px;color:var(--muted)}
+.ties{display:flex;gap:6px;flex-wrap:wrap}
+.muted{color:var(--muted)}
+ol.bl{padding-left:20px}ol.bl li{margin:8px 0}
+details.src{border:1px solid var(--line);border-radius:8px;background:var(--panel);margin:8px 0}
+details.src summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:14px}
+details.src ul{margin:0;padding:0 14px 12px 32px;font-size:13.5px}
+details.src li{margin:4px 0;overflow-wrap:anywhere}
+.cite{font-size:.82em;color:var(--muted);white-space:nowrap}
+button.lnk{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;font-size:13px;padding:0}
+@media (max-width:820px){.wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:16px 16px 60px}
+ nav{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;overflow-x:auto;gap:4px;padding:8px 0;border-bottom:1px solid var(--line)}
+ nav .brand{display:none} nav a{border-left:0;border-bottom:2px solid transparent;white-space:nowrap;padding:6px 10px}
+ nav a.active{border-bottom-color:var(--accent)}
+ .hdr{grid-template-columns:1fr}.hdr .k{border-bottom:0;padding-bottom:2px}
+ .pair{grid-template-columns:1fr}.card dl{grid-template-columns:1fr;gap:2px}.card dt{padding-top:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav id="nav">
+ <div class="brand">Tencent · 0700.HK</div>
+ <a href="#s1">1 · Business in one line</a>
+ <a href="#s2">2 · Bull case</a>
+ <a href="#s3">3 · Bear case</a>
+ <a href="#s4">4 · Signals</a>
+ <a href="#s5">5 · External challenge</a>
+ <a href="#s6">6 · Bottom line</a>
+ <a href="#src">Sources</a>
+</nav>
+<main>
+ <div class="hdr" id="hdr"></div>
+ <h1 id="title"></h1>
+ <div class="date" id="date"></div>
+
+ <section id="s1"><h2>1. Business in one line</h2><div id="s1body"></div></section>
+
+ <section id="s2">
+  <h2>2. Bull case — Peter Lynch pitch</h2>
+  <div class="toolbar">
+   <div class="seg" role="group" aria-label="View">
+    <button data-view="cards" aria-pressed="true">Bull assumptions</button>
+    <button data-view="pair" aria-pressed="false">Bull vs bear, side by side</button>
+   </div>
+   <button class="lnk" id="expandAll">Expand all</button>
+  </div>
+  <p class="lede bull" id="bullOpen"></p>
+  <div id="bullCards"></div>
+  <div id="pairView" hidden></div>
+  <p id="bullMissing"></p>
+ </section>
+
+ <section id="s3">
+  <h2>3. Bear case — Munger invert</h2>
+  <p class="lede bear" id="bearOpen"></p>
+  <p class="muted" style="font-size:13.5px">Ordered by severity and permanence, not by the bull sequence.</p>
+  <div id="bearCards"></div>
+ </section>
+
+ <section id="s4">
+  <h2>4. Signals to monitor</h2>
+  <div class="toolbar"><div class="seg" role="group" aria-label="Filter signals" id="sigFilter"></div></div>
+  <div class="signals" id="signals"></div>
+ </section>
+
+ <section id="s5"><h2>5. External challenge notes</h2><p class="muted" id="ext"></p></section>
+
+ <section id="s6"><h2>6. Bottom line</h2><ol class="bl" id="bottom"></ol></section>
+
+ <section id="src" style="border-bottom:0"><h2>Sources</h2><div id="sources"></div></section>
+</main>
+</div>
+<script>
+const C = {"company":"Tencent Holdings","title":"Tencent — Bull & Bear Memo","date":"11 September 2026","header":[["company","Tencent Holdings Ltd (0700.HK; RMB counter 80700). IFRS, FY ends 31 Dec."],["sources used","Q2/H1 2026 results announcement; FY2025 results announcement and Annual Report; FY2022 results announcement; Q1 and Q2 2026 call transcripts (third-party: Quartr via stockanalysis.com — Tencent publishes none)."],["latest period","Q2 2026 (quarter ended 30 June 2026), reported 12 August 2026."],["missing or stale data","No segment operating profit; no cloud or AI revenue (cloud growth is verbal, from calls); Video Accounts ad load verbal only; no FinTech split; no numeric capex guidance. The new-AI-products loss is computed, not reported."]],"s1":{"line":"Tencent owns China's default communication layer — Weixin/WeChat, 1,439m combined MAU in Q2 2026 — and charges for the attention and transactions that flow through it four ways: games and digital content (VAS, 48% of Q2 revenue), advertising (Marketing Services, 21%), and payments, wealth, loans and cloud (FinTech & Business Services, 30%).","mechanism":"The graph is already paid for, so each new monetisation layer — Video Accounts ads, Mini Games, Mini Shops, Weixin Pay — lands at high incremental margin. That is why group gross margin rose from 43.1% (FY2022) to 56.2% (FY2025) and 58% in Q2 2026 while revenue grew only 14% and 11%.","type":"Stalwart","typeWhy":"RMB751.8bn revenue in FY2025, growing low-teens. The twist: a capital-heavy AI build in 2026, so the bear case lives in the capital cycle."},"bull":{"open":"The simple reason this stock could work is that the core franchise is compounding profit at close to 20% with expanding margins, and that growth is hidden under an AI build the core can fund by itself. Non-IFRS operating profit excluding new AI products rose 19% to RMB86.1bn in Q2 2026, at a 42% margin (+2.8pp). Reported non-IFRS operating profit grew only 9% because new AI products lost about RMB10.5bn in the quarter.","items":[{"id":"A1","title":"Advertising keeps compounding on under-monetised Weixin inventory","must":"Marketing Services keeps growing at high-teens or better for several years, driven by both price (eCPM) and volume (impressions), without gross margin eroding as AI depreciation rises.","why":"Ads close the loop inside Weixin: the click lands in a Mini Shop or Mini Game and is paid through Weixin Pay, so advertisers see the conversion and pay more per impression. Volume headroom is unusual too: management puts Video Accounts ad load at 4–5%, the lowest in the industry [Q1'26 call].","evidence":"Marketing Services +19% in FY2025 to RMB145.0bn, then +20% in Q1 and +22% in Q2 2026 to RMB43.6bn, with gross margin at 57% [H1'26 RA]. Video Accounts time spent rose more than 20% yoy in Q2 [H1'26 RA]. AIM+ handled about 30% of advertiser spend in Q1 [Q1'26 call].","monitor":"Marketing Services yoy growth and segment gross margin; any disclosed change in Video Accounts ad load."},{"id":"A2","title":"Domestic games stay a growing, high-margin annuity","must":"Evergreen titles hold their daily users and new hits keep arriving, with a rising share from internally developed games (which carry no royalty to third parties).","why":"No other Chinese publisher combines this many evergreens (Honour of Kings, Peacekeeper Elite, Delta Force, VALORANT) with distribution through Weixin and QQ. Mix drives margin: VAS gross margin rose from 60% to 64% yoy as internally developed games grew their share.","evidence":"Domestic Games +18% in FY2025 to RMB164.2bn and +17% in Q2 2026 to RMB47.3bn. Roco Kingdom: World ranked #1 by DAU and gross receipts among new mobile titles in China year-to-date [H1'26 RA].","monitor":"Domestic Games growth, VAS gross margin, and where new titles rank."},{"id":"A3","title":"The AI spend earns a return rather than just adding depreciation","must":"The capex (RMB84.7bn in H1 2026) turns into revenue: cloud accelerates as capacity arrives, WorkBuddy converts users to paid tokens, and better ad and game targeting shows up in the core. The new-AI-products loss stops widening after Hunyuan 4.","why":"Distribution model labs lack: Weixin, WeCom and Tencent Meeting already reach the enterprise buyers. The downside is partly hedged, because idle compute can be rented out through Tencent Cloud; management says recently ordered compute could be resold at more than a 30% profit, and cloud prices were raised in May [Q2'26 call].","evidence":"Cloud growth rose from high teens in Q1 to low 20s in Q2 (verbal) [Q2'26 call]. Hy3 is top-3 on OpenRouter by token consumption, and WorkBuddy is #1 in China by monthly interactions (Analysys) [H1'26 RA].","monitor":"The new-AI-products loss (core operating profit minus reported); cloud growth; depreciation versus gross profit growth."},{"id":"A4","title":"Capital allocation stays per-share disciplined through the build","must":"The core's cash, plus sales from the investment portfolio, fund the capex and a meaningful buyback at the same time, so share count keeps falling.","why":"Q2 free cash flow excluding compute prepayments was RMB37.6bn (Q1: RMB56.7bn). Behind that sits a reserve of listed stakes worth RMB487.2bn plus unlisted stakes carried at RMB387.9bn, which management is selling faster to sustain buybacks [H1'26 RA; Q1'26 call].","evidence":"Buybacks were HKD80.0bn in FY2025 [FY25 RA] and HKD24.4bn in H1 2026 [H1'26 RA]. The 2025 final dividend was HKD5.30/share (up from 4.50).","monitor":"Buyback pace versus capex, and whether buybacks are funded by operating cash flow or asset sales."}],"missing":"Why the market might be missing it: headline profit growth of 9% blends a core growing 19% with an AI start-up losing about RMB10bn a quarter, and Q2 free cash flow was negative. If the AI loss merely plateaus, reported growth converges up toward the core's."},"bear":{"open":"The most likely way I lose money is that Tencent stops being a capital-light compounder and becomes a capital-heavy AI utility. The core keeps growing, but a rising share of its cash goes into compute that earns China-cloud returns, and value per share stalls.","items":[{"id":"B1","attacks":["A4","A3"],"sev":"Permanent","title":"Capex is a new regime, not a temporary hump","fail":"Q2 capex was RMB52.8bn (+176% yoy), over RMB200bn annualised against RMB79.2bn for all of FY2025. Non-current prepayments jumped from RMB24.5bn to RMB91.2bn in six months, so more is already committed. The model race has no finish line (Hunyuan 4 this year, then 5), and management is choosing its own models and apps over renting compute out, so A3's rental hedge is a fallback it declines to use.","confirm":"Capex stays above about RMB40bn a quarter into 2027, while cloud growth stays around 20% and the new-AI loss keeps widening.","damage":"Q2 free cash flow was −RMB13.8bn and net cash fell from RMB146.9bn to RMB58.2bn in one quarter. Buybacks slowed to HKD24.4bn in H1 2026 (HKD80.0bn in FY2025), and management says 'potentially less' cash will go to them as capex rises [Q2'26 call]. If free-cash conversion stays lower, the per-share compounding that justifies a stalwart valuation is gone.","perm":"Permanent if the model race stays open-ended; fixable if capex steps down after the training peak and the prepaid compute turns into revenue."},{"id":"B2","attacks":["A3"],"sev":"Permanent","title":"AI returns land at China-cloud economics, not Weixin economics","fail":"Chinese tokens are cheap and cloud pricing has historically been harsh. WorkBuddy subsidises free users and runs several models (including DeepSeek), so Tencent may earn only an orchestrator's margin. Supply is fragile: capacity depends on China-designed ASICs arriving 'month by month' [Q1'26 call], and the Annual Report flags export controls.","confirm":"The new-AI loss, about RMB8.8bn in Q1 and RMB10.5bn in Q2 (computed), keeps widening after Hunyuan 4. Cloud growth fails to accelerate even though capex has roughly tripled. FinTech & Business Services gross margin slips below 52%.","damage":"Return on capital dilutes: PP&E depreciation was already up 57% yoy in Q2 (RMB9.6bn vs 6.1bn), and hundreds of billions of RMB would earn cloud-utility returns inside a group whose core earns a 42% operating margin.","perm":"Permanent if capacity is overbuilt at the top of the price cycle."},{"id":"B3","attacks":["A1"],"sev":"Permanent (unproven)","title":"Agents shorten the path the ad model monetises","fail":"Xiaowei, the agent inside Weixin, completes a task from one instruction, so each transaction yields fewer impressions and clicks while costing more compute. Phone-maker OS agents could also sit above Weixin. Analysts raised both on the Q1 and Q2 calls; management dismissed them without numbers.","confirm":"Marketing Services growth decelerates hard as Xiaowei rolls out broadly, especially if Video Accounts time spent is still rising at the same time.","damage":"It hits the highest-quality growth stream (57% gross margin) and becomes permanent if Weixin loses the gateway.","perm":"Permanent if it happens; nothing in the sources confirms it yet."},{"id":"B4","attacks":["A2"],"sev":"Fixable","title":"A games shock hits the cash engine at peak capex","fail":"Games depend on hits and regulators: every title needs approval, and foreign ownership of game operators is barred, hence the VIE structure [FY25 AR]. International already fell 0.8% in Q2 as two Supercell games declined.","confirm":"Domestic Games growth falls to single digits or below, and VAS gross margin falls back from 64%.","damage":"The last shock year, FY2022, saw revenue fall 1% (RMB554.6bn against RMB560.1bn) and gross margin trough at 43.1% [FY22 RA]. The same shock in 2026–27 would hit the business that funds the AI build.","perm":"Historically fixable; 2023–25 recovered. It becomes permanent only if monetisation caps become lasting."}]},"signals":[{"s":"New-AI-products operating loss (core non-IFRS OP − reported non-IFRS OP)","v":"≈RMB10.5bn Q2'26 (≈8.8bn Q1)","src":"H1'26 RA; Q1'26 call (computed)","dir":"Plateau or narrowing after Hunyuan 4 supports A3; widening confirms B2","ties":["A3","B2"]},{"s":"Capital expenditures","v":"RMB52.8bn Q2'26; RMB84.7bn H1 vs 79.2bn FY25","src":"H1'26 RA; FY25 RA","dir":"Step-down by 2027 means a hump (A4); >RMB40bn/qtr sustained means B1","ties":["A4","B1"]},{"s":"Free cash flow and net cash","v":"FCF −RMB13.8bn (37.6bn ex-prepayments); net cash RMB58.2bn","src":"H1'26 RA","dir":"Net cash turning to net debt confirms B1","ties":["B1","A4"]},{"s":"Non-current prepayments (committed compute)","v":"RMB91.2bn vs 24.5bn Dec'25","src":"H1'26 RA balance sheet","dir":"Further build-up means more committed capex ahead (B1)","ties":["B1"]},{"s":"Buybacks and their funding","v":"HKD24.4bn H1'26 vs HKD80.0bn FY25","src":"H1'26 RA; FY25 RA","dir":"Funded by operating cash, not portfolio sales, supports A4","ties":["A4","B1"]},{"s":"Marketing Services growth / gross margin","v":"+22% yoy; GM 57%","src":"H1'26 RA","dir":"≥ high-teens with stable GM supports A1; sharp slowdown during the Xiaowei rollout means B3","ties":["A1","B3"]},{"s":"Domestic Games growth / VAS gross margin","v":"+17% yoy; VAS GM 64%","src":"H1'26 RA","dir":"Single-digit growth or GM \u003c 60% means B4","ties":["A2","B4"]},{"s":"Cloud revenue growth","v":"Low-20s % Q2 (high-teens Q1)","src":"Q2'26 call (verbal only)","dir":"Acceleration as capacity lands supports A3; stuck ~20% despite 3× capex means B2","ties":["A3","B2"]}],"external":"Not run. This memo uses company sources only. Ask for an \"external challenge\" to add competitor, regulatory and short-seller views here.","bottom":["Tencent could work because its core franchise of Weixin advertising and internally developed games is growing operating profit about 19% with rising margins, and a still-unprofitable AI build is holding reported growth down to 9%.","For that to pay off, AI spending, now above RMB50bn of capex a quarter, has to peak and start earning returns through cloud, WorkBuddy tokens and better ad conversion, so the roughly RMB10bn quarterly AI loss stops widening.","The most important way the thesis breaks is that the capex becomes permanent: an open-ended model race funded by the core would turn a capital-light compounder into a capital-heavy AI utility earning China-cloud returns while buybacks shrink.","I would turn bearish if capex stays above about RMB40bn a quarter into 2027 while the AI loss widens and net cash keeps falling, and more bullish if the AI loss narrows while cloud growth accelerates as the prepaid compute arrives."],"sources":[{"group":"Results announcements (HKEX)","items":[["H1'26 RA","Announcement of results for the three and six months ended 30 June 2026 — sources/Earnings_Releases/FY2026_H1_Results_Announcement.pdf"],["FY25 RA","FY2025 full-year results announcement — sources/Earnings_Releases/FY2025_FullYear_Results_Announcement.pdf"],["FY22 RA","FY2022 full-year results announcement — sources/Earnings_Releases/FY2022_FullYear_Results_Announcement.pdf"]]},{"group":"Annual report","items":[["FY25 AR","Annual Report 2025 (risk factors; regulatory framework for online games) — sources/Annual_Reports/FY2025_Annual_Report.pdf"]]},{"group":"Call transcripts (third-party)","items":[["Q2'26 call","Q2 2026 results webinar, 12 Aug 2026 — Quartr via stockanalysis.com; not company-published"],["Q1'26 call","Q1 2026 results webinar, 13 May 2026 — Quartr via stockanalysis.com; not company-published"]]},{"group":"Computed figures (from the above)","items":[["New-AI loss","Non-IFRS OP ex new AI products minus reported non-IFRS OP: Q2 86.1 − 75.6 = 10.5; Q1 84.4 − 75.6 = 8.8 (RMB bn)"],["Gross margin","FY2022 238.7 / 554.6 = 43.1%; FY2025 422.6 / 751.8 = 56.2%"]]}]};
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const cite = s => esc(s).replace(/\[([^\]]+)\]/g,'<span class="cite">[$1]</span>');
+$("#title").textContent = C.title; $("#date").textContent = C.date;
+$("#hdr").innerHTML = C.header.map(h=>`<div class="k">${h[0]}:</div><div>${cite(h[1])}</div>`).join("");
+$("#s1body").innerHTML = `<p style="font-size:16.5px">${cite(C.s1.line)}</p><p>${cite(C.s1.mechanism)}</p><p><span class="type">${C.s1.type}</span>${cite(C.s1.typeWhy)}</p>`;
+$("#bullOpen").innerHTML = cite(C.bull.open);
+$("#bullMissing").innerHTML = "<strong>Why the market might be missing it:</strong> " + cite(C.bull.missing.replace(/^Why the market might be missing it: /,""));
+$("#bearOpen").innerHTML = cite(C.bear.open);
+const tag = id => `<span class="tag ${id[0]==="A"?"a":"b"}">${id}</span>`;
+$("#bullCards").innerHTML = C.bull.items.map(a=>`<details class="card"><summary>${tag(a.id)}<strong>${esc(a.title)}</strong></summary><div class="body"><dl>
+ <dt>What must happen</dt><dd>${cite(a.must)}</dd><dt>Why this company</dt><dd>${cite(a.why)}</dd>
+ <dt>Evidence</dt><dd>${cite(a.evidence)}</dd><dt>Monitor</dt><dd>${cite(a.monitor)}</dd></dl></div></details>`).join("");
+$("#bearCards").innerHTML = C.bear.items.map(b=>`<details class="card"><summary>${tag(b.id)}<strong>${esc(b.title)}</strong><span class="sev">attacks ${b.attacks.join(", ")} · ${b.sev}</span></summary><div class="body"><dl>
+ <dt>How it could fail</dt><dd>${cite(b.fail)}</dd><dt>What confirms failure</dt><dd>${cite(b.confirm)}</dd>
+ <dt>Damage</dt><dd>${cite(b.damage)}</dd><dt>Permanent or fixable</dt><dd>${cite(b.perm)}</dd></dl></div></details>`).join("");
+$("#pairView").innerHTML = C.bull.items.map(a=>{
+  const atk = C.bear.items.filter(b=>b.attacks.includes(a.id));
+  const bear = atk.length ? atk.map(b=>`<h4>${tag(b.id)} ${esc(b.title)}</h4><p><span class="lbl">How it fails</span><br>${cite(b.fail)}</p><p><span class="lbl">Confirms failure</span><br>${cite(b.confirm)}</p><p class="muted" style="font-size:13px">${esc(b.sev)}</p>`).join("<hr style='border:0;border-top:1px solid var(--line)'>") : `<p class="none">No direct attack in the bear case.</p>`;
+  return `<div class="pair"><div class="col bull"><h4>${tag(a.id)} ${esc(a.title)}</h4><p><span class="lbl">What must happen</span><br>${cite(a.must)}</p><p><span class="lbl">Evidence</span><br>${cite(a.evidence)}</p></div><div class="col bear">${bear}</div></div>`;
+}).join("");
+document.querySelectorAll("#s2 .seg button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#s2 .seg button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  const pair = b.dataset.view==="pair";
+  $("#bullCards").hidden = pair; $("#pairView").hidden = !pair; $("#expandAll").hidden = pair;
+});
+let allOpen=false;
+$("#expandAll").onclick=()=>{allOpen=!allOpen;document.querySelectorAll("details.card").forEach(d=>d.open=allOpen);$("#expandAll").textContent=allOpen?"Collapse all":"Expand all";};
+const ids = ["All",...C.bull.items.map(a=>a.id),...C.bear.items.map(b=>b.id)];
+$("#sigFilter").innerHTML = ids.map((id,i)=>`<button data-f="${id}" aria-pressed="${i===0}">${id}</button>`).join("");
+function drawSignals(f){
+  $("#signals").innerHTML = C.signals.filter(s=>f==="All"||s.ties.includes(f)).map(s=>`<div class="sig"><div class="ties">${s.ties.map(tag).join("")}</div><div class="name">${esc(s.s)}</div><div class="val">${esc(s.v)}</div><div class="dir">${esc(s.dir)}</div><div class="src">${esc(s.src)}</div></div>`).join("") || `<p class="none">No signal tracks this item.</p>`;
+}
+drawSignals("All");
+document.querySelectorAll("#sigFilter button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#sigFilter button").forEach(x=>x.setAttribute("aria-pressed",x===b));drawSignals(b.dataset.f);});
+$("#ext").textContent = C.external;
+$("#bottom").innerHTML = C.bottom.map(s=>`<li>${cite(s)}</li>`).join("");
+$("#sources").innerHTML = C.sources.map((g,i)=>`<details class="src"${i===0?" open":""}><summary>${esc(g.group)} (${g.items.length})</summary><ul>${g.items.map(it=>`<li><strong>${esc(it[0])}</strong> — ${esc(it[1])}</li>`).join("")}</ul></details>`).join("");
+// scroll spy
+const links=[...document.querySelectorAll("nav a")];
+const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
+function spy(){let cur=secs[0];for(const s of secs){if(s.getBoundingClientRect().top<=120)cur=s;}
+ if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)cur=secs[secs.length-1];
+ links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+cur.id));}
+addEventListener("scroll",spy,{passive:true});spy();
+</script>
+</body>
+</html>
