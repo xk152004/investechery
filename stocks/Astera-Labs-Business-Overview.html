@@ -20,13 +20,12 @@ h1{font-size:38px;line-height:1.18;margin-bottom:10px}
 h2{font-size:27px;line-height:1.24;margin:52px 0 14px}
 h3{font-size:21px;line-height:1.3;margin:30px 0 8px}
 p{margin:0 0 16px}
-a{color:var(--terracotta)}
 .kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);
   font-weight:700;margin-bottom:12px}
 .srcline{color:var(--muted);font-size:15.5px;line-height:1.5;border-top:1px solid var(--line);
   padding-top:14px;margin-top:18px}
 .restate{font-family:Georgia,'Times New Roman',serif;font-size:23px;line-height:1.48;
-  border-left:5px solid var(--terracotta);padding:6px 0 6px 22px;margin:34px 0 40px;color:var(--ink)}
+  border-left:5px solid var(--terracotta);padding:6px 0 6px 22px;margin:34px 0 40px}
 .engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:34px 0}
 .engine .lbl{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
   color:#C9BFAF;font-weight:700;margin-bottom:10px}
@@ -55,7 +54,7 @@ a{color:var(--terracotta)}
 .pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0;
   font-family:Georgia,serif;font-size:20px;line-height:1.5}
 .pull .attr{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14.5px;
-  color:var(--muted);margin-top:10px;font-style:normal}
+  color:var(--muted);margin-top:10px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
 .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
 .card h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px;font-weight:700}
@@ -69,8 +68,7 @@ a{color:var(--terracotta)}
 .tw{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:10px;background:#fff}
 table{border-collapse:collapse;width:100%;font-size:16.5px}
 th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.42}
-th{background:var(--ink);color:var(--cream);font-weight:700;font-size:14.5px;
-  letter-spacing:.03em;border-bottom:none}
+th{background:var(--ink);color:var(--cream);font-weight:700;font-size:14.5px;border-bottom:none}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 tbody tr:last-child td{border-bottom:none}
 tbody tr:nth-child(even){background:#FCFAF6}
@@ -92,13 +90,15 @@ ul.plain li{margin-bottom:10px;line-height:1.5}
 
 <div class="wrap">
 
-<div class="kicker">Business Overview</div>
+<div class="kicker">Business Overview · Second edition</div>
 <h1>Astera Labs, Inc. — Nasdaq: ALAB</h1>
 <div class="srcline">
-6 September 2026 · Built from Astera Labs SEC filings — FY2025 Form 10-K (filed 20 February 2026),
+13 September 2026 · Built from Astera Labs SEC filings — FY2025 Form 10-K (filed 20 February 2026),
 FY2024 Form 10-K, Forms 10-Q through the quarter ended 30 June 2026, the 2026 proxy and material-event
-Forms 8-K — with industry structure and competitor economics taken from independent primary sources:
-PCI-SIG, the UALink Consortium, and the filings of Broadcom, Marvell, Credo, Rambus and Parade.
+Forms 8-K — together with <b>31 management transcripts</b>: all ten quarterly earnings calls since the
+IPO, twenty conference appearances through the Citi Global TMT Conference of 9 September 2026, and a
+technical webinar on UALink. Industry structure and competitor economics come from PCI-SIG, the UALink
+Consortium, and the filings of Broadcom, Marvell, Credo, Rambus and Parade.
 <b>This is not a valuation and not a recommendation.</b>
 </div>
 
@@ -110,28 +110,28 @@ interface standards.
 
 <div class="engine">
   <div class="lbl">The economic engine</div>
-  <div class="unit">One connectivity device — a retimer chip, a cable module, or a fabric switch —
-  shipped into one accelerator socket or rack link.</div>
-  <div class="earn">Each dollar of price carries roughly <b>73 to 76 cents of gross profit</b>, because
-  the customer is paying for analogue design content rather than for silicon area. Winning the socket
-  takes <b>up to two years</b> from design win to volume shipment; holding it lasts the life of the
-  platform. Neither unit volumes nor selling prices are disclosed, so dollar content per accelerator
-  cannot be computed from any primary source.</div>
+  <div class="unit">Dollar content per AI accelerator — taken from under $100 at the March 2024 IPO to
+  roughly $1,000 today.</div>
+  <div class="earn">Each dollar of price carries <b>73 to 76 cents of gross profit</b>, because the
+  customer is paying for analogue design content rather than silicon area. Winning the socket takes
+  <b>up to two years</b> from design win to volume; holding it lasts the life of the platform. The
+  content figure is <b>management's characterisation, not a reported metric</b> — no unit volume or
+  selling price is disclosed in any filing.</div>
 </div>
 
 <div class="kpis">
+  <div class="kpi"><div class="k">Content per accelerator</div><div class="v">~$1,000</div>
+    <div class="s">From under $100 at IPO; target "multiple thousands"</div></div>
   <div class="kpi"><div class="k">Q2 2026 revenue</div><div class="v">$392.4m</div>
-    <div class="s">+104% year-on-year, +27% sequentially</div></div>
+    <div class="s">+104% year-on-year; Q3 guided to $540–560m</div></div>
   <div class="kpi"><div class="k">Gross margin</div><div class="v">73.3%</div>
-    <div class="s">Post-IPO low; guided to ~72% for Q3</div></div>
+    <div class="s">Converging on the 70% long-term target</div></div>
   <div class="kpi"><div class="k">Non-GAAP op. margin</div><div class="v">39.1%</div>
     <div class="s">GAAP 22.7%; the gap is stock compensation</div></div>
   <div class="kpi"><div class="k">Net cash</div><div class="v">$1.25bn</div>
     <div class="s">Zero debt in every period reviewed</div></div>
-  <div class="kpi"><div class="k">Organic vs reported</div><div class="v">104% = 104%</div>
-    <div class="s">Acquisitions added capability, not revenue</div></div>
-  <div class="kpi"><div class="k">Cycle position</div><div class="v">Record</div>
-    <div class="s">Peak volume, margin at its own trough</div></div>
+  <div class="kpi"><div class="k">End-customer concentration</div><div class="v">86%</div>
+    <div class="s">Top three end customers, FY2025</div></div>
 </div>
 
 <h2>1. What the business is, in one paragraph</h2>
@@ -139,54 +139,107 @@ interface standards.
 package them, and the finished parts are sold against ordinary purchase orders to the contract
 manufacturers that build servers for hyperscalers. Revenue is recognised on shipment. There is no
 subscription, no royalty and no licence: engineering-services revenue, $3.2m in FY2024, fell to exactly
-zero in FY2025, leaving the revenue line entirely hardware. Three end customers provided approximately
-86% of FY2025 revenue.</p>
+zero in FY2025. Three end customers provided approximately 86% of FY2025 revenue.</p>
 
 <h2>2. What it actually does</h2>
 <p>Data moves between chips along copper traces, and the faster it moves the shorter the distance copper
 can carry it before the signal is unrecoverable. PCI-SIG doubles the PCIe interface speed roughly every
-three years — 32 GT/s at Gen5, 64 GT/s at Gen6, 128 GT/s at Gen7, whose specification was released on
-11 June 2025 — and the loss budget does not widen to compensate. Gen6 allows about 32 dB of channel
-loss against Gen5's 36 dB, because Gen6 packs two bits into each symbol using PAM4 signalling, which
-costs roughly 9 dB of signal-to-noise margin outright.</p>
-<p>The consequence is concrete. A signal that comfortably crossed a server motherboard two generations
-ago cannot reliably cross the same eighteen inches today. Something must sit in the middle of that path,
-receive the degraded signal, reconstruct it digitally and retransmit a clean copy. That part is a
-retimer, and it is the core of what Astera sells.</p>
-
-<h3>Four product families, one platform</h3>
-<p>The company reports as a single segment and publishes no revenue split between the four lines.</p>
-<ul class="plain">
-<li><b>Aries</b> — PCIe and CXL retimers and smart cable modules. The original product, and the source
-of record quarterly revenue in Q2 2026.</li>
-<li><b>Taurus</b> — Ethernet cable modules, the same physics problem applied to the network between
-servers and switches.</li>
-<li><b>Leo</b> — CXL memory controllers for expanding and pooling DRAM. Notably, Leo is the one family
-absent from the demand-driver sentence in both the FY2025 10-K and the Q2 2026 10-Q, which name only
-Aries, Scorpio and Taurus. The filings never say Leo is shrinking; they simply never cite it as a reason
-revenue grew.</li>
-<li><b>Scorpio</b> — fabric switches, in a P-Series for PCIe Gen 6.0 traffic and an X-Series for
-GPU-to-GPU clustering. The newest line and strategically the most consequential.</li>
-</ul>
-<p>Binding them together is COSMOS, embedded link- and fleet-management software that runs on the
-customer's own operating system. It is not separately priced, and no standalone COSMOS revenue appears
-in any filing. Its economic function is not to earn money but to make the hardware harder to remove: a
-hyperscaler that has built fleet diagnostics around Astera's telemetry has wired that dependency into
-its operations rather than merely into its bill of materials.</p>
+three years — 32 GT/s at Gen5, 64 GT/s at Gen6, 128 GT/s at Gen7, released 11 June 2025 — and the loss
+budget narrows rather than widens. Gen6 allows about 32 dB of channel loss against Gen5's 36 dB, because
+it packs two bits into each symbol using PAM4 signalling, which costs roughly 9 dB of signal-to-noise
+margin outright.</p>
 
 <div class="pull">
-"Total revenue increased $200.5 million, or 104% … primarily due to an increase in overall unit
-shipments driven by higher demand for our Aries, Scorpio, and Taurus products, as well as higher overall
-average selling prices resulting from an increased mix of hardware modules and Scorpio products."
-<div class="attr">Astera Labs, Form 10-Q for the quarter ended 30 June 2026. Both volume and price are
-rising. Neither is quantified anywhere in the filings.</div>
+"If you are gonna be running a sprint, you can run very fast for a hundred meters. But if somebody asks
+you to run a sprint over a marathon distance, that's not possible… So you put a retimer. What the
+retimer will do is to recover that signal, understand what the message is, and retransmit a completely
+fresh copy."
+<div class="attr">Jitendra Mohan, chief executive, Deutsche Bank Technology Conference, 29 August 2024</div>
 </div>
 
+<p>A retimer doubles or triples the usable reach of a link. A switch does something different — it
+routes traffic between many endpoints rather than repairing one link — which is why the two carry very
+different prices, and why the shift from one to the other is the central event in this company's
+economics.</p>
+
+<h3>The unit: dollar content per accelerator</h3>
+<p>The filings disclose neither unit volumes nor selling prices, so the economic unit cannot be built
+from them. Management supplies it on calls and at conferences, consistently enough to trace a path.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Period</th><th>Content per accelerator</th><th>What was added</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td class="rl">At IPO, March 2024</td><td>Under $100; "$50 to $100"</td><td>Aries retimers only</td><td>Barclays, Dec 2024; TD Cowen, May 2026</td></tr>
+<tr><td class="rl">Late 2024</td><td>"$100 to $150"</td><td>Taurus Ethernet modules</td><td>RBC conference, Nov 2025</td></tr>
+<tr><td class="rl">Mid 2025</td><td>"multiple hundreds of dollars"</td><td>Scorpio P-Series switches</td><td>Q2 2025 call, 5 Aug 2025</td></tr>
+<tr><td class="rl">Mid 2026</td><td>"beyond $1,000 per XPU"</td><td>Scorpio X-Series switches</td><td>Q1 2026 call, 5 May 2026</td></tr>
+<tr><td class="rl">Stated target</td><td>"multiple thousands of dollars"</td><td>Optical engines, UALink</td><td>Q2 2026 call, 4 Aug 2026</td></tr>
+</tbody></table></div>
+<p class="note">Roughly a tenfold increase in two and a half years, on a base of accelerator units that
+was itself growing. Two cautions: these are management characterisations, not audited disclosures, and
+no third party can verify them. And when an analyst extrapolated the trend to $10,000 within three to
+five years at the Evercore conference on 3 June 2026, the company declined to confirm it — a restraint
+worth noting, since it is otherwise the most promotable number the company has.</p>
+
+<div class="chart">
+<div class="ct">Revenue rises on two multiplying terms</div>
+<div class="cs">Accelerator units grow, and the dollars captured on each accelerator grow with them.
+The lower panel is why revenue has outrun hyperscaler unit growth — and why this is not simply a
+leveraged bet on accelerator volume.</div>
+<svg viewBox="0 0 820 470" width="100%" role="img" aria-label="Quarterly revenue with Q3 2026 guidance above, and the step-up in dollar content per accelerator below, from under 100 dollars at IPO to about 1000 dollars by mid 2026"><line x1="64" y1="216.0" x2="796" y2="216.0" stroke="#E5DDD0" stroke-width="1"/><text x="55" y="220.0" text-anchor="end" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">0</text><line x1="64" y1="152.7" x2="796" y2="152.7" stroke="#E5DDD0" stroke-width="1"/><text x="55" y="156.7" text-anchor="end" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">200</text><line x1="64" y1="89.3" x2="796" y2="89.3" stroke="#E5DDD0" stroke-width="1"/><text x="55" y="93.3" text-anchor="end" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">400</text><line x1="64" y1="26.0" x2="796" y2="26.0" stroke="#E5DDD0" stroke-width="1"/><text x="55" y="30.0" text-anchor="end" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">600</text><rect x="78.6" y="195.3" width="37.3" height="20.7" fill="#C75B39"  rx="2"/><text x="97.3" y="189.3" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">65</text><rect x="145.2" y="191.6" width="37.3" height="24.4" fill="#C75B39"  rx="2"/><text x="163.8" y="185.6" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">77</text><rect x="211.7" y="180.2" width="37.3" height="35.8" fill="#C75B39"  rx="2"/><text x="230.4" y="174.2" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">113</text><rect x="278.3" y="171.3" width="37.3" height="44.7" fill="#C75B39"  rx="2"/><text x="296.9" y="165.3" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">141</text><rect x="344.8" y="165.5" width="37.3" height="50.5" fill="#C75B39"  rx="2"/><text x="363.5" y="159.5" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">159</text><rect x="411.4" y="155.2" width="37.3" height="60.8" fill="#C75B39"  rx="2"/><text x="430.0" y="149.2" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">192</text><rect x="477.9" y="143.0" width="37.3" height="73.0" fill="#C75B39"  rx="2"/><text x="496.5" y="137.0" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">231</text><rect x="544.5" y="130.3" width="37.3" height="85.7" fill="#C75B39"  rx="2"/><text x="563.1" y="124.3" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">271</text><rect x="611.0" y="118.3" width="37.3" height="97.7" fill="#C75B39"  rx="2"/><text x="629.6" y="112.3" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">308</text><rect x="677.5" y="91.7" width="37.3" height="124.3" fill="#C75B39"  rx="2"/><text x="696.2" y="85.7" text-anchor="middle" font-size="11" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">392</text><rect x="744.1" y="41.8" width="37.3" height="174.2" fill="none" stroke="#C75B39" stroke-width="1.6" stroke-dasharray="4 3" rx="2"/><text x="762.7" y="35.8" text-anchor="middle" font-size="11" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">550</text><line x1="64" y1="216" x2="796" y2="216" stroke="#2B2B2B" stroke-width="1.2"/><text x="64" y="17" font-size="12.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="700">Quarterly revenue, $m</text><text x="762.7" y="231.0" text-anchor="middle" font-size="10.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" font-style="italic">guided</text><line x1="64" y1="396.0" x2="796" y2="396.0" stroke="#E5DDD0" stroke-width="1"/><text x="55" y="400.0" text-anchor="end" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">$0</text><line x1="64" y1="340.3" x2="796" y2="340.3" stroke="#E5DDD0" stroke-width="1"/><text x="55" y="344.3" text-anchor="end" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">$500</text><line x1="64" y1="284.7" x2="796" y2="284.7" stroke="#E5DDD0" stroke-width="1"/><text x="55" y="288.7" text-anchor="end" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">$1000</text><path d="M97.3,387.7 L296.9,387.7 L296.9,382.1 L430.0,382.1 L430.0,351.5 L696.2,351.5 L696.2,284.7 L762.7,284.7" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"/><circle cx="97.3" cy="387.7" r="4" fill="#3C6E8F"/><text x="106.3" y="365.7" text-anchor="start" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" font-weight="700" style="font-variant-numeric:tabular-nums"><$100</text><text x="106.3" y="378.7" text-anchor="start" font-size="10.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Aries only</text><circle cx="296.9" cy="382.1" r="4" fill="#3C6E8F"/><text x="305.9" y="360.1" text-anchor="start" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" font-weight="700" style="font-variant-numeric:tabular-nums">$100–150</text><text x="305.9" y="373.1" text-anchor="start" font-size="10.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">+ Taurus</text><circle cx="430.0" cy="351.5" r="4" fill="#3C6E8F"/><text x="439.0" y="329.5" text-anchor="start" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" font-weight="700" style="font-variant-numeric:tabular-nums">multiple hundreds</text><text x="439.0" y="342.5" text-anchor="start" font-size="10.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">+ Scorpio P</text><circle cx="696.2" cy="284.7" r="4" fill="#3C6E8F"/><text x="687.2" y="262.7" text-anchor="end" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" font-weight="700" style="font-variant-numeric:tabular-nums">~$1,000</text><text x="687.2" y="275.7" text-anchor="end" font-size="10.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">+ Scorpio X</text><line x1="64" y1="396" x2="796" y2="396" stroke="#2B2B2B" stroke-width="1.2"/><text x="64" y="259" font-size="12.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="700">Dollar content per accelerator — management's own characterisation</text><text x="97.3" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 24</text><text x="163.8" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 24</text><text x="230.4" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 24</text><text x="296.9" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 24</text><text x="363.5" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 25</text><text x="430.0" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 25</text><text x="496.5" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 25</text><text x="563.1" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 25</text><text x="629.6" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 26</text><text x="696.2" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 26</text><text x="762.7" y="414.0" text-anchor="middle" font-size="11" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 26E</text></svg>
+</div>
+
+<h3>Four product families, and the one that is taking over</h3>
+<p>The company reports as a single segment and publishes no revenue split by line, but management gives
+enough to see the shape. <b>Aries</b>, the PCIe and CXL retimer family, was still the largest line in
+Q2 2026 and set a record that quarter. <b>Taurus</b> sells Ethernet cable modules. <b>Scorpio</b>, the
+fabric-switch family launched in late 2024, exceeded 10% of revenue within nine months, finished 2025
+above 15% with a Q4 exit rate near 20%, and was guided on 4 August 2026 to become the largest family in
+Q3 2026 — a quarter earlier than management had said three months before. Within Scorpio, the X-Series
+for accelerator-to-accelerator traffic is overtaking the P-Series. PCIe Gen6 products went from over 20%
+of revenue in Q3 2025 to over a third in Q1 2026 to more than half in Q2 2026.</p>
+<p><b>Leo</b>, the CXL memory-controller family, is the exception, and section 7 treats its history as
+evidence in its own right.</p>
+
+<h3>COSMOS: what the software actually does</h3>
+<p>The filings describe COSMOS as embedded link- and fleet-management software and leave it there. The
+transcripts explain why it matters. The software reads physical sensors for temperature and voltage,
+electrical sensors for connector integrity, and protocol sensors for retry rates, then exposes that
+telemetry to the cloud operator. Its most valuable function is prediction.</p>
+
+<div class="pull">
+"We can pinpoint and say, in connector number 91, pin number six, it looks like the pin may be bent. If
+a problem hasn't quite happened, but it's predicted to happen, let's say, 21 days from now, so we're
+able to model that and provide telemetry."
+<div class="attr">Sanjay Gajendra, president and COO, Morgan Stanley Conference, 5 March 2025</div>
+</div>
+
+<p>The value sits in what a failure costs. In a 64-accelerator cluster all the parts behave as one
+machine, so a single failed link halts the entire training job, and management puts the restart cost at
+roughly 45 minutes each time. The company also states that only about 69% of AI servers work correctly
+on first bring-up. Diagnostics that shorten bring-up and predict failures before they stop a job are
+worth more than the silicon they run on — and they are wired into the customer's operations rather than
+its bill of materials. Management's framing is that even giving the chip away would not dislodge them:
+"If we take our chip and we white-label it and give it to somebody else, they still will not be able to
+displace us because of this strong software component." That is a claim rather than a demonstrated
+fact, but a specific and testable one.</p>
+
+<h3>Who actually pays</h3>
+<p>Three end customers accounted for approximately 86% of FY2025 revenue. The concentration table in the
+10-K looks milder — five customers above 10% against three in FY2024 — because those are contract
+manufacturers buying on the end customers' behalf, and volumes shift between them for reasons unrelated
+to demand. Management does not dispute the underlying picture: "it is a limited set of customers that
+truly matter… In some ways it's an occupational hazard."</p>
+<p>The transcripts identify far more than the filings. Amazon is named as the warrant counterparty and
+as having chosen Astera alongside NVIDIA for NVLink Fusion. AWS Trainium, AMD's MI450 and Helios racks,
+Microsoft Azure and Maia, Google's TPU and proprietary ICI fabric, Meta's MTIA, Qualcomm's AI200 and
+NVIDIA's Hopper, Blackwell and Vera Rubin platforms all appear as programmes Astera builds for or
+around. The lead Scorpio customer is never named. As of 9 September 2026 the company said it was
+"shipping to all of the U.S.-based hyperscalers."</p>
+
 <h2>3. Industry, competitive position and moat</h2>
-<p>The value chain runs from SerDes design IP, through fabless connectivity silicon, through foundry
-and packaging, through module assembly, through the ODMs that build the servers, to the hyperscaler.
-Profit concentrates at the ends nearest the intellectual property and thins toward assembly. Reported
-gross margins across the silicon layer make the pattern visible.</p>
+<p>Profit in this chain concentrates at the ends nearest the intellectual property and thins toward
+assembly. Reported gross margins across the silicon layer make the pattern visible.</p>
 
 <div class="tw"><table>
 <thead><tr><th>Company</th><th class="n">GAAP GM</th><th class="n">Non-GAAP GM</th><th>Business mix</th></tr></thead>
@@ -198,68 +251,85 @@ gross margins across the silicon layer make the pattern visible.</p>
 <tr><td class="rl">Marvell</td><td class="n">53.1%</td><td class="n">58.9%</td><td>Custom silicon, optics, networking</td></tr>
 <tr><td class="rl">Parade</td><td class="n">40.3%</td><td class="n">n/d</td><td>Redrivers, display and USB-C interface</td></tr>
 </tbody></table></div>
-<p class="note">Most recent reported period for each: Rambus Q2 2026 (27 Jul 2026); Astera Q2 2026
-(4 Aug 2026); Broadcom Q3 FY2026 (2 Sep 2026, company-wide); Credo Q1 FY2027 (quarter ended 1 Aug 2026);
-Marvell Q2 FY2027 (27 Aug 2026, company-wide); Parade Q1 2026 (22 Apr 2026). Broadcom and Marvell
+<p class="note">Most recent reported period for each: Rambus Q2 2026; Astera Q2 2026; Broadcom Q3 FY2026
+(company-wide); Credo Q1 FY2027; Marvell Q2 FY2027 (company-wide); Parade Q1 2026. Broadcom and Marvell
 figures are company-wide, not segment-specific.</p>
 
-<p>The ordering is not accidental. Rambus earns royalties on IP it does not manufacture. Parade sells
-redrivers and display parts where differentiation is thin. Astera sits near the top of the silicon layer
-because its parts carry high analogue design content relative to die area and pass little foundry cost
-through to the customer. Marvell and Broadcom sit lower partly because hyperscaler custom-silicon
-programmes are negotiated on cost-plus-like terms with foundry cost passed through — a structurally
-different business from selling a catalogue part. The reading is not that Astera is better run, but that
-it occupies a position where the customer pays for design rather than for silicon area.</p>
+<p>Rambus earns royalties on IP it does not manufacture. Parade sells redrivers and display parts where
+differentiation is thin. Astera sits near the top because its parts carry high analogue design content
+relative to die area and pass little foundry cost to the customer. Marvell and Broadcom sit lower partly
+because hyperscaler custom-silicon programmes are negotiated on cost-plus-like terms with foundry cost
+passed through — a structurally different business from selling a catalogue part.</p>
 
-<h3>The standards battle is the real structural question</h3>
-<p>Astera's addressable content depends on which fabric wins the job of connecting accelerators to each
-other. Three candidates are live. NVIDIA opened NVLink to third parties through NVLink Fusion, announced
-18 May 2025, naming Astera Labs, Marvell, MediaTek, Alchip, Synopsys and Cadence among its partners. The
-UALink Consortium — Alibaba, AMD, Apple, AWS, Cisco, Google, HPE, Intel, Meta, Microsoft and Astera
-itself — published its 1.0 specification in April 2025 and four further specifications on 7 April 2026.
-Broadcom has shipped Tomahawk Ultra, an Ethernet switch aimed at the same job.</p>
-<p>Astera is inside all three tents at once. That is the most important single fact about its
-competitive position, and it is a hedge rather than a moat: the company does not need to know which
-fabric wins, only that accelerators keep needing to be connected. What no primary source establishes is
-whether total connectivity content per accelerator rises, falls or merely changes shape as scale-up
-traffic migrates from PCIe to NVLink or Ethernet. PCIe retiming remains necessary for
-processor-to-accelerator, accelerator-to-network-card and accelerator-to-storage links whichever fabric
-wins, and lane counts are rising across all of them — but the direction of net dollar content is
-inference, not evidence, and it is the single question that most determines how large this business can
-become.</p>
+<h3>Why a socket is hard to take</h3>
+<p>The filings describe qualification as a risk to Astera; management describes it as a barrier against
+everyone else. Both are true, and the mechanism is the same.</p>
 
-<h3>Which barriers actually bind</h3>
-<p>Three are real. <b>Qualification</b>: the 10-K states it can take up to two years from design win to
-volume shipment, that customer qualification "may continue for several months or more," and that
-qualification "does not assure any sales." An incumbent with silicon already qualified holds the socket
-for the platform's life, and a challenger's win appears in revenue two years after it is made.
-<b>Standards-body incumbency</b>: seats in the PCI-SIG, CXL, UALink and NVLink Fusion working groups are
-how a vendor learns what the specification will require before it is published, and Astera holds them
-across every competing standard. <b>Scarcity of analogue talent</b>: Qualcomm chose to buy Alphawave
-Semi for roughly $2.4bn of enterprise value, announced 9 June 2025, rather than build equivalent
-capability — direct evidence from a company with the resources to do either.</p>
-<p>One asserted barrier does not bind. Nothing stops a hyperscaler designing its own retimer. No primary
-source found any such programme as of September 2026, but that is absence of evidence, not evidence of
-impossibility. Hyperscaler custom silicon has concentrated on accelerators and network cards, where the
-value per chip is far larger. The reason a retimer is unattractive to in-source is that it is a
-low-revenue, high-difficulty part requiring redesign every generation. The reason that could change is
-that the buyer is spending steadily more on it.</p>
-<p>Testing the company's own account: the claim of a differentiated platform is supported — no named
-competitor matches the same four categories plus software. Any claim of scale advantage is contradicted.
-Broadcom generated $16.7bn of AI semiconductor revenue in the quarter ended 2 August 2026 and guided to
-roughly $21.7bn for the next, against Astera's $392.4m, at a 68% non-GAAP operating margin. Credo, the
-closest comparable, grew 115% to $479.0m in the quarter ended 1 August 2026 with similar concentration.
-Two companies growing at a hundred per cent into the same customer set is evidence of a demand surge,
-not of a defended niche.</p>
+<div class="pull">
+"Somebody that we talked to from the investment community said that getting qualified at a hyperscaler
+is like getting an organ transplant. The body is actively trying to reject the foreign entity that you
+are trying to insert."
+<div class="attr">Jitendra Mohan, JPMorgan Conference, 21 May 2024</div>
+</div>
+
+<p>Three consequences follow. Incumbency compounds: "once a hyperscaler has figured out their
+connectivity infrastructure, they don't go back to tweak it and optimize it, not for a couple of
+dollars." Displacement requires foresight a challenger rarely has: "in order for somebody to deploy a
+new scale up, they have to have made that decision, like, two years ago." And revenue visibility is
+unusually long for a component vendor — next year's growth is "largely baked" twelve to eighteen months
+ahead, and current scale-up wins are expected to generate revenue into 2029.</p>
+<p>The strongest evidence on how hard this business is comes from the company's own history. Astera was
+not the first retimer vendor — it was <b>the fourth</b>. "We were not the first ones out of the gate…
+there were already three or four other companies… fortunately for us, we survived, all the other
+companies are gone." A market that eliminated three of four entrants is not one a well-funded competitor
+walks into casually.</p>
+
+<h3>The standards battle, and whether it helps or hurts</h3>
+<p>Three camps exist, and management's taxonomy is the clearest available: proprietary fabrics (NVIDIA's
+NVLink, Google's ICI), memory-semantic standards (PCIe and UALink), and Ethernet-based approaches
+(Broadcom's Tomahawk Ultra, the emerging ESUN work). The distinction separating the second from the
+third is real: memory semantics let an accelerator read another's memory with the same instruction it
+uses for its own, while Ethernet requires addressing and routing information attached to every request.
+Software stacks are tuned to one or the other, which is why customers stay in their lane.</p>
+<p>Astera sits in all three camps — a UALink board member, having by its own account replaced Broadcom
+on that board; a named NVLink Fusion partner alongside Amazon; a PCIe incumbent; and willing to build
+Ethernet scale-up silicon where customers ask. Management's position is that no protocol transition
+reduces its content and most increase it, because moving from a retimer role to a switch role multiplies
+the dollars: "when you have a scale-up protocol that we do support, then our content really does
+explode."</p>
+<p><b>That claim deserves scrutiny, and the best evidence against it comes from management itself.</b>
+Asked about NVLink Fusion at Citi on 9 September 2026, the chief executive said of one customer that
+"the total revenue opportunity on a per rack basis is about the same given the differences in attach
+rate and ASP. Maybe it is a wash." Separately, when NVIDIA moved from the eight-accelerator Hopper board
+to the two-accelerator Blackwell board — roughly a quarter of the area — Aries content per board fell
+outright; management states total content still rose because sockets migrated to networking and storage
+and because hyperscalers customised the reference design. The honest reading: content per accelerator
+has risen strongly in aggregate, individual product lines can lose content to an architecture change,
+and at least one major protocol shift is neutral rather than accretive.</p>
+
+<h3>Competitors, and what management concedes</h3>
+<p>The 10-K names Broadcom, Credo, Marvell, Microchip, Montage, Parade and Rambus as competitors.
+Management never names any of them on an earnings call — a consistent discipline across all ten — but
+speaks freely at conferences. Broadcom is the incumbent whose Gen5 PCIe switches Astera displaced. Credo
+builds complete cables where Astera supplies only the module. Marvell's acquisitions of Celestial AI and
+XConn are acknowledged as direct moves into optics and PCIe/UALink switching.</p>
+<p>Two claims are worth recording because they are falsifiable: management said in January 2025 that
+"we don't see anybody else with a viable Gen 6 product yet," and in November 2025 that "nobody else is
+shipping anything in volume today." A competitor shipping Gen6 retimers in volume would be the clearest
+single signal that the position is eroding.</p>
+<p>Scale contradicts any claim of dominance. Broadcom generated $16.7bn of AI semiconductor revenue in
+the quarter ended 2 August 2026 and guided to roughly $21.7bn for the next, at a 68% non-GAAP operating
+margin, against Astera's $392.4m. Credo grew 115% to $479.0m in the quarter ended 1 August 2026. Two
+companies growing at a hundred per cent into the same customer set is evidence of a demand surge, not of
+a defended niche — and management does not pretend otherwise: "the competition will come, and we welcome
+that. There is a lot of demand. It is not a zero-sum game."</p>
 
 <h2>4. Growth engine</h2>
-<p>Astera has made three acquisitions: aiXscale Photonics for $31.1m (10 Nov 2025, $16.9m to goodwill
-and $14.5m to in-process R&amp;D), an unnamed data-centre acceleration company for $74.0m (9 Feb 2026,
-$68.4m to goodwill for "expected synergies and assembled workforce"), and a third on 29 May 2026 that
-was itself immaterial. None contributed material revenue, and the purchase-price allocations confirm it:
-essentially all consideration landed in goodwill and IPR&amp;D rather than in acquired revenue-generating
-assets. <b>Reported growth is therefore organic growth</b> — the headline rate describes the business as
-it stands, not a series of purchases.</p>
+<p>Astera has made three acquisitions — aiXscale Photonics for $31.1m (Nov 2025), an unnamed data-centre
+acceleration company for $74.0m (Feb 2026, $68.4m to goodwill for "expected synergies and assembled
+workforce"), and an immaterial third (May 2026). None contributed material revenue; the purchase-price
+allocations put essentially everything into goodwill and IPR&amp;D. <b>Reported growth is organic
+growth.</b></p>
 
 <div class="tw"><table>
 <thead><tr><th></th><th class="n">FY2023</th><th class="n">FY2024</th><th class="n">FY2025</th><th class="n">H1 2026</th></tr></thead>
@@ -269,56 +339,56 @@ it stands, not a series of purchases.</p>
 <tr><td class="rl">Acquired revenue</td><td class="n">none</td><td class="n">none</td><td class="n">immaterial</td><td class="n">immaterial</td></tr>
 <tr><td class="rl">Organic growth</td><td class="n">45%</td><td class="n">242%</td><td class="n">~115%</td><td class="n">~99%</td></tr>
 </tbody></table></div>
-<p class="note">Organic growth is inferred from the immateriality of acquired revenue disclosed in the
-business-combination footnotes; the company publishes no organic growth figure.</p>
 
 <h3>The drivers, ranked</h3>
 
 <div class="lever structural"><div class="tag">Structural</div>
-<div class="t">Accelerator unit growth at three end customers</div>
-<p>Every part ships because an accelerator shipped. All four hyperscalers raised or held aggressive
-capital spending through mid-2026: Microsoft spent $115.9bn in the year to June 2026 against $64.6bn the
-year before; Meta guided to $130–145bn for 2026; Alphabet raised 2026 guidance to roughly $195–205bn.
-The largest driver, and the one Astera controls least.</p></div>
+<div class="t">Content per accelerator — the move from repairing links to routing them</div>
+<p>A retimer repairs one link; a switch routes traffic for a whole rack and carries many times the
+price. Scorpio took the company from "multiple hundreds" to roughly $1,000 per accelerator. Management
+adds that switch pricing does not commoditise as clusters scale: "contrary to popular belief that price
+per lane goes down, it actually goes up with radix."</p></div>
+
+<div class="lever structural"><div class="tag">Structural · outside the company's control</div>
+<div class="t">Accelerator unit growth at a handful of hyperscalers</div>
+<p>Microsoft spent $115.9bn in the year to June 2026 against $64.6bn the year before; Meta guided to
+$130–145bn for 2026; Alphabet raised 2026 guidance to roughly $195–205bn. Management cites industry
+forecasts of hyperscaler spending "reaching into the trillion-dollar range" in 2027.</p></div>
 
 <div class="lever structural"><div class="tag">Structural</div>
-<div class="t">Content per accelerator rising as PCIe generations advance</div>
-<p>Each speed doubling shortens copper's usable reach while lane counts per accelerator rise,
-mechanically increasing how many retiming and conditioning devices a system needs. This is the driver
-that does not require unit counts to rise, and the reason the business is not simply a leveraged bet on
-accelerator volume.</p></div>
+<div class="t">The PCIe generation transition</div>
+<p>Each doubling shortens copper's reach while lane counts rise, and the Gen6 retimer carries a 20–25%
+ASP uplift over Gen5. Gen6 went from over 20% of revenue in Q3 2025 to more than half in Q2 2026.</p></div>
 
 <div class="lever mgmt"><div class="tag">Management-driven</div>
-<div class="t">Mix shift into Scorpio switches and hardware modules</div>
-<p>Management guided on 4 August 2026 that Scorpio would become the largest product family in Q3 2026,
-a quarter ahead of prior expectations. Modules and switches carry materially higher selling prices than
-bare integrated circuits, lifting revenue per socket — and lowering gross margin.</p></div>
-
-<div class="lever mgmt"><div class="tag">Management-driven · partly confirmed</div>
-<div class="t">Customer broadening</div>
-<p>Five customers of record exceeded 10% of revenue in FY2025 against three in FY2024. The Q2 2026 10-Q
-cautions that this partly reflects volume shifting between manufacturing partners rather than new end
-customers, and the 86% top-three end-customer figure suggests genuine broadening has been modest.</p></div>
+<div class="t">Scorpio X-Series ramping into scale-up sockets</div>
+<p>Engagements rose from "10+" through most of 2026 to "high teens" by 9 September 2026, with several
+expected to convert to design wins by year end. The caution: engagements are not orders — in November
+2025 management said "only a handful of those are actual design wins today."</p></div>
 
 <div class="lever"><div class="tag">Temporary · contributes nothing yet</div>
 <div class="t">Optical interconnect and custom silicon</div>
-<p>The CEO cited "expansion into optical interconnects and custom solutions" as expanding the
-opportunity "in 2027 and beyond." aiXscale supplies the photonics capability. No revenue is attributed
-to either today.</p></div>
+<p>Component-level connector sales from aiXscale are expected to be the first optical revenue in 2027,
+near-packaged optics in the second half of 2027, co-packaged optics in 2028 and beyond. Custom work —
+NVLink Fusion translator chips and custom Leo controllers for KV-cache offload — is guided to ship in
+2027 and described as a "multi-billion dollar incremental opportunity."</p></div>
 
-<div class="chart">
-<div class="ct">Quarterly revenue, and the guided step</div>
-<div class="cs">Q3 2026 is the guidance midpoint of $540–560m given on 4 August 2026 — roughly 40%
-sequential growth on top of a quarter that grew 27%. This business is inflecting, not compounding
-steadily.</div>
-<svg viewBox="0 0 820 330" width="100%" role="img" aria-label="Quarterly revenue from Q1 2024 to Q2 2026 with Q3 2026 guidance midpoint"><line x1="62" y1="284.0" x2="798" y2="284.0" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="288.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">0</text><line x1="62" y1="219.5" x2="798" y2="219.5" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="223.5" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">150</text><line x1="62" y1="155.0" x2="798" y2="155.0" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="159.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">300</text><line x1="62" y1="90.5" x2="798" y2="90.5" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="94.5" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">450</text><line x1="62" y1="26.0" x2="798" y2="26.0" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="30.0" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">600</text><rect x="76.7" y="255.9" width="37.5" height="28.1" fill="#C75B39"  rx="2"/><text x="95.5" y="248.9" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">65</text><text x="95.5" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 24</text><rect x="143.6" y="250.9" width="37.5" height="33.1" fill="#C75B39"  rx="2"/><text x="162.4" y="243.9" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">77</text><text x="162.4" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 24</text><rect x="210.5" y="235.4" width="37.5" height="48.6" fill="#C75B39"  rx="2"/><text x="229.3" y="228.4" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">113</text><text x="229.3" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 24</text><rect x="277.4" y="223.3" width="37.5" height="60.7" fill="#C75B39"  rx="2"/><text x="296.2" y="216.3" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">141</text><text x="296.2" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 24</text><rect x="344.4" y="215.5" width="37.5" height="68.5" fill="#C75B39"  rx="2"/><text x="363.1" y="208.5" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">159</text><text x="363.1" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 25</text><rect x="411.3" y="201.5" width="37.5" height="82.5" fill="#C75B39"  rx="2"/><text x="430.0" y="194.5" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">192</text><text x="430.0" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 25</text><rect x="478.2" y="184.8" width="37.5" height="99.2" fill="#C75B39"  rx="2"/><text x="496.9" y="177.8" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">231</text><text x="496.9" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 25</text><rect x="545.1" y="167.6" width="37.5" height="116.4" fill="#C75B39"  rx="2"/><text x="563.8" y="160.6" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">271</text><text x="563.8" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 25</text><rect x="612.0" y="151.4" width="37.5" height="132.6" fill="#C75B39"  rx="2"/><text x="630.7" y="144.4" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">308</text><text x="630.7" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 26</text><rect x="678.9" y="115.3" width="37.5" height="168.7" fill="#C75B39"  rx="2"/><text x="697.6" y="108.3" text-anchor="middle" font-size="11.5" fill="#2B2B2B" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">392</text><text x="697.6" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 26</text><rect x="745.8" y="47.5" width="37.5" height="236.5" fill="none" stroke="#C75B39" stroke-width="1.6" stroke-dasharray="4 3" rx="2"/><text x="764.5" y="40.5" text-anchor="middle" font-size="11.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" font-weight="600" style="font-variant-numeric:tabular-nums">550</text><text x="764.5" y="302.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 26E</text><line x1="62" y1="284" x2="798" y2="284" stroke="#2B2B2B" stroke-width="1.2"/><text x="62" y="18" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">$ millions</text><text x="764.5" y="318.0" text-anchor="middle" font-size="11" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" font-style="italic">guided</text></svg>
-</div>
-
-<p>Two balance-sheet items corroborate the ramp and carry its risk. Inventory rose from $59.0m at the
-end of FY2025 to $113.8m at 30 June 2026; receivables from $83.2m to $192.5m; and purchase commitments
-to manufacturing partners from $74.9m to $181.7m over the same six months. The company is building and
-committing ahead of guided revenue, which is consistent with the guidance and is also the mechanism by
-which a demand pause becomes a write-down.</p>
+<p>Guidance for Q3 2026 is $540–560m against $392.4m delivered in Q2 — roughly 40% sequential growth on
+top of a quarter that grew 27% sequentially and 104% year-on-year, and which beat the top of the
+company's own guide by about $27m. The business is inflecting, not compounding steadily, and the same
+operating leverage would work in reverse against a pause.</p>
+<p>Three balance-sheet items corroborate the ramp and carry its risk: inventory rose from $59.0m at the
+end of FY2025 to $113.8m at 30 June 2026, receivables from $83.2m to $192.5m, and purchase commitments
+from $74.9m to $181.7m. Management reports inventory at about 75 days and no supply concerns, but is
+explicit that supply is not fully within its control: "Does this solve for infinite upside? No, of course
+it doesn't… To the extent that they're short on something else, could that delay a program rollout?
+Sure, it could."</p>
+<p>On the size of the prize management is expansive: it expects its served market to expand "by more
+than 10x over the next five years to reach $25 billion," puts merchant scale-up switching at roughly
+$20bn annually by 2030 and aims to serve "at least half" of it, and expects the new Taurus family to
+double that line's opportunity to over $4bn by 2030. These are company estimates, and the segmentation
+is not consistent between conferences — the $10bn figure is given at one event as UALink alone and at
+another as PCIe and UALink combined.</p>
 
 <h2>5. Margin, cash and capital allocation</h2>
 
@@ -339,80 +409,83 @@ added fair-value adjustments on private equity investments — so that row is no
 across the four columns. H1 2026 is a half-year, not annualised.</p>
 
 <div class="chart">
-<div class="ct">Gross margin falling while operating margin climbs</div>
-<div class="cs">Read together, not separately: the gross margin decline is mix and warrants, while
-operating leverage lifts the operating line. The same two lines at a cycle top would instead mean price
-erosion masked by fixed-cost absorption.</div>
-<svg viewBox="0 0 820 330" width="100%" role="img" aria-label="GAAP gross margin and GAAP operating margin by quarter, Q3 2024 to Q2 2026"><line x1="54" y1="245.3" x2="720" y2="245.3" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="249.3" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">0%</text><line x1="54" y1="193.7" x2="720" y2="193.7" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="197.7" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">20%</text><line x1="54" y1="142.1" x2="720" y2="142.1" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="146.1" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">40%</text><line x1="54" y1="90.5" x2="720" y2="90.5" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="94.5" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">60%</text><line x1="54" y1="38.9" x2="720" y2="38.9" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="42.9" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">80%</text><path d="M54.0,44.8 L149.1,54.4 L244.3,52.1 L339.4,49.7 L434.6,48.7 L529.7,50.3 L624.9,48.4 L720.0,56.2" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"/><circle cx="54.0" cy="44.8" r="3.6" fill="#C75B39"/><circle cx="149.1" cy="54.4" r="3.6" fill="#C75B39"/><circle cx="244.3" cy="52.1" r="3.6" fill="#C75B39"/><circle cx="339.4" cy="49.7" r="3.6" fill="#C75B39"/><circle cx="434.6" cy="48.7" r="3.6" fill="#C75B39"/><circle cx="529.7" cy="50.3" r="3.6" fill="#C75B39"/><circle cx="624.9" cy="48.4" r="3.6" fill="#C75B39"/><circle cx="720.0" cy="56.2" r="3.6" fill="#C75B39"/><path d="M54.0,265.7 L149.1,245.0 L244.3,227.0 L339.4,191.9 L434.6,183.4 L529.7,181.6 L624.9,193.4 L720.0,186.7" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"/><circle cx="54.0" cy="265.7" r="3.6" fill="#3C6E8F"/><circle cx="149.1" cy="245.0" r="3.6" fill="#3C6E8F"/><circle cx="244.3" cy="227.0" r="3.6" fill="#3C6E8F"/><circle cx="339.4" cy="191.9" r="3.6" fill="#3C6E8F"/><circle cx="434.6" cy="183.4" r="3.6" fill="#3C6E8F"/><circle cx="529.7" cy="181.6" r="3.6" fill="#3C6E8F"/><circle cx="624.9" cy="193.4" r="3.6" fill="#3C6E8F"/><circle cx="720.0" cy="186.7" r="3.6" fill="#3C6E8F"/><text x="730.0" y="60.2" font-size="12.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" font-weight="700">Gross margin</text><text x="730.0" y="190.7" font-size="12.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" font-weight="700">Operating margin</text><text x="54.0" y="33.8" text-anchor="start" font-size="11.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">77.7%</text><text x="720.0" y="45.2" text-anchor="end" font-size="11.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">73.3%</text><text x="54.0" y="283.7" text-anchor="start" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">-7.9%</text><text x="720.0" y="204.7" text-anchor="end" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">22.7%</text><text x="54.0" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 24</text><text x="149.1" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 24</text><text x="244.3" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 25</text><text x="339.4" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 25</text><text x="434.6" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 25</text><text x="529.7" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 25</text><text x="624.9" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 26</text><text x="720.0" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 26</text><line x1="54" y1="245.3" x2="720" y2="245.3" stroke="#2B2B2B" stroke-width="1.2"/></svg>
+<div class="ct">Gross margin converging on the target while operating margin climbs</div>
+<div class="cs">Management has held a 70% long-term gross margin model and a 40% operating margin model
+unchanged since the IPO. For two years margins ran well above the target; they are now approaching it —
+by mix and warrants, not by price.</div>
+<svg viewBox="0 0 820 330" width="100%" role="img" aria-label="GAAP gross margin and operating margin by quarter with the 70 percent long-term gross margin target marked"><line x1="54" y1="245.3" x2="720" y2="245.3" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="249.3" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">0%</text><line x1="54" y1="193.7" x2="720" y2="193.7" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="197.7" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">20%</text><line x1="54" y1="142.1" x2="720" y2="142.1" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="146.1" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">40%</text><line x1="54" y1="90.5" x2="720" y2="90.5" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="94.5" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">60%</text><line x1="54" y1="38.9" x2="720" y2="38.9" stroke="#E5DDD0" stroke-width="1"/><text x="44" y="42.9" text-anchor="end" font-size="12" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">80%</text><line x1="54" y1="64.7" x2="720" y2="64.7" stroke="#C79A3A" stroke-width="1.6" stroke-dasharray="5 4"/><text x="62.0" y="80.7" text-anchor="start" font-size="11.5" fill="#C79A3A" font-family="Calibri,Segoe UI,Arial" font-weight="700">70% long-term gross margin target</text><path d="M54.0,44.8 L149.1,54.4 L244.3,52.1 L339.4,49.7 L434.6,48.7 L529.7,50.3 L624.9,48.4 L720.0,56.2" fill="none" stroke="#C75B39" stroke-width="2.6" stroke-linejoin="round"/><circle cx="54.0" cy="44.8" r="3.6" fill="#C75B39"/><circle cx="149.1" cy="54.4" r="3.6" fill="#C75B39"/><circle cx="244.3" cy="52.1" r="3.6" fill="#C75B39"/><circle cx="339.4" cy="49.7" r="3.6" fill="#C75B39"/><circle cx="434.6" cy="48.7" r="3.6" fill="#C75B39"/><circle cx="529.7" cy="50.3" r="3.6" fill="#C75B39"/><circle cx="624.9" cy="48.4" r="3.6" fill="#C75B39"/><circle cx="720.0" cy="56.2" r="3.6" fill="#C75B39"/><path d="M54.0,265.7 L149.1,245.0 L244.3,227.0 L339.4,191.9 L434.6,183.4 L529.7,181.6 L624.9,193.4 L720.0,186.7" fill="none" stroke="#3C6E8F" stroke-width="2.6" stroke-linejoin="round"/><circle cx="54.0" cy="265.7" r="3.6" fill="#3C6E8F"/><circle cx="149.1" cy="245.0" r="3.6" fill="#3C6E8F"/><circle cx="244.3" cy="227.0" r="3.6" fill="#3C6E8F"/><circle cx="339.4" cy="191.9" r="3.6" fill="#3C6E8F"/><circle cx="434.6" cy="183.4" r="3.6" fill="#3C6E8F"/><circle cx="529.7" cy="181.6" r="3.6" fill="#3C6E8F"/><circle cx="624.9" cy="193.4" r="3.6" fill="#3C6E8F"/><circle cx="720.0" cy="186.7" r="3.6" fill="#3C6E8F"/><text x="730.0" y="60.2" font-size="12.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" font-weight="700">Gross margin</text><text x="730.0" y="190.7" font-size="12.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" font-weight="700">Operating margin</text><text x="54.0" y="33.8" font-size="11.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">77.7%</text><text x="720.0" y="45.2" text-anchor="end" font-size="11.5" fill="#C75B39" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">73.3%</text><text x="54.0" y="283.7" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">-7.9%</text><text x="720.0" y="204.7" text-anchor="end" font-size="11.5" fill="#3C6E8F" font-family="Calibri,Segoe UI,Arial" style="font-variant-numeric:tabular-nums">22.7%</text><text x="54.0" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 24</text><text x="149.1" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 24</text><text x="244.3" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 25</text><text x="339.4" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 25</text><text x="434.6" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q3 25</text><text x="529.7" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q4 25</text><text x="624.9" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q1 26</text><text x="720.0" y="304.0" text-anchor="middle" font-size="11.5" fill="#6E675C" font-family="Calibri,Segoe UI,Arial">Q2 26</text><line x1="54" y1="245.3" x2="720" y2="245.3" stroke="#2B2B2B" stroke-width="1.2"/></svg>
 </div>
 
 <h3>Why the gross margin is falling while the business improves</h3>
-<p>Gross margin peaked at 77.9% in Q2 2024 and reached 73.3% in Q2 2026, with guidance of about 72% for
-Q3. The 10-Q names two causes: "a shift in product mix towards lower margin hardware modules, as well as
-the impact of the Warrants."</p>
+<p>Gross margin peaked at 77.9% in Q2 2024 and reached 73.3% in Q2 2026, with Q3 guided to about 72%.
+The 10-Q names two causes: "a shift in product mix towards lower margin hardware modules, as well as the
+impact of the Warrants."</p>
 <p>The mix effect is the deliberate consequence of the growth strategy. A bare retimer chip is nearly
-pure design content sold at high margin on a small piece of silicon. A cable module wraps that chip in
-connectors, cable and assembly — real costs carrying no design premium. A Scorpio switch is a much
-larger die. Each raises revenue per socket and lowers the percentage margin on it. Gross profit dollars
-per socket rise; the ratio falls. An investor watching only the percentage would read the company's most
-successful product transition as deterioration.</p>
+pure design content sold at high margin on a small die. A cable module wraps that chip in connectors,
+cable and assembly, none of which carries a design premium. A Scorpio switch is a much larger die. Each
+raises revenue per socket and lowers the percentage margin on it — and management notes the spread
+within Scorpio is itself wide, driven by "use case and lane count utilization," though averaging in line
+with the corporate rate. Gross profit dollars per socket rise; the ratio falls. An investor watching only
+the percentage would read the company's most successful product transition as deterioration.</p>
 
 <h3>The customer warrant, and why it grows</h3>
 <p>Astera has issued three tranches of warrants to Amazon.com NV Investment Holdings LLC: 1,484,230
-shares at $20.34 in October 2022, 831,945 shares at $20.34 in October 2023, and 3,262,299 shares at
-$142.82 on 5 February 2026, with a maximum fair value of $280.0m and expiry in February 2033. The 2026
-tranche vests against tranches of purchases totalling up to $6.5bn of switch, signal-conditioning and
-optical-engine products.</p>
+shares at $20.34 in October 2022, 831,945 at $20.34 in October 2023, and 3,262,299 at $142.82 on
+5 February 2026, with a maximum fair value of $280.0m and expiry in February 2033. The 2026 tranche vests
+against purchases totalling up to $6.5bn of switch, signal-conditioning and optical-engine products.</p>
 <p>The accounting is what matters. The warrants are treated "as consideration payable as we did not
 receive a distinct good or service in exchange," and as vesting becomes probable the grant-date fair
-value is recognised "as a reduction of revenue." This is not an expense below the line — it is a
-deduction from revenue, landing directly in gross margin. The charge was $1.4m in FY2024, $5.5m in
-FY2025, $2.1m in Q1 2026, and $10.2m in Q2 2026 alone.</p>
+value is recognised "as a reduction of revenue" — not an expense below the line, but a deduction from
+revenue landing directly in gross margin. The charge was $1.4m in FY2024, $5.5m in FY2025, $2.1m in
+Q1 2026 and $10.2m in Q2 2026. Management quantified the run-rate itself: "we are kind of modeling a
+non-cash hit to gross margins of about 2 points a quarter starting kind of in the Q2 timeframe."</p>
 <p>The mechanism compounds in an unusual direction: <b>the better the Amazon relationship performs, the
 larger the deduction from reported revenue</b>, amortising until January 2033. The economics are sound —
 the company is buying a $6.5bn purchase framework with equity — but reported growth and margin will
-understate the underlying business by a widening amount for as long as this customer ramps. The vesting
-breakpoints are redacted from the filed exhibits, so the path of the charge cannot be modelled from
-public sources. Cumulative vested shares stood at 1,663,042 at 30 June 2026, none yet exercised.</p>
+understate the underlying business by a widening amount for as long as this customer ramps. Vesting
+breakpoints are redacted, so the path cannot be modelled. Cumulative vested shares stood at 1,663,042 at
+30 June 2026, none exercised.</p>
 
 <h3>Stock compensation, and the tax line that depends on it</h3>
 <p>Stock compensation ran 18.8% of revenue in FY2025 and 16.1% in H1 2026. The gap between GAAP and
-non-GAAP operating margin — 18.9 points in FY2025 — is almost entirely this, and its cash cost appears
-as dilution: 162.0m shares at the end of FY2024, 170.2m at the end of FY2025, 173.5m at 30 June 2026,
-with guidance assuming about 185m diluted shares in Q3 2026. There is no buyback programme.</p>
+non-GAAP operating margin — 18.9 points in FY2025 — is almost entirely this, and its cash cost appears as
+dilution: 162.0m shares at end-FY2024, 170.2m at end-FY2025, 173.5m at 30 June 2026, with guidance
+assuming about 185m diluted shares in Q3 2026.</p>
 <p>The same stock compensation drives a tax line worth understanding. FY2025 GAAP net income of $219.1m
-exceeded GAAP operating income of $173.4m, and Q2 2026 net income of $153.1m exceeded operating income
-of $89.2m, because the effective tax rate is negative — minus 0.4% in FY2025 — driven by "excess tax
-benefits of stock-based compensation" worth $171.2m in FY2025. This is not a valuation-allowance
-release: the company <i>increased</i> its GAAP valuation allowance to $270.3m at 31 December 2025 from
-$168.3m a year earlier and maintains a full allowance. Excess tax benefits arise when shares vest above
-grant-date value, so a meaningful part of reported GAAP earnings is a function of the share price rather
-than of operations.</p>
+exceeded GAAP operating income of $173.4m, and Q2 2026 net income of $153.1m exceeded operating income of
+$89.2m, because the effective tax rate is negative — minus 0.4% in FY2025 — driven by "excess tax
+benefits of stock-based compensation" worth $171.2m in FY2025. This is not a valuation-allowance release:
+the company <i>increased</i> its GAAP valuation allowance to $270.3m at 31 December 2025 from $168.3m a
+year earlier and maintains a full allowance. Excess benefits arise when shares vest above grant-date
+value, so a meaningful part of reported GAAP earnings is a function of the share price rather than of
+operations.</p>
 
 <h3>Where the cash has gone</h3>
 <p>Operating cash flow was $319.3m in FY2025 against $37.5m of capital expenditure. Across FY2024 and
-FY2025 combined, cumulative operating cash flow of $456.0m compares with cumulative GAAP net income of
-$135.7m — but that 3.4× ratio is an artefact of adding back $394.6m of non-cash stock compensation.
-Against non-GAAP net income of $474.3m for the same two years, conversion was 0.96×. Cash tracks the
-non-GAAP profit closely, which is the honest reading: the difference between GAAP and non-GAAP here is
-real dilution, not an accounting artefact.</p>
+FY2025, cumulative operating cash flow of $456.0m compares with cumulative GAAP net income of $135.7m —
+but that 3.4× ratio is an artefact of adding back $394.6m of non-cash stock compensation. Against
+non-GAAP net income of $474.3m, conversion was 0.96×. Cash tracks non-GAAP profit closely, which is the
+honest reading: the GAAP gap is real dilution, not an accounting artefact.</p>
 <p>Ranked across FY2024 and FY2025: capital expenditure $71.8m, acquisitions net of cash $28.8m, taxes
-withheld on share settlement $20.1m. No dividends, no buybacks, no debt repayment. What that reveals is
-a management team that has done almost nothing with its cash — the $1.25bn balance grew because
+withheld on share settlement $20.1m. No dividends, no buybacks, no debt repayment. Asked directly at
+Citi on 9 September 2026 — long after the IPO lock-up expired — whether cash might be returned to
+shareholders, the chief financial officer did not engage, answering only that capital allocation
+"centers around organic investments as well as inorganic investments." The $1.25bn balance grew because
 operations generated more than the business consumed, not because capital was deliberately deployed.
-Defensible at this stage, but it means capital allocation is untested and there is no record to judge.</p>
-<p>One governance item belongs here. Two material weaknesses — inadequate risk assessment and
-ineffective IT general controls — existed at 31 December 2024 and were reported remediated at
-31 December 2025, with the auditor designating the aiXscale acquisition accounting a critical audit
-matter. The CFO changed in the same window: Michael Tate retired effective 2 March 2026 with no
-disagreement disclosed, succeeded by Desmond Lynch, previously CFO of Rambus. A new Chief Accounting
-Officer role was filled on 20 January 2026.</p>
+Defensible at this stage, but capital allocation is untested and there is no record to judge. One related
+concession: the former CFO said in March 2026 that "we've underinvested last year" — the stated reason
+for the R&amp;D step-up now compressing operating margin.</p>
+<p>Governance has been catching up with growth. Two material weaknesses — inadequate risk assessment and
+ineffective IT general controls — existed at 31 December 2024 and were reported remediated a year later,
+with the auditor designating the aiXscale acquisition accounting a critical audit matter. Michael Tate
+retired as CFO effective 2 March 2026 with no disagreement disclosed, succeeded by Desmond Lynch,
+previously CFO of Rambus. A new chief accounting officer role was filled on 20 January 2026.</p>
 
 <h2>6. Cyclicality, constraints and what to monitor</h2>
-<p>Revenue by geography looks like a China and Taiwan concentration. It mostly is not one. The 10-K is
-explicit that "revenue by location is determined by the billing address of the Company's customers,
-which includes the Company's end customers' manufacturing partners and the Company's distributors" —
-these are contract-manufacturing addresses, not end markets.</p>
+<p>Revenue by geography looks like a China and Taiwan concentration. It is not one. The 10-K states that
+"revenue by location is determined by the billing address of the Company's customers, which includes the
+Company's end customers' manufacturing partners and the Company's distributors" — contract-manufacturing
+addresses, not end markets.</p>
 
 <div class="tw"><table>
 <thead><tr><th>Billing location</th><th class="n">FY2023 $m</th><th class="n">FY2024 $m</th><th class="n">FY2025 $m</th><th class="n">% of FY2025</th></tr></thead>
@@ -423,44 +496,48 @@ these are contract-manufacturing addresses, not end markets.</p>
 <tr><td class="rl">United States</td><td class="n">30.7</td><td class="n">11.3</td><td class="n">27.4</td><td class="n">3.2%</td></tr>
 <tr><td class="rl">Other</td><td class="n">7.4</td><td class="n">13.3</td><td class="n">44.4</td><td class="n">5.2%</td></tr>
 </tbody></table></div>
-<p class="note">The $248m shift into Singapore in a single year reflects ODM assembly moving, not demand
-moving.</p>
 
-<p>The China line is not entirely benign, though. The 10-K describes a real commercial effect from
-export controls: concerns that United States companies "may not be reliable suppliers" have "caused some
-of our customers in China to amass large inventories of our products well in advance of need or caused
-some of our customers to replace our products in favor of products from other suppliers." The first half
-of that sentence pulls demand forward into a future air pocket; the second is permanent share loss.</p>
+<p><b>The transcripts settle what the filing leaves ambiguous.</b> China is 30.1% of revenue by billing
+address, but management has repeatedly put actual Chinese end-customer demand below 10% of revenue, and
+in August 2026 said it would "continue to be in the single digits." The $248m shift into Singapore in a
+single year is ODM assembly relocating, not demand moving. This materially reduces the export-control
+exposure the geography table implies — though the 10-K still describes a real effect, with Chinese
+customers having "amassed large inventories of our products well in advance of need" or replaced Astera
+parts with other suppliers. The first pulls demand forward into an air pocket; the second is permanent
+share loss. Neither is large relative to the whole.</p>
 
 <h3>Where the business sits in its own cycle</h3>
-<p>On volume and revenue, at its own record and accelerating. On gross margin, at its post-IPO low —
-73.3% against 77.9% in Q2 2024, guided lower still. On operating margin, near its high, because
-operating expenses grow more slowly than revenue. These readings are not contradictory but must be held
-together: record volume with compressing gross margin and expanding operating margin describes a company
-scaling a mix shift successfully. The same three facts at a cycle top would describe pricing beginning
-to erode while fixed-cost absorption flattered the operating line. The filings attribute the margin
-decline to mix and warrants, not to price — which supports the first reading, and is the thing to keep
-testing.</p>
-<p>Cyclicality is high and structurally unbuffered. No backlog, no take-or-pay, no contracted minimums,
-no recurring revenue — just purchase orders cancellable outside limited notice periods. In a downturn
-the mechanism is not gradual: orders stop, the inventory and purchase commitments built for the ramp
-remain, and the cost base of 756 employees, up 72% in a year, stays in place.</p>
+<p>On volume and revenue, at its own record and accelerating. On gross margin, at its post-IPO low and
+converging on the 70% target. On operating margin, near its high, because operating expenses grow more
+slowly than revenue. Held together these describe a company scaling a mix shift successfully rather than
+one whose pricing is eroding — the filings and the calls agree the decline is mix and warrants, not
+price. The same three facts at a cycle top would mean something quite different, so the mix explanation
+is what has to keep holding.</p>
+<p>Cyclicality is high and structurally unbuffered: no backlog, no take-or-pay, no contracted minimums,
+no recurring revenue. Partially offsetting this is unusual forward visibility — design decisions are made
+about two years ahead, next year's revenue is "largely baked" twelve to eighteen months out, and current
+scale-up wins should generate revenue into 2029. Visibility is not commitment, but it means a demand
+shift shows up as deferred programmes rather than cancelled orders. In a genuine downturn the mechanism
+is not gradual: orders stop, the inventory and purchase commitments built for the ramp remain, and the
+cost base of 756 employees — up 72% in a year — stays in place. On the wider overbuild question
+management has been candid rather than reassuring: "I don't think my crystal ball goes out five
+years."</p>
 
 <div class="two">
 <div class="card durable"><h4>Durable — likely to survive ten years</h4>
 <ul>
-<li>Qualified silicon at each generation, with a design-win-to-volume lag of up to two years that holds a socket for the platform's life</li>
-<li>Seats in PCI-SIG, CXL, UALink and NVLink Fusion simultaneously, so the company need not pick the winning fabric</li>
-<li>COSMOS fleet telemetry embedded in customer operations rather than only in the bill of materials</li>
-<li>Scarcity of high-rate SerDes analogue talent, evidenced by Qualcomm buying Alphawave rather than building</li>
-<li>$1.25bn of cash, no debt, and a business that funds its own growth from operations</li>
+<li>Qualification economics: a socket takes up to two years to win and is then held for the platform's life, with decisions made two years ahead</li>
+<li>COSMOS telemetry wired into customer operations, where a failed link halts a whole training job</li>
+<li>Seats in PCI-SIG, CXL, UALink and NVLink Fusion at once, so the company need not pick the winning fabric</li>
+<li>Demonstrated survivorship: the fourth retimer entrant and the only one of four still trading</li>
+<li>$1.25bn of cash, no debt, and growth funded entirely from operations</li>
 </ul></div>
 <div class="card borrowed"><h4>Borrowed — currently helping, not guaranteed</h4>
 <ul>
 <li>Hyperscaler capital spending at unprecedented and still-rising levels, with no disclosed digestion as of mid-2026</li>
 <li>A negative effective tax rate driven by excess stock-compensation benefits, which requires a rising share price to persist</li>
-<li>Gross margin above 73% before the module and switch mix shift has fully landed</li>
-<li>The Amazon relationship, supported by a warrant whose $6.5bn purchase framework is a framework, not an order book</li>
+<li>Gross margin above 72% before the module and switch mix shift has fully landed against the 70% target</li>
+<li>A roadmap whose timing has slipped before — Leo was promised for 2025 and is now guided to 2027</li>
 <li>The absence of any hyperscaler in-house retimer programme, which is an observation about today rather than a barrier</li>
 </ul></div>
 </div>
@@ -468,108 +545,144 @@ remain, and the cost base of 756 employees, up 72% in a year, stays in place.</p
 <div class="tw"><table>
 <thead><tr><th>What to monitor</th><th>Why it matters</th><th>Where published</th></tr></thead>
 <tbody>
-<tr><td class="rl">Hyperscaler capital expenditure and its direction</td><td>The volume driver Astera does not control</td><td>Microsoft, Alphabet, Amazon and Meta quarterly releases and 10-Qs</td></tr>
-<tr><td class="rl">Gross margin against the mix commentary</td><td>Separates deliberate mix shift from price erosion</td><td>Astera quarterly release and 10-Q MD&amp;A</td></tr>
+<tr><td class="rl">Gross margin against the 70% target</td><td>Separates deliberate mix shift from price erosion</td><td>Astera quarterly release and 10-Q MD&amp;A</td></tr>
 <tr><td class="rl">The quarterly warrant charge against revenue</td><td>Scales with the largest customer's ramp and depresses reported growth</td><td>Astera 10-Q, warrant note</td></tr>
-<tr><td class="rl">Customers above 10%, and the top-three end-customer share</td><td>The only public measure of concentration easing</td><td>Astera 10-K concentration note and business section</td></tr>
-<tr><td class="rl">Inventory and receivables against guided revenue</td><td>Builds ahead of demand become write-downs if demand pauses</td><td>Astera 10-Q balance sheet</td></tr>
-<tr><td class="rl">Purchase commitments to manufacturing partners</td><td>Management's own forward volume view, in dollars</td><td>Astera 10-K and 10-Q commitments note</td></tr>
-<tr><td class="rl">PCIe Gen6/Gen7 and UALink silicon availability</td><td>Determines when the next content step arrives</td><td>PCI-SIG and UALink Consortium announcements</td></tr>
+<tr><td class="rl">Scorpio X engagements converting to design wins</td><td>Engagements are not orders; the conversion rate is the real signal</td><td>Earnings calls and conference appearances</td></tr>
+<tr><td class="rl">Content per accelerator as management restates it</td><td>The unit metric; a stalled figure means the content story has topped out</td><td>Earnings calls and conference appearances</td></tr>
+<tr><td class="rl">2027 optical and UALink revenue timing</td><td>Tests whether the roadmap slips as Leo's did</td><td>Earnings calls; UALink Consortium</td></tr>
+<tr><td class="rl">A competitor shipping Gen6 retimers in volume</td><td>Would falsify management's clearest technical-lead claim</td><td>Broadcom, Marvell, Credo releases and filings</td></tr>
+<tr><td class="rl">Hyperscaler capital expenditure and its direction</td><td>The volume driver Astera does not control</td><td>Microsoft, Alphabet, Amazon, Meta releases</td></tr>
+<tr><td class="rl">Inventory, receivables and purchase commitments vs. guided revenue</td><td>Builds ahead of demand become write-downs if demand pauses</td><td>Astera 10-Q balance sheet and commitments note</td></tr>
 </tbody></table></div>
 
 <h2>7. Risks and open questions</h2>
-<p>Cyclicality is covered above. What follows is what cyclicality does not capture, with the transmission
-mechanism in each case.</p>
+
+<h3>The Leo record, and what it implies for the rest of the roadmap</h3>
+<p>Leo is the CXL memory-controller family, and its history is the best available evidence on how much
+to discount this company's forward timing. The promise has moved every year for five years.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Stated</th><th>Commitment</th><th>What happened</th><th>Management's explanation</th></tr></thead>
+<tbody>
+<tr><td class="rl">May 2024</td><td>Deployment "in the 25 timeframe"</td><td>Did not occur</td><td>CXL-capable CPUs delayed from Sapphire Rapids to Granite Rapids and Turin</td></tr>
+<tr><td class="rl">Nov 2024</td><td>First production shipments "middle of next year"</td><td>Did not occur</td><td>"Crawl-to-walk stage"; conceded prior "overhype" on memory pooling</td></tr>
+<tr><td class="rl">Feb–May 2025</td><td>Volume ramp "second half of 2025"</td><td>Did not occur</td><td>Still shipping pre-production quantities in H2 2025</td></tr>
+<tr><td class="rl">Aug–Nov 2025</td><td>Ramp "in the 2026 timeframe"</td><td>Did not occur</td><td>"We expected initially for it to happen this year and it has not"</td></tr>
+<tr><td class="rl">Aug 2026</td><td>Volume production at two US hyperscalers in 2027</td><td>Pending</td><td>"Renewed momentum"; KV-cache offload as the new use case</td></tr>
+</tbody></table></div>
+
+<p>Management deserves credit for saying so plainly — "CXL, among all of our products, has been much
+slower to ramp than anything else, actually. So I'll have to admit that." The relevance is
+forward-looking rather than historical. Leo is a small line and its delay has cost little. But the next
+two roadmap items — optical revenue in 2027 and UALink volume in 2027 — rest on the same kind of forecast
+from the same team, and a large part of the case for content per accelerator reaching "multiple
+thousands" depends on them arriving roughly on time. <b>The Leo record is the reason to treat those dates
+as aspirations rather than schedules.</b></p>
+
+<h3>Risks with a specific mechanism</h3>
 <ul class="plain">
 <li><b>The three end customers who provide 86% of revenue are the parties best equipped to replace the
 company.</b> The 10-K concedes it: end customers "may develop their own products that may compete with
 our solutions." Retimers have been unattractive to in-source because revenue per part is small relative
-to design difficulty — but Astera's own growth steadily raises the dollars a hyperscaler spends on this
-content, which is what makes an in-house programme worth funding. Success erodes the reason the company
-has been left alone.</li>
+to design difficulty — but content per accelerator has risen roughly tenfold since the IPO and management
+intends it to rise further. The growth that makes the company valuable is the same growth that makes an
+in-house programme worth funding. Management's answer is that hyperscalers prefer a third supplier to
+being "held hostage" by vertically integrated vendors — an argument about Broadcom and NVIDIA, not about
+the customer's own engineering.</li>
+<li><b>Architecture changes can remove content from a product line without warning.</b> Moving from the
+eight-accelerator Hopper board to the two-accelerator Blackwell board cut Aries content per board
+outright. Total content rose for other reasons, but the mechanism is real and the next architecture
+change is not in Astera's control.</li>
+<li><b>At least one scale-up protocol shift is neutral, not accretive.</b> On NVLink Fusion at one named
+customer, the CEO said on 9 September 2026 that the per-rack opportunity is "about the same… Maybe it is
+a wash." Content expansion is the core of the growth case, so the cases where it does not expand are the
+ones to track.</li>
 <li><b>The largest customer is also a warrant-holder whose incentive is struck at $142.82.</b> The
-alignment is real, and so is the opacity: vesting thresholds are redacted, so an investor cannot see how
-close purchases are running to the breakpoints, or distinguish a demand shortfall from a timing shift.</li>
+alignment is real and so is the opacity: vesting thresholds are redacted, so an investor cannot see how
+close purchases run to the breakpoints, or distinguish a demand shortfall from a timing shift.</li>
 <li><b>GAAP earnings are levered to the share price through the tax line.</b> A full valuation allowance
 of $270.3m is maintained while the effective rate is negative because excess benefits on vesting stock
-exceed tax otherwise payable. A sustained fall in the share price shrinks those benefits, raising the
-effective rate toward the 21% statutory federal rate and cutting GAAP net income with no change
-whatsoever in the operating business. The mechanism runs the wrong way at the wrong time.</li>
+exceed tax otherwise payable. A sustained fall in the share price shrinks them, raising the effective
+rate toward the 21% statutory federal rate and cutting GAAP net income with no change in the operating
+business.</li>
 <li><b>A single foundry in Taiwan makes every chip.</b> TSMC fabricates all of the company's integrated
-circuits with no disclosed second source. Re-qualification at a new supplier restarts the customer
-qualification clock, so recovery from a supply disruption is measured in quarters.</li>
+circuits with no disclosed second source, and re-qualification restarts the customer qualification clock
+— so recovery from a supply disruption is measured in quarters.</li>
 <li><b>Broadcom competes at roughly fifty times the AI revenue scale and is entering the same job.</b>
-Tomahawk Ultra targets Ethernet scale-up fabrics directly against Scorpio's X-Series, and a 68%
-operating margin gives room to price aggressively in an adjacent product to defend a far larger switch
-franchise. Astera's fastest-growing family runs into its largest competitor.</li>
-<li><b>Co-packaged optics could eventually remove the copper being retimed.</b> NVIDIA announced
-Quantum-X and Spectrum-X Photonics on 18 March 2025. Adoption is at the network switch layer, not
-intra-rack, and the announcement claims nothing about replacing PCIe retimers. aiXscale is the hedge.
-The mechanism to watch is optics moving down from switch-to-switch into accelerator-to-switch and then
-intra-rack links.</li>
+Tomahawk Ultra targets Ethernet scale-up directly against Scorpio's X-Series, and a 68% operating margin
+gives room to price aggressively in an adjacent product to defend a far larger switch franchise.</li>
+<li><b>Co-packaged optics could eventually remove the copper being retimed — but customers are resisting
+it.</b> Management reports customers "want to stay with copper for as much as possible" on cost, power
+and reliability, and that nobody has demonstrated deploying CPO at scale reliably. aiXscale is the hedge.
+The risk is not that optics arrives but that it arrives on someone else's silicon.</li>
 <li><b>Control and accounting maturity lag the growth rate.</b> Two material weaknesses persisted through
-2024, the auditor designated acquisition accounting a critical audit matter, the CFO changed and a Chief
-Accounting Officer role was created within six weeks of each other, and headcount rose 72% in a year.
-None of this is a problem today; all of it is the condition under which reporting problems appear.</li>
+2024, the auditor designated acquisition accounting a critical audit matter, the CFO changed and a chief
+accounting officer role was created within six weeks of each other, and headcount rose 72% in a year.</li>
 </ul>
 
-<h3>What the sources could not answer</h3>
-<p>These are findings, not omissions — each would need resolving before a thesis could be held with
-confidence.</p>
+<h3>What the sources still cannot answer</h3>
+<p>The transcripts closed four of the seven gaps identified before they were available: content per
+accelerator is now traceable, Chinese end-demand is established below 10%, product mix is partly visible
+through the Scorpio and Gen6 disclosures, and management's unscripted answers are on the record. What
+remains open:</p>
 <ul class="plain">
-<li><b>Unit volumes and selling prices are not disclosed</b> for any product or period, so volume and
-price growth cannot be separated and dollar content per accelerator cannot be computed.</li>
-<li><b>Revenue is not split by product family</b>, so management's statement that Scorpio becomes the
-largest family in Q3 2026 cannot be verified against any filing.</li>
-<li><b>Warrant vesting breakpoints are redacted</b>, so neither the path of the contra-revenue charge to
-2033 nor the pace at which the remaining 3.9m unvested shares dilute can be modelled.</li>
-<li><b>Whether content per accelerator rises or falls as scale-up migrates to NVLink and UALink is
-unestablished.</b> No consortium, competitor or company publishes a content figure.</li>
+<li><b>Dollar revenue by product family is still not disclosed.</b> Scorpio's share is known only in
+bands; Aries, Taurus and Leo are never sized.</li>
+<li><b>The content-per-accelerator figures are management characterisations, not reported metrics.</b>
+No unit volume or selling price is published, so the tenfold increase cannot be independently verified or
+decomposed into price and attach rate.</li>
+<li><b>Warrant vesting breakpoints are redacted.</b> Neither the contra-revenue path to 2033 nor the pace
+at which the remaining 3.9m unvested shares dilute can be modelled.</li>
+<li><b>Whether Scorpio X engagements convert.</b> The count rose from "10+" to "high teens" by September
+2026, but management said in November 2025 that "only a handful of those are actual design wins."</li>
+<li><b>Management's Gen6 technical-lead claim is unverified.</b> "Nobody else is shipping anything in
+volume today" is the company's own assessment; no independent source confirms or refutes it.</li>
 <li><b>There is no long-run price history for interface semiconductors through a severe downturn.</b>
-Whether pricing held or collapsed when volumes fell in 2001, 2008 and 2022 could not be established from
-primary sources; answering it would require the historical filings of prior-generation interface vendors
-such as PMC-Sierra, IDT and Applied Micro.</li>
-<li><b>No earnings-call transcripts are in the evidence base</b>, so analyst pushback and unscripted
-answers are absent.</li>
-<li><b>Two of the three end customers are never identified.</b> Only Amazon is named, and only in the
-warrant disclosures.</li>
+Answering it would require the historical filings of prior-generation vendors such as PMC-Sierra, IDT and
+Applied Micro.</li>
+<li><b>Two of the three end customers are still not identified as customers.</b> Only Amazon is named.
+Many hyperscaler programmes are discussed, but which of them buy, and in what size, is never stated.</li>
 </ul>
 
 <h2>8. Investor takeaways</h2>
 <ul class="plain">
 <li><b>What this business really is:</b> a toll on the physics of moving data inside an AI rack. Copper
 gets worse every generation, lane counts rise, and someone has to sell the silicon that fixes it.</li>
-<li><b>The economic engine:</b> high-design-content parts at 73–76% gross margin, into sockets that take
-up to two years to win and then hold for the life of the platform, funded entirely from operations with
-no debt.</li>
-<li><b>The main growth lever:</b> content per accelerator rising as PCIe generations advance and as mix
-shifts into Scorpio switches and modules — lifting revenue and gross profit dollars while lowering the
-margin percentage.</li>
+<li><b>The economic engine:</b> dollar content per accelerator, taken from under $100 at the IPO to
+roughly $1,000 today at 73–76% gross margin, in sockets that take two years to win and are then held for
+the life of the platform.</li>
+<li><b>The main growth lever:</b> the move from repairing links to routing them. A switch carries many
+times a retimer's price, which is why Scorpio becoming the largest product family matters more than any
+single quarter's revenue.</li>
 <li><b>What could break the story:</b> three customers provide 86% of revenue and are the parties most
-capable of replacing the company; the growth that makes Astera valuable is the same growth that makes
-in-sourcing worth funding.</li>
-<li><b>What to monitor:</b> gross margin against the mix explanation, the escalating warrant charge, and
-whether end-customer concentration genuinely broadens rather than merely redistributing across
-manufacturing partners.</li>
+capable of replacing the company — and rising content per accelerator is precisely what would make an
+in-house programme worth their while.</li>
+<li><b>What to monitor:</b> gross margin against the 70% target, the escalating warrant charge, and
+whether the 2027 optical and UALink roadmap lands on time — because Leo was promised for 2025 and is now
+guided to 2027.</li>
 </ul>
 
 <div class="foot">
-<b>Sources.</b> Company evidence: Astera Labs FY2025 Form 10-K (filed 20 February 2026), FY2024 Form
-10-K (14 February 2025), Forms 10-Q for the quarters ended 31 March 2026 and 30 June 2026 and the
-comparable 2024–2025 quarters, the 2026 DEF 14A proxy, the Form 8-K of 10 February 2026 disclosing the
-Amazon warrant agreement, and the Q1 and Q2 2026 earnings release exhibits filed 5 May and 4 August 2026.
-Industry evidence: PCI-SIG (PCIe 7.0 specification release, 11 June 2025); UALink Consortium
-(specification releases, April 2025 and 7 April 2026); NVIDIA (NVLink Fusion, 18 May 2025; Quantum-X and
-Spectrum-X Photonics, 18 March 2025); Qualcomm (Alphawave Semi acquisition, 9 June 2025); and the most
-recent earnings releases of Broadcom, Marvell, Credo, Rambus and Parade.
+<b>Sources.</b> Company filings: Astera Labs FY2025 Form 10-K (20 February 2026), FY2024 Form 10-K,
+Forms 10-Q through the quarter ended 30 June 2026, the 2026 DEF 14A proxy, the Form 8-K of 10 February
+2026 disclosing the Amazon warrant agreement, and the Q1 and Q2 2026 earnings release exhibits.
+Management transcripts: all ten quarterly earnings calls from Q1 2024 (7 May 2024) to Q2 2026 (4 August
+2026); twenty investor-conference appearances from the JPMorgan conference of 21 May 2024 to the Citi
+Global TMT Conference of 9 September 2026; and the UALink technology webinar of 20 May 2025. Industry
+sources: PCI-SIG (PCIe 7.0 release, 11 June 2025); UALink Consortium (April 2025 and 7 April 2026);
+NVIDIA (NVLink Fusion, 18 May 2025; Quantum-X and Spectrum-X Photonics, 18 March 2025); Qualcomm
+(Alphawave acquisition, 9 June 2025); and the latest earnings releases of Broadcom, Marvell, Credo,
+Rambus and Parade.
 <br><br>
 <b>Post-dating the filings.</b> Q3 2026 guidance of $540–560m revenue and roughly 72% gross margin was
-given on 4 August 2026 and is unaudited management guidance, not reported results. Two acquisitions
-(9 February and 29 May 2026) and the February 2026 Amazon warrant post-date the FY2025 Form 10-K and are
-described from the Q2 2026 Form 10-Q and the related Form 8-K.
+given on 4 August 2026 and is unaudited management guidance, not reported results. The Citi conference of
+9 September 2026 post-dates every filing and every earnings call; it reiterated the Q3 guide without
+change, and supplied the "high teens" Scorpio X engagement count and the NVLink Fusion "wash" remark.
 <br><br>
-No earnings-call transcripts or investor-day materials were available in the evidence base. This
-document is not a valuation and not a recommendation.
+<b>On management statements.</b> Content per accelerator, TAM and market-share figures, design-win counts
+and competitive claims in this document are management's own characterisations and are labelled as such.
+They are not audited, not disclosed in any filing, and cannot be verified independently. This document is
+not a valuation and not a recommendation.
 </div>
 
 </div>

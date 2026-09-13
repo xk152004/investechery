@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astera Labs vs Broadcom: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Astera Labs vs Broadcom: who wins the next decade?</h1>
+  <p class="source">AI data-centre connectivity and custom silicon. ALAB / AVGO. Run 13 September 2026. Built from Astera Labs FY2024 and FY2025 10-Ks, 10-Qs through Q2 FY2026, earnings-call and conference transcripts through Citi TMT on 9 September 2026, held in the analyst's own filing archive; Broadcom FY2025 10-K, FY2026 Q1 to Q3 results and calls; plus named third-party research (Counterpoint, Dell'Oro, 650 Group) and standards-body sources. Events swept through 13 September 2026; most recent event checked: Broadcom's Q3 FY2026 results on 2 September 2026, which raised FY2026 AI revenue guidance to about $58bn and put FY2028 at about $230bn. Figures in USD, as reported, no FX conversion. Fiscal years are offset by roughly two months (Astera Labs ends 31 December, Broadcom the Sunday nearest 31 October). Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Astera Labs</span><span class="chip b">Broadcom</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Broadcom is the stronger business for the next five to ten years, because it designs the accelerator that Astera Labs plugs into and sells the connectivity socket as part of the same program.</div>
+    <div class="why">The single most load-bearing fact: Astera Labs' own FY2025 10-K says one end customer was more than 70% of its revenue, up from under 40% a year earlier, while Broadcom sells six contracted XPU programs whose top five end customers together are about 40%.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Only one of seven product cells is genuinely contested. Astera Labs is absent from the three cells that carry 91% of Broadcom's revenue (Broadcom FY2025 10-K; Astera Labs FY2025 10-K).</div>
+    <div class="col"><span class="n">2</span><br>Broadcom's FY2027 and FY2028 AI revenue is guided at about $115bn and $230bn with management stating the supply is already secured (Q3 FY2026 call, 2 Sep 2026). Astera Labs gives no full-year guidance at all.</div>
+    <div class="col"><span class="n">3</span><br>Strip Broadcom's acquisition amortization out of cost of sales and the two gross margins sit within two points. The entire 48.6-point EBIT gap is opex intensity, not pricing.</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">Broadcom - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">Broadcom - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">Broadcom breaks last - clear</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favours Astera Labs, right lean favours Broadcom; marker position shows how decisive. Growth is narrow because Astera Labs owns the growth rate and Broadcom owns the growth mechanism.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, and why does it persist?</div>
+    <div class="w"><span class="chip b">Broadcom, on mechanism, not on rate</span></div>
+    <p>Astera Labs owns the rate and will keep owning it: revenue compounded at 171% a year from FY2023 to FY2025 against Broadcom's 34%, and FY2026 looks like plus 121% against plus 66% (inferred from Astera Labs' 1H revenue of $700.8m plus the $550m Q3 guide midpoint, and from Broadcom's three reported quarters plus its $34.8bn Q4 guide). That is evidence of the last three years, not an answer about the next five. The forward mechanism belongs to Broadcom: its AI cell is guided to grow 190% to about $58bn in FY2026, then roughly $115bn in FY2027 and $230bn in FY2028, and Hock Tan said on 2 September 2026 that "we have secured the supply to meet this outlook." Behind those numbers are six customers under multi-gigawatt commitments running to 2029, contracted in public: Meta through 2029 (14 April 2026), OpenAI for 10GW through 2029 (13 October 2025), and Anthropic at 5GW in 2027 rising to 10GW in 2028.</p>
+    <p>Astera Labs' forward mechanism is real but unconverted. Content per accelerator has gone from under $100 at the March 2024 IPO to roughly $1,000 today, Scorpio X engagements moved from 10 to "high teens" between February and September 2026, and Scorpio became the largest product family in Q3 FY2026, a quarter earlier than management expected. Every one of those facts is a leading indicator rather than a booked order, volume is dated 2027, and the company guides one quarter forward with no annual number of any kind. The cells carrying its next five years are scale-up fabric, PCIe signal conditioning (already more than half of Q2 FY2026 revenue) and CXL memory in 2027; the cells carrying Broadcom's are custom compute, scale-out networking and the VMware annuity.</p>
+    <div class="chartbox">
+<svg viewBox="0 0 900 265" role="img" aria-label="Revenue indexed to 100 at FY2023">
+<line x1="70" y1="215.0" x2="840" y2="215.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="219.0" text-anchor="end" font-size="13" fill="#6E675C">100</text>
+<line x1="70" y1="168.8" x2="840" y2="168.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="172.8" text-anchor="end" font-size="13" fill="#6E675C">500</text>
+<line x1="70" y1="110.9" x2="840" y2="110.9" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="114.9" text-anchor="end" font-size="13" fill="#6E675C">1,000</text>
+<line x1="70" y1="53.1" x2="840" y2="53.1" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="57.1" text-anchor="end" font-size="13" fill="#6E675C">1,500</text>
+<text x="70" y="240" text-anchor="middle" font-size="13" fill="#6E675C">FY2023</text>
+<text x="320" y="240" text-anchor="middle" font-size="13" fill="#6E675C">FY2024</text>
+<text x="570" y="240" text-anchor="middle" font-size="13" fill="#6E675C">FY2025</text>
+<text x="820" y="240" text-anchor="middle" font-size="13" fill="#6E675C">FY2026E</text>
+<polyline points="70,215.0 320,209.9 570,206.0 820,192.3" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+<circle cx="70" cy="215.0" r="4" fill="#3C6E8F"/>
+<circle cx="320" cy="209.9" r="4" fill="#3C6E8F"/>
+<circle cx="570" cy="206.0" r="4" fill="#3C6E8F"/>
+<circle cx="820" cy="192.3" r="4" fill="#3C6E8F"/>
+<polyline points="70,215.0 320,187.0 570,141.5 820,38.4" fill="none" stroke="#C75B39" stroke-width="3"/>
+<circle cx="70" cy="215.0" r="4" fill="#C75B39"/>
+<circle cx="320" cy="187.0" r="4" fill="#C75B39"/>
+<circle cx="570" cy="141.5" r="4" fill="#C75B39"/>
+<circle cx="820" cy="38.4" r="4" fill="#C75B39"/>
+<text x="838" y="31" text-anchor="end" font-size="15" font-weight="700" fill="#C75B39">Astera Labs 1,627</text>
+<text x="838" y="182" text-anchor="end" font-size="15" font-weight="700" fill="#3C6E8F">Broadcom 296</text>
+<text x="70" y="255" font-size="13" fill="#6E675C">Index, FY2023 = 100</text>
+</svg>      <div class="cap">Revenue indexed to 100 at FY2023. Astera Labs FY2023 $115.8m, FY2024 $396.3m, FY2025 $852.5m (FY2025 10-K); FY2026E about $1,884m (inferred: 1H actual $700.8m, plus the $550m Q3 guide midpoint, plus a Q4 at the same 15% sequential step the company delivered a year earlier). Broadcom FY2023 $35,819m, FY2024 $51,574m, FY2025 $63,887m (FY2025 10-K); FY2026E about $105,889m (inferred: three reported quarters plus the $34.8bn Q4 guide of 2 Sep 2026). The flat blue line is the point: on rate alone this comparison is not close, and rate alone is not the question.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins, and through what?</div>
+    <div class="w"><span class="chip b">Broadcom, but not where it looks</span></div>
+    <p>The headline is a chasm: a three-year average EBIT margin of 37.1% against minus 11.5%, and a non-GAAP operating margin of 67.9% in Broadcom's Q3 FY2026 against 39.1% in Astera Labs' Q2. The instinct is to attribute that to pricing power, and the instinct is wrong. Broadcom's reported cost of sales carries $6,031m of acquisition-related intangible amortization in FY2025, which is 9.4% of revenue and which Astera Labs simply does not have. Remove it and the two companies' gross margins converge to within two points, 75.5% against 73.7% on a three-year average. Both companies buy TSMC wafers, both sell into the same accelerator racks, and both price at roughly the same level.</p>
+    <p>The entire conversion gap is therefore manufactured below the gross line, in opex intensity. Research and development plus selling costs ran 23.8% of Broadcom's sales in FY2025 against 55.3% of Astera Labs'. The mechanism is one SerDes and IP base amortized across custom accelerators, Ethernet switching, network cards, optics and PCIe, sitting alongside a software segment earning roughly a 76.8% operating margin (inferred) on almost no incremental engineering. Astera Labs funds four product families, an optical acquisition and a new Israeli design centre off a revenue base 75 times smaller. The tension worth naming is not that the growth and margin winners differ, because they do not; it is that both companies' gross margins are falling right now for the same reason, hardware and memory content in the mix. Astera Labs went 76.4% to 73.7% to a roughly 72% guide; Broadcom went 78.6% to 74.9%. Only one of them absorbs that while still expanding operating margin, and the other is simultaneously paying its largest customer for the volume through warrants booked as a reduction of revenue.</p>
+    <div class="chartbox">
+<svg viewBox="0 0 900 200" role="img" aria-label="Gross and EBIT margin dumbbells">
+<text x="40" y="28" font-size="15" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">Gross margin, like-for-like, 3-year average</text>
+<line x1="40" y1="52" x2="860" y2="52" stroke="#E5DDD0" stroke-width="2"/>
+<text x="40" y="82" font-size="13" fill="#6E675C">60%</text>
+<text x="860" y="82" text-anchor="end" font-size="13" fill="#6E675C">85%</text>
+<line x1="489.4" y1="52" x2="548.4" y2="52" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="489.4" cy="52" r="8" fill="#C75B39"/>
+<circle cx="548.4" cy="52" r="8" fill="#3C6E8F"/>
+<text x="476.4" y="57" text-anchor="end" font-size="14" font-weight="700" fill="#C75B39">Astera Labs 73.7%</text>
+<text x="561.4" y="57" text-anchor="start" font-size="14" font-weight="700" fill="#3C6E8F">Broadcom 75.5%</text>
+<text x="518.9" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#2B2B2B">+1.8 pts</text>
+<text x="40" y="126" font-size="15" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">EBIT margin, 3-year average</text>
+<line x1="40" y1="150" x2="860" y2="150" stroke="#E5DDD0" stroke-width="2"/>
+<text x="40" y="180" font-size="13" fill="#6E675C">-20%</text>
+<text x="860" y="180" text-anchor="end" font-size="13" fill="#6E675C">50%</text>
+<line x1="139.6" y1="150" x2="708.9" y2="150" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="139.6" cy="150" r="8" fill="#C75B39"/>
+<circle cx="708.9" cy="150" r="8" fill="#3C6E8F"/>
+<text x="126.6" y="155" text-anchor="end" font-size="14" font-weight="700" fill="#C75B39">Astera Labs -11.5%</text>
+<text x="721.9" y="155" text-anchor="start" font-size="14" font-weight="700" fill="#3C6E8F">Broadcom 37.1%</text>
+<text x="424.2" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#2B2B2B">+48.6 pts</text>
+</svg>      <div class="cap">Like-for-like gross margin removes acquisition-related intangible amortization and restructuring from Broadcom's cost of sales in all three years ($1,853m, $6,023m, $6,031m and $4m, $254m, $76m respectively); Astera Labs carries essentially neither. Sources: Broadcom FY2025 10-K consolidated statements of operations; Astera Labs FY2025 10-K, with FY2023 from the FY2024 10-K.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">3. Where does each one break if the tide turns?</div>
+    <div class="w"><span class="chip a">Astera Labs breaks first, on a far smaller shock</span></div>
+    <p>Astera Labs' exposure is one sentence in its own filing. The FY2025 10-K states that "in 2025, one end customer represented more than 70% of our revenue; the top three end customers represented an aggregate of approximately 86% of our revenue." A year earlier the same risk factor said no end customer exceeded 40% and the top three were about 80%. Concentration did not creep, it stepped. The damage mechanism is short: a single program decision at that customer, a second-source award, a pause, or a shift to a Broadcom-designed fabric removes the majority of revenue inside two quarters. The balance sheet is not the issue; zero debt and $1.25bn of cash and securities at 30 June 2026 means the company survives comfortably. The business case does not.</p>
+    <p>Broadcom's exposure is buyer solvency and second-sourcing, and both are slower. Its AI backlog is concentrated in frontier laboratories committing gigawatts of hardware they have not yet earned the cash to pay for, and it stopped quoting a total backlog figure at Q3 FY2026 after publishing $73bn of AI backlog and $162bn consolidated on 11 December 2025. Separately, its oldest and largest franchise has already been split: on 22 April 2026 Google awarded the TPU 8i inference part to MediaTek while Broadcom kept 8t training. Against $13.7bn of quarterly free cash flow, $59.4bn of debt is comfortably serviceable, so the mechanism is growth-rate compression rather than distress. Astera Labs breaks first, and the trigger is one customer decision rather than an industry-wide funding contraction.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These are the seven product cells that carry essentially all of both companies' economics; every score is argued in the tabs below.</p>
+  <table>
+    <tr><th>Cell</th><th class="ca">Astera Labs</th><th class="cb">Broadcom</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>PCIe signal conditioning and smart cables</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Aries set a record quarter and PCIe Gen6 passed half of total revenue in Q2 FY2026, while Broadcom sells retimers as an adjunct to switch and accelerator bundles (Astera Labs Q2 FY2026 call, 4 Aug 2026; Broadcom press release, 6 Mar 2024)</td></tr>
+    <tr><td>AI scale-up fabric (PCIe, UALink, Scale-Up Ethernet)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Astera Labs ships the only PCIe 6 fabric in volume and holds a UALink promoter seat with engagements up from 10 to high teens; Broadcom shipped Tomahawk Ultra in July 2025 and won the 2026 Azure Helios racks by default, but named no hyperscaler adopter at launch (Astera Labs Q4 FY2025 call, 10 Feb 2026 and Citi TMT, 9 Sep 2026; Broadcom press release, 15 Jul 2025; Tech Times, 21 Jul 2026)</td></tr>
+    <tr><td>CXL memory connectivity</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Leo has design wins and volume promised at two US hyperscalers in 2027 but is still pre-revenue; no Broadcom CXL memory controller was found (Astera Labs Q2 FY2026 call, 4 Aug 2026)</td></tr>
+    <tr><td>AI scale-out Ethernet, network cards, optical DSP</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Astera Labs has Taurus and does not disclose it separately; Broadcom's AI networking revenue rose more than 2.5 times year on year in Q3 FY2026 across Tomahawk 6, Jericho4, Thor Ultra and 1.6T optical DSPs (Broadcom Q3 FY2026 call, 2 Sep 2026)</td></tr>
+    <tr><td>AI custom compute (XPU)</td><td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Astera Labs is absent by choice ("we are very selective in the parts of custom that we are going after"); Broadcom has six customers and an estimated 60% of the ASIC design-partner market by 2027 (Citi TMT, 9 Sep 2026; Counterpoint Research)</td></tr>
+    <tr><td>Non-AI semiconductors</td><td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Broadcom's broadband, wireless, storage and industrial franchises were about $16.9bn in FY2025 (inferred: semiconductor segment less disclosed AI revenue) and are cyclical rather than growing; Astera Labs has no presence</td></tr>
+    <tr><td>Infrastructure software</td><td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>VMware and mainframe software was $27.0bn in FY2025 at roughly a 76.8% operating margin (inferred from the segment note), with customers litigating renewal terms rather than leaving; Astera Labs has no presence (Broadcom FY2025 10-K)</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs; a score with no exhibit behind it does not ship. Scores are per cell and are not summed, and the three lenses get their verdicts in the Three Answers above, not here. On geography: a true product by geography grid would mislead in this pair, because both companies report revenue by billing address rather than end demand. Astera Labs states it outright in its FY2025 10-K ("revenue by location is determined by the billing address of the Company's customers, which includes the Company's end customers' manufacturing partners and the Company's distributors"), which is why Singapore, China and Taiwan were 91.6% of its FY2025 revenue and the United States 3.2%; Broadcom ships 48% of revenue through distributors with Singapore at 16.9% of the total. Scores are therefore per product cell, global.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">One of these companies sells into the AI rack. The other designs the chip at the centre of it and sells into the rack as well.</div>
+    <p>Normalization first, because the two filings do not line up. Astera Labs reports a single operating segment, so its product split exists only in management commentary on calls. Broadcom reports two segments plus a voluntary AI revenue disclosure that cuts across both. Seven normalized product cells reconcile them: custom compute, scale-up fabric, PCIe signal conditioning and cables, scale-out Ethernet and optics, CXL memory, non-AI semiconductors, and infrastructure software. Both report in US dollars, so there is no FX basis to state, but the fiscal years are offset by roughly two months and that offset is not adjusted anywhere below.</p>
+    <p>The geography axis had to be abandoned, and saying why is more useful than faking it. Astera Labs' FY2025 10-K attributes revenue to the billing address of manufacturing partners and distributors rather than end customers, which is how a company selling to American hyperscalers books 32.5% of revenue in Singapore, 30.1% in China, 29.0% in Taiwan and 3.2% in the United States. Broadcom has the same problem in milder form, with 48% of revenue through distributors and Singapore at 16.9%. Constructing product by country cells on those numbers would produce a table that looks precise and means nothing, so the cells below are product cells, global, and the geography evidence is used only where it says something real, which is the supply chapter.</p>
+    <p>What the cell map shows is that this is not a symmetric duel. Only one cell is genuinely contested. Astera Labs is entirely absent from the three cells that carry 91% of Broadcom's revenue, and Broadcom does not seriously contest the cell where Astera Labs earns most of its money. The two companies meet in the scale-up fabric, and that meeting is the whole argument.</p>
+    <div class="chartbox">
+<svg viewBox="0 0 900 312" role="img" aria-label="Butterfly chart of product cells as share of each company revenue">
+<text x="330" y="26" text-anchor="end" font-size="15" font-weight="700" fill="#C75B39">Astera Labs, FY2025</text>
+<text x="570" y="26" font-size="15" font-weight="700" fill="#3C6E8F">Broadcom, FY2025</text>
+<line x1="40" y1="36" x2="860" y2="36" stroke="#E5DDD0" stroke-width="1"/>
+<text x="450" y="67" text-anchor="middle" font-size="13" fill="#2B2B2B">PCIe signal conditioning</text>
+<rect x="83.5" y="51" width="246.5" height="22" fill="#C75B39" fill-opacity="0.55"/>
+<text x="93.5" y="67" font-size="13" font-weight="700" fill="#FFFFFF">~85% (inferred)</text>
+<text x="578" y="67" font-size="13" fill="#6E675C">no franchise (ND)</text>
+<text x="450" y="103" text-anchor="middle" font-size="13" fill="#2B2B2B">Infrastructure software</text>
+<text x="322" y="103" text-anchor="end" font-size="13" fill="#6E675C">no presence</text>
+<rect x="570" y="87" width="122.7" height="22" fill="#3C6E8F" fill-opacity="1"/>
+<text x="700.7" y="103" font-size="13" font-weight="700" fill="#3C6E8F">42.3%</text>
+<text x="450" y="139" text-anchor="middle" font-size="13" fill="#2B2B2B">Non-AI semiconductors</text>
+<text x="322" y="139" text-anchor="end" font-size="13" fill="#6E675C">no presence</text>
+<rect x="570" y="123" width="76.6" height="22" fill="#3C6E8F" fill-opacity="0.55"/>
+<text x="654.6" y="139" font-size="13" font-weight="700" fill="#3C6E8F">~26% (inferred)</text>
+<text x="450" y="175" text-anchor="middle" font-size="13" fill="#2B2B2B">AI custom compute (XPU)</text>
+<text x="322" y="175" text-anchor="end" font-size="13" fill="#6E675C">no presence, by choice</text>
+<rect x="570" y="159" width="66.4" height="22" fill="#3C6E8F" fill-opacity="0.55"/>
+<text x="644.4" y="175" font-size="13" font-weight="700" fill="#3C6E8F">~23% (inferred)</text>
+<text x="450" y="211" text-anchor="middle" font-size="13" fill="#2B2B2B">AI scale-up fabric</text>
+<rect x="286.5" y="195" width="43.5" height="22" fill="#C75B39" fill-opacity="1"/>
+<text x="278.5" y="211" text-anchor="end" font-size="13" font-weight="700" fill="#C75B39">>15% (disclosed)</text>
+<text x="578" y="211" font-size="13" fill="#6E675C">inside networking (ND)</text>
+<text x="450" y="247" text-anchor="middle" font-size="13" fill="#2B2B2B">AI scale-out Ethernet, optical</text>
+<text x="322" y="247" text-anchor="end" font-size="13" fill="#6E675C">Taurus, not disclosed (ND)</text>
+<rect x="570" y="231" width="24.6" height="22" fill="#3C6E8F" fill-opacity="0.55"/>
+<text x="602.6" y="247" font-size="13" font-weight="700" fill="#3C6E8F">~8% (inferred)</text>
+<text x="450" y="283" text-anchor="middle" font-size="13" fill="#2B2B2B">CXL memory connectivity</text>
+<text x="322" y="283" text-anchor="end" font-size="13" fill="#6E675C">pre-revenue, volume 2027</text>
+<text x="578" y="283" font-size="13" fill="#6E675C">no product found</text>
+<line x1="450" y1="40" x2="450" y2="298" stroke="#E5DDD0" stroke-width="1"/>
+</svg>      <div class="cap">Bars are share of each company's OWN FY2025 revenue, not absolute dollars. This is a deliberate departure from a shared absolute scale: at $63,887m against $852.5m, a shared dollar axis would render every Astera Labs bar invisible and the picture would carry no information. The 75-fold size gap is stated instead of drawn. Solid bars are disclosed figures; 55% opacity marks inferred ones. Astera Labs: Scorpio above 15% of FY2025 revenue is disclosed (Q4 FY2025 call, 10 Feb 2026); the roughly 85% residual for Aries and Taurus is inferred, since the company discloses no revenue by product family in any filing. Broadcom: infrastructure software $27,029m and semiconductor solutions $36,858m are disclosed (FY2025 10-K); the split of the semiconductor segment into AI compute, AI networking and non-AI is inferred from the disclosed $20bn FY2025 AI revenue and management's statement that accelerators were roughly 73% of the AI backlog.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">ALAB FY2025 (% of total)</th><th class="num ca">ALAB growth</th><th class="num cb">AVGO FY2025 (% of total)</th><th class="num cb">AVGO growth</th><th>Margin signal and leader</th></tr>
+      <tr><td>Infrastructure software</td><td class="num ca">none</td><td class="num ca">n/a</td><td class="num cb">$27,029m (42.3%) (10-K)</td><td class="num cb">+26%</td><td>Broadcom alone. About 76.8% segment operating margin (inferred). The margin engine of the whole company</td></tr>
+      <tr><td>Non-AI semiconductors</td><td class="num ca">none</td><td class="num ca">n/a</td><td class="num cb">~$16,858m (26.4%) (inferred)</td><td class="num cb">cyclical trough</td><td>Broadcom alone. Semiconductor segment operating margin 57.6% (inferred)</td></tr>
+      <tr><td>AI custom compute (XPU)</td><td class="num ca">none, by choice</td><td class="num ca">n/a</td><td class="num cb">~$14,600m (22.9%) (inferred)</td><td class="num cb">AI revenue +65% FY2025, guided +190% FY2026</td><td>Broadcom alone, and gross-margin dilutive on memory content (Q3 FY2026 call)</td></tr>
+      <tr><td>PCIe signal conditioning and smart cables</td><td class="num ca">~85% (inferred residual)</td><td class="num ca">Aries record quarter Q2 FY2026</td><td class="num cb">a product line, not a franchise (ND)</td><td class="num cb">ND</td><td>Astera Labs. Gen6 passed 50% of its revenue in Q2 FY2026</td></tr>
+      <tr><td>AI scale-up fabric</td><td class="num ca">Scorpio above 15% (disclosed)</td><td class="num ca">largest family from Q3 FY2026</td><td class="num cb">inside AI networking (ND)</td><td class="num cb">Tomahawk Ultra shipped Jul 2025</td><td>Contested. This is the duel cell</td></tr>
+      <tr><td>AI scale-out Ethernet, NIC, optical</td><td class="num ca">Taurus, not disclosed (ND)</td><td class="num ca">ND</td><td class="num cb">~$5,400m (8.5%) (inferred)</td><td class="num cb">+2.5x year on year Q3 FY2026</td><td>Broadcom, decisively</td></tr>
+      <tr><td>CXL memory connectivity</td><td class="num ca">pre-revenue</td><td class="num ca">volume 2027 at two US hyperscalers</td><td class="num cb">no product found (ND)</td><td class="num cb">n/a</td><td>Astera Labs by default, on nothing yet</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> only one of seven cells is genuinely contested, and Astera Labs is absent from the three that carry 91% of Broadcom's revenue. <b>Implication:</b> this is a pure play fighting for one socket inside a portfolio company that also designs the chip the socket attaches to, which means the comparison is about survival of a merchant position, not about share of a shared market. <span class="kpi">KPI: Scorpio X engagements converted to named design wins, disclosed at Astera Labs' FY2026 results in February 2027; five or more of the current high-teens engagements confirms the merchant position.</span> [Sources: Astera Labs FY2025 10-K and Q2 FY2026 10-Q; Broadcom FY2025 10-K and Q3 FY2026 call, 2 Sep 2026.]</div>
+
+    <h3>Segment growth engines</h3>
+    <p>Broadcom's custom compute engine runs on contracts, not forecasts. Six accelerator customers are under multi-gigawatt commitments disclosed in public releases: Meta extended through 2029 on 14 April 2026, OpenAI at 10 gigawatts through 2029 announced 13 October 2025, and Anthropic at one gigawatt in 2026 rising to five in 2027 and ten in 2028 per the Q3 FY2026 call. Growth here is organic, and the cost of it is a $10,977m research budget in FY2025 on a headcount of roughly 33,000 with 57% in research roles. The engine's weakness is visible in the same disclosure: accelerator content is increasingly memory, which is why the consolidated gross margin is being diluted even as the revenue triples.</p>
+    <p>Astera Labs' scale-up engine runs on content expansion. Management's figure is that content per accelerator went from under $100 at the March 2024 IPO to about $1,000 today, with Scorpio X alone expected to grow "well beyond $1,000 per XPU in future generations." The company sizes the merchant scale-up switching opportunity at $20bn, which is a company claim rather than a third-party estimate; 650 Group's January 2026 forecast puts total scale-up above $30bn a year by 2030 but splits it NVLink $25bn plus, Ethernet $8bn plus, PCIe and UALink $3bn plus, which means the standard Astera Labs leads is the smallest of the three pools on that view. Growth is essentially organic; three small deals in the last year (aiXscale Photonics for $31.1m closed 10 November 2025, a $74.0m asset acquisition in February 2026 and an undisclosed one in May 2026) added optical and design capability rather than revenue, and took goodwill from $19.0m to $91.6m in six months.</p>
+    <div class="iik"><b>Insight:</b> Broadcom's forward growth is contracted and supply-secured through FY2028; Astera Labs' is engagement-stage, dated 2027, and unaccompanied by any annual guidance. <b>Implication:</b> the higher growth rate and the higher growth confidence sit in different companies, and only one of those two things compounds reliably. <span class="kpi">KPI: whether Broadcom reiterates the roughly $115bn FY2027 AI revenue figure at its Q1 FY2027 results in March 2027.</span> [Sources: Broadcom Q3 FY2026 call, 2 Sep 2026; Broadcom press releases 13 Oct 2025 and 14 Apr 2026; Astera Labs Q2 FY2026 call, 4 Aug 2026 and Citi TMT, 9 Sep 2026; 650 Group, 20 Jan 2026.]</div>
+
+    <h3>Price control and route to market</h3>
+    <p>Neither company sells directly to the buyer that decides. Astera Labs sells to distributors and to its end customers' manufacturing partners, so its four largest direct customers in Q2 FY2026 at 29%, 25%, 15% and 13% of revenue are contract manufacturers rather than hyperscalers. Price is set in a hyperscaler design-in and collected through an ODM. Broadcom books 48% of revenue through distributors but sets accelerator and fabric pricing inside multi-year program contracts, and its 14 April 2026 Meta release is explicit that the program bundles "high-radix Ethernet switches, optics, PCIe switches, SerDes" with the accelerator itself.</p>
+    <p>The difference that matters is what happens to realized price as volume rises. On 5 February 2026 Astera Labs granted Amazon a warrant over 3,262,299 shares at $142.82, vesting against tranches of payments "for the purchase up to a total of $6.5 billion" of its switch, signal conditioning and optical products. Because this is consideration payable to a customer, it is booked as a reduction of revenue, not as an expense: $10.2m in Q2 FY2026 alone, and roughly 200 basis points of the quarter's gross-margin guide. The customer has a contractual claim on part of every incremental dollar. Broadcom's customers extract their price concession in the program negotiation, once, rather than as a standing deduction from the supplier's revenue line.</p>
+    <div class="iik"><b>Insight:</b> neither company is a price-setter, but only Astera Labs has a mechanism that makes its own success dilutive to reported revenue and margin. <b>Implication:</b> content-per-socket wins should be discounted by the share the customer has already contracted away, which is why a rising content story can coincide with a falling gross margin. <span class="kpi">KPI: warrant contra-revenue as a percentage of Astera Labs' quarterly revenue (10-Q note on warrants); sustained above 3% means the relationship is being paid for in price.</span> [Sources: Astera Labs Q2 FY2026 10-Q; 8-K of 10 Feb 2026; Q1 FY2026 call, 5 May 2026; Broadcom FY2025 10-K and press release, 14 Apr 2026.]</div>
+
+    <h3>Supply resilience</h3>
+    <table>
+      <tr><th>Dimension</th><th class="ca">Astera Labs</th><th class="cb">Broadcom</th></tr>
+      <tr><td>Foundry</td><td class="ca">TSMC, sole source. "TSMC is our sole manufacturing partner for our integrated circuits and we currently have not qualified another source" (FY2025 10-K Item 1A)</td><td class="cb">Also TSMC-centric; Counterpoint estimates TSMC at roughly 99% of AI ASIC wafer share</td></tr>
+      <tr><td>Capacity secured</td><td class="ca">No. "We generally do not have long-term contracts with our third-party manufacturing partners"; the $181.7m of purchase commitments at 30 June 2026 are primarily software licences and cloud hosting, not wafers</td><td class="cb">Claimed. "In 2027 we have secured the supply to again double AI revenue to approximately $115 billion" (Hock Tan, 2 Sep 2026)</td></tr>
+      <tr><td>Assembly and test</td><td class="ca">ASE and Amkor, plus "a small, limited number" of module and substrate partners</td><td class="cb">ND</td></tr>
+      <tr><td>Geographic single point</td><td class="ca">Named explicitly: TSMC and its primary distributor are in Taiwan, and "the risk of an earthquake in Taiwan is significant"</td><td class="cb">Same underlying exposure, spread across a far larger supplier base</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> the two companies share one foundry dependency and have opposite allocation power. <b>Implication:</b> in a wafer-constrained AI cycle the 75-times-larger buyer with prepaid capacity is served first, and that is a mechanism rather than a sentiment. <span class="kpi">KPI: Astera Labs work-in-progress inventory against revenue; it tripled from $35.8m to $98.7m in the first half of FY2026, and WIP continuing to outrun revenue signals either a genuine ramp or an allocation hoard.</span> [Sources: Astera Labs FY2025 10-K Items 1 and 1A, Q2 FY2026 10-Q; Broadcom Q3 FY2026 call, 2 Sep 2026; Counterpoint Research.]</div>
+
+    <h3>Competitive context</h3>
+    <p>Astera Labs' own 10-K names its competitors as Broadcom, Credo, Marvell, Microchip, Montage, Parade and Rambus, with the qualifier that they "compete with us with respect to some, but not all, of our solutions." No named research firm publishes vendor-level PCIe retimer share, so the honest position is that Astera Labs is the focused player and the others sell retimers as adjuncts. In PCIe switching it is a share-taker: Broadcom owned the Gen5 socket and Astera Labs took the Gen6 one, which its chief executive described plainly at Citi on 9 September 2026: "Before we got on the scene, the dominant switch supplier was actually Broadcom with their PCIe Gen 5 switch products. What we did when we entered this space is we decided to focus on AI. We did not have any baggage." In custom accelerators Broadcom is the share-holder under first attack, with Counterpoint putting it near 60% of the design-partner market by 2027 and Google having just split TPU 8 between Broadcom and MediaTek.</p>
+
+    <h3>Risks by cell</h3>
+    <p>Astera Labs' scale-up cell carries standards risk, and it is not symmetric. Broadcom left the UALink board in October 2025 and moved to Scale-Up Ethernet and the OCP ESUN initiative; Astera Labs holds a UALink promoter seat. The consortium has now published two spec versions and shipped no volume silicon, and the consequence showed up in July 2026 when Microsoft's AMD Helios racks went out on a Broadcom-co-designed Ethernet fabric precisely because native UALink switching silicon is not production-ready until 2027. Its signal conditioning cell carries integration risk, where the accelerator designer absorbs retiming or bundles it. Broadcom's custom compute cell carries second-sourcing risk, already realized once at Google, and its whole AI complex carries buyer-solvency risk, because gigawatt commitments from pre-profit laboratories are only as firm as their funding.</p>
+    <div class="iik"><b>Insight:</b> Astera Labs is exposed to a standard it helps steer but that has not yet shipped, while Broadcom is exposed to a standard it does not steer but already ships against. <b>Implication:</b> the scale-up prize is still forward-dated for both, and Broadcom is currently monetizing the waiting period with installed Ethernet silicon. <span class="kpi">KPI: number of 2027 rack architectures publicly specifying native UALink switching, counted at OCP and hyperscaler announcements through end-2027.</span> [Sources: The Register, 7 Apr 2026; TrendForce, 14 Oct 2025; Tech Times, 21 Jul 2026; Fierce Network, 23 Jul 2026.]</div>
+
+    <div class="pull">Astera Labs will grow faster for years and still be growing inside a socket that Broadcom's customers can choose to fill from Broadcom.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In socket-attach industries the terms are set years before deployment, in the design cycle, by whoever the customer invites to co-design the chip.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:2%">Broadcom - clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:2%">Broadcom - clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">Broadcom - narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Suppliers is narrow because both companies depend on the same single foundry; only the allocation power differs.</div>
+    </div>
+
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Astera Labs</h3><p><b>COSMOS software layer</b>, embedded across all four product families and the clearest stickiness claim management makes. Jitendra Mohan at Citi on 9 September 2026: "To somebody who is already using a Scorpio X and therefore using our COSMOS software, it just becomes very easy for them to move from Scorpio X to a UALink-based Scorpio X." Durability MEDIUM; a genuine integration and retraining cost, but a well-funded rival needs two or three years, not a decade.</p><p><b>First to volume at PCIe Gen6</b>, where Scorpio P "remains the only PCIe 6 fabric shipping in volume in the market" (Q4 FY2025 call). Durability LOW to MEDIUM; this is a timing lead, and Broadcom demonstrated a 144-lane Gen6 switch at SC25 in November 2025. A lead is not a moat.</p><p><b>UALink promoter board seat</b>, one of thirteen, while Broadcom sits only as a contributor. Durability MEDIUM and entirely contingent on UALink winning sockets.</p></div>
+      <div class="col b"><h3>Broadcom</h3><p><b>Custom accelerator co-design incumbency.</b> Six customers, an estimated 60% of the design-partner market by 2027 (Counterpoint), Meta contracted through 2029 and OpenAI through 2029. Durability HIGH, and the proof of the type is the timeline: a chip generation is a multi-year co-design and a hyperscaler cannot re-partner mid-program. This takes years, not money.</p><p><b>One SerDes and IP base</b> amortized across accelerators, Ethernet switching, network cards, optics and PCIe, funded by $10,977m of FY2025 research. Durability HIGH.</p><p><b>The right to bundle the socket.</b> The 14 April 2026 Meta release sells PCIe switches and SerDes inside the accelerator program; the 13 October 2025 OpenAI release names "Ethernet, PCIe and optical connectivity." Durability HIGH, and this is the mechanism by which a merchant supplier gets designed out rather than out-competed.</p><p><b>VMware installed base</b>, repriced to a 76.8% operating margin (inferred) with customers litigating renewal terms rather than leaving. Durability HIGH, irrelevant to the connectivity fight, decisive to the economics.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Astera Labs defends a product with a software layer and a timing lead; Broadcom defends a position inside the customer's design cycle and the right to sell the adjacent socket with the chip. <b>Implication:</b> the two are not competing for the same thing, which is why Astera Labs can win its cells and still lose the relationship. <span class="kpi">KPI: Astera Labs design wins on platforms where Broadcom designed the accelerator, inferable from end-customer commentary, counted through end-2027.</span> [Sources: Astera Labs Q4 FY2025 call, 10 Feb 2026 and Citi TMT, 9 Sep 2026; Broadcom press releases 13 Oct 2025 and 14 Apr 2026; Counterpoint Research.]</div>
+
+    <h3>Customers: who controls net price and access</h3>
+    <p>Astera Labs' direct customer list is a list of contract manufacturers, so the disclosed concentration of 29%, 25%, 15% and 13% in Q2 FY2026 understates the real dependency. The number that matters sits in the risk factors: "In 2025, one end customer represented more than 70% of our revenue; the top three end customers represented an aggregate of approximately 86% of our revenue." The FY2024 10-K said no end customer exceeded 40% and the top three were about 80%. That is not drift, it is a step change in one year, and it happened during the fastest growth the company has had. Pricing power, measured by what the customer extracts, is negative: the Amazon warrant reduces revenue as purchases accumulate.</p>
+    <p>Broadcom's largest customer is 32% of FY2025 net revenue and 44% of receivables, which looks worse until the other two disclosures are read alongside it. The company also says 48% of revenue goes through distributors and, separately, that "aggregate sales to our top five end customers, through all channels, accounted for approximately 40% of our net revenue." Those two cannot both describe end customers at those magnitudes, so the 32% is almost certainly a distributor of record (inferred). Real end-customer concentration is roughly 40% across five accounts, each under a multi-year program. Broadcom negotiates six times; Astera Labs negotiates once and cannot walk away.</p>
+    <div class="iik"><b>Insight:</b> one end customer above 70% against five end customers at about 40% combined, and the concentrated one is the company with negative realized pricing power. <b>Implication:</b> Astera Labs' revenue quality is materially worse than its growth rate suggests, and a renegotiation it loses is not survivable as a business case. <span class="kpi">KPI: the end-customer concentration sentence in Astera Labs' FY2026 10-K (February 2027). Below 55% is the diversification proof; above 70% again confirms dependence.</span> [Sources: Astera Labs FY2024 and FY2025 10-Ks Item 1A, Q2 FY2026 10-Q; Broadcom FY2025 10-K.]</div>
+
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Both companies are fabless and both depend on TSMC, but only one of them has bought insurance. Astera Labs states that TSMC is its sole integrated-circuit manufacturer and that it "currently ha[s] not qualified another source," that it generally has no long-term supply contracts, and that substantially all purchases are on a purchase-order basis. Its $181.7m of purchase commitments at 30 June 2026 are primarily software licences and cloud hosting rather than wafers, so there is no secured capacity behind a ramp that management expects to grow 40% sequentially in Q3. Broadcom's position is the opposite claim, made explicitly: the supply for roughly $115bn of FY2027 AI revenue and $230bn in FY2028 is, in management's words, already secured. Dual-sourcing coverage is LOW for Astera Labs and not separately disclosed for Broadcom.</p>
+    <p>Pass-through tells the same story from the other end. Both companies are watching gross margin fall for the identical reason, more hardware and memory content in the mix: Astera Labs went 76.4% in Q1 FY2026 to 73.7% in Q2 to a roughly 72% Q3 guide; Broadcom went 78.6% in FY2025 to 74.9% in Q3 FY2026. The difference is what happens underneath. Broadcom's operating margin rose 240 basis points year on year anyway, because opex leverage absorbed the mix hit. Astera Labs' guided operating margin also rises, to about 43%, which shows the same absorption beginning, from a far lower base.</p>
+    <div class="iik"><b>Insight:</b> identical single-foundry dependency, opposite allocation power, and both companies absorbing the same hardware-content dilution. <b>Implication:</b> the shock that matters here is allocation, not price, and allocation follows volume. <span class="kpi">KPI: Astera Labs' non-GAAP gross margin against management's own stated 70% long-term drift, quarterly. Below 70% before end-2027 means the content story is being paid for in margin.</span> [Sources: Astera Labs FY2025 10-K Item 1A, Q2 FY2026 10-Q and Q2 call; Broadcom Q3 FY2026 call, 2 Sep 2026.]</div>
+
+    <h3>The price and power triangle: the top three cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>AI scale-up fabric</td><td>ALAB: hyperscaler design-in, ODM billing. AVGO: bundled inside the accelerator program contract</td><td>ALAB carries premium content (about $1,000 per accelerator) but margin only "broadly in range with our corporate gross margins" (CFO, Q2 FY2026), so not accretive. AVGO prices inside the program</td><td>ALAB buys wafers on purchase orders. AVGO says supply is secured to FY2028</td><td>ALAB share UP from near zero, margin FLAT to DOWN. AVGO share HOLDS the Ethernet path and took the 2026 Azure Helios racks by default</td><td>Native UALink Scorpio X shipping in volume by Q4 2027</td></tr>
+      <tr><td>PCIe signal conditioning</td><td>ALAB designed in at all US hyperscalers (company claim, 9 Sep 2026). AVGO sells retimers as an adjunct</td><td>ALAB leads on price and position; module mix dilutes it</td><td>Same foundry for both</td><td>ALAB share FLAT to UP, margin DOWN. AVGO largely indifferent</td><td>Aries revenue trajectory against the 70% gross-margin target</td></tr>
+      <tr><td>AI custom compute</td><td>ALAB none, by choice: "we are very selective in the parts of custom that we are going after"</td><td>AVGO sets it inside the program</td><td>AVGO secured</td><td>AVGO share HOLDS near 60% of design partners, margin DOWN on memory content; first crack visible in the Google TPU 8i award to MediaTek, 22 Apr 2026</td><td>A second design partner announced on a Meta or OpenAI generation by end-2027</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Astera Labs' fastest-growing cell is the one its own chief financial officer describes as merely corporate-average margin, while part of the content per socket is contractually returned to the customer. <b>Implication:</b> growing into a cell at average margin while paying the customer for the privilege is volume, not power, and the two are easy to confuse at 100% growth. <span class="kpi">KPI: Scorpio gross margin commentary at Astera Labs' Q4 FY2026 results, February 2027; any statement that Scorpio is accretive rather than in line would change this reading.</span> [Sources: Astera Labs Q2 FY2026 call, 4 Aug 2026 and Citi TMT, 9 Sep 2026; Tech Times, 21 Jul 2026; TNW, 22 Apr 2026.]</div>
+
+    <h3>The causal gap</h3>
+    <p><b>Cause one, scale and the amortization base. Impact MAJOR, not closeable.</b> Astera Labs spent 55.3% of sales on research and selling in FY2025 against Broadcom's 23.8%, and Broadcom's $10,977m research budget is spread across seven product lines and two segments. Closing this requires roughly ten times Astera Labs' current revenue on a similar cost base. That is not an 18-month project and money does not buy it.</p>
+    <p><b>Cause two, attach to the accelerator socket. Impact MAJOR, not closeable on current strategy.</b> Broadcom designs the accelerator and sells the fabric with it. Astera Labs cannot replicate this without entering custom accelerator design, which its chief executive has explicitly declined to do at scale. This is the only gap that would matter even if the first one closed.</p>
+    <p><b>Cause three, end-customer concentration, running against Astera Labs. Impact MAJOR, and closeable.</b> More than 70% of FY2025 revenue from one end customer is a business-model vulnerability rather than a cost one, and it is the one gap that can genuinely shut inside 18 to 24 months: the company says it now ships to all US-based hyperscalers and has moved Scorpio X engagements from 10 to the high teens. This is the entire constructive case, and it is testable on a date.</p>
+    <div class="pull">Broadcom holds the stronger position because it is invited into the design two years before the socket exists, and Astera Labs has to win the socket after the chip is already drawn.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">The gap between these two cost engines is 48.6 points of EBIT margin, and almost none of it is made at the price point.</div>
+    <p>Both companies present costs by function, so there is no by-nature reconciliation problem. There is a different one. Broadcom's reported cost of sales includes amortization of acquisition-related intangibles of $1,853m, $6,023m and $6,031m in FY2023, FY2024 and FY2025, plus restructuring charges of $4m, $254m and $76m. Astera Labs carries essentially neither. Comparing the reported gross margins would make Broadcom look structurally worse than Astera Labs in FY2024 by 13.4 points, which is an artefact of the VMware purchase price rather than anything about how either company makes a chip. Both versions are shown below, and the like-for-like line is used everywhere else on this page.</p>
+    <p>The second mapping note is on selling costs. Astera Labs reports sales and marketing separately from general and administrative and has no SG&A line at all, so SG&A here is the sum of the two, on the same basis in all three years. Its FY2024 figures are distorted by the IPO: $88.9m of that year's $234.6m of stock compensation was recognized on the liquidity-event vesting condition, which is why selling and administrative costs reached 55.0% of sales in a year when revenue tripled. All five ratios are computable for both companies in all three years, so nothing below is marked ND.</p>
+    <h3>Three years, five ratios</h3>
+    <table>
+      <tr><th>% of sales, FY2023-FY2025 average</th><th class="num ca">Astera Labs</th><th class="num cb">Broadcom</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS (like-for-like)</td><td class="num ca">26.3</td><td class="num cb">24.5</td><td class="num">-1.8</td><td>Near-identical fabless economics; both buy TSMC wafers and both are diluting with hardware content</td></tr>
+      <tr><td>Gross margin (like-for-like)</td><td class="num ca">73.7</td><td class="num cb">75.5</td><td class="num">+1.8</td><td>Not the gap. Strip the acquisition amortization and the two price at roughly the same level</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">49.9</td><td class="num cb">16.6</td><td class="num">-33.3</td><td>Astera Labs funds four families plus optics plus UALink off a sub-$1bn base; Broadcom amortizes one IP base across seven product lines and two segments</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">35.2</td><td class="num cb">6.9</td><td class="num">-28.3</td><td>The FY2024 IPO distortion plus a selling model still being built, against a company selling to six named accounts and a distributor network</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">-11.5</td><td class="num cb">37.1</td><td class="num">+48.6</td><td>Entirely an opex-intensity outcome, not a pricing outcome</td></tr>
+    </table>
+    <p class="score-note">Gross margin and COGS are shown like-for-like, with acquisition amortization and restructuring removed from Broadcom's cost of sales in all three years. On as-reported figures Broadcom's three-year average COGS is 33.4% and gross margin 66.6%, which would put Astera Labs ahead by 7.1 points on a difference that is purely purchase accounting. Fiscal years are offset by roughly two months and are not adjusted. Sources: Astera Labs FY2025 10-K (FY2023 column from the FY2024 10-K); Broadcom FY2025 10-K.</p>
+    <div class="chartbox">
+<svg viewBox="0 0 900 300" role="img" aria-label="Five cost ratios, three-year averages">
+<line x1="60" y1="216.8" x2="860" y2="216.8" stroke="#2B2B2B" stroke-width="1.5"/>
+<line x1="60" y1="173.6" x2="860" y2="173.6" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="177.6" text-anchor="end" font-size="13" fill="#6E675C">20%</text>
+<line x1="60" y1="130.4" x2="860" y2="130.4" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="134.4" text-anchor="end" font-size="13" fill="#6E675C">40%</text>
+<line x1="60" y1="87.2" x2="860" y2="87.2" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="91.2" text-anchor="end" font-size="13" fill="#6E675C">60%</text>
+<line x1="60" y1="44.0" x2="860" y2="44.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="52" y="48.0" text-anchor="end" font-size="13" fill="#6E675C">80%</text>
+<text x="52" y="220.8" text-anchor="end" font-size="13" fill="#6E675C">0%</text>
+<rect x="75" y="160.0" width="50" height="56.8" fill="#C75B39"/>
+<text x="100" y="153.0" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">26.3</text>
+<rect x="133" y="163.9" width="50" height="52.9" fill="#3C6E8F"/>
+<text x="158" y="156.9" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">24.5</text>
+<text x="129" y="285" text-anchor="middle" font-size="14" fill="#2B2B2B">COGS</text>
+<rect x="235" y="57.6" width="50" height="159.2" fill="#C75B39"/>
+<text x="260" y="50.6" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">73.7</text>
+<rect x="293" y="53.7" width="50" height="163.1" fill="#3C6E8F"/>
+<text x="318" y="46.7" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">75.5</text>
+<text x="289" y="285" text-anchor="middle" font-size="14" fill="#2B2B2B">Gross margin</text>
+<rect x="395" y="109.0" width="50" height="107.8" fill="#C75B39"/>
+<text x="420" y="102.0" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">49.9</text>
+<rect x="453" y="180.9" width="50" height="35.9" fill="#3C6E8F"/>
+<text x="478" y="173.9" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">16.6</text>
+<text x="449" y="285" text-anchor="middle" font-size="14" fill="#2B2B2B">R&D</text>
+<rect x="555" y="140.8" width="50" height="76.0" fill="#C75B39"/>
+<text x="580" y="133.8" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">35.2</text>
+<rect x="613" y="201.9" width="50" height="14.9" fill="#3C6E8F"/>
+<text x="638" y="194.9" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">6.9</text>
+<text x="609" y="285" text-anchor="middle" font-size="14" fill="#2B2B2B">SG&A</text>
+<rect x="715" y="216.8" width="50" height="24.8" fill="#C75B39"/>
+<text x="740" y="257.6" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">-11.5</text>
+<rect x="773" y="136.7" width="50" height="80.1" fill="#3C6E8F"/>
+<text x="798" y="129.7" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">37.1</text>
+<text x="769" y="285" text-anchor="middle" font-size="14" fill="#2B2B2B">EBIT margin</text>
+<text x="75" y="20" font-size="14" font-weight="700" fill="#C75B39">Astera Labs</text>
+<text x="195" y="20" font-size="14" font-weight="700" fill="#3C6E8F">Broadcom</text>
+<text x="330" y="20" font-size="13" fill="#6E675C">% of sales, FY2023-FY2025 average; Broadcom COGS and gross margin ex acquisition amortization</text>
+</svg>      <div class="cap">Five ratios, three-year averages. Broadcom's COGS and gross margin are shown ex acquisition-related amortization and restructuring; all other lines are as reported.</div>
+    </div>
+    <h3>Year by year</h3>
+    <table>
+      <tr><th>% of sales</th><th class="num ca">ALAB FY2023</th><th class="num ca">FY2024</th><th class="num ca">FY2025</th><th class="num cb">AVGO FY2023</th><th class="num cb">FY2024</th><th class="num cb">FY2025</th></tr>
+      <tr><td>COGS (like-for-like)</td><td class="num ca">31.1</td><td class="num ca">23.6</td><td class="num ca">24.3</td><td class="num cb">25.9</td><td class="num cb">24.8</td><td class="num cb">22.7</td></tr>
+      <tr><td>Gross margin (like-for-like)</td><td class="num ca">68.9</td><td class="num ca">76.4</td><td class="num ca">75.7</td><td class="num cb">74.1</td><td class="num cb">75.2</td><td class="num cb">77.3</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">63.4</td><td class="num ca">50.7</td><td class="num ca">35.7</td><td class="num cb">14.7</td><td class="num cb">18.1</td><td class="num cb">17.2</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">31.0</td><td class="num ca">55.0</td><td class="num ca">19.7</td><td class="num cb">4.4</td><td class="num cb">9.6</td><td class="num cb">6.6</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">-25.5</td><td class="num ca">-29.3</td><td class="num ca">20.3</td><td class="num cb">45.2</td><td class="num cb">26.1</td><td class="num cb">39.9</td></tr>
+      <tr><td>Stock compensation</td><td class="num ca">9.2</td><td class="num ca">59.2</td><td class="num ca">18.8</td><td class="num cb">6.1</td><td class="num cb">11.0</td><td class="num cb">11.8</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Astera Labs' research burden fell from 63.4% to 35.7% of sales in two years while Broadcom's held near 17%, and Astera Labs' stock compensation is still running at 18.8% of sales against 11.8%. <b>Implication:</b> the cost gap is a scale gap that scale itself is closing, but the dilution gap is a choice that does not close automatically. <span class="kpi">KPI: Astera Labs' non-GAAP operating margin against the roughly 43% guided for Q3 FY2026; sustained expansion above 45% through FY2027 would confirm the leverage is structural rather than a one-quarter mix effect.</span> [Sources: both companies' FY2025 10-Ks; Astera Labs Q2 FY2026 call, 4 Aug 2026.]</div>
+
+    <h3>The structural gap</h3>
+    <p>The most persistent difference is not gross margin, it is opex intensity, and it is present in all three years without a single exception: research plus selling ran 94.4%, 105.7% and 55.3% of Astera Labs' sales against 19.1%, 27.7% and 23.8% of Broadcom's. Once Broadcom's acquisition amortization is removed from cost of sales the two companies' gross margins converge to within two points on a three-year average, which means the entire 48.6-point EBIT gap is manufactured below the gross line rather than won at the price point. The mechanism comes straight from the power map: Broadcom spreads one SerDes and IP base across accelerators, Ethernet switching, network cards, optics and PCIe, then carries a software segment earning roughly a 76.8% operating margin on almost no incremental engineering, while Astera Labs funds four product families, an optical acquisition and a new Israeli design centre off a revenue base 75 times smaller.</p>
+    <p>This confirms the power map rather than contradicting it, with one qualification that cuts both ways. It confirms it because the pricing-power story was never that Astera Labs sells cheaply; it is that Astera Labs has no operating leverage yet and will never have a software annuity. It qualifies it because the ratio is collapsing quickly, with research down from 63.4% to 35.7% of sales in two years and a guided non-GAAP operating margin of about 43% for Q3 FY2026 against 39.1% in Q2, so what looks like a permanent cost handicap is substantially a scale handicap that growth is curing. The honest read is that Astera Labs is buying its way toward Broadcom's cost structure and is perhaps a third of the way there, while Broadcom's own gross margin is falling for exactly the reason Astera Labs' is, memory and hardware content in the mix, and its operating margin keeps rising regardless. Cash generation is where the difference is starkest and least arguable: Broadcom converted 46% of Q3 FY2026 revenue into free cash flow, against operating cash flow of 23% of revenue at Astera Labs in the first half of FY2026.</p>
+    <div class="pull">Broadcom runs the leaner engine by 48.6 points of EBIT margin, and almost none of that is pricing, because like-for-like gross margins are within two points of each other.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>A second design partner takes a top-three accelerator generation.</b> On 22 April 2026 Google awarded TPU 8i inference to MediaTek while Broadcom kept 8t training, the first split inside Broadcom's oldest and largest account. If that repeats at Meta or OpenAI, the co-design position stops being a moat and becomes a portfolio of renewable contracts, at which point Broadcom's connectivity attach weakens and a merchant supplier like Astera Labs gets a wider door. <span style="color:var(--good);font-weight:700;">Early warning: any announced second design partner on a Meta MTIA or OpenAI accelerator generation, by end-2027, from company releases.</span></li>
+      <li><b>Frontier-laboratory funding contracts and the AI backlog proves softer than "secured supply" implies.</b> Broadcom's gigawatt commitments come from buyers that are not yet self-funding, and the company stopped quoting a total backlog figure at Q3 FY2026 after publishing $73bn of AI backlog and $162bn consolidated on 11 December 2025. A guidance cut would reveal that the forward revenue was an intention rather than an order. <span style="color:var(--good);font-weight:700;">Early warning: the FY2027 AI revenue figure at Broadcom's Q1 FY2027 results in March 2027; anything below roughly $100bn breaks the visibility argument.</span></li>
+      <li><b>Scale-up standardizes on native UALink faster than on Ethernet.</b> Broadcom left the UALink board in October 2025 and bet on Scale-Up Ethernet and OCP ESUN; Astera Labs holds a promoter seat and ships the only volume PCIe Gen6 fabric. If 2027 rack architectures adopt native UALink switching at scale, Broadcom is defending a path it does not steer and Astera Labs' content claim of more than $1,000 per accelerator gets validated at exactly the moment its own silicon arrives. <span style="color:var(--good);font-weight:700;">Early warning: number of 2027 rack architectures publicly specifying native UALink switching, counted at OCP and hyperscaler announcements through end-2027.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favours</th><th>Where published</th></tr>
+    <tr><td>Astera Labs Scorpio X engagements converted to named design wins</td><td>Five or more of the current high-teens engagements</td><td>Q4 FY2026 results, February 2027</td><td class="ca">Astera Labs</td><td>Astera Labs earnings call</td></tr>
+    <tr><td>Astera Labs top end-customer share of revenue</td><td>Below 55% (above 70% again is the negative)</td><td>FY2026 10-K, February 2027</td><td class="ca">Astera Labs if below; <span class="cb">Broadcom if not</span></td><td>Astera Labs 10-K, Item 1A</td></tr>
+    <tr><td>Astera Labs non-GAAP gross margin</td><td>Holds at 72% or above</td><td>Through FY2027</td><td class="ca">Astera Labs if held; <span class="cb">Broadcom if below 70%</span></td><td>Astera Labs quarterly releases</td></tr>
+    <tr><td>Broadcom FY2027 AI revenue guidance</td><td>Reiterated at about $115bn</td><td>Q1 FY2027 results, March 2027</td><td class="cb">Broadcom</td><td>Broadcom earnings call</td></tr>
+    <tr><td>Second design partner on a Meta or OpenAI accelerator generation</td><td>Any announcement</td><td>End-2027</td><td class="ca">Astera Labs</td><td>Company press releases</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Broadcom is the stronger business and the smaller research problem, because its next three years are already public at gigawatt granularity and the remaining uncertainty is macro rather than company-specific. The deep-dive hours belong to Astera Labs, and to one question: who the end customer at more than 70% of revenue actually is, and whether Scorpio X converts enough of those high-teens engagements before that concentration is tested.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> Three lenses run in one pass: a growth and profitability map that breaks both companies out of consolidated totals into product cells, a power map comparing moats, customer control and supplier links, and a cost engine comparing three years of five ratios on a reconciled basis. The 80/20 filter keeps the cells that explain roughly all of each company's economics and collapses the rest; the geography axis was dropped deliberately because both companies report revenue by billing address rather than end demand, and that is stated rather than worked around. Figures are in US dollars as reported with no FX conversion, fiscal years are offset by roughly two months and are not adjusted, ND marks data that is not publicly disclosed, and (inferred) marks a conclusion reasoned from disclosed figures with the logic given at the point of use. This is a business-strength comparison, not a valuation: it says nothing about either company's share price, and nothing here is a recommendation to buy or sell anything.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Astera Labs, Inc., Form 10-K for FY2025, filed 20 February 2026 (analyst's local filing archive; SEC EDGAR CIK 0001736297)</li>
+      <li>Astera Labs, Inc., Form 10-K for FY2024, filed 14 February 2025</li>
+      <li>Astera Labs, Inc., Form 10-Q for Q2 FY2026, filed 5 August 2026, and Form 10-Q for Q1 FY2026, filed 6 May 2026</li>
+      <li>Astera Labs, Inc., Form 8-K of 10 February 2026 (Items 1.01, 3.02, 9.01), Amazon transaction and warrant agreements</li>
+      <li>Astera Labs earnings-call transcripts: Q4 FY2025 (10 February 2026), Q1 FY2026 (5 May 2026), Q2 FY2026 (4 August 2026)</li>
+      <li>Astera Labs at Citi's 2026 Global TMT Conference, transcript, 9 September 2026</li>
+      <li>Broadcom Inc., Form 10-K for FY2025, filed 18 December 2025 (SEC EDGAR CIK 0001730168)</li>
+      <li>Broadcom Inc. quarterly results releases and earnings calls: Q4 FY2025 (11 December 2025), Q1 FY2026 (4 March 2026), Q2 FY2026 (3 June 2026), Q3 FY2026 (2 September 2026), investors.broadcom.com</li>
+      <li>Broadcom press releases: PCIe Gen5 and Gen6 retimers (6 March 2024), end-to-end PCIe Gen6 portfolio (25 February 2025), Tomahawk Ultra (15 July 2025), Jericho4 (4 August 2025), OpenAI collaboration (13 October 2025), Thor Ultra (14 October 2025), extended Meta partnership (14 April 2026)</li>
+      <li>Counterpoint Research, AI server compute ASIC shipments to triple by 2027</li>
+      <li>Dell'Oro Group, AI back-end network switch sales, 2Q26; and data centre capex above $1 trillion in 2026 (10 June 2026)</li>
+      <li>650 Group, In the AI era, Ethernet set to surge in scale-out and ramp in scale-up, 20 January 2026</li>
+      <li>UALink Consortium member list, accessed 13 September 2026; The Register, UALink 2.0 specifications, 7 April 2026</li>
+      <li>Open Compute Project, Scale-Up Ethernet specification v1.0.0, 16 July 2025; TrendForce, Broadcom joins OCP ESUN after exiting UALink board, 14 October 2025</li>
+      <li>Tech Times, Azure bets on AMD Helios, 21 July 2026; Fierce Network, AMD Helios bets on AI networking over open Ethernet, 23 July 2026</li>
+      <li>The Next Web, Google Ironwood TPU and the TPU 8 split, 22 April 2026; Tom's Hardware, custom AI ASICs examined, 21 May 2026, and NVIDIA invests $2bn in Marvell, 2 April 2026</li>
+      <li>CNBC, Broadcom reveals its mystery $10 billion customer is Anthropic, 11 December 2025</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
