@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadcom vs Marvell: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  .tblwrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .duo .col p{font-size:17px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:12px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:12px;}
+  .answer p:last-of-type{margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  @media(max-width:620px){.leanrow{grid-template-columns:110px 1fr;}}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Broadcom vs Marvell: who wins the next decade?</h1>
+  <p class="source">Merchant AI and data-infrastructure semiconductors. AVGO / MRVL. Run 14 September 2026. Built from Broadcom FY2023-FY2025 10-Ks and the FY2026 Q3 10-Q, Marvell FY2024-FY2026 10-Ks and the FY2027 Q2 10-Q, both companies' earnings-call transcripts through September 2026, their 8-K material-event filings, and cited third-party market research. Events swept through 14 September 2026; most recent events checked: Broadcom Q3 FY2026 results and the FY2027-FY2028 AI outlook (2 September 2026) and Marvell's Google warrant 8-K (19 August 2026). Figures in USD as reported by each company; no FX conversion applied. Fiscal years are offset by roughly one quarter and every table says so. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Broadcom (AVGO)</span><span class="chip b">Marvell (MRVL)</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Broadcom is the materially stronger business for the next five to ten years, and unusually, all three lenses agree rather than splitting.</div>
+    <div class="why">The load-bearing evidence is the thing that cannot be bought in five years: Broadcom carries a 31.4bn dollar software annuity at 94% gross margin behind an AI franchise almost six times Marvell's entire data-centre business, while Marvell carries 2.3bn dollars of declining communications revenue behind an 81%-data-center business it is paying its largest customer 6.4% of its equity to expand.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Broadcom's custom XPU line alone, roughly 42.3bn dollars in FY2026E, is about 3.5 times Marvell's entire company, and its FY2028 AI outlook of 230bn dollars is roughly 13 times Marvell's guided FY2028 total of 18bn dollars (AVGO Q3 FY2026 call; MRVL Q2 FY2027 call).</div>
+    <div class="col"><span class="n">2</span><br>Marvell issued Google a warrant over 58,970,907 shares at 206 dollars, vesting one tranche per 500m dollars of custom revenue through FY2033. Broadcom's filings contain no customer warrant at all (MRVL 8-K, 19 Aug 2026; AVGO FY2025 10-K and FY2026 Q3 10-Q).</div>
+    <div class="col"><span class="n">3</span><br>In its latest full year Marvell grew revenue 42.1% and operating cash flow 4.1%. Broadcom grew revenue 23.9% and operating cash flow 38.0% to 27,537m dollars (MRVL FY2026 10-K; AVGO FY2025 10-K).</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:2%">Broadcom - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:2%">Broadcom - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:10%">Broadcom breaks last - clear</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors Broadcom, right lean favors Marvell; marker position shows how decisive. All three lean the same way, which is itself the finding.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product and geography?</div>
+    <div class="w"><span class="chip a">Broadcom</span></div>
+    <p>The forward mechanism is a contracted, capacity-anchored program book, not a market-size story. Three cells carry the next five years. Custom XPU, roughly 42.3bn dollars in FY2026E, rests on six customers with gigawatt-denominated schedules disclosed to 2028: Google under a long-term agreement at multi-tens of billions annually, Anthropic at 1 GW in 2026 rising to 5 GW in 2027 and an incremental 10 GW in 2028, OpenAI at 1.3 GW in 2027 and over 5 GW in 2028, and Meta at three MTIA generations and 3 GW through 2028, with management stating supply is already secured for the 115bn dollar FY2027 and 230bn dollar FY2028 outlooks (AVGO Q3 FY2026 call, 2 Sep 2026). AI networking, roughly 15.7bn dollars, grows independently of that: Tomahawk 6 is deployed at hyperscalers that buy their accelerators elsewhere, and Tomahawk 7 at 200 Tbps is taped out. Infrastructure software, 31.4bn dollars at 94% segment gross margin and 15% ARR growth, compounds through any AI air pocket and funds the research budget inside one.</p>
+    <p>Marvell's forward mechanism is real and narrower. Scale-up optics and scale-up switching are genuinely new addressable market, its optical DSP franchise is the estimated share leader, and Celestial AI's photonic fabric already carries a design win at a top hyperscaler. But its raised FY2028 target of 18bn dollars is roughly 8% of Broadcom's FY2028 AI-only line of sight, and the gap is widening rather than closing.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 920 250" role="img" aria-label="Revenue indexed to 100">
+<line x1="56" y1="146.7" x2="710" y2="146.7" stroke="#E5DDD0" stroke-width="1"/>
+<text x="46" y="151.7" text-anchor="end" font-size="13" fill="#6E675C">100</text>
+<line x1="56" y1="116.0" x2="710" y2="116.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="46" y="121.0" text-anchor="end" font-size="13" fill="#6E675C">150</text>
+<line x1="56" y1="85.3" x2="710" y2="85.3" stroke="#E5DDD0" stroke-width="1"/>
+<text x="46" y="90.3" text-anchor="end" font-size="13" fill="#6E675C">200</text>
+<line x1="56" y1="54.7" x2="710" y2="54.7" stroke="#E5DDD0" stroke-width="1"/>
+<text x="46" y="59.7" text-anchor="end" font-size="13" fill="#6E675C">250</text>
+<line x1="56" y1="24.0" x2="710" y2="24.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="46" y="29.0" text-anchor="end" font-size="13" fill="#6E675C">300</text>
+<text x="56.0" y="234" text-anchor="middle" font-size="14" fill="#6E675C">2023</text>
+<text x="274.0" y="234" text-anchor="middle" font-size="14" fill="#6E675C">2024</text>
+<text x="492.0" y="234" text-anchor="middle" font-size="14" fill="#6E675C">2025</text>
+<text x="710.0" y="234" text-anchor="middle" font-size="14" fill="#6E675C">2026E</text>
+<polyline points="56.0,146.7 274.0,119.7 492.0,98.8 710.0,26.5" fill="none" stroke="#C75B39" stroke-width="3"/>
+<circle cx="56.0" cy="146.7" r="4" fill="#C75B39"/>
+<circle cx="274.0" cy="119.7" r="4" fill="#C75B39"/>
+<circle cx="492.0" cy="98.8" r="4" fill="#C75B39"/>
+<circle cx="710.0" cy="26.5" r="4" fill="#C75B39"/>
+<text x="722.0" y="32.5" text-anchor="start" font-size="16" font-weight="700" fill="#C75B39">Broadcom 296</text>
+<polyline points="56.0,146.7 274.0,143.6 492.0,116.6 710.0,74.3" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+<circle cx="56.0" cy="146.7" r="4" fill="#3C6E8F"/>
+<circle cx="274.0" cy="143.6" r="4" fill="#3C6E8F"/>
+<circle cx="492.0" cy="116.6" r="4" fill="#3C6E8F"/>
+<circle cx="710.0" cy="74.3" r="4" fill="#3C6E8F"/>
+<text x="722.0" y="80.3" text-anchor="start" font-size="16" font-weight="700" fill="#3C6E8F">Marvell 218</text>
+<text x="56" y="136.7" text-anchor="start" font-size="13" fill="#6E675C">indexed to 100</text>
+</svg>
+      <div class="cap">Revenue indexed to 100. Broadcom FY2023-FY2026E (FY2023 35,819m, FY2024 51,574m, FY2025 63,887m per the FY2025 10-K; FY2026E 105.9bn = 9M actual 71,089m from the FY2026 Q3 10-Q plus 34.8bn Q4 guidance). Marvell FY2024-FY2027E (FY2024 5,507.7m, FY2025 5,767.3m, FY2026 8,194.6m per the FY2026 10-K; FY2027E ~12.0bn guidance). Fiscal years are offset by roughly one quarter: Broadcom's FY2026 ends 1 Nov 2026, Marvell's FY2027 ends ~30 Jan 2027.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins, and through what?</div>
+    <div class="w"><span class="chip a">Broadcom</span></div>
+    <p>There is no compounder-versus-fortress tension to report here, because the growth winner and the margin winner are the same company. The conversion mechanism is operating expense intensity, not pricing. Broadcom carries research and selling costs at roughly 7% of revenue consolidated and roughly 6% inside its semiconductor segment; Marvell carries them at 22%. That produced a 31.3-point operating margin gap in the latest comparable quarters, 67.9% against 36.6%, on a gross margin gap of only 16.1 points. Strip the software annuity out entirely and the point sharpens: Broadcom's semiconductor segment earned a 66.9% gross margin against Marvell's 58.9%, a gap of 8 points, and converted it into a 61.3% operating margin against Marvell's 36.6%, a gap of 24.7.</p>
+    <p>The tension worth naming cuts the other way. Broadcom's gross margin is deteriorating precisely because of the mix that drives its growth: 78% a year ago, 75% in Q3 FY2026, guided to approximately 73% in Q4, as rising XPU memory content passes through at little markup. Marvell's sits flat at 58 to 59% with custom mix as its own stated headwind. The two are converging on gross margin and diverging on operating margin. What that says is that custom silicon is a structurally lower-margin business for whoever sells it, so Broadcom's advantage does not rest on a pricing moat in accelerators at all. It rests on a relative cost base one-third the size and an annuity Marvell has no version of, which is the harder gap to close, because Marvell cannot fix it by winning a design contest.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 920 190" role="img" aria-label="Margin dumbbells">
+<text x="60" y="30" font-size="14" fill="#6E675C">Gross margin, latest quarter, non-GAAP</text>
+<line x1="60" y1="54" x2="860" y2="54" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/>
+<text x="52" y="59" text-anchor="end" font-size="13" fill="#6E675C">50%</text>
+<text x="868" y="59" text-anchor="start" font-size="13" fill="#6E675C">80%</text>
+<line x1="297.3" y1="54" x2="726.7" y2="54" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="297.3" cy="54" r="9" fill="#3C6E8F"/>
+<circle cx="726.7" cy="54" r="9" fill="#C75B39"/>
+<text x="297.3" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">Marvell 58.9%</text>
+<text x="726.7" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">Broadcom 75.0%</text>
+<text x="512.0" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#2B2B2B">+16.1 pts</text>
+<text x="60" y="114" font-size="14" fill="#6E675C">Operating margin, latest quarter, non-GAAP</text>
+<line x1="60" y1="138" x2="860" y2="138" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/>
+<text x="52" y="143" text-anchor="end" font-size="13" fill="#6E675C">30%</text>
+<text x="868" y="143" text-anchor="start" font-size="13" fill="#6E675C">70%</text>
+<line x1="192.0" y1="138" x2="818.0" y2="138" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="192.0" cy="138" r="9" fill="#3C6E8F"/>
+<circle cx="818.0" cy="138" r="9" fill="#C75B39"/>
+<text x="192.0" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">Marvell 36.6%</text>
+<text x="818.0" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">Broadcom 67.9%</text>
+<text x="505.0" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#2B2B2B">+31.3 pts</text>
+</svg>
+      <div class="cap">Latest reported quarters, each company's own non-GAAP basis, which excludes acquisition-intangible amortization, stock compensation and restructuring for both. Broadcom Q3 FY2026 ended 2 Aug 2026 (Q3 FY2026 earnings call, 2 Sep 2026); Marvell Q2 FY2027 ended 1 Aug 2026 (Q2 FY2027 earnings call, 27 Aug 2026). The two quarter-ends fall within one day of each other.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">3. Where does each break if the tide turns?</div>
+    <div class="w"><span class="chip b">Marvell breaks first</span></div>
+    <p>Broadcom's exposure is concentration compounded by financial entanglement. Its top five end customers are approximately 40% of net revenue, its AI franchise sits on six accelerator customers, and Anthropic alone becomes the largest of them in 2027. Through the AI XPV Platform established with Apollo and Blackstone in June 2026, with a first 35bn dollar tranche closed for Anthropic's 1 GW deployment, Broadcom is now a participant in its customers' financing and carries residual value guarantees it describes as low-risk contingent liabilities. If frontier-lab funding tightens, its order book and its contingent liabilities move in the same direction at the same time. Against that it holds a 31.4bn dollar software annuity uncorrelated with AI capital spending and 27.5bn dollars of annual operating cash flow. It has a floor.</p>
+    <p>Marvell has the same concentration without the floor. Distributor A was 44% of revenue in Q2 FY2027, up from 34% a year earlier; four customers were 72% of gross accounts receivable at 1 August 2026; data center is 79% of revenue and nothing sits behind it, because communications and other is 2.3bn dollars, guided down low-to-mid teens percent in Q3 FY2027, and the automotive Ethernet line was sold. Marvell has also been buying its seat, with a 58.97m-share warrant to Google and 3.5bn dollars for Celestial AI inside seven months; the share components of the two together are roughly 12% of the diluted count. A single program loss at Distributor A or the largest custom socket removes roughly a quarter of company revenue against a fixed research base of 25% of sales that is already calibrated to a custom business management expects to more than double in FY2028.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These six cells carry substantially all of the combined economics; every score is argued in the tabs below. Geography is stated as demand geography, not shipment destination, for the reason given in the Growth Map tab.</p>
+  <div class="tblwrap">
+  <table>
+    <tr><th>Cell (product x demand geography)</th><th class="ca">AVGO</th><th class="cb">MRVL</th><th>Why (sourced)</th></tr>
+    <tr><td>Custom AI silicon (XPU) - US frontier labs, shipped via Taiwan and the US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>AVGO: six named programs, supply stated as secured to a 230bn dollar FY2028 outlook, and it shipped TPU v8i ahead of MediaTek's v8t on the same socket (Q3 FY2026 call). MRVL: no disclosed custom revenue, 8-12% estimated share (Counterpoint 26 Jan 2026; J.P. Morgan via secondary report 22 Jun 2026), and it issued Google a 58.97m-share warrant to expand scope</td></tr>
+    <tr><td>AI networking - Ethernet switching, global hyperscaler</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>AVGO: Tomahawk 6 at 102.4 Tbps deployed even at hyperscalers buying accelerators elsewhere; Tomahawk 7 at 200 Tbps taped out (Q3 FY2026 call). MRVL: 51.2T switching on track to more than double this year, but off roughly a 1bn dollar base (Q2 FY2027 call)</td></tr>
+    <tr><td>Optical interconnect and DSP - global module makers and hyperscalers</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>The one cell at parity. MRVL: estimated ~70% optical DSP share (BEP Research 7 Mar 2026, single analyst source), 1.6T ramping, COLORZ 1600 coherent. AVGO: claims leadership in leading-edge optical DSPs and owns the EML, VCSEL and CW laser fabs beneath the sockets (FY2025 10-K; Q3 FY2026 call)</td></tr>
+    <tr><td>Scale-up interconnect, emerging - US hyperscaler</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Both unproven. AVGO: Tomahawk Ultra and SUE-T inside the OCP ESUN workstream, copper-centric today. MRVL: Celestial photonic fabric with one disclosed hyperscaler design win, plus UALink, ESUN and NVLink Fusion coverage (MRVL Q3 FY2026 and Q2 FY2027 calls)</td></tr>
+    <tr><td>Infrastructure software - global enterprise, US and EMEA weighted</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>AVGO: 31.4bn dollars, 94% segment gross margin, approximately 84% Q3 operating margin, ARR growing 15% (Q3 FY2026 10-Q and call). MRVL has no presence in any form</td></tr>
+    <tr><td>Non-AI semis and comms - China and rest of world weighted</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>AVGO: 16.4bn dollars, roughly flat, broadband and server storage up against wireless down. MRVL: 2.3bn dollars recovering off a deep trough but guided down low-to-mid teens percent in Q3 FY2027, with automotive Ethernet divested</td></tr>
+  </table>
+  </div>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds by legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs and are per cell. They are never summed: adding a software score to an accelerator score would manufacture precision that does not exist. The three lenses get their verdicts in the Three Answers above, not here.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Two companies riding the same AI wave, but one is selling four things and the other is selling one.</div>
+    <p>Before any cell table, one normalization that matters more than the usual label mapping. Broadcom reports two segments and discloses AI semiconductor revenue as a management metric; Marvell reports a single operating segment and, since December 2025, only two end markets. Neither discloses revenue by product and geography together, and both state in their own filings that their geographic tables do not indicate end demand. Broadcom: for the majority of its products, title and control transfer to customers in Penang, Malaysia. Marvell: a substantial majority of shipments to China are for non-China customers with contract manufacturing there. Building a product-by-country grid from those tables would fabricate precision, so the cells below run on product with a stated demand geography, and the geographic tables are carried separately with the honest reading attached.</p>
+    <p>The second thing to fix before comparing is scale. Broadcom's guided FY2026 revenue of roughly 105.9bn dollars is about 8.8 times Marvell's guided FY2027 revenue of roughly 12.0bn dollars. Absolutes appear below for context, but every judgment rests on ratios, growth rates and mechanisms.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 1000 300" role="img" aria-label="Butterfly chart of revenue cells: Broadcom left in terracotta, Marvell right in blue">
+<text x="368" y="32" text-anchor="end" font-size="16" font-weight="700" fill="#C75B39">BROADCOM   FY2026E</text>
+<text x="632" y="32" text-anchor="start" font-size="16" font-weight="700" fill="#3C6E8F">MARVELL   FY2027E</text>
+<line x1="30" y1="44" x2="970" y2="44" stroke="#E5DDD0" stroke-width="1"/>
+<rect x="112.0" y="62" width="256.0" height="26" fill="#C75B39" fill-opacity="1"/>
+<text x="122.0" y="80" text-anchor="start" font-size="15" font-weight="700" fill="#FFFFFF">$58.0bn</text>
+<text x="104.0" y="80" text-anchor="end" font-size="13" fill="#6E675C">+186% YoY</text>
+<rect x="632" y="62" width="43.3" height="26" fill="#3C6E8F" fill-opacity="0.55"/>
+<text x="683.3" y="80" text-anchor="start" font-size="15" font-weight="700" fill="#2B2B2B">$9.8bn</text>
+<text x="751.3" y="80" text-anchor="start" font-size="13" fill="#6E675C">+60% YoY</text>
+<text x="500" y="80" text-anchor="middle" font-size="14" font-weight="400" fill="#2B2B2B">AI / data-center semis</text>
+<rect x="229.4" y="114" width="138.6" height="26" fill="#C75B39" fill-opacity="1"/>
+<text x="239.4" y="132" text-anchor="start" font-size="15" font-weight="700" fill="#FFFFFF">$31.4bn</text>
+<text x="221.4" y="132" text-anchor="end" font-size="13" fill="#6E675C">+16% YoY</text>
+<text x="634" y="132" text-anchor="start" font-size="15" font-weight="700" fill="#6E675C">$0.0bn</text>
+<text x="702" y="132" text-anchor="start" font-size="13" fill="#6E675C">no presence</text>
+<text x="500" y="132" text-anchor="middle" font-size="14" font-weight="400" fill="#2B2B2B">Infrastructure software</text>
+<rect x="295.6" y="166" width="72.4" height="26" fill="#C75B39" fill-opacity="0.55"/>
+<text x="287.6" y="184" text-anchor="end" font-size="15" font-weight="700" fill="#2B2B2B">$16.4bn</text>
+<text x="217.6" y="184" text-anchor="end" font-size="13" fill="#6E675C">~flat</text>
+<rect x="632" y="166" width="10.2" height="26" fill="#3C6E8F" fill-opacity="0.55"/>
+<text x="650.2" y="184" text-anchor="start" font-size="15" font-weight="700" fill="#2B2B2B">$2.3bn</text>
+<text x="718.2" y="184" text-anchor="start" font-size="13" fill="#6E675C">+10% YoY</text>
+<text x="500" y="184" text-anchor="middle" font-size="14" font-weight="400" fill="#2B2B2B">Non-AI semis / comms</text>
+<line x1="30" y1="205" x2="970" y2="205" stroke="#E5DDD0" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="181.3" y="218" width="186.7" height="26" fill="#C75B39" fill-opacity="0.55"/>
+<text x="191.3" y="236" text-anchor="start" font-size="15" font-weight="700" fill="#FFFFFF">$42.3bn</text>
+<text x="173.3" y="236" text-anchor="end" font-size="13" fill="#6E675C">(inferred)</text>
+<rect x="632" y="218" width="53.0" height="26" fill="#3C6E8F" fill-opacity="1"/>
+<text x="693.0" y="236" text-anchor="start" font-size="15" font-weight="700" fill="#2B2B2B">$12.0bn</text>
+<text x="761.0" y="236" text-anchor="start" font-size="13" fill="#6E675C">FY2027E total</text>
+<text x="500" y="236" text-anchor="middle" font-size="14" font-weight="700" fill="#2B2B2B">MEMO  XPU line vs whole company</text>
+</svg>
+      <div class="cap">Revenue by normalized cell, USD billions. Broadcom FY2026E = 9M actual (FY2026 Q3 10-Q, filed 10 Sep 2026) plus Q4 guidance (Q3 FY2026 call, 2 Sep 2026). Marvell FY2027E from Q2 FY2027 guidance (27 Aug 2026). Bars drawn at reduced opacity are inferred: Broadcom's non-AI semis and XPU-only line are derived from the disclosed AI revenue guidance and the Q3 FY2026 73/27 XPU-to-networking mix; Marvell's cells are derived from FY2026 actuals grown at guided rates. Fiscal years offset by roughly one quarter.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>Cell</th><th class="num ca">AVGO rev (% of total)</th><th class="num ca">AVGO growth</th><th class="num cb">MRVL rev (% of total)</th><th class="num cb">MRVL growth</th><th>Margin signal and leader</th></tr>
+      <tr><td>AI / data-center semiconductors</td><td class="num ca">58.0bn (55%)<br>guided</td><td class="num ca">+186%</td><td class="num cb">9.8bn (81%)<br>(inferred)</td><td class="num cb">+60%</td><td>AVGO. Semiconductor segment gross margin ~67% against MRVL non-GAAP 58.9%, but segment operating margin 61% against 37%; the cell is 5.9x larger and growing three times faster</td></tr>
+      <tr><td>&nbsp;&nbsp;of which custom AI silicon (XPU)</td><td class="num ca">42.3bn (40%)<br>(inferred)</td><td class="num ca">shipments +3.5x</td><td class="num cb">ND</td><td class="num cb">"more than 2x in FY2028"</td><td>AVGO. Six named customers with gigawatt schedules; MRVL discloses no custom revenue figure at all</td></tr>
+      <tr><td>&nbsp;&nbsp;of which AI networking and optics</td><td class="num ca">15.7bn (15%)<br>(inferred)</td><td class="num ca">+over 2.5x</td><td class="num cb">ND</td><td class="num cb">three franchises near 1bn run rate</td><td>Split. AVGO leads switching, MRVL leads optical DSP</td></tr>
+      <tr><td>Infrastructure software</td><td class="num ca">31.4bn (30%)</td><td class="num ca">+16%; ARR +15%</td><td class="num cb">0.0 (0%)</td><td class="num cb">n/a</td><td>AVGO, uncontested. 94% segment gross margin, ~84% Q3 operating margin</td></tr>
+      <tr><td>Non-AI semis / comms and other</td><td class="num ca">16.4bn (15%)<br>(inferred)</td><td class="num ca">~flat to +5%</td><td class="num cb">2.3bn (19%)<br>(inferred)</td><td class="num cb">+10%, Q3 guided down</td><td>Neither. Both are cyclical ballast; AVGO's is 7x larger and steadier</td></tr>
+      <tr><td><b>Total</b></td><td class="num ca"><b>105.9bn</b></td><td class="num ca"><b>~+66%</b></td><td class="num cb"><b>12.0bn</b></td><td class="num cb"><b>~+45%</b></td><td>&nbsp;</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> Broadcom's engine is two cells, custom accelerators and a software annuity, that are 70% of revenue between them, one growing about 190% and the other compounding at 15% ARR on 94% gross margins; Marvell's engine is one cell, data center, at 81% of revenue with no disclosed internal split. <b>Implication:</b> the same AI air pocket removes roughly 55% of Broadcom's growth and roughly 81% of Marvell's revenue base. <span class="kpi">KPI: Marvell data-center revenue as a share of total - above 85% by the FY2027 10-K (~Mar 2027) confirms single-cell dependence; below 75% would show the communications recovery restoring ballast.</span> [Sources: AVGO FY2026 Q3 10-Q and Q3 FY2026 call; MRVL FY2026 10-K and Q2 FY2027 call]</div>
+
+    <h3>Geography, and why it cannot be crossed with product</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>Destination of shipment</th><th class="num ca">AVGO FY2025</th><th class="num ca">AVGO FY2023</th><th class="num cb">MRVL FY2026</th><th class="num cb">MRVL FY2024</th></tr>
+      <tr><td>United States</td><td class="num ca">16,506m (25.8%)</td><td class="num ca">6,975m (19.5%)</td><td class="num cb">1,174.1m (14%)</td><td class="num cb">795.6m (14%)</td></tr>
+      <tr><td>China including Hong Kong</td><td class="num ca">11,155m (17.5%)</td><td class="num ca">11,533m (32.2%)</td><td class="num cb">2,969.9m (36%)</td><td class="num cb">2,371.0m (43%)</td></tr>
+      <tr><td>Singapore</td><td class="num ca">10,796m (16.9%)</td><td class="num ca">4,479m (12.5%)</td><td class="num cb">ND</td><td class="num cb">ND</td></tr>
+      <tr><td>Taiwan</td><td class="num ca">6,451m (10.1%)</td><td class="num ca">below 10%</td><td class="num cb">1,657.3m (20%)</td><td class="num cb">161.9m (3%)</td></tr>
+      <tr><td>Other</td><td class="num ca">balance</td><td class="num ca">balance</td><td class="num cb">2,393.3m (30%)</td><td class="num cb">2,179.2m (40%)</td></tr>
+    </table>
+    </div>
+    <p>Two facts survive the logistics distortion. Broadcom's China revenue is flat in dollars while the company nearly doubled, 11,533m in FY2023 against 11,155m in FY2025, so China fell from 32.2% to 17.5% of revenue: none of Broadcom's AI growth is China-sourced. Marvell's Taiwan destination revenue went from 161.9m to 1,657.3m in two years, a tenfold move tracking the shift of its data-center output to Taiwan-based contract manufacture, while China remains 36% of shipments.</p>
+    <div class="iik"><b>Insight:</b> neither geographic table maps to end demand, but the direction of travel differs - Broadcom's China exposure is shrinking as a share of a growing base while Marvell's, though falling, is still 36% and twice Broadcom's. <b>Implication:</b> a China-facing export restriction is a mix event for Broadcom and a logistics event for Marvell, but Marvell's disclosure gives an investor less ability to tell the two apart. <span class="kpi">KPI: Marvell China destination share in the FY2027 10-K (~Mar 2027) - below 30% would confirm the AI mix is pulling shipments to Taiwan and the US.</span> [Sources: AVGO FY2025 10-K geographic note; MRVL FY2026 10-K disaggregation note]</div>
+
+    <h3>Segment growth engines</h3>
+    <p>In custom accelerators, Broadcom's driver is a contracted program book disclosed in unusual specificity, and it is organic: Broadcom has made no semiconductor acquisition since 2019. Marvell's driver is real but undisclosed in dollars, and its cost is now explicit. On 18 August 2026 Marvell issued Google a warrant over 58,970,907 shares at 206 dollars, vesting in 240 tranches, one for each 500m dollars of Custom Products revenue through FY2033. In AI networking and optics, Marvell is at or near parity: the Inphi-derived optical DSP franchise is the estimated share leader, 800G is in volume and 1.6T is ramping, and COLORZ 1600 coherent pluggables address a scale-across opportunity management sizes at more than ten times current front-end DCI bandwidth. Broadcom answers with switching, and with laser fabs it owns. In infrastructure software Marvell has no analogue at all, and in non-AI semiconductors Marvell has been shrinking its own optionality, having divested automotive Ethernet for 2.5bn dollars in net proceeds.</p>
+    <div class="iik"><b>Insight:</b> Broadcom's accelerator growth is bought with engineering, described by management as the fastest time to market from product definition to production without the need for respins; Marvell's is now partly bought with equity. <b>Implication:</b> Broadcom's incremental accelerator dollar converts fully to revenue while Marvell's converts at a discount that scales with success, because warrant vesting is recognized as a reduction of revenue. <span class="kpi">KPI: number of Google warrant tranches vested, first disclosable in the MRVL FY2027 Q3 10-Q (~Dec 2026); each tranche marks 500m dollars of custom revenue recognized.</span> [Sources: AVGO Q3 FY2026 call, 2 Sep 2026; MRVL 8-K, 19 Aug 2026; MRVL FY2026 10-K]</div>
+
+    <h3>Price control and route to market</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>&nbsp;</th><th class="ca">Broadcom</th><th class="cb">Marvell</th></tr>
+      <tr><td>Distributor share of revenue</td><td class="ca">48% in FY2025 and FY2024</td><td class="cb">43% in FY2026</td></tr>
+      <tr><td>Largest single channel or customer</td><td class="ca">top five end customers ~40% of revenue</td><td class="cb">Distributor A <b>44%</b> of revenue in Q2 FY2027, up from 34% a year earlier; Direct Customer A 14% in FY2026</td></tr>
+      <tr><td>Receivable concentration</td><td class="ca">ND at this granularity</td><td class="cb">four customers = 72% of gross accounts receivable at 1 Aug 2026</td></tr>
+      <tr><td>Price mechanism in the growth cell</td><td class="ca">multi-year co-development agreements; accelerators priced against GPU total cost of ownership at about half the cost of a GPU</td><td class="cb">design-win pricing, with net price <b>reduced by customer warrants recognized as a reduction of revenue</b></td></tr>
+      <tr><td>Price power actually exercised</td><td class="ca">software ARR +15% under enterprise-wide licensing; record 67.9% operating margin in Q3 FY2026, up 240bp year on year even as gross margin fell 210bp</td><td class="cb">Q3 FY2027 gross margin guided <b>down</b> sequentially because the forecast acceleration of the custom business creates the headwind</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> Marvell has issued customer warrants in each of the last three fiscal years - 4.2m shares in FY2025, 1.0m in FY2026 and 58.97m in August 2026 - and accounts for vesting as a reduction of revenue; Broadcom's FY2025 10-K and FY2026 Q3 10-Q contain no customer warrant. <b>Implication:</b> in the same industry at the same moment, one company is being paid for access and the other is paying for it, which is the clearest single read on who controls net price. <span class="kpi">KPI: any new customer warrant in Broadcom's FY2026 10-K (~Dec 2026); absence confirms the asymmetry.</span> [Sources: AVGO FY2025 10-K; MRVL FY2026 10-K, FY2027 Q2 10-Q and 8-K of 19 Aug 2026]</div>
+
+    <h3>Supply resilience</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>&nbsp;</th><th class="ca">Broadcom</th><th class="cb">Marvell</th></tr>
+      <tr><td>Manufacturing model</td><td class="ca">outsources a majority of manufacturing but owns proprietary fabs for FBAR filters and GaAs and InP lasers (VCSEL and side-emitting)</td><td class="cb">pure fabless; foundries located in Taiwan, with secondary sources in China, Germany, South Korea, Singapore and the US</td></tr>
+      <tr><td>Owned capacity in the growth cell</td><td class="ca">lasers for optical interconnect (EML, VCSEL, CW); <b>Singapore substrate fab deploying from fiscal 2027</b></td><td class="cb">none; photonics capability acquired with Celestial AI, closed 2 Feb 2026</td></tr>
+      <tr><td>Named bottlenecks</td><td class="ca">leading-edge wafers, substrates and HBM memory; management states supply secured for the FY2027 and FY2028 outlooks</td><td class="cb">pervasive industry-wide constraints</td></tr>
+      <tr><td>Cash cost of securing supply</td><td class="ca">capex 532m in Q3 FY2026, 1.4bn guided for Q4</td><td class="cb"><b>approximately 1bn dollars of capacity prepayments to suppliers in FY2027</b>, cash out before revenue</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> both face the same substrate and HBM bottleneck, but Broadcom is answering it with capacity it will own from FY2027 and Marvell is answering it by prepaying third parties roughly 1bn dollars. <b>Implication:</b> Broadcom converts the shortage into a barrier while Marvell converts it into working capital, which is why its operating cash flow grew 4% in a year its revenue grew 42%. <span class="kpi">KPI: Marvell operating cash flow below 15% of revenue in FY2027 (10-K, ~Mar 2027) would show the prepayment model is structural, not a one-year catch-up.</span> [Sources: AVGO FY2025 10-K and Q3 FY2026 call; MRVL FY2026 10-K and Q2 FY2027 call]</div>
+
+    <h3>Competitive context</h3>
+    <p>Published share estimates for merchant custom AI silicon disagree by definition but agree on direction: Counterpoint Research (26 January 2026) puts Broadcom at approximately 60% and Marvell at approximately 8% of the compute-ASIC design-partner market by 2027, while a J.P. Morgan estimate reported second-hand (22 June 2026) puts Broadcom at 80 to 85% and Marvell at 10 to 12% of the high-end ASIC market. Alchip is entering the AWS Trainium supply chain and MediaTek is attacking the Google socket with the v8x inference part; Broadcom stated on 2 September 2026 that it is shipping TPU v8i ahead of MediaTek's v8t, which was initiated earlier. Vendor shares for merchant switch silicon, PAM4 DSP and PCIe retimers are <b>ND</b>: 650 Group, Dell'Oro, LightCounting and Cignal AI publish these to subscribers only, and the available system-level proxy understates Broadcom because Arista and Cisco whitebox platforms consume merchant silicon. Read as share direction, Broadcom is a share-taker in custom accelerators, having added OpenAI and Anthropic programs in eighteen months, and a defender in switching against a vertically integrated Nvidia; Marvell is a share-donor in custom accelerators on the Counterpoint estimate and a share-holder in optical DSP.</p>
+
+    <h3>Risks by segment</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>Cell</th><th>The one risk that does most damage</th><th>Who is more exposed</th></tr>
+      <tr><td>Custom AI silicon</td><td>a frontier lab insources, re-awards to MediaTek or Alchip, or slips its gigawatt schedule</td><td><b>Broadcom in dollars, Marvell in survival.</b> Broadcom loses more revenue; Marvell loses the thing its cost structure is built for</td></tr>
+      <tr><td>AI networking and optics</td><td>scale-up moves to optics faster than copper roadmaps assume, and the winning modulator technology is one the incumbent did not back</td><td><b>Broadcom.</b> Its scale-up answer is Ethernet-and-copper centric; Marvell bought Celestial AI precisely for this transition</td></tr>
+      <tr><td>Infrastructure software</td><td>VMware renewal churn as enterprise-wide licenses reset at higher prices</td><td>Broadcom, but on a 15%-ARR-growth annuity at 94% gross margin with no competitor in this duel</td></tr>
+      <tr><td>Non-AI and communications</td><td>prolonged carrier and enterprise capital spending trough</td><td><b>Marvell.</b> Its communications line is 2.3bn dollars, guided down low-to-mid teens in Q3 FY2027, with automotive Ethernet divested, so there is no second leg</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> the risk that kills is the same for both, a frontier-lab program loss, but the consequence is asymmetric because Broadcom has a 31bn dollar software annuity and 27.5bn dollars of annual operating cash flow behind the exposure and Marvell has 2.3bn dollars of declining communications revenue and 1.75bn dollars of operating cash flow. <b>Implication:</b> the same event is a bad year for Broadcom and an existential reset for Marvell. <span class="kpi">KPI: Broadcom infrastructure software ARR growth sustained at 13% or above through the FY2027 quarterly calls confirms the annuity is intact and the floor is real.</span> [Sources: AVGO FY2025 10-K and Q3 FY2026 call; MRVL FY2026 10-K and Q2 FY2027 call]</div>
+
+    <div class="pull">On cells alone Broadcom wins: its AI cell is 5.9 times Marvell's and growing three times faster with supply stated as secured to 2028, it carries a 31.4bn dollar software annuity Marvell has in no form, and the one cell where Marvell is at parity is also the cell where Broadcom owns the lasers beneath the sockets.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">One of these companies holds a long-term supply agreement with Google. The other issued Google a warrant over 6.4% of itself.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:6%">Broadcom - clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:2%">Broadcom - clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:26%">Broadcom - narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Suppliers is the closest lever: both are bottlenecked on substrates and HBM, and Broadcom's edge is owned capacity arriving rather than a position it already holds.</div>
+    </div>
+
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Broadcom</h3>
+        <p><b>Respin-free leading-edge execution. Durability: High.</b> Proof rather than adjective: Broadcom shipped Google's TPU v8i into production ahead of MediaTek's competing v8t, which was initiated earlier, and attributes this to the fastest time to market from product definition to production without the need for respins. A respin on a leading-edge accelerator costs a customer two quarters it cannot buy back.</p>
+        <p><b>Owned IP and process assets across the interconnect chain. Durability: High for process, Medium for IP.</b> SerDes, chip-to-chip interconnect, leading-edge HBM and SRAM integration and advanced packaging, backed by owned fabs for FBAR filters and GaAs and InP lasers, plus a Singapore substrate fab deploying from fiscal 2027.</p>
+        <p><b>A switching installed base independent of the accelerator socket. Durability: Medium.</b> Tomahawk 6 is deployed at effectively all AI hyperscalers building accelerators with Broadcom and at those that are not. Nvidia Spectrum-X is a well-funded vertically integrated attack.</p>
+        <p><b>A software annuity with real switching costs. Durability: High.</b> VMware Cloud Foundation under enterprise-wide licences, 94% segment gross margin, ARR growing 15%, uncorrelated with the semiconductor cycle.</p></div>
+      <div class="col b"><h3>Marvell</h3>
+        <p><b>Optical DSP leadership. Durability: Medium-High.</b> The Inphi franchise is the estimated share leader at approximately 70% on the one independent estimate located (BEP Research, 7 March 2026, a single analyst source and indicative only), with 800G in volume and 1.6T ramping. Broadcom, Credo and captive hyperscaler programs all attack it, and Broadcom now claims leadership in leading-edge optical DSPs on its own call.</p>
+        <p><b>Breadth across every scale-up option. Durability: Medium.</b> Marvell is positioned across all three purpose-built scale-up protocols, UALink, ESUN and NVLink Fusion through an expanded Nvidia partnership, and across all three modulator technologies with both NPO and CPO packaging. Optionality is not yet a moat; it becomes one only if a branch wins.</p>
+        <p><b>Celestial AI photonic fabric. Durability: Medium, unproven.</b> Acquired 2 February 2026 for 3.5bn dollars of total consideration. Proof it is more than a technology bet: Celestial had already secured a design win with one of the world's largest hyperscalers for PF chiplets co-packaged into both custom accelerators and scale-up switches. Guided revenue is a 500m dollar annualized run rate only by Q4 FY2028.</p>
+        <p><b>The XPU-attach category. Durability: Low-Medium.</b> CXL, custom NICs, storage and memory interface controllers and near-memory compute. This is adjacency built on relationship access, and the August 2026 warrant shows what that access costs.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Broadcom's two strongest moats are years-to-replicate; Marvell's strongest moat is genuinely defensible but its second and third are option value with one disclosed design win between them. <b>Implication:</b> in a downturn Broadcom defends on installed base and contract while Marvell defends on being technically necessary in a transition that has not yet happened. <span class="kpi">KPI: a second named hyperscaler design win for Celestial AI photonic fabric by the end of FY2028 - without it, the acquisition is a single-customer bet that cost roughly 6% dilution.</span> [Sources: AVGO Q3 FY2026 call and FY2025 10-K; MRVL Q3 FY2026 call, Q2 FY2027 call and FY2027 Q2 10-Q]</div>
+
+    <h3>Customers: who controls net price and access</h3>
+    <p>On concentration the two look superficially alike and are not. Broadcom's top five end customers are approximately 40% of net revenue and distributors 48%; Marvell's Distributor A alone was 44% of net revenue in Q2 FY2027, up from 34% a year earlier, Direct Customer A was 14% in FY2026, and four customers were 72% of gross accounts receivable at 1 August 2026. On access quality the gap is wider than the percentages: Broadcom holds a long-term agreement with Google covering future generations of TPUs and AI networking at multi-tens of billions of dollars annually, plus gigawatt-denominated commitments from Anthropic, OpenAI and Meta running to 2028, while Marvell's access is design-win by design-win and its most significant scope expansion was formalized in a warrant agreement.</p>
+    <p>That warrant, in full, is the exhibit. On 18 August 2026 Marvell issued Google a warrant over 58,970,907 shares at 206 dollars, exercisable to 18 August 2033. A time-based portion vests quarterly over the first year; the remainder vests in 240 equal tranches, one for each 500m dollars of Custom Products revenue purchased by or on behalf of Google through FY2033. Against roughly 921m diluted shares, full vesting is about 6.4% dilution, and full vesting implies roughly 120bn dollars of cumulative custom revenue. It is not the first: Marvell issued a 4.2m-share customer warrant in FY2025 and a 1.0m-share customer warrant in FY2026, both recognized as reductions to revenue as qualifying revenue is recognized. Broadcom's FY2025 10-K and FY2026 Q3 10-Q contain no customer warrant.</p>
+    <div class="iik"><b>Insight:</b> in the same industry and the same quarter, Broadcom is raising realized price on a 94%-margin software base while Marvell is handing its largest customer equity that reduces reported revenue as that customer buys more. <b>Implication:</b> Marvell's marginal custom dollar is worth less than a headline dollar and the discount grows with success, which is part of why revenue up 42% in FY2026 produced operating cash flow up 4%. <span class="kpi">KPI: Marvell warrant tranches vested, first disclosable in the FY2027 Q3 10-Q (~Dec 2026); two or more by Q4 FY2027 validates the custom ramp and confirms the revenue offset is live.</span> [Sources: MRVL 8-K 19 Aug 2026, FY2026 10-K, FY2027 Q2 10-Q; AVGO FY2025 10-K and Q3 FY2026 call]</div>
+
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Both are bottlenecked in the same place. Broadcom names leading-edge wafers, substrates and HBM memory and states supply is secured for its FY2027 and FY2028 outlooks; Marvell names pervasive industry-wide constraints. The difference is what each is doing about it. Broadcom holds Medium vertical integration, outsourcing a majority of manufacturing but owning FBAR and laser fabs and deploying a Singapore substrate fab from FY2027. Marvell holds Low vertical integration, is purely fabless with foundries located in Taiwan, and is making approximately 1bn dollars of capacity prepayments to suppliers in FY2027. Pass-through strength is Partial for both, evidenced in gross margin: Broadcom's fell from 78% to a guided 73% on rising accelerator memory content while its operating margin held at 66%, and Marvell's sits at roughly 59% with custom mix its stated headwind.</p>
+    <div class="iik"><b>Insight:</b> Broadcom is answering the substrate bottleneck with a fab it will own from FY2027 while Marvell is answering it by prepaying third parties approximately 1bn dollars. <b>Implication:</b> when allocation tightens again Broadcom's position improves structurally and Marvell's improves only as long as it keeps writing cheques. <span class="kpi">KPI: Marvell capacity prepayments in FY2028 - a repeat at 1bn dollars or more, checkable at the Investor Day of 6 October 2026 or the Q4 FY2027 call, means the cost is permanent rather than a one-time catch-up.</span> [Sources: AVGO FY2025 10-K and Q3 FY2026 call; MRVL FY2026 10-K and Q2 FY2027 call]</div>
+
+    <h3>The price and power triangle: top three cells</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>Custom AI silicon</td><td><b>AVGO:</b> direct multi-year co-development with six named labs. <b>MRVL:</b> 44% of revenue through one distributor; scope expanded via warrant</td><td><b>AVGO:</b> above, priced against GPU total cost of ownership. <b>MRVL:</b> below, and net price reduced by warrant vesting</td><td><b>AVGO:</b> supply stated as secured through FY2028. <b>MRVL:</b> ~1bn dollars of prepayments to secure allocation</td><td><b>AVGO share up, margin down but leverage up</b> (gross margin 78 to 73%, operating margin flat at 66%). <b>MRVL share flat to down</b> on the Counterpoint estimate, <b>margin up</b> off a low base as scale arrives</td><td>AVGO: whether the 115bn dollar FY2027 AI outlook is reiterated (~Dec 2026 and ~Mar 2027). MRVL: warrant tranches vested</td></tr>
+      <tr><td>AI networking, Ethernet switching</td><td><b>AVGO:</b> merchant silicon into Arista, Cisco and hyperscaler whitebox, including accounts where it has no accelerator</td><td><b>AVGO:</b> parity to above; first to 102.4T and first to tape out 200T</td><td><b>AVGO:</b> internal packaging and laser capacity</td><td><b>AVGO share flat to up, margin flat.</b> <b>MRVL share up off a small base</b>, with 51.2T on track to more than double this year</td><td>Tomahawk 7 production timing; Marvell switching revenue crossing 1bn dollars annualized (Investor Day, 6 Oct 2026)</td></tr>
+      <tr><td>Optical interconnect and DSP</td><td><b>MRVL:</b> direct to module makers and hyperscalers; the incumbent socket</td><td><b>MRVL:</b> at parity or above - its one premium franchise</td><td><b>AVGO</b> advantaged: owns EML, VCSEL and CW laser fabs; <b>MRVL</b> buys them</td><td><b>MRVL share flat to down, margin flat</b> - it defends the DSP but does not own the optics beneath it. <b>AVGO share up</b> as it expands laser capacity</td><td>Marvell 1.6T DSP revenue disclosure; Broadcom optical component capacity additions in the FY2026 10-K (~Dec 2026)</td></tr>
+    </table>
+    </div>
+    <p>Where the growth map and the power map disagree, and it matters: Marvell's fastest-growing and most-promoted cell, custom silicon, is precisely the cell where it has the least pricing power. It is the cell that carries a 44%-of-revenue distributor, the cell whose mix management names as the gross-margin headwind, and the cell it had to buy scope in with a 59m-share warrant. Its strongest power position, optical DSP, is the cell it discusses least in dollar terms and the one where Broadcom owns the underlying laser manufacture. The company is growing hardest where it is weakest and is quietest where it is strongest.</p>
+
+    <h3>The causal gap</h3>
+    <p><b>1. Scale of the design-and-supply base. Impact: Major.</b> Broadcom runs approximately 33,000 employees, 57% of them in research and development, against a revenue base guided to 105.9bn dollars. Marvell spends 25.3% of sales on research to cover optical, switching, custom, storage and communications simultaneously. Closing this needs either a revenue base several times larger, which takes a decade, or a narrower product scope, which forfeits the breadth that is its stated differentiator. Not closable in five years.</p>
+    <p><b>2. Who pays whom for access. Impact: Major.</b> Broadcom holds a long-term supply agreement with Google and takes no dilution; Marvell issued Google a warrant over 6.4% of its diluted shares to expand the same relationship. Closing this requires Marvell to become technically non-substitutable in a socket, which is what Celestial AI is for, and not before FY2029.</p>
+    <p><b>3. Presence or absence of a counter-cyclical annuity. Impact: Moderate to Major.</b> Broadcom has 31.4bn dollars of 94%-gross-margin software growing 15% ARR; Marvell has 2.3bn dollars of declining communications revenue after divesting automotive Ethernet. Marvell could buy an annuity, but three years of capital allocation have run the other way. Not closable without reversing stated strategy.</p>
+    <p>The honesty test: could a well-funded rival close each gap in eighteen months with money alone? For gaps one and three, no. For gap two, no, because it is a consequence of the other two.</p>
+    <div class="pull">Broadcom holds the stronger power position on all three levers, but the supplier lever is close and the optical socket is genuinely contested, which is where Marvell's case has to be made.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">The gap that decides this duel is not gross margin, where the two are converging. It is operating expense intensity, where they are not.</div>
+    <p>Both companies present costs by function, so the usual by-nature translation problem does not arise. The real reconciliation issue is larger: both income statements are dominated by acquisition-related intangible amortization, sitting in different proportions in different lines. Broadcom's FY2025 cost of revenue carries 6,031m dollars of it against a total of 20,593m, with a further 2,031m in operating expenses. Marvell's FY2026 total is 942.0m, of which approximately 641.4m sits in cost of goods sold, derived as cost of goods sold of 4,013.9m less material, labour and other product cost of 3,322.8m, less stock compensation in cost of goods sold of 49.2m, less restructuring in cost of goods sold of 0.5m. Comparing the two on GAAP alone therefore flatters neither consistently, so three views follow. All three tell the same story with different noise, which is the honesty check.</p>
+    <p>One further flag before the tables. Marvell's FY2025 cost of goods sold includes 357.9m dollars of restructuring-related impairment of acquired intangibles, inventory and equipment, which the company itemizes; that year's gross margin is depressed by roughly 6.2 points for a one-off reason. It is left in the GAAP view and removed in the quarterly view. Fiscal years are offset by roughly one quarter throughout: Broadcom FY2023, FY2024 and FY2025 ended 29 October 2023, 3 November 2024 and 2 November 2025; Marvell FY2024, FY2025 and FY2026 ended 3 February 2024, 1 February 2025 and 31 January 2026.</p>
+
+    <h3>View A: three years, five ratios, GAAP as reported</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>% of sales, 3y average</th><th class="num ca">Broadcom FY2023-25</th><th class="num cb">Marvell FY2024-26</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS</td><td class="num ca">33.4</td><td class="num cb">55.4</td><td class="num">-22.0</td><td>Broadcom's mix: 42% of FY2025 revenue is software at roughly 93% segment gross margin; Marvell is 100% silicon</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">16.7</td><td class="num cb">31.2</td><td class="num">-14.5</td><td>Scale, not parsimony. Broadcom spent 10,977m dollars against Marvell's 2,075.2m; the ratio gap is the denominator</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">6.9</td><td class="num cb">12.8</td><td class="num">-5.9</td><td>Broadcom sells direct to a handful of named accounts and through 48% distribution; Marvell carries a full commercial organization on one-ninth the revenue</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">66.6</td><td class="num cb">44.6</td><td class="num">+22.0</td><td>Software mix plus owned laser fabs against a pure-fabless silicon P&amp;L</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">37.1</td><td class="num cb">-2.2</td><td class="num">+39.3</td><td>Operating leverage. Broadcom converts; Marvell was loss-making at the operating line in two of the three years</td></tr>
+    </table>
+    </div>
+    <p class="score-note">Sources: AVGO FY2025 10-K consolidated statements of operations (filed 18 Dec 2025); MRVL FY2026 10-K consolidated statements of operations (filed 11 Mar 2026). Every line is present and directionally identical in all three years, so no ratio here is a one-off artefact, with the single flagged exception of Marvell's FY2025 gross margin.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 920 300" role="img" aria-label="Cost engine three-year average ratios">
+<line x1="60" y1="210.2" x2="890" y2="210.2" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="215.2" text-anchor="end" font-size="13" fill="#6E675C">0%</text>
+<line x1="60" y1="158.8" x2="890" y2="158.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="163.8" text-anchor="end" font-size="13" fill="#6E675C">20%</text>
+<line x1="60" y1="107.2" x2="890" y2="107.2" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="112.2" text-anchor="end" font-size="13" fill="#6E675C">40%</text>
+<line x1="60" y1="55.8" x2="890" y2="55.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="60.8" text-anchor="end" font-size="13" fill="#6E675C">60%</text>
+<line x1="60" y1="210.2" x2="890" y2="210.2" stroke="#2B2B2B" stroke-width="1.5"/>
+<rect x="97.0" y="124.2" width="42" height="86.0" fill="#C75B39"/>
+<text x="118.0" y="117.2" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">33.4</text>
+<rect x="147.0" y="67.6" width="42" height="142.7" fill="#3C6E8F"/>
+<text x="168.0" y="60.6" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">55.4</text>
+<text x="143.0" y="270" text-anchor="middle" font-size="15" fill="#2B2B2B">COGS</text>
+<rect x="263.0" y="167.2" width="42" height="43.0" fill="#C75B39"/>
+<text x="284.0" y="160.2" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">16.7</text>
+<rect x="313.0" y="129.9" width="42" height="80.3" fill="#3C6E8F"/>
+<text x="334.0" y="122.9" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">31.2</text>
+<text x="309.0" y="270" text-anchor="middle" font-size="15" fill="#2B2B2B">R&amp;D</text>
+<rect x="429.0" y="192.5" width="42" height="17.8" fill="#C75B39"/>
+<text x="450.0" y="185.5" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">6.9</text>
+<rect x="479.0" y="177.3" width="42" height="33.0" fill="#3C6E8F"/>
+<text x="500.0" y="170.3" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">12.8</text>
+<text x="475.0" y="270" text-anchor="middle" font-size="15" fill="#2B2B2B">SG&amp;A</text>
+<rect x="595.0" y="38.8" width="42" height="171.5" fill="#C75B39"/>
+<text x="616.0" y="31.8" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">66.6</text>
+<rect x="645.0" y="95.4" width="42" height="114.8" fill="#3C6E8F"/>
+<text x="666.0" y="88.4" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">44.6</text>
+<text x="641.0" y="270" text-anchor="middle" font-size="15" fill="#2B2B2B">Gross margin</text>
+<rect x="761.0" y="114.7" width="42" height="95.5" fill="#C75B39"/>
+<text x="782.0" y="107.7" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">37.1</text>
+<rect x="811.0" y="210.2" width="42" height="5.7" fill="#3C6E8F"/>
+<text x="832.0" y="233.9" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">-2.2</text>
+<text x="807.0" y="270" text-anchor="middle" font-size="15" fill="#2B2B2B">EBIT margin</text>
+<rect x="60" y="281" width="12" height="12" fill="#C75B39"/>
+<text x="78" y="292" text-anchor="start" font-size="13" fill="#C75B39">Broadcom, FY2023-25 average</text>
+<rect x="310" y="281" width="12" height="12" fill="#3C6E8F"/>
+<text x="328" y="292" text-anchor="start" font-size="13" fill="#3C6E8F">Marvell, FY2024-26 average</text>
+</svg>
+      <div class="cap">Three-year averages of the five ratios, GAAP as reported. Broadcom FY2023-FY2025, Marvell FY2024-FY2026, fiscal years offset by roughly one quarter. Marvell's negative EBIT margin average reflects operating losses in FY2024 and FY2025.</div>
+    </div>
+
+    <h3>View B: the cash cost engine, latest reported quarter</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>Latest quarter, non-GAAP</th><th class="num ca">Broadcom Q3 FY2026, ended 2 Aug 2026</th><th class="num cb">Marvell Q2 FY2027, ended 1 Aug 2026</th><th class="num">Gap</th></tr>
+      <tr><td>Gross margin</td><td class="num ca">75.0%</td><td class="num cb">58.9%</td><td class="num">+16.1 pts</td></tr>
+      <tr><td>Operating margin</td><td class="num ca">67.9%</td><td class="num cb">36.6%</td><td class="num">+31.3 pts</td></tr>
+      <tr><td>Operating expense, % of revenue</td><td class="num ca">~7.1% (derived)</td><td class="num cb">22.3% (611m of 2,739m)</td><td class="num">-15.2 pts</td></tr>
+      <tr><td>Revenue growth, year on year</td><td class="num ca">+86%</td><td class="num cb">+37%</td><td class="num">&nbsp;</td></tr>
+    </table>
+    </div>
+    <p>Two directional facts matter more than the levels. Broadcom's gross margin is falling, from 78% a year ago to 75% in Q3 and a guided 73% in Q4, because accelerator memory content is dilutive. Marvell's is roughly flat at 58 to 59% and guided to stay there, with custom mix its own stated headwind. The two are converging on gross margin and diverging on operating margin, where Broadcom's rose 240 basis points year on year to a record 67.9% and Marvell's rose 180 basis points to 36.6%.</p>
+
+    <h3>View C: semiconductors only</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>Semiconductors only</th><th class="num ca">AVGO Semiconductor Solutions, Q3 FY2026</th><th class="num cb">MRVL total, Q2 FY2027</th></tr>
+      <tr><td>Revenue</td><td class="num ca">20,839m</td><td class="num cb">2,739m</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">66.9% (derived: revenue 20,839m less segment cost of revenue 6,892m)</td><td class="num cb">58.9% non-GAAP</td></tr>
+      <tr><td>Operating expense, % of revenue</td><td class="num ca">~5.6% (R&amp;D 1,006m plus SG&amp;A 171m)</td><td class="num cb">22.3% non-GAAP</td></tr>
+      <tr><td>Operating margin</td><td class="num ca">61.3% (12,770m)</td><td class="num cb">36.6% non-GAAP</td></tr>
+    </table>
+    </div>
+    <p class="score-note">Sources: AVGO FY2026 Q3 10-Q segment note; MRVL Q2 FY2027 earnings call. The basis is not identical: Broadcom's segment figures exclude stock compensation entirely, as does Marvell's non-GAAP, but Broadcom's segment operating expenses also exclude unallocated corporate costs that Marvell's do not. The gap is directionally sound and should not be read to the decimal. Conflict flagged: Broadcom's Q3 FY2026 call transcript states a Semiconductor Solutions segment gross margin of approximately 76%, which does not reconcile with the segment note in the FY2026 Q3 10-Q (revenue 20,839m less cost of revenue 6,892m equals 66.9%) and does not reconcile with the 61% segment operating margin the same call reports against 6% segment operating expenses. The filing figure is used throughout.</p>
+
+    <h3>Cash conversion: the line that decides whether the margin is real</h3>
+    <div class="tblwrap">
+    <table>
+      <tr><th>&nbsp;</th><th class="ca">Broadcom</th><th class="cb">Marvell</th></tr>
+      <tr><td>Operating cash flow, three years</td><td class="ca">18,085m (FY23), 19,962m (FY24), <b>27,537m</b> (FY25)</td><td class="cb">1,370.5m (FY24), 1,681.2m (FY25), <b>1,750.5m</b> (FY26)</td></tr>
+      <tr><td>Latest year revenue growth</td><td class="ca">+23.9%</td><td class="cb"><b>+42.1%</b></td></tr>
+      <tr><td>Latest year operating cash flow growth</td><td class="ca"><b>+38.0%</b></td><td class="cb"><b>+4.1%</b></td></tr>
+      <tr><td>Operating cash flow as % of revenue</td><td class="ca">43.1%</td><td class="cb">21.4%</td></tr>
+      <tr><td>Latest quarter</td><td class="ca">free cash flow 13.7bn, 46% of revenue</td><td class="cb">operating cash flow 606m, depressed by capacity prepayments</td></tr>
+    </table>
+    </div>
+    <p>This is the sharpest number in the run. Marvell grew revenue 42% and operating cash flow 4%. Its own explanation is a 1.1bn dollar working-capital outflow from receivables, inventories and prepayments, and its FY2026 net income of 2.7bn dollars included a 1.8bn dollar non-cash gain on the automotive Ethernet divestiture. Broadcom grew revenue 24% and operating cash flow 38%.</p>
+    <div class="iik"><b>Insight:</b> the operating margin gap of 31.3 points rests on an expense gap of 15.2 points, not on the 16.1-point gross margin gap, and the cash statements confirm which one is real. <b>Implication:</b> Broadcom can lose a design contest and still earn its margin; Marvell's fixed research base is already calibrated to a custom business management expects to more than double in FY2028, and if that doubling slips a year the research base does not. <span class="kpi">KPI: Marvell operating cash flow above 20% of revenue for FY2027 (10-K, ~Mar 2027) would show the FY2026 conversion was a growth-funding year rather than a structural feature.</span> [Sources: AVGO FY2025 10-K and Q3 FY2026 call; MRVL FY2026 10-K and Q2 FY2027 call]</div>
+
+    <h3>The structural gap</h3>
+    <p>The most persistent gap is operating expense intensity, present in every one of the three years and in the latest quarter. Broadcom carries research, development and selling costs at roughly 7% of revenue consolidated and roughly 6% inside its semiconductor segment; Marvell carries them at 22%. The mechanism comes straight from the growth map: Broadcom amortizes an 11bn dollar research budget over a 106bn dollar revenue base and a small number of very large sockets, while Marvell spends a quarter of every sales dollar covering optical, switching, custom, storage and communications simultaneously on a 12bn dollar base.</p>
+    <p>Does the cost engine confirm the power map? Partly, and the disagreement is the more useful half. It confirms it on operating margin and on cash conversion, both of which track Broadcom's contractual position and Marvell's cheque-writing. It complicates it on gross margin, where the two are converging rather than diverging: Broadcom's slide from 78% to a guided 73% on accelerator memory content says that even the strong party in this industry passes through memory cost at little markup, and that custom silicon is a structurally lower-margin business for whoever sells it. The corollary is that Broadcom's advantage in this duel does not rest on a pricing moat in custom silicon at all. It rests on a relative cost base and a software annuity Marvell has no version of, which is a harder gap to close than a price gap, because Marvell cannot fix it by winning a design contest.</p>
+    <div class="pull">Broadcom runs the leaner engine on every measure and has done through three years and a restructuring cycle, but the gap that matters is expense intensity and cash conversion, not gross margin, where the two are converging.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>Scale-up goes optical faster than copper roadmaps assume, and Celestial AI's photonic fabric wins more than one hyperscaler.</b> Broadcom's scale-up answer, Tomahawk Ultra and SUE-T, is Ethernet-and-copper centric; Marvell's is an acquired 16 Tb/s photonic-fabric chiplet already designed into one top hyperscaler's accelerators and switches, freeing die-edge beachfront for HBM in a way edge-connected CPO cannot. <span style="color:var(--good);font-weight:700;">Early warning: a second named PF-chiplet hyperscaler design win, and Celestial tracking to its guided 500m dollar annualized run rate by Q4 FY2028. First checkable at the Marvell Investor Day, 6 October 2026.</span></li>
+      <li><b>One of Broadcom's six accelerator customers insources, re-awards, or slips its gigawatt schedule.</b> MediaTek is already contesting the Google socket with v8x and Alchip is entering AWS Trainium, so the competitive set for custom silicon is widening exactly as Broadcom's disclosed outlook extends further out. <span style="color:var(--good);font-weight:700;">Early warning: any revision at all to the 115bn dollar FY2027 or 230bn dollar FY2028 AI outlook. Management said explicitly it does not intend to update these quarterly, so any update is signal. First opportunity: Q4 FY2026 results, around December 2026.</span></li>
+      <li><b>The frontier-lab financing chain impairs and the AI XPV Platform stops being off-balance-sheet in substance.</b> Broadcom closed a first 35bn dollar tranche with Apollo and Blackstone in June 2026 for Anthropic's 1 GW deployment and may provide residual value guarantees it treats as low-risk contingent liabilities; that makes its order book and its liabilities correlated to the same event. <span style="color:var(--good);font-weight:700;">Early warning: the size and terms of tranches after the first 35bn dollars, and whether residual value guarantees appear as recognized liabilities rather than contingent disclosure in Broadcom's FY2026 10-K, due around December 2026.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <div class="tblwrap">
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, favors</th><th>Where published</th></tr>
+    <tr><td>Broadcom FY2027 AI semiconductor revenue outlook</td><td>held at or raised above 115bn dollars</td><td>Q4 FY2026 results ~Dec 2026; Q1 FY2027 ~Mar 2027</td><td class="ca">Broadcom</td><td>AVGO earnings call and 8-K</td></tr>
+    <tr><td>Marvell Google warrant tranches vested</td><td>two or more tranches, each equal to 500m dollars of Custom Products revenue</td><td>FY2027 Q3 10-Q ~Dec 2026; FY2027 10-K ~Mar 2027</td><td class="cb">Marvell if two or more; Broadcom if zero</td><td>MRVL 10-Q and 10-K equity note</td></tr>
+    <tr><td>Marvell Distributor A share of revenue</td><td>below 40% (broadening) versus above 50% (single channel)</td><td>FY2027 10-K, ~Mar 2027</td><td class="cb">Marvell if below 40%</td><td>MRVL 10-K concentration note</td></tr>
+    <tr><td>Broadcom non-GAAP operating margin</td><td>holds at or above 64% while gross margin falls toward 72%</td><td>each FY2027 quarter</td><td class="ca">Broadcom; confirms the leverage thesis rather than a pricing thesis</td><td>AVGO earnings calls</td></tr>
+    <tr><td>Marvell operating cash flow conversion</td><td>above 20% of revenue for the full year</td><td>FY2027 10-K, ~Mar 2027</td><td class="cb">Marvell</td><td>MRVL consolidated statement of cash flows</td></tr>
+  </table>
+  </div>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Broadcom first, but not on the part everyone is reading: the accelerator pipeline is already disclosed in more detail than most managements give, and the thin disclosure, the only place where the downside is structural rather than cyclical, is the AI XPV Platform and its residual value guarantees in the FY2026 10-K due around December 2026. The second call on your time is Marvell's Investor Day on 6 October 2026, which should put the first dollar figure on the custom business and on scale-up optics: Marvell is the more interesting research problem and the weaker business, and that is the day you would find out whether the photonic-fabric transition is real and early.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> This is a three-lens peer duel: a growth and profitability map that breaks both companies out of consolidated totals into normalized product cells ranked by contribution, a power map comparing moats, customer relationships and supplier links, and a cost engine comparing three years of five expense ratios with the acquisition-amortization and fiscal-offset reconciliations stated rather than buried. The 80/20 filter keeps only the cells that carry substantially all of the combined economics. All figures are in USD as reported by each company with no FX conversion; fiscal years are offset by roughly one quarter and every table says so. <b>ND</b> means the data does not exist publicly; <b>(inferred)</b> means a figure derived by stated arithmetic from disclosed numbers, never an invented one. This is a business-strength comparison, not a valuation. It contains no view on either company's share price, no multiple, no fair value and no recommendation, and says nothing about what either stock is worth.</p>
+    <p class="sources"><b>Sources.</b> Primary sources are the filings and transcripts in the research folder; third-party market research is used only for competitive context and is labelled where single-sourced.</p>
+    <ul class="sources">
+      <li>Broadcom Inc., Annual Report on Form 10-K, fiscal year 2025, filed 18 December 2025</li>
+      <li>Broadcom Inc., Annual Report on Form 10-K, fiscal year 2024, filed 20 December 2024</li>
+      <li>Broadcom Inc., Quarterly Report on Form 10-Q, Q3 fiscal 2026, filed 10 September 2026</li>
+      <li>Broadcom Inc., Q3 fiscal 2026 earnings call transcript, 2 September 2026</li>
+      <li>Broadcom Inc., Current Report on Form 8-K, 2 September 2026 (results, dividend) and 2 April 2026 (Item 5.02, CFO transition)</li>
+      <li>Marvell Technology, Inc., Annual Report on Form 10-K, fiscal year 2026, filed 11 March 2026</li>
+      <li>Marvell Technology, Inc., Annual Report on Form 10-K, fiscal year 2025, filed 12 March 2025</li>
+      <li>Marvell Technology, Inc., Quarterly Report on Form 10-Q, Q2 fiscal 2027, filed 28 August 2026</li>
+      <li>Marvell Technology, Inc., Q2 fiscal 2027 earnings call transcript, 27 August 2026</li>
+      <li>Marvell Technology, Inc., Current Report on Form 8-K, 19 August 2026 (Items 1.01 and 3.02, Warrant Agreement with Google LLC dated 18 August 2026)</li>
+      <li>Marvell Technology, Inc., Current Report on Form 8-K, 2 December 2025 (Agreement and Plan of Reorganization, Celestial AI Inc.) and Q3 fiscal 2026 acquisition call transcript, 2 December 2025</li>
+      <li>Marvell Technology, Inc., Current Report on Form 8-K, 15 April 2026 (Fifth Supplemental Indenture, 5.300% Senior Notes due 2036)</li>
+      <li>Counterpoint Research, "AI Server Compute ASIC Shipments to Triple by 2027", 26 January 2026</li>
+      <li>TrendForce, "CSPs Accelerate ASIC Push in 2H26", 20 March 2026, and "Global AI Server Shipments Forecast to Grow Over 28% YoY in 2026", 20 January 2026</li>
+      <li>J.P. Morgan estimates on custom ASIC share and 2027 unit crossover, as reported second-hand, 22 June 2026 (secondary source; treated as indicative)</li>
+      <li>BEP Research, "AI Optical Interconnect Landscape 2026", 7 March 2026 (single independent-analyst source; optical DSP share treated as indicative)</li>
+      <li>Cignal AI, "Tracking the Coherent DSP Supply Chain 2026", April 2026</li>
+      <li>Network World, "Major network vendors team to advance Ethernet for scale-up AI networking", 14 October 2025 (ESUN and UALink membership)</li>
+      <li>IDC datacenter Ethernet switching tracker commentary, 1Q26 (system-level proxy only; understates merchant silicon share)</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

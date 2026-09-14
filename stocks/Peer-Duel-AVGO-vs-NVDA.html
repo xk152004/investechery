@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadcom vs NVIDIA: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .tbl-scroll{overflow-x:auto;}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:12px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:12px;}
+  .answer p:last-child{margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  @media(max-width:600px){.leanrow{grid-template-columns:110px 1fr;gap:8px;} .leanrow .lbl{font-size:15px;}}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Broadcom vs NVIDIA: who wins the next decade?</h1>
+  <p class="source">AI data-centre semiconductors. AVGO / NVDA. Run 14 September 2026. Built from Broadcom 10-K FY2023 to FY2025 and 10-Q filings through fiscal Q3 2026, NVIDIA 10-K FY2024 to FY2026 and 10-Q filings through fiscal Q2 2027, both companies' most recent earnings calls, and cited third-party research. Events swept through 14 September 2026; most recent event checked: NVIDIA's acquisition of Hugging Face for $12.93bn, announced 3 September 2026, and Broadcom's fiscal Q3 2026 results and new fiscal 2028 AI revenue target, 2 September 2026. Figures in USD; both companies report in USD, so no FX conversion applies. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Broadcom (AVGO)</span><span class="chip b">NVIDIA (NVDA)</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">NVIDIA is the stronger business for the next five to ten years, and the margin is not narrow.</div>
+    <div class="why">It owns the architecture its customers build on, its customer concentration is falling while Broadcom's is rising, and on both companies' own forward guidance it adds roughly four dollars of revenue for every one Broadcom adds, from a base already three times larger.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>NVIDIA guides fiscal 2028 revenue growth of approximately 70% and calls the number supply-constrained; Broadcom guides fiscal 2027 AI revenue of $115bn. Over the comparable window NVIDIA grows faster from a base 3.8 times larger (both companies' Q3 and Q2 calls, September and August 2026).</div>
+    <div class="col"><span class="n">2</span><br>Broadcom's largest channel customer went from 29% to 42% of net revenue in a year; NVIDIA's largest direct customer went from 22% of fiscal 2026 revenue to 16% in fiscal Q2 2027 (AVGO FY2026 Q2 10-Q; NVDA FY2026 10-K and FY2027 Q2 10-Q).</div>
+    <div class="col"><span class="n">3</span><br>The 21.9-point reported EBIT margin gap is almost entirely purchase accounting and equity compensation. Strip both and the cost engines are effectively tied, which means cost decides nothing here and power decides everything.</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">NVIDIA, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">NVIDIA, narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">NVIDIA breaks last, narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favours Broadcom, right lean favours NVIDIA; marker position shows how decisive. Resilience reads NVIDIA narrowly because Broadcom breaks first but NVIDIA breaks deeper.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product and geography?</div>
+    <div class="w"><span class="chip b">NVIDIA, clear</span></div>
+    <p>Broadcom's trailing rate is faster, and that is a base effect rather than a mechanism. AI semiconductor revenue grew 221% year on year to $16.7bn in fiscal Q3 2026 against NVIDIA data-centre growth of 117% to $89.0bn, but the forward guidance both managements have put on the record reverses the ranking. Broadcom guides AI revenue of $115bn in fiscal 2027 and $230bn in fiscal 2028; adding infrastructure software and non-AI silicon at current trajectories puts total fiscal 2027 revenue near $168bn against roughly $106bn in fiscal 2026. NVIDIA guides fiscal Q3 2027 revenue of $108bn and fiscal 2028 growth of approximately 70%, and describes that number as supply-constrained rather than demand-limited (Broadcom Q3 FY2026 call, 2 September 2026; NVIDIA Q2 FY2027 call, 26 August 2026).</p>
+    <p>The structural driver is buyer breadth. NVIDIA's three carrying cells are hyperscale ($49bn in the quarter, up 13% sequentially), the block management calls ACIE covering neoclouds, sovereigns, enterprises and industrial ($40bn, up 138% year on year, guided toward roughly half of data-centre revenue), and networking (record quarter, up 18% sequentially, Spectrum-X Ethernet up 2.6 times). Each is a separate demand pool with a separate failure mode. Broadcom's carrying cells are four named programmes: Google TPU, Anthropic, OpenAI's Jalapeño and Meta's MTIA, expressed by management as gigawatt commitments rather than as contracts. The one genuinely uncorrelated engine in this duel belongs to Broadcom, and it is not silicon: infrastructure software at $8.8bn a quarter, 94% gross margin and 15% ARR growth.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 800 262" role="img" aria-label="Quarterly revenue indexed to 100, last six reported quarters">
+        <line x1="70" y1="197.1" x2="690" y2="197.1" stroke="#E5DDD0" stroke-width="1"/>
+        <text x="62" y="201" text-anchor="end" font-size="13" fill="#6E675C">100</text>
+        <line x1="70" y1="72.2" x2="690" y2="72.2" stroke="#F2EDE4" stroke-width="1"/>
+        <text x="62" y="76" text-anchor="end" font-size="13" fill="#6E675C">190</text>
+        <polyline fill="none" stroke="#C75B39" stroke-width="2.5" points="70,197.1 194,189.0 318,171.3 442,160.2 566,135.6 690,72.2"/>
+        <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" points="70,197.1 194,189.2 318,159.6 442,127.2 566,88.0 690,45.3"/>
+        <circle cx="690" cy="72.2" r="4.5" fill="#C75B39"/><circle cx="690" cy="45.3" r="4.5" fill="#3C6E8F"/>
+        <circle cx="70" cy="197.1" r="4" fill="#7a7268"/>
+        <text x="78" y="215" text-anchor="start" font-size="14" fill="#6E675C" font-weight="700">Both indexed to 100</text>
+        <text x="684" y="40" text-anchor="end" font-size="15" fill="#3C6E8F" font-weight="700">NVIDIA 218</text>
+        <text x="684" y="103" text-anchor="end" font-size="15" fill="#C75B39" font-weight="700">Broadcom 197</text>
+        <text x="70" y="244" text-anchor="middle" font-size="13" fill="#6E675C">May 25</text>
+        <text x="194" y="244" text-anchor="middle" font-size="13" fill="#6E675C">Aug 25</text>
+        <text x="318" y="244" text-anchor="middle" font-size="13" fill="#6E675C">Nov 25</text>
+        <text x="442" y="244" text-anchor="middle" font-size="13" fill="#6E675C">Feb 26</text>
+        <text x="566" y="244" text-anchor="middle" font-size="13" fill="#6E675C">May 26</text>
+        <text x="690" y="244" text-anchor="middle" font-size="13" fill="#6E675C">Aug 26</text>
+      </svg>
+      <div class="cap">Quarterly total revenue indexed to 100 at the quarter ending May 2025. Broadcom: $15,004m, $15,952m, $18,015m, $19,311m, $22,187m, $29,591m (AVGO 10-Q filings FY2025 Q2 to FY2026 Q2, FY2025 10-K, and Form 10-Q for the quarter ended 2 August 2026, accession 0001730168-26-000080). NVIDIA: $44,062m, $46,743m, $57,006m, $68,127m, $81,616m, $96,221m (NVDA FY2026 10-K and 10-Q filings through the quarter ended 26 July 2026). NVIDIA's fiscal quarters end roughly one month earlier than Broadcom's; tick labels use Broadcom's period ends. NVIDIA's line sits above Broadcom's throughout, which is the point: the faster percentage grower over the window is the larger company.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip b">NVIDIA, narrow, and the reported gap is mostly not real</span></div>
+    <p>The as-reported three-year averages show a 21.9-point EBIT margin gap. Almost all of it is accounting, not operations. Broadcom's cost of revenue carries VMware purchase-accounting amortisation worth 9.1%, 18.0% and 12.6% of revenue in fiscal 2023 to 2025 against NVIDIA's 0.2%; strip it and Broadcom's gross margin averages 75.3% against NVIDIA's 72.9%, so Broadcom is 2.4 points ahead rather than 6.3 points behind, and the EBIT gap narrows to 8.7 points. Strip equity compensation as well, which runs at 9.7% of revenue at Broadcom against 4.1% at NVIDIA on the same three-year basis, and the two run at 60.0% and 63.1% operating margin. The cost engines are effectively tied. Neither company wins this duel on efficiency.</p>
+    <p>What separates them forward is pass-through, not cost. Both face the same memory-price shock. NVIDIA has announced executed price increases effective fiscal Q1 2028 and guides a 71% to 72% gross margin trough recovering to 72% to 73%. Broadcom is absorbing the same shock as mix: gross margin guided to approximately 73% for fiscal Q4 2026 against 78% a year earlier, attributed by its CFO to the increasing mix of XPUs with their increasing memory content. One company reprices and the other dilutes, because one sets list price to a queue of allocated buyers and the other negotiates inside a customer's co-development contract.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 800 306" role="img" aria-label="Margin dumbbells, three-year averages, reported and adjusted">
+        <text x="160" y="40" text-anchor="end" font-size="14" fill="#2B2B2B" font-weight="700">Gross margin</text>
+        <text x="160" y="57" text-anchor="end" font-size="13" fill="#6E675C">as reported</text>
+        <line x1="170" y1="45" x2="700" y2="45" stroke="#EFE9DE" stroke-width="6" stroke-linecap="round"/>
+        <line x1="558" y1="45" x2="625" y2="45" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="558" cy="45" r="7" fill="#C75B39"/><circle cx="625" cy="45" r="7" fill="#3C6E8F"/>
+        <text x="548" y="50" text-anchor="end" font-size="14" fill="#C75B39" font-weight="700">AVGO 66.6</text>
+        <text x="635" y="50" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">NVDA 72.9</text>
+        <text x="591" y="30" text-anchor="middle" font-size="13" fill="#6E675C">6.3 pts to NVDA</text>
+
+        <text x="160" y="110" text-anchor="end" font-size="14" fill="#2B2B2B" font-weight="700">Gross margin</text>
+        <text x="160" y="127" text-anchor="end" font-size="13" fill="#6E675C">ex purchase accounting</text>
+        <line x1="170" y1="115" x2="700" y2="115" stroke="#EFE9DE" stroke-width="6" stroke-linecap="round"/>
+        <line x1="625" y1="115" x2="650" y2="115" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="650" cy="115" r="7" fill="#C75B39"/><circle cx="625" cy="115" r="7" fill="#3C6E8F"/>
+        <text x="660" y="120" text-anchor="start" font-size="14" fill="#C75B39" font-weight="700">AVGO 75.3</text>
+        <text x="615" y="120" text-anchor="end" font-size="14" fill="#3C6E8F" font-weight="700">NVDA 72.9</text>
+        <text x="637" y="100" text-anchor="middle" font-size="13" fill="#6E675C">2.4 pts to AVGO</text>
+
+        <text x="160" y="180" text-anchor="end" font-size="14" fill="#2B2B2B" font-weight="700">EBIT margin</text>
+        <text x="160" y="197" text-anchor="end" font-size="13" fill="#6E675C">as reported</text>
+        <line x1="170" y1="185" x2="700" y2="185" stroke="#EFE9DE" stroke-width="6" stroke-linecap="round"/>
+        <line x1="245" y1="185" x2="477" y2="185" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="245" cy="185" r="7" fill="#C75B39"/><circle cx="477" cy="185" r="7" fill="#3C6E8F"/>
+        <text x="235" y="190" text-anchor="end" font-size="14" fill="#C75B39" font-weight="700">AVGO 37.1</text>
+        <text x="487" y="190" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">NVDA 59.0</text>
+        <text x="361" y="170" text-anchor="middle" font-size="13" fill="#6E675C">21.9 pts to NVDA</text>
+
+        <text x="160" y="250" text-anchor="end" font-size="14" fill="#2B2B2B" font-weight="700">EBIT margin</text>
+        <text x="160" y="267" text-anchor="end" font-size="13" fill="#6E675C">ex purchase accounting</text>
+        <text x="160" y="283" text-anchor="end" font-size="13" fill="#6E675C">and ex stock compensation</text>
+        <line x1="170" y1="255" x2="700" y2="255" stroke="#EFE9DE" stroke-width="6" stroke-linecap="round"/>
+        <line x1="488" y1="255" x2="521" y2="255" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="488" cy="255" r="7" fill="#C75B39"/><circle cx="521" cy="255" r="7" fill="#3C6E8F"/>
+        <text x="478" y="260" text-anchor="end" font-size="14" fill="#C75B39" font-weight="700">AVGO 60.0</text>
+        <text x="531" y="260" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">NVDA 63.1</text>
+        <text x="504" y="240" text-anchor="middle" font-size="13" fill="#6E675C">3.1 pts to NVDA</text>
+        <text x="170" y="300" text-anchor="start" font-size="13" fill="#6E675C">30%</text>
+        <text x="700" y="300" text-anchor="end" font-size="13" fill="#6E675C">80%</text>
+      </svg>
+      <div class="cap">Three-year averages, percent of revenue. Broadcom fiscal 2023 to 2025 (10-K filed 18 December 2025); NVIDIA fiscal 2024 to 2026 (10-K filed 25 February 2026). Adjustments: acquisition-related intangible amortisation added back from both cost of revenue and operating expenses (Broadcom $3,247m, $9,267m, $8,062m per the 10-K segment note; NVIDIA's equivalent is immaterial at $527m in fiscal 2026); stock-based compensation added back from the cash-flow statements (Broadcom $2,171m, $5,741m, $7,568m; NVIDIA $3,549m, $4,737m, $6,386m). Both adjustments are real costs to shareholders; the point of the exhibit is that they are structural differences in how the two businesses were assembled and paid for, not differences in how efficiently they operate.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip a">Broadcom breaks first</span> <span class="chip b">NVIDIA breaks deeper</span></div>
+    <p><b>Broadcom's one exposure is design ownership.</b> Fifty-six percent of revenue is AI silicon built to four customers' architectures, sold through a channel in which one distributor accounts for 42% of net revenue, up from 29% a year earlier, with the top five end customers at roughly 45% (AVGO fiscal 2026 Q2 10-Q). Broadcom owns none of those designs. The customer can re-tender the next generation, and press reporting from 20 August 2026 describes Marvell winning Google TPU design work and AMD reportedly engaged on a later generation, with MediaTek already holding TPU v8. Management did not address multi-sourcing on the 2 September 2026 call. This trigger is a single engineering decision at a single customer and can land in any quarter.</p>
+    <p><b>NVIDIA's one exposure is that it is financing its own demand.</b> Non-marketable equity securities rose from $3.4bn to $22.3bn during fiscal 2026, management expects AI labs leveraging NVIDIA's balance sheet to contribute roughly a quarter of next year's business, and the balance sheet carries $95.2bn of inventory purchase and long-term supply and capacity obligations, flagged as a critical audit matter in the fiscal 2026 10-K, against $32bn of inventory at fiscal Q2 2027. If frontier-lab funding tightens, NVIDIA impairs the equity and strands the inventory in the same quarter. It has already demonstrated the mechanism at smaller scale with a $4.5bn H20 write-down in fiscal Q1 2026.</p>
+    <p><b>Broadcom breaks first</b> because its failure mode is idiosyncratic, customer-specific and by external accounts already in motion, while NVIDIA's requires the entire AI capital-expenditure cycle to turn. NVIDIA breaks deeper because when that happens it absorbs the loss on three lines at once: revenue, inventory and investments.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These are the cells that carry roughly 80% of the combined economics. Every score is argued in the tabs below, and the scores are not summed, because adding a software cell to a China cell manufactures precision that does not exist.</p>
+  <div class="tbl-scroll">
+  <table>
+    <tr><th>Cell (product and region, end-demand basis)</th><th class="ca">AVGO</th><th class="cb">NVDA</th><th>Why, one clause, sourced</th></tr>
+    <tr><td>AI accelerators, US hyperscalers and AI labs</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+      <td>AVGO: six XPU programmes and roughly 60% of custom-ASIC design-partner share (Counterpoint, 26 Jan 2026, estimate), but the customer owns the design and is re-tendering it. NVDA: $89.0bn data-centre quarter with purchase orders from every major hyperscaler, AI cloud and system OEM before Vera Rubin reached volume (Q2 FY2027 call).</td></tr>
+    <tr><td>AI and data-centre networking, US hyperscalers and AI labs</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td>AVGO: merchant-silicon leader, first to market with the 100Tb Tomahawk 6 and Tomahawk 7 at 200Tbps taped out, plus its own EML, VCSEL and laser fabs (Q3 FY2026 call; FY2025 10-K). NVDA: number two in AI back-end Ethernet switching (Dell'Oro, 3 Sep 2026, estimate), Spectrum-X up 2.6 times, and NVLink uncontested in scale-up. A genuine split by layer.</td></tr>
+    <tr><td>AI data centre, sovereign, neocloud and enterprise</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+      <td>AVGO: these buyers do not design custom silicon, so Broadcom reaches them only through merchant networking components sold to someone else's system. NVDA: ACIE revenue of $40.0bn, up 138% year on year, guided toward roughly half of data-centre revenue (Q2 FY2027 call).</td></tr>
+    <tr><td>AI data centre, China</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td>
+      <td>AVGO: $11.2bn of fiscal 2025 revenue on a ship-to basis, largely non-AI, with no export-control event found in the sweep window (FY2025 10-K). NVDA: China revenue fell from $25.0bn to $19.7bn between fiscal 2025 and 2026, and management assumes no China data-centre compute revenue in its outlook (FY2026 10-K; Q2 FY2027 call).</td></tr>
+    <tr><td>Legacy and consumer silicon, global</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td>AVGO: non-AI semiconductors of $4.2bn, up 5% year on year and flat sequentially, held by legacy sockets in broadband, wireless and server storage (Q3 FY2026 call). NVDA: Graphics $7.9bn, up 46%, riding the same Blackwell architecture as the data-centre line (FY2027 Q2 10-Q).</td></tr>
+    <tr><td>Infrastructure software, Americas and EMEA enterprise</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+      <td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td>
+      <td>AVGO: $8.8bn a quarter at 94% gross margin and roughly 84% operating margin with ARR up 15%, and pricing power strong enough to attract an EU antitrust complaint from CISPE on 23 Mar 2026. NVDA: no reported software revenue line; CUDA is a stronger lock-in but is monetised inside the hardware price, so it produces nothing that survives a hardware pause.</td></tr>
+  </table>
+  </div>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs and are per cell, never summed. Geographic basis caveat: Broadcom reports revenue by ship-to or delivery location, with title for most products transferring in Penang, Malaysia; NVIDIA reports by customer headquarters. Both state that a substantial share of Asian-billed revenue serves US and European end demand, so the cells above are scored on end demand rather than on the reported regional split.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Broadcom sells three businesses; NVIDIA sells one. That single structural fact explains most of what the cell table shows.</div>
+    <p>Before any number: the two companies report geography on opposite bases, and the difference is not cosmetic. Broadcom discloses revenue by ship-to or delivery location, and title for most products transfers in Penang, Malaysia, which pushes revenue into Asia Pacific. NVIDIA discloses revenue by customer headquarters, recast in fiscal Q3 2026 from a prior basis, which pushes revenue into the United States. Both companies say so themselves: Broadcom writes that a substantial portion of product shipped to China ends up in devices its end customers sell in the United States and Europe, and NVIDIA estimates that 76% of data-centre revenue from Taiwan-headquartered customers was attributed to end customers in the United States and Europe. The reported regional splits below are therefore shown as reported with the basis labelled, and every judgement in this page is made on end demand, where the two look nearly identical: US hyperscalers and AI labs.</p>
+    <p>Segment labels are normalised as follows. Broadcom's AI semiconductor revenue, disclosed on calls inside the semiconductor solutions segment, maps to NVIDIA's Data Center inside Compute and Networking. Broadcom's non-AI semiconductors map to NVIDIA's Graphics plus Automotive plus OEM. Broadcom's infrastructure software segment has no NVIDIA counterpart and is marked ND on that side rather than forced into a comparison.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 800 278" role="img" aria-label="Butterfly chart of revenue cells, matched half-years">
+        <text x="310" y="22" text-anchor="end" font-size="15" fill="#C75B39" font-weight="700">Broadcom, H1 FY2026</text>
+        <text x="490" y="22" text-anchor="start" font-size="15" fill="#3C6E8F" font-weight="700">NVIDIA, H1 FY2027</text>
+        <line x1="310" y1="32" x2="310" y2="262" stroke="#E5DDD0" stroke-width="1"/>
+        <line x1="490" y1="32" x2="490" y2="262" stroke="#E5DDD0" stroke-width="1"/>
+
+        <rect x="300.3" y="49" width="9.7" height="18" fill="#C75B39"/>
+        <rect x="490" y="49" width="249.5" height="18" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="294" y="62" text-anchor="end" font-size="14" fill="#C75B39" font-weight="700">4.4</text>
+        <text x="266" y="62" text-anchor="end" font-size="12" fill="#6E675C">+14%</text>
+        <text x="745" y="62" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">113.4</text>
+        <text x="745" y="75" text-anchor="start" font-size="12" fill="#6E675C">+111%</text>
+        <text x="400" y="55" text-anchor="middle" font-size="12.5" fill="#2B2B2B">AI and compute silicon,</text>
+        <text x="400" y="69" text-anchor="middle" font-size="12.5" fill="#2B2B2B">Americas-billed</text>
+
+        <rect x="255.2" y="83" width="54.8" height="18" fill="#C75B39"/>
+        <rect x="490" y="83" width="78.5" height="18" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="249" y="96" text-anchor="end" font-size="14" fill="#C75B39" font-weight="700">24.9</text>
+        <text x="221" y="96" text-anchor="end" font-size="12" fill="#6E675C">+66%</text>
+        <text x="575" y="96" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">35.7</text>
+        <text x="616" y="96" text-anchor="start" font-size="12" fill="#6E675C">+136%</text>
+        <text x="400" y="89" text-anchor="middle" font-size="12.5" fill="#2B2B2B">AI and compute silicon,</text>
+        <text x="400" y="103" text-anchor="middle" font-size="12.5" fill="#2B2B2B">Asia-billed</text>
+
+        <rect x="490" y="117" width="33" height="18" fill="#3C6E8F"/>
+        <text x="298" y="130" text-anchor="end" font-size="13" fill="#6E675C">ND</text>
+        <text x="529" y="130" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">15.0</text>
+        <text x="570" y="130" text-anchor="start" font-size="12" fill="#6E675C">+52%</text>
+        <text x="400" y="123" text-anchor="middle" font-size="12.5" fill="#2B2B2B">Consumer and workstation</text>
+        <text x="400" y="137" text-anchor="middle" font-size="12.5" fill="#2B2B2B">graphics</text>
+
+        <rect x="490" y="151" width="25.1" height="18" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="298" y="164" text-anchor="end" font-size="13" fill="#6E675C">ND</text>
+        <text x="521" y="164" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">11.4</text>
+        <text x="562" y="164" text-anchor="start" font-size="12" fill="#6E675C">-9%</text>
+        <text x="400" y="157" text-anchor="middle" font-size="12.5" fill="#2B2B2B">Compute silicon,</text>
+        <text x="400" y="171" text-anchor="middle" font-size="12.5" fill="#2B2B2B">China-billed</text>
+
+        <rect x="297" y="185" width="13" height="18" fill="#C75B39"/>
+        <text x="291" y="198" text-anchor="end" font-size="14" fill="#C75B39" font-weight="700">5.9</text>
+        <text x="263" y="198" text-anchor="end" font-size="12" fill="#6E675C">+8%</text>
+        <text x="496" y="198" text-anchor="start" font-size="13" fill="#6E675C">no presence</text>
+        <text x="400" y="191" text-anchor="middle" font-size="12.5" fill="#2B2B2B">Infrastructure software,</text>
+        <text x="400" y="205" text-anchor="middle" font-size="12.5" fill="#2B2B2B">Americas</text>
+
+        <rect x="296.1" y="219" width="13.9" height="18" fill="#C75B39"/>
+        <rect x="490" y="219" width="5.3" height="18" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="290" y="232" text-anchor="end" font-size="14" fill="#C75B39" font-weight="700">6.3</text>
+        <text x="262" y="232" text-anchor="end" font-size="12" fill="#6E675C">+12%</text>
+        <text x="501" y="232" text-anchor="start" font-size="14" fill="#3C6E8F" font-weight="700">2.4</text>
+        <text x="530" y="232" text-anchor="start" font-size="12" fill="#6E675C">+27%</text>
+        <text x="400" y="233" text-anchor="middle" font-size="12.5" fill="#2B2B2B">All other cells</text>
+        <text x="400" y="268" text-anchor="middle" font-size="12" fill="#6E675C">Revenue, $bn, matched half-years. Faded bars are inferred cells.</text>
+      </svg>
+      <div class="cap">Broadcom: two fiscal quarters ended 3 May 2026, revenue disaggregated by type and region, fiscal 2026 Q2 10-Q Note 2 (products and subscriptions by Americas, Asia Pacific, EMEA). NVIDIA: six months ended 26 July 2026, fiscal 2027 Q2 10-Q segment and geographic tables. NVIDIA publishes no segment-by-geography cross-tab, so its Compute and Networking cells apply the disclosed consolidated geographic mix to the segment and are shown faded and marked inferred; Compute and Networking is 91.6% of revenue, which bounds the approximation error at the Graphics remainder. Growth rates are year on year: Broadcom cell growth from the same 10-Q comparatives, NVIDIA growth from the disclosed geographic totals. Broadcom's regional basis is ship-to or delivery location, NVIDIA's is customer headquarters, so the Americas and Asia rows are not directly comparable and the split between them is a channel artefact, not an end-demand one.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>Normalised cell</th><th class="num ca">AVGO rev, % of total</th><th class="num ca">AVGO y/y</th><th class="num cb">NVDA rev, % of total</th><th class="num cb">NVDA y/y</th><th>Leader and why</th></tr>
+      <tr><td>AI data-centre silicon and systems</td><td class="num ca">$16.7bn, 56%</td><td class="num ca">+221%</td><td class="num cb">$89.0bn, 92%</td><td class="num cb">+117%</td><td>NVDA on scale, 5.3 times larger; AVGO on rate of change</td></tr>
+      <tr><td>of which accelerators</td><td class="num ca">approx. $12.2bn (inferred: 73% of AI revenue)</td><td class="num ca">units up 3.5x</td><td class="num cb">ND, not split</td><td class="num cb">ND</td><td>NVDA, with AVGO closing</td></tr>
+      <tr><td>of which AI networking</td><td class="num ca">approx. $4.5bn (inferred: 27% of AI revenue)</td><td class="num ca">over +150%</td><td class="num cb">record quarter, +18% q/q; $8.2bn in Q3 FY2026</td><td class="num cb">+162% in Q3 FY2026</td><td>NVDA on systems revenue, AVGO on merchant switch silicon</td></tr>
+      <tr><td>Non-AI and consumer silicon</td><td class="num ca">$4.2bn, 14%</td><td class="num ca">+5%</td><td class="num cb">$7.9bn, 8%</td><td class="num cb">+46%</td><td>NVDA, whose legacy line still grows; AVGO's is flat</td></tr>
+      <tr><td>Infrastructure software</td><td class="num ca">$8.8bn, 30%, ARR +15%</td><td class="num ca">+29%</td><td class="num cb">ND, no software segment</td><td class="num cb">ND</td><td>AVGO, uncontested</td></tr>
+      <tr><td><b>Total</b></td><td class="num ca"><b>$29.6bn</b></td><td class="num ca"><b>+86%</b></td><td class="num cb"><b>$96.2bn</b></td><td class="num cb"><b>+106%</b></td><td>NVDA</td></tr>
+    </table>
+    </div>
+    <p class="score-note">Broadcom figures: fiscal Q3 2026, quarter ended 2 August 2026 (Q3 FY2026 earnings call, 2 September 2026, and Form 10-Q, accession 0001730168-26-000080). NVIDIA figures: fiscal Q2 2027, quarter ended 26 July 2026 (Q2 FY2027 earnings call, 26 August 2026, and 10-Q). Broadcom's XPU and networking split is management commentary on the call only and appears in no filing, hence inferred.</p>
+    <div class="iik"><b>Insight:</b> Broadcom's revenue is three real businesses, AI silicon at 56%, software at 30% and legacy silicon at 14%, while NVIDIA's is one at 92%; NVIDIA is both larger and faster in the shared cell, but Broadcom holds a 94%-gross-margin software annuity for which NVIDIA has no counterpart. <b>Implication:</b> in the up-cycle NVIDIA compounds harder, and in a pause Broadcom keeps $8.8bn a quarter of subscription revenue that does not stop. <span class="kpi">KPI: Broadcom infrastructure-software ARR growth, 15% year on year at Q3 FY2026, staying above 10% through fiscal 2027; below that the ballast argument weakens.</span> Sources: both companies' latest earnings calls and 10-Q filings.</div>
+
+    <h3>Segment growth engines</h3>
+    <p><b>Accelerators.</b> Broadcom grows by adding named programmes, not by taking share in an open market: six XPU customers at Q3 FY2026, with Google's TPU Ironwood v7 and v8i, Anthropic, OpenAI's Jalapeño and Meta's MTIA named on the call. Management expressed the forward book in gigawatts rather than revenue: Anthropic at 1GW in 2026, 5GW in 2027 and line of sight to an incremental 10GW in 2028; OpenAI at 1.3GW in 2027 and over 5GW in 2028; Meta at roughly 3GW through 2028. NVIDIA grows by selling one platform to every buyer at once, with hyperscale at $49bn and ACIE at $40bn in the same quarter. The cost of growing differs by an order of magnitude: NVIDIA carries $95.2bn of purchase and capacity obligations to hold its position, while Broadcom spent $623m of capital expenditure in all of fiscal 2025.</p>
+    <div class="iik"><b>Insight:</b> Broadcom's growth is contractual and concentrated; NVIDIA's is market-wide and diversified. <b>Implication:</b> Broadcom's forward numbers can be underwritten programme by programme, which also means they can die programme by programme; NVIDIA's cannot be underwritten that way but equally cannot be killed by one customer decision. <span class="kpi">KPI: whether Broadcom's six XPU customers become seven at material volume by end-fiscal-2027, and whether NVIDIA's ACIE share of data-centre revenue holds above 40%.</span> Sources: AVGO Q3 FY2026 call; NVDA Q2 FY2027 call; NVDA FY2026 10-K; AVGO FY2025 10-K.</div>
+    <p><b>Networking.</b> Broadcom leads the merchant silicon layer: first to market with the 100Tb Tomahawk 6, Tomahawk 7 at 200Tbps taped out, leadership in every generation of PCI Express switching, and a vertically integrated optical component line of EMLs, VCSELs and CW lasers made in its own Fort Collins and Breinigsville fabs. NVIDIA sells systems rather than chips and is winning at that level: Dell'Oro ranks it number two in AI back-end Ethernet switching in both the first and second quarters of 2026, behind Celestica, with Spectrum-X up 2.6 times year on year. Note the layer confusion before drawing a conclusion: Celestica's number-one position is built on merchant silicon, much of it Broadcom's, so the two are not always competing for the same dollar.</p>
+    <div class="iik"><b>Insight:</b> Broadcom owns the silicon layer and NVIDIA owns the integrated-rack layer, and NVLink scale-up is the one place NVIDIA can lock Broadcom out entirely. <b>Implication:</b> as rack-scale designs displace discrete switch sockets, Broadcom's networking revenue per gigawatt compresses even while its chips keep shipping. <span class="kpi">KPI: Dell'Oro quarterly AI back-end switch vendor rank; NVIDIA passing Celestica for number one would mean the integration thesis is beating the merchant thesis.</span> Sources: AVGO Q3 FY2026 call; Dell'Oro Group, 3 September 2026 (estimate).</div>
+    <p><b>Software and legacy silicon.</b> Broadcom's software cell grew 29% to $8.8bn at 94% gross margin and roughly 84% operating margin on the VMware Cloud Foundation subscription conversion. ARR growth of 15% is the honest underlying rate; the gap to 29% comes from upfront licence recognition on non-terminable contracts, and the fiscal 2026 Q2 10-Q discloses $1,964m of upfront licence revenue reclassified into products in the quarter. Broadcom's legacy silicon is flat at 5% growth. NVIDIA's legacy cell, Graphics, grew 46% because gaming GPUs are cut from the same Blackwell silicon as the data-centre product.</p>
+    <div class="iik"><b>Insight:</b> Broadcom's non-AI ballast is a software annuity carrying real renewal and regulatory risk, after CISPE filed an EU antitrust complaint on 23 March 2026 over the termination of the VMware cloud service provider programme; NVIDIA's ballast is a consumer franchise riding the very cycle it is meant to hedge. <b>Implication:</b> Broadcom's hedge is higher margin but contested, NVIDIA's is high quality but correlated. <span class="kpi">KPI: VMware ARR growth, and any escalation by the European Commission from complaint to formal proceedings.</span> Sources: AVGO Q3 FY2026 call; AVGO FY2026 Q2 10-Q; CISPE complaint reporting, 23 March 2026.</div>
+
+    <h3>Price control and route to market</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>&nbsp;</th><th class="ca">Broadcom</th><th class="cb">NVIDIA</th></tr>
+      <tr><td>Channel</td><td class="ca">56% of net revenue through distributors; one distributor is 42% of net revenue, up from 29%; top five end customers approximately 45%, up from 40% (FY2026 Q2 10-Q)</td><td class="cb">Direct to cloud providers, ODMs, OEMs and system integrators; largest direct customer 22% of FY2026 revenue, falling to 16% in FY2027 Q2 (FY2026 10-K; FY2027 Q2 10-Q)</td></tr>
+      <tr><td>Pricing mechanism</td><td class="ca">Programme-level co-development contracts with multi-year pricing schedules; remaining performance obligations of $33.3bn at fiscal 2025 year end (FY2025 10-K)</td><td class="cb">List-priced platform; management states executed price increases take effect in fiscal Q1 2028 to recover memory cost (Q2 FY2027 call)</td></tr>
+      <tr><td>Disclosed price and volume split of growth</td><td class="ca">ND</td><td class="cb">ND</td></tr>
+      <tr><td>Pricing power actually exercised</td><td class="ca">Semiconductor segment gross margin of approximately 76% in Q3 FY2026 despite rising XPU mix; separately, VMware price increases severe enough to draw an EU antitrust complaint</td><td class="cb">Raising prices into a memory shock while still guiding fiscal 2028 gross margin of 72% to 73%</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> NVIDIA sets price unilaterally and has announced an increase to recover memory inflation, while Broadcom's XPU prices are negotiated inside co-development agreements with customers who own the design and are actively dual-sourcing it. <b>Implication:</b> NVIDIA controls net price and Broadcom controls cost to serve, so a memory shock hits Broadcom's margin without the same recovery lever. <span class="kpi">KPI: Broadcom consolidated gross margin against its own approximately 73% fiscal Q4 2026 guide; a print below 71% without a revenue beat says the XPU price schedule is not absorbing memory inflation.</span> Sources: both companies' latest calls and 10-Q filings.</div>
+
+    <h3>Supply resilience</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>&nbsp;</th><th class="ca">Broadcom</th><th class="cb">NVIDIA</th></tr>
+      <tr><td>Foundry</td><td class="ca">Approximately 95% of contract-manufactured wafers from TSMC in fiscal 2025, flagged by the company itself as a prioritisation risk (FY2025 10-K risk factors)</td><td class="cb">TSMC and Samsung (FY2026 10-K)</td></tr>
+      <tr><td>Memory</td><td class="ca">HBM sourced externally; Samsung memorandum of understanding, July 2026, covering HBM and 2nm foundry, not a firm order</td><td class="cb">SK hynix, Micron and Samsung all certified for HBM4 on Vera Rubin, June 2026</td></tr>
+      <tr><td>Own fabrication</td><td class="ca">Yes: FBAR filters at Fort Collins, InP and GaAs lasers at Breinigsville and Singapore, both named as sole sources</td><td class="cb">None; CoWoS packaging via TSMC; assembly via Hon Hai, Wistron and Fabrinet</td></tr>
+      <tr><td>Inventory posture</td><td class="ca">$4.5bn at Q3 FY2026, roughly 3.6% of fiscal 2025 revenue</td><td class="cb">$21.4bn at fiscal 2026 year end and $32bn at Q2 FY2027, plus $95.2bn of purchase and capacity obligations</td></tr>
+      <tr><td>Disclosed incident</td><td class="ca">TSMC capacity named as the binding constraint, March 2026; substrate and HBM availability named on the Q3 FY2026 call</td><td class="cb">$4.5bn H20 write-down in fiscal Q1 2026 on loss of export licences</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> Broadcom is materially more concentrated at the foundry but carries almost no inventory risk, while NVIDIA is dual-sourced at the foundry and triple-sourced on memory but has $95.2bn of committed spend standing against a forecast. <b>Implication:</b> Broadcom's supply risk is a delivery risk, meaning it cannot get wafers; NVIDIA's is a balance-sheet risk, meaning it has already paid for wafers it may not sell. <span class="kpi">KPI: Broadcom disclosing a second foundry qualified for XPUs; NVIDIA's purchase-obligation balance falling in a quarter where revenue also falls.</span> Sources: AVGO FY2025 10-K; NVDA FY2026 10-K; NVDA FY2027 Q2 10-Q.</div>
+
+    <h3>Competitive context</h3>
+    <p>Third-party estimates, each flagged as such. ASIC-based systems were 27.8% of 2026 AI server shipments against 69.7% GPU-based, the highest ASIC share since 2023 (TrendForce, 20 January 2026). Broadcom holds roughly 60% of custom-ASIC design-partner share for 2027 against Marvell at roughly 8%, while Google's TPU share of ASIC programme volumes falls from 64% in 2024 to 52% in 2027 as Meta's MTIA and Microsoft's Maia ramp (Counterpoint, 26 January 2026). In networking, Dell'Oro ranks AI back-end Ethernet switching in the second quarter of 2026 as Celestica first, NVIDIA second, Arista third and Cisco fourth and gaining (3 September 2026). Two competitive events in the window matter more than the share tables: AMD won a six-gigawatt multi-generation GPU commitment from OpenAI on 6 October 2025 with a warrant for up to 160m AMD shares, and press reporting on 20 August 2026 describes Marvell winning Google TPU design work with a warrant reported at up to $12.2bn, with AMD reportedly engaged on a later generation and MediaTek already holding TPU v8.</p>
+    <p>Read as share-taker or share-donor: in accelerators Broadcom is taking share from merchant GPU in aggregate while donating share inside its own largest programme. NVIDIA is donating aggregate accelerator share while taking networking share. One conflict is unresolved and worth naming: Broadcom management made no acknowledgement of Google multi-sourcing on the 2 September 2026 call, while press reporting from 20 August 2026 describes it in detail. Neither Broadcom nor Alphabet has confirmed it.</p>
+
+    <h3>Risks by segment</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>Cell</th><th>The one risk that does the most damage</th><th>More exposed</th><th>Why</th></tr>
+      <tr><td>AI accelerators</td><td>A named customer redesigns to a rival partner or brings the next generation in house</td><td class="ca">Broadcom</td><td>Six customers carry 56% of total revenue, one distributor is 42% of net revenue, and Google multi-sourcing is already reported</td></tr>
+      <tr><td>AI networking</td><td>Rack-scale integration eliminates the discrete merchant switch socket</td><td class="ca">Broadcom</td><td>NVLink and Spectrum-X ship inside the rack; Broadcom must win a socket inside someone else's design</td></tr>
+      <tr><td>Legacy and consumer silicon</td><td>Cycle downturn</td><td class="cb">NVIDIA</td><td>Graphics rides the same Blackwell supply and the same AI cycle it is meant to diversify against</td></tr>
+      <tr><td>Software</td><td>Regulatory or renewal shock to VMware pricing</td><td class="ca">Broadcom</td><td>CISPE EU antitrust complaint of 23 March 2026 over VCF licensing terms</td></tr>
+      <tr><td>Whole book</td><td>Customer credit, because both are financing their own demand</td><td>Both, differently</td><td>Broadcom provides residual value guarantees inside an Apollo and Blackstone SPV; NVIDIA holds $22.3bn of non-marketable equity in the labs that buy its chips</td></tr>
+    </table>
+    </div>
+    <div class="pull">On cells alone: NVIDIA's engine is larger, faster and spread across four distinct buyer types, while Broadcom's is faster in percentage terms, concentrated in four named programmes, and is the only one of the two carrying a non-correlated annuity underneath it.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">One company owns an architecture; the other is very good at building someone else's. That is the whole power map.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">NVIDIA, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:2%">NVIDIA, clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">NVIDIA, narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Moats reads narrow because Broadcom's software annuity and owned optical fabs are real assets that NVIDIA does not have; Customers reads clear because the two concentrations are moving in opposite directions.</div>
+    </div>
+
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Broadcom</h3>
+        <p><b>Design-partner incumbency. Durability: Medium.</b> The moat is being the fastest and most reliable custom-accelerator partner, not owning the architecture. Management's proof is delivery: fastest time to market for TPUs from definition to production without respins, plus SerDes, chip-to-chip interconnect, HBM and SRAM integration and advanced packaging IP. External corroboration: roughly 60% of custom-ASIC design-partner share for 2027 against Marvell at 8% (Counterpoint, estimate). It is Medium rather than High because the customer owns the architecture and can re-tender it, and by press account has begun to.</p>
+        <p><b>Physical-layer integration. Durability: High.</b> Broadcom owns fabs for FBAR filters and for the InP and GaAs lasers behind optical interconnect, and names Fort Collins and Breinigsville as sole sources. This is a years-not-money asset.</p>
+        <p><b>Software annuity. Durability: High operationally, Medium legally.</b> $8.8bn a quarter at 94% gross margin with a mission-critical private-cloud installed base and high switching cost, but with a live EU antitrust complaint against its licensing terms.</p></div>
+      <div class="col b"><h3>NVIDIA</h3>
+        <p><b>Architecture plus CUDA. Durability: High.</b> The moat is that customers write software against the platform and buy a rack that must be taken whole. Proof is behavioural rather than rhetorical: purchase orders for Vera Rubin from every major hyperscaler, AI cloud and system OEM before volume shipment, and revenue opportunity per gigawatt rising from $18bn on Hopper to $25bn on Grace Blackwell to $40bn on Vera Rubin as more of the rack becomes NVIDIA content. A well-funded rival needs years, not money: AMD has held a six-gigawatt OpenAI commitment since October 2025 without dislodging the platform.</p>
+        <p><b>System-level vertical integration. Durability: High.</b> GPU, CPU, DPU, NVLink, Ethernet and InfiniBand and software sold as one product. Grace CPU trailing twelve-month revenue exceeded $5bn, and Vera is guided to more than double CPU revenue in fiscal 2028.</p>
+        <p><b>Software annuity: ND.</b> No separately reported software revenue. CUDA is the stronger lock-in but produces no revenue line that survives a hardware pause.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Broadcom's moat is renewed per programme per generation while NVIDIA's is renewed per workload by the software engineers already writing against it. <b>Implication:</b> Broadcom has to win again roughly every eighteen months, and every win is a negotiation with a counterparty that holds the design. <span class="kpi">KPI: number of Broadcom XPU programmes publicly lost to a rival design partner by end-fiscal-2027, currently zero disclosed; and NVIDIA's realised revenue per gigawatt against the $40bn Vera Rubin figure.</span> Sources: AVGO Q3 FY2026 call and FY2025 10-K; NVDA Q2 FY2027 call; Counterpoint, 26 January 2026 (estimate).</div>
+
+    <h3>Customers: who controls net price and access</h3>
+    <p>The two concentrations are moving in opposite directions and that is the single most legible fact in this section. Broadcom's largest channel customer, a distributor, went from 29% to 42% of net revenue in a year, and its top five end customers from roughly 40% to 45%. NVIDIA's largest direct customer went from 22% of fiscal 2026 revenue to 16% in fiscal Q2 2027, with the top three at 16%, 15% and 13% across the half, as ACIE broadened the base toward what management expects will be roughly half the data-centre business.</p>
+    <p>Access quality differs in the same direction. Broadcom's own fiscal 2026 Q2 risk factors state that its top customers, including AI customers, have made greater demands on pricing and contractual terms, seeking to lease custom accelerators or requiring Broadcom to purchase and lease full AI racks, together with alternative financing arrangements, and that such arrangements have imposed and may impose financial obligations including backstops or guarantees. That is a company disclosing, in its own filing, that its buyers are writing the commercial structure. NVIDIA's equivalent disclosure runs the other way: it has been asked to offer financing arrangements to support customer build-outs and states it has not entered into any.</p>
+    <div class="iik"><b>Insight:</b> Broadcom's customer concentration is rising while its customers dictate commercial structure; NVIDIA's is falling while it dictates price. <b>Implication:</b> when demand softens the margin pressure sits on Broadcom, because its buyers are four engineering organisations that own the designs and have alternatives, while NVIDIA's buyers are hundreds of operators queuing for allocated supply. <span class="kpi">KPI: Broadcom's largest-distributor percentage in each 10-Q, where above 45% is a deepening dependency; NVIDIA's largest direct customer percentage, where a return above 20% would reverse the diversification claim.</span> Sources: AVGO FY2026 Q2 10-Q; NVDA FY2026 10-K and FY2027 Q2 10-Q.</div>
+
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Broadcom sources approximately 95% of its contract-manufactured wafers from TSMC, a concentration it flags itself as a prioritisation risk, and it named TSMC capacity as the binding constraint in March 2026 and substrate and HBM availability on the September 2026 call. Its Samsung arrangement covering HBM and 2nm foundry is a memorandum of understanding, not a firm order. NVIDIA runs TSMC and Samsung at the foundry and has certified all three memory makers, SK hynix, Micron and Samsung, for HBM4 on Vera Rubin. Dual-sourcing coverage reads Low at the foundry and Medium on memory for Broadcom, against Medium and High for NVIDIA.</p>
+    <p>Pass-through is where the gap becomes financial. NVIDIA is Strong: it announced executed price increases effective fiscal Q1 2028 and still guides fiscal 2028 gross margin of 72% to 73% against what management called extreme pricing conditions in memory. Broadcom is Partial: it guided fiscal Q4 2026 gross margin down to approximately 73% from 78% a year earlier and attributed the decline to the increasing mix of XPUs with their increasing memory content, which is absorbing the shock rather than repricing it.</p>
+    <div class="iik"><b>Insight:</b> NVIDIA is both better sourced and better able to pass costs on, and the memory shock is happening now rather than hypothetically. <b>Implication:</b> in the same input-cost event NVIDIA holds margin by raising price while Broadcom's compresses by mix. <span class="kpi">KPI: Broadcom's fiscal Q4 2026 gross margin against its own 73% guide, and NVIDIA's fiscal Q4 2027 gross margin against its own 71% to 72% trough guide. Whoever misses their own number is losing the pass-through argument.</span> Sources: AVGO FY2025 10-K risk factors and Q3 FY2026 call; NVDA FY2026 10-K and Q2 FY2027 call.</div>
+
+    <h3>The price and power triangle: top three cells</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome, share and margin</th><th>Confirming KPI</th></tr>
+      <tr><td>AI accelerators into US hyperscalers and AI labs</td><td><b class="ca">AVGO</b> indirect, distributor at 42% of revenue, into four engineering organisations. <b class="cb">NVDA</b> direct into hundreds of buyers plus an ODM channel.</td><td><b class="ca">AVGO</b> below: management's pitch is that Jalapeño runs OpenAI workloads at half the cost of a GPU. <b class="cb">NVDA</b> above, and raising.</td><td><b class="ca">AVGO</b> constrained by TSMC. <b class="cb">NVDA</b> constrained but dual-sourced.</td><td><b class="ca">AVGO</b> share up, margin down, because mix dilution is disclosed and guided. <b class="cb">NVDA</b> share down slightly in units, margin roughly flat because price recovers memory cost.</td><td>AVGO consolidated gross margin against the 73% Q4 guide</td></tr>
+      <tr><td>AI networking into the same buyers</td><td><b class="ca">AVGO</b> sells merchant silicon to ODMs and switch vendors, including to Celestica, which Dell'Oro ranks first in AI back-end Ethernet. <b class="cb">NVDA</b> sells the network inside the rack.</td><td><b class="cb">NVDA</b> above, captured inside a system price the customer cannot line-item.</td><td>Parity.</td><td><b class="ca">AVGO</b> share flat in silicon, revenue per gigawatt down. <b class="cb">NVDA</b> share up and margin up.</td><td>Dell'Oro quarterly AI back-end switch vendor rank</td></tr>
+      <tr><td>Infrastructure software into global enterprise (AVGO) against consumer and workstation graphics (NVDA)</td><td><b class="ca">AVGO</b> direct enterprise renewal motion at 94% gross margin. <b class="cb">NVDA</b> add-in-board partners and OEMs, Graphics operating margin 45.6% in H1 FY2027.</td><td><b class="ca">AVGO</b> has raised effective prices hard enough to attract an EU antitrust complaint, which is the strongest available external evidence of pricing power exercised.</td><td>Parity.</td><td><b class="ca">AVGO</b> share flat, margin up, with a regulatory tail. <b class="cb">NVDA</b> share up, margin up, but correlated to the same cycle as its data-centre business.</td><td>VMware ARR growth; European Commission action</td></tr>
+    </table>
+    </div>
+    <p>This cell has no true counterpart on the NVIDIA side, which is itself the finding, and it is the one place where the answer runs Broadcom's way.</p>
+    <div class="pull">The tension worth naming: Broadcom grows fastest exactly where it has least pricing power. Its 221% AI growth is priced inside co-development contracts, sold through a distributor that is 42% of its revenue, to customers who own the IP and are re-tendering it. Its real pricing power sits in the software segment, which grows 15% on an ARR basis. The growth map and the power map disagree about Broadcom, and that disagreement is the most useful output of this run.</div>
+
+    <h3>The causal gap</h3>
+    <p><b>Who owns the design. Impact: Major.</b> Broadcom's customers own the architecture and specify the chip; Broadcom supplies IP and execution. NVIDIA owns the architecture and the software written against it. For Broadcom to close this it would have to become an architecture owner, which means a decade of ecosystem building it has never attempted. Not closable in eighteen months with money, which is what makes it a real moat difference rather than a lead.</p>
+    <p><b>Direction of customer concentration. Impact: Moderate.</b> Broadcom's largest channel customer went from 29% to 42% of revenue in a year and its top five from 40% to 45%, while NVIDIA's largest direct customer fell from 22% to 16%. Broadcom closes this by bringing XPU customers five and six to material volume. It says it has six; revenue is visibly concentrated in four. Closable in two to three years if the programmes land.</p>
+    <p><b>Cost pass-through. Impact: Moderate.</b> Broadcom guided gross margin from 78% to approximately 73% and attributed it to XPU memory content; NVIDIA announced price increases effective fiscal Q1 2028 and guides 72% to 73% after a trough. Broadcom closes this only by renegotiating programme pricing schedules, which realistically happens at the next generation rather than inside this one.</p>
+    <div class="pull">NVIDIA holds the stronger power position for five to ten years, and not narrowly: it owns an architecture, its concentration is falling while Broadcom's rises, and it is repricing a memory shock that Broadcom is absorbing.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">Strip purchase accounting and equity compensation and the two cost engines are effectively tied, which means cost decides nothing in this duel.</div>
+    <p>Both companies present costs by function and report in US dollars, so no by-nature reconstruction or currency conversion is required and all five ratios are defensible on both sides. Two mapping notes govern the tables. Broadcom's total cost of revenue includes amortisation of acquisition-related intangible assets of $1,853m, $6,023m and $6,031m in fiscal 2023 to 2025, and its reported selling, general and administrative line excludes the separately presented amortisation and restructuring lines. NVIDIA's acquisition-related intangible amortisation is immaterial and sits in unallocated acquisition-related and other costs, at $527m in fiscal 2026, so its cost of revenue is close to a pure product cost. Fiscal years are offset: Broadcom's ends in early November and NVIDIA's in late January, a gap of roughly twelve weeks, which is inside one quarter. Broadcom fiscal 2023 to 2025 is paired with NVIDIA fiscal 2024 to 2026.</p>
+
+    <h3>Three years, five ratios, as reported</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>Percent of sales, 3-year average</th><th class="num ca">Broadcom</th><th class="num cb">NVIDIA</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS</td><td class="num ca">33.4</td><td class="num cb">27.1</td><td class="num">6.3 to NVDA</td><td>Broadcom's cost of revenue carries VMware purchase-accounting amortisation</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">16.7</td><td class="num cb">10.9</td><td class="num">5.8 to NVDA</td><td>Broadcom funds many product lines and carries heavy equity comp; NVIDIA amortises one architecture over 3.5 times the revenue</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">6.9</td><td class="num cb">3.1</td><td class="num">3.8 to NVDA</td><td>Broadcom carries an enterprise-software sales and renewal organisation; NVIDIA sells direct to a handful of accounts</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">66.6</td><td class="num cb">72.9</td><td class="num">6.3 to NVDA</td><td>Same purchase-accounting cause, inverted</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">37.1</td><td class="num cb">59.0</td><td class="num">21.9 to NVDA</td><td>The sum of the above; see the adjusted table below before reading anything into it</td></tr>
+    </table>
+    </div>
+    <div class="chartbox">
+      <svg viewBox="0 0 800 300" role="img" aria-label="Five cost ratios, three-year averages, Broadcom against NVIDIA">
+        <rect x="60" y="14" width="12" height="12" fill="#C75B39"/><text x="78" y="25" font-size="14" fill="#C75B39" font-weight="700">Broadcom</text>
+        <rect x="170" y="14" width="12" height="12" fill="#3C6E8F"/><text x="188" y="25" font-size="14" fill="#3C6E8F" font-weight="700">NVIDIA</text>
+        <line x1="55" y1="240" x2="765" y2="240" stroke="#2B2B2B" stroke-width="1.5"/>
+        <rect x="87" y="156.5" width="40" height="83.5" fill="#C75B39"/><rect x="133" y="172.25" width="40" height="67.75" fill="#3C6E8F"/>
+        <text x="107" y="150" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="700">33.4</text><text x="153" y="166" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="700">27.1</text>
+        <text x="130" y="262" text-anchor="middle" font-size="14" fill="#2B2B2B">COGS</text>
+        <rect x="222" y="198.25" width="40" height="41.75" fill="#C75B39"/><rect x="268" y="212.75" width="40" height="27.25" fill="#3C6E8F"/>
+        <text x="242" y="192" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="700">16.7</text><text x="288" y="206" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="700">10.9</text>
+        <text x="265" y="262" text-anchor="middle" font-size="14" fill="#2B2B2B">R&amp;D</text>
+        <rect x="357" y="222.75" width="40" height="17.25" fill="#C75B39"/><rect x="403" y="232.25" width="40" height="7.75" fill="#3C6E8F"/>
+        <text x="377" y="216" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="700">6.9</text><text x="423" y="226" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="700">3.1</text>
+        <text x="400" y="262" text-anchor="middle" font-size="14" fill="#2B2B2B">SG&amp;A</text>
+        <rect x="492" y="73.5" width="40" height="166.5" fill="#C75B39"/><rect x="538" y="57.75" width="40" height="182.25" fill="#3C6E8F"/>
+        <text x="512" y="67" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="700">66.6</text><text x="558" y="51" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="700">72.9</text>
+        <text x="535" y="262" text-anchor="middle" font-size="14" fill="#2B2B2B">Gross margin</text>
+        <rect x="627" y="147.25" width="40" height="92.75" fill="#C75B39"/><rect x="673" y="92.5" width="40" height="147.5" fill="#3C6E8F"/>
+        <text x="647" y="141" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="700">37.1</text><text x="693" y="86" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="700">59.0</text>
+        <text x="670" y="262" text-anchor="middle" font-size="14" fill="#2B2B2B">EBIT margin</text>
+        <text x="400" y="288" text-anchor="middle" font-size="13" fill="#6E675C">Percent of revenue, three-year averages, as reported. Broadcom FY2023-25, NVIDIA FY2024-26.</text>
+      </svg>
+      <div class="cap">Broadcom: 10-K for fiscal 2025, filed 18 December 2025, consolidated statements of operations. NVIDIA: 10-K for fiscal 2026, filed 25 February 2026, consolidated statements of income. All five ratios are computed from as-reported lines with no adjustment; the adjustments that matter are set out below the chart.</div>
+    </div>
+
+    <h3>Per year, as reported</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>&nbsp;</th><th class="num">COGS %</th><th class="num">R&amp;D %</th><th class="num">SG&amp;A %</th><th class="num">Gross margin %</th><th class="num">EBIT margin %</th></tr>
+      <tr><td class="ca">Broadcom FY2023</td><td class="num">31.1</td><td class="num">14.7</td><td class="num">4.4</td><td class="num">68.9</td><td class="num">45.2</td></tr>
+      <tr><td class="ca">Broadcom FY2024</td><td class="num">37.0</td><td class="num">18.1</td><td class="num">9.6</td><td class="num">63.0</td><td class="num">26.1</td></tr>
+      <tr><td class="ca">Broadcom FY2025</td><td class="num">32.2</td><td class="num">17.2</td><td class="num">6.6</td><td class="num">67.8</td><td class="num">39.9</td></tr>
+      <tr><td class="cb">NVIDIA FY2024</td><td class="num">27.3</td><td class="num">14.2</td><td class="num">4.4</td><td class="num">72.7</td><td class="num">54.1</td></tr>
+      <tr><td class="cb">NVIDIA FY2025</td><td class="num">25.0</td><td class="num">9.9</td><td class="num">2.7</td><td class="num">75.0</td><td class="num">62.4</td></tr>
+      <tr><td class="cb">NVIDIA FY2026</td><td class="num">28.9</td><td class="num">8.6</td><td class="num">2.1</td><td class="num">71.1</td><td class="num">60.4</td></tr>
+    </table>
+    </div>
+    <p class="score-note">Broadcom fiscal 2024 is distorted by the first full year of VMware purchase accounting; NVIDIA fiscal 2026 carries a $4.5bn H20 export-control charge in cost of revenue, worth roughly 2.1 points of gross margin.</p>
+
+    <h3>The same ratios, honestly reconciled</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>Percent of sales, 3-year average</th><th class="num ca">Broadcom</th><th class="num cb">NVIDIA</th><th class="num">Gap</th></tr>
+      <tr><td>Gross margin, as reported</td><td class="num ca">66.6</td><td class="num cb">72.9</td><td class="num">6.3 to NVDA</td></tr>
+      <tr><td>Gross margin, excluding acquisition-intangible amortisation</td><td class="num ca">75.3</td><td class="num cb">72.9</td><td class="num">2.4 to AVGO</td></tr>
+      <tr><td>EBIT margin, as reported</td><td class="num ca">37.1</td><td class="num cb">59.0</td><td class="num">21.9 to NVDA</td></tr>
+      <tr><td>EBIT margin, excluding acquisition-intangible amortisation</td><td class="num ca">50.3</td><td class="num cb">58.8</td><td class="num">8.5 to NVDA</td></tr>
+      <tr><td>EBIT margin, excluding amortisation and stock compensation</td><td class="num ca">60.0</td><td class="num cb">63.1</td><td class="num">3.1 to NVDA</td></tr>
+      <tr><td>Memo: stock compensation</td><td class="num ca">9.7</td><td class="num cb">4.1</td><td class="num">5.6 higher at AVGO</td></tr>
+      <tr><td>Memo: acquisition-intangible amortisation</td><td class="num ca">13.2</td><td class="num cb">0.2</td><td class="num">13.0 higher at AVGO</td></tr>
+    </table>
+    </div>
+    <p class="score-note">Amortisation added back from both cost of revenue and operating expenses: Broadcom $3,247m, $9,267m and $8,062m for fiscal 2023 to 2025 per the 10-K segment note; NVIDIA's equivalent is immaterial. Stock compensation from the cash-flow statements: Broadcom $2,171m, $5,741m and $7,568m; NVIDIA $3,549m, $4,737m and $6,386m. Both are real costs to shareholders. The exhibit does not argue they should be ignored; it argues that they are differences in how the two businesses were assembled and paid for rather than differences in how efficiently they run.</p>
+
+    <h3>The latest quarter, like for like</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>&nbsp;</th><th class="ca">Broadcom Q3 FY2026, quarter to 2 Aug 2026</th><th class="cb">NVIDIA Q2 FY2027, quarter to 26 Jul 2026</th></tr>
+      <tr><td>Revenue</td><td class="ca">$29,591m, up 86%</td><td class="cb">$96,221m, up 106%</td></tr>
+      <tr><td>Gross margin</td><td class="ca">69.1% GAAP, 75% non-GAAP</td><td class="cb">75.0%, GAAP equals non-GAAP</td></tr>
+      <tr><td>Operating margin</td><td class="ca">53.9% GAAP, 67.9% non-GAAP</td><td class="cb">66.2% GAAP</td></tr>
+      <tr><td>Next-quarter gross margin guide</td><td class="ca">approximately 73%, down from 78% a year earlier</td><td class="cb">74% plus or minus 50bp, trough of 71% to 72% expected in Q4</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> on a like-for-like non-GAAP basis the two now run within roughly two points of each other on both gross and operating margin, which confirms the three-year adjusted tables rather than contradicting them. <b>Implication:</b> the reported 21.9-point EBIT gap is not a live operating gap and should not carry a verdict. <span class="kpi">KPI: whether Broadcom's non-GAAP operating margin stays above 65% as XPU mix rises past 60% of revenue.</span> Sources: AVGO Q3 FY2026 call and Form 10-Q for the quarter ended 2 August 2026; NVDA Q2 FY2027 call and 10-Q.</div>
+
+    <h3>Capital intensity, where they genuinely differ</h3>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>&nbsp;</th><th class="ca">Broadcom FY2025</th><th class="cb">NVIDIA FY2026</th></tr>
+      <tr><td>Property, plant and equipment, net</td><td class="num ca">$2,530m, 4.0% of revenue</td><td class="num cb">$10,383m, 4.8% of revenue</td></tr>
+      <tr><td>Capital expenditure</td><td class="num ca">$623m, 1.0% of revenue</td><td class="num cb">$6,042m including intangibles, 2.8% of revenue</td></tr>
+      <tr><td>Inventory</td><td class="num ca">$2,270m, 3.6% of revenue</td><td class="num cb">$21,403m, 9.9% of revenue</td></tr>
+      <tr><td>Operating cash flow</td><td class="num ca">$27,537m, 43.1% of revenue</td><td class="num cb">$102,718m, 47.6% of revenue</td></tr>
+      <tr><td>Committed forward purchases</td><td class="num ca">Remaining performance obligations $33.3bn (revenue side)</td><td class="num cb">Inventory purchase and long-term supply and capacity obligations $95.2bn (cost side)</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> NVIDIA carries 2.7 times Broadcom's inventory as a share of revenue and $95.2bn of purchase and capacity obligations, because it sells full rack-scale systems and must pre-buy memory and packaging capacity, while Broadcom's XPU model leaves more of that working capital with the customer and the ODM. <b>Implication:</b> in a demand pause NVIDIA takes the write-down first and larger, as it already did with $4.5bn on H20 and $7.2bn of total inventory provisions in fiscal 2026, while Broadcom's downside arrives more slowly as a thinner book. <span class="kpi">KPI: NVIDIA inventory days and the purchase-obligation balance in each 10-Q; a second provision above $3bn without a matching revenue beat is the tell.</span> Sources: AVGO FY2025 10-K; NVDA FY2026 10-K.</div>
+
+    <h3>The structural gap</h3>
+    <p>The most persistent difference across all three years is not gross margin and not EBIT margin, both of which move once you adjust them. It is operating expense intensity: Broadcom spends 16.7% of revenue on research and development and 6.9% on selling, general and administrative against NVIDIA's 10.9% and 3.1%, and the gap is present in every one of the three years in both lines. The mechanism comes straight from Step 1. Broadcom funds five semiconductor end markets plus an enterprise software portfolio, each with its own engineering roadmap and its own renewal sales organisation, and it pays a materially larger share of that cost in equity, at 9.7% of revenue against 4.1%. NVIDIA funds one architecture and sells it to a few hundred accounts, so every incremental dollar of revenue meets an expense base that barely moves.</p>
+    <p>Does this confirm or contradict the power map? It confirms it, but not in the way the reported numbers suggest. The company with the stronger pricing power should show it in gross margin, and once purchase accounting is removed Broadcom's gross margin is actually the higher of the two, at 75.3% against 72.9%. That is not a contradiction: Broadcom's product-level economics are genuinely excellent, helped by a software segment at 94% gross margin. What Broadcom does not have is NVIDIA's operating leverage, and what it is now losing is the direction of travel, guiding gross margin from 78% to 73% while NVIDIA guides a shallower trough and a recovery funded by price increases it can actually impose. The cost engines are tied; the pricing engines are not. That is why this duel is decided on the power lens rather than on the cost lens, and it is why a reader who anchors on the headline 37% against 59% operating margin has drawn the right conclusion from the wrong evidence.</p>
+    <div class="pull">Neither company runs a structurally leaner operation than the other. The 21.9-point reported EBIT gap is purchase accounting plus equity compensation, and whoever wins this duel does not win it on cost.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>The ASIC crossover arrives faster than the platform can defend.</b> ASIC-based systems were 27.8% of 2026 AI server shipments against 69.7% GPU-based, the highest ASIC share since 2023 (TrendForce, 20 January 2026, estimate), and Counterpoint projects custom-ASIC unit shipments to pass data-centre GPU shipments by 2028 (26 January 2026, estimate). If the majority of inference migrates to custom silicon, Broadcom's roughly 60% design-partner share becomes the better franchise regardless of who owns the architecture. <span style="color:var(--good);font-weight:700;">Early warning: ASIC share of AI server shipments above 35% for calendar 2027, in TrendForce's annual AI server mix.</span></li>
+      <li><b>NVIDIA's vendor-financing loop unwinds.</b> The mechanism is specific rather than atmospheric: NVIDIA holds $22.3bn of non-marketable equity in private companies that buy its chips, up from $3.4bn a year earlier; management expects AI labs leveraging NVIDIA's balance sheet to contribute roughly a quarter of next year's business; and $95.2bn of purchase and capacity obligations stand against that same forecast. A funding squeeze at two or three frontier labs impairs the equity and strands the inventory in the same quarter. <span style="color:var(--good);font-weight:700;">Early warning: a non-marketable equity impairment, or an inventory provision above $3bn in a quarter without a matching revenue beat, at any point through fiscal 2028, in the 10-Q.</span></li>
+      <li><b>Memory inflation proves structural and NVIDIA cannot reprice.</b> The remaining margin advantage rests entirely on executed price increases landing in fiscal Q1 2028. If hyperscalers resist, NVIDIA's gross margin stays at the trough, the adjusted margin gap of 3.1 points closes to nothing, and Broadcom's 94%-gross-margin software annuity becomes the more valuable asset in the duel. <span style="color:var(--good);font-weight:700;">Early warning: NVIDIA gross margin below 71% in any quarter through fiscal 2028, against its own 71% to 72% trough guide.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <div class="tbl-scroll">
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favours</th><th>Where published</th></tr>
+    <tr><td>Broadcom consolidated gross margin</td><td>At or above the guided 73%</td><td>Fiscal Q4 2026 result, around December 2026</td><td class="ca">Broadcom: XPU pricing is absorbing memory inflation</td><td>AVGO earnings release and 10-K</td></tr>
+    <tr><td>NVIDIA gross margin at the guided trough</td><td>At or above 71%</td><td>Fiscal Q4 2027 result, around February 2027</td><td class="cb">NVIDIA: pass-through works. Below 71% is flip condition three firing</td><td>NVDA earnings release and 10-K</td></tr>
+    <tr><td>Broadcom largest-distributor share of net revenue</td><td>At or below 45%</td><td>Each 10-Q through fiscal 2027</td><td class="ca">Broadcom: concentration stabilising. Above 45% favours NVIDIA</td><td>AVGO 10-Q, MD&amp;A net revenue discussion</td></tr>
+    <tr><td>Disclosed loss of a Broadcom XPU programme to a rival design partner</td><td>Zero</td><td>By end of fiscal 2027, November 2027</td><td class="ca">Broadcom: design-partner moat intact. Any disclosed loss favours NVIDIA</td><td>AVGO earnings calls; customer disclosure</td></tr>
+    <tr><td>NVIDIA ACIE share of data-centre revenue</td><td>At or above 40%</td><td>Each quarter through fiscal 2028</td><td class="cb">NVIDIA: diversification away from hyperscalers is real</td><td>NVDA earnings call CFO commentary</td></tr>
+  </table>
+  </div>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the deep-dive hours on NVIDIA first. It is the stronger business on every lens, and the research compounds: revenue per gigawatt, the ACIE mix and the purchase-obligation ledger tell you most of what matters about the entire AI capital-expenditure cycle, Broadcom included. Then give Broadcom exactly one day on one question. Does Google multi-sourcing its TPU design work to Marvell, AMD and MediaTek reach the fiscal 2028 $230bn number, and if so by how much. That question is answerable from Alphabet's own disclosure and Broadcom's next two quarters, and until it is answered nothing else in the Broadcom file can be sized.
+  </div>
+
+  <h2>Open questions the sources could not answer</h2>
+  <ul style="padding-left:22px;font-size:17px;">
+    <li style="margin-bottom:8px;">Broadcom does not disclose the split of AI revenue between XPUs and networking in any filing; the 73 to 27 split used here is management commentary on the fiscal Q3 2026 call only, and is marked inferred wherever it appears.</li>
+    <li style="margin-bottom:8px;">No credible dated merchant Ethernet switch-silicon share figure for 2025 or 2026 was retrievable from a named research house. Commonly circulated Broadcom share figures appeared only on sources that do not meet the evidence bar and were excluded rather than guessed.</li>
+    <li style="margin-bottom:8px;">Neither company publishes a product-by-geography cross-tab for its AI business, and NVIDIA publishes no segment-by-geography table at all, which is why the NVIDIA cells in the butterfly chart are inferred.</li>
+    <li style="margin-bottom:8px;">The reported Google multi-sourcing of TPU design work, dated 20 August 2026, has no confirmation from Broadcom or Alphabet, and Broadcom management did not address it on the 2 September 2026 call. It is the single largest unresolved fact in this run.</li>
+    <li style="margin-bottom:8px;">Broadcom's contingent exposure under the Apollo and Blackstone AI XPV Platform is described on the fiscal Q3 2026 call as modest residual value guarantees but is not quantified in any filing reviewed. Press reporting of a much larger guaranteed senior tranche, dated 20 August 2026, is unconfirmed by the company.</li>
+  </ul>
+
+  <div class="footer">
+    <p><b>Method.</b> This run compares two businesses through three lenses in sequence: a growth and profitability map that breaks both companies out of their consolidated totals into product and geography cells and keeps the cells that explain roughly 80% of the combined economics, a power map that tests moats, customer relationships and supplier links, and a cost engine that puts three years of five ratios side by side after reconciling the classification differences between them. Segment labels and regions are normalised to a single map, stated in the Growth Map tab, and both companies report in US dollars so no currency conversion applies. ND means the data does not exist publicly; inferred means a figure was reasoned to from disclosed components, with the logic stated; third-party market-share figures are labelled as estimates and attributed to the research house and date. This is a business-strength comparison and a prioritisation verdict. It is not a valuation, it contains no view on either company's share price, and it says nothing about whether either stock is worth owning at any price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Broadcom Inc., Form 10-K for fiscal year ended 2 November 2025, filed 18 December 2025.</li>
+      <li>Broadcom Inc., Form 10-Q for the fiscal quarter ended 3 May 2026, filed 9 June 2026.</li>
+      <li>Broadcom Inc., Form 10-Q for the fiscal quarter ended 2 August 2026, accession 0001730168-26-000080, filed 10 September 2026.</li>
+      <li>Broadcom Inc., fiscal Q3 2026 earnings call transcript, 2 September 2026.</li>
+      <li>Broadcom Inc., fiscal Q4 2025 earnings call transcript, 11 December 2025.</li>
+      <li>NVIDIA Corporation, Form 10-K for fiscal year ended 25 January 2026, filed 25 February 2026.</li>
+      <li>NVIDIA Corporation, Form 10-Q for the fiscal quarter ended 26 July 2026, filed 26 August 2026.</li>
+      <li>NVIDIA Corporation, fiscal Q2 2027 earnings call transcript, 26 August 2026.</li>
+      <li>Counterpoint Research, AI Server Compute ASIC Shipments to Triple by 2027, 26 January 2026 (estimate).</li>
+      <li>TrendForce, 2026 AI server shipment forecast and GPU against ASIC mix, 20 January 2026 (estimate).</li>
+      <li>TrendForce, reporting on Marvell, AMD and MediaTek in the Google TPU programme, 20 August 2026 (press report, unconfirmed by either company).</li>
+      <li>Dell'Oro Group, AI back-end network switch sales surpass front-end networks for the first time in 2Q2026, 3 September 2026 (estimate).</li>
+      <li>Dell'Oro Group, Ethernet extends lead in AI scale-out networks, 2 June 2026 (estimate).</li>
+      <li>AMD Inc. investor relations, AMD and OpenAI announce strategic partnership to deploy 6 gigawatts of AMD GPUs, 6 October 2025.</li>
+      <li>Blackstone, Broadcom, Apollo and Blackstone establish strategic platform to accelerate more than 20 gigawatts of global AI deployments, 9 June 2026.</li>
+      <li>Broadcom investor relations, OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators, 13 October 2025.</li>
+      <li>NVIDIA and OpenAI announce strategic partnership to deploy 10 gigawatts of NVIDIA systems, 22 September 2025.</li>
+      <li>CISPE EU antitrust complaint over VMware cloud service provider licensing, reported 23 March 2026.</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
