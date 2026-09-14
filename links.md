@@ -1,3 +1,5 @@
+- [Astera Labs Business Overview](https://xk152004.github.io/investechery/stocks/Astera-Labs-Business-Overview.html)
+- [Astera Labs vs Broadcom — Peer Duel](https://xk152004.github.io/investechery/stocks/Astera%20Labs%20vs%20Broadcom%20%E2%80%94%20Peer%20Duel.html)
 - [SKHY vs MU Peer Duel](https://xk152004.github.io/investechery/stocks/SKHY_vs_MU_Peer_Duel.html)
 - [KLA Corporation — Bull & Bear Memo](https://xk152004.github.io/investechery/stocks/KLA%20Corporation%20%E2%80%94%20Bull%20%26%20Bear%20Memo.html)
 - [Astera Labs — Bull & Bear Memo](https://xk152004.github.io/investechery/stocks/Astera%20Labs%20%E2%80%94%20Bull%20%26%20Bear%20Memo.html)
@@ -58,7 +60,6 @@
 - [Lumentum Business Overview](https://xk152004.github.io/investechery/stocks/Lumentum-Business-Overview.html)
 - [Coherent Business Overview](https://xk152004.github.io/investechery/stocks/Coherent-Business-Overview.html)
 - [Space X Business Overview](https://xk152004.github.io/investechery/stocks/SpaceX-Business-Overview.html)
-- [Astera Labs Business Overview](https://xk152004.github.io/investechery/stocks/Astera-Labs-Business-Overview.html)
 - [Micron Business Overview](https://xk152004.github.io/investechery/stocks/Micron-Business-Overview.html)
 - [SK Hynix Business Overview](https://xk152004.github.io/investechery/stocks/SK-hynix-Business-Overview.html)
 - [Tencent Business Overview](https://xk152004.github.io/investechery/stocks/Tencent-Business-Overview.html)
