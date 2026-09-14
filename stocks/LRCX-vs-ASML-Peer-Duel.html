@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lam Research vs ASML: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .tablescroll{overflow-x:auto;}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:12px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:12px;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  @media(max-width:620px){.leanrow{grid-template-columns:110px 1fr;gap:8px;} .leanrow .lbl{font-size:15px;}}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Lam Research vs ASML: who wins the next decade?</h1>
+  <p class="source">Semiconductor capital equipment. LRCX / ASML. Run 14 September 2026. Built from Lam Research Forms 10-K for fiscal 2024, 2025 and 2026, ASML Forms 20-F for 2024 and 2025, both companies' 2026 quarterly filings, the Lam Q4 FY2026 earnings call and the Lam presentation at Goldman Sachs Communacopia on 10 September 2026. Events swept through 14 September 2026; most recent events checked: Lam at Goldman Sachs Communacopia, 10 September 2026, and ASML's Q2 2026 results and raised full-year guidance, 15 July 2026. Lam figures in US dollars, ASML figures in euros; all ratios are percentages of each company's own revenue and are therefore free of any exchange-rate effect, and no figure in this page is converted between currencies. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Lam Research (A)</span><span class="chip b">ASML (B)</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">ASML is the stronger business for the next five to ten years, because it supplies the one step no leading-edge fab can skip, while Lam must win every application against a named rival. But the gap has narrowed on every measurable dimension for three straight years, and Lam's next five years contain more identifiable new revenue content.</div>
+    <div class="why">The load-bearing evidence: ASML's 20-F names no competitor for EUV, and customers pre-pay it EUR 18.2bn. Lam's 10-K names a credible rival in every market it serves, and its customers pre-pay it USD 2.4bn, down year on year.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>ASML has no second source. Lam's own 10-K names Applied Materials, ASM International, Wonik IPS, Hitachi, Tokyo Electron, Screen and Semes across its markets. ASML's 20-F names none for EUV and frames its competitive risk as technical, not commercial. (LRCX FY2026 10-K, Competition; ASML FY2025 20-F, risk factors)</div>
+    <div class="col"><span class="n">2</span><br>Customers finance ASML. Contract liabilities stood at EUR 18,196.2m at end-2025, up from EUR 16,266.5m. Lam's deferred revenue was USD 2.43bn, down USD 250m year on year. (ASML FY2025 20-F; LRCX FY2026 10-K)</div>
+    <div class="col"><span class="n">3</span><br>The gap is closing. Lam's gross margin rose 320bps over three years against ASML's 150bps, narrowing the difference from 4.0 points to 2.3, and its operating margin moved 670bps against 180bps. (both companies' consolidated statements)</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:2%">Lam Research - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">ASML - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">ASML breaks last - narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favours Lam Research, right lean favours ASML; marker position shows how decisive. Resilience is narrow because ASML breaks less often but harder: one customer was 23.9% of its 2025 sales.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product and geography?</div>
+    <div class="w"><span class="chip a">Lam Research</span></div>
+    <p>The mechanism is served-available-market expansion inside a pool that is itself growing, and it is arithmetic rather than ambition. Lam's share of addressable wafer fab equipment spending is roughly 36 to 36.5% today against a high-30s target, and management says it is getting there faster than the plan set at its 2025 Investor Day; every point of that on a 2026 equipment pool guided to the low USD 150bn range is about USD 1.5bn of revenue Lam could not previously address. The content is named and datable: gate-all-around adds roughly USD 1bn of addressable market per 100,000 wafer starts per month of new capacity and backside power adds a similar amount, addressable market per NAND wafer doubles from the 128-layer node to 500-plus layers, and the through-silicon via step for high-bandwidth memory is a Lam process.</p>
+    <p>ASML's forward mechanism is narrower by construction, which is the price of a monopoly on one step: more EUV in more fabs, with advanced logic EUV spending growing 10 to 20% a year to 2030 and DRAM 15 to 25%. Its own long-range frame has already been overtaken. The EUR 43bn to 45bn guided for 2026 meets the EUR 44bn low end of ASML's published 2030 scenario four years early, which implies roughly a 4% compound rate from here to the EUR 52bn moderate case (inferred: arithmetic on ASML's own published scenarios and its 15 July 2026 guidance). The cells carrying Lam's next five years are etch and deposition into leading-edge foundry in Taiwan and the United States, DRAM and high-bandwidth memory in Korea, and the 500-layer NAND transition. The cells carrying ASML's are EUV into advanced logic in Taiwan and DRAM in Korea, and both are constrained by how many systems it can build rather than by how many customers want.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 230" role="img" aria-label="Revenue indexed to 100 at the first of three reported years">
+        <line x1="70" y1="185" x2="810" y2="185" stroke="#E5DDD0" stroke-width="1"/>
+        <line x1="70" y1="30" x2="70" y2="185" stroke="#E5DDD0" stroke-width="1"/>
+        <text x="60" y="174" text-anchor="end" fill="#6E675C" font-size="13">95</text>
+        <text x="60" y="120" text-anchor="end" fill="#6E675C" font-size="13">120</text>
+        <text x="60" y="66" text-anchor="end" fill="#6E675C" font-size="13">145</text>
+        <text x="110" y="205" text-anchor="middle" fill="#6E675C" font-size="13">Year 1</text>
+        <text x="420" y="205" text-anchor="middle" fill="#6E675C" font-size="13">Year 2</text>
+        <text x="730" y="205" text-anchor="middle" fill="#6E675C" font-size="13">Year 3</text>
+        <text x="110" y="222" text-anchor="middle" fill="#6E675C" font-size="13">FY24 / CY23</text>
+        <text x="420" y="222" text-anchor="middle" fill="#6E675C" font-size="13">FY25 / CY24</text>
+        <text x="730" y="222" text-anchor="middle" fill="#6E675C" font-size="13">FY26 / CY25</text>
+        <polyline points="110,169.3 420,118.5 730,49.5" fill="none" stroke="#C75B39" stroke-width="3"/>
+        <polyline points="110,169.3 420,163.7 730,129.6" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+        <circle cx="110" cy="169.3" r="4.5" fill="#C75B39"/><circle cx="420" cy="118.5" r="4.5" fill="#C75B39"/><circle cx="730" cy="49.5" r="4.5" fill="#C75B39"/>
+        <circle cx="110" cy="169.3" r="4.5" fill="#3C6E8F"/><circle cx="420" cy="163.7" r="4.5" fill="#3C6E8F"/><circle cx="730" cy="129.6" r="4.5" fill="#3C6E8F"/>
+        <text x="120" y="186" text-anchor="start" fill="#6E675C" font-size="13">both 100</text>
+        <text x="742" y="48" text-anchor="start" fill="#C75B39" font-size="14" font-weight="bold">Lam 156</text>
+        <text x="742" y="133" text-anchor="start" fill="#3C6E8F" font-size="14" font-weight="bold">ASML 119</text>
+      </svg>
+      <div class="cap">Revenue indexed to 100 at each company's first of three reported years. Lam fiscal 2024 USD 14,905.4m, fiscal 2025 USD 18,435.6m, fiscal 2026 USD 23,232.7m (LRCX FY2026 10-K). ASML 2023 EUR 27,558.5m, 2024 EUR 28,262.9m, 2025 EUR 32,667.3m (ASML FY2025 20-F; 2023 from FY2024 20-F). Lam's fiscal year ends in late June and ASML's in December, a six-month offset, so Lam's window sits half a year later in the same cycle. Indexing removes the currency difference entirely. ASML's guided 2026 of EUR 43bn to 45bn would index to 156 to 163, drawing level with Lam's fiscal 2026 (ASML 6-K, 15 July 2026).</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip b">ASML, narrowly, and narrowing</span></div>
+    <p>ASML converts growth into margin through mix rather than volume, and the proof sits in its own technology table: unit shipments fell from 583 systems in 2024 to 535 in 2025 while system revenue rose 11.6%, because an EUV system carries an average selling price of roughly EUR 242m against about EUR 12.8m for a KrF tool (inferred: value divided by units, ASML FY2025 20-F). That is what pricing power looks like when it is structural. The customer must buy the expensive tool to get the node, so realised price rises without a list-price negotiation. Three-year averages put ASML ahead on gross margin, 51.8% against 48.8%, and on operating margin, 33.1% against 32.0%.</p>
+    <p>The direction of travel belongs to Lam, and this is the most valuable finding of the run: the growth winner and the margin winner are converging rather than diverging, which is unusual. Lam's gross margin rose 320bps over three years against ASML's 150bps, narrowing the gap from 4.0 points to 2.3, and its operating margin moved 670bps against 180bps. Lam's mechanism is self-help that has not run out, and it names all three parts: volume still shifting into its low-cost Malaysia plant, new differentiated products carrying more content each year, and pricing actions. It has raised its long-term target to a mid-50s gross margin and a mid-40s operating margin, from 50.5% and 35.3% in fiscal 2026. ASML's mechanism is further EUV mix plus a service line at 25.1% of sales that nobody else is permitted to perform, targeting 56 to 60% gross margin by 2030 from 52.8% in 2025. ASML stays ahead on level; Lam closes most of the distance.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 190" role="img" aria-label="Gross margin and operating margin dumbbells, three year averages">
+        <text x="20" y="30" fill="#2B2B2B" font-size="15" font-weight="bold">Gross margin, 3-year average</text>
+        <line x1="120" y1="62" x2="780" y2="62" stroke="#E5DDD0" stroke-width="2"/>
+        <text x="112" y="67" text-anchor="end" fill="#6E675C" font-size="13">44%</text>
+        <text x="788" y="67" text-anchor="start" fill="#6E675C" font-size="13">56%</text>
+        <line x1="384" y1="62" x2="549" y2="62" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="384" cy="62" r="8" fill="#C75B39"/><circle cx="549" cy="62" r="8" fill="#3C6E8F"/>
+        <text x="384" y="45" text-anchor="middle" fill="#C75B39" font-size="14" font-weight="bold">Lam 48.8%</text>
+        <text x="549" y="45" text-anchor="middle" fill="#3C6E8F" font-size="14" font-weight="bold">ASML 51.8%</text>
+        <text x="466" y="82" text-anchor="middle" fill="#6E675C" font-size="13">gap 3.0 pts</text>
+        <text x="20" y="122" fill="#2B2B2B" font-size="15" font-weight="bold">Operating margin, 3-year average</text>
+        <line x1="120" y1="154" x2="780" y2="154" stroke="#E5DDD0" stroke-width="2"/>
+        <text x="112" y="159" text-anchor="end" fill="#6E675C" font-size="13">26%</text>
+        <text x="788" y="159" text-anchor="start" fill="#6E675C" font-size="13">38%</text>
+        <line x1="450" y1="154" x2="511" y2="154" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="450" cy="154" r="8" fill="#C75B39"/><circle cx="511" cy="154" r="8" fill="#3C6E8F"/>
+        <text x="440" y="137" text-anchor="middle" fill="#C75B39" font-size="14" font-weight="bold">Lam 32.0%</text>
+        <text x="530" y="137" text-anchor="middle" fill="#3C6E8F" font-size="14" font-weight="bold">ASML 33.1%</text>
+        <text x="480" y="174" text-anchor="middle" fill="#6E675C" font-size="13">gap 1.1 pts</text>
+      </svg>
+      <div class="cap">Three-year averages. Lam fiscal 2024 to 2026, ASML calendar 2023 to 2025; six-month fiscal offset noted. Both sets are percentages of each company's own revenue and are unaffected by exchange rates. Sources: LRCX FY2026 10-K consolidated statements of operations; ASML FY2025 20-F operating results, with 2023 from the FY2024 20-F. A three-point gross-margin deficit converting into a one-point operating-margin deficit is the whole Lam cost story in one picture.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip a">Lam Research breaks first, ASML breaks harder</span></div>
+    <p>Lam's structural exposure is that roughly 64% of its revenue is systems sold into a contested market at parity pricing with no customer pre-payment cushion, with deferred revenue of USD 2.43bn that fell year on year. When equipment spending turns, Lam faces volume decline and price pressure from Applied Materials, Tokyo Electron and Hitachi in the same quarter, because a customer cutting capex can also shop the remaining budget. ASML's exposure is the opposite shape. It is insulated quarter to quarter by about EUR 18.2bn of contract liabilities customers have already paid, but its revenue turns on very few decisions: one customer was 23.9% of 2025 sales, up from 16.6% a year earlier, and the two largest were 38.0%. A single customer deferring a node does more damage to ASML in one stroke than a general slowdown does to Lam.</p>
+    <p>Behind that sits the sharper exposure. Carl Zeiss SMT is ASML's sole supplier of lenses, mirrors, illuminators and collectors, manufactured only at Oberkochen and Wetzlar, and ASML's own 20-F states that if Zeiss could not maintain production over a prolonged period ASML would effectively cease to be able to conduct its business. The exclusivity that keeps competitors out also caps ASML's output at whatever Zeiss can build, which is why the 2027 capacity plan of plus 30% is a Zeiss question rather than an ASML one. Lam has no counterparty of that criticality and runs factories in seven countries that management describes as deliberately not interrelated, so one region's demand shock does not close all of them.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These six cells carry roughly 94% of Lam's revenue and 97% of ASML's; every score is argued in the tabs below. Cells are scored on position, not size, so a small cell can score 5 and a large one 2.</p>
+  <div class="tablescroll">
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">Lam</th><th class="cb">ASML</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>Leading-edge foundry and logic capex, Taiwan</td>
+        <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+        <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+        <td>Lam at a record Taiwan quarter, 27% of June-2026 revenue, winning 2nm and 3nm with Akara and new ALD but sharing wallet with Applied Materials and Tokyo Electron; ASML indispensable, Taiwan EUR 8,337.9m or 25.5% of 2025 sales (LRCX Q4 FY2026 call; ASML FY2025 20-F)</td></tr>
+    <tr><td>Leading-edge foundry and logic capex, United States</td>
+        <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+        <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+        <td>Lam's US share described by its CFO as consistent with its global share as TSMC, Samsung and Intel build out, supported by a USD 3bn lab and engineering programme; ASML US sales EUR 4,089.1m, 12.5% of 2025 (Goldman Communacopia, 10 Sep 2026; ASML FY2025 20-F)</td></tr>
+    <tr><td>DRAM and high-bandwidth memory capex, Korea</td>
+        <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+        <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+        <td>Lam strong across 1-alpha, 1-beta and 1-gamma nodes and owns the through-silicon via step for HBM, Korea 19% of fiscal 2026; ASML sees DRAM EUV spending compounding 15 to 25% to 2030, Korea EUR 8,159.6m or 25.0% of sales (LRCX FY2026 10-K and Q4 call; ASML FY2025 20-F)</td></tr>
+    <tr><td>NAND capex, Korea, Japan and United States</td>
+        <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+        <td class="cb"><span class="pips b"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td>
+        <td>Lam dominant: the USD 40bn conversion cycle, addressable market per wafer doubling from 128 to 500-plus layers, and NAND revenue more than doubling sequentially in the June-2026 quarter; NAND is not an EUV market and ASML's memory exposure is DRAM-weighted (LRCX Q4 FY2026 call; ASML FY2025 20-F end-use table)</td></tr>
+    <tr><td>Mature and mainstream capex, China</td>
+        <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+        <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td>
+        <td>Lam holds high share where it is permitted to sell, China 34% of fiscal 2026, but domestic Chinese customers declined in the June quarter while multinationals in China grew; ASML China fell from 36.1% to 29.1% of sales and KrF system value fell 54.5% in two years (LRCX FY2026 10-K and Q4 call; ASML FY2025 20-F)</td></tr>
+    <tr><td>Installed base service and upgrades, global</td>
+        <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+        <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+        <td>Lam larger and fast, USD 8,347.2m in fiscal 2026 and up 43% year on year in the June quarter, but its own 10-K names third-party spare-parts providers as real competition; ASML EUR 8,193.0m and up 26.2%, and no one else may service an EUV tool (LRCX FY2026 10-K and Q4 call; ASML FY2025 20-F)</td></tr>
+  </table>
+  </div>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs; a score with no exhibit behind it does not ship. Scores are per cell and are not summed, because adding a NAND score to a China score would manufacture precision that does not exist. The three lenses get their verdicts in the Three Answers above, not here.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Both companies sell into the same fabs, but one is paid for a step with no alternative and the other for many steps each with an alternative, and that single fact organises every cell below.</div>
+    <p>Normalisation first, because the two filings do not line up. Lam's fiscal year ends in late June and ASML's in December, a six-month offset that puts Lam's window half a year later in the same cycle; this is stated wherever a growth rate appears. Lam's reported split of systems against customer-support revenue maps onto ASML's split of net system sales against installed base management, and both are shown that way. On end markets Lam reports foundry, memory and logic separately while ASML reports only logic and memory, so foundry and logic-IDM are read together where the two are compared. Currency is handled by not converting anything: every ratio is a percentage of each company's own revenue, and absolute figures stay in the currency they were reported in.</p>
+    <p>The butterfly below is the whole cell analysis in one picture. Neither company discloses revenue at the level of product multiplied by geography, so five of the six rows are inferred by applying each company's disclosed product split to its disclosed geographic split. That inference assumes product mix is uniform across regions, which it is not: Lam's China revenue skews toward mature-node Reliant tools and ASML's skews toward DUV rather than EUV. The bars are therefore right about rank and roughly right about size, and the caveat matters most in the China row, where both companies' true mix is more mature than the average.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 268" role="img" aria-label="Butterfly chart of top product by geography cells, Lam left, ASML right">
+        <text x="320" y="22" text-anchor="end" fill="#C75B39" font-size="15" font-weight="bold">Lam Research</text>
+        <text x="580" y="22" text-anchor="start" fill="#3C6E8F" font-size="15" font-weight="bold">ASML</text>
+        <text x="450" y="22" text-anchor="middle" fill="#6E675C" font-size="13">% of own revenue</text>
+        <line x1="450" y1="30" x2="450" y2="258" stroke="#E5DDD0" stroke-width="1"/>
+
+        <rect x="153" y="40" width="212" height="20" fill="#C75B39"/>
+        <rect x="535" y="40" width="148" height="20" fill="#3C6E8F"/>
+        <text x="450" y="54" text-anchor="middle" fill="#2B2B2B" font-size="13">Service and upgrades, global</text>
+        <text x="145" y="54" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">35.9%</text>
+        <text x="145" y="68" text-anchor="end" fill="#6E675C" font-size="12">$8.35bn, +20.2%</text>
+        <text x="691" y="54" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">25.1%</text>
+        <text x="691" y="68" text-anchor="start" fill="#6E675C" font-size="12">EUR 8.19bn, +26.2%</text>
+
+        <rect x="236" y="78" width="129" height="20" fill="#C75B39" fill-opacity="0.55"/>
+        <rect x="535" y="78" width="129" height="20" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="450" y="92" text-anchor="middle" fill="#2B2B2B" font-size="13">Systems x China (inferred)</text>
+        <text x="228" y="92" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">21.8%</text>
+        <text x="228" y="106" text-anchor="end" fill="#6E675C" font-size="12">region +26.0%</text>
+        <text x="672" y="92" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">21.8%</text>
+        <text x="672" y="106" text-anchor="start" fill="#6E675C" font-size="12">region -6.6%</text>
+
+        <rect x="282" y="116" width="83" height="20" fill="#C75B39" fill-opacity="0.55"/>
+        <rect x="535" y="116" width="113" height="20" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="450" y="130" text-anchor="middle" fill="#2B2B2B" font-size="13">Systems x Taiwan (inferred)</text>
+        <text x="274" y="130" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">14.1%</text>
+        <text x="274" y="144" text-anchor="end" fill="#6E675C" font-size="12">region +45.9%</text>
+        <text x="656" y="130" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">19.1%</text>
+        <text x="656" y="144" text-anchor="start" fill="#6E675C" font-size="12">region +91.5%</text>
+
+        <rect x="293" y="154" width="72" height="20" fill="#C75B39" fill-opacity="0.55"/>
+        <rect x="535" y="154" width="110" height="20" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="450" y="168" text-anchor="middle" fill="#2B2B2B" font-size="13">Systems x Korea (inferred)</text>
+        <text x="285" y="168" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">12.2%</text>
+        <text x="285" y="182" text-anchor="end" fill="#6E675C" font-size="12">region +8.8%</text>
+        <text x="653" y="168" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">18.7%</text>
+        <text x="653" y="182" text-anchor="start" fill="#6E675C" font-size="12">region +27.3%</text>
+
+        <rect x="338" y="192" width="27" height="20" fill="#C75B39" fill-opacity="0.55"/>
+        <rect x="535" y="192" width="55" height="20" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="450" y="206" text-anchor="middle" fill="#2B2B2B" font-size="13">Systems x US (inferred)</text>
+        <text x="330" y="206" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">4.5%</text>
+        <text x="330" y="220" text-anchor="end" fill="#6E675C" font-size="12">region +26.0%</text>
+        <text x="598" y="206" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">9.4%</text>
+        <text x="598" y="220" text-anchor="start" fill="#6E675C" font-size="12">region -9.6%</text>
+
+        <rect x="331" y="230" width="34" height="20" fill="#C75B39" fill-opacity="0.55"/>
+        <rect x="535" y="230" width="19" height="20" fill="#3C6E8F" fill-opacity="0.55"/>
+        <text x="450" y="244" text-anchor="middle" fill="#2B2B2B" font-size="13">Systems x Japan (inferred)</text>
+        <text x="323" y="244" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">5.8%</text>
+        <text x="323" y="258" text-anchor="end" fill="#6E675C" font-size="12">region +13.4%</text>
+        <text x="562" y="244" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">3.2%</text>
+        <text x="562" y="258" text-anchor="start" fill="#6E675C" font-size="12">region +22.9%</text>
+      </svg>
+      <div class="cap">Bars are each cell as a percentage of that company's own total revenue, a shared scale that needs no currency conversion; absolute figures are shown in each company's reporting currency. Lam fiscal 2026, ASML calendar 2025. Rows with reduced opacity are inferred by applying the disclosed product split to the disclosed geographic split, and assume uniform product mix by region, which overstates the leading-edge content of both China rows. Growth rates are the region's own year-on-year change: Lam's computed from disclosed regional percentages applied to disclosed totals (inferred); ASML's from its disclosed regional sales table. Rows cover 94.3% of Lam's revenue and 97.3% of ASML's. Sources: LRCX FY2026 10-K revenue disaggregation; ASML FY2025 20-F segment and revenue notes.</div>
+    </div>
+
+    <h3>The cells that matter</h3>
+    <div class="tablescroll">
+    <table>
+      <tr><th>Cell</th><th class="num ca">Lam, % of total</th><th class="num ca">Lam growth</th><th class="num cb">ASML, % of total</th><th class="num cb">ASML growth</th><th>Margin signal and leader</th></tr>
+      <tr><td>Service and upgrades, global</td><td class="num ca">35.9% ($8,347.2m, 10-K)</td><td class="num ca">+20.2%</td><td class="num cb">25.1% (EUR 8,193.0m, 20-F)</td><td class="num cb">+26.2%</td><td>ASML leads: uncontested on EUV tools. Lam faces third-party spares competition named in its own 10-K</td></tr>
+      <tr><td>Systems x China</td><td class="num ca">21.8% (inferred)</td><td class="num ca">+26.0% (region, inferred)</td><td class="num cb">21.8% (inferred)</td><td class="num cb">-6.6% (region, 20-F)</td><td>Lam leads on direction. Both restricted; ASML's China share fell 7.0 points in one year, KrF value down 54.5% over two</td></tr>
+      <tr><td>Systems x Taiwan</td><td class="num ca">14.1% (inferred)</td><td class="num ca">+45.9% (region, inferred)</td><td class="num cb">19.1% (inferred)</td><td class="num cb">+91.5% (region, 20-F)</td><td>ASML leads: EUV cannot be substituted at 2nm. Lam's Taiwan quarter was a dollar record at 27% of revenue</td></tr>
+      <tr><td>Systems x Korea</td><td class="num ca">12.2% (inferred)</td><td class="num ca">+8.8% (region, inferred)</td><td class="num cb">18.7% (inferred)</td><td class="num cb">+27.3% (region, 20-F)</td><td>ASML leads on DRAM EUV adoption; Lam owns the through-silicon via step for high-bandwidth memory</td></tr>
+      <tr><td>Systems x United States</td><td class="num ca">4.5% (inferred)</td><td class="num ca">+26.0% (region, inferred)</td><td class="num cb">9.4% (inferred)</td><td class="num cb">-9.6% (region, 20-F)</td><td>Even. Both follow TSMC, Samsung and Intel onshore capacity; ASML's 2025 dip is delivery timing, not share</td></tr>
+      <tr><td>Systems x Japan</td><td class="num ca">5.8% (inferred)</td><td class="num ca">+13.4% (region, inferred)</td><td class="num cb">3.2% (inferred)</td><td class="num cb">+22.9% (region, 20-F)</td><td>Lam larger here on NAND and mature-node exposure; small cell for both</td></tr>
+      <tr><td>All other regions</td><td class="num ca">5.7%</td><td class="num ca">ND</td><td class="num cb">2.7%</td><td class="num cb">ND</td><td>Southeast Asia, Singapore, EMEA, Netherlands; immaterial to the call</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> The two companies have near-identical China exposure by size and opposite exposure by direction, and near-identical service businesses in absolute terms even though ASML is 40% larger by revenue. <b>Implication:</b> Lam's installed base is doing more work per dollar of systems sold, which is why its support business is its most defensible cell, while ASML's China cell is shrinking into a restriction it does not control. <span class="kpi">KPI: China as a percentage of revenue for both. Lam reports it quarterly; ASML annually in the 20-F. Either falling below 15% would remove a fifth of the cell base.</span> [Sources: LRCX FY2026 10-K revenue disaggregation; ASML FY2025 20-F segment note]</div>
+
+    <h3>Segment growth engines</h3>
+    <p>Lam's engine is intensity, not capacity. Every move into the third dimension adds process steps that are etch and deposition steps: gate-all-around is a 3D gate that must be selectively etched and conformally deposited, backside power is a 3D interconnect, high-bandwidth memory stacks are bonded through silicon vias that Lam drills and fills, and 500-layer NAND is the same problem repeated vertically. Management quantifies it the same way each time, roughly USD 1bn of addressable market per 100,000 wafer starts per month for gate-all-around and a similar figure for backside power, which is why its share of equipment spending can rise while its share of any single application stays flat. All of it is organic; the last transaction of consequence was the Novellus combination in 2012, and the CFO stated on 10 September 2026 that large acquisitions are not part of the strategy.</p>
+    <p>ASML's engine is adoption, and it is capacity-limited rather than demand-limited. It recognised 48 EUV systems in 2025, up from 46 in 2024, and plans to add 30% to a 2026 low-numerical-aperture capacity of about 65 systems for 2027, with a further 30% under investigation for 2028. High numerical aperture is real but early: four EXE units in 2025 for EUR 1,156.9m, with more than 400,000 wafers run by customers by year end and the EXE:5200B demonstrated to full specification at a customer site. Its growth therefore depends on building more of the same thing faster, not on finding new things to sell.</p>
+    <div class="iik"><b>Insight:</b> Lam can grow by winning new process steps inside a fab it already serves; ASML can only grow by shipping more systems. <b>Implication:</b> Lam has two growth levers, market and share of market, while ASML has one, and that one runs through a single German supplier. <span class="kpi">KPI: Lam's addressable market as a percentage of wafer fab equipment spending, currently 36 to 36.5%, against its high-30s target, disclosed on quarterly calls; and ASML EUV units recognised per year, disclosed each February in the 20-F, against the roughly 65-unit 2026 capacity.</span> [Sources: LRCX Q4 FY2026 call 2026-07-29; Goldman Communacopia 2026-09-10; ASML FY2025 20-F; ASML 6-K 2026-07-15]</div>
+
+    <h3>Price control and route to market</h3>
+    <p>Neither company has an intermediary. Both sell direct to a handful of integrated device manufacturers and foundries, so nothing sits between list price and net price except the negotiation itself, and route to market does not separate them. What separates them is how each raises realised price. ASML does it through mix without touching a list price: unit shipments fell 8.2% in 2025 while system revenue rose 11.6%, because the customer moving to the next node must buy a EUR 242m EUV tool instead of a EUR 12.8m KrF tool. Lam does it by putting more value into each new tool and then charging for it, which requires a new product every year. Lam names pricing explicitly as one of three drivers of its record June-2026 gross margin, alongside operational and scale efficiency and favourable mix, and declines to discuss like-for-like pricing, which is itself informative.</p>
+    <div class="iik"><b>Insight:</b> ASML's price rises are a by-product of the roadmap; Lam's have to be won each year with new product content. <b>Implication:</b> in a year when Lam has no major new platform, its pricing lever goes quiet, while ASML's continues as long as customers advance nodes. <span class="kpi">KPI: Lam quarterly gross margin against its stated mid-50s target, from 52.0% in the June-2026 quarter; convergence toward ASML's 54 to 56% 2026 guide would mean Lam is closing a power gap, divergence that it is not.</span> [Sources: LRCX Q4 FY2026 call; ASML FY2025 20-F technology table; ASML 6-K 2026-07-15]</div>
+
+    <h3>Supply resilience</h3>
+    <p>This is the one lens where Lam is clearly the safer business. ASML's optics come from Carl Zeiss SMT alone, under an exclusive arrangement, from two sites in Germany, and its own filing states that a prolonged Zeiss production failure would end ASML's ability to conduct business. ASML has bound the risk as tightly as it can, holding 24.9% of Carl Zeiss SMT Holding, funding Zeiss High-NA research and making non-interest-bearing advances against future optical column deliveries, but binding a single point of failure closer does not make it two points. Lam single-sources certain components and sub-assemblies, is qualifying alternates and carries deliberate excess inventory, and manufactures in Oregon, California, Ohio, Malaysia, Taiwan, Korea and Austria; its CEO describes those sites as not interrelated, so a demand or disruption shock in one does not propagate to all.</p>
+    <div class="iik"><b>Insight:</b> ASML's supply structure is its deepest moat and its single largest physical risk at the same time, because Zeiss sells optical columns to no one else and ASML buys them from no one else. <b>Implication:</b> a competitor cannot buy its way in, and ASML cannot buy its way past a Zeiss capacity ceiling. <span class="kpi">KPI: whether ASML delivers the plus 30% EUV capacity step for 2027 and confirms the further 30% for 2028, stated at quarterly results; a deferral is a Zeiss constraint surfacing.</span> [Sources: ASML FY2025 20-F risk factors and related-party note; LRCX FY2026 10-K manufacturing; LRCX Q4 FY2026 call]</div>
+
+    <h3>Competitive context</h3>
+    <p>The market around the duel is not symmetrical. Lam's 10-K names Applied Materials as its primary competitor in dielectric and metals deposition and in etch, ASM International and Wonik IPS in atomic layer and plasma-enhanced deposition, Hitachi and Tokyo Electron in etch, and Screen, Semes and Tokyo Electron in wet clean; Lam claims leadership in conductor etch on the strength of more than 40,000 installed chambers worldwide. ASML's 20-F has no equivalent passage, because there is nobody to name in EUV. Both are share-donors in China to indigenous toolmakers, and for the same reason: export controls create a protected domestic market. Lam's filing makes the point bluntly, stating that the restrictions provide an advantage to international competitors not subject to them.</p>
+
+    <h3>Risks by segment</h3>
+    <p>The NAND cell is Lam's sharpest. The USD 40bn conversion opportunity that has driven record upgrade revenue is now expected to be largely complete by the end of 2027, pulled forward from a multi-year expectation, and upgrades were the largest sequential contributor to Lam's record June-2026 support quarter. The offset is that conversions destroy raw wafer capacity, which management says is down about 20% from peak, so greenfield NAND should follow, but the timing gap between the two is a real hole. ASML's sharpest cell risk is Taiwan: 25.5% of 2025 sales, growing 91.5% in one year, concentrated in a customer base management does not name and in a jurisdiction whose political status its own risk factors call unique. And ASML's DUV-into-China cell is already in visible decline, with KrF system value down from EUR 2,202.5m in 2023 to EUR 1,001.3m in 2025.</p>
+    <div class="iik"><b>Insight:</b> Lam's biggest cell risk is a timing gap it can see coming; ASML's is a concentration it cannot reduce. <b>Implication:</b> Lam's risk is a bad two quarters, ASML's is a bad decade if the concentration resolves badly. <span class="kpi">KPI: Lam support-group revenue sequential growth through 2027, quarterly, against announced greenfield NAND fab starts; ASML Taiwan and largest-customer share in the FY2026 20-F, February 2027.</span> [Sources: LRCX Q4 FY2026 call; Goldman Communacopia 2026-09-10; ASML FY2025 20-F]</div>
+
+    <div class="pull">On cells alone Lam has the better next five years, because its addressable market widens with every move into the third dimension while ASML's widens only when it can build more machines.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In an industry where a qualified tool keeps its socket for the life of the application, the question that decides a decade is not who executes best but whether the customer has an alternative at all.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:2%">ASML - clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">ASML - narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:26%">Lam Research - narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Customers is narrow to ASML because its pricing power and EUR 18.2bn of customer pre-payments are offset by a top customer at 23.9% of sales. Suppliers goes to Lam because ASML's Zeiss exclusivity, whatever else it is, is a single point of failure its own filing calls existential.</div>
+    </div>
+
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Lam Research</h3><p><b>Qualification lock, durability medium.</b> Lam's own 10-K states the mechanism: once a manufacturer qualifies a tool for an application and node it generally keeps that selection for the application's life, and Lam may have difficulty selling where a competitor was qualified first. Proof of scale: more than 40,000 conductor etch chambers installed worldwide. The lock is real but cuts both ways, and has to be re-won at every node.</p><p><b>Accumulated process capability, durability medium to high.</b> Forty years plus the Novellus combination, expressed today in Akara conductor etch with DirectDrive, Vantex, Lam Cryo 3.0, the ALD range, dry photoresist and panel-level advanced packaging, where 510mm by 515mm systems have shipped into development programmes. Money alone does not replicate this, but a determined competitor with time can.</p><p><b>Low-cost manufacturing footprint, durability medium.</b> Seven countries, with the Malaysia shift since 2023 named by management as the structural step-up in gross margin. Replicable with capital.</p></div>
+      <div class="col b"><h3>ASML</h3><p><b>Sole source for EUV, durability high.</b> The strongest single fact in this duel is a negative: ASML's 20-F contains no competitor passage for EUV, and frames competitive risk as whether its own High-NA programme and its suppliers make technical progress, not whether a rival wins a socket. No leading-edge node can be built without it.</p><p><b>Supplier-layer exclusivity, durability high.</b> Carl Zeiss SMT supplies optical columns to ASML and to nobody else, and ASML buys them from nobody else. A well-funded entrant cannot buy the optics at any price, because they are not for sale. Roughly two decades and a part-owned supplier ecosystem stand between an entrant and a working system.</p><p><b>Installed base that only ASML can service, durability high.</b> Installed base management revenue of EUR 8,193.0m in 2025, up 26.2%, growing with the EUV fleet and with customer productivity upgrades, with no third-party parts market to erode it.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Lam's moats are time-and-capital moats that a determined competitor could erode over a decade; ASML's are structural, because the binding constraint is a supplier that sells to nobody else. <b>Implication:</b> over five to ten years ASML's position is the one that does not require continued winning to persist. <span class="kpi">KPI: any credible second EUV source, or any announced leading-edge node that skips EUV, within 24 months. Neither exists today.</span> [Sources: LRCX FY2026 10-K competition and patents sections; LRCX Q4 FY2026 call; ASML FY2025 20-F risk factors and related-party note]</div>
+
+    <h3>Customers: who controls net price and access</h3>
+    <p>Concentration runs against ASML. In fiscal 2026 Lam's four largest customers were 16%, 15%, 12% and 12% of revenue, about 55% combined with no single customer above 16%, a broadening from fiscal 2025 when two customers were 17% and 15% and fiscal 2024 when one was 17%. ASML's largest customer was EUR 7,796.7m or 23.9% of 2025 sales, up sharply from 16.6% in 2024, with the two largest at 38.0%. On raw dependence, therefore, Lam is the safer of the two, and moving in the safer direction while ASML moves the other way.</p>
+    <p>Control of terms runs the other way, and decisively. ASML held EUR 18,196.2m of contract liabilities at the end of 2025, up from EUR 16,266.5m: customers financing ASML's working capital in exchange for a delivery slot. Lam's equivalent deferred revenue balance was USD 2.43bn and fell USD 250m year on year, which the 10-K attributes mainly to lower customer down payments. That single contrast is the clearest available proof of who sets the terms in each relationship. The second proof is realised price: ASML shipped fewer systems in 2025 and collected more money, while Lam's margin expansion came from a combination of pricing, plant mix and product content that it has to reassemble every year.</p>
+    <div class="iik"><b>Insight:</b> Lam has better-spread customers; ASML has better terms with worse-spread customers, and its top-customer dependence rose 7.3 points in a single year. <b>Implication:</b> Lam absorbs the loss of any one relationship more easily, but ASML never has to discount to keep one. <span class="kpi">KPI: ASML largest-customer share in the FY2026 20-F, February 2027. Above 25% raises single-decision risk further; contract liabilities falling while sales rise would mean down-payment terms are softening.</span> [Sources: LRCX FY2026 10-K Note 19 and deferred revenue discussion; ASML FY2025 20-F risk factors and contract balances note]</div>
+
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>ASML states the position itself, in its own risk factors: Carl Zeiss SMT is the sole supplier of lenses, mirrors, illuminators, collectors and other critical optics under an exclusive arrangement, capable of producing them only at Oberkochen and Wetzlar, and if Zeiss terminated the relationship or could not maintain production over a prolonged period ASML would effectively cease to be able to conduct its business. The relationship is managed as tightly as a relationship can be, run on a stated principle of two companies and one business, with ASML holding 24.9% of Carl Zeiss SMT Holding, funding Zeiss High-NA research of EUR 22.5m in 2025 and advancing non-interest-bearing payments to secure deliveries. Lam single-sources certain components and sub-assemblies, names none as existential, is qualifying alternates, holds excess inventory against the risk, and spreads production across seven countries that its CEO describes as deliberately uncorrelated so that the same demand event does not hit all of them.</p>
+    <p>On pass-through the two are level, and this sub-lens does not separate them. Lam absorbed aluminium and steel tariff costs in fiscal 2026 and still expanded gross margin 180 basis points. ASML expanded 150 basis points in 2025 and guides to a further 120 to 320 basis points for 2026. Neither has a cost pass-through problem.</p>
+    <div class="iik"><b>Insight:</b> the supply structure that makes ASML uncopyable also caps its output at whatever two German factories can produce. <b>Implication:</b> ASML's growth ceiling and its existential risk are the same object, which is a genuinely unusual position for a business of its quality. <span class="kpi">KPI: ASML EUV units recognised per calendar year, 48 in 2025, against the stated 2026 capacity of about 65 low-NA systems and the plus 30% step for 2027. Below 60 for 2026 says the constraint is binding.</span> [Sources: ASML FY2025 20-F risk factors, related-party and equity-method notes; ASML 6-K 2026-07-15; LRCX FY2026 10-K manufacturing; LRCX Q4 FY2026 call]</div>
+
+    <h3>The price and power triangle: top three cells</h3>
+    <div class="tablescroll">
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome, share and margin</th><th>Confirming KPI</th></tr>
+      <tr><td>EUV lithography x Taiwan and Korea</td><td>Direct, both</td><td>ASML far above: about EUR 242m per system, no alternative (inferred from 20-F technology table)</td><td>ASML constrained by Zeiss capacity, not by demand</td><td>ASML share flat at effectively all of it, margin up; 2026 gross margin guide 54 to 56%. Lam is in the same fabs at a fraction of the tool value</td><td>EUV units recognised in 2026 against about 65 units of capacity</td></tr>
+      <tr><td>Etch and deposition x Taiwan, Korea and China</td><td>Direct, both</td><td>Lam at parity with Applied Materials and Tokyo Electron, won on cost of ownership and new product content</td><td>Lam's seven-country footprint is the advantage; ASML absent from this cell</td><td>Lam share up: addressable market moving from 36 to 36.5% of equipment spending toward the high 30s faster than its 2025 plan; margin up, June-2026 gross margin 52%</td><td>Lam revenue growth against wafer fab equipment growth; a third consecutive year of outperformance confirms</td></tr>
+      <tr><td>Installed base service and upgrades, global</td><td>Direct, both</td><td>Lam at parity, competing with third-party spare-parts providers named in its own 10-K; ASML above, since nobody else may service an EUV tool</td><td>Both secure</td><td>Lam grows off a larger base, USD 8.35bn and up 43% year on year in the June quarter, at contested margin; ASML grows faster in percentage terms, up 26.2%, at uncontested margin</td><td>Lam support revenue growth against installed-base growth, versus ASML installed base management growth</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> the third row is where the growth map and the power map disagree, and the disagreement is the most useful thing on this page. Lam's service line is bigger and growing fast, but it is the one part of Lam's business with an open third-party market attacking it; ASML's is smaller, growing faster, and cannot be competed for at all. <b>Implication:</b> Lam's most defensible-looking cell is less defensible than its size suggests, which is exactly the kind of error a size-ranked cell table produces if power is not overlaid on it. <span class="kpi">KPI: Lam support-group gross margin disclosure or commentary on spares pricing; sustained mix shift toward upgrades and away from spares would mean the third-party pressure is biting.</span> [Sources: LRCX FY2026 10-K competition section; LRCX Q4 FY2026 call; ASML FY2025 20-F]</div>
+
+    <h3>The causal gap</h3>
+    <p><b>Cause one, absence of a second source. Impact: major, favouring ASML.</b> Lam faces named competitors in every market; ASML faces none in EUV. To close it Lam would have to make an entire application category single-source, which the physics of etch and deposition does not permit, because many chemistries and chamber designs can remove or add material while only one optical system currently resolves at 13.5 nanometres. Not closable at any price or in any timeframe.</p>
+    <p><b>Cause two, customer financing of working capital. Impact: moderate, favouring ASML.</b> EUR 18.2bn of contract liabilities against USD 2.43bn of deferred revenue that is falling. To close it Lam would need customers to pre-fund tools they can buy elsewhere. Not closable while a second source exists, which makes this a symptom of cause one rather than an independent gap.</p>
+    <p><b>Cause three, breadth of the addressable opportunity. Impact: major, favouring Lam.</b> Lam's addressable market is 36 to 36.5% of an equipment pool guided to the low USD 150bn range for 2026 and is widening through gate-all-around, backside power, 500-layer NAND and advanced packaging. Lithography is a narrower slice, and ASML's own 2030 revenue ceiling of EUR 44bn to 60bn has been reached at the bottom end in 2026. ASML cannot widen its slice by winning adjacent process steps the way Lam can, and its 20-F frames growth as more EUV in more fabs rather than as more steps. Closable only by ASML entering non-lithography equipment, which it has not signalled and which would put it against Lam, Applied Materials and Tokyo Electron on their ground.</p>
+    <div class="pull">ASML holds the stronger power position for the next five to ten years, and the honest reason is a negative fact: its customers have no alternative, and its own filing does not bother to name one.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">ASML runs the leaner engine in level terms and will keep doing so, but a three-point gross-margin deficit that converts into a one-point operating-margin deficit is not a laggard's engine, it is a differently shaped one.</div>
+    <p>The reconciliation here is unusually clean. ASML files a Form 20-F with US GAAP primary statements presented by function, exactly as Lam presents its 10-K, so there is no by-nature to by-function mapping to construct and no ratio has to be marked not disclosed. Three caveats are stated once and carried everywhere. Lam's fiscal 2026 ended 28 June 2026 while ASML's 2025 ended 31 December 2025, a six-month offset that places Lam's window half a year later in the same up-cycle, so every Lam column reflects a slightly hotter demand environment than the ASML column beside it. Lam reports in US dollars and ASML in euros, but all five metrics are ratios to each company's own revenue and are therefore free of exchange-rate effects; nothing here is converted. Lam's fiscal 2024 included company-itemised restructuring of USD 43.4m in cost of goods sold and USD 18.2m in operating expenses, left inside the functional lines as reported, worth about 30 basis points on that year's gross margin; there was none in fiscal 2025 or 2026 and none at ASML in any of the three years.</p>
+
+    <h3>Three years, five ratios</h3>
+    <div class="tablescroll">
+    <table>
+      <tr><th>% of sales, 3-year average</th><th class="num ca">Lam Research</th><th class="num cb">ASML</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>Cost of goods sold</td><td class="num ca">51.2</td><td class="num cb">48.2</td><td class="num">+3.0</td><td>ASML sells a single-source tool at roughly EUR 242m; Lam sells contested tools at parity pricing</td></tr>
+      <tr><td>Research and development</td><td class="num ca">11.5</td><td class="num cb">14.7</td><td class="num">-3.2</td><td>ASML alone funds the EUV physics programme with no second source to share it; Lam spreads research across many applications on a base that grew 26% last year</td></tr>
+      <tr><td>Selling, general and administrative</td><td class="num ca">5.4</td><td class="num cb">4.0</td><td class="num">+1.4</td><td>Lam supports more than 40,000 installed chambers across seven manufacturing countries and many applications; ASML ships 535 systems a year to a handful of customers</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">48.8</td><td class="num cb">51.8</td><td class="num">-3.0</td><td>The mirror of cost of goods sold, and the cleanest single reading of the power gap</td></tr>
+      <tr><td>Operating margin</td><td class="num ca">32.0</td><td class="num cb">33.1</td><td class="num">-1.1</td><td>Lam's lighter research spend almost entirely offsets its weaker gross margin</td></tr>
+    </table>
+    </div>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 300" role="img" aria-label="Grouped bars of five cost ratios, three year averages, Lam terracotta and ASML blue">
+        <line x1="70" y1="250" x2="870" y2="250" stroke="#E5DDD0" stroke-width="1"/>
+        <text x="60" y="255" text-anchor="end" fill="#6E675C" font-size="13">0%</text>
+        <text x="60" y="140" text-anchor="end" fill="#6E675C" font-size="13">29%</text>
+        <text x="60" y="55" text-anchor="end" fill="#6E675C" font-size="13">51%</text>
+        <rect x="102" y="54" width="46" height="196" fill="#C75B39"/><rect x="152" y="66" width="46" height="184" fill="#3C6E8F"/>
+        <text x="125" y="47" text-anchor="middle" fill="#C75B39" font-size="14" font-weight="bold">51.2</text>
+        <text x="175" y="59" text-anchor="middle" fill="#3C6E8F" font-size="14" font-weight="bold">48.2</text>
+        <text x="150" y="270" text-anchor="middle" fill="#2B2B2B" font-size="14">COGS</text>
+        <rect x="262" y="206" width="46" height="44" fill="#C75B39"/><rect x="312" y="194" width="46" height="56" fill="#3C6E8F"/>
+        <text x="285" y="199" text-anchor="middle" fill="#C75B39" font-size="14" font-weight="bold">11.5</text>
+        <text x="335" y="187" text-anchor="middle" fill="#3C6E8F" font-size="14" font-weight="bold">14.7</text>
+        <text x="310" y="270" text-anchor="middle" fill="#2B2B2B" font-size="14">R&amp;D</text>
+        <rect x="422" y="229" width="46" height="21" fill="#C75B39"/><rect x="472" y="235" width="46" height="15" fill="#3C6E8F"/>
+        <text x="445" y="222" text-anchor="middle" fill="#C75B39" font-size="14" font-weight="bold">5.4</text>
+        <text x="495" y="228" text-anchor="middle" fill="#3C6E8F" font-size="14" font-weight="bold">4.0</text>
+        <text x="470" y="270" text-anchor="middle" fill="#2B2B2B" font-size="14">SG&amp;A</text>
+        <rect x="582" y="64" width="46" height="186" fill="#C75B39"/><rect x="632" y="52" width="46" height="198" fill="#3C6E8F"/>
+        <text x="605" y="57" text-anchor="middle" fill="#C75B39" font-size="14" font-weight="bold">48.8</text>
+        <text x="655" y="45" text-anchor="middle" fill="#3C6E8F" font-size="14" font-weight="bold">51.8</text>
+        <text x="630" y="270" text-anchor="middle" fill="#2B2B2B" font-size="14">Gross margin</text>
+        <rect x="742" y="128" width="46" height="122" fill="#C75B39"/><rect x="792" y="124" width="46" height="126" fill="#3C6E8F"/>
+        <text x="765" y="121" text-anchor="middle" fill="#C75B39" font-size="14" font-weight="bold">32.0</text>
+        <text x="815" y="117" text-anchor="middle" fill="#3C6E8F" font-size="14" font-weight="bold">33.1</text>
+        <text x="790" y="270" text-anchor="middle" fill="#2B2B2B" font-size="14">Operating margin</text>
+        <rect x="70" y="286" width="14" height="10" fill="#C75B39"/><text x="90" y="295" fill="#C75B39" font-size="13" font-weight="bold">Lam Research</text>
+        <rect x="220" y="286" width="14" height="10" fill="#3C6E8F"/><text x="240" y="295" fill="#3C6E8F" font-size="13" font-weight="bold">ASML</text>
+      </svg>
+      <div class="cap">Three-year averages as a percentage of each company's own revenue. Lam fiscal 2024 to 2026 (LRCX FY2026 10-K, consolidated statements of operations, three years presented). ASML calendar 2023 to 2025 (ASML FY2025 20-F operating results; 2023 column from the FY2024 20-F). Ratios are unaffected by the dollar and euro difference. Six-month fiscal offset applies throughout.</div>
+    </div>
+
+    <h3>Year by year</h3>
+    <div class="tablescroll">
+    <table>
+      <tr><th>Lam Research, % of revenue</th><th class="num">COGS</th><th class="num">R&amp;D</th><th class="num">SG&amp;A</th><th class="num">Gross margin</th><th class="num">Operating margin</th></tr>
+      <tr><td>Fiscal 2024 (revenue $14,905.4m)</td><td class="num">52.7</td><td class="num">12.8</td><td class="num">5.8</td><td class="num">47.3</td><td class="num">28.6</td></tr>
+      <tr><td>Fiscal 2025 (revenue $18,435.6m)</td><td class="num">51.3</td><td class="num">11.4</td><td class="num">5.3</td><td class="num">48.7</td><td class="num">32.0</td></tr>
+      <tr><td>Fiscal 2026 (revenue $23,232.7m)</td><td class="num">49.5</td><td class="num">10.2</td><td class="num">4.9</td><td class="num">50.5</td><td class="num">35.3</td></tr>
+    </table>
+    </div>
+    <div class="tablescroll">
+    <table>
+      <tr><th>ASML, % of revenue</th><th class="num">Cost of sales</th><th class="num">R&amp;D</th><th class="num">SG&amp;A</th><th class="num">Gross margin</th><th class="num">Operating margin</th></tr>
+      <tr><td>2023 (net sales EUR 27,558.5m)</td><td class="num">48.7</td><td class="num">14.4</td><td class="num">4.0</td><td class="num">51.3</td><td class="num">32.8</td></tr>
+      <tr><td>2024 (net sales EUR 28,262.9m)</td><td class="num">48.7</td><td class="num">15.2</td><td class="num">4.1</td><td class="num">51.3</td><td class="num">31.9</td></tr>
+      <tr><td>2025 (net sales EUR 32,667.3m)</td><td class="num">47.2</td><td class="num">14.4</td><td class="num">3.9</td><td class="num">52.8</td><td class="num">34.6</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> Lam improved on every one of the five ratios in every one of the three years; ASML improved on three of five and went backwards on research intensity and operating margin in 2024. <b>Implication:</b> Lam's engine is still being tuned while ASML's is close to its designed setting, which is why the level gap and the trajectory gap point in opposite directions. <span class="kpi">KPI: Lam quarterly gross margin reaching 53% or better by the June-2027 quarter, from 52.0% in June 2026, against ASML's 2026 guide of 54 to 56%.</span> [Sources: both companies' consolidated statements as cited above; ASML 6-K 2026-07-15]</div>
+
+    <h3>The structural gap</h3>
+    <p>The most persistent gap is research and development as a percentage of sales, and it runs in Lam's favour: 14.7% for ASML against 11.5% for Lam, present in all three years, never narrowing below 2.6 points and widening to 3.8 points in the middle year. It is structural rather than a one-off, and the mechanism comes straight from the power map. ASML is the only company in the world funding extreme ultraviolet lithography, so it carries the entire cost of extending Moore's Law on one revenue line, with Zeiss High-NA funding on top of that, while Lam amortises its research across etch, deposition, clean, upgrades and packaging on a base that grew 26% last year. Strategically this says ASML buys its monopoly every year and Lam rents its position application by application, and both are paying about the right price for what they get.</p>
+    <p>The gross-margin gap runs the other way and confirms the power map rather than contradicting it: the company with no second source earns 51.8% against 48.8%, which is the expected result and would be a warning sign if it were absent. What is not expected is the direction of travel. Lam's gross margin rose 320 basis points across the three years while ASML's rose 150, so the gap narrowed from 4.0 points to 2.3, and Lam's operating margin moved 670 basis points against ASML's 180. Lam attributes its improvement to three named things: volume shifted into its low-cost Malaysia plant since 2023, new differentiated products, and pricing actions. Each has further to run, and the company has raised its long-term targets to a mid-50s gross margin and a mid-40s operating margin accordingly. On the bottom line the two are already nearly level at 32.0% against 33.1% average operating margin, and Lam's June-2026 quarter at 38.4% with a 39.5% September guide will likely erase that 1.1-point average gap within the year. The cost engine therefore agrees with the power map on rank and disagrees with it on momentum, which is the finding that keeps this duel from being a formality.</p>
+    <div class="pull">ASML runs the leaner engine and always will, but Lam is closing the distance with self-help that has not run out, and on operating margin the gap is nearly gone.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>Zeiss becomes the ceiling rather than the moat.</b> ASML plans to add 30% to its 2026 low-numerical-aperture EUV capacity of about 65 systems for 2027, and is investigating a further 30% for 2028; every one of those units depends on optics made at two sites in Germany by a supplier ASML part-owns but does not control. If that capacity slips, the monopoly stops converting into growth and ASML becomes a very high-margin business that cannot get bigger, at which point Lam's wider opportunity set decides the decade. <span style="color:var(--good);font-weight:700;">Early warning: EUV units recognised per calendar year, 48 in 2025, disclosed each February in the 20-F. Fewer than 60 for 2026 says the constraint is binding.</span></li>
+      <li><b>The NAND conversion cliff arrives before greenfield replaces it, which would widen the call in ASML's favour.</b> Lam's USD 40bn NAND upgrade opportunity is now expected to be largely complete by the end of 2027, pulled forward from a multi-year expectation, and upgrade revenue was the largest sequential driver of Lam's record June-2026 support quarter. Conversions also destroy raw wafer capacity, which management says is down about 20% from peak, so new fabs should follow; but if they do not follow promptly, the fastest-growing line inside Lam's most defensible business reverses while its systems business is still cyclical. <span style="color:var(--good);font-weight:700;">Early warning: Lam support-group revenue declining sequentially for two consecutive quarters during 2027 with no announced greenfield NAND fab starts. Disclosed on quarterly calls.</span></li>
+      <li><b>Export controls escalate on the chokepoint.</b> ASML's China sales fell from 36.1% of the total in 2024 to 29.1% in 2025, and its KrF system value halved over two years; Lam's own 10-K states that US controls hand an advantage to international competitors not subject to them, and Lam's China revenue fell from 34% to 26% of the quarter between March and June 2026 with domestic Chinese customers declining while multinationals in China grew. Being the chokepoint is precisely what makes ASML a political instrument, and that is a monopoly-specific cost Lam does not carry to the same degree. <span style="color:var(--good);font-weight:700;">Early warning: China below 15% of revenue for either company, or the qualification of an indigenous Chinese etch or lithography tool at a leading-edge domestic customer. Lam reports quarterly, ASML annually.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <div class="tablescroll">
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favours</th><th>Where published</th></tr>
+    <tr><td>Lam addressable market as a percentage of wafer fab equipment spending</td><td>38% or better, from 36 to 36.5%</td><td>Fiscal 2027 close, June 2027</td><td class="ca">Lam Research</td><td>Quarterly earnings call commentary and Investor Day</td></tr>
+    <tr><td>Lam gross margin, quarterly non-GAAP</td><td>53% or better, from 52.0%</td><td>June 2027 quarter</td><td class="ca">Lam Research</td><td>Quarterly earnings release</td></tr>
+    <tr><td>ASML EUV units recognised, calendar 2026</td><td>60 units or more, from 48 in 2025</td><td>FY2026 Form 20-F, February 2027</td><td class="cb">ASML</td><td>20-F net system sales per technology note</td></tr>
+    <tr><td>ASML largest customer as a share of net sales</td><td>25% or below, from 23.9%</td><td>FY2026 Form 20-F, February 2027</td><td class="cb">ASML if at or below; <span class="ca">Lam if above</span></td><td>20-F risk factors</td></tr>
+    <tr><td>ASML 2027 revenue guidance</td><td>EUR 50bn or more</td><td>Q4 2026 results, late January 2027</td><td class="cb">ASML if at or above; <span class="ca">Lam if EUR 46bn or below</span></td><td>Quarterly results release and 6-K</td></tr>
+  </table>
+  </div>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the deep-dive hours on Lam Research first. ASML's business can be stated in one sentence and audited in an afternoon: it is the only supplier of the enabling step, its output is capped by one German optics partner, and its published 2030 frame has already been overtaken by its own 2026 guidance, which is a disclosure question rather than an analytical one. Lam is the harder read and the one where the work changes the answer, because the move from 36% toward the high 30s of equipment spending, the shape of the NAND cliff at the end of 2027, and whether the Malaysia cost shift plus new product content really carries gross margin to the mid-50s are three live variables the filings support but do not settle.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> This is a three-step duel: a growth and profitability map that breaks both companies out of consolidated totals into product by geography cells, a power map comparing moats, customer relationships and supplier links, and a cost engine placing three years of five cost ratios side by side. Cells were filtered to those covering roughly 80% or more of each company's economics, which here meant six cells covering 94.3% of Lam's revenue and 97.3% of ASML's; the tail is shown as one row. Nothing is converted between dollars and euros, because every comparative measure used is a ratio to each company's own revenue; absolute figures stay in the currency of the filing they came from, and the six-month fiscal-year offset between the two companies is restated wherever a period is compared. Figures marked (inferred) are conclusions reached by arithmetic on disclosed numbers, with the logic stated at the point of use; ND marks data that does not exist publicly. This is a comparison of business strength and says nothing about either company's share price, valuation or the merits of owning either one; it names which business is stronger and what evidence would change that view, and leaves the price question entirely to the reader.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Lam Research Corporation, Annual Report on Form 10-K for the fiscal year ended 28 June 2026, filed 7 August 2026. Consolidated statements of operations; revenue disaggregation by geography and by systems versus customer support; Note 19 segment, geographic information and major customers; competition; manufacturing; liquidity.</li>
+      <li>Lam Research Corporation, Annual Report on Form 10-K for the fiscal year ended 29 June 2025, filed 11 August 2025.</li>
+      <li>Lam Research Corporation, Annual Report on Form 10-K for the fiscal year ended 30 June 2024, filed 29 August 2024. Customers and manufacturing sections.</li>
+      <li>Lam Research Corporation, fourth quarter fiscal 2026 earnings call transcript, 29 July 2026. Wafer fab equipment outlook, addressable market, NAND conversion, regional mix, gross and operating margin targets, September quarter guidance.</li>
+      <li>Lam Research Corporation, Goldman Sachs Communacopia and Technology Conference transcript, 10 September 2026. Demand visibility, clean room constraint, China, customer support business, addressable market progress, capital allocation and acquisitions.</li>
+      <li>ASML Holding N.V., Annual Report on Form 20-F for the year ended 31 December 2025, filed 25 February 2026. Operating results; net system sales per technology and per end use; total net sales and long-lived assets by geographic region; contract assets and liabilities; risk factors on customer concentration, Carl Zeiss SMT and geopolitics; related parties and variable interest entities; 2030 long-term growth opportunity.</li>
+      <li>ASML Holding N.V., Annual Report on Form 20-F for the year ended 31 December 2024, filed 5 March 2025. Comparative 2023 operating results.</li>
+      <li>ASML Holding N.V., Report on Form 6-K, second quarter 2026 results, 15 July 2026. Q2 2026 net sales, gross margin and net income; raised full-year 2026 guidance; third quarter guidance; EUV and DUV capacity plans for 2027 and 2028.</li>
+      <li>ASML Investor Day, November 2024, 2030 scenarios as restated in the FY2025 Form 20-F.</li>
+      <li>StockTitan, summary of ASML Holding N.V. Form 6-K of 15 July 2026, https://www.stocktitan.net/sec-filings/ASML/6-k-asml-holding-nv-current-report-foreign-issuer-67ec6be4aac7.html, used to confirm Q2 2026 and guidance figures.</li>
+      <li>Equibles, Lam Research Q4 2026 earnings call summary, https://equibles.com/stocks/lrcx/calls/2026-q4, used to cross-check the September 2026 quarter guidance and segment detail against the primary transcript.</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
