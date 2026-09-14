@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Overview — ASML Holding N.V.</title>
+<style>
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font:19px/1.58 Calibri,'Segoe UI',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;margin:0}
+h1{font-size:38px;line-height:1.15;margin:6px 0 10px}
+h2{font-size:27px;line-height:1.2;margin:52px 0 14px;padding-top:20px;border-top:1px solid var(--line)}
+h3{font-size:21px;line-height:1.25;margin:30px 0 10px}
+p{margin:0 0 16px}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{font-size:15px;color:var(--muted);margin:0 0 4px;line-height:1.5}
+.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.45;border-left:5px solid var(--terracotta);
+  padding:4px 0 4px 22px;margin:32px 0 36px;color:var(--ink)}
+
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:34px 0}
+.engine .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#B9AE9C;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:30px;line-height:1.2;margin:0 0 12px}
+.engine p{margin:0;color:#E7E0D4;font-size:18px;line-height:1.55}
+.engine .hl{color:#F0A184;font-weight:700}
+
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 8px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px;line-height:1.35}
+.kpi .v{font-family:Georgia,serif;font-size:29px;color:var(--terracotta);line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
+
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;
+  padding:16px 20px;margin:0 0 12px}
+.lever.structural{border-left-color:var(--good)} .lever.structural .tag{color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)} .lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)} .lever.cyclical .tag{color:var(--blue)}
+.lever.temp .tag{color:var(--terracotta)}
+.lever .hd{font-weight:700;font-size:19px;margin:6px 0 6px}
+.lever p{margin:0;font-size:17px;line-height:1.55}
+
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:22px 26px;margin:26px 0}
+.pull q{font-family:Georgia,serif;font-size:21px;line-height:1.45;display:block;quotes:"\201C" "\201D"}
+.pull .att{font-size:14px;color:var(--muted);margin-top:12px;display:block}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.card h4{margin:0 0 12px;font-family:Georgia,serif;font-size:19px}
+.card ul{margin:0;padding-left:20px} .card li{margin-bottom:10px;font-size:17px;line-height:1.5}
+
+figure{margin:26px 0}
+figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+.chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 14px 10px}
+svg{display:block;width:100%;height:auto;max-width:100%}
+
+.tw{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:16px;min-width:520px}
+caption{text-align:left;font-weight:700;font-size:17px;padding-bottom:10px;font-family:Georgia,serif}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.45}
+th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--line)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+tr.tot td{font-weight:700;border-top:2px solid var(--line)}
+
+ul.plain{padding-left:20px} ul.plain li{margin-bottom:11px}
+.note{font-size:15px;color:var(--muted);line-height:1.55}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);line-height:1.65}
+footer a{color:var(--muted)}
+@media (max-width:680px){
+  body{font-size:17px}
+  .wrap{padding:28px 16px 60px}
+  h1{font-size:29px} h2{font-size:23px} h3{font-size:19px}
+  .kpis{grid-template-columns:1fr 1fr;gap:10px}
+  .kpi .v{font-size:24px}
+  .two{grid-template-columns:1fr}
+  .engine .unit{font-size:24px}
+  .restate{font-size:19px;padding-left:16px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Business Overview</div>
+<h1>ASML Holding N.V.</h1>
+<p class="srcline">Nasdaq: ASML · Euronext Amsterdam: ASML · Veldhoven, the Netherlands</p>
+<p class="srcline"><strong>14 September 2026.</strong> Built from ASML's Forms 20-F for FY2016, FY2020, FY2024 and FY2025 (the last filed 25 February 2026), Forms 6-K through 15 July 2026, and ASML's own quarterly releases through Q2 2026 — with industry structure drawn from SEMI, WSTS/SIA, US BIS, the European Commission, the Dutch government, China's MOFCOM, and the filings of Canon, Nikon, KLA, Lam, Applied Materials, Tokyo Electron, ZEISS, TRUMPF, TSMC, Micron, SK hynix, Samsung and Intel.</p>
+<p class="srcline"><em>This is not a valuation and not a recommendation. No price, multiple or target appears anywhere on this page.</em></p>
+
+<div class="restate">ASML sells the one machine in chipmaking that has no substitute — and then earns a growing annuity servicing every machine it has ever shipped.</div>
+
+<div class="engine">
+  <div class="lab">The economic engine</div>
+  <div class="unit">One lithography system</div>
+  <p>ASML recognised <span class="hl num">327</span> lithography systems in FY2025 at a blended <span class="hl num">€72.3m</span> each — one EUV system averaged <span class="hl num">€241.7m</span>, one High-NA EXE system <span class="hl num">€289.2m</span>, and one mature-node KrF system <span class="hl num">€12.8m</span>. The engine is not units. It is <span class="hl">revenue per build slot</span>: the factory can make roughly 65 EUV and 130 DUV immersion systems a year, so every generation that prints smaller and costs more raises revenue without a single extra machine. In FY2025 ASML shipped <span class="hl">91 fewer</span> lithography systems than in FY2024 and system revenue rose <span class="hl num">12.4%</span>.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Blended price, one system</div><div class="v">€72.3m</div><div class="s">FY2025, lithography only. Up from €50.5m in FY2024. Inferred — ASML has published no ASP since FY2016.</div></div>
+  <div class="kpi"><div class="k">Gross margin per system-euro</div><div class="v">52.8%</div><div class="s">FY2025. 54.0% in Q2 2026; Q3 2026 guided to 55–57%.</div></div>
+  <div class="kpi"><div class="k">Headline earnings</div><div class="v">€9.61bn</div><div class="s">FY2025 net income, 29.4% of sales. Diluted EPS €24.71.</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">Net cash</div><div class="s">€13.32bn cash and short-term investments against €4.39bn total debt at FY2025 year end.</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">At peak</div><div class="s">Record margin; 2026 guidance raised twice in six months. Unit volume capped, not weak.</div></div>
+  <div class="kpi"><div class="k">Organic growth</div><div class="v">15.6%</div><div class="s">FY2025 reported — and identical to organic. No material acquisition since 2020.</div></div>
+</div>
+
+<h2>1. What the business is</h2>
+<div class="tw"><table>
+<caption>Executive snapshot</caption>
+<tbody>
+<tr><th style="width:26%">Industry</th><td>Wafer fab equipment. Global semiconductor equipment billings were $135.1bn in 2025, +15% (SEMI, 7 Apr 2026); SEMI put wafer fab equipment specifically at $115.7bn.</td></tr>
+<tr><th>How it makes money</th><td>Sells a small number of extremely expensive machines to roughly a dozen chipmakers, takes large down payments years before delivery, then services and upgrades each machine for its twenty-year life.</td></tr>
+<tr><th>What protects it</th><td>No second EUV manufacturer appears in any primary source. The optics come from one supplier, Carl Zeiss SMT, 24.9% owned by ASML; a High-NA projection optic has over 40,000 parts and absorbed roughly ten million ZEISS engineering hours.</td></tr>
+<tr><th>What drives earnings</th><td>EUV unit volume and mix; the escalating price of each successive generation; and the installed-base service line, up 26.2% to €8.19bn in FY2025 at a 50.9% gross margin.</td></tr>
+<tr><th>What to watch</th><td>ASML's own output ceiling; the two export-control suspensions that both expire on 10 November 2026; and whether the memory pricing funding 2026 demand mean-reverts.</td></tr>
+<tr><th>Cycle exposure</th><td><strong>High — but asymmetric.</strong> Revenue has fallen in only one of the last ten years, while unit volumes and end-market mix swing violently beneath a stable top line.</td></tr>
+</tbody></table></div>
+
+<h2>2. What the company does</h2>
+<p>Every integrated circuit is built by printing a pattern onto a silicon wafer, then etching or depositing material where the pattern fell. Lithography is the printing step, and it alone determines how small a feature can be made. A chipmaker that cannot print smaller features cannot advance to the next node, whatever else it buys. That is why lithography is the one wafer-fab-equipment category with no route around it.</p>
+<p>The product ladder runs from i-line and KrF at the mature end, through argon-fluoride dry and immersion systems, to EUV at 13.5nm wavelength, and now to High-NA EUV — ASML's EXE platform — which widens the optics' numerical aperture to print smaller still. Shorter wavelength and wider aperture are the only two levers, and ASML controls both.</p>
+
+<h3>Tracing one machine from order to cash</h3>
+<p>A customer signs a volume purchase agreement, which may run up to five years, and reserves a production slot. A down payment falls due at reservation or delivery; the balance on final acceptance. For an established product with a proven history of factory acceptance, control transfers on delivery. For a new product it waits until installation and site acceptance at the customer's fab — and ASML's "fast shipments", which skip some factory testing to deliver sooner, push recognition to site acceptance and, in ASML's own words, "can impact comparability of our results of operations from period to period" (FY2025 20-F).</p>
+<p>Invoices are typically due in 15 to 45 days. Because the down payments arrive years ahead of recognition, ASML carried <strong>€19.4bn of contract liabilities</strong> at FY2025 year end against €11.4bn of inventory. The customers finance the working capital of the business. Once installed, the machine then generates service contracts, billable parts and labour, light-source maintenance, and field upgrades that resell throughput to a machine already paid for.</p>
+
+<h3>Two revenue streams, moving in opposite directions</h3>
+<p>FY2025 net system sales were €24.47bn, 74.9% of the total; Installed Base Management — service plus field upgrades — was €8.19bn, 25.1%. The second grew 26.2% against the first's 12.4%, and by Q2 2026 it had reached 29.6% of sales. Its gross margin rose from 48.2% to 50.9%, converging on the company average.</p>
+<p>The shapes differ. System revenue depends on what customers decide to buy this year. Installed-base revenue depends on how many machines exist and how hard they are run — a base that only grows, since ASML has never retired a generation.</p>
+
+<h3>What is being exited, and what entered</h3>
+<p>KrF units fell from 184 in 2023 to 152 in 2024 to 78 in 2025; ArF dry from 32 to 28 to 16. Together those lines shed 122 units in two years at implied prices of €12.8m and €26.7m, against EUV at €241.7m. Shedding low-price units while the factory is capacity-constrained is not a retreat — it is the allocation of a fixed number of build slots to the machines that earn most. Entering: metrology and inspection grew to 208 units, more than any lithography type, but at €4.0m each contributes only €824.6m; and ASML shipped its first advanced-packaging tool, the TWINSCAN XT:260. Both extend the customer relationship sideways without yet moving the economics.</p>
+
+<h2>3. Industry, competitive position and moat</h2>
+<p>ASML's filings describe an industry in which it is the indispensable supplier. Independent evidence largely confirms that — then complicates it in two ways that matter more than the confirmation.</p>
+
+<h3>The first complication: the monopoly does not earn monopoly margins</h3>
+<div class="tw"><table>
+<caption>Equipment-layer margins, most recent reported fiscal year</caption>
+<thead><tr><th>Vendor</th><th class="n">Gross margin</th><th class="n">Operating margin</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td><strong>KLA</strong></td><td class="n">61.3%</td><td class="n">41.7%</td><td>FY2026 to 30 Jun 2026</td></tr>
+<tr><td><strong>ASML</strong></td><td class="n">52.8%</td><td class="n">34.6%</td><td>FY2025</td></tr>
+<tr><td>Lam Research</td><td class="n">50.5%</td><td class="n">35.3%</td><td>FY2026 to 28 Jun 2026</td></tr>
+<tr><td>Applied Materials</td><td class="n">48.7%</td><td class="n">29.2%</td><td>FY2025 to 26 Oct 2025</td></tr>
+<tr><td>Tokyo Electron</td><td class="n">45.3%</td><td class="n">25.6%</td><td>FY2026 to 31 Mar 2026</td></tr>
+<tr><td>Canon — Industrial segment</td><td class="n">n/d</td><td class="n">17.3%</td><td>FY2025</td></tr>
+<tr><td>Nikon — Precision Equipment</td><td class="n">n/d</td><td class="n">−2.7%</td><td>FY2026 to 31 Mar 2026</td></tr>
+</tbody></table></div>
+<p>ASML holds an absolute monopoly in EUV and earns a <em>lower</em> gross margin than KLA, which competes in process control, and roughly the same operating margin as Lam. A monopoly sold to five sophisticated, capital-disciplined buyers does not price like a monopoly. Whatever pricing power EUV exclusivity confers, ASML has not taken it to the limit — which reads either as restraint that preserves the relationship, or as evidence that the buyers hold more power than the structure implies.</p>
+
+<h3>The second: the profit pool moved downstream</h3>
+<p>In the June 2026 quarter Micron reported an 84.9% gross margin and 80.4% operating margin, SK hynix a 76% operating margin, Samsung's Device Solutions division roughly 70%, and TSMC a 67.7% gross margin. Every major ASML customer is currently earning more than ASML is. That is cyclical, not structural — Micron's gross margin was 39.8% a year earlier — but it is the condition under which those customers are filling ASML's 2026 and 2027 build slots. Intel is the counter-example: its foundry lost $2.09bn in that same quarter.</p>
+
+<h3>Competition, as the competitors describe it</h3>
+<p>ASML says it "compete[s] primarily with Canon and Nikon in respect of DUV systems" and is "currently the world's only manufacturer of EUV lithography systems". The second claim is supported without qualification: neither Canon's nor Nikon's own product catalogue lists an EUV system, and neither discloses EUV revenue, units or development spending.</p>
+<p>The first is true in form and misleading in substance. <strong>Nikon</strong> shipped 27 semiconductor lithography systems in its year to March 2026 — ten of them ArF immersion — and lost money doing it, with Precision Equipment operating profit of −¥4.5bn on ¥167.2bn; its plan for the next year cuts ArFi to seven units. <strong>Canon</strong> shipped 234 systems, but 188 were i-line and 46 KrF; it sells no ArF immersion system at all, and its ArF re-entry product is a dry tool at 65nm resolution, two generations behind. ASML recognised 131 ArF immersion systems for €10.3bn. In the segment that carries the economics, the competition is one loss-making vendor shipping ten machines a year.</p>
+
+<h3>What a rival would have to recreate</h3>
+<div class="pull">
+<q>If Carl Zeiss SMT were to terminate its supply relationship with us or be unable to maintain production of optics over a prolonged period, we would effectively cease to be able to conduct our business.</q>
+<span class="att">ASML, FY2025 Form 20-F — the company's own description of its single most important dependency.</span>
+</div>
+<p>ZEISS's own disclosures give the scale: a High-NA projection optic of more than 40,000 parts weighing twelve tons, mirror coatings of over a hundred layers each a few atoms thick, around ten million man-hours of R&amp;D. TRUMPF's next-generation EUV drive laser has more than 450,000 parts and reached series production only in 2026.</p>
+<p>The dependency runs both ways, which the risk framing understates. ZEISS SMT generated €5.055bn in the year to September 2025, +23%, against ZEISS Group revenue of €11.896bn — roughly 43% of the group. TRUMPF's entire EUV division was €724m, <em>down 23%</em>. Neither supplier has an alternative customer, and ASML has bound them further with a 24.9% equity stake, €1.91bn of loans receivable and €1.19bn of advance payments.</p>
+<p class="note"><strong>What the evidence does not establish.</strong> No independent authority states that EUV optics cannot be second-sourced. ZEISS itself uses the language of "strategic partnership", not exclusivity, and the publicly disclosed 2016 arrangement grants preferential pricing rather than a sole-supply contract. The case rests on the observed absence of any alternative anywhere in the public record, reinforced by the supplier's own complexity claims — strong circumstantial evidence, not proof of impossibility.</p>
+
+<h3>What could weaken the position</h3>
+<p><strong>Nanoimprint.</strong> Canon claims 14nm linewidth and a tenth of EUV's power consumption, but discloses no throughput or overlay figures, has named exactly one new customer since 2023 — a US research consortium taking delivery for R&amp;D and prototypes — and does not list nanoimprint as a shipped-unit category in its own 2025 volume tables or its 2026 plan. No chipmaker discloses it in production.</p>
+<p><strong>A state-funded entrant.</strong> No statement from MIIT, the State Council, the Chinese Academy of Sciences or any listed Chinese company claims an EUV system, source or optics. What Chinese official channels do publicise is an 8nm-linewidth electron-beam research tool explicitly unsuited to volume manufacturing. The absence is informative given how readily China publicises semiconductor milestones — but whether a decade-long state programme could succeed is genuinely unknown.</p>
+<p><strong>The customers.</strong> Four took 61.2% of FY2025 sales, the largest 23.9%. Consolidation, a fab push-out, or one customer slowing a node transition moves ASML's revenue more than any competitor can. The companies that capture profit in this chain hold a position the rest cannot route around and sell into buyers who cannot coordinate. ASML holds the strongest such position in the industry; the qualification the outside evidence adds is that its buyer base is small enough to coordinate, and the margin table above is where that shows up.</p>
+
+<h2>4. Growth engine</h2>
+<p>Total net sales grew 15.6% in FY2025. Because ASML has made no material acquisition since Berliner Glas in October 2020 (€257.1m), and its September 2025 investment in Mistral AI is an unconsolidated 11.1% stake, <strong>reported growth and organic growth are the same number in every year of this period</strong>. There is no acquisition effect to strip out.</p>
+<p>The headline conceals an unusual fact: ASML shipped 327 lithography systems against 418 the year before — 91 fewer machines, a 21.8% fall in volume — and net system sales still rose 12.4%. All of the system-side growth came from price and mix.</p>
+
+<div class="tw"><table>
+<caption>FY2025 growth decomposition — reported equals organic</caption>
+<thead><tr><th></th><th class="n">FY2024 (€m / units)</th><th class="n">FY2025 (€m / units)</th><th class="n">Change</th></tr></thead>
+<tbody>
+<tr><td><strong>EUV (NXE + EXE)</strong></td><td class="n">8,321.4 / 44</td><td class="n">11,602.7 / 48</td><td class="n">+3,281.3</td></tr>
+<tr><td><strong>DUV and i-line</strong></td><td class="n">12,801.8 / 374</td><td class="n">12,047.0 / 279</td><td class="n">−754.8</td></tr>
+<tr><td>Metrology &amp; inspection</td><td class="n">645.5 / 165</td><td class="n">824.6 / 208</td><td class="n">+179.1</td></tr>
+<tr><td>Net system sales</td><td class="n">21,768.7 / 583</td><td class="n">24,474.3 / 535</td><td class="n">+2,705.6</td></tr>
+<tr><td>Installed Base Management</td><td class="n">6,494.2</td><td class="n">8,193.0</td><td class="n">+1,698.8</td></tr>
+<tr class="tot"><td>Total net sales</td><td class="n">28,262.9</td><td class="n">32,667.3</td><td class="n">+4,404.4</td></tr>
+</tbody></table></div>
+<p class="note">Source: FY2025 20-F, net system sales per technology. Unit counts include metrology and inspection; lithography-only units were 418 and 327.</p>
+<p>Read the table as one sentence: <strong>ASML replaced 95 mature DUV machines worth an average €13m with four additional EUV machines worth an average €242m — and grew.</strong> That substitution is the growth engine, and it works only while the factory is the binding constraint.</p>
+
+<h3>Drivers, ranked</h3>
+<div class="lever structural"><span class="tag">Structural</span><div class="hd">1. Generational price escalation</div>
+<p>Each EUV generation prints smaller and costs more: implied NXE price rose from €187.1m to €237.4m in a year, and High-NA EXE recognised at €289.2m. Because output is capacity-limited, every generation raises revenue per build slot without an extra machine. The most durable lever in the business.</p></div>
+<div class="lever structural"><span class="tag">Structural</span><div class="hd">2. The installed-base annuity</div>
+<p>Up 26.2% to €8.19bn in FY2025 and 29.6% of sales by Q2 2026, at a gross margin that has risen to 50.9%. It compounds mechanically: every machine ever shipped adds to the base, EUV is more service-intensive than DUV, and field upgrades resell throughput to machines already paid for.</p></div>
+<div class="lever cyclical"><span class="tag">Cyclical</span><div class="hd">3. AI-driven capacity expansion</div>
+<p>ASML attributes its strengthened outlook to "the anticipated increase and acceleration of capacity expansion plans by our advanced Logic and DRAM customers to meet the strong end-market demand driven by AI". The four largest hyperscalers have guided roughly $665–695bn of 2026 capital expenditure, against about $370bn spent in 2025. Real, and not structural.</p></div>
+<div class="lever cyclical"><span class="tag">Cyclical, turning structural</span><div class="hd">4. Memory's return to EUV</div>
+<p>Memory system sales rose 44% in FY2024 and were broadly flat at €8.42bn in FY2025. Memory's implied price per system overtook Logic's in FY2024 for the first time in the disclosed series and stayed ahead in FY2025 — €49.2m against €44.1m. DRAM's shift to EUV for high-bandwidth memory converts a volume-driven end market into a value-driven one; SEMI forecasts DRAM wafer fab equipment up 39% in 2026.</p></div>
+<div class="lever mgmt"><span class="tag">Management-driven</span><div class="hd">5. Capacity additions</div>
+<p>ASML plans to add 30% to its 2026 low-NA EUV capacity of around 65 systems for 2027, and the same to its DUV immersion capacity of around 130, with a further 30% under investigation for 2028. The only lever that raises unit volume, and the one management controls.</p></div>
+<div class="lever temp"><span class="tag">Temporary</span><div class="hd">6. Mature-node China DUV</div>
+<p>China was 29.1% of FY2025 sales, down from 36.1%. ASML describes its China business as "stronger than anticipated", offsetting weak mainstream demand elsewhere. A shrinking share of a growing total, sitting directly under the export-control regime.</p></div>
+
+<h2>5. Margin, cash and capital allocation</h2>
+<p>Gross margin has climbed from 44.8% in FY2016 to 52.8% in FY2025 and 54.0% in Q2 2026, with Q3 2026 guided to 55–57%. ASML states the mechanism plainly: margin rose "mainly driven by a favorable NXE product mix and higher net service and field option sales and margins", partially offset by "the dilutive impact of EXE systems recognized in sales".</p>
+
+<figure>
+<div class="chartbox">
+<svg viewBox="0 0 860 360" role="img" aria-label="Lithography units shipped against blended price per system, FY2018 to FY2025">
+  <title>Units fall, price per system accelerates</title>
+  <line x1="70" y1="300" x2="820" y2="300" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="70" y1="40" x2="70" y2="300" stroke="#E5DDD0" stroke-width="1.5"/>
+  <g font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">
+    <text x="62" y="304" text-anchor="end">0</text>
+    <text x="62" y="238" text-anchor="end">125</text>
+    <text x="62" y="173" text-anchor="end">250</text>
+    <text x="62" y="108" text-anchor="end">375</text>
+    <text x="62" y="44" text-anchor="end">500</text>
+    <text x="828" y="304" text-anchor="start">€0m</text>
+    <text x="828" y="238" text-anchor="start">€20m</text>
+    <text x="828" y="173" text-anchor="start">€40m</text>
+    <text x="828" y="108" text-anchor="start">€60m</text>
+    <text x="828" y="44" text-anchor="start">€80m</text>
+  </g>
+  <g font-size="12.5" fill="#6E675C" font-family="Calibri,Arial,sans-serif" text-anchor="middle">
+    <text x="110" y="322">FY18</text><text x="220" y="322">FY19</text><text x="330" y="322">FY20</text>
+    <text x="440" y="322">FY22</text><text x="550" y="322">FY23</text><text x="660" y="322">FY24</text><text x="770" y="322">FY25</text>
+  </g>
+  <!-- units: 224,229,258,345,449,418,327 scale y=300-(v/500)*260 -->
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5"
+    points="110,183.5 220,180.9 330,165.8 440,120.6 550,66.5 660,82.6 770,129.9"/>
+  <g fill="#3C6E8F">
+    <circle cx="110" cy="183.5" r="4"/><circle cx="220" cy="180.9" r="4"/><circle cx="330" cy="165.8" r="4"/>
+    <circle cx="440" cy="120.6" r="4"/><circle cx="550" cy="66.5" r="4"/><circle cx="660" cy="82.6" r="4"/><circle cx="770" cy="129.9" r="4"/>
+  </g>
+  <!-- ASP: 35.4,38.1,38.6,42.8,47.7,50.5,72.3 scale y=300-(v/80)*260 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="3"
+    points="110,184.9 220,176.2 330,174.5 440,160.9 550,144.9 660,135.9 770,64.0"/>
+  <g fill="#C75B39">
+    <circle cx="110" cy="184.9" r="4"/><circle cx="220" cy="176.2" r="4"/><circle cx="330" cy="174.5" r="4"/>
+    <circle cx="440" cy="160.9" r="4"/><circle cx="550" cy="144.9" r="4"/><circle cx="660" cy="135.9" r="4"/><circle cx="770" cy="64.0" r="4"/>
+  </g>
+  <g font-family="Georgia,serif" font-size="14" font-weight="700">
+    <text x="112" y="206" fill="#3C6E8F" text-anchor="start">Units shipped</text>
+    <text x="550" y="56" fill="#3C6E8F" text-anchor="middle">449</text>
+    <text x="768" y="147" fill="#3C6E8F" text-anchor="end">327</text>
+    <text x="112" y="171" fill="#C75B39" text-anchor="start">Price per system</text>
+    <text x="768" y="52" fill="#C75B39" text-anchor="end">€72.3m</text>
+  </g>
+</svg>
+</div>
+<figcaption>Lithography systems recognised (left axis, blue) against blended price per system (right axis, terracotta). FY2021 is omitted — no filing reviewed here covers it. Price per system is calculated from disclosed net system sales less metrology and inspection, divided by lithography units; ASML has published no average selling price since FY2016. Sources: FY2020, FY2024 and FY2025 Forms 20-F.</figcaption>
+</figure>
+
+<p>The chart is the business in one picture. Units peaked in FY2023 and have fallen 27% since; price per system rose 43% in FY2025 alone. The two lines crossing is the mix shift described in Section 4 — and it is why a year of falling volume produced record revenue and record margin.</p>
+
+<figure>
+<div class="chartbox">
+<svg viewBox="0 0 860 340" role="img" aria-label="Gross margin and installed base share of revenue, FY2014 to Q2 2026">
+  <title>Gross margin rises as the installed base grows</title>
+  <line x1="66" y1="290" x2="820" y2="290" stroke="#E5DDD0" stroke-width="1.5"/>
+  <line x1="66" y1="34" x2="66" y2="290" stroke="#E5DDD0" stroke-width="1.5"/>
+  <g font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif">
+    <text x="58" y="294" text-anchor="end">15%</text>
+    <text x="58" y="230" text-anchor="end">25%</text>
+    <text x="58" y="166" text-anchor="end">35%</text>
+    <text x="58" y="102" text-anchor="end">45%</text>
+    <text x="58" y="38" text-anchor="end">55%</text>
+  </g>
+  <g font-size="12" fill="#6E675C" font-family="Calibri,Arial,sans-serif" text-anchor="middle">
+    <text x="86" y="312">14</text><text x="153" y="312">15</text><text x="220" y="312">16</text><text x="287" y="312">17</text>
+    <text x="354" y="312">18</text><text x="421" y="312">19</text><text x="488" y="312">20</text><text x="588" y="312">22</text>
+    <text x="655" y="312">23</text><text x="722" y="312">24</text><text x="789" y="312">25</text>
+  </g>
+  <!-- GM: 44.3,46.1,44.8,44.9,46.0,44.7,48.6,|50.5,51.3,51.3,52.8 ; y=290-((v-15)/40)*256 -->
+  <polyline fill="none" stroke="#C75B39" stroke-width="3"
+    points="86,102.5 153,90.9 220,99.2 287,98.6 354,91.6 421,100.5 488,74.6"/>
+  <polyline fill="none" stroke="#C75B39" stroke-width="3"
+    points="588,63.2 655,58.1 722,58.1 789,48.5"/>
+  <g fill="#C75B39">
+    <circle cx="86" cy="102.5" r="3.5"/><circle cx="153" cy="90.9" r="3.5"/><circle cx="220" cy="99.2" r="3.5"/>
+    <circle cx="287" cy="98.6" r="3.5"/><circle cx="354" cy="91.6" r="3.5"/><circle cx="421" cy="100.5" r="3.5"/>
+    <circle cx="488" cy="74.6" r="3.5"/><circle cx="588" cy="63.2" r="3.5"/><circle cx="655" cy="58.1" r="3.5"/>
+    <circle cx="722" cy="58.1" r="3.5"/><circle cx="789" cy="48.5" r="4.5"/>
+  </g>
+  <!-- IBM %: 27.5,32.6,32.7,-,24.5,23.9,26.2,|27.1,20.4,23.0,25.1 -->
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="6 4"
+    points="86,210.0 153,177.4 220,176.6 354,229.2 421,233.0 488,218.3"/>
+  <polyline fill="none" stroke="#3C6E8F" stroke-width="2.5" stroke-dasharray="6 4"
+    points="588,212.5 655,255.4 722,238.8 789,225.4"/>
+  <g fill="#3C6E8F">
+    <circle cx="86" cy="210" r="3"/><circle cx="153" cy="177.4" r="3"/><circle cx="220" cy="176.6" r="3"/>
+    <circle cx="354" cy="229.2" r="3"/><circle cx="421" cy="233" r="3"/><circle cx="488" cy="218.3" r="3"/>
+    <circle cx="588" cy="212.5" r="3"/><circle cx="655" cy="255.4" r="3"/><circle cx="722" cy="238.8" r="3"/><circle cx="789" cy="225.4" r="3"/>
+  </g>
+  <g font-family="Georgia,serif" font-size="14" font-weight="700">
+    <text x="88" y="88" fill="#C75B39" text-anchor="start">Gross margin 44.3%</text>
+    <text x="795" y="40" fill="#C75B39" text-anchor="end">52.8%</text>
+    <text x="88" y="198" fill="#3C6E8F" text-anchor="start">Installed base, % of sales</text>
+    <text x="795" y="216" fill="#3C6E8F" text-anchor="end">25.1%</text>
+  </g>
+  <g font-size="11.5" fill="#9A9083" font-family="Calibri,Arial,sans-serif" text-anchor="middle">
+    <text x="538" y="140">FY2021</text><text x="538" y="155">not covered</text>
+  </g>
+  <line x1="538" y1="166" x2="538" y2="284" stroke="#E5DDD0" stroke-width="1" stroke-dasharray="3 4"/>
+</svg>
+</div>
+<figcaption>Gross margin (terracotta, solid) and Installed Base Management as a share of total net sales (blue, dashed), FY2014–FY2025. FY2017 installed-base share and all FY2021 figures are not disclosed in the filings reviewed. Gross margin reached 54.0% in Q2 2026, above the range shown. Sources: FY2016, FY2020, FY2024 and FY2025 Forms 20-F.</figcaption>
+</figure>
+
+<p><strong>The cost structure explains why the margin holds in a downturn.</strong> ASML assembles rather than manufactures much of what it sells: purchases from the ZEISS group alone were €4.41bn in FY2025, about 28.6% of total cost of sales, and 272 business-critical suppliers account for 89% of product-related spend. That keeps the fixed-cost base lower than the machine complexity suggests — which is why gross margin held at exactly 51.3% through the FY2024 downturn.</p>
+<p><strong>The operating leverage sits below gross profit.</strong> R&amp;D of €4.70bn fell from 15.2% to 14.4% of sales in FY2025 and SG&amp;A from 4.1% to 3.9%, even as both grew in absolute euros. That is what carried a 1.5-point gross margin gain into a 2.7-point operating margin gain, to 34.6%. It runs in reverse too, and ASML says so: having grown headcount and capacity, "it would be difficult to adjust our costs adequately in a timely manner in the event of an industry downturn".</p>
+
+<div class="tw"><table>
+<caption>The financial spine</caption>
+<thead><tr><th></th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2024</th><th class="n">FY2025</th></tr></thead>
+<tbody>
+<tr><td>Total net sales (€m)</td><td class="n">6,794.8</td><td class="n">13,978.5</td><td class="n">28,262.9</td><td class="n">32,667.3</td></tr>
+<tr><td>Gross margin</td><td class="n">44.8%</td><td class="n">48.6%</td><td class="n">51.3%</td><td class="n">52.8%</td></tr>
+<tr><td>Lithography systems (units)</td><td class="n">157</td><td class="n">258</td><td class="n">418</td><td class="n">327</td></tr>
+<tr><td>EUV systems recognised (units)</td><td class="n">4</td><td class="n">31</td><td class="n">44</td><td class="n">48</td></tr>
+<tr><td>Installed Base Management (€m)</td><td class="n">2,223.6</td><td class="n">3,661.9</td><td class="n">6,494.2</td><td class="n">8,193.0</td></tr>
+<tr><td>Operating cash flow (€m)</td><td class="n">1,665.9</td><td class="n">4,627.6</td><td class="n">11,166.2</td><td class="n">12,658.5</td></tr>
+</tbody></table></div>
+<p class="note"><strong>Comparability.</strong> ASML adopted ASC 606 on 1 January 2018, so FY2016 revenue is not on the same recognition basis as later years. The FY2020 filing restates FY2016 sales to €6,875.1m and gross margin to 45.7% without reconciling the change. The FY2016 unit count of 157 is on the then-current definition, which the later lithography-only definition puts at 154. And an "Other income" line of €93.8m in FY2016, from customer R&amp;D funding, was eliminated from 2018. A trend line drawn across FY2016 is indicative, not exact.</p>
+
+<h3>Where the cash goes</h3>
+<p>Operating cash flow was €12.66bn in FY2025 and free cash flow €11.03bn, against capital expenditure that <em>fell</em> from €2.07bn to €1.57bn. Over FY2016–FY2025, excluding FY2021 which no reviewed filing covers, the ranking is unambiguous: <strong>buybacks roughly €15.8bn</strong> — including €5.95bn in FY2025 alone, an eleven-fold increase, with a new €12bn programme to December 2028 announced on 28 January 2026; <strong>dividends roughly €13.9bn</strong>, the declared FY2025 dividend raised 17.2% to €7.50 a share, with the cadence moving annual → semi-annual → quarterly over the decade; <strong>capital expenditure roughly €10.0bn</strong>, consistently the smallest; and <strong>acquisitions and strategic stakes roughly €5.3bn</strong>, front-loaded into HMI (€2.98bn) and the ZEISS 24.9% stake (€1.0bn) in 2016–17, then almost nothing until the €1.30bn Mistral AI investment in September 2025.</p>
+<p>Two features of that record are worth naming. The share count fell from 429.9m at FY2016 year end to 385.4m at FY2025 — a 10.3% reduction — and ASML cancels rather than warehouses what it buys. And in 2016 it <em>paused</em> an announced buyback to fund HMI and the ZEISS stake: capital returns are the residual, not the commitment. The vendor financing is the other side of the same posture — €1.91bn of loans receivable and €1.19bn of advance payments to ZEISS, restructured in May 2025 onto interest-free terms with revenue-linked repayment. ASML funds its supplier's capacity from its own balance sheet.</p>
+<p class="note"><strong>Post-dating the filings:</strong> cash and short-term investments stood at €7.58bn at the end of Q2 2026, down from €13.32bn at FY2025 year end. The €12bn buyback is being executed at pace into a rising market.</p>
+
+<h2>6. Cyclicality, constraints and where it sits now</h2>
+<p>ASML is highly cyclical in units and end-market mix, and much less so in revenue. That distinction is the most useful thing to understand about the business in a downturn.</p>
+<p><strong>2019.</strong> Memory system sales fell from €4.55bn on 213 units to €2.43bn on 106 units — down 46.5% in value and 50.2% in units in one year — while total revenue <em>rose</em> 8.0% because Logic units nearly doubled. Gross margin dipped from 46.0% to 44.7%. <strong>FY2024.</strong> EUV units fell from 53 to 44, lithography units from 449 to 418, NXE revenue 13.9% — and gross margin held at exactly 51.3%, with revenue up 2.6%. Two end markets that trough in different years, plus a service line that does not trough at all, is what produces that stability.</p>
+<p class="note">The industry backdrop is less reassuring than ASML's own record. SEMI equipment billings fell 7% in 2019 and just 1.3% in 2023 — with wafer processing actually up 1% — making 2023 the mildest equipment recession in the modern record and a poor template for a severe one. The only verified severe precedent is the 2009 trough of $15.92bn, off which 2010 rebounded 148%. Annual billings for 2001 and 2008 sit behind a paid subscription and cannot be stated from primary sources.</p>
+
+<h3>Where it sits right now: at or very near a peak</h3>
+<p>Gross margin of 54.0% in Q2 2026, guided to 55–57% in Q3, is the highest in the disclosed record against a 44.3% low in FY2014. Full-year 2026 guidance has been raised twice in six months — <strong>€34–39bn at 51–53% in January → €36–40bn at 51–53% in April → €43–45bn at 54–56% in July.</strong> Backlog stood at €38.8bn and remaining performance obligations at €46.5bn at FY2025 year end, against €43.3bn a year earlier, 65% expected to convert within twelve months.</p>
+<p>Unit volume is the exception, and it is <em>capped</em> rather than weak: 2026 capacity is around 65 low-NA EUV and 130 DUV immersion systems, with 30% additions planned for 2027. ASML cannot answer a demand surge with volume inside eighteen months — which is why the surge appears as price, mix and backlog instead.</p>
+<p>The demand behind it deserves naming precisely. WSTS forecasts 2026 semiconductor sales of <strong>$1.51 trillion, up 90%, with memory alone above $800bn and growing 250%</strong> — having forecast $975bn for the same year only five months earlier. Micron's DRAM prices rose in the low-60s percent and NAND in the mid-80s percent <em>in a single quarter</em>. Almost the entire upward revision is memory price, not wafer volume. A memory price normalisation would remove most of the 2026 industry growth with no change in silicon demand — and memory wafer fab equipment, ASML's fastest-growing end market, is what would be cut first.</p>
+<p class="note">This also matters for ASML's stated 2030 model of €44–60bn of revenue at 56–60% gross margin, which rests on semiconductor sales reaching $1 trillion by 2030 at a 9% CAGR. The milestone has already been passed four years early — but SIA's own Factbook puts realised industry growth from 2001 to 2024 at <strong>6.8% a year</strong>, and the 2026 starting point now embeds a memory price level that has historically mean-reverted. The destination arrived without the mechanism the thesis assumed.</p>
+
+<div class="two">
+<div class="card"><h4 style="color:var(--good)">Durable — survives ten years</h4>
+<ul>
+<li>Sole EUV manufacturer; no second programme appears in any primary source</li>
+<li>Single-source optics and drive laser a rival would have to recreate, not buy</li>
+<li>Installed base: €8.19bn, +26.2%, ~50.9% gross margin, grows with every machine shipped</li>
+<li>€19.4bn of customer down payments funding working capital</li>
+<li>Generational price escalation — each platform earns more per build slot than the last</li>
+</ul></div>
+<div class="card"><h4 style="color:var(--terracotta)">Borrowed — currently helping</h4>
+<ul>
+<li>Memory pricing at a decade high; WSTS forecasts memory revenue +250% in 2026</li>
+<li>Hyperscaler capex of roughly $665–695bn guided for 2026 by four companies</li>
+<li>China mainstream DUV at 29.1% of sales, under a live export-control regime</li>
+<li>Two export-control suspensions, both expiring 10 November 2026</li>
+<li>Capacity-constrained pricing — margin guidance raised from 51–53% to 54–56% in six months</li>
+</ul></div>
+</div>
+
+<div class="tw"><table>
+<caption>What to monitor, and where it is published</caption>
+<thead><tr><th>Indicator</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>EUV units recognised and Installed Base Management revenue</td><td>ASML quarterly releases and IR presentations (asml.com)</td></tr>
+<tr><td>Remaining performance obligations and backlog</td><td>ASML quarterly releases; annual Form 20-F</td></tr>
+<tr><td>ASML's stated EUV and DUV immersion capacity for the next year</td><td>ASML quarterly investor calls — the constraint that converts demand into price</td></tr>
+<tr><td>Worldwide semiconductor equipment billings</td><td>SEMI (semi.org)</td></tr>
+<tr><td>Semiconductor sales, memory component separately</td><td>WSTS (wsts.org) and SIA (semiconductors.org)</td></tr>
+<tr><td>DRAM and NAND average selling prices</td><td>Micron, SK hynix and Samsung quarterly results</td></tr>
+<tr><td>Hyperscaler capital expenditure guidance</td><td>Microsoft, Alphabet, Amazon and Meta filings</td></tr>
+<tr><td>Reimposition of the BIS Affiliates Rule, scheduled 10 Nov 2026</td><td>US Federal Register / BIS</td></tr>
+<tr><td>Expiry of China's rare-earth control suspension, 10 Nov 2026</td><td>MOFCOM announcements (mofcom.gov.cn)</td></tr>
+</tbody></table></div>
+
+<h2>7. Risks and open questions</h2>
+<p>Cyclicality is covered above and is not repeated. What follows is what cyclicality does not capture, ordered by how badly each compounds with the others.</p>
+<ul class="plain">
+<li><strong>A dated policy cliff, on both sides at once.</strong> The US Affiliates Rule — extending Entity List restrictions to any entity 50% owned by a listed party — took effect 29 September 2025 and was suspended on 10 November 2025, with reimposition scheduled for <strong>10 November 2026</strong>. China suspended its extraterritorial rare-earth controls the same day, also to <strong>10 November 2026</strong>; those controls require case-by-case approval where the end use is logic at 14nm and below, memory of 256 layers and above, or the equipment to make them. ASML sits on both sides: 29.1% of sales go to China, and it has disclosed preparing since early 2024 for rare-earth magnet restrictions. A simultaneous reimposition hits demand and inputs in the same quarter.</li>
+<li><strong>The supplier is a single point of failure ASML has also financed.</strong> Beyond the operational dependency: €1.91bn of loans receivable, €1.19bn of advance payments and €822.6m of equity — roughly €3.9bn of balance-sheet exposure to one supplier, restructured in May 2025 onto interest-free terms with repayment linked to ZEISS's revenue. ZEISS SMT is also a variable interest entity ASML does not consolidate. A production disruption would stop ASML's output and impair its balance sheet in the same moment.</li>
+<li><strong>Capacity commitments made at the top.</strong> €12.7bn of purchase obligations, €9.6bn within a year, and 30% capacity additions for 2027 — decisions taken while customers earn 70–85% margins on memory. ASML's contracts allow it to delay or cancel ordered goods, which limits direct exposure. The indirect exposure is the operating leverage it names itself: a cost base sized for €43–45bn of revenue does not shrink quickly if the memory price that justified it reverts.</li>
+<li><strong>Concentration that is commercial and financial at once.</strong> Four customers took 61.2% of FY2025 sales, the largest 23.9%, the two largest 38.0%; the three largest are 35.4% of accounts and finance receivables. The largest customer's share moved 31.8% → 16.6% → 23.9% across FY2023–FY2025 — a 15-point swing driven by node-ramp timing at individual customers, not by anything ASML controls.</li>
+<li><strong>High-NA has to work, and has to become accretive.</strong> Four EXE units were recognised in FY2025, all shipped to customer R&amp;D facilities, and the platform is explicitly dilutive to gross margin; high-volume manufacturing support is expected from 2027. ASML states that for a new technology "reaching profitable margins can take years" and that failure can bring impairments on capitalised technologies and obsolete inventory. If customers conclude that multi-patterned low-NA EUV remains cheaper per wafer, the generational price escalation that drives the first growth lever stalls at the current generation.</li>
+<li><strong>Insider and IP risk carries an export-control consequence.</strong> ASML discloses that insider misconduct "ha[s] led — and may continue to lead — to unauthorized access, data breaches, theft" and specifically to "violations of export controls and other regulations". The loss is not principally the intellectual property, which would take a decade to exploit; it is the licensing relationship with the Dutch and US governments on which the China business depends. No material litigation is currently disclosed.</li>
+</ul>
+
+<h3>What the sources could not answer</h3>
+<p class="note">These are findings, not gaps in the research. Each would need resolving before an investor could size the economics with confidence.</p>
+<ul class="plain">
+<li>ASML has published <strong>no average selling price since FY2016</strong>. Every price figure here is calculated from disclosed revenue and units, and blended figures mix new and used systems because that split is not disclosed.</li>
+<li><strong>EUV gross margin has never been separately quantified.</strong> The FY2020 filing said EUV had passed 40%; nothing since. High-NA's dilution is described but not sized.</li>
+<li><strong>Installed Base Management is not split</strong> between service and field upgrades — the difference between a contracted annuity and a discretionary purchase a customer can defer.</li>
+<li>ASML reported Q4 2025 net bookings of €13.2bn, €7.4bn of it EUV, but <strong>disclosed no bookings figure in its Q2 2026 release or presentation</strong>. The forward-order signal has become less visible at the point in the cycle when it matters most.</li>
+<li><strong>No independent body publishes lithography's share of wafer fab equipment.</strong> The roughly one-third figure is arithmetic with an exchange-rate assumption, not a sourced statistic.</li>
+<li>The FY2020 filing <strong>restates FY2016 revenue and net income without reconciliation</strong>, and FY2021 is covered by no filing reviewed here. The ten-year series has one unexplained step and one hole.</li>
+<li>SEMI's annual equipment billings for <strong>2001 and 2008 — the two genuinely severe downturns</strong> — are behind a paid subscription. The depth of a real equipment recession cannot be established from free primary sources.</li>
+<li>No independent technical authority confirms that <strong>EUV optics cannot be second-sourced</strong>, and no primary source establishes whether a state-funded EUV programme could succeed over a decade. Both are unknown, not settled.</li>
+</ul>
+
+<h2>8. Investor takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is.</strong> A capacity-constrained monopolist on the one process step in chipmaking that has no substitute, attached to a service annuity that grows with every machine it has ever shipped.</li>
+<li><strong>The core economic engine.</strong> Revenue per build slot, not units. FY2025 system sales grew 12.4% on 91 fewer lithography machines, because a €242m EUV system replaced roughly eighteen €13m mature-node ones.</li>
+<li><strong>The main growth lever.</strong> Generational price escalation reinforced by the installed base — both structural. The current demand surge sitting on top of them is a memory price event financed by hyperscaler capital expenditure, and it is not.</li>
+<li><strong>What could break the story.</strong> High-NA failing to become accretive; ZEISS stopping production; or both export-control suspensions being reimposed on 10 November 2026 into a cost base sized for €43–45bn of revenue.</li>
+<li><strong>What to monitor.</strong> EUV units and Installed Base Management revenue quarterly, ASML's stated capacity for the following year, and memory average selling prices at Micron, SK hynix and Samsung — that last is the variable most likely to turn first.</li>
+</ul>
+
+<footer>
+<p><strong>Built from:</strong> ASML Forms 20-F for FY2016 (filed 8 Feb 2017), FY2020 (10 Feb 2021), FY2024 (5 Mar 2025) and FY2025 (25 Feb 2026); Forms 6-K dated 16 Apr 2025, 16 Jul 2025, 15 Oct 2025, 15 Apr 2026 and 15 Jul 2026; the November 2024 Investor Day letter and presentation; and ASML's Q4 2025 and Q2 2026 results releases and investor presentations.</p>
+<p><strong>Independent sources:</strong> SEMI equipment billings and forecasts (7 Apr 2026, 16 Dec 2025, 14 Jul 2026, 1 Apr 2026); WSTS (May 2026, Dec 2025, Mar 2026) and SIA (2025 Factbook, Feb 2026); US BIS and the Federal Register (13 Oct 2022, 25 Oct 2023, 5 Dec 2024, 30 Sep 2025, 12 Nov 2025); European Commission Delegated Regulation (EU) 2025/2003; Government of the Netherlands (Mar 2023, Sep 2024, 15 Jan 2025); China MOFCOM Announcements 18, 61, 62 and 70 of 2025; and the results filings of Canon, Nikon, KLA, Lam Research, Applied Materials, Tokyo Electron, ZEISS, TRUMPF, TSMC, Micron, SK hynix, Samsung and Intel.</p>
+<p><strong>Post-dating the FY2025 filing:</strong> the €12bn share buyback programme announced 28 January 2026 and running to December 2028; the January 2026 streamlining of ASML's Technology and IT organisations; Q1 and Q2 2026 results and the two upward revisions to 2026 guidance; and the capacity plans stated on 15 July 2026. ASML has said it will update its long-term model at a Capital Markets Day on 10 June 2027.</p>
+<p>Figures marked as inferred are calculated from disclosed data, not reported. This page is a business and industry analysis — not a valuation, and not a recommendation.</p>
+</footer>
+
+</div>
+</body>
+</html>
