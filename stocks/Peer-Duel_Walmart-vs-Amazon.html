@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walmart vs Amazon: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .tscroll{overflow-x:auto;}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:10px;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Walmart vs Amazon: who wins the next decade?</h1>
+  <p class="source">Mass retail and commerce platforms. WMT / AMZN. Run 15 September 2026. Built from the last three annual reports of each company (Walmart FY2024 to FY2026 10-Ks, Amazon FY2023 to FY2025 10-Ks), the latest interim filings (Walmart Q2 FY2027 10-Q filed 28 August 2026, Amazon Q2 2026 10-Q filed 31 July 2026), the accompanying earnings calls, and the material-event 8-Ks of both companies. Events swept through 15 September 2026; most recent events checked: Walmart Q2 FY2027 results and raised full-year guidance, 20 August 2026, and Amazon Q2 2026 results with 2026 capital expenditure guidance raised to approximately $220bn, 30 July 2026. Figures in US dollars as reported; no currency conversion is required and none was applied. Walmart's fiscal year ends 31 January and Amazon's 31 December, a one-month offset, so Walmart FY2026 is paired throughout with Amazon FY2025. This is not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Walmart</span><span class="chip b">Amazon</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Amazon is the stronger business for the next five to ten years, because a third of its revenue now sits in service layers whose demand is supply-constrained, while Walmart's equivalent layers compound faster in percentage terms off a base roughly one-sixtieth the size.</div>
+    <div class="why">The load-bearing evidence: AWS, advertising and third-party seller services together produced $369.5bn of Amazon's $716.9bn of FY2025 revenue; Walmart's advertising and membership lines together produced about $10.7bn of $713.2bn.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Amazon's fastest cell is accelerating, not maturing: AWS grew 36.7% in Q2 2026, its fifth consecutive quarter of acceleration and fastest in 18 quarters, against a $496bn backlog growing triple digits (Amazon Q2 2026 call, 30 Jul 2026).</div>
+    <div class="col"><span class="n">2</span><br>Walmart's only double-digit US merchandise category has turned: health and wellness grew 12.0% in FY2026 and then fell 1.8% in Q2 FY2027 under maximum fair price drug regulation (Walmart FY2026 10-K and Q2 FY2027 10-Q).</div>
+    <div class="col"><span class="n">3</span><br>The cost engine argues the other way and caps confidence: Walmart converted 3.5% of revenue in capex into $14.9bn of free cash flow, while Amazon's trailing-twelve-month free cash flow to 30 June 2026 is negative $7.6bn (both companies' filings).</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">Amazon, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">Amazon on level, Walmart on rate</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:2%">Walmart breaks last, clear</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favours Walmart, right lean favours Amazon; marker position shows how decisive.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product and geography?</div>
+    <div class="w"><span class="chip b">Amazon, clear</span></div>
+    <p>Three cells carry Amazon's next five years, and each has a forward driver that is visible now rather than hoped for. AWS ($128.7bn in FY2025, growing 36.7% in Q2 2026) is not selling into a market it must create: it has $496bn of contracted backlog growing triple digits year on year and contracted power capacity set to double by the end of 2027 against 2025, so the growth mechanism is capacity arriving into demand that is already signed. Advertising ($68.6bn, up 26% in Q2 2026) monetises first-party purchase intent Amazon already owns and is extending into new inventory in Prime Video and live sports. Third-party seller services ($172.2bn) grow with marketplace units that sellers, not Amazon, finance.</p>
+    <p>Walmart's forward engine is real and improving, but it is smaller and it is attached to something slow. US eCommerce compounded 23.4% a year to $99.6bn and is now profitable at double-digit incremental margins; global advertising grew 46% to $6.4bn and membership fees passed $4.3bn in FY2026. Against that, the two categories that are two-thirds of Walmart US grew 3.4% (grocery, $285.5bn) and 1.0% (general merchandise, $115.1bn) in FY2026, and health and wellness, the only double-digit category, turned negative in Q2 FY2027 under a price mechanism Walmart cannot negotiate with. [Sources: Walmart FY2026 10-K; Walmart Q2 FY2027 10-Q and call, Aug 2026; Amazon FY2025 10-K; Amazon Q2 2026 10-Q and call, Jul 2026]</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 860 250" role="img" aria-label="Indexed revenue paths">
+<line x1="70" y1="181.1" x2="700" y2="181.1" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="185.1" text-anchor="end" fill="#6E675C" font-size="13">100</text>
+<line x1="70" y1="143.3" x2="700" y2="143.3" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="147.3" text-anchor="end" fill="#6E675C" font-size="13">110</text>
+<line x1="70" y1="105.6" x2="700" y2="105.6" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="109.6" text-anchor="end" fill="#6E675C" font-size="13">120</text>
+<line x1="70" y1="67.8" x2="700" y2="67.8" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="71.8" text-anchor="end" fill="#6E675C" font-size="13">130</text>
+<line x1="70" y1="30.0" x2="700" y2="30.0" stroke="#E5DDD0" stroke-width="1"/>
+<text x="62" y="34.0" text-anchor="end" fill="#6E675C" font-size="13">140</text>
+<text x="70.0" y="222" text-anchor="start" fill="#6E675C" font-size="13">FY24 / CY23</text>
+<text x="280.0" y="222" text-anchor="middle" fill="#6E675C" font-size="13">FY25 / CY24</text>
+<text x="490.0" y="222" text-anchor="middle" fill="#6E675C" font-size="13">FY26 / CY25</text>
+<text x="700.0" y="222" text-anchor="end" fill="#6E675C" font-size="13">LTM latest</text>
+<polyline points="70.0,181.1 280.0,161.8 490.0,143.3 700.0,130.1" fill="none" stroke="#C75B39" stroke-width="3"/>
+<circle cx="70.0" cy="181.1" r="4" fill="#C75B39"/>
+<circle cx="280.0" cy="161.8" r="4" fill="#C75B39"/>
+<circle cx="490.0" cy="143.3" r="4" fill="#C75B39"/>
+<circle cx="700.0" cy="130.1" r="4" fill="#C75B39"/>
+<text x="710.0" y="135.1" text-anchor="start" fill="#C75B39" font-size="15" font-weight="700">Walmart 114</text>
+<polyline points="70.0,181.1 280.0,139.6 490.0,87.8 700.0,48.9" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+<circle cx="70.0" cy="181.1" r="4" fill="#3C6E8F"/>
+<circle cx="280.0" cy="139.6" r="4" fill="#3C6E8F"/>
+<circle cx="490.0" cy="87.8" r="4" fill="#3C6E8F"/>
+<circle cx="700.0" cy="48.9" r="4" fill="#3C6E8F"/>
+<text x="710.0" y="53.9" text-anchor="start" fill="#3C6E8F" font-size="15" font-weight="700">Amazon 135</text>
+<text x="70" y="18" fill="#6E675C" font-size="13">Total revenue indexed to 100</text>
+</svg>
+      <div class="cap">Total revenue indexed to 100 at Walmart FY2024 (year ended 31 Jan 2024) and Amazon FY2023 (year ended 31 Dec 2023). LTM points: Walmart twelve months to 31 July 2026 ($735.8bn, computed from the FY2026 10-K plus the Q2 FY2027 and Q2 FY2026 10-Qs); Amazon twelve months to 30 June 2026 ($775.7bn, computed the same way). Sources: both companies' 10-Ks and 10-Qs.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins, and through what?</div>
+    <div class="w"><span class="chip b">Amazon on level</span> <span class="chip a">Walmart on rate of change</span></div>
+    <p>Amazon converts revenue to EBIT at 9.5% on a three-year average against Walmart's 4.2%, and the mechanism is mix rather than operating skill. Put fulfilment costs above the gross-margin line so the two cost-of-sales definitions actually mean the same thing, and Amazon's adjusted gross margin rose from 31.2% to 35.1% over three years while Walmart's went from 24.4% to 24.9%. Strikingly, on that same like-for-like basis Walmart runs the LEANER operating expense line, 20.5% of revenue against Amazon's 23.5%, so the entire EBIT gap is the 8.5-point gross-margin advantage that AWS, advertising and seller commissions confer, partly given back in opex.</p>
+    <p>Here is the tension worth owning, because the growth winner and the margin-improvement winner are different companies. Walmart is currently the better margin-expansion story on its own base: in Q2 FY2027 it grew underlying operating income about 10% on a 2.5% US comparable sales number, four times its revenue growth, which management stated it has not achieved relative to the US comp in two decades, with almost half of the profit growth coming from membership, advertising and marketplace, and advertising plus membership fees representing nearly a third of Q4 FY2026 operating income. That is a compounder with an average engine improving fast against a fortress whose engine is already rich. Read both sets of reported numbers honestly and the gap widens rather than narrows: Amazon's FY2025 EBIT absorbed $2.5bn of FTC settlement, about $2.7bn of severance, about $1.3bn of physical-store impairments and $1.1bn of Italian tax and litigation charges, so its underlying margin is better than 11.2%; while Walmart's 158 basis point US gross-margin gain in Q2 FY2027 came primarily from about $2.9bn of tariff refunds that management is handing straight back to customers as price, so its underlying rate is worse than reported. [Sources: both FY 10-Ks; Walmart Q2 FY2027 call; Amazon FY2025 10-K supplemental disclosures]</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 860 190" role="img" aria-label="Margin dumbbells">
+<text x="196" y="57" text-anchor="end" fill="#2B2B2B" font-size="15" font-weight="700">Gross margin</text>
+<line x1="210" y1="52" x2="700" y2="52" stroke="#E5DDD0" stroke-width="2"/>
+<text x="210" y="78" text-anchor="middle" fill="#6E675C" font-size="12">15%</text>
+<text x="700" y="78" text-anchor="middle" fill="#6E675C" font-size="12">40%</text>
+<line x1="400.1" y1="52" x2="566.7" y2="52" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="400.1" cy="52" r="9" fill="#C75B39"/>
+<circle cx="566.7" cy="52" r="9" fill="#3C6E8F"/>
+<text x="400.1" y="36" text-anchor="middle" fill="#C75B39" font-size="13" font-weight="700">Walmart 24.7%</text>
+<text x="566.7" y="36" text-anchor="middle" fill="#3C6E8F" font-size="13" font-weight="700">Amazon 33.2%</text>
+<text x="483.4" y="72" text-anchor="middle" fill="#6E675C" font-size="13">gap +8.5pts Amazon</text>
+<text x="716" y="57" text-anchor="start" fill="#6E675C" font-size="12">3y avg</text>
+<text x="196" y="145" text-anchor="end" fill="#2B2B2B" font-size="15" font-weight="700">EBIT margin</text>
+<line x1="210" y1="140" x2="700" y2="140" stroke="#E5DDD0" stroke-width="2"/>
+<text x="210" y="166" text-anchor="middle" fill="#6E675C" font-size="12">0%</text>
+<text x="700" y="166" text-anchor="middle" fill="#6E675C" font-size="12">15%</text>
+<line x1="347.2" y1="140" x2="520.3" y2="140" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="347.2" cy="140" r="9" fill="#C75B39"/>
+<circle cx="520.3" cy="140" r="9" fill="#3C6E8F"/>
+<text x="347.2" y="124" text-anchor="middle" fill="#C75B39" font-size="13" font-weight="700">Walmart 4.2%</text>
+<text x="520.3" y="124" text-anchor="middle" fill="#3C6E8F" font-size="13" font-weight="700">Amazon 9.5%</text>
+<text x="433.8" y="160" text-anchor="middle" fill="#6E675C" font-size="13">gap +5.3pts Amazon</text>
+<text x="716" y="145" text-anchor="start" fill="#6E675C" font-size="12">3y avg</text>
+</svg>
+      <div class="cap">Three-year averages: Walmart FY2024 to FY2026, Amazon FY2023 to FY2025. Gross margin is stated on the like-for-like basis with Amazon's fulfilment expense moved above the line, because Walmart's cost of sales already carries the cost of moving goods to stores, clubs and customers while Amazon's does not. On reported definitions the gross margins are 24.7% and 48.7%, which is not a comparison. Sources: both companies' consolidated statements of operations.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip b">Amazon breaks first</span></div>
+    <p>Amazon's exposure is capital timing compounded by counterparty circularity. It is pre-funding roughly $220bn of 2026 capital expenditure against revenue it has contracted but not yet delivered; trailing-twelve-month free cash flow through 30 June 2026 is negative $7.6bn against positive $18.2bn a year earlier; and it shortened server and networking useful lives from six years to five effective 1 January 2025, adding $1.4bn of depreciation that landed mainly on AWS. Layered on top, the two AI labs named on its own Q2 2026 call as the largest multi-year multi-gigawatt committers to its Trainium chips are both companies Amazon itself finances: $28.7bn invested in OpenAI Series C in the first half of 2026, a further $15.0bn obligated at 31 March 2026 and a separate $35.0bn equity commitment letter signed 27 February 2026; plus $10.0bn of Anthropic preferred stock in Q2 2026 and a $20.0bn facility released against AWS compute-capacity delivery milestones. If AI demand disappoints, the depreciation arrives whether the revenue does or not.</p>
+    <p>Walmart's exposure is regulatory and concentrated in one category, plus a leadership transition. Health and wellness was its only double-digit US category and it is now shrinking on maximum fair price regulation that cost 125 basis points of Q2 FY2027 comparable sales and is guided at roughly 100 basis points for the full year; general merchandise has been effectively flat for two years ($113,985m in FY2024 to $115,060m in FY2026) even while management reports share gains, a tension between the narrative and the disaggregation table that is worth watching; and the entire senior team turned over in February 2026, with Doug McMillon retiring after twelve years and new chief executives installed at the group, Walmart U.S., Sam's Club U.S. and Walmart International.</p>
+    <p>Amazon breaks first, and not marginally. Its grocery business is subscale (physical stores were $22.6bn worldwide in FY2025 and it impaired about $1.3bn of them), so it has no non-discretionary floor, and its capital commitment is contractual while its AI revenue is not yet delivered. Walmart's worst decade looks like a 2% comparable sales number with rising free cash flow, because it can cut capital expenditure from 3.7% of sales toward 2.5% and harvest. [Sources: Amazon FY2025 10-K and Q2 2026 10-Q; Amazon 8-K 27 Feb 2026; Walmart FY2026 10-K, Q2 FY2027 10-Q, 8-Ks of 14 Nov 2025 and 16 Jan 2026]</p>
+  </div>
+
+  <h2>Segment and Geography Scorecard</h2>
+  <p>These are the cells that carry roughly 80% of the two companies' combined economics. Every score below is argued in one of the three tabs that follow; scores are per cell and are deliberately not summed.</p>
+  <div class="tscroll">
+  <table>
+    <tr><th>Cell (product and region)</th><th class="ca">Walmart</th><th class="cb">Amazon</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>Grocery, US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>$285.5bn of Walmart US grocery net sales growing 3.4% and driving the weekly trip, against Amazon physical stores of $22.6bn worldwide on which it took about $1.3bn of impairments in FY2025 (both FY 10-Ks)</td></tr>
+    <tr><td>General merchandise, US and North America</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Walmart's category was flat over two years ($113,985m to $115,060m) while Amazon online stores plus third-party units compounded; Amazon sets the assortment standard (both FY 10-Ks)</td></tr>
+    <tr><td>Health and wellness, US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Walmart has the scale ($69.5bn FY2026) but lost the growth to maximum fair price regulation from January 2026; Amazon's pharmacy sits inside a $5.9bn Other line (Walmart Q2 FY2027 10-Q; Amazon FY2025 10-K)</td></tr>
+    <tr><td>Warehouse club, US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Sam's Club U.S. $93.0bn with 4.4% comparable sales and eCommerce up 26% in Q2 FY2027, but a 2.6% segment operating margin and a stronger club operator in the market; Amazon has no club format (Walmart FY2026 10-K and Q2 FY2027 call)</td></tr>
+    <tr><td>Retail, International</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Walmart International grew 12.8% in Q2 FY2027 led by China and India but its FY2026 operating income fell on a $0.7bn PhonePe charge; Amazon International turned from a $2.7bn loss in 2023 to $4.75bn of profit in 2025 (both filings)</td></tr>
+    <tr><td>Cloud infrastructure, global</td><td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>AWS $128.7bn at a 35.4% segment operating margin, accelerating to 36.7% growth in Q2 2026 on a $496bn backlog; Walmart has no presence (Amazon FY2025 10-K and Q2 2026 call)</td></tr>
+    <tr><td>Retail media and advertising, global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Walmart is genuinely taking share at plus 46% to $6.4bn in FY2026 with Walmart Connect up 43% in Q2, but Amazon Ads is roughly ten times the size at $68.6bn and still grew 26% in Q2 2026 (Walmart Q4 FY2026 and Q2 FY2027 calls; Amazon FY2025 10-K and Q2 2026 10-Q)</td></tr>
+    <tr><td>Third-party marketplace and fulfilment services</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Walmart US marketplace grew 52% with about half flowing through its own fulfilment, but management states it is not yet profitable and is an area of ongoing investment; Amazon's is $172.2bn and is now sold as a service to third parties such as P&G and 3M (Walmart Q4 FY2026 and Q2 FY2027 calls; Amazon FY2025 10-K and Q2 2026 call)</td></tr>
+  </table>
+  </div>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs; a score with no exhibit behind it does not ship. Scores are per cell and are not summed, because adding a cloud score to a grocery score would manufacture precision that does not exist. The three lenses get their verdicts in the Three Answers above, not here.</p>
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Two companies of almost identical size earn their money in completely different shapes, and the shape is the whole story.</div>
+    <p>Before any table, the labels have to be made to mean the same thing. Walmart reports three segments, Amazon three, and they line up on geography but not on content: Amazon's North America segment already contains advertising, subscription and third-party commission revenue, whereas Walmart reports those same activities inside segment net sales without a dollar split, disclosing only growth rates plus an annual total for advertising and membership fees. Amazon's product-line disaggregation therefore cuts across its segments and the two sets of rows are not additive. AWS has no Walmart counterpart at all, and Sam's Club has no Amazon counterpart; both are marked as no presence rather than quietly dropped, because the absence is the finding.</p>
+    <p>The butterfly below ranks the cells by combined size. It shows the thing a consolidated income statement hides: at the top the two businesses look like near-twins, $483.0bn of Walmart US against $426.3bn of Amazon North America, and by the fourth row they are no longer in the same industry.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 920 312" role="img" aria-label="Butterfly chart of product x geography cells">
+<text x="322" y="24" text-anchor="end" fill="#C75B39" font-size="16" font-weight="700">Walmart</text>
+<text x="598" y="24" text-anchor="start" fill="#3C6E8F" font-size="16" font-weight="700">Amazon</text>
+<text x="460" y="24" text-anchor="middle" fill="#6E675C" font-size="13">net sales, $bn</text>
+<line x1="30" y1="32" x2="890" y2="32" stroke="#E5DDD0" stroke-width="1"/>
+<text x="460" y="65" text-anchor="middle" fill="#2B2B2B" font-size="14">Mass retail, US / North America</text>
+<rect x="122.0" y="50" width="200.0" height="20" fill="#C75B39"/>
+<text x="115.0" y="65" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="700">483.0</text>
+<text x="60.0" y="65" text-anchor="end" fill="#6E675C" font-size="13">+4.6%</text>
+<rect x="598" y="50" width="176.5" height="20" fill="#3C6E8F"/>
+<text x="781.5" y="65" text-anchor="start" fill="#2B2B2B" font-size="14" font-weight="700">426.3</text>
+<text x="836.5" y="65" text-anchor="start" fill="#6E675C" font-size="13">+9.9%</text>
+<text x="460" y="101" text-anchor="middle" fill="#2B2B2B" font-size="14">Retail, International</text>
+<rect x="268.0" y="86" width="54.0" height="20" fill="#C75B39"/>
+<text x="261.0" y="101" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="700">130.4</text>
+<text x="206.0" y="101" text-anchor="end" fill="#6E675C" font-size="13">+6.7%</text>
+<rect x="598" y="86" width="67.0" height="20" fill="#3C6E8F"/>
+<text x="672.0" y="101" text-anchor="start" fill="#2B2B2B" font-size="14" font-weight="700">161.9</text>
+<text x="727.0" y="101" text-anchor="start" fill="#6E675C" font-size="13">+11.1%</text>
+<text x="460" y="137" text-anchor="middle" fill="#2B2B2B" font-size="14">3P marketplace services</text>
+<text x="322" y="137" text-anchor="end" fill="#6E675C" font-size="13">ND, not disclosed  +52% US</text>
+<rect x="598" y="122" width="71.3" height="20" fill="#3C6E8F"/>
+<text x="676.3" y="137" text-anchor="start" fill="#2B2B2B" font-size="14" font-weight="700">172.2</text>
+<text x="731.3" y="137" text-anchor="start" fill="#6E675C" font-size="13">+10.9%</text>
+<text x="460" y="173" text-anchor="middle" fill="#2B2B2B" font-size="14">Cloud infrastructure (AWS)</text>
+<text x="322" y="173" text-anchor="end" fill="#6E675C" font-size="13">no presence</text>
+<rect x="598" y="158" width="53.3" height="20" fill="#3C6E8F"/>
+<text x="658.3" y="173" text-anchor="start" fill="#2B2B2B" font-size="14" font-weight="700">128.7</text>
+<text x="713.3" y="173" text-anchor="start" fill="#6E675C" font-size="13">+19.1%</text>
+<text x="460" y="209" text-anchor="middle" fill="#2B2B2B" font-size="14">Warehouse club, US</text>
+<rect x="283.5" y="194" width="38.5" height="20" fill="#C75B39"/>
+<text x="276.5" y="209" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="700">93.0</text>
+<text x="221.5" y="209" text-anchor="end" fill="#6E675C" font-size="13">+3.9%</text>
+<text x="598" y="209" text-anchor="start" fill="#6E675C" font-size="13">no presence</text>
+<text x="460" y="245" text-anchor="middle" fill="#2B2B2B" font-size="14">Advertising, global</text>
+<rect x="319.3" y="230" width="2.7" height="20" fill="#C75B39"/>
+<text x="312.3" y="245" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="700">6.4</text>
+<text x="257.3" y="245" text-anchor="end" fill="#6E675C" font-size="13">+46%</text>
+<rect x="598" y="230" width="28.4" height="20" fill="#3C6E8F"/>
+<text x="633.4" y="245" text-anchor="start" fill="#2B2B2B" font-size="14" font-weight="700">68.6</text>
+<text x="688.4" y="245" text-anchor="start" fill="#6E675C" font-size="13">+21.0%</text>
+<text x="460" y="281" text-anchor="middle" fill="#2B2B2B" font-size="14">Membership / subscription</text>
+<rect x="320.2" y="266" width="1.8" height="20" fill="#C75B39"/>
+<text x="313.2" y="281" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="700">4.3</text>
+<text x="258.2" y="281" text-anchor="end" fill="#6E675C" font-size="13">+15%</text>
+<rect x="598" y="266" width="20.5" height="20" fill="#3C6E8F"/>
+<text x="625.5" y="281" text-anchor="start" fill="#2B2B2B" font-size="14" font-weight="700">49.6</text>
+<text x="680.5" y="281" text-anchor="start" fill="#6E675C" font-size="13">+11.1%</text>
+</svg>
+      <div class="cap">Net sales in US dollars, billions. Walmart FY2026 (year ended 31 Jan 2026) against Amazon FY2025 (year ended 31 Dec 2025); growth figures are two-year compound annual rates from the same filings except where marked. Walmart's third-party marketplace revenue is not disclosed in dollars anywhere in its filings, so that side is ND with the disclosed US growth rate shown instead. Walmart advertising ($6.4bn) and membership fees (over $4.3bn) are management disclosures from the Q4 FY2026 call of 19 February 2026, not filing line items, and they sit inside the segment net sales shown in the top rows, so the rows must not be added. Sources: Walmart FY2026 10-K; Amazon FY2025 10-K.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <div class="tscroll">
+    <table>
+      <tr><th>Cell</th><th class="num ca">WMT rev (% of total)</th><th class="num ca">WMT 2y CAGR</th><th class="num cb">AMZN rev (% of total)</th><th class="num cb">AMZN 2y CAGR</th><th>Margin signal and leader</th></tr>
+      <tr><td>Mass retail, US and North America</td><td class="num ca">483.0bn (68%)</td><td class="num ca">4.6%</td><td class="num cb">426.3bn (59%)</td><td class="num cb">9.9%</td><td>Segment operating margin 5.2% vs 6.9%. Amazon leads on both growth and margin</td></tr>
+      <tr><td>Retail, International</td><td class="num ca">130.4bn (18%)</td><td class="num ca">6.7%</td><td class="num cb">161.9bn (23%)</td><td class="num cb">11.1%</td><td>Segment operating margin 3.9% vs 2.9%. Walmart leads on margin, Amazon on growth and trajectory</td></tr>
+      <tr><td>Third-party marketplace services</td><td class="num ca">ND</td><td class="num ca">+52% US, Q2 FY27</td><td class="num cb">172.2bn (24%)</td><td class="num cb">10.9%</td><td>Walmart states it is not yet profitable; Amazon's is a mature toll. Amazon leads decisively</td></tr>
+      <tr><td>Cloud infrastructure</td><td class="num ca">no presence</td><td class="num ca">ND</td><td class="num cb">128.7bn (18%)</td><td class="num cb">19.1%</td><td>Segment operating margin 35.4%. Amazon uncontested</td></tr>
+      <tr><td>Warehouse club, US</td><td class="num ca">93.0bn (13%)</td><td class="num ca">3.9%</td><td class="num cb">no presence</td><td class="num cb">ND</td><td>Segment operating margin 2.6%. Walmart uncontested but thin</td></tr>
+      <tr><td>Advertising, global</td><td class="num ca">6.4bn (0.9%)</td><td class="num ca">+46% FY26</td><td class="num cb">68.6bn (9.6%)</td><td class="num cb">21.0%</td><td>High incremental margin on both sides (inferred: neither discloses segment profitability for this line; Walmart states advertising plus membership was near a third of Q4 FY26 operating income). Amazon on scale, Walmart on rate</td></tr>
+      <tr><td>Membership and subscription</td><td class="num ca">over 4.3bn (0.6%)</td><td class="num ca">+15% FY26</td><td class="num cb">49.6bn (6.9%)</td><td class="num cb">11.1%</td><td>Near-full flow-through on both (inferred from the near-zero incremental cost of a fee). Amazon on scale</td></tr>
+      <tr><td>All other</td><td class="num ca">membership and other income 6.8bn</td><td class="num ca">n/a</td><td class="num cb">physical stores 22.6bn, other 5.9bn</td><td class="num cb">n/a</td><td>Immaterial to the call on either side</td></tr>
+    </table>
+    </div>
+    <p class="score-note">Definitional caveat that cannot be reconciled: Walmart's advertising, membership and marketplace revenue is embedded in the segment rows above, while Amazon's is broken out separately and spans its segments. The rows are therefore comparable one against one, never summable down a column.</p>
+    <div class="iik"><b>Insight:</b> the two companies' second-largest profit engines are different kinds of business entirely, and only one of them is capacity-constrained rather than demand-constrained. <b>Implication:</b> over five to ten years the mix shift, not the merchandise business, decides which margin line moves. <span class="kpi">KPI: AWS segment revenue growth (Amazon quarterly 8-K) and Walmart global advertising growth (Walmart quarterly call), each reported every three months.</span> [Sources: Walmart FY2026 10-K segment and disaggregation notes; Amazon FY2025 10-K Note 10]</div>
+
+    <h3>Segment growth engines</h3>
+    <p>AWS is the only cell in this duel where the constraint is supply. Management stated on 30 July 2026 that even at approximately $220bn of 2026 cash capital expenditure it will not have enough capacity to meet 2026 demand, expects the same in 2027, and described 2028 demand as already striking; contracted power capacity is set to double by the end of 2027 against 2025. That is a forward mechanism with a physical schedule behind it, and it is organic. Amazon advertising's driver is inventory expansion plus conversion quality, with management disclosing that shoppers who click a sponsored prompt convert 48% more often and spend 21% more. Walmart's fastest cells have a different mechanism: eCommerce density. US eCommerce compounded 23.4% a year to $99.6bn, store-fulfilled delivery grew over 40% in Q2 FY2027, and 37% of store-fulfilled deliveries were fee-paying expedited orders, which is what turned eCommerce profitable at double-digit incremental margins. Separating organic from acquired matters on Walmart's advertising line: the 46% FY2026 growth includes VIZIO, acquired December 2024 for $1.9bn net, and the FY2027 number will include Vibe, which management guides at a 20 basis point operating income headwind.</p>
+    <div class="iik"><b>Insight:</b> Amazon's largest growth cell is rationing supply while Walmart's is still building demand density. <b>Implication:</b> Amazon's near-term growth is a delivery problem, Walmart's is a penetration problem, and delivery problems resolve on a known schedule. <span class="kpi">KPI: AWS revenue added sequentially per quarter (it added over $4.6bn quarter on quarter in Q2 2026, about 80% more than its largest previous increase); a fall below $3bn would signal the capacity story stalling.</span> [Sources: Amazon Q2 2026 earnings call, 30 Jul 2026; Walmart Q2 FY2027 earnings call, 20 Aug 2026]</div>
+
+    <h3>Price control and route to market</h3>
+    <p>Walmart controls essentially all of its route to market. It owns the stores, the fleet and increasingly the automation: about 60% of US stores receive freight from automated distribution centres and about half of eCommerce fulfilment centre volume is automated. List price is net price, with no intermediary clawing anything back. Amazon controls its own first-party route and, more valuably, it owns the route for other people's goods, taking a commission, a fulfilment fee and an advertising fee on the same third-party unit without funding the inventory. The clearest evidence of how each uses that power arrived in the same quarter: Amazon implemented an FBA fuel and logistics surcharge in April 2026 and retained the roughly $600m of tariff refunds it received, while Walmart handed substantially all of its roughly $2.9bn of tariff refunds back to customers as price investment and told investors to read Q2 and Q3 together as a result.</p>
+    <div class="iik"><b>Insight:</b> both companies are price-setters, but Walmart converts its power into customer price by policy while Amazon converts its into fee income. <b>Implication:</b> Walmart's reported gross margin will always understate its pricing power, and Amazon's will always express it, so a like-for-like margin comparison systematically flatters Amazon. <span class="kpi">KPI: Amazon third-party seller services revenue growing faster than paid-unit growth, which indicates take-rate expansion; disclosed in the quarterly 8-K.</span> [Sources: Amazon Q2 2026 call; Walmart Q2 FY2027 call and 10-Q]</div>
+
+    <h3>Supply resilience</h3>
+    <div class="tscroll">
+    <table>
+      <tr><th>Dimension</th><th class="ca">Walmart</th><th class="cb">Amazon</th></tr>
+      <tr><td>Critical input</td><td class="ca">Merchandise, fuel, labour (about 2.1m associates)</td><td class="cb">Memory, advanced packaging, grid power, labour (1,576,000 employees)</td></tr>
+      <tr><td>Integration</td><td class="ca">High: owned DCs, owned transport, private brands as a price counterweight</td><td class="cb">High on logistics, partial on silicon (Trainium and Graviton at over $25bn combined run rate), none on memory or grid</td></tr>
+      <tr><td>Pass-through</td><td class="ca">Strong on merchandise (gross margin rate rose 8bp in FY26 and 40bp in FY25 through the tariff episode); weak on fuel (over $2bn of incremental cost guided for FY27)</td><td class="cb">Partial: AWS contracts are largely pre-signed, so the 2026 capex guide rose from about $200bn to about $220bn on memory cost with no offsetting price</td></tr>
+      <tr><td>Disclosed incident</td><td class="ca">Tariff episode, resolved with about $2.9bn of refunds, reinvested in price</td><td class="cb">Memory cost inflation and the Middle East fuel and line-haul increase, partly offset by the April 2026 FBA surcharge</td></tr>
+    </table>
+    </div>
+    <div class="iik"><b>Insight:</b> Walmart's supply risk is cyclical and hedgeable; Amazon's is a physical bottleneck it has partly pre-sold at fixed prices. <b>Implication:</b> a memory or power cost shock lands directly on AWS margin rather than on the customer. <span class="kpi">KPI: further Amazon capex guidance revisions attributed explicitly to component cost; each one is margin, not growth.</span> [Sources: Walmart FY2026 10-K and Q2 FY2027 call; Amazon Q2 2026 call]</div>
+
+    <h3>Competitive context</h3>
+    <p>In US mass retail the players that matter are Walmart, Amazon, Costco, Target, Kroger and Aldi, with Temu and Shein pressing the low-price general merchandise end. Walmart is the share-taker in grocery and, on its own reported numbers, a share-donor in general merchandise, where the category has been flat for two years. Amazon is the share-taker in general merchandise and a share-donor in physical grocery, having impaired about $1.3bn of physical-store assets in FY2025. In cloud the contest is AWS against Microsoft Azure and Google Cloud, where AWS is the incumbent leader and was until recently the decelerating one. In retail media Amazon Ads is roughly ten times Walmart Connect, and Walmart is the fastest-growing challenger.</p>
+
+    <h3>Risks by segment</h3>
+    <p>Walmart US health and wellness is the sharpest: a government price mechanism removed the segment's only double-digit grower and cost 125 basis points of Q2 FY2027 comparable sales, and Walmart is far more exposed than Amazon because pharmacy is a real category for it and a line item inside a $5.9bn Other bucket for Amazon. Walmart US general merchandise is where tariff and cross-border marketplace pressure lands, and it has been flat for two years. Amazon AWS carries the whole forward case on contracted capacity being consumed at contracted prices, by counterparties two of whom Amazon finances. Amazon International earns 2.9% after absorbing $1.1bn of Italian tax and litigation charges in Q4 2025, the thinnest profit layer in either company. Walmart International earns 3.9% with meaningful China concentration and a new segment chief executive.</p>
+    <div class="iik"><b>Insight:</b> each company's most exposed cell is one it cannot fix with operations, Walmart's by regulation and Amazon's by counterparty concentration. <b>Implication:</b> the flip conditions for this call live in those two cells, not in the retail operations. <span class="kpi">KPI: Walmart US health and wellness net sales year on year in the 10-Q disaggregation table; Amazon related-party or customer-concentration disclosure in the FY2026 10-K.</span> [Sources: Walmart Q2 FY2027 10-Q; Amazon FY2025 10-K]</div>
+
+    <div class="pull">Walmart's engine is pointed at the customer, Amazon's at the seller and the developer, and only the second kind of engine currently has more demand than it can serve.</div>
+  </div>
+  <div class="view" id="v1">
+    <div class="frame">In this industry terms are set by whoever owns the route to the customer, and both companies own one; the difference is what they charge for it.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">Amazon, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:2%">Amazon, clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:26%">Walmart, narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Each call is argued in the sections below.</div>
+    </div>
+
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Walmart</h3>
+        <p><b>Physical density as a fulfilment asset. Durability high.</b> 4,615 US units sitting within a short drive of most of the country, now doing delivery work: store-fulfilled delivery grew over 40% in Q2 FY2027 and 70% of eCommerce orders arrive same day or better. A well-funded competitor can buy warehouses; it cannot buy 4,600 sites already zoned, staffed and stocked.</p>
+        <p><b>Grocery scale. Durability high.</b> $285.5bn of US grocery net sales creates a weekly non-discretionary trip that no online-only competitor has replicated at margin.</p>
+        <p><b>Automation stack. Durability medium.</b> About 60% of US stores fed by automated distribution centres, about half of eCommerce fulfilment volume automated. Buyable with money, but it took years.</p>
+      </div>
+      <div class="col b"><h3>Amazon</h3>
+        <p><b>AWS installed base and switching cost. Durability high.</b> A $496bn backlog that is contractual, multi-year and in AI increasingly written on five-year terms, with management noting servers break even in a little under three years.</p>
+        <p><b>Three tolls on one unit. Durability high.</b> Commission, fulfilment and advertising all charged on the same third-party sale, financed by the seller's inventory: $172.2bn of seller services plus $68.6bn of advertising.</p>
+        <p><b>Custom silicon. Durability medium to high.</b> Trainium and Graviton at a combined run rate above $25bn, contested by NVIDIA and by hyperscaler peers, so this one is money-buyable over a long enough horizon.</p>
+        <p><b>Prime habit. Durability high.</b> $49.6bn of subscription revenue; Alexa for Shopping used by over 350m customers in twelve months.</p>
+      </div>
+    </div>
+    <div class="iik"><b>Insight:</b> Walmart's moat is physical and local, Amazon's is contractual and digital. <b>Implication:</b> Walmart's moat defends a 5% segment margin while Amazon's defends a 35% one, so the same quality of moat produces very different economics. <span class="kpi">KPI: Walmart store-fulfilled delivery growth and the fee-paid share of it (37% in Q2 FY2027); AWS backlog disclosed on the quarterly call.</span> [Sources: Walmart FY2026 10-K and Q2 FY2027 call; Amazon Q2 2026 call and FY2025 10-K]</div>
+
+    <h3>Customers: who controls net price and access</h3>
+    <p>Neither company has a customer above 10% of revenue; Walmart states explicitly in its FY2026 10-K that it did not generate material revenues from any single customer, and Amazon discloses none. The asymmetry is elsewhere. Walmart's counterparty power runs toward suppliers: payments from suppliers reduce cost of sales, and its supplier financing programmes confirmed $40.3bn of invoices in FY2026 while leaving Walmart's own payment terms untouched. But Walmart deliberately declines to convert that power into margin, and said so: it handed substantially all of roughly $2.9bn of tariff refunds back as price in Q2 and Q3 FY2027, and management described Every Day Low Price as a philosophy that biases toward lowering price whenever the opportunity arises. Amazon holds a second kind of customer power that Walmart is only now acquiring: power over third-party sellers, whose access to demand it controls and whose fees it can reprice unilaterally. It exercised it in the same quarter, implementing an FBA fuel and logistics surcharge in April 2026 and retaining its roughly $600m of tariff refunds. On the AWS side the relationship is contractual and long-dated rather than negotiated quarter to quarter.</p>
+    <div class="iik"><b>Insight:</b> Walmart negotiates with people who sell to it; Amazon also charges people who sell through it. <b>Implication:</b> Amazon can raise realised revenue per unit without selling another unit, and Walmart structurally cannot. <span class="kpi">KPI: number and size of Amazon seller fee changes announced per year; Walmart marketplace share of US eCommerce sales, disclosed on the quarterly call.</span> [Sources: Walmart FY2026 10-K, Q2 FY2027 call; Amazon Q2 2026 call]</div>
+
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Walmart's inputs are merchandise, fuel and labour, and it holds a private-brand portfolio (Great Value, Equate, Member's Mark, George) as a permanent negotiating counterweight on the merchandise side. The evidence that pass-through works is in the numbers: the consolidated gross profit rate rose 8 basis points in FY2026 and 40 basis points in FY2025, straight through the tariff episode. Fuel is the exception and it is unhedged, at over $2bn of incremental cost guided for FY2027. Amazon's merchandise supply position is comparable, but its binding constraint has moved: it is now memory, advanced packaging and grid interconnection. The 2026 capital expenditure guide was raised from about $200bn to about $220bn explicitly because memory got more expensive, and management said capacity will still fall short of demand in 2026 and probably 2027. Because AWS demand is largely pre-contracted, that input inflation cannot be repriced to the customer inside the existing backlog.</p>
+    <div class="iik"><b>Insight:</b> Walmart can pass merchandise inflation on and has; Amazon cannot pass component inflation into an already-signed backlog. <b>Implication:</b> this is the one lever where the smaller-margin company is the more resilient one. <span class="kpi">KPI: AWS segment operating margin staying inside its 35% to 39% band while quarterly capital expenditure remains above $50bn.</span> [Sources: Walmart FY2026 10-K MD&A and Q2 FY2027 call; Amazon Q2 2026 call]</div>
+
+    <h3>The price and power triangle: the top three cells</h3>
+    <div class="tscroll">
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome: share and margin</th><th>Confirming KPI</th></tr>
+      <tr><td>Mass retail, US and North America</td><td>Walmart owns stores and fleet; Amazon owns the network and the seller's access to demand</td><td>Walmart below by policy; Amazon at parity with surcharges added</td><td>High on both sides</td><td>Amazon share up and margin up (6.4% to 6.9% segment margin in two years); Walmart share up and margin flat by choice</td><td>Walmart US comparable sales excluding health and wellness against Amazon North America growth</td></tr>
+      <tr><td>Retail, International</td><td>Walmart owns stores in 18 countries; Amazon owns the marketplace in developed markets</td><td>Walmart below in emerging markets; Amazon at parity in Germany, UK and Japan</td><td>Walmart medium (China and India concentration, new segment CEO); Amazon medium (EU regulatory, $1.1bn Italian charge)</td><td>Amazon share up and margin up off a 2.9% base; Walmart share flat and margin down (4.5% to 3.9% in FY2026)</td><td>Amazon International operating margin above 4%; Walmart International margin recovering to 4.5%</td></tr>
+      <tr><td>Cloud and the service layer</td><td>Amazon total; Walmart absent</td><td>Amazon is the price-setter within its own backlog</td><td>Amazon constrained by power and memory, not demand</td><td>Amazon uncontested; the cell simply does not exist for Walmart</td><td>AWS revenue growth at or above 30%</td></tr>
+    </table>
+    </div>
+
+    <h3>The causal gap</h3>
+    <p><b>Cause one, mix rather than operations. Impact: major.</b> Amazon earns roughly 34% of revenue from AWS, advertising and third-party seller services at structurally high incremental margin; Walmart earns about 1.6% from the equivalent lines. That single fact is the whole EBIT gap, and Walmart cannot close it by running stores better. To close it Walmart would have to grow advertising roughly tenfold, which at the FY2026 rate of plus 46% is about six years of uninterrupted compounding, and it would still have no cloud business.</p>
+    <p><b>Cause two, who funds the inventory. Impact: moderate.</b> Amazon's most profitable retail growth comes from third-party units the seller finances. Walmart is genuinely closing this gap, with US marketplace up 52% and about half of it now flowing through Walmart Fulfillment Services, up nearly 400 basis points year on year. But management states plainly that marketplace is not yet profitable and is an area of ongoing investment. This gap is closable in perhaps three to five years with money and merchant recruitment, which by the test that matters means it is not a moat.</p>
+    <p><b>Cause three, capital intensity, and this one runs the other way. Impact: major.</b> Walmart spends 3.5% of revenue on capital expenditure and converts to $14.9bn of free cash flow; Amazon spent 17.9% in FY2025 and guides roughly $220bn for 2026, taking trailing-twelve-month free cash flow to negative $7.6bn. Amazon cannot close this gap while the build continues; it can only be waited out, and the waiting is the risk.</p>
+
+    <div class="pull">Amazon holds the stronger power position because its moat is priced and Walmart's is deliberately given away, but Walmart holds the one lever that matters in a shock: it can stop spending and the cash appears.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">Amazon runs the richer engine and Walmart runs the cheaper one, and the reported gross margins hide both facts.</div>
+    <p>Both companies report by function, but they cut the functions differently, and comparing the headline gross margins would quietly lie. Walmart's cost of sales includes merchandise cost and the cost of transporting merchandise to its distribution facilities, stores, clubs and customers, plus Sam's Club warehousing. Amazon's cost of sales includes product cost and inbound and outbound shipping but excludes fulfilment centre operation, receiving, warehousing, picking, packing, customer service and payment processing, all of which sit in a separate Fulfillment line worth $109.1bn in FY2025. Amazon's reported 50.3% gross margin and Walmart's 24.9% are therefore not the same measure. Below, both the reported figures and an adjusted Amazon line are shown, the adjustment being to move Fulfillment above the gross margin line, which is the closest defensible like-for-like.</p>
+    <p>Two further honesty notes. Walmart discloses no research and development line anywhere in its filings, so that row is ND rather than zero; its technology spend is partly inside operating expenses and partly capitalised into capital expenditure. Amazon's Technology and infrastructure line is shown in the R&D row but flagged, because it mixes genuine development with the running cost of AWS infrastructure and therefore overstates research intensity against a conventional R&D line. Restructuring and one-off items are left inside both companies' functional lines, because neither itemises them consistently across all three years; the material ones are named in the structural gap paragraph below.</p>
+
+    <h3>Three years, the five ratios</h3>
+    <div class="tscroll">
+    <table>
+      <tr><th>% of total revenue, 3y average</th><th class="num ca">Walmart</th><th class="num cb">Amazon</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS</td><td class="num ca">75.3</td><td class="num cb">51.3 reported / 66.8 adjusted</td><td class="num">24.0 / 8.5</td><td>A third of Amazon's revenue carries no merchandise cost at all</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">ND</td><td class="num cb">14.6</td><td class="num">ND</td><td>Walmart discloses no R&amp;D line; Amazon's figure includes AWS infrastructure running cost, so it is not pure R&amp;D</td></tr>
+      <tr><td>SG&amp;A / operating expense</td><td class="num ca">20.5</td><td class="num cb">8.9 excl. fulfilment / 23.5 on the like-for-like basis</td><td class="num">3.0, Walmart lower</td><td>On matched definitions Walmart runs the leaner overhead: store labour is cheaper per dollar of revenue than fulfilment plus technology</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">24.7</td><td class="num cb">48.7 reported / 33.2 adjusted</td><td class="num">24.0 / 8.5</td><td>Mix: AWS, advertising and seller commissions</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">4.2</td><td class="num cb">9.5</td><td class="num">5.3</td><td>The only fully clean comparison in the table, and it is a mix gap, not an efficiency gap</td></tr>
+      <tr><td>Capex / revenue (added row)</td><td class="num ca">3.5</td><td class="num cb">15.1 (2y avg)</td><td class="num">11.6, Walmart lower</td><td>The AI infrastructure build; Amazon's 2023 cash capex is not given in the FY2025 reconciliation, so this is a two-year average and the header says so</td></tr>
+      <tr><td>Free cash flow (added row)</td><td class="num ca">+$14.9bn FY2026</td><td class="num cb">+$11.2bn FY2025; negative $7.6bn LTM to Jun-26</td><td class="num">reversed</td><td>Capital expenditure crossing above operating cash flow</td></tr>
+    </table>
+    </div>
+    <p class="score-note">Walmart FY2024 to FY2026 against Amazon FY2023 to FY2025. Walmart mapping: cost of sales and operating, selling, general and administrative expenses exactly as reported, over total revenues including membership and other income. Amazon mapping: cost of sales as reported for the reported row; cost of sales plus Fulfillment for the adjusted row; operating expense on the like-for-like basis is Technology and infrastructure plus Sales and marketing plus General and administrative, over total net sales. The same mapping is used for all three years.</p>
+
+    <div class="chartbox">
+      <svg viewBox="0 0 880 300" role="img" aria-label="Cost engine grouped bars">
+<line x1="40" y1="232" x2="850" y2="232" stroke="#E5DDD0" stroke-width="1"/>
+<text x="40" y="20" fill="#6E675C" font-size="13">% of total revenue, 3 year average (capex 2 year for Amazon)</text>
+<rect x="640" y="6" width="12" height="12" fill="#C75B39"/><text x="658" y="17" fill="#C75B39" font-size="13">Walmart</text>
+<rect x="736" y="6" width="12" height="12" fill="#3C6E8F"/><text x="754" y="17" fill="#3C6E8F" font-size="13">Amazon</text>
+<rect x="80" y="56.9" width="42" height="175.1" fill="#C75B39"/>
+<text x="101" y="49.9" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">75.3</text>
+<rect x="130" y="76.7" width="42" height="155.3" fill="#3C6E8F"/>
+<text x="151" y="69.7" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">66.8</text>
+<text x="130" y="254" text-anchor="middle" fill="#2B2B2B" font-size="14">COGS</text>
+<rect x="240" y="174.6" width="42" height="57.4" fill="#C75B39"/>
+<text x="261" y="167.6" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">24.7</text>
+<rect x="290" y="154.8" width="42" height="77.2" fill="#3C6E8F"/>
+<text x="311" y="147.8" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">33.2</text>
+<text x="290" y="254" text-anchor="middle" fill="#2B2B2B" font-size="14">Gross margin</text>
+<rect x="400" y="184.3" width="42" height="47.7" fill="#C75B39"/>
+<text x="421" y="177.3" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">20.5</text>
+<rect x="450" y="177.4" width="42" height="54.6" fill="#3C6E8F"/>
+<text x="471" y="170.4" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">23.5</text>
+<text x="450" y="254" text-anchor="middle" fill="#2B2B2B" font-size="14">Operating expense</text>
+<rect x="560" y="222.2" width="42" height="9.8" fill="#C75B39"/>
+<text x="581" y="215.2" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">4.2</text>
+<rect x="610" y="209.9" width="42" height="22.1" fill="#3C6E8F"/>
+<text x="631" y="202.9" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">9.5</text>
+<text x="610" y="254" text-anchor="middle" fill="#2B2B2B" font-size="14">EBIT margin</text>
+<rect x="720" y="223.9" width="42" height="8.1" fill="#C75B39"/>
+<text x="741" y="216.9" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">3.5</text>
+<rect x="770" y="196.9" width="42" height="35.1" fill="#3C6E8F"/>
+<text x="791" y="189.9" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="700">15.1</text>
+<text x="770" y="254" text-anchor="middle" fill="#2B2B2B" font-size="14">Capex / revenue</text>
+<text x="40" y="272" fill="#6E675C" font-size="12">Like for like basis: Amazon fulfilment costs moved above the gross margin line so both COGS figures carry the cost of moving goods.</text>
+<text x="40" y="290" fill="#6E675C" font-size="12">Amazon operating expense = technology and infrastructure + sales and marketing + general and administrative. Walmart = operating, selling, general and administrative.</text>
+</svg>
+      <div class="cap">Sources: Walmart FY2026 10-K consolidated statements of income and cash flows; Amazon FY2025 10-K consolidated statements of operations and free cash flow reconciliation; Amazon Q2 2026 10-Q for the trailing-twelve-month figures.</div>
+    </div>
+
+    <h3>The structural gap</h3>
+    <p>The most persistent structural difference in this pair is not a cost ratio at all, it is capital intensity, and it is the only line where Walmart wins decisively and in every year. Walmart's capital expenditure has sat between 3.2% and 3.7% of revenue for three consecutive years while generating $12.7bn to $15.1bn of free cash flow annually; Amazon's rose from 12.2% to 17.9% of revenue and is guided at roughly $220bn for 2026, which took trailing-twelve-month free cash flow through 30 June 2026 to negative $7.6bn from positive $18.2bn a year earlier. The mechanism comes straight out of the growth map: Amazon is pre-funding AWS capacity that is contracted but not yet delivered, and it shortened server and networking useful lives from six years to five effective 1 January 2025, adding $1.4bn of depreciation that landed mainly on AWS.</p>
+    <p>On the margin side the cost engine confirms the power map rather than contradicting it. Amazon's adjusted gross margin rose 390 basis points over three years, from 31.2% to 35.1%, while Walmart's rose 50 basis points, from 24.4% to 24.9%, and in both cases the movement is mix: Amazon adding advertising and AWS, Walmart adding advertising and membership. The confirmation has one genuinely surprising wrinkle, which is that on matched definitions Walmart runs the leaner overhead, 20.5% against 23.5%, so the entire EBIT gap is the gross margin and none of it is operating discipline. The two reported figures also need adjusting in opposite directions. Amazon's FY2025 EBIT absorbed $2.5bn of FTC settlement, about $2.7bn of severance, about $1.3bn of impairments concentrated on physical stores and $1.1bn of Italian tax and litigation charges, so its underlying margin is better than 11.2%. Walmart's Q2 FY2027 US gross margin gain of 158 basis points came primarily from tariff refunds that management is handing straight back as price, so its underlying rate is worse than reported. Corrected in both directions, the mix gap widens rather than narrows, which is why the cost lens does not overturn the call. What it does do is cap confidence, because a business that cannot currently self-fund its own growth is running on a schedule it does not fully control.</p>
+
+    <div class="pull">Amazon converts revenue into profit at more than twice Walmart's rate because a third of its revenue has no cost of goods, and Walmart converts profit into cash at a rate Amazon has not matched since 2024.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>AI circularity in the AWS backlog.</b> The two AI labs named on Amazon's own Q2 2026 call as its largest multi-year multi-gigawatt Trainium committers are both companies Amazon finances: $28.7bn invested in OpenAI Series C in the first half of 2026, a further $15.0bn obligated at 31 March 2026 and a $35.0bn commitment letter signed 27 February 2026 fundable through 2028; plus $10.0bn of Anthropic preferred in Q2 2026 and a $20.0bn facility released against AWS compute-capacity delivery milestones. If a material share of the $496bn backlog is owed by counterparties Amazon capitalised, AWS growth is partly a recycling of Amazon's own balance sheet rather than independent third-party demand, and the growth answer weakens at its root. <span style="color:var(--good);font-weight:700;">Early warning: AWS backlog growth falling below 30% year on year while committed investment in OpenAI and Anthropic keeps rising, or a related-party revenue concentration disclosure appearing in the FY2026 10-K.</span></li>
+      <li><b>Depreciation outrunning utilisation.</b> Roughly $220bn of 2026 capital expenditure on five-year server lives requires sustained high utilisation; management stated servers take a little under three years to break even. A demand pause of even two quarters puts fixed depreciation against falling incremental revenue, and the useful-life shortening already cost $1.4bn of depreciation in 2025 before this year's assets arrive. <span style="color:var(--good);font-weight:700;">Early warning: AWS segment operating margin below 30% for two consecutive quarters while quarterly cash capital expenditure stays above $50bn.</span></li>
+      <li><b>Walmart's mix flywheel outrunning its merchandise drag.</b> If global advertising holds above 35% growth, marketplace reaches break-even, and US comparable sales excluding health and wellness stay near 3.5%, Walmart compounds operating income at two to four times its revenue growth for several years, which is what it did in Q2 FY2027 (about 10% underlying operating income growth on a 2.5% US comp, a ratio management says it has not achieved in two decades). That closes the gap from the other end without Amazon doing anything wrong. <span style="color:var(--good);font-weight:700;">Early warning: Walmart global advertising growth at or above 35% for FY2027 together with management disclosing marketplace at or above break-even.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <div class="tscroll">
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favours</th><th>Where published</th></tr>
+    <tr><td>AWS year-on-year revenue growth</td><td>Stays at or above 30%</td><td>Q4 2026 results, early Feb 2027</td><td class="cb">Amazon</td><td>Amazon quarterly earnings 8-K and 10-Q</td></tr>
+    <tr><td>AWS contracted backlog</td><td>Above $550bn at 31 Dec 2026 (from $496bn at 30 Jun 2026)</td><td>Q4 2026 call, early Feb 2027</td><td class="cb">Amazon</td><td>Amazon quarterly earnings call</td></tr>
+    <tr><td>Amazon free cash flow</td><td>Returns to positive for full-year 2026; if it stays below negative $20bn it favours Walmart</td><td>FY2026 10-K, Feb 2027</td><td class="cb">Amazon if positive</td><td>Amazon 10-K free cash flow reconciliation</td></tr>
+    <tr><td>Walmart global advertising growth</td><td>At or above 35% for FY2027</td><td>Q4 FY2027 call, Feb 2027</td><td class="ca">Walmart</td><td>Walmart quarterly earnings call</td></tr>
+    <tr><td>Walmart US health and wellness net sales</td><td>Back to flat or better year on year</td><td>Q4 FY2027 10-K disaggregation, Mar 2027</td><td class="ca">Walmart</td><td>Walmart 10-K revenue disaggregation note</td></tr>
+    <tr><td>Walmart underlying operating income growth against US comparable sales</td><td>At or above 2x sales growth for FY2027, excluding tariff refund effects</td><td>Q4 FY2027 call, Feb 2027</td><td class="ca">Walmart</td><td>Walmart quarterly earnings call and 10-K</td></tr>
+  </table>
+  </div>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the deep-dive hours on Amazon first, and spend them specifically on AWS unit economics and the related-party structure of the $496bn backlog, because that single question decides whether the stronger business in this pair is compounding or capitalising. Walmart is the better-understood business and much the cheaper one to monitor: two disclosures a quarter, global advertising growth and US comparable sales excluding health and wellness, tell you almost everything that matters.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> This is a three-lens duel: a growth and profitability map that breaks both companies out of their consolidated totals into product and geography cells and keeps the cells explaining roughly 80% of the economics; a power map comparing moats, customer relationships and supplier links, then forcing the conclusion into the top three cells; and a cost engine comparing three years of cost ratios on explicitly reconciled definitions. Labels were normalised across two different segment structures and the irreconcilable parts are stated under the tables rather than papered over; both companies report in US dollars so no currency conversion was applied, and the one-month fiscal offset is stated wherever years are paired. ND means the figure does not exist in public disclosure, and (inferred) marks a conclusion reasoned to rather than read off a page. This is a comparison of business strength, not a valuation: it contains no multiples, no fair value, no price target and no view whatsoever on either company's share price.</p>
+    <p class="sources"><b>Sources.</b> All primary documents were read in full from the analyst's own research folder.</p>
+    <ul class="sources">
+      <li>Walmart Inc., Form 10-K for fiscal year ended 31 January 2026, filed 13 March 2026 (segment note, revenue disaggregation note, MD&amp;A, risk factors, cash flow statements)</li>
+      <li>Walmart Inc., Forms 10-K for fiscal years ended 31 January 2025 and 31 January 2024, filed 14 March 2025 and 15 March 2024</li>
+      <li>Walmart Inc., Form 10-Q for the quarter ended 31 July 2026, filed 28 August 2026</li>
+      <li>Walmart Inc., Q2 FY2027 earnings call transcript, 20 August 2026; Q4 FY2026 earnings call transcript, 19 February 2026</li>
+      <li>Walmart Inc., Forms 8-K of 14 November 2025 (McMillon retirement, Furner appointment), 16 January 2026 (Guggina appointment, Furner compensation) and 30 January 2026 (McLay separation)</li>
+      <li>Amazon.com, Inc., Form 10-K for fiscal year ended 31 December 2025, filed 6 February 2026 (Note 10 Segment Information, supplemental disclosures on charges and useful lives, free cash flow reconciliation)</li>
+      <li>Amazon.com, Inc., Forms 10-K for fiscal years ended 31 December 2024 and 31 December 2023</li>
+      <li>Amazon.com, Inc., Form 10-Q for the quarter ended 30 June 2026, filed 31 July 2026 (Anthropic facility disclosure, OpenAI investment disclosure, trailing-twelve-month free cash flow)</li>
+      <li>Amazon.com, Inc., Q2 2026 earnings call transcript, 30 July 2026 (AWS growth and backlog, capital expenditure guidance, Trainium commitments)</li>
+      <li>Amazon.com, Inc., Form 8-K of 27 February 2026 (OpenAI $35.0bn equity commitment letter)</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

@@ -1,3 +1,5 @@
+- [Peer Duel Walmart vs Costco](https://xk152004.github.io/investechery/stocks/Peer_Duel_Walmart_vs_Costco.html)
+- [Peer Duel Walmart vs Amazon](https://xk152004.github.io/investechery/stocks/Peer-Duel_Walmart-vs-Amazon.html)
 - [ASML vs KLA Peer Duel](https://xk152004.github.io/investechery/stocks/ASML-vs-KLA-Peer-Duel.html)
 - [LRCX vs ASML Peer Duel](https://xk152004.github.io/investechery/stocks/LRCX-vs-ASML-Peer-Duel.html)
 - [Lam Research Business Overview](https://xk152004.github.io/investechery/stocks/Lam-Research-Business-Overview.html)

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walmart vs Costco: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:10px;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Walmart vs Costco: who wins the next decade?</h1>
+  <p class="source">US mass and warehouse-club retail. WMT / COST. Run 15 September 2026. Built from Walmart's FY2024, FY2025 and FY2026 Form 10-K filings and quarterly releases through Q2 FY2027 (20 Aug 2026), Costco's FY2023, FY2024 and FY2025 Form 10-K filings and releases through Q3 FY2026 (28 May 2026), both companies' earnings-call transcripts, and Numerator, Placer.ai and Marketplace Pulse third-party data. Events swept through 15 Sept 2026; most recent event checked: Costco's August 2026 sales release of 2 Sept 2026, which closed FY2026 at $297.3B net sales, up 10.2%. Figures in USD, as reported, no FX conversion applied. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Walmart</span><span class="chip b">Costco</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Costco is the stronger business for the next five to ten years, and the reason is not the margin.</div>
+    <div class="why">Costco's growth is produced by things it owns and controls, warehouses it opens, members it renews and a fee it has not yet raised, while Walmart's core US store added five net units in FY2026 and roughly 4.3 of its 4.6-point comparable-sales gain came from ecommerce.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Costco runs SG&amp;A at 9.2% of net sales against Walmart's 20.7%, in every one of the last three years, while paying an average US wage of $32.00 an hour against Walmart's $18.25 (both 10-Ks, 3-year averages computed).</div>
+    <div class="col"><span class="n">2</span><br>Costco added 25 net warehouses in FY2026 on a 914 base, each recent cohort annualizing $192M versus $150M for the FY2023 cohort; Walmart US added 5 net stores in FY2026 (Costco Q1 FY26 call; Walmart FY2026 10-K).</div>
+    <div class="col"><span class="n">3</span><br>Costco has taken US grocery share three years running, 7.6% to 8.2%, while Walmart has given back 20.4% to 19.9% (Numerator, via Supermarket News, 2026).</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">Costco, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:26%">Walmart, narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">Costco breaks last, narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors Walmart, right lean favors Costco; marker position shows how decisive. Growth and margin are won by different companies, which is the single most useful finding in this run.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product and geography?</div>
+    <div class="w"><span class="chip b">Costco, clear</span></div>
+    <p>Three cells carry Costco's next five years and each has a driver Costco sets itself. The US club cell, $200.0B of FY2025 total revenue at a 3.44% operating margin, grows because Costco opens roughly 25 to 30 warehouses a year against a 939-unit base and because recent cohorts open bigger: FY2025 openings were annualizing $192M each, against $150M for the FY2023 cohort (Costco Q1 FY26 call, 11 Dec 2025). Other International, $38.3B, is 13.9% of revenue but 15.9% of profit, with segment margin expanding from 3.91% to 4.33% over three years and roughly half of planned openings now outside the US (FY2025 10-K; Q4 FY25 call). Canada, $36.9B on 110 warehouses, earns a 5.01% operating margin, the best cell in either company.</p>
+    <p>Walmart's comparable engine is a channel shift, not a footprint. Walmart US added 5 net stores in FY2026 and roughly 4.3 points of its 4.6-point comp came from ecommerce, which means the physical store comp is close to flat (Walmart FY2026 annual report; FY26 Q4 release). Walmart International grew sales 7.0% in FY2026 while its operating income fell 7.2%, the only shrinking profit cell in either company (FY2026 10-K, segment note). The forward difference is mechanical: Costco's growth compounds off assets it is still adding, Walmart's off a mix shift inside a footprint that is finished.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 820 235" role="img" aria-label="Net sales indexed to 100 at the start of each company's three-year window">
+        <text x="10" y="18" font-size="14" fill="#6E675C">Net sales, indexed to 100</text>
+        <line x1="60" y1="200" x2="790" y2="200" stroke="#E5DDD0" stroke-width="1"/>
+        <text x="70" y="220" font-size="14" fill="#6E675C" text-anchor="middle">start of window</text>
+        <text x="410" y="220" font-size="14" fill="#6E675C" text-anchor="middle">+1 year</text>
+        <text x="750" y="220" font-size="14" fill="#6E675C" text-anchor="middle">latest full year</text>
+        <polyline points="70,176 410,132 750,84" fill="none" stroke="#C75B39" stroke-width="3"/>
+        <polyline points="70,168 410,124 750,52" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+        <circle cx="70" cy="176" r="4.5" fill="#C75B39"/><circle cx="410" cy="132" r="4.5" fill="#C75B39"/><circle cx="750" cy="84" r="4.5" fill="#C75B39"/>
+        <circle cx="70" cy="168" r="4.5" fill="#3C6E8F"/><circle cx="410" cy="124" r="4.5" fill="#3C6E8F"/><circle cx="750" cy="52" r="4.5" fill="#3C6E8F"/>
+        <text x="70" y="196" font-size="14" fill="#2B2B2B" text-anchor="start">both 100</text>
+        <text x="410" y="114" font-size="13" fill="#3C6E8F" text-anchor="middle">105.0</text>
+        <text x="410" y="152" font-size="13" fill="#C75B39" text-anchor="middle">105.0</text>
+        <text x="742" y="80" font-size="15" fill="#C75B39" font-weight="bold" text-anchor="end">Walmart 109.9</text>
+        <text x="742" y="48" font-size="15" fill="#3C6E8F" font-weight="bold" text-anchor="end">Costco 113.6</text>
+        <text x="60" y="36" font-size="13" fill="#6E675C">Within a tenth of a point for two years, then they part. Lines nudged apart to stay legible.</text>
+      </svg>
+      <div class="cap">Walmart net sales FY2024 $642,637M, FY2025 $674,538M, FY2026 $706,413M (FY2026 10-K). Costco net sales FY2023 $237,710M, FY2024 $249,625M, FY2025 $269,912M (FY2025 10-K). Each company indexed to its own three-year window; the two windows are offset by five months and Costco's FY2023 base year was 53 weeks, which flatters the base and understates Costco's true three-year rate. Costco's just-closed FY2026 net sales of $297.3B, up 10.2% (2 Sept 2026 release), are not plotted because Walmart's comparable year is still in progress; Walmart's FY2027 guide is 4.0% to 5.0% constant currency (Q2 FY27 release).</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip a">Walmart, narrow, and it is a different company from the growth winner</span></div>
+    <p>Walmart earns a 4.2% operating margin on total revenue against Costco's 3.6% (three-year averages, computed from both 10-Ks), and the conversion mechanism is no longer merchandise. Advertising reached roughly $6.4B in FY2026, up 46%, marketplace sales grew 52% in Q2 FY2027 with about half of that business flowing through Walmart Fulfillment Services, and global membership fee revenue rose 17%. Management has put a number on it twice: the combination of advertising and membership fees was "nearly one third of our operating income" in Q4 FY2026, and "almost half of the growth" in Q2 FY2027 (both earnings calls). These lines carry close to no incremental cost, which is why Walmart's operating income compounds at roughly twice its sales growth.</p>
+    <p>The tension is the finding. Costco's operating margin is the one that is actually rising, 3.35% to 3.65% to 3.77% across FY2023 to FY2025 and 4.0% in Q3 FY2026, while Walmart's sat at 4.17%, 4.31%, 4.18%, flat across the same span. Read together: Costco is the compounder with the thinner engine and Walmart is the fortress whose store stopped growing and which is building a second engine to replace it. Walmart wins the level today; Costco wins the direction. That is why this answer is marked narrow and why it does not overturn the call.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 820 175" role="img" aria-label="Gross margin and EBIT margin dumbbells, Walmart versus Costco">
+        <text x="10" y="18" font-size="14" fill="#6E675C">Gross margin, % of net sales, 3-year average</text>
+        <line x1="90" y1="52" x2="730" y2="52" stroke="#E5DDD0" stroke-width="2"/>
+        <text x="84" y="57" font-size="13" fill="#6E675C" text-anchor="end">0%</text>
+        <text x="736" y="57" font-size="13" fill="#6E675C" text-anchor="start">30%</text>
+        <line x1="322" y1="52" x2="602" y2="52" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="322" cy="52" r="8" fill="#3C6E8F"/><circle cx="602" cy="52" r="8" fill="#C75B39"/>
+        <text x="322" y="38" font-size="14" fill="#3C6E8F" font-weight="bold" text-anchor="middle">Costco 10.9%</text>
+        <text x="602" y="38" font-size="14" fill="#C75B39" font-weight="bold" text-anchor="middle">Walmart 24.0%</text>
+        <text x="462" y="72" font-size="13" fill="#6E675C" text-anchor="middle">gap 13.1 pts</text>
+        <text x="10" y="112" font-size="14" fill="#6E675C">EBIT margin, % of total revenue, 3-year average</text>
+        <line x1="90" y1="146" x2="730" y2="146" stroke="#E5DDD0" stroke-width="2"/>
+        <text x="84" y="151" font-size="13" fill="#6E675C" text-anchor="end">0%</text>
+        <text x="736" y="151" font-size="13" fill="#6E675C" text-anchor="start">6%</text>
+        <line x1="474" y1="146" x2="538" y2="146" stroke="#2B2B2B" stroke-width="2"/>
+        <circle cx="474" cy="146" r="8" fill="#3C6E8F"/><circle cx="538" cy="146" r="8" fill="#C75B39"/>
+        <text x="430" y="132" font-size="14" fill="#3C6E8F" font-weight="bold" text-anchor="middle">Costco 3.6%</text>
+        <text x="600" y="132" font-size="14" fill="#C75B39" font-weight="bold" text-anchor="middle">Walmart 4.2%</text>
+        <text x="506" y="166" font-size="13" fill="#6E675C" text-anchor="middle">gap 0.6 pt</text>
+      </svg>
+      <div class="cap">Walmart FY2024 to FY2026, Costco FY2023 to FY2025; computed from each company's reported income statements. Gross margin is stated on net sales only, excluding membership and other income from both numerator and denominator, because folding fees in inflates Costco's apparent merchandising margin by 1.7 points against 0.7 point for Walmart. A 13.1-point merchandising gap collapses to a 0.6-point EBIT gap; the cost engine tab shows where the other 12.5 points go.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip a">Walmart breaks first</span></div>
+    <p>Walmart's exposure is that its new profit is advertising, which is the most cyclical revenue line either company has. A third of operating income now depends on brand budgets that get cut before consumer spending does, and it arrives exactly as Walmart US transactions decelerate to plus 1.5% with average ticket at plus 1.1% (Q2 FY2027 release). Sitting inside the same raised guidance is roughly $2.9B of tariff refunds received in Q2 FY2027, worth about 750 basis points of that quarter's operating-income growth, which does not repeat. Health and wellness, the segment's fastest-growing category two years ago at 12.4% rising to 14.4% of Walmart US sales, has already turned into a 125-basis-point comp headwind from deflation and brand-to-generic transfer (Q2 FY2027 call).</p>
+    <p>Costco's exposure is slower and more visible. Worldwide comparable traffic has decelerated from plus 5.2% to plus 2.4% over four quarters while average ticket and gasoline do the work, and gasoline at roughly 10% of net sales is flattering FY2026 comps by about 1.6 points (FY2025 10-K; quarterly calls). More than half of operating income, 51.3% in FY2025, is a membership fee that has been raised twice in nine years with no further increase announced, just as Sam's Club cut the base-tier price gap from $15 to $5 on 1 May 2026. But a trade-down cycle sends traffic toward Costco, not away from it, and 92.2% of members renew. Walmart breaks first because its downside compounds, a soft consumer cutting both transactions and ad budgets at once, while Costco's downside is a single line item it can reprice.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These are the product and geography cells that carry roughly 80% of the two companies' combined economics. Every score is argued in the three tabs below, and none of them is summed.</p>
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">Walmart</th><th class="cb">Costco</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>US mass and supermarket</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td>
+      <td>$483.0B and 19.9% of US grocery, but share down from 20.4% over two years (FY2026 10-K; Numerator 2026); Costco has no non-club US format</td></tr>
+    <tr><td>US warehouse club</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+      <td>Costco US $200.0B at 3.44% margin vs Sam's $93.0B at 2.63%, and Costco is taking share inside the channel: adjusted comp 6.6% vs BJ's 3.1% (both FY filings; BJ's Q2 FY26)</td></tr>
+    <tr><td>Canada</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+      <td>Costco $36.9B on 110 warehouses at a 5.01% margin, the best cell in either company, vs Walmart $23.7B on 404 units (Costco FY2025 10-K; Walmart FY2026 unit disclosure)</td></tr>
+    <tr><td>Mexico and Central America</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td>Walmart 3,316 Mexican units and $52.5B of segment sales vs Costco's 43 warehouses; Costco's Mexico revenue is ND, buried in Other International (both FY filings)</td></tr>
+    <tr><td>Asia: China, Japan, Korea, Taiwan</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td>Walmart China $24.6B growing 9.7% with Sam's China at record members, but Costco holds 78 warehouses across four markets and launched China Executive membership ahead of plan (Q2 FY27 call; Costco Q3 FY26 call)</td></tr>
+    <tr><td>Europe</td>
+      <td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td>Walmart has exited; Costco holds 41 warehouses but Spanish construction delays cut its FY2026 opening plan twice, 35 to 28 to 26 (Costco Q2 and Q3 FY26 calls)</td></tr>
+    <tr><td>Latin America ex-Mexico and Africa</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td>
+      <td>Walmart-only: Chile 403, Guatemala 282, South Africa 272 units and more, inside a segment whose operating income fell 7.2% in FY2026 (FY2026 10-K)</td></tr>
+    <tr><td>India</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td>
+      <td>Flipkart and PhonePe consolidated and growing, but PhonePe shelved its IPO in March 2026 and Flipkart's Mumbai listing is not before FY2027 (TechCrunch, 16 Mar 2026; Reuters, 9 Mar 2026)</td></tr>
+    <tr><td>US retail media and marketplace</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td>
+      <td>Walmart advertising roughly $6.4B up 46%, marketplace up 52%; Costco discloses no retail-media revenue anywhere and shut Costco Next in September 2026 (Walmart FY26 Q4 release; press-sourced on Costco Next, unconfirmed by the company)</td></tr>
+    <tr><td>US ecommerce and fulfillment</td>
+      <td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td>
+      <td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td>
+      <td>Walmart $150.4B global ecommerce with same-day reach to 95% of US households; Costco digitally-enabled is roughly 10% of sales but comped 20.9% in FY2026 (Walmart FY2026 annual report; Costco releases)</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs; a score with no exhibit behind it does not ship. Scores are per cell and are not summed, because adding a US club score to an India score would manufacture precision that does not exist. The three lenses get their verdicts in the Three Answers above, not here.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Both companies sell groceries to Americans. One of them is finished building its store base and the other is not, and almost everything else follows from that.</div>
+    <p>These two do not report in the same shape, so the cells below are normalized before anything is compared. Walmart reports three segments, Walmart US, Walmart International and Sam's Club US, and gives segment revenue as net sales only. Costco reports three geographies, United States, Canada and Other International, and gives segment revenue as total revenue, which already contains membership fees, the highest-margin dollars in the company. Costco does not disclose membership fees by segment, so Costco's segment margins cannot be restated onto Walmart's basis; that is stated rather than papered over. Fiscal calendars are offset by five months, Walmart's year ending 31 January and Costco's the Sunday nearest 31 August, and Costco's FY2023 was a 53-week year.</p>
+    <p>Two further definitions do not reconcile. Costco's headline comparable sales include gasoline price and currency effects, and it publishes an adjusted series alongside; Walmart's US comps exclude fuel, cover the US only, and Walmart publishes no total-company comp. Costco headlines "digitally-enabled" comparable sales, which include Instacart and same-day, while Walmart headlines ecommerce sales growth on a revenue-recognition basis that excludes third-party marketplace gross merchandise value. Where those meet, the comparison is directional only.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 820 235" role="img" aria-label="Butterfly chart of revenue by normalized cell, Walmart left, Costco right">
+        <text x="200" y="22" font-size="15" fill="#C75B39" font-weight="bold" text-anchor="middle">Walmart</text>
+        <text x="620" y="22" font-size="15" fill="#3C6E8F" font-weight="bold" text-anchor="middle">Costco</text>
+        <line x1="305" y1="32" x2="305" y2="205" stroke="#E5DDD0" stroke-width="1"/>
+        <line x1="515" y1="32" x2="515" y2="205" stroke="#E5DDD0" stroke-width="1"/>
+
+        <rect x="115" y="49" width="190" height="22" fill="#C75B39"/>
+        <text x="109" y="65" font-size="14" fill="#2B2B2B" text-anchor="end">$483.0B<tspan fill="#6E675C" font-size="12"> +4.4%</tspan></text>
+        <text x="410" y="65" font-size="14" fill="#2B2B2B" text-anchor="middle">US mass, non-club</text>
+        <text x="521" y="65" font-size="13" fill="#6E675C" text-anchor="start">no presence</text>
+
+        <rect x="268.4" y="89" width="36.6" height="22" fill="#C75B39"/>
+        <text x="262.4" y="105" font-size="14" fill="#2B2B2B" text-anchor="end">$93.0B<tspan fill="#6E675C" font-size="12"> +3.1%</tspan></text>
+        <text x="410" y="105" font-size="14" fill="#2B2B2B" text-anchor="middle">US warehouse club</text>
+        <rect x="515" y="89" width="78.7" height="22" fill="#3C6E8F"/>
+        <text x="599.7" y="105" font-size="14" fill="#2B2B2B" text-anchor="start">$200.0B<tspan fill="#6E675C" font-size="12"> +8.6%</tspan></text>
+
+        <rect x="295.7" y="129" width="9.3" height="22" fill="#C75B39"/>
+        <text x="289.7" y="145" font-size="14" fill="#2B2B2B" text-anchor="end">$23.7B<tspan fill="#6E675C" font-size="12"> ND</tspan></text>
+        <text x="410" y="145" font-size="14" fill="#2B2B2B" text-anchor="middle">Canada</text>
+        <rect x="515" y="129" width="14.5" height="22" fill="#3C6E8F"/>
+        <text x="535.5" y="145" font-size="14" fill="#2B2B2B" text-anchor="start">$36.9B<tspan fill="#6E675C" font-size="12"> +5.9%</tspan></text>
+
+        <rect x="263.0" y="169" width="42.0" height="22" fill="#C75B39"/>
+        <text x="257.0" y="185" font-size="14" fill="#2B2B2B" text-anchor="end">$106.7B<tspan fill="#6E675C" font-size="12"> +7.0%</tspan></text>
+        <text x="410" y="181" font-size="14" fill="#2B2B2B" text-anchor="middle">All other</text>
+        <text x="410" y="196" font-size="14" fill="#2B2B2B" text-anchor="middle">international</text>
+        <rect x="515" y="169" width="15.1" height="22" fill="#3C6E8F"/>
+        <text x="536.1" y="185" font-size="14" fill="#2B2B2B" text-anchor="start">$38.3B<tspan fill="#6E675C" font-size="12"> +8.0%</tspan></text>
+
+        <text x="10" y="228" font-size="13" fill="#6E675C">Bars share one scale. Growth is latest full fiscal year over prior.</text>
+      </svg>
+      <div class="cap">Walmart figures are FY2026 segment net sales (FY2026 10-K); Walmart Canada is a country disclosure inside the International segment and its year-over-year growth is not separately published, hence ND. "All other international" is Walmart International less Canada, and includes Flipkart and PhonePe, which are not retail. Costco figures are FY2025 segment total revenue, which includes membership fees (FY2025 10-K); Costco's Other International includes Mexico. Costco's FY2025 growth rates are clean 52-week comparisons; its FY2024 rates are not, because FY2023 was 53 weeks.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">Walmart revenue</th><th class="num ca">Growth</th><th class="num cb">Costco revenue</th><th class="num cb">Growth</th><th>Margin signal and leader</th></tr>
+      <tr><td>US mass, non-club</td><td class="num ca">$483.0B (68.4%)</td><td class="num ca">+4.4%</td><td class="num cb">none</td><td class="num cb">ND</td><td>Walmart, 5.21% segment operating margin, uncontested by Costco</td></tr>
+      <tr><td>US warehouse club</td><td class="num ca">$93.0B (13.2%)</td><td class="num ca">+3.1%</td><td class="num cb">$200.0B (72.7%)</td><td class="num cb">+8.6%</td><td>Costco, 3.44% vs Sam's 2.63%, on 2.15x the revenue</td></tr>
+      <tr><td>Canada</td><td class="num ca">$23.7B</td><td class="num ca">ND</td><td class="num cb">$36.9B (13.4%)</td><td class="num cb">+5.9%</td><td>Costco, 5.01%, the highest-margin cell in either company</td></tr>
+      <tr><td>All other international</td><td class="num ca">$106.7B</td><td class="num ca">+7.0%</td><td class="num cb">$38.3B (13.9%)</td><td class="num cb">+8.0%</td><td>Costco, margin rising 3.91% to 4.33% over three years while Walmart International operating income fell 7.2%</td></tr>
+      <tr><td>Advertising and marketplace</td><td class="num ca">~$6.4B ads</td><td class="num ca">+46%</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Walmart, uncontested; Costco discloses no retail-media revenue anywhere</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Costco leads three of the four merchandise cells on both growth and margin, and loses only the one cell it does not compete in. <b>Implication:</b> Walmart's consolidated margin advantage is carried entirely by a single US cell that is growing 4.4% with a near-flat store, so the comparison is not "big low-margin retailer versus small high-margin retailer" but "one profitable cell versus a system of them." <span class="kpi">KPI: Costco Other International operating margin, above 4.5% by the FY2027 10-K (Oct 2027), confirms the international engine is compounding rather than diluting.</span> Source: Walmart FY2026 10-K segment note; Costco FY2025 10-K segment note.</div>
+    <h3>Segment growth engines</h3>
+    <p>Walmart US runs on ecommerce and the businesses ecommerce creates. Roughly 4.3 of the segment's 4.6-point FY2026 comp came from ecommerce, marketplace sales grew 52% in Q2 FY2027 with about half flowing through Walmart Fulfillment Services, up around 400 basis points year over year, and advertising off that traffic grew 46% globally. Unit growth contributes essentially nothing, five net stores in FY2026 against a plan of about 20 new locations and 650-plus remodels for calendar 2026. Part of the advertising growth is acquired rather than organic: Vizio closed in December 2024 and is explicitly inside the FY2026 number, and Walmart does not disclose the organic-only rate.</p>
+    <p>Sam's Club is the most instructive cell in Walmart's portfolio because it is the same architecture as Costco and shows what that architecture does at lower volume. Membership income of $2,525M in FY2026 exceeded the segment's entire $2,442M of operating income, meaning the merchandise operation loses money standalone. Sam's is buying traffic with price, transactions up 7.0% against average ticket down 2.5% in Q2 FY2027, and raised its fees to $60 and $120 effective 1 May 2026, worth more than $200M a year and cutting the base-tier gap to Costco from $15 to $5.</p>
+    <p>Costco's growth is 100% organic across the window, with no acquisitions disclosed in three years of filings. Frequency was the historic engine, plus 5% in FY2025, but it has decelerated to plus 2.4% worldwide by Q3 FY2026 while average ticket does more of the work. New warehouses contribute roughly 1.8 points a year, visible in the gap between FY2026 net sales growth of 10.2% and comps of 8.4%. The membership fee increase effective 1 September 2024 accounted for about 40% of FY2025 membership income growth and had faded to a little more than a quarter of it by Q3 FY2026.</p>
+    <div class="iik"><b>Insight:</b> Sam's Club, the one Walmart cell built on Costco's architecture, generates 103% of its operating income from fees and has to discount to hold traffic, while Costco generates 51% from fees and grows traffic and ticket together. <b>Implication:</b> The club model is not automatically good; it works at Costco's volume per box, $295M against Sam's $155M, and not obviously below it. <span class="kpi">KPI: Sam's Club US average ticket back above zero by Q4 FY2027 (reported Feb 2027) would show the traffic was bought once, not structurally.</span> Source: Walmart FY2026 10-K and Q2 FY2027 release; Costco FY2025 10-K.</div>
+    <h3>Price control and route to market</h3>
+    <p>Costco controls net price to an unusual degree because it sells fewer than 4,000 active items per warehouse, a figure it discloses in the 10-K, and because Kirkland Signature is a large enough share of sales that launching one can remove a national brand's only slot rather than merely take shelf space. Costco's own pricing lever is the membership fee, and it has been exercised: Gold Star went from $60 to $65 and Executive from $120 to $130 effective 1 September 2024, the first increase since June 2017, across roughly 52 million memberships. US and Canada renewal fell only from 92.9% to 92.2% over the following 21 months, and management attributes that slide to a mix shift toward online sign-ups rather than churn, with membership income excluding the increase still compounding 7.0% to 7.5% every quarter.</p>
+    <p>Walmart's price instrument points the other way. It counted more than 11,000 rollbacks in Q2 FY2027 against 7,200 at the end of Q1, and told investors its "price gaps to conventional grocers here in the US are strong, and they continue to widen." Walmart does not disclose an item count, a private-brand penetration rate, a Walmart+ member count, or a Sam's Club renewal rate, so four of the metrics that would let a reader check its pricing power against Costco's simply do not exist publicly. The widely cited Costco maximum-markup policy of 14% on branded goods and 15% on Kirkland returns zero hits in a full-text search of Costco's 10-K filings; it is management lore, not disclosure, and the auditable proxy is the gross margin itself at 10.6% to 11.1% over three years.</p>
+    <div class="iik"><b>Insight:</b> Costco has demonstrated price elasticity near zero on the only price it controls, while Walmart has spent its pricing power downward, including redeploying roughly $2.9B of tariff refunds into rollbacks rather than into margin. <b>Implication:</b> Costco holds an untaken earnings lever of known effectiveness; Walmart holds a share-taking weapon that consumes the same cash. <span class="kpi">KPI: a Costco fee increase announced by September 2027, on the historic five-to-seven-year cadence, would add near-100%-margin revenue with a documented renewal cost of under 100 basis points.</span> Source: Costco FY2024 and FY2025 10-Ks, quarterly calls; Walmart Q2 FY2027 call.</div>
+    <h3>Supply resilience</h3>
+    <table>
+      <tr><th>Dimension</th><th class="ca">Walmart</th><th class="cb">Costco</th></tr>
+      <tr><td>Import exposure</td><td class="ca">"More than two-thirds of what we sell in the US is made, assembled or grown here", so roughly one third imported; largest import markets China, Mexico, Canada, Vietnam, India (McMillon and Rainey, Q1 FY2026 call)</td><td class="cb">"About a third of our sales in the US are imported from other countries, and less than half of those are items coming from China, Mexico and Canada" (Vachris, Q2 FY2025 call)</td></tr>
+      <tr><td>Tariff response</td><td class="ca">Warned publicly it would raise prices in May 2025, then received roughly $2.9B of refunds in Q2 FY2027, worth about 750 bps of that quarter's operating-income growth, and redeployed them into rollbacks</td><td class="cb">Re-routed tariffed goods to non-US markets inside one quarter using "limited SKU count and global footprint", consolidated global buying to save 30% to 40% on some items, held banana and pineapple prices while accepting margin impact</td></tr>
+      <tr><td>Single-source risk</td><td class="ca">No named supplier or single-source dependence disclosed; risk factor is generic</td><td class="cb">"We do not obtain a significant portion of merchandise from any one supplier", verbatim in both FY2024 and FY2025 10-Ks</td></tr>
+      <tr><td>Vertical integration</td><td class="ca">Olathe, Kansas case-ready beef facility opened 27 June 2025, its first fully owned; equity stake in Sustainable Beef LLC since 2022</td><td class="cb">Lincoln Premium Poultry, Fremont, Nebraska, roughly $450M, built specifically to defend the rotisserie chicken price (trade press, WATTAgNet; not a filing disclosure)</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Import exposure is near-identical at roughly one third of US sales, but the response capability is not: Costco can re-source an entire item globally in one decision at 4,000 SKUs, while Walmart's breadth makes item-level re-sourcing far slower and it instead absorbed the shock on the shelf until refunds arrived. <b>Implication:</b> In the next trade shock the same asymmetry recurs, and Walmart's mitigation depends on a legal outcome while Costco's depends on its own buying. <span class="kpi">KPI: Costco gross margin on net sales holding above 11.0% through FY2027 (10-K, Oct 2027) would confirm the re-sourcing worked without a price-hold cost.</span> Source: both companies' FY filings and earnings calls, 2025 and 2026.</div>
+    <h3>Competitive context and risks by segment</h3>
+    <p>The duel happens inside a market that is moving. On Numerator panel data, US grocery share in 2026 reads Walmart 19.9%, Kroger 8.3%, Costco 8.2%, Albertsons 4.5%, Publix 4.1%; over three years Costco has gone 7.6% to 8.2% while Walmart has gone 20.4% to 19.9% and Kroger and Albertsons have both contracted. On CPG share the fastest gainer is neither of these two: Amazon and Whole Foods together went 6.4% to 8.0%, a full point in a year, which is the shared threat. Inside the club channel Costco is roughly two thirds of US revenue against Sam's roughly 30% and BJ's roughly 7%, and BJ's comps of plus 3.1% against Costco's plus 6.6% adjusted say Costco is taking share within the channel, not riding it.</p>
+    <p>The risk that most damages each top cell is different in kind. For Walmart US it is comp quality: with transactions at plus 1.5% and the store comp near flat, the segment's 5.21% margin is being funded by advertising rather than merchandise, so an advertising deceleration removes the offset before store traffic can replace it. For Sam's Club it is that the merchandise business does not earn money without fees, into a second fee increase in four years with renewal undisclosed. For Walmart International it is margin, not growth: operating income fell 7.2% on 7.0% sales growth, and an IPO of Flipkart or PhonePe converts a consolidated growth engine into a mark. For Costco US it is frequency, the variable the entire model rests on, decelerating from plus 5% to plus 2.4% with gasoline flattering the comp. For Costco's membership line it is a fee not raised since September 2024 whose contribution to growth has already faded from 40% to a quarter.</p>
+    <div class="pull">On cells alone Costco has the higher-probability path: it leads three of four merchandise cells on growth and margin, it is the only one of the two taking measured US grocery share, and its growth still comes from opening boxes rather than from a channel shift that is nearly finished.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">Costco is financed by the customer's access fee. Walmart is financed by the shelf, and lately by the advertisement next to it.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">Costco, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:2%">Costco, clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:26%">Costco, narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Moats and suppliers are narrow because Walmart's density and purchasing scale are genuine; customers is clear because Costco publishes a 92.2% renewal rate and Walmart publishes no membership count at all.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Walmart</h3><p><b>Proximity, durability high.</b> Approximately 90% of the US population lives within 10 miles of a Walmart store or club, and same-day delivery reaches 95% of US households. A competitor cannot buy 4,611 US stores and 192 domestic distribution centers; it would need decades of entitlement and construction.</p><p><b>The data and advertising flywheel, durability medium.</b> Roughly $6.4B of global advertising, up 46%, marketplace up 52% with about half through Walmart Fulfillment Services, plus the Scintilla data product. Management says advertising and membership together are nearly a third of operating income. Medium rather than high because Amazon already runs the same flywheel at far greater scale, and because advertising revenue is bought with capital, not earned with time.</p></div>
+      <div class="col b"><h3>Costco</h3><p><b>The membership fee, durability high.</b> $5,323M in FY2025, 51.3% of operating income, from 81.0M paid members and 145.2M cardholders, with 38.7M executive members producing 73.6% of worldwide net sales. Renewal is 92.2% in the US and Canada. A rival cannot replicate this without first earning a decade of price trust.</p><p><b>SKU compression, durability high.</b> Fewer than 4,000 active items per warehouse, disclosed in the 10-K, producing $295M of sales per box against Sam's $155M and 13.05x inventory turns against Walmart's 9.29x. This is not money-buyable; it is a format choice that took thirty years to make profitable and that no broad-line retailer can adopt without abandoning its own assortment.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Both moats are real, but Walmart's strongest one, proximity, is a defensive asset that no longer produces growth, while Costco's strongest one, the fee, is both a defense and an untaken price lever. <b>Implication:</b> Over a decade the asset that can still be repriced is worth more than the asset that can only be defended. <span class="kpi">KPI: Costco paid members above 90M by the FY2028 10-K (from 82.9M at Q3 FY2026) would confirm the fee base is still widening, not just repricing.</span> Source: Costco FY2025 10-K and Q3 FY2026 call; Walmart FY2026 10-K and ESG disclosure.</div>
+    <h3>Customers: who controls net price and access</h3>
+    <p>Neither company discloses a customer above 10% of revenue, which is to say neither has one; in both cases the concentrated party is the buyer, not the seller. The difference is what each can prove about its hold on that buyer. Costco publishes a renewal rate every quarter, 92.2% in the US and Canada and 89.7% worldwide at Q3 FY2026, and can point to an 8.3% fee increase in September 2024 that cost it roughly 70 basis points of renewal over 21 months, most of which management attributes to a mix shift toward online sign-ups. Walmart publishes no Walmart+ member count, no Sam's Club member count and no Sam's renewal rate; the only public numbers are third-party estimates such as CIRP's roughly 33 million Walmart+ shoppers as of the July 2026 quarter, which CIRP itself cautions are users rather than paid subscribers.</p>
+    <p>The two also hold opposite public commitments. Costco has kept the $1.50 hot dog and soda combination unchanged since 1985, reaffirmed it publicly at the very moment it raised the membership fee, and brought hot-dog production in-house to make the price work; the roughly $5 rotisserie chicken is backed by an owned Nebraska poultry complex. Walmart has no comparable permanent price commitment. Its signal is the rollback count and the price gap, both of which float. The contested front is the same household: Walmart's chief executive has twice quantified that the majority, and at one point 75%, of its market-share growth came from households earning more than $100,000, which is precisely the Numerator-measured Costco core above $125,000.</p>
+    <div class="iik"><b>Insight:</b> Costco can demonstrate its pricing power with a published number, and Walmart cannot, because four of the metrics that would show it, item count, private-brand penetration, Walmart+ members and Sam's renewal, are not disclosed. <b>Implication:</b> An investor underwriting Walmart's membership flywheel is underwriting management commentary; an investor underwriting Costco's is underwriting a quarterly disclosure. <span class="kpi">KPI: Walmart disclosing a Walmart+ member count or a Sam's Club renewal rate, at any point through FY2028, would close the evidence gap and is worth more to the Walmart case than another quarter of growth commentary.</span> Source: both companies' 10-K filings and quarterly calls; CIRP, 2026.</div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>The clean natural experiment is the 2021 to 2023 inflation episode. Costco's gross margin fell from 11.13% in FY2021 to 10.48% in FY2022, 65 basis points surrendered to hold shelf prices, and then recovered to 11.12% by FY2025. Walmart's FY2023 gross profit rate fell 83 basis points, but the company attributed that to "markdowns and mix of sales", which is a different failure: it had bought wrong and cleared inventory, a breadth problem rather than a deliberate price hold. In the 2025 and 2026 tariff episode Costco again went first with its own margin, holding banana and pineapple prices while "accepting that there may be a margin impact", and used its narrow assortment to re-route tariffed goods to non-US markets inside a single quarter. Walmart warned publicly that prices would rise, absorbed the cost until the Supreme Court's February 2026 ruling released refunds, then redeployed roughly $2.9B into 11,000 rollbacks.</p>
+    <p>Private label is the supplier lever in both cases, and it is stronger at Costco for a structural reason. With fewer than 4,000 SKUs, a Kirkland Signature launch removes a national brand's only slot, which makes it a credible item-level threat in every negotiation; management's disclosed positioning is 15% to 20% of value against the national-brand alternative. With well over a hundred thousand items, a Great Value launch takes shelf share but rarely eliminates a brand's presence. Walmart's offsetting lever is different in kind: it can charge the supplier for visibility through Walmart Connect, roughly $6.4B of advertising revenue, and through Scintilla data, which is leverage no supplier faces at Costco.</p>
+    <div class="iik"><b>Insight:</b> Costco's supplier leverage comes from being able to remove a product, Walmart's from being able to sell a product access to its own customers; the first is a threat, the second is a transaction. <b>Implication:</b> In a cost shock the threat works immediately and the transaction does not, which is why Costco's gross margin absorbed inflation by choice and Walmart's absorbed it by markdown. <span class="kpi">KPI: Costco gross margin on net sales through the next input-cost spike; a decline of 50 bps or more with prices held is the moat working, a decline with prices also rising is the moat failing.</span> Source: Costco FY2021 to FY2025 filings and calls; Walmart FY2023 and FY2027 disclosures.</div>
+    <h3>The price and power triangle: the top three cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome, share and margin</th><th>Confirming KPI</th></tr>
+      <tr><td>US warehouse club</td><td>Both direct, no intermediaries; Costco adds 747 gas stations that force the trip</td><td>Costco below Sam's on like items; Sam's has just cut the membership gap from $15 to $5</td><td>Costco higher: 4,000 SKUs allow one-decision re-sourcing</td><td>Costco share up, margin up (3.05% to 3.44% over three years); Sam's share flat, margin flat at 2.6% while discounting</td><td>Sam's US average ticket back above zero</td></tr>
+      <tr><td>US mass and grocery</td><td>Walmart direct with 90% of the US within 10 miles; Costco absent</td><td>Walmart below conventional grocers and widening the gap with 11,000 rollbacks</td><td>Walmart lower: breadth slows item-level re-sourcing</td><td>Walmart share down 0.5 pt over two years but dollars up 8.1%; the donor is Kroger and Albertsons, the taker is Amazon</td><td>Walmart US comp transactions above +2.0%</td></tr>
+      <tr><td>Canada</td><td>Costco 110 warehouses at high density; Walmart 404 units at low density</td><td>Costco parity on price with a higher-income member base</td><td>Both stable; Canada is a mature market for both</td><td>Costco margin up and highest anywhere at 5.01%; Walmart Canada revenue and margin not separately disclosed, ND</td><td>Costco Canada adjusted comp above +5%</td></tr>
+    </table>
+    <h3>The causal gap</h3>
+    <p><b>Cause one, the income architecture. Impact: major, and Walmart is closing it.</b> Costco captures roughly 13.1% of net sales in total, 11.12% gross margin plus 1.97% in fees, against Walmart's roughly 25.2%. Because the fee is 51.3% of operating income, Costco is structurally indifferent to merchandise markup and can credibly promise to be "the last one to go up and always the first one to go down." Walmart cannot make that promise on merchandise, so it has built a second income layer, advertising plus membership at nearly a third of operating income, that performs the same function. The tell that Walmart understands this: Sam's Club US membership income of $2,525M exceeded the segment's entire $2,442M operating income in FY2026. Walmart is converging on Costco's architecture from the opposite direction, and how fast it gets there is the single most important open question in this duel.</p>
+    <p><b>Cause two, SKU compression. Impact: major, and not closable.</b> Fewer than 4,000 SKUs produces $295M of sales per warehouse, which produces 13.05x inventory turns, which means goods are frequently sold before suppliers are paid, which makes an 11% gross margin profitable, which produces the lowest price, which justifies the fee, which produces 92% renewal, which produces the volume. Walmart's breadth is its own moat, but breadth costs turns, and 9.3x turns cannot support an 11% gross margin. Closing this would require Walmart to abandon the assortment that is its reason for existing, so the realistic answer is that it never closes.</p>
+    <p><b>Cause three, labor. Impact: major, and it runs opposite to intuition.</b> Costco pays an average US wage of $32.00 an hour with roughly 94% retention among employees of a year or more, and runs SG&amp;A at 9.25% of net sales. Walmart pays $18.25 and runs operating expenses at 20.94%. The variable is not wage discipline, it is labor hours per dollar of sales, which is set by format. Neither can adopt the other's labor model without adopting the other's format, which is why this gap has not closed in thirty years. Walmart's actual answer is not to become Costco but to make the labor line matter less: automated freight now reaches roughly 67% of US stores, and the three fastest-growing businesses, advertising, marketplace and fulfillment services, carry almost no incremental labor.</p>
+    <div class="pull">Costco holds the stronger power position because the one price it fully controls has demonstrated near-zero elasticity, and because at 4,000 items its private label is a threat to remove a supplier rather than merely to crowd one.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">Costco gives away 13.2 points of gross margin and takes back 11.5 points of operating expense. That single trade is the whole business.</div>
+    <p>Both companies present costs by function, so no by-nature reconstruction is needed and the mapping is close to clean: Walmart's "cost of sales" against Costco's "merchandise costs", and Walmart's "operating, selling, general and administrative expenses" against Costco's "selling, general and administrative". Two adjustments matter. First, gross margin is stated on net sales only, excluding membership and other income from both numerator and denominator, because Costco's fees are close to 100% incremental margin with no merchandise cost behind them; folding them in inflates Costco's apparent merchandising margin by 1.7 points against 0.7 point for Walmart, which is the classic way this particular comparison lies. Second, neither company reports a research and development caption, so that ratio is ND for both; technology spend sits inside operating expense or is capitalized. Walmart's FY2026 tax reconciliation does carry a research and development credit line, confirming the activity exists without ever appearing as an expense.</p>
+    <p>Windows: Walmart FY2024 to FY2026, Costco FY2023 to FY2025, offset by five months, with Costco's FY2023 a 53-week year. Costco's FY2026 income statement had not been filed as of 15 September 2026, so its full-year operating figures are not in these averages; its Q3 FY2026 ratios, gross margin 11.0% on net sales, SG&amp;A 9.0% and EBIT 4.0% of total revenue, say the structure is holding and still improving.</p>
+    <h3>Three years, five ratios</h3>
+    <table>
+      <tr><th>% of net sales, 3-year average</th><th class="num ca">Walmart</th><th class="num cb">Costco</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>Cost of goods sold</td><td class="num ca">76.0</td><td class="num cb">89.1</td><td class="num">-13.1</td><td>Costco caps markup by policy and practice; Walmart prices to a competitive gap, not to a markup ceiling</td></tr>
+      <tr><td>Research and development</td><td class="num ca">ND</td><td class="num cb">ND</td><td class="num">ND</td><td>Neither reports an R&amp;D caption; technology spend is inside operating expense or capitalized</td></tr>
+      <tr><td>SG&amp;A and operating expense</td><td class="num ca">20.7</td><td class="num cb">9.2</td><td class="num">+11.5</td><td>4,000 SKUs, pallet merchandising, no advertising budget, $295M of sales per box, and 2.4x the revenue per employee</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">24.0</td><td class="num cb">10.9</td><td class="num">+13.1</td><td>The merchandising gap; Costco sells goods close to cost by design because the fee carries the profit</td></tr>
+      <tr><td>EBIT margin (% of total revenue)</td><td class="num ca">4.2</td><td class="num cb">3.6</td><td class="num">+0.6</td><td>Where the 13-point gap ends up: almost entirely spent, leaving Walmart ahead by six tenths of a point</td></tr>
+    </table>
+    <div class="chartbox">
+      <svg viewBox="0 0 820 285" role="img" aria-label="Grouped bars of the four measurable cost ratios, three-year averages">
+        <line x1="60" y1="240" x2="790" y2="240" stroke="#E5DDD0" stroke-width="1"/>
+        <text x="10" y="18" font-size="14" fill="#6E675C">Three-year averages, % of net sales (EBIT on total revenue)</text>
+        <rect x="102" y="88" width="55" height="152" fill="#C75B39"/>
+        <rect x="165" y="61.8" width="55" height="178.2" fill="#3C6E8F"/>
+        <text x="129.5" y="80" font-size="14" fill="#C75B39" font-weight="bold" text-anchor="middle">76.0</text>
+        <text x="192.5" y="54" font-size="14" fill="#3C6E8F" font-weight="bold" text-anchor="middle">89.1</text>
+        <text x="161" y="262" font-size="14" fill="#2B2B2B" text-anchor="middle">Cost of goods sold</text>
+        <rect x="292" y="198.6" width="55" height="41.4" fill="#C75B39"/>
+        <rect x="355" y="221.6" width="55" height="18.4" fill="#3C6E8F"/>
+        <text x="319.5" y="190" font-size="14" fill="#C75B39" font-weight="bold" text-anchor="middle">20.7</text>
+        <text x="382.5" y="213" font-size="14" fill="#3C6E8F" font-weight="bold" text-anchor="middle">9.2</text>
+        <text x="351" y="262" font-size="14" fill="#2B2B2B" text-anchor="middle">SG&amp;A</text>
+        <rect x="482" y="192" width="55" height="48" fill="#C75B39"/>
+        <rect x="545" y="218.2" width="55" height="21.8" fill="#3C6E8F"/>
+        <text x="509.5" y="184" font-size="14" fill="#C75B39" font-weight="bold" text-anchor="middle">24.0</text>
+        <text x="572.5" y="210" font-size="14" fill="#3C6E8F" font-weight="bold" text-anchor="middle">10.9</text>
+        <text x="541" y="262" font-size="14" fill="#2B2B2B" text-anchor="middle">Gross margin</text>
+        <rect x="672" y="231.6" width="55" height="8.4" fill="#C75B39"/>
+        <rect x="735" y="232.8" width="55" height="7.2" fill="#3C6E8F"/>
+        <text x="699.5" y="224" font-size="14" fill="#C75B39" font-weight="bold" text-anchor="middle">4.2</text>
+        <text x="762.5" y="224" font-size="14" fill="#3C6E8F" font-weight="bold" text-anchor="middle">3.6</text>
+        <text x="731" y="262" font-size="14" fill="#2B2B2B" text-anchor="middle">EBIT margin</text>
+        <text x="60" y="40" font-size="14" fill="#C75B39" font-weight="bold">Walmart</text>
+        <text x="140" y="40" font-size="14" fill="#3C6E8F" font-weight="bold">Costco</text>
+        <text x="10" y="280" font-size="13" fill="#6E675C">R&amp;D is ND for both companies and is not plotted: neither reports an R&amp;D expense caption.</text>
+      </svg>
+      <div class="cap">Computed from Walmart's FY2024 to FY2026 and Costco's FY2023 to FY2025 reported income statements. Costco's FY2023 was a 53-week year; ratios are unaffected by week count because both numerator and denominator scale together.</div>
+    </div>
+    <h3>The wider engine, same three years</h3>
+    <table>
+      <tr><th>Metric, 3-year average</th><th class="num ca">Walmart</th><th class="num cb">Costco</th><th>Reading</th></tr>
+      <tr><td>Inventory turns</td><td class="num ca">9.1x</td><td class="num cb">12.7x</td><td>Costco holds 28.9 days of inventory against Walmart's 40.2, and frequently sells goods before paying for them</td></tr>
+      <tr><td>Return on equity</td><td class="num ca">21.5%</td><td class="num cb">29.5%</td><td>Costco earns more on less capital despite one third of Walmart's gross margin</td></tr>
+      <tr><td>Capital expenditure, % of revenue</td><td class="num ca">3.5%</td><td class="num cb">1.9%</td><td>Walmart funds automation and 650-plus remodels; its FY2027 guide has since risen to about 4.0%</td></tr>
+      <tr><td>Revenue per employee</td><td class="num ca">$324,000</td><td class="num cb">$779,000</td><td>2.4x, while Costco pays $32.00 an hour against Walmart's $18.25</td></tr>
+      <tr><td>Revenue per store or warehouse</td><td class="num ca">$63.1M</td><td class="num cb">$289.5M</td><td>Costco does 4.6x the volume per box, and 1.9x Sam's Club specifically</td></tr>
+      <tr><td>Membership as % of operating income</td><td class="num ca">21.6% (all membership and other income); 8.0% for Sam's alone</td><td class="num cb">53.2% (pure fees)</td><td>Costco's profit is the subscription; Walmart's is still the merchandise, but less so every year</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Costco pays 75% more per hour and spends less than half as much on operating expense, so the cost advantage is not wage discipline but labor hours per dollar of sales. <b>Implication:</b> The gap is a property of the format, not of management effort, which means neither company can borrow the other's cost structure without borrowing its store. <span class="kpi">KPI: Costco SG&amp;A as a percentage of net sales staying below 9.5% through FY2027 (10-K, Oct 2027) while average hourly wage rises would confirm the productivity, not the payroll, is doing the work.</span> Source: both companies' FY filings, computed.</div>
+    <h3>The structural gap</h3>
+    <p>The most persistent difference is operating expense: 20.7% of net sales against 9.2%, present in all three years, with the smallest annual variance of any ratio in the table. It is not a wage gap, because Costco pays $32.00 an hour against Walmart's $18.25 and still spends less than half. It is labor hours and fixed cost per dollar of sales, and the cause sits upstream in Step 1: fewer than 4,000 items, pallet merchandising, no advertising budget and $295M of sales per warehouse mean each Costco hour touches roughly 2.4 times more revenue. The two ratios are one trade, not two facts. Costco surrenders 13.1 points of gross margin and recovers 11.5 points of operating expense, which is why a merchandising gap that looks decisive collapses to a six-tenths-of-a-point EBIT gap.</p>
+    <p>The cost engine confirms the power map rather than contradicting it, which matters because it is the check that would have exposed a hollow moat story. A company earning 53% of its operating income from a fee does not need merchandise markup, so Costco's very low gross margin is the moat working, not the moat failing. Strip the fees out entirely and Costco's merchandise operation earned roughly 1.9% EBIT on net sales in FY2025 against Walmart's roughly 4.2%: Costco is a subscription business wearing a retailer's clothes. Checked the other way, Walmart's gross margin rose 53 basis points in FY2025 and 13 more in FY2026 while its EBIT margin stayed flat at 4.17%, 4.31%, 4.18%, which says the merchandising gain is being spent on operating expense, price and capital rather than banked, consistent with 11,000 rollbacks and capital expenditure guided up to about 4.0% of sales. Costco's EBIT margin over the same span went 3.35%, 3.65%, 3.77% and 4.0% in the most recent quarter, so the two are converging, from the direction that favors Costco.</p>
+    <div class="pull">Costco wins the cost engine decisively and structurally, on the one ratio that cannot be copied without changing format, and the gap has been stable for three decades.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>Costco's frequency engine stalls.</b> Worldwide comparable traffic has gone from plus 5.2% to plus 2.4% over four quarters while average ticket and gasoline, roughly 10% of net sales, do the work. Costco's 3.44% US margin and 92.2% renewal are both downstream of members coming more often; if frequency keeps falling, the fee has to be justified by price alone at the exact moment Sam's Club has cut the base-tier gap from $15 to $5. <span style="color:var(--good);font-weight:700;">Early warning: worldwide comparable traffic below +1.5% for two consecutive quarters, reported on Costco's quarterly calls.</span></li>
+      <li><b>Walmart's second income layer proves both faster and less cyclical than assumed.</b> Advertising at roughly $6.4B is still only about 0.9% of total revenue, far below Amazon's share of its own retail revenue, so the runway is real. If advertising holds above 35% growth through a soft consumer year, Walmart's profit growth decouples from its comp, the margin lens starts to outweigh the cost lens, and the case that Walmart is simply reaching Costco's income architecture by a different route becomes the stronger reading. <span style="color:var(--good);font-weight:700;">Early warning: two consecutive quarters of global advertising growth above 35% with Walmart US comp below 3%, in the quarterly releases.</span></li>
+      <li><b>Costco's untaken fee increase never arrives, or arrives and breaks.</b> More than half of operating income is a fee raised twice in nine years, and the September 2024 increase has already faded from about 40% to a little more than a quarter of membership income growth. If no increase is announced by 2028 the membership line converts to pure member-count growth; if one is announced and renewal drops materially, the elasticity assumption that underpins this entire verdict is wrong. <span style="color:var(--good);font-weight:700;">Early warning: US and Canada renewal below 92.0% within four quarters of any announced increase, or no increase announced by the FY2028 10-K.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>Costco US and Canada membership renewal rate</td><td>Below 92.0% for two consecutive quarters</td><td>September 2027</td><td class="ca">Walmart</td><td>Costco quarterly earnings call</td></tr>
+    <tr><td>Walmart global advertising growth</td><td>Below 25% for two consecutive quarters</td><td>August 2027</td><td class="cb">Costco</td><td>Walmart quarterly earnings release and call</td></tr>
+    <tr><td>Walmart US comparable transactions, ex-fuel</td><td>Below +1.0% in any quarter</td><td>February 2027</td><td class="cb">Costco</td><td>Walmart quarterly earnings release</td></tr>
+    <tr><td>Costco net new warehouses opened</td><td>30 or more in FY2027; a third consecutive cut below 28 reads the other way</td><td>September 2027</td><td class="cb">Costco if met, Walmart if cut again</td><td>Costco Q4 earnings call and 10-K</td></tr>
+    <tr><td>Sam's Club US average ticket</td><td>Back above zero</td><td>February 2027</td><td class="ca">Walmart</td><td>Walmart quarterly earnings release</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Walmart gets the deep-dive hours first, precisely because it is the weaker business on this evidence. Costco's model has three moving parts you can track in one page of a quarterly release, renewal, traffic and the fee cadence, while Walmart has a chief executive and three segment heads all new since 1 February 2026, a profit mix a third of the way through a transformation from merchandise to advertising, and a non-repeating $2.9B tariff refund sitting inside a raised guide. The variance around Walmart is far wider, so the marginal research hour buys more there. The next piece of work is a business-overview run on Walmart, aimed squarely at whether advertising, marketplace and membership can carry operating-income growth once the tariff refund laps.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> This run compares two businesses through three lenses, where the money comes from by product and geography, who holds power over customers and suppliers, and who runs the leaner cost engine, then converges on a prioritization verdict. Cells are filtered 80/20 so that only the ones explaining roughly four fifths of the combined economics are analyzed; segment labels, regions and currency are normalized before comparison, and the places where they cannot be reconciled are stated in the Growth Map tab rather than smoothed over. Every figure carries a source, or the tag ND where the data does not exist publicly, or "(inferred)" where a conclusion was reasoned rather than reported. This is a business-strength comparison, not a valuation: it contains no multiple, no fair value, no target and no view on either share price, and says only which business is stronger on this evidence and what would change that.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Walmart Inc., Form 10-K for the fiscal year ended 31 January 2026, filed 13 March 2026 (segment note, geography and category detail, unit counts, risk factors)</li>
+      <li>Walmart Inc., Forms 10-K for fiscal years ended 31 January 2025 and 31 January 2024</li>
+      <li>Walmart Inc., Q4 FY2026 earnings release and call, 19 February 2026; Q1 FY2027 release, 21 May 2026; Q2 FY2027 release and call, 20 August 2026</li>
+      <li>Walmart Inc., Unit Counts and Square Footage disclosure, FY2026 Q4</li>
+      <li>Walmart Inc., Sam's Club Investment Community Meeting, 11 April 2025</li>
+      <li>Costco Wholesale Corporation, Form 10-K for the fiscal year ended 31 August 2025, filed October 2025 (segment note, merchandise categories, membership data, SKU disclosure, wage and retention data)</li>
+      <li>Costco Wholesale Corporation, Forms 10-K for fiscal years ended 1 September 2024 and 3 September 2023</li>
+      <li>Costco Wholesale Corporation, Q4 FY2025 release and call, 25 September 2025; Q1 FY2026 call, 11 December 2025; Q2 FY2026 release and call, 5 March 2026; Q3 FY2026 release and call, 28 May 2026; August 2026 sales release, 2 September 2026</li>
+      <li>Numerator US grocery and CPG share series, via Supermarket News and Grocery Dive, 2026</li>
+      <li>Placer.ai, wholesale-club visit data, Q1 2025 and March 2026</li>
+      <li>Marketplace Pulse, Walmart marketplace seller and GMV estimates, 4 June 2026</li>
+      <li>Consumer Intelligence Research Partners, Walmart+ membership estimate, July 2026 quarter</li>
+      <li>BJ's Wholesale Club Holdings, FY2025 full-year results and Q2 FY2026 results, for club-channel context</li>
+      <li>Walmart leadership announcements, 14 November 2025 and 16 January 2026; Sam's Club membership fee change effective 1 May 2026; Walmart agreement to acquire Vibe.co, 23 June 2026</li>
+      <li>US Supreme Court ruling on IEEPA tariffs, February 2026, and both companies' subsequent refund disclosures</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
