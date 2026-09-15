@@ -1,6 +1,8 @@
 - [Visa Stock Pressure 2025 2026](https://xk152004.github.io/investechery/stocks/Visa-Stock-Pressure-2025-2026.html)
 - [Visa Mastercard Stablecoins Agentic Commerce](https://xk152004.github.io/investechery/stocks/Visa-Mastercard-Stablecoins-Agentic-Commerce.html)
+- [AXP Business Overview](https://xk152004.github.io/investechery/stocks/AXP-Business-Overview.html)
 - [Berkshire Hathaway Business Overview](https://xk152004.github.io/investechery/stocks/Berkshire-Hathaway-Business-Overview.html)
+- [Peer Duel Costco vs Amazon](https://xk152004.github.io/investechery/stocks/Peer-Duel_Costco-vs-Amazon.html)
 - [Peer Duel Walmart vs Costco](https://xk152004.github.io/investechery/stocks/Peer_Duel_Walmart_vs_Costco.html)
 - [Peer Duel Walmart vs Amazon](https://xk152004.github.io/investechery/stocks/Peer-Duel_Walmart-vs-Amazon.html)
 - [ASML vs KLA Peer Duel](https://xk152004.github.io/investechery/stocks/ASML-vs-KLA-Peer-Duel.html)
