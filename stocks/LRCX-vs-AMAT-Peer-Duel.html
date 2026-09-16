@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lam Research vs Applied Materials: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker">Peer Duel, Compound With AI</div>
+<h1>Lam Research vs Applied Materials: who wins the next decade?</h1>
+<p class="source">Semiconductor wafer fab equipment (WFE). LRCX / AMAT. Run 16 Sep 2026. Built from Lam's FY2021-FY2026 10-Ks, FY2026 earnings call transcripts and September 2026 conference transcripts (Kun's LRCX sources folder), plus Applied's FY2024-FY2025 10-Ks, FY2025-FY2026 earnings releases and prepared remarks (SEC EDGAR, Applied IR). Events swept through 16 Sep 2026; most recent events checked: Lam at Goldman Sachs Communacopia (10 Sep 2026), Applied board appointment (27 Aug 2026) and dividend declaration (10 Sep 2026). Figures in USD as reported; Lam's fiscal year ends in June, Applied's in October (an 8-month offset, flagged wherever it matters). Not a valuation and not a recommendation.</p>
+<div class="chips"><span class="chip a">Lam Research</span><span class="chip b">Applied Materials</span></div>
+
+<div class="verdict-banner">
+<div class="label">The Call</div>
+<div class="verdict">Lam is, narrowly, the stronger business for the next decade; Applied is the sturdier one.</div>
+<div class="why">Chips are being built upward (gate-all-around transistors, 3D DRAM, 500-layer NAND, stacked HBM). That raises the number of etch and deposition steps per wafer, which is Lam's core. Lam's served market is rising from the low-30s to above 36% of WFE, and it keeps 35.3% of sales as EBIT against Applied's 29.6% over the same calendar window.</div>
+</div>
+<div class="reasons">
+<div class="col"><span class="n">1</span><br>Lam's growth comes from rising etch and deposition content per wafer plus a services arm growing +20% a year. Applied's larger foundry/logic systems base grew 3% over FY23-25 (Lam FY2026 10-K; Applied FY2025 10-K).</div>
+<div class="col"><span class="n">2</span><br>Over the same calendar window Lam's EBIT margin is 5.7 points higher: 35.3% (FY26) vs about 29.6% for Applied's twelve months to July 2026, or 31.0% excluding Applied's one-off charges. Lam's gross margin lead is only about 1 point (calc from 10-K and releases).</div>
+<div class="col"><span class="n">3</span><br>The call is narrow because Lam breaks first. Its top four customers were 55% of FY26 revenue, memory was 46% of June-quarter systems revenue, and its margin lead disappeared at the FY24 trough (28.6% vs 28.9%).</div>
+</div>
+
+<div class="duelwrap">
+<div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Lam - narrow</div></div></div>
+<div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Lam - clear at this point in the cycle</div></div></div>
+<div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">Applied breaks last - clear</div></div></div>
+<div class="cap">The three answers, argued below. Left lean favors Lam, right lean favors Applied; marker position shows how decisive.</div>
+</div>
+
+<h2>The Three Answers</h2>
+<div class="answer">
+<div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+<div class="w"><span class="chip a">Lam Research, narrow</span></div>
+<p>Three cells carry the next five years.</p>
+<ul style="margin:6px 0 10px 22px;font-size:18px">
+<li><b>Leading-edge foundry/logic in Taiwan and the US.</b> Lam says each 100k wafer starts of gate-all-around capacity adds $1B to what it can sell, and backside power adds another $1B (Citi, 9 Sep 2026).</li>
+<li><b>DRAM/HBM in Korea, Taiwan and the US.</b> This is the fastest-growing WFE segment into 2027, and Lam is carrying etch and hard-mask wins from logic into it (Q4 FY26 call).</li>
+<li><b>Lam's installed-base services</b> (CSBG: spares, service, upgrades and Reliant mature-node tools). June-quarter revenue was $2.5B, up 43%.</li>
+</ul>
+<p>Applied leads by scale in the first two cells and claims the #1 position in leading-edge logic and DRAM (Q3 FY26 prepared remarks, company claim). But its foundry/logic systems revenue grew only from $13.5B to $13.9B over FY24-25. Lam's served market, meanwhile, is rising faster than it planned at its 2025 Investor Day (Q4 FY26 call). Lam's forward risk is NAND: the $40B upgrade wave finishes by end-2027 and new NAND fabs arrive only from 2H28.</p>
+<div class="chartbox"><svg viewBox="0 0 900 250" role="img" aria-label="Indexed revenue paths">
+<line x1="70" x2="760" y1="185.3" y2="185.3" stroke="#E5DDD0"/><text x="62" y="190.3" text-anchor="end" font-size="14" fill="#6E675C">100</text>
+<line x1="70" x2="760" y1="123.7" y2="123.7" stroke="#E5DDD0"/><text x="62" y="128.7" text-anchor="end" font-size="14" fill="#6E675C">125</text>
+<line x1="70" x2="760" y1="62.0" y2="62.0" stroke="#E5DDD0"/><text x="62" y="67.0" text-anchor="end" font-size="14" fill="#6E675C">150</text>
+<text x="70.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">FY21</text>
+<text x="208.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">FY22</text>
+<text x="346.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">FY23</text>
+<text x="484.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">FY24</text>
+<text x="622.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">FY25</text>
+<text x="760.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">FY26 / TTM Jul-26</text>
+<polyline points="70.0,185.3 208.0,141.4 346.0,138.0 484.0,180.6 622.0,121.2 760.0,40.3" fill="none" stroke="#C75B39" stroke-width="3"/>
+<circle cx="70.0" cy="185.3" r="4" fill="#C75B39"/>
+<circle cx="208.0" cy="141.4" r="4" fill="#C75B39"/>
+<circle cx="346.0" cy="138.0" r="4" fill="#C75B39"/>
+<circle cx="484.0" cy="180.6" r="4" fill="#C75B39"/>
+<circle cx="622.0" cy="121.2" r="4" fill="#C75B39"/>
+<circle cx="760.0" cy="40.3" r="4" fill="#C75B39"/>
+<polyline points="70.0,185.3 208.0,156.2 346.0,148.3 484.0,141.4 622.0,128.6 760.0,102.2" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+<circle cx="70.0" cy="185.3" r="4" fill="#3C6E8F"/>
+<circle cx="208.0" cy="156.2" r="4" fill="#3C6E8F"/>
+<circle cx="346.0" cy="148.3" r="4" fill="#3C6E8F"/>
+<circle cx="484.0" cy="141.4" r="4" fill="#3C6E8F"/>
+<circle cx="622.0" cy="128.6" r="4" fill="#3C6E8F"/>
+<circle cx="760.0" cy="102.2" r="4" fill="#3C6E8F"/>
+<text x="770.0" y="45.3" font-size="16" font-weight="700" fill="#C75B39">Lam 159</text>
+<text x="770.0" y="107.2" font-size="16" font-weight="700" fill="#3C6E8F">Applied 134</text>
+<text x="484.0" y="202.6" text-anchor="middle" font-size="14" fill="#C75B39">Lam FY24 memory trough 102</text>
+</svg>
+<div class="cap">Revenue indexed to 100 at FY21. Lam: $14,626M, $17,227M, $17,429M, $14,905M, $18,436M, $23,233M (FY21-26 10-Ks). Applied: $23,063M, $25,785M, $26,517M, $27,176M, $28,368M (FY21-25), then $30,837M for the twelve months to July 2026 (calc: Q4 FY25 $6,800M + Q1-Q3 FY26 $7,012M / $7,910M / $9,115M, Applied releases). The final points are about one month apart in calendar terms.</div></div>
+</div>
+<div class="answer">
+<div class="q">2. Who converts that growth into superior margins?</div>
+<div class="w"><span class="chip a">Lam Research, clear on EBIT, narrow on gross margin</span></div>
+<p>Compared over the same calendar window, the two companies' gross margins are about a point apart, but Lam's EBIT margin is 4 to 6 points higher. The lead comes from lighter operating costs: R&amp;D was 10.2% of sales vs 12.6%, and SG&amp;A 4.9% vs 6.2% (latest fiscal years). Lam spends its R&amp;D on a narrower etch and deposition portfolio, while Applied funds more product lines plus the $5B EPIC R&amp;D center. On gross margin, Lam credits pricing actions, low-cost manufacturing in Malaysia and product mix for its 52.0% June quarter, and guides to the mid-50s (Q4 FY26 call). Applied reached 50.4% in its July quarter after 13 straight quarters of year-on-year gains (Q3 FY26 release). The test of whether this is structural: at Lam's FY24 memory trough its EBIT margin was 28.6%, level with Applied's 28.9%. Today's gap is part structure, part operating leverage.</p>
+<div class="chartbox"><svg viewBox="0 0 900 190" role="img" aria-label="Margin dumbbells">
+<text x="10" y="60" font-size="17" font-weight="700" fill="#2B2B2B">Gross margin</text>
+<line x1="190" x2="860" y1="55" y2="55" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/>
+<text x="190" y="81" font-size="13" fill="#6E675C" text-anchor="middle">44%</text><text x="860" y="81" font-size="13" fill="#6E675C" text-anchor="middle">54%</text>
+<line x1="551.8" x2="625.5" y1="55" y2="55" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="625.5" cy="55" r="9" fill="#C75B39"/><circle cx="551.8" cy="55" r="9" fill="#3C6E8F"/>
+<text x="633.5" y="39" font-size="15" font-weight="700" fill="#C75B39">Lam 50.5%</text>
+<text x="543.8" y="39" text-anchor="end" font-size="15" font-weight="700" fill="#3C6E8F">Applied 49.4%</text>
+<text x="588.6" y="81" text-anchor="middle" font-size="14" fill="#2B2B2B">+1.1 pts Lam</text>
+<text x="10" y="145" font-size="17" font-weight="700" fill="#2B2B2B">EBIT margin</text>
+<line x1="190" x2="860" y1="140" y2="140" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/>
+<text x="190" y="166" font-size="13" fill="#6E675C" text-anchor="middle">26%</text><text x="860" y="166" font-size="13" fill="#6E675C" text-anchor="middle">40%</text>
+<line x1="362.3" x2="635.1" y1="140" y2="140" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="635.1" cy="140" r="9" fill="#C75B39"/><circle cx="362.3" cy="140" r="9" fill="#3C6E8F"/>
+<text x="643.1" y="124" font-size="15" font-weight="700" fill="#C75B39">Lam 35.3%</text>
+<text x="354.3" y="124" text-anchor="end" font-size="15" font-weight="700" fill="#3C6E8F">Applied 29.6%</text>
+<text x="498.7" y="166" text-anchor="middle" font-size="14" fill="#2B2B2B">+5.7 pts Lam</text>
+</svg>
+<div class="cap">GAAP. Lam FY26 (Jul-25 to Jun-26, 10-K). Applied, twelve months Aug-25 to Jul-26 (calc from quarterly releases, using rounded quarterly GAAP margin %; approx.). Applied EBIT is 31.0% excluding the $253M BIS penalty and $181M restructuring. Latest-quarter non-GAAP: Lam 52.0% GM / 38.4% OM (June 2026) vs Applied 50.4% / 34.0% (July 2026).</div></div>
+</div>
+<div class="answer">
+<div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+<div class="w"><span class="chip a">Lam breaks first</span></div>
+<p><b>Lam: a customer and memory cliff, felt through operating leverage.</b></p>
+<ul style="margin:6px 0 10px 22px;font-size:18px">
+<li>Four customers were 16%, 15%, 12% and 12% of FY26 revenue (Lam FY2026 10-K, Note 19).</li>
+<li>NAND revenue more than doubled in the June quarter, but it is conversion spend due to end in 2027.</li>
+<li>FY24 showed how this plays out: revenue fell 14.5% when memory spending paused, while Applied's grew 2.5% in its comparable year.</li>
+</ul>
+<p><b>Applied: China mature-node demand plus fixed costs.</b></p>
+<ul style="margin:6px 0 10px 22px;font-size:18px">
+<li>China was 28% of revenue in the July 2026 quarter.</li>
+<li>In February 2026 Applied paid a $252.5M BIS penalty and accepted compliance audits.</li>
+<li>Capex rose to $2.26B in FY25, and Applied plans to double system output by 2028. That fixed cost bites if the AI build pauses.</li>
+</ul>
+<p>Lam breaks first because its exposure is concentrated in fewer buyers and one memory type. Applied's is spread across a broader base.</p>
+</div>
+
+<h2>Segment-Geography Scorecard</h2>
+<p>These five cells carry essentially all of both companies' revenue. Neither company reports product by region, so the regions attached to each cell are inferred from where its customers' fabs sit. Every score is argued in the tabs below.</p>
+<table>
+<tr><th>Cell (product x region)</th><th class="ca">Lam</th><th class="cb">Applied</th><th>Why (one clause, sourced)</th></tr>
+<tr><td>Leading-edge foundry/logic, Taiwan + US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Lam foundry revenue up sharply with gate-all-around wins (Akara installed base doubling yearly); Applied claims #1 at the leading edge but grew 3% in FY25 (Q4 FY26 call; Applied FY25 10-K)</td></tr>
+<tr><td>Installed-base services, global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>CSBG $8.3B, +20% in FY26 and +43% in the June quarter; AGS $6.4B, +3% in FY25, but more than two-thirds subscription (10-Ks; Q3 FY26 remarks)</td></tr>
+<tr><td>DRAM / HBM, Korea + Taiwan + US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Applied DRAM is 26% of a $20.8B systems base vs Lam's ~$3.3B (inferred); Lam gaining via Vector hard mask and Akara wins (Q4 FY26 call)</td></tr>
+<tr><td>NAND upgrades, Korea + Japan + China multinationals</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Lam dominant in high-aspect-ratio etch, with NAND systems revenue doubling quarter on quarter; flash is 7% of Applied systems (Q4 FY26 call; Applied FY25 10-K)</td></tr>
+<tr><td>Mature-node foundry, China domestic</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Both are fenced off from part of this market by export rules. Lam share of China revenue fell from 43% to 26% in four quarters; Applied steadier at 27-30% (earnings calls and releases)</td></tr>
+</table>
+<div class="rubric"><b>How to read the scores:</b>
+<span><b>5</b> dominant in the cell and compounding (share + price + growth)</span><span><b>4</b> advantaged and gaining share</span><span><b>3</b> holds position; grows with the market</span><span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span><span><b>1</b> weak and losing share, or exiting</span><span><b>0</b> no meaningful presence</span></div>
+<p class="score-note">Scores are anchored to the exhibits in the three tabs. Scores are per cell and are not summed; the three lenses get their verdicts in the Three Answers above.</p>
+
+<div class="tabs"><button class="on" onclick="show(0,this)">Growth Map</button><button onclick="show(1,this)">Power Map</button><button onclick="show(2,this)">Cost Engine</button></div>
+
+<div class="view on" id="v0">
+<div class="frame">Applied is the bigger engine, pointed at the same markets. Lam's growth comes from steps whose count per wafer rises as chips go vertical.</div>
+<p><b>How the labels were matched.</b></p>
+<ul style="margin:6px 0 12px 22px">
+<li>Lam reports systems revenue by market (foundry, memory, logic/IDM) in its 10-K, and gives the NAND vs DRAM split only on quarterly calls.</li>
+<li>Applied reports Semiconductor Systems revenue by device type (foundry-logic, DRAM, flash).</li>
+<li>Services are matched as Lam's CSBG vs Applied's AGS. The match is imperfect: CSBG includes Reliant mature-node tools and upgrades, while Applied moved its 200mm business out of AGS in Q1 FY26.</li>
+<li>Periods are the latest fiscal years: Lam FY26 (to June 2026), Applied FY25 (to October 2025). Applied's year ends eight months earlier and missed most of 2026's surge, which flatters Lam's growth column. The latest-quarter row below corrects for that.</li>
+</ul>
+<div class="chartbox"><svg viewBox="0 0 960 286" role="img" aria-label="Butterfly chart of revenue cells">
+<text x="365" y="24" text-anchor="end" font-size="17" font-weight="700" fill="#C75B39">Lam FY26 ($M, growth vs FY25)</text>
+<text x="595" y="24" text-anchor="start" font-size="17" font-weight="700" fill="#3C6E8F">Applied FY25 ($M, growth vs FY24)</text>
+<rect x="207.8" y="46" width="157.2" height="26" fill="#C75B39" fill-opacity="0.55"/>
+<text x="201.8" y="64" text-anchor="end" font-size="15" fill="#2B2B2B">9,130 (inferred) <tspan fill="#6E675C">| +37%</tspan></text>
+<rect x="595" y="46" width="240.0" height="26" fill="#3C6E8F"/>
+<text x="841.0" y="64" font-size="15" fill="#2B2B2B">13,935 <tspan fill="#6E675C">| +3%</tspan></text>
+<text x="480" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Foundry/logic systems</text>
+<text x="480" y="75" text-anchor="middle" font-size="13" fill="#6E675C">TW, US, KR lead edge; CN mature</text>
+<rect x="221.2" y="92" width="143.8" height="26" fill="#C75B39" fill-opacity="1"/>
+<text x="215.2" y="110" text-anchor="end" font-size="15" fill="#2B2B2B">8,347 <tspan fill="#6E675C">| +20%</tspan></text>
+<rect x="595" y="92" width="110.0" height="26" fill="#3C6E8F"/>
+<text x="711.0" y="110" font-size="15" fill="#2B2B2B">6,385 <tspan fill="#6E675C">| +3%</tspan></text>
+<text x="480" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Installed-base services</text>
+<text x="480" y="121" text-anchor="middle" font-size="13" fill="#6E675C">global</text>
+<rect x="307.6" y="138" width="57.4" height="26" fill="#C75B39" fill-opacity="0.55"/>
+<text x="301.6" y="156" text-anchor="end" font-size="15" fill="#2B2B2B">3,330 (inferred) <tspan fill="#6E675C">| ND</tspan></text>
+<rect x="595" y="138" width="93.1" height="26" fill="#3C6E8F"/>
+<text x="694.1" y="156" font-size="15" fill="#2B2B2B">5,407 <tspan fill="#6E675C">| -3%</tspan></text>
+<text x="480" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">DRAM / HBM systems</text>
+<text x="480" y="167" text-anchor="middle" font-size="13" fill="#6E675C">KR, TW, US, JP</text>
+<rect x="323.1" y="184" width="41.9" height="26" fill="#C75B39" fill-opacity="0.55"/>
+<text x="317.1" y="202" text-anchor="end" font-size="15" fill="#2B2B2B">2,430 (inferred) <tspan fill="#6E675C">| ND</tspan></text>
+<rect x="595" y="184" width="25.1" height="26" fill="#3C6E8F"/>
+<text x="626.1" y="202" font-size="15" fill="#2B2B2B">1,456 <tspan fill="#6E675C">| +83%</tspan></text>
+<text x="480" y="196" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">NAND systems</text>
+<text x="480" y="213" text-anchor="middle" font-size="13" fill="#6E675C">KR, JP, CN multinationals</text>
+<text x="359" y="248" text-anchor="end" font-size="15" fill="#6E675C">no presence</text>
+<rect x="595" y="230" width="20.4" height="26" fill="#3C6E8F"/>
+<text x="621.4" y="248" font-size="15" fill="#2B2B2B">1,185 <tspan fill="#6E675C">| ND</tspan></text>
+<text x="480" y="242" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Display and other</text>
+<text x="480" y="259" text-anchor="middle" font-size="13" fill="#6E675C">panel makers, Asia (inferred)</text>
+</svg>
+<div class="cap">$M. Lam cell sizes for foundry/logic, DRAM and NAND are inferred by weighting the four FY26 quarterly systems mixes (calls) against quarterly systems revenue; the result reconciles to the 10-K's 54% foundry / 7% logic figure within 1 point. Applied cells come from the FY25 10-K device-type split. Growth for Lam's DRAM and NAND cells is ND because the prior-year split was not disclosed annually. Sources: Lam FY2026 10-K; Lam Q1-Q4 FY26 call transcripts; Applied FY2024 and FY2025 10-Ks.</div></div>
+<h3>The cells that matter</h3>
+<table>
+<tr><th>Cell</th><th class="num ca">Lam FY26 $M (% of total)</th><th class="num ca">Growth</th><th class="num cb">Applied FY25 $M (% of total)</th><th class="num cb">Growth</th><th>Margin signal / leader</th></tr>
+<tr><td>Foundry/logic systems</td><td class="num ca">~9,130 (39%) inferred</td><td class="num ca">~+37%</td><td class="num cb">13,935 (49%)</td><td class="num cb">+2.9%</td><td>Applied by scale; Semi Systems op. margin 35.5% (FY25 10-K). Lam gaining.</td></tr>
+<tr><td>Installed-base services</td><td class="num ca">8,347 (36%)</td><td class="num ca">+20.2%</td><td class="num cb">6,385 (23%)</td><td class="num cb">+2.6%</td><td>Lam larger and faster; AGS op. margin 28.1%, lower than Applied's systems margin (FY25 10-K); Lam margin ND</td></tr>
+<tr><td>DRAM / HBM systems</td><td class="num ca">~3,330 (14%) inferred</td><td class="num ca">ND</td><td class="num cb">5,407 (19%)</td><td class="num cb">-3.0%</td><td>Applied leads</td></tr>
+<tr><td>NAND systems</td><td class="num ca">~2,430 (10%) inferred</td><td class="num ca">ND</td><td class="num cb">1,456 (5%)</td><td class="num cb">+83%</td><td>Lam leads</td></tr>
+<tr><td>Display and other</td><td class="num ca">0</td><td class="num ca">-</td><td class="num cb">1,185 (4%)</td><td class="num cb">ND</td><td>Applied only; loss-making Corporate &amp; Other line</td></tr>
+<tr><td>Latest quarter, total revenue</td><td class="num ca">6,720 (Jun-26)</td><td class="num ca">+30% YoY</td><td class="num cb">9,115 (Jul-26)</td><td class="num cb">+25% YoY</td><td>Next guide: Lam $8.1B (+52% calc) vs Applied $10.25B (+51%)</td></tr>
+</table>
+<p style="font-size:16px;margin-top:6px">Regions: Lam FY26 China 34%, Taiwan 22%, Korea 19%, Japan 9%, US 7%, SE Asia 6%, Europe 3% (Lam FY2026 10-K). Applied FY25 China 30%, Taiwan 24%, Korea 20%, US 11%, Japan 8%, SE Asia 4%, Europe 3% (Applied FY25 10-K). Latest-quarter China share: Lam 26% (June 2026), Applied 28% (July 2026).</p>
+<div class="iik"><b>Insight:</b> On an aligned calendar the two are growing at the same pace (+30% vs +25% last quarter, both guiding about +51%). What differs is the mix: Lam's revenue sits in services and NAND/foundry etch and deposition, Applied's in a bigger foundry/logic and DRAM systems base. <b>Implication:</b> Over a decade, growth follows served-market share of WFE more than any single quarter. Lam says its share of served market is above 36%, heading for the high 30s. <span class="kpi">KPI: Lam's served market at 37% or more of WFE for CY2027 (disclosed at Q2 FY27 call, Jan 2027); Applied's Semi Systems growth above WFE growth for CY2026 (Nov 2026 release).</span> [Source: Lam Citi transcript 9 Sep 2026; Lam Q4 FY26 call; Applied Q3 FY26 release and prepared remarks]</div>
+<h3>Segment growth engines</h3>
+<p><b>Leading-edge foundry/logic.</b> Moving from FinFET to gate-all-around roughly doubles the number of surface-treatment steps, and adds selective etch and atomic-layer deposition steps (Lam Q4 FY26 call). Lam's Akara etch platform and Argos surface-treatment tool won tool-of-record positions (the tool a chipmaker qualifies for a given process step) at 2nm. Applied cites differentiated positions in deposition, materials modification, conductor etch and eBeam, and hosts TSMC and Samsung at its EPIC R&amp;D center (Applied Q2/Q3 FY26 remarks; EPIC release, Feb 2026). Both grow organically here; Applied's $120M NEXX acquisition (closed June 2026) is packaging and immaterial.</p>
+<p><b>DRAM/HBM.</b> Memory makers expect to add 20-25% DRAM capacity a year, but are limited by how fast cleanroom space comes online (Lam Citi, 9 Sep 2026). Applied has the bigger DRAM base; Lam's DRAM revenue is growing from a smaller base by carrying logic process know-how into DRAM. <b>NAND.</b> Lam says its content per NAND wafer doubles from 128 to 500+ layers, but the spend is conversions: raw wafer starts are down 20% from peak, and new fabs come from 2H28 (Citi). <b>Advanced packaging.</b> Both guide more than 70% growth in 2026.</p>
+<div class="iik"><b>Insight:</b> Lam's engines are tied to how many etch and deposition steps each wafer needs. Applied's are tied to breadth across the flow plus leading-edge scale. <b>Implication:</b> As 3D structures spread from NAND into logic and DRAM, Lam's served market grows faster than WFE. Applied's is more exposed to lateral scaling, which is slowing. <span class="kpi">KPI: Lam DRAM share of systems revenue at 25% or more through CY2027 (quarterly calls).</span> [Source: Lam Q4 FY26 call and Citi/Goldman Sachs Sept 2026 transcripts; Applied Q3 FY26 prepared remarks]</div>
+<h3>Price control and route-to-market</h3>
+<p>Both sell direct to a handful of chipmakers, and a tool qualified for a given process step is hard to displace. Lam's 10-K says it may struggle to sell to a customer that has qualified a competitor's tool. Pricing therefore shows up in new products and upgrades rather than list increases. Lam named "pricing actions" as a driver of its 52% June-quarter gross margin and ranks new-product mix first, factory location second and direct pricing third (Goldman Sachs, 10 Sep 2026). Applied shows the same power more slowly: 13 straight quarters of year-on-year gross margin gains.</p>
+<div class="iik"><b>Insight:</b> Neither company shows list-price power over concentrated buyers; each gets paid through new tools at technology transitions. <b>Implication:</b> The company winning more tool-of-record decisions at each transition holds net price better. Right now that evidence favors Lam, which also has the faster gross margin gain. <span class="kpi">KPI: Non-GAAP gross margin: Lam at 53% or more vs Applied at 51% or less by June 2027 quarter.</span> [Source: Lam Q4 FY26 call and Goldman Sachs transcript; Applied Q3 FY26 release]</div>
+<h3>Supply resilience</h3>
+<table><tr><th>Dimension</th><th class="ca">Lam</th><th class="cb">Applied</th></tr>
+<tr><td>Footprint</td><td class="ca">Oregon, California, Ohio, Malaysia (second factory ramping), Taiwan, Korea, Austria (Q4 FY26 call)</td><td class="cb">"Distributed" US, Singapore, Japan, China, Korea, Taiwan, Israel, plus contract manufacturers (FY25 10-K)</td></tr>
+<tr><td>Inventory posture</td><td class="ca">$4.3B, 3.0x turns, best in about 5 years (June 2026)</td><td class="cb">$5.9B FY25, about 148 days (about 2.5x, calc); $6.6B July 2026</td></tr>
+<tr><td>Single-source language</td><td class="ca">Supply chain and outsource-provider disruption risk factor (FY26 10-K)</td><td class="cb">"Some key parts" from a single qualified supplier (FY25 10-K)</td></tr>
+<tr><td>Capacity move</td><td class="ca">Malaysia phase 2; densifying existing factories</td><td class="cb">$500M Singapore expansion; aims to double quarterly system output by 2028</td></tr></table>
+<div class="iik"><b>Insight:</b> Lam's factory network turns inventory faster and was built earlier near its customers. <b>Implication:</b> In a demand spike Lam ships without extra working capital; in a bust Applied holds more inventory to work down. <span class="kpi">KPI: Inventory turns: Lam holding 3.0x or better, Applied improving to 2.8x or better, by FY2027.</span> [Source: Lam Q4 FY26 call; Applied FY25 10-K; Applied Q3 FY26 release]</div>
+<h3>Competitive context</h3>
+<p>In etch, Lam names Applied, TEL and Hitachi as its main rivals; in deposition, Applied, with ASM and Wonik IPS in ALD/PECVD (the atomic-layer and plasma-enhanced deposition methods) (Lam FY2026 10-K). Independent share data (TechInsights, Gartner) was not accessible (ND). One secondary source, The Information Network (May 2026, paywalled, unverified), says Applied and TEL lost share in 2025 while Lam gained. Lam's own claim of three straight years of outgrowing WFE points the same way.</p>
+<h3>Risks by segment</h3>
+<p><b>Foundry/logic:</b> Lam is more exposed to mature-node China orders, which fell sharply in the June quarter; Applied to TSMC's pacing, since its largest customer was 19% of FY25 revenue. <b>DRAM:</b> Applied is more exposed to a memory capex pause, because DRAM is its biggest growth cell. <b>NAND:</b> Lam is far more exposed; the conversion wave ends in 2027. <b>Services:</b> a utilization drop hits spares for both, but Applied's subscription contracts cushion AGS.</p>
+<div class="pull">Lam has the better-placed engine: its content per wafer rises with every 3D transition. Applied's engine is larger but grew slower through FY23-25, and it is only now accelerating with the 2026 boom.</div>
+</div>
+
+<div class="view" id="v1">
+<div class="frame">In semicap, the chipmaker sets the terms, except at the steps where only one tool works. Power is the count of those steps.</div>
+<div class="duelwrap">
+<div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Applied - narrow</div></div></div>
+<div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Applied - narrow</div></div></div>
+<div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Lam - narrow</div></div></div>
+<div class="cap">Who sets the terms, lever by lever; each call is argued below.</div></div>
+<h3>Moats: what rivals cannot copy</h3>
+<div class="duo">
+<div class="col a"><h3>Lam Research</h3><p><b>1. Installed base in etch.</b> More than 40,000 conductor etch chambers are installed (Q4 FY26 call), feeding spares, upgrades and learning cycles. Durability: High.</p><p><b>2. High-aspect-ratio etch and 3D know-how.</b> Built on NAND (Cryo 3.0) and now carried into gate-all-around logic and DRAM through Akara, Argos and Vector wins. Durability: High, because it takes years of process learning, not money.</p><p><b>3. Packaging.</b> Leader in through-silicon-via (TSV) etch and electroplating. Durability: Medium.</p></div>
+<div class="col b"><h3>Applied Materials</h3><p><b>1. Breadth.</b> Positions in CMP, ion implant, epitaxy and eBeam inspection, where Lam is absent, enable co-optimized multi-step solutions (FY25 10-K). Durability: High.</p><p><b>2. EPIC co-development.</b> A $5B R&amp;D center with TSMC, Samsung, SK hynix and Micron as partners gives Applied access to customers' roadmaps early. Durability: Medium-High, since a rival could fund one but not quickly win the same partners.</p><p><b>3. Connected installed base.</b> More than 37,000 chambers are connected to AIx software. Durability: Medium.</p></div></div>
+<div class="iik"><b>Insight:</b> Applied's moat is breadth plus co-development; Lam's is depth in the steps that are multiplying. <b>Implication:</b> Breadth protects Applied's share of total WFE; depth grows Lam's share of the WFE increment. <span class="kpi">KPI: Lam served market as a share of WFE (target high 30s) vs Applied Semi Systems growth relative to WFE, CY2026-27.</span> [Source: Lam Q4 FY26 call; Applied FY25 10-K; EPIC release 11 Feb 2026]</div>
+<h3>Customers: who controls net price and access</h3>
+<p><b>Lam:</b> four customers were 16%, 15%, 12% and 12% of FY26 revenue (55%), up from one customer at 17% in FY24 (Lam FY2026 10-K). Its 10-K warns that large customers can negotiate "decreased pricing". <b>Applied:</b> two customers were 19% and 15% of FY25 revenue (34%), and more than two-thirds of service revenue is subscription (Applied FY25 10-K; Q4 FY25 remarks). Both have customers pre-committing: Lam says tool discussions now run into 2027 and beyond, and Applied's FY25 backlog was $15.0B.</p>
+<div class="iik"><b>Insight:</b> Lam's revenue has become markedly more concentrated as the AI build-out centers on a few fab owners. <b>Implication:</b> When those few buyers slow down or push for price, Lam's margin takes the hit first. <span class="kpi">KPI: Lam customers above 10% of revenue: four or fewer, with the largest below 20%, in the FY2027 10-K (Aug 2027).</span> [Source: Lam FY24 and FY26 10-Ks Note 19; Applied FY25 10-K]</div>
+<h3>Suppliers: who absorbs shocks</h3>
+<p><b>Lam:</b> factories in several regions serving different demand, which Lam says lets it "get what we need when we need it and also at the prices" (Q4 FY26 call). Tariffs weighed on gross margin in the September 2025 quarter (Q1 FY26 call). <b>Applied:</b> a distributed model with contract manufacturers and some single-supplier parts, and now under Commerce Department (BIS) audits and annual certifications after the February 2026 settlement. Pass-through looks similar: both lifted gross margin through the 2025 tariff period.</p>
+<div class="iik"><b>Insight:</b> Lam's footprint is leaner; Applied carries a compliance burden that constrains how it ships. <b>Implication:</b> Lam absorbs a supply or policy shock with less working capital and less friction. <span class="kpi">KPI: Any new export-control penalty or shipment suspension disclosed in 10-Q or 8-K filings (either company).</span> [Source: Lam Q1 and Q4 FY26 calls; BIS release 11 Feb 2026]</div>
+<h3>The price/power triangle: top 3 cells</h3>
+<table><tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+<tr><td>Leading-edge foundry/logic, TW+US</td><td>Both direct; tool-of-record per step</td><td>Parity (inferred); Lam premium on new tools</td><td>Both high</td><td>Lam share up / margin up; Applied share flat / margin up</td><td>Lam foundry systems $ growth vs Applied foundry-logic $ growth, CY2027</td></tr>
+<tr><td>DRAM/HBM, KR+TW+US</td><td>Both direct</td><td>Parity (inferred)</td><td>Both high</td><td>Applied holds lead; Lam share up from smaller base</td><td>Lam DRAM % of systems at 25% or more</td></tr>
+<tr><td>Installed-base services, global</td><td>Both captive to own installed base; third-party spares compete</td><td>Lam premium in upgrades; Applied subscription lock-in</td><td>Both high</td><td>Lam grows faster; Applied steadier</td><td>CSBG growth minus AGS growth, CY2027</td></tr></table>
+<p>The tension: Applied has the stronger overall power position but the weaker growth cells. Lam is growing fastest precisely where its customers are most concentrated, so its growth depends on a few buyers it cannot control.</p>
+<h3>The causal gap</h3>
+<p><b>1. Breadth vs depth.</b> Applied spans the flow; Lam dominates the steps that are multiplying. Impact: Major. Neither can close the gap within five years; building an etch franchise takes a decade of tool-of-record wins, not money. <b>2. Customer concentration.</b> Impact: Moderate. Lam can only dilute it as DRAM and logic customers broaden, over 2-3 years. <b>3. Manufacturing cost footprint.</b> Impact: Moderate. Applied is closing this with Singapore and its 2028 output plan, over 2-3 years.</p>
+<div class="pull">Applied narrowly holds the stronger power position: more breadth, fewer dependent customers and stickier services. Lam's edge is its supply engine and depth in the steps that are multiplying.</div>
+</div>
+
+<div class="view" id="v2">
+<div class="frame">Lam runs leaner in operating expenses in every year, but its gross margin edge is recent and its EBIT edge grows and shrinks with volume.</div>
+<p>Both report costs by function under US GAAP, so the five ratios compare cleanly. Lam FY24-26 (ending June) is set against Applied FY23-25 (ending October). Applied's last year ends eight months before Lam's, so Applied's column misses most of the 2026 upswing. The dumbbells in Answer 2 show the calendar-aligned check. Treatment of one-off lines:</p>
+<ul style="margin:6px 0 12px 22px">
+<li>Lam: FY24 restructuring charges ($43M in COGS, $18M in opex) are included in COGS and EBIT but kept out of SG&amp;A.</li>
+<li>Applied: FY25 restructuring ($181M) is kept out of SG&amp;A but included in EBIT.</li>
+<li>Applied's SG&amp;A is marketing &amp; selling plus G&amp;A.</li>
+</ul>
+<h3>Three years, five ratios</h3>
+<table><tr><th>% of sales, 3y avg</th><th class="num ca">Lam FY24-26</th><th class="num cb">Applied FY23-25</th><th class="num">Gap</th><th>What drives it</th></tr>
+<tr><td>COGS</td><td class="num ca">51.2</td><td class="num cb">52.4</td><td class="num">-1.2</td><td>Lam's Malaysia scale and pricing in FY26; the two were level in FY25</td></tr>
+<tr><td>R&amp;D</td><td class="num ca">11.5</td><td class="num cb">12.1</td><td class="num">-0.6</td><td>Narrower portfolio; Lam higher in its FY24 trough</td></tr>
+<tr><td>SG&amp;A</td><td class="num ca">5.4</td><td class="num cb">6.3</td><td class="num">-0.9</td><td>Lighter selling model and fewer product lines; Lam lower in all 3 years</td></tr>
+<tr><td>Gross margin</td><td class="num ca">48.8</td><td class="num cb">47.6</td><td class="num">+1.2</td><td>Mirror of COGS</td></tr>
+<tr><td>EBIT margin</td><td class="num ca">32.0</td><td class="num cb">29.0</td><td class="num">+3.0</td><td>Operating leverage in the FY25-26 upswing</td></tr></table>
+<div class="chartbox"><svg viewBox="0 0 900 300" role="img" aria-label="Cost engine grouped bars">
+<line x1="30" x2="880" y1="250" y2="250" stroke="#2B2B2B"/>
+<rect x="50" y="68.5" width="56" height="181.5" fill="#C75B39"/>
+<text x="78.0" y="62.5" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">51.2</text>
+<rect x="114" y="64.2" width="56" height="185.8" fill="#3C6E8F"/>
+<text x="142.0" y="58.2" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">52.4</text>
+<text x="110" y="274" text-anchor="middle" font-size="15" fill="#2B2B2B">COGS</text>
+<rect x="220" y="209.2" width="56" height="40.8" fill="#C75B39"/>
+<text x="248.0" y="203.2" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">11.5</text>
+<rect x="284" y="207.1" width="56" height="42.9" fill="#3C6E8F"/>
+<text x="312.0" y="201.1" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">12.1</text>
+<text x="280" y="274" text-anchor="middle" font-size="15" fill="#2B2B2B">R&amp;D</text>
+<rect x="390" y="230.9" width="56" height="19.1" fill="#C75B39"/>
+<text x="418.0" y="224.9" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">5.4</text>
+<rect x="454" y="227.7" width="56" height="22.3" fill="#3C6E8F"/>
+<text x="482.0" y="221.7" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">6.3</text>
+<text x="450" y="274" text-anchor="middle" font-size="15" fill="#2B2B2B">SG&amp;A</text>
+<rect x="560" y="77.0" width="56" height="173.0" fill="#C75B39"/>
+<text x="588.0" y="71.0" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">48.8</text>
+<rect x="624" y="81.2" width="56" height="168.8" fill="#3C6E8F"/>
+<text x="652.0" y="75.2" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">47.6</text>
+<text x="620" y="274" text-anchor="middle" font-size="15" fill="#2B2B2B">Gross margin</text>
+<rect x="730" y="136.5" width="56" height="113.5" fill="#C75B39"/>
+<text x="758.0" y="130.5" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">32.0</text>
+<rect x="794" y="147.2" width="56" height="102.8" fill="#3C6E8F"/>
+<text x="822.0" y="141.2" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">29.0</text>
+<text x="790" y="274" text-anchor="middle" font-size="15" fill="#2B2B2B">EBIT margin</text>
+<text x="880" y="22" text-anchor="end" font-size="14" fill="#6E675C">% of sales, 3-year average: <tspan fill="#C75B39" font-weight="700">Lam FY24-26</tspan> vs <tspan fill="#3C6E8F" font-weight="700">Applied FY23-25</tspan></text>
+</svg><div class="cap">GAAP consolidated statements of operations: Lam FY2025 and FY2026 10-Ks; Applied FY2025 10-K (FY23-25 columns).</div></div>
+<table><tr><th>Lam (FY)</th><th class="num">COGS</th><th class="num">R&amp;D</th><th class="num">SG&amp;A</th><th class="num">GM</th><th class="num">EBIT</th><th>Applied (FY)</th><th class="num">COGS</th><th class="num">R&amp;D</th><th class="num">SG&amp;A</th><th class="num">GM</th><th class="num">EBIT</th></tr>
+<tr><td class="ca">FY24</td><td class="num">52.7</td><td class="num">12.8</td><td class="num">5.8</td><td class="num">47.3</td><td class="num">28.6</td><td class="cb">FY23</td><td class="num">53.3</td><td class="num">11.7</td><td class="num">6.1</td><td class="num">46.7</td><td class="num">28.9</td></tr>
+<tr><td class="ca">FY25</td><td class="num">51.3</td><td class="num">11.4</td><td class="num">5.3</td><td class="num">48.7</td><td class="num">32.0</td><td class="cb">FY24</td><td class="num">52.5</td><td class="num">11.9</td><td class="num">6.6</td><td class="num">47.5</td><td class="num">28.9</td></tr>
+<tr><td class="ca">FY26</td><td class="num">49.5</td><td class="num">10.2</td><td class="num">4.9</td><td class="num">50.5</td><td class="num">35.3</td><td class="cb">FY25</td><td class="num">51.3</td><td class="num">12.6</td><td class="num">6.2</td><td class="num">48.7</td><td class="num">29.2</td></tr></table>
+<p style="font-size:16px">Raw $M. Lam FY24/25/26: revenue 14,905 / 18,436 / 23,233; COGS 7,853 / 9,457 / 11,507; R&amp;D 1,902 / 2,096 / 2,376; SG&amp;A 868 / 982 / 1,150; operating income 4,264 / 5,901 / 8,200. Applied FY23/24/25: revenue 26,517 / 27,176 / 28,368; COGS 14,133 / 14,279 / 14,560; R&amp;D 3,102 / 3,233 / 3,570; SG&amp;A 1,628 / 1,797 / 1,768; operating income 7,654 / 7,867 / 8,289.</p>
+<h3>The structural gap</h3>
+<p>The most persistent gap is SG&amp;A. Lam spends 0.3 to 1.3 points less of sales on it in every year. That fits Lam's narrower product range sold to the same few customers, and it is structural. The EBIT gap is bigger but not persistent: at Lam's FY24 memory trough its EBIT margin (28.6%) sat just below Applied's (28.9%), then widened to 6 points as volume returned. Applied's R&amp;D intensity went up in FY25 as revenue grew, which reflects a choice to fund breadth and EPIC. The cross-check against the power map is partly contradictory. Applied's stronger overall power does not show up as a higher gross margin, and the two gross margins were identical in FY25. So breadth protects Applied's share, not its price. Lam's cost edge is real but cyclical, which supports the "Lam breaks first" answer.</p>
+<div class="pull">Lam runs the leaner cost structure, and its EBIT lead in good years is much larger than the structural gap. Applied's heavier R&amp;D buys stability, not higher margins.</div>
+</div>
+
+<div class="flip"><h3>What would flip the call</h3><ul>
+<li><b>The NAND air pocket.</b> NAND conversions finish in 2027, and new NAND fabs arrive only from 2H28. If DRAM and logic wins do not fill the gap, Lam's revenue falls while WFE grows. <span style="color:var(--good);font-weight:700;">Early warning: Lam NAND below 12% of systems revenue for two straight quarters in CY2027 while its guided WFE rises (earnings calls).</span></li>
+<li><b>Applied wins the gate-all-around and backside-power etch/deposition steps.</b> Applied's co-optimized flows at EPIC could take the selective etch and ALD steps Lam is counting on. <span style="color:var(--good);font-weight:700;">Early warning: Lam's served market fails to reach 37% of WFE in CY2027, or Applied's foundry-logic systems revenue grows faster than Lam's foundry revenue in CY2027 (calls, 10-Ks).</span></li>
+<li><b>Concentrated buyers take back price.</b> With four customers at 55% of revenue, a single slowdown or procurement push could stall Lam's route to mid-50s gross margin. <span style="color:var(--good);font-weight:700;">Early warning: Lam non-GAAP gross margin below 51% in any quarter of FY2027 while revenue is flat or up (quarterly release).</span></li>
+</ul></div>
+
+<h2>The KPI pack: 12-24 months</h2>
+<table><tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+<tr><td>Lam served market as % of WFE</td><td>37% or higher for CY2027</td><td>Jan 2028</td><td>Lam</td><td>Lam earnings call / investor events</td></tr>
+<tr><td>Non-GAAP gross margin, latest quarter</td><td>Lam 53% or more, Applied 51% or less</td><td>Jun 2027 quarter</td><td>Lam</td><td>Quarterly releases</td></tr>
+<tr><td>Services growth: CSBG minus AGS</td><td>Lam ahead by 5 pts or more for CY2027</td><td>Jan-Feb 2028</td><td>Lam</td><td>Lam call; Applied release</td></tr>
+<tr><td>Lam NAND share of systems revenue</td><td>Below 12% for 2 quarters</td><td>Through Dec 2027</td><td>Applied</td><td>Lam earnings calls</td></tr>
+<tr><td>Applied Semi Systems growth vs WFE</td><td>Faster than WFE in CY2026 and CY2027</td><td>Nov 2027</td><td>Applied</td><td>Applied Q4 releases and remarks</td></tr>
+</table>
+
+<div class="timeverdict"><div class="label">Where to spend your time</div>
+Lam gets the deep-dive hours first. A business overview and a Lam vs ASML duel already sit in the folder, so the next piece of work is a filing read of Lam's FY24 downturn and its customer concentration note. After that, run a business overview on Applied to test its #1 leading-edge claim.</div>
+
+<div class="footer">
+<p><b>Method.</b> The duel runs three lenses (growth cells, power, cost engine), then weights them for the industry. In semicap, winning the tool-of-record decision at each technology transition decides a decade, so growth share and conversion are weighted above resilience. Cells are filtered to those carrying about 80% of revenue. Labels are matched across differing segment definitions, figures are USD as reported, and the 8-month fiscal-year offset is flagged, with calendar-aligned cross-checks. ND means not publicly disclosed; "inferred" means derived by stated arithmetic from disclosed mixes. Lam facts come from the sources folder; Applied facts and the event sweep come from the web, per the skill. This is a business-strength comparison, not a valuation, and it says nothing about either stock's price.</p>
+<p class="sources"><b>Sources.</b></p>
+<ul class="sources">
+<li>Lam Research Form 10-K FY2026 (filed 7 Aug 2026), FY2025 (11 Aug 2025), FY2024 (29 Aug 2024), FY2023, FY2022: sources/Annual_Reports</li>
+<li>Lam Research earnings call transcripts Q1-Q4 FY2026 (22 Oct 2025, 28 Jan 2026, 22 Apr 2026, 29 Jul 2026); Citi Global TMT (9 Sep 2026); Goldman Sachs Communacopia (10 Sep 2026): sources/Transcripts</li>
+<li>Lam Research leadership transition release, 3 Feb 2026: newsroom.lamresearch.com</li>
+<li>Applied Materials Form 10-K FY2025 (EDGAR 0001628280-25-056742) and FY2024 (0000006951-24-000044): sec.gov</li>
+<li>Applied Materials Q4 FY2025 results, 13 Nov 2025: globenewswire.com/news-release/2025/11/13/3187810</li>
+<li>Applied Materials Q4 FY2022 results (FY21-22 revenue): sec.gov/Archives/edgar/data/6951/000000695122000037</li>
+<li>Applied Materials Q1 FY2026 (12 Feb 2026), Q2 FY2026 (14 May 2026), Q3 FY2026 (13 Aug 2026) releases and prepared remarks: ir.appliedmaterials.com; globenewswire.com/news-release/2026/08/13/3344890</li>
+<li>BIS press release, Applied Materials $252M penalty, 11 Feb 2026: bis.gov</li>
+<li>Applied Materials EPIC Center / Samsung release, 11 Feb 2026; Singapore expansion release, 10 Jun 2026; NEXX acquisition release, May 2026: ir.appliedmaterials.com, globenewswire.com</li>
+<li>Applied Materials affiliates-rule revenue impact, 2 Oct 2025: finance.yahoo.com (Reuters)</li>
+<li>TrendForce, BESI takeover interest report, 13 Mar 2026 (no deal found)</li>
+<li>The Information Network (R. Castellano), 2025 equipment share note, May 2026 (secondary, paywalled, unverified)</li>
+</ul></div>
+</div>
+<script>function show(i,btn){document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}</script>
+</body>
+</html>
