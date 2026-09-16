@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tencent vs Alibaba: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head><body>
+<div class="wrap">
+<div class="kicker">Peer Duel, Compound With AI</div>
+<h1>Tencent vs Alibaba: who wins the next decade?</h1>
+<p class="source">China consumer internet platforms. 0700.HK / BABA. Run 16 September 2026. Built from Tencent Annual Reports FY2023 to FY2025, the H1 2026 results announcement and the Q2 2026 call transcript (third-party); Alibaba Form 20-F FY2024 to FY2026 (fiscal years ending 31 March), Form 6-K filings through 4 September 2026 and the June quarter 2026 results release; cited industry data. Events swept through 16 September 2026; most recent event checked: Alibaba completed a HK$80bn placing of 710m new shares on 26 August 2026 (6-K). Figures in RMB, as reported, no FX conversion. Alibaba's fiscal year ends one quarter after Tencent's. Not a valuation and not a recommendation.</p>
+<div class="chips"><span class="chip a">Tencent</span><span class="chip b">Alibaba</span></div>
+
+<div class="verdict-banner">
+<div class="label">The Call</div>
+<div class="verdict">Tencent is the stronger business for the next five to ten years: its growth comes from its highest-margin cells, while Alibaba's growth comes from its lowest-margin cells and its core marketplace is being defended with its own profits.</div>
+<div class="why">Alibaba's China E-commerce Group EBITA fell 44% in FY2026 to RMB107.5bn (margin 38.0% to 19.4%) while Tencent's Marketing Services gross profit rose 24% at a 58% margin (Alibaba 20-F FY2026; Tencent AR FY2025).</div>
+</div>
+<div class="reasons">
+<div class="col"><span class="n">1</span><br>Gross margin gap of 13 points is present in all three years (52.4% vs 39.2% average) and is structural: Alibaba books first-party goods, logistics and quick-commerce delivery inside cost of revenue (Cost Engine tab).</div>
+<div class="col"><span class="n">2</span><br>Both sell merchant ads in China, but Tencent's ad revenue grew 22% in Q2 2026 while Alibaba's customer management revenue fell 7% (plus 1% like-for-like) in the June quarter (Tencent H1 2026 results; Alibaba June Q 2026 release).</div>
+<div class="col"><span class="n">3</span><br>Both are in an AI capex surge, but Alibaba entered it with negative free cash flow (minus RMB46.6bn FY2026) and funded it with new equity, while Tencent's core business still generated RMB37.6bn of Q2 free cash flow before compute prepayments.</div>
+</div>
+<div class="duelwrap">
+<div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Tencent - narrow</div></div></div>
+<div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Tencent - clear</div></div></div>
+<div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Tencent - clear</div></div></div>
+<div class="cap">The three answers, argued below. Left lean favors Tencent, right lean favors Alibaba; marker position shows how decisive.</div>
+</div>
+
+<h2>The Three Answers</h2>
+<div class="answer">
+<div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+<div class="w"><span class="chip a">Tencent, narrowly</span></div>
+<p>Tencent's next five years ride three cells whose drivers are already in place. China merchant marketing (RMB145.0bn, up 19%) grows on price, not ad load: AI targeting, AI-made creative and closed-loop ads into Mini Shops and Mini Games lift eCPM, and Video Accounts time spent grew over 20% in Q2 2026. Domestic games (RMB164.2bn, up 18%) compound on a portfolio of evergreen titles plus a pipeline that produced the top new mobile title of 2026 (Roco Kingdom: World). International revenue (RMB89.6bn outside the Mainland, up 38%) adds geographic diversification. Alibaba owns the single fastest large cell of either company, AI cloud (RMB48.4bn in the June quarter, up 45%, AI revenue up triple digits for twelve quarters), on the back of market leadership and in-house chips. But its largest cell, customer management revenue, grew 5% in FY2026 and 1% like-for-like in the June quarter, and quick commerce's 47% growth is revenue net of subsidies. The call is narrow because cloud could become Alibaba's second core. (Tencent AR FY2025, H1 2026 results; Alibaba 20-F FY2026, June Q 2026 release.)</p>
+<div class="chartbox"><svg viewBox="0 0 860 240" role="img" aria-label="Indexed revenue"><line x1="60" x2="720" y1="181.1" y2="181.1" stroke="#E5DDD0"/><text x="52" y="185.11111111111111" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">100</text><line x1="60" x2="720" y1="105.6" y2="105.6" stroke="#E5DDD0"/><text x="52" y="109.55555555555556" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">120</text><line x1="60" x2="720" y1="30.0" y2="30.0" stroke="#E5DDD0"/><text x="52" y="34.0" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">140</text><text x="60.0" y="224" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2021 / FY22</text><text x="225.0" y="224" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2022 / FY23</text><text x="390.0" y="224" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2023 / FY24</text><text x="555.0" y="224" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2024 / FY25</text><text x="720.0" y="224" text-anchor="middle" font-size="13" fill="#6E675C" font-weight="normal">2025 / FY26</text><polyline points="60.0,181.1 225.0,184.9 390.0,148.2 555.0,113.5 720.0,51.9" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="60.0" cy="181.1" r="4" fill="#C75B39"/><circle cx="225.0" cy="184.9" r="4" fill="#C75B39"/><circle cx="390.0" cy="148.2" r="4" fill="#C75B39"/><circle cx="555.0" cy="113.5" r="4" fill="#C75B39"/><circle cx="720.0" cy="51.9" r="4" fill="#C75B39"/><polyline points="60.0,181.1 225.0,174.3 390.0,142.2 555.0,117.6 720.0,105.6" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="60.0" cy="181.1" r="4" fill="#3C6E8F"/><circle cx="225.0" cy="174.3" r="4" fill="#3C6E8F"/><circle cx="390.0" cy="142.2" r="4" fill="#3C6E8F"/><circle cx="555.0" cy="117.6" r="4" fill="#3C6E8F"/><circle cx="720.0" cy="105.6" r="4" fill="#3C6E8F"/><text x="730" y="56.911111111111154" text-anchor="start" font-size="15" fill="#C75B39" font-weight="bold">Tencent 134</text><text x="730" y="110.55555555555556" text-anchor="start" font-size="15" fill="#3C6E8F" font-weight="bold">Alibaba 120</text></svg>
+<div class="cap">Revenue indexed to 100 at Tencent FY2021 (RMB560.1bn) and Alibaba FY2022 ending March 2022 (RMB853.1bn). Tencent 2025 RMB751.8bn; Alibaba FY2026 RMB1,023.7bn, which absorbs the Sun Art and Intime disposals (like-for-like FY2026 growth 11%). Sources: Tencent AR FY2025 five-year summary; Alibaba 20-F FY2024 and FY2026.</div></div>
+</div>
+<div class="answer">
+<div class="q">2. Who converts that growth into superior margins?</div>
+<div class="w"><span class="chip a">Tencent, clearly</span></div>
+<p>Tencent's mix does the converting: incremental revenue arrives in internally developed games (VAS gross margin 64% in Q2 2026, up from 60%) and in AI-priced ads, while fintech and cloud gross margin climbed from 40% in 2023 to 51% in 2025 on scale. Alibaba's conversion runs the other way. Its growth cells are cloud (EBITA margin 9.0% FY2026, about 12% in the June quarter) and quick commerce (loss-making, inferred from the segment EBITA fall), and sales and marketing rose from 12% of revenue in FY2024 to 24% in FY2026. The growth winner and margin winner are the same company, but the finding worth keeping is sharper: Tencent's growth engine is also its margin engine, while Alibaba's best growth engine carries its thinnest positive margin. (Tencent AR FY2024, FY2025, H1 2026; Alibaba 20-F FY2026.)</p>
+<div class="chartbox"><svg viewBox="0 0 860 170" role="img" aria-label="Margin dumbbells"><text x="146" y="55" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">Gross margin</text><line x1="160" x2="800" y1="50" y2="50" stroke="#E5DDD0" stroke-width="2"/><text x="160" y="76" text-anchor="start" font-size="13" fill="#6E675C" font-weight="normal">0%</text><text x="800" y="76" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">60%</text><line x1="578.1" x2="718.9" y1="50" y2="50" stroke="#2B2B2B" stroke-width="2"/><circle cx="718.9" cy="50" r="8" fill="#C75B39"/><circle cx="578.1" cy="50" r="8" fill="#3C6E8F"/><text x="718.9333333333333" y="36" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="bold">Tencent 52.4%</text><text x="578.1333333333333" y="36" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="bold">Alibaba 39.2%</text><text x="648.5333333333333" y="72" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">+13.2pts</text><text x="146" y="135" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">EBIT margin</text><line x1="160" x2="800" y1="130" y2="130" stroke="#E5DDD0" stroke-width="2"/><text x="160" y="156" text-anchor="start" font-size="13" fill="#6E675C" font-weight="normal">0%</text><text x="800" y="156" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">60%</text><line x1="270.9" x2="480.0" y1="130" y2="130" stroke="#2B2B2B" stroke-width="2"/><circle cx="480.0" cy="130" r="8" fill="#C75B39"/><circle cx="270.9" cy="130" r="8" fill="#3C6E8F"/><text x="480.0" y="116" text-anchor="middle" font-size="14" fill="#C75B39" font-weight="bold">Tencent 30.0%</text><text x="270.93333333333334" y="116" text-anchor="middle" font-size="14" fill="#3C6E8F" font-weight="bold">Alibaba 10.4%</text><text x="375.4666666666667" y="152" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">+19.6pts</text></svg>
+<div class="cap">Three-year averages: Tencent calendar 2023 to 2025 (IFRS), Alibaba fiscal years ending March 2024 to 2026 (US GAAP income from operations). Latest quarter: Tencent Q2 2026 gross margin 57.8%, operating margin 32.9%; Alibaba June Q 2026 gross margin 38.2%, operating margin 5.6%. Sources: annual reports and quarterly releases as listed.</div></div>
+</div>
+<div class="answer">
+<div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+<div class="w"><span class="chip b">Alibaba breaks first</span></div>
+<p>Alibaba's exposure is merchant economics: customer management revenue depends on take-rate increases (a software service fee on GMV since September 2024) and, in the June quarter, on contra-revenue incentives to keep merchants, so a consumer slowdown or a further Douyin and PDD shift hits the one cell funding cloud, quick commerce and AI Labs (June quarter AI Labs loss RMB13.9bn). With free cash flow at minus RMB44.7bn in the June quarter and a HK$80bn equity raise already spent on AI intent, it has less room to wait. Tencent's exposure is concentration of approval and attention: domestic games need NPPA licences (freezes in 2018 and 2021 to 2022), and its AI build is a lump sum (capex RMB52.8bn in Q2 2026, net cash down from RMB146.9bn to RMB58.2bn in one quarter). Tencent breaks second because its core still self-funds and its losses are chosen, not competitive. (Alibaba 20-F FY2026, June Q 2026 release, 6-K 26 Aug 2026; Tencent H1 2026 results, Q2 2026 call.)</p>
+</div>
+
+<h2>Segment-Geography Scorecard</h2>
+<p>These six cells carry roughly 80% of combined segment revenue and nearly all of both companies' profit; every score is argued in the tabs below.</p>
+<table>
+<tr><th>Cell (product x region)</th><th class="ca">Tencent</th><th class="cb">Alibaba</th><th>Why (one clause, sourced)</th></tr>
+<tr><td>China merchant marketing</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Tencent grows 19 to 22% on price from a smaller share; Alibaba holds the largest share but grew CMR 1% like-for-like (Tencent H1 2026; Alibaba June Q 2026)</td></tr>
+<tr><td>China cloud and AI infrastructure</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Alibaba leads share (IDC H1 2025 25.6% vs 8.8%) and grows 45% at a rising margin; Tencent business services grew high teens (Alibaba June Q 2026; Tencent AR FY2025)</td></tr>
+<tr><td>China games and social content</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td>Tencent domestic games RMB164.2bn, up 18%; Alibaba's Lingxi Games and Hujing sit in a loss-making All others (Tencent AR FY2025; Alibaba 20-F FY2026)</td></tr>
+<tr><td>China payments and fintech</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Weixin Pay inside Tencent FinTech grew high single digit; Alibaba holds 33% of Ant Group by equity method, no consolidated fintech revenue (Tencent AR FY2025; Alibaba 20-F FY2026)</td></tr>
+<tr><td>China local services and quick commerce</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Alibaba revenue up 47% but net of subsidies and loss-making; Tencent routes traffic via Mini Programs with no own operation (Alibaba 20-F FY2026)</td></tr>
+<tr><td>International (games / commerce)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Tencent international games up 33% in 2025 but plus 4% cc in Q2 2026; AIDC up 9% with loss narrowed to RMB2.1bn (Tencent H1 2026; Alibaba 20-F FY2026)</td></tr>
+</table>
+<div class="rubric"><b>How to read the scores:</b>
+<span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+<span><b>4</b> advantaged and gaining share</span>
+<span><b>3</b> holds position; grows with the market</span>
+<span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+<span><b>1</b> weak and losing share, or exiting</span>
+<span><b>0</b> no meaningful presence</span></div>
+<p class="score-note">Scores are anchored to the exhibits in the three tabs and are not summed; the lenses get their verdicts in the Three Answers above.</p>
+
+<div class="tabs">
+<button class="on" onclick="show(0,this)">Growth Map</button>
+<button onclick="show(1,this)">Power Map</button>
+<button onclick="show(2,this)">Cost Engine</button>
+</div>
+
+<div class="view on" id="v0">
+<div class="frame">The two companies meet head-on in only two cells, merchant marketing and cloud, and they are moving in opposite directions in both.</div>
+<p>Normalization: Tencent reports four segments by product with gross profit as its segment measure; Alibaba reported four business groups with adjusted EBITA in FY2026, then regrouped in the June 2026 quarter into Alibaba E-commerce Group, AI Cloud and Compute Services, AI Labs and Applications, and All others. We align Tencent Marketing Services with Alibaba customer management revenue (both are merchant-paid marketing in China), Tencent FinTech and Business Services with Alibaba Cloud Intelligence (Tencent does not split fintech from cloud, so the bar is broader), and Tencent International Games with Alibaba's AIDC as the international cell. Alibaba segment revenue is shown before RMB89.6bn of inter-segment eliminations.</p>
+<p>Scale flatters Alibaba. Its RMB1,023.7bn of FY2026 revenue is 36% larger than Tencent's RMB751.8bn, but about a third of Alibaba's pre-elimination segment revenue sits in first-party retail, logistics, wholesale and All others businesses, much of it booked gross (inferred: RMB386bn of RMB1,113bn), while Tencent's revenue is almost entirely digital. Geographically both are China businesses: Tencent earns 88% in the Mainland, and Alibaba's international group is about 13% of pre-elimination segment revenue.</p>
+<div class="chartbox"><svg viewBox="0 0 820 386" role="img" aria-label="Butterfly chart of revenue cells"><text x="297.0" y="20" text-anchor="end" font-size="15" fill="#C75B39" font-weight="bold">Tencent (FY Dec 2025)</text><text x="523.0" y="20" text-anchor="start" font-size="15" fill="#3C6E8F" font-weight="bold">Alibaba (FY Mar 2026)</text><text x="410.0" y="61" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">China merchant marketing</text><rect x="229.1" y="46" width="75.9" height="24" fill="#C75B39"/><text x="223.105844722303" y="55" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">145.0</text><text x="223.105844722303" y="73" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">+19%</text><rect x="515.0" y="46" width="180.0" height="24" fill="#3C6E8F"/><text x="701.0" y="55" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">343.9</text><text x="701.0" y="73" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">+5% (JunQ -7%)</text><text x="410.0" y="103" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">Fintech and cloud services</text><rect x="184.9" y="88" width="120.1" height="24" fill="#C75B39"/><text x="178.930212271009" y="97" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">229.4</text><text x="178.930212271009" y="115" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">+8% (FBS)</text><rect x="515.0" y="88" width="82.8" height="24" fill="#3C6E8F"/><text x="603.7507996510614" y="97" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">158.1</text><text x="603.7507996510614" y="115" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">+34% (cloud)</text><text x="410.0" y="145" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">All other businesses</text><rect x="300.8" y="130" width="4.2" height="24" fill="#C75B39"/><text x="294.76039546379764" y="139" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">8.1</text><text x="294.76039546379764" y="157" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">+4%</text><rect x="515.0" y="130" width="146.9" height="24" fill="#3C6E8F"/><text x="667.9206164582728" y="139" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">280.7</text><text x="667.9206164582728" y="157" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">-25% (disposals)</text><text x="410.0" y="187" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">International</text><rect x="264.5" y="172" width="40.5" height="24" fill="#C75B39"/><text x="258.48822332073274" y="181" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">77.4</text><text x="258.48822332073274" y="199" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">+33% (games)</text><rect x="515.0" y="172" width="75.5" height="24" fill="#3C6E8F"/><text x="596.4754289037511" y="181" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">144.2</text><text x="596.4754289037511" y="199" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">+9% (AIDC)</text><text x="410.0" y="229" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">Domestic games</text><rect x="219.1" y="214" width="85.9" height="24" fill="#C75B39"/><text x="213.05641174760103" y="223" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">164.2</text><text x="213.05641174760103" y="241" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">+18%</text><text x="521.0" y="228" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">ND</text><text x="410.0" y="271" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">Social networks and subs</text><rect x="238.2" y="256" width="66.8" height="24" fill="#C75B39"/><text x="232.1608025588834" y="265" text-anchor="end" font-size="15" fill="#2B2B2B" font-weight="bold">127.7</text><text x="232.1608025588834" y="283" text-anchor="end" font-size="14" fill="#6E675C" font-weight="normal">+5%</text><text x="521.0" y="270" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">ND</text><text x="410.0" y="313" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">China 1P retail, logistics</text><text x="299.0" y="312" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">0</text><rect x="515.0" y="298" width="55.2" height="24" fill="#3C6E8F"/><text x="576.2195405641174" y="307" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">105.5</text><text x="576.2195405641174" y="325" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">+2%</text><text x="410.0" y="355" text-anchor="middle" font-size="15" fill="#2B2B2B" font-weight="bold">Quick commerce</text><text x="299.0" y="354" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">0</text><rect x="515.0" y="340" width="41.1" height="24" fill="#3C6E8F"/><text x="562.0875254434428" y="349" text-anchor="start" font-size="15" fill="#2B2B2B" font-weight="bold">78.5</text><text x="562.0875254434428" y="367" text-anchor="start" font-size="14" fill="#6E675C" font-weight="normal">+47%</text></svg>
+<div class="cap">RMB bn. Tencent calendar 2025 (AR FY2025 Note 6 and MD&amp;A); Alibaba fiscal year ending 31 March 2026, segment revenue before eliminations (20-F FY2026 Item 5). Growth is year on year; Alibaba June quarter 2026 customer management revenue shown in brackets. All other: Tencent Others; Alibaba All others (RMB254.4bn) plus China commerce wholesale (RMB26.3bn). ND: Alibaba does not disclose games or social content revenue.</div></div>
+<h3>The cells that matter</h3>
+<table>
+<tr><th>Cell</th><th class="num ca">Tencent rev (% total)</th><th class="num ca">Growth</th><th class="num cb">Alibaba rev (% seg.)</th><th class="num cb">Growth</th><th>Margin signal / leader</th></tr>
+<tr><td>China merchant marketing</td><td class="num ca">145.0 (19%)</td><td class="num ca">+19%; Q2 26 +22%</td><td class="num cb">343.9 (31%)</td><td class="num cb">+5%; JunQ 26 -7%</td><td>Tencent GM 58%; Alibaba CEG EBITA margin 19.4% (38.0% FY25). Momentum: Tencent</td></tr>
+<tr><td>Fintech and cloud</td><td class="num ca">229.4 (31%)</td><td class="num ca">+8%; Q2 26 +9%</td><td class="num cb">158.1 (14%)</td><td class="num cb">+34%; JunQ 26 +45%</td><td>Tencent FBS GM 51%; Alibaba cloud EBITA 9.0%, about 12% JunQ. Momentum: Alibaba</td></tr>
+<tr><td>Domestic games</td><td class="num ca">164.2 (22%)</td><td class="num ca">+18%; Q2 26 +17%</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Tencent VAS GM 60%, 64% Q2 26. Leader: Tencent</td></tr>
+<tr><td>Social networks and subscriptions</td><td class="num ca">127.7 (17%)</td><td class="num ca">+5%; Q2 26 +1%</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Mature; Tencent only</td></tr>
+<tr><td>International</td><td class="num ca">77.4 (10%)</td><td class="num ca">+33%; Q2 26 -1% (+4% cc)</td><td class="num cb">144.2 (13%)</td><td class="num cb">+9%</td><td>Tencent inside VAS 60% GM; AIDC EBITA -1.4%. Leader on profit: Tencent</td></tr>
+<tr><td>China 1P retail, logistics and quick commerce</td><td class="num ca">0</td><td class="num ca">-</td><td class="num cb">184.0 (17%)</td><td class="num cb">+2% / +47%</td><td>Low or negative margin (inferred from CEG EBITA fall); Alibaba only</td></tr>
+<tr><td>All other</td><td class="num ca">8.1 (1%)</td><td class="num ca">+4%</td><td class="num cb">280.7 (25%)</td><td class="num cb">-25% (disposals)</td><td>Alibaba All others EBITA -14.0%</td></tr>
+</table>
+<div class="iik"><b>Insight:</b> Tencent's growth sits in cells earning 58 to 64% gross margins; Alibaba's two fastest cells (cloud, quick commerce) are its thinnest-margin or loss-making ones, and its highest-margin cell (CMR) is flat. <b>Implication:</b> Revenue growth at Alibaba does not compound into profit at the same rate as at Tencent unless cloud margins rise well above today's 12%. <span class="kpi">KPI: Alibaba customer management revenue like-for-like growth back above 5% by the March 2027 quarter; Tencent Marketing Services growth above 15% through Q2 2027 (quarterly releases).</span> [Source: Tencent AR FY2025, H1 2026 results; Alibaba 20-F FY2026, June Q 2026 release]</div>
+<h3>Segment growth engines</h3>
+<p><b>Merchant marketing.</b> Tencent: Marketing Services grew on "pricing and ad impressions", with pricing helped by AI targeting and closed-loop ads, impressions by Video Accounts and Weixin Search, and "modest increases in ad load" (AR FY2025). Alibaba: FY2026 CMR growth was "driven by the improvement of take rate" (20-F FY2026), meaning price on a GMV base that is not growing fast, and the June quarter needed a merchant development program booked as contra revenue. Tencent's driver is more durable because it still has unmonetized surfaces; Alibaba's is a pricing lever it has already pulled.</p>
+<p><b>Cloud and AI.</b> Alibaba: external cloud revenue up 45% in the June quarter, AI-related revenue RMB12.4bn, and the segment now includes T-Head chips; the cost is capex of RMB126.1bn in FY2026 and RMB67.7bn in one quarter. Tencent: business services grew at a high-teens rate in 2025, capex primarily trains Hunyuan models and serves WorkBuddy inference first, cloud customers second (Q2 2026 call). Growth here is organic for both; Alibaba's is larger and more externally validated.</p>
+<p><b>Games.</b> Organic and portfolio-driven: evergreen titles (Honour of Kings, Peacekeeper Elite, Delta Force, VALORANT) plus new launches. The cost is content and studio R&amp;D, both already in Tencent's cost base.</p>
+<div class="iik"><b>Insight:</b> Tencent's engines are price-led on owned attention; Alibaba's core engine is price-led on merchants and its growth engine is capacity-led. <b>Implication:</b> Capacity-led growth needs capital ahead of revenue, which is why Alibaba's free cash flow turned negative first. <span class="kpi">KPI: Alibaba cloud EBITA margin at or above 12% for four consecutive quarters to June 2027 (quarterly releases).</span> [Source: Tencent AR FY2025, Q2 2026 call; Alibaba 20-F FY2026, June Q 2026 release]</div>
+<h3>Price control and route-to-market</h3>
+<p>Tencent sells directly to consumers (game items, subscriptions) and to advertisers through its own auction; there is no intermediary between it and net price. Alibaba's customers are merchants who can move budget to Douyin, PDD or Tencent's own Mini Shops, and the June quarter shows Alibaba paying merchants back through contra revenue. In cloud the pricing environment improved for both: Tencent raised Tencent Cloud prices across the board in May 2026 and cut discounts (Q2 2026 call).</p>
+<div class="iik"><b>Insight:</b> Tencent controls the route to both of its paying customer groups; Alibaba's merchants have more exits than five years ago. <b>Implication:</b> Net-price realization in marketing favors Tencent through a soft consumer cycle. <span class="kpi">KPI: Alibaba reported take rate or contra-revenue incentives disclosed in the December 2026 quarter (release).</span> [Source: Tencent AR FY2025; Alibaba 20-F FY2026 Item 5, June Q 2026 release]</div>
+<h3>Supply resilience</h3>
+<table>
+<tr><th>Input</th><th class="ca">Tencent</th><th class="cb">Alibaba</th></tr>
+<tr><td>AI accelerators</td><td class="ca">Procured; non-current prepayments, deposits and other assets RMB91.2bn at 30 June 2026 vs RMB24.5bn at December 2025 (Interim Report 2026, Note 20)</td><td class="cb">In-house T-Head Zhenwu chips, 650+ external customers (June Q 2026 release)</td></tr>
+<tr><td>Content</td><td class="ca">Owned studios and licensed IP; content costs RMB69.6bn (AR FY2025 Note 7)</td><td class="cb">Merchant supply, not owned</td></tr>
+<tr><td>Fulfilment labor</td><td class="ca">None</td><td class="cb">Fengniao rider network for quick commerce (20-F FY2026)</td></tr>
+<tr><td>Memory and bandwidth</td><td class="ca">Bandwidth RMB32.0bn; passed through via cloud price rises</td><td class="cb">ND</td></tr>
+</table>
+<div class="iik"><b>Insight:</b> Alibaba is more self-sufficient in compute, Tencent has fewer physical inputs overall. <b>Implication:</b> A tighter US export regime hurts Tencent's AI timeline more than Alibaba's; a labor-cost or rider-regulation shock hurts only Alibaba. <span class="kpi">KPI: Tencent capex split between internal training and external cloud disclosed by FY2026 annual report.</span> [Source: Tencent AR FY2025, Q2 2026 call; Alibaba June Q 2026 release]</div>
+<h3>Competitive context</h3>
+<p>China internet advertising share, H1 2025: Taobao 22.5%, Douyin 19.1%, Weixin 10.8% (QuestMobile; approx., unverified, carried from prior research and not re-checked this run); Tencent is the share-taker, Alibaba the share-holder. China cloud IaaS plus PaaS, H1 2025: Alibaba 25.6%, Huawei 12.3%, China Telecom 11.4%, China Mobile 8.9%, Tencent 8.8% (IDC; approx., unverified, carried from prior research); Alibaba is the share-taker in AI cloud (Omdia, 38.1%, cited in Alibaba's June Q 2026 release). Quick commerce: Meituan, Alibaba and JD; share figures ND (Meituan and JD no longer disclose, Alibaba reports net of subsidies). Domestic games market RMB350.8bn in 2025 (GPC/CNG; approx., unverified), where Tencent is the leader.</p>
+<h3>Risks by segment</h3>
+<p><b>Merchant marketing:</b> AI assistants (Alibaba's Qwen app at 250m users, ByteDance's Doubao) move shopping intent off both feeds; Alibaba is more exposed because search-led P4P is its core. <b>Cloud:</b> token price commoditization; Alibaba more exposed because cloud is its growth thesis. <b>Games:</b> approval freezes; only Tencent exposed. <b>Quick commerce:</b> renewed subsidy war; only Alibaba exposed.</p>
+<div class="pull">On cells alone, Tencent has the higher-probability path because its growth and its margin come from the same places; Alibaba's path depends on cloud growing into a second core fast enough to replace a stalling marketplace.</div>
+</div>
+
+<div class="view" id="v1">
+<div class="frame">In China internet, whoever owns daily attention sets the terms; Tencent owns it through social and games, Alibaba rents it through merchants.</div>
+<div class="duelwrap">
+<div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Tencent - clear</div></div></div>
+<div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Tencent - clear</div></div></div>
+<div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Alibaba - narrow</div></div></div>
+<div class="cap">Who sets the terms, lever by lever; each call argued below.</div>
+</div>
+<h3>Moats: what rivals cannot copy</h3>
+<div class="duo">
+<div class="col a"><h3>Tencent</h3><p>Weixin and WeChat social graph, 1,439m combined MAU in Q2 2026; a rival would need years of relationships, not money (durability High). Evergreen game portfolio and own studios, proven by Domestic Games reaching RMB164.2bn (High). Weixin Pay embedded in chat and Mini Programs (High, regulated).</p></div>
+<div class="col b"><h3>Alibaba</h3><p>Taobao and Tmall two-sided marketplace with Alimama consumer data and about 64m 88VIP members (Medium: shoppers multihome, share lost to PDD and Douyin over 2020s). Alibaba Cloud scale plus Qwen models and T-Head chips, first in China cloud (IDC) and 32% of enterprise model invocation (Frost and Sullivan, cited in 20-F FY2026) (High).</p></div>
+</div>
+<div class="iik"><b>Insight:</b> Tencent's moat is attention it owns; Alibaba's strongest moat is now in cloud, not commerce. <b>Implication:</b> Tencent's advantage defends its current profit pool; Alibaba's defends its future one. <span class="kpi">KPI: Weixin MAU growth stays positive and Video Accounts time spent above plus 15% yoy (Tencent quarterly); Alibaba 88VIP members above 60m (Alibaba quarterly).</span> [Source: Tencent H1 2026 results; Alibaba 20-F FY2026, June Q 2026 release]</div>
+<h3>Customers: who controls net price and access</h3>
+<p>Tencent: no customer above 10% of revenue; consumers pay directly and advertisers bid in Tencent's auction, where AI targeting raised pricing in 2025 (AR FY2025). Alibaba: merchants pay CPC, CPM and CPS fees (0.1% to 5.0% on Tmall) plus a software service fee since September 2024; FY2026 CMR growth came from take rate, and June quarter CMR fell 7% after contra-revenue merchant incentives (20-F FY2026; June Q 2026 release). Pricing power exercised: Tencent raised ad pricing and cloud prices; Alibaba raised take rate, then paid part of it back.</p>
+<div class="iik"><b>Insight:</b> Tencent sets net price; Alibaba negotiates it. <b>Implication:</b> In a demand slowdown, margin pressure lands on Alibaba's CMR first. <span class="kpi">KPI: Alibaba CMR reported growth versus like-for-like gap narrowing to under 3 points by the March 2027 quarter.</span> [Source: Tencent AR FY2025; Alibaba 20-F FY2026, June Q 2026 release]</div>
+<h3>Suppliers: who absorbs shocks</h3>
+<p>Tencent: GPU supply constrained by US export controls, answered with large prepayments and model efficiency; content and bandwidth passed through via price (cloud price rise May 2026). Alibaba: T-Head gives dual sourcing for compute; quick commerce adds a rider cost base with Weak pass-through while subsidy competition persists. Alibaba was added to the US Section 1260H list in June 2026 (6-K 9 June 2026); Tencent has been on it since the January 2025 update (approx., unverified); neither designation bans investment.</p>
+<div class="iik"><b>Insight:</b> Alibaba absorbs compute shocks better; Tencent absorbs every other input shock better. <b>Implication:</b> The supplier lever narrows Tencent's advantage only in the AI race, not in the profit pool. <span class="kpi">KPI: Tencent new-AI-products loss (non-IFRS OP ex new AI minus reported non-IFRS OP) below RMB8bn per quarter by Q2 2027.</span> [Source: Tencent H1 2026 results; Alibaba June Q 2026 release, 6-K 9 June 2026; MoFo 26 June 2026]</div>
+<h3>The price/power triangle: top 3 cells</h3>
+<table>
+<tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+<tr><td>China merchant marketing</td><td>Both direct auctions; Tencent over owned attention, Alibaba over merchant GMV</td><td>Tencent rising (eCPM up); Alibaba take rate up then rebated</td><td>Both stable</td><td>Tencent share up, margin flat to up; Alibaba share flat to down, margin down</td><td>Tencent MS growth vs Alibaba CMR growth gap above 10pts</td></tr>
+<tr><td>China cloud and AI</td><td>Both direct, enterprise</td><td>Both raising prices in 2026</td><td>Alibaba stronger (own chips)</td><td>Alibaba share up, margin up; Tencent share flat, margin up</td><td>Alibaba cloud EBITA margin at or above 12%</td></tr>
+<tr><td>International</td><td>Tencent via app stores; Alibaba via own marketplaces</td><td>Parity</td><td>Both exposed to tariffs and FX</td><td>Tencent flat after 2025 surge; Alibaba share up, margin toward breakeven</td><td>AIDC EBITA positive for a full fiscal year</td></tr>
+</table>
+<p>Tension named: Alibaba grows fastest exactly where it has pricing power and supply control (cloud), but that cell is still only 14% of segment revenue at a 9 to 12% margin, so the power it holds does not yet move group profit.</p>
+<h3>The causal gap</h3>
+<p><b>1. Owned attention vs merchant dependence</b> (Major): Tencent monetizes users directly across social, games and ads; Alibaba monetizes merchants whose alternatives multiplied. Not closable by Alibaba with money; it would need a daily-use consumer surface, which is what the Qwen app and Taobao Instant Commerce are trying to build, a multi-year effort. <b>2. Gross revenue mix</b> (Major): first-party retail, logistics and rider delivery sit in Alibaba's cost of revenue. Closable only by exit; disposals of Sun Art, Intime and Trendyol GO show it is under way. <b>3. Compute self-sufficiency</b> (Moderate, Alibaba ahead): Tencent can partly close it within two to three years through procurement and efficiency, which makes it money-buyable and therefore a weaker moat.</p>
+<div class="pull">Tencent holds the stronger power position for five to ten years; Alibaba holds the edge only in cloud and compute supply. Early warnings: Weixin MAU turning negative for Tencent; CMR like-for-like growth staying below 3% for Alibaba.</div>
+</div>
+
+<div class="view" id="v2">
+<div class="frame">Tencent runs leaner at every level that matters: it buys less to sell each yuan, and it spends less to sell it.</div>
+<p>Mapping: both present costs by function. Tencent's R&amp;D sits inside general and administrative expenses, so we take R&amp;D from Note 7 (RMB64.1bn, 70.7bn, 85.7bn) and define SG&amp;A as selling and marketing plus G&amp;A minus R&amp;D. Tencent EBIT is IFRS operating profit, which includes other gains and losses. Alibaba R&amp;D is "product development expenses" (includes some technology operating costs); SG&amp;A is sales and marketing plus G&amp;A; EBIT is US GAAP income from operations after amortization and goodwill impairment. Windows: Tencent calendar 2023 to 2025; Alibaba fiscal years ending March 2024 to 2026, a one-quarter offset.</p>
+<h3>Three years, five ratios</h3>
+<table>
+<tr><th>% of sales, 3y avg</th><th class="num ca">Tencent</th><th class="num cb">Alibaba</th><th class="num">Gap</th><th>What drives it</th></tr>
+<tr><td>COGS</td><td class="num ca">47.6</td><td class="num cb">60.8</td><td class="num">-13.2</td><td>Alibaba books 1P goods, logistics and riders gross</td></tr>
+<tr><td>R&amp;D</td><td class="num ca">10.9</td><td class="num cb">5.9</td><td class="num">+5.0</td><td>Tencent's digital revenue base is smaller; games and AI are R&amp;D-heavy</td></tr>
+<tr><td>SG&amp;A</td><td class="num ca">12.1</td><td class="num cb">20.9</td><td class="num">-8.8</td><td>Alibaba buys users and merchants (S&amp;M 24% in FY2026)</td></tr>
+<tr><td>Gross margin</td><td class="num ca">52.4</td><td class="num cb">39.2</td><td class="num">+13.2</td><td>Mix: digital goods and ads vs gross retail and delivery</td></tr>
+<tr><td>EBIT margin</td><td class="num ca">30.0</td><td class="num cb">10.4</td><td class="num">+19.6</td><td>Both of the above; Alibaba FY2026 at 4.9%</td></tr>
+</table>
+<div class="chartbox"><svg viewBox="0 0 860 280" role="img" aria-label="Cost engine grouped bars"><line x1="50" x2="840" y1="230" y2="230" stroke="#2B2B2B"/><rect x="80" y="83.5" width="46" height="146.5" fill="#C75B39"/><text x="103" y="77.53846153846152" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">47.6</text><rect x="132" y="42.9" width="46" height="187.1" fill="#3C6E8F"/><text x="155" y="36.923076923076934" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">60.8</text><text x="129" y="252" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="normal">COGS</text><rect x="230" y="196.5" width="46" height="33.5" fill="#C75B39"/><text x="253" y="190.46153846153845" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">10.9</text><rect x="282" y="211.8" width="46" height="18.2" fill="#3C6E8F"/><text x="305" y="205.84615384615384" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">5.9</text><text x="279" y="252" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="normal">R&D</text><rect x="380" y="192.8" width="46" height="37.2" fill="#C75B39"/><text x="403" y="186.76923076923077" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">12.1</text><rect x="432" y="165.7" width="46" height="64.3" fill="#3C6E8F"/><text x="455" y="159.69230769230768" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">20.9</text><text x="429" y="252" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="normal">SG&A</text><rect x="530" y="68.8" width="46" height="161.2" fill="#C75B39"/><text x="553" y="62.769230769230774" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">52.4</text><rect x="582" y="109.4" width="46" height="120.6" fill="#3C6E8F"/><text x="605" y="103.38461538461537" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">39.2</text><text x="579" y="252" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="normal">Gross margin</text><rect x="680" y="137.7" width="46" height="92.3" fill="#C75B39"/><text x="703" y="131.69230769230768" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">30.0</text><rect x="732" y="198.0" width="46" height="32.0" fill="#3C6E8F"/><text x="755" y="192.0" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="bold">10.4</text><text x="729" y="252" text-anchor="middle" font-size="14" fill="#2B2B2B" font-weight="normal">EBIT margin</text><text x="840" y="20" text-anchor="end" font-size="13" fill="#6E675C" font-weight="normal">3-year average, % of revenue</text></svg>
+<div class="cap">Sources: Tencent AR FY2024 and FY2025 consolidated income statement and Note 7; Alibaba 20-F FY2026 consolidated income statements.</div></div>
+<table>
+<tr><th>Year</th><th class="num">COGS</th><th class="num">R&amp;D</th><th class="num">SG&amp;A</th><th class="num">Gross margin</th><th class="num">EBIT margin</th></tr>
+<tr><td class="ca">Tencent 2023</td><td class="num">51.9</td><td class="num">10.5</td><td class="num">12.1</td><td class="num">48.1</td><td class="num">26.3</td></tr>
+<tr><td class="ca">Tencent 2024</td><td class="num">47.1</td><td class="num">10.7</td><td class="num">11.9</td><td class="num">52.9</td><td class="num">31.5</td></tr>
+<tr><td class="ca">Tencent 2025</td><td class="num">43.8</td><td class="num">11.4</td><td class="num">12.3</td><td class="num">56.2</td><td class="num">32.1</td></tr>
+<tr><td class="cb">Alibaba FY2024</td><td class="num">62.3</td><td class="num">5.6</td><td class="num">16.7</td><td class="num">37.7</td><td class="num">12.0</td></tr>
+<tr><td class="cb">Alibaba FY2025</td><td class="num">60.0</td><td class="num">5.7</td><td class="num">18.9</td><td class="num">40.0</td><td class="num">14.1</td></tr>
+<tr><td class="cb">Alibaba FY2026</td><td class="num">60.2</td><td class="num">6.5</td><td class="num">27.2</td><td class="num">39.8</td><td class="num">4.9</td></tr>
+</table>
+<h3>The structural gap</h3>
+<p>The most persistent difference is gross margin: 10.4, 12.9 and 16.4 points in Tencent's favor across the three years, and widening. The mechanism is the revenue mix mapped in the Growth tab, not efficiency: Alibaba's revenue includes first-party retail and logistics booked gross, and quick commerce delivery costs, while Tencent's incremental revenue is software, ads and virtual items. It implies Tencent's pricing power shows up where the power map says it should, so the cost data confirms the power map rather than contradicting it. The more telling second gap is SG&amp;A, which at Alibaba jumped from 16.7% to 27.2% of revenue in two years: that is a choice to buy share in quick commerce and user experience, and a new management priority could reverse it, which is the one way Alibaba's margin gap narrows without a mix change. R&amp;D intensity is the only line where Alibaba looks leaner, and that is a denominator effect of its gross revenue.</p>
+<div class="pull">Tencent runs the leaner engine by a wide, persistent margin; Alibaba's gap is part structure (mix) and part choice (marketing spend).</div>
+</div>
+
+<div class="flip">
+<h3>What would flip the call</h3>
+<ul>
+<li>Tencent's AI build stops being a lump sum. Management framed 2026 to 2027 compute as a one-time model-building cost measured against the balance sheet; if new-AI losses keep widening (about RMB10.5bn in Q2 2026, computed) and capex stays above RMB50bn a quarter into 2027, the self-funding advantage erodes. <span style="color:var(--good);font-weight:700;">Early warning: Tencent net cash below zero or quarterly capex above RMB60bn by Q2 2027 (quarterly results).</span></li>
+<li>Alibaba cloud becomes China's AI utility at scale and margin. If AI Cloud and Compute grows 40% a year with EBITA margin in the mid-teens, it passes customer management revenue in quarterly size within about two years (inferred: RMB48.4bn vs RMB82.5bn in the June quarter) and changes Alibaba's profit mix. <span style="color:var(--good);font-weight:700;">Early warning: AI Cloud and Compute EBITA margin at or above 15% in any quarter before June 2027 (Alibaba release).</span></li>
+<li>AI agents move commerce and ad intent off Weixin. If Qwen app (250m users) or Doubao become the default place Chinese users shop and search, Tencent's closed-loop ad pricing loses its data edge. <span style="color:var(--good);font-weight:700;">Early warning: Tencent Marketing Services growth below 10% for two consecutive quarters (Tencent results).</span></li>
+</ul>
+</div>
+
+<h2>The KPI pack: 12-24 months</h2>
+<table>
+<tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+<tr><td>Alibaba customer management revenue, like-for-like growth</td><td>At or above +5% yoy</td><td>March 2027 quarter</td><td class="cb">Alibaba</td><td>Alibaba quarterly release</td></tr>
+<tr><td>Alibaba AI Cloud and Compute EBITA margin</td><td>At or above 15%</td><td>June 2027 quarter</td><td class="cb">Alibaba</td><td>Alibaba quarterly release</td></tr>
+<tr><td>Tencent Marketing Services revenue growth</td><td>At or above +15% yoy</td><td>Q2 2027</td><td class="ca">Tencent</td><td>Tencent results announcement</td></tr>
+<tr><td>Tencent new-AI-products loss (non-IFRS OP ex new AI minus non-IFRS OP)</td><td>Below RMB8bn per quarter</td><td>Q2 2027</td><td class="ca">Tencent</td><td>Tencent results announcement</td></tr>
+<tr><td>Alibaba quarterly free cash flow</td><td>Positive</td><td>December 2026 quarter</td><td class="cb">Alibaba (if missed, Tencent)</td><td>Alibaba quarterly release</td></tr>
+</table>
+
+<div class="timeverdict"><div class="label">Where to spend your time</div>
+Spend the next deep-dive hours on Tencent, specifically a read of the FY2026 interim report's capex, prepayment and AI loss disclosures, because the only thing likely to overturn this call is Tencent's own capital cycle, not Alibaba.</div>
+
+<div class="footer">
+<p><b>Method.</b> Three lenses (growth by product x geography cell, power over customers and suppliers, a three-year cost engine) applied to both companies, keeping only the cells that explain about 80% of the economics, then a verdict that must survive all three. Segments are normalized to common cells, figures are in RMB as reported, Alibaba's fiscal year ends one quarter after Tencent's, ND means not publicly disclosed, and (inferred) or computed marks our own reasoning. This is a business-strength comparison, not a valuation, and says nothing about either stock's price.</p>
+<p class="sources"><b>Sources.</b></p>
+<ul class="sources">
+<li>Tencent Holdings, Annual Report 2025 (HKEXnews) and Annual Report 2024; local research folder sources/Annual_Reports</li>
+<li>Tencent Holdings, Announcement of results for the three and six months ended 30 June 2026 (HKEXnews, 12 August 2026)</li>
+<li>Tencent Q2 2026 earnings call transcript, 12 August 2026 (third-party, Quartr via stockanalysis.com)</li>
+<li>Alibaba Group, Form 20-F for fiscal year ended 31 March 2026 (SEC EDGAR, 20 May 2026) and Form 20-F FY2024</li>
+<li>Alibaba Group, June Quarter 2026 Results, Business Wire, 20 August 2026, https://secure.businesswire.com/news/home/20260818525201/en/</li>
+<li>Alibaba Group, Pricing and Completion of HK$80 Billion Placing of New Shares, 23 and 26 August 2026, https://www.alibabagroup.com/en-US/document-2028384807859257344; 6-K 26 August 2026</li>
+<li>Alibaba Group, 6-K 9 June 2026, Inclusion of Alibaba Group on the CMC List; Morrison Foerster, DoD Expands the Section 1260H List, 26 June 2026</li>
+<li>Alibaba Group, RMB380bn AI and cloud infrastructure plan, February 2025, https://www.alibabagroup.com/en-US/document-1830678592242057216</li>
+<li>Bloomberg, Tencent sells Kuaishou stake, 6 July 2026; Xinhua, SAMR conditional approval of Ximalaya acquisition, 12 May 2026</li>
+<li>IDC China cloud IaaS plus PaaS H1 2025; QuestMobile China internet advertising H1 2025; GPC/CNG China games market 2025 (gathered in prior Tencent project research)</li>
+</ul>
+</div>
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script></body></html>

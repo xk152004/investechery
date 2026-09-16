@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alibaba vs Amazon: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker">Peer Duel, Compound With AI</div>
+<h1>Alibaba vs Amazon: who wins the next decade?</h1>
+<p class="source">Platform commerce and cloud. BABA / AMZN. Run 16 September 2026. Built from Alibaba results releases FY2021 to FY2026 and the June 2026 quarter (6-K, 20 Aug 2026), the FY2026 20-F; Amazon Q4 releases 2020 to 2025, the 2025 10-K segment data and the Q2 2026 release (30 Jul 2026); earnings-call transcripts; Omdia, Synergy, eMarketer, CIRP, Hugging Face; regulator releases (FTC, European Commission, Federal Register, US DoD). Events swept September 2025 to 16 September 2026; most recent events checked: Alibaba HK$80bn new-share placement (24 Aug 2026), Amazon GBP4.25bn sterling bond (9 Sep 2026). Figures in USD; Alibaba translated at RMB6.898 per US$ (company FY2026 convenience rate) for every year, ratios computed in RMB. Alibaba fiscal year ends 31 March, one quarter offset from Amazon's calendar year. Evidence is web primary sources; the project sources folder was not connected to this run. Not a valuation and not a recommendation.</p>
+<div class="chips"><span class="chip a">Alibaba (BABA)</span><span class="chip b">Amazon (AMZN)</span></div>
+
+<div class="verdict-banner">
+  <div class="label">The Call</div>
+  <div class="verdict">Amazon is the stronger business for the next 5 to 10 years: its growth is contracted and priced up, while Alibaba's is subsidized and priced down.</div>
+  <div class="why">AWS carries a $496bn backlog and is raising GPU prices; Alibaba's China commerce core grew customer management revenue 1% like-for-like in the June 2026 quarter while FY2026 sales and marketing rose to 24% of revenue to defend it.</div>
+</div>
+<div class="reasons">
+  <div class="col"><span class="n">1</span><br>Profit pool quality. AWS earned a 39.4% operating margin in Q2 2026 on $42.2bn revenue; Alibaba Cloud earned about 12% on RMB48.4bn (Amazon Q2 2026 release; Alibaba Jun-Q 2026 release).</div>
+  <div class="col"><span class="n">2</span><br>Direction of the engine. Alibaba's FY2026 EBIT margin fell to 4.9% from 14.1% as S&amp;M rose 70%; Amazon's rose to 11.2% from 6.4% in two years (FY results releases, both).</div>
+  <div class="col"><span class="n">3</span><br>Freedom of inputs. Amazon buys Nvidia and ships its own Trainium; Alibaba's access to advanced GPUs is gated by Washington licences and Beijing guidance, and it added the DoD 1260H label in June 2026.</div>
+</div>
+<div class="duelwrap">
+  <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">Amazon - clear</div></div></div>
+  <div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Amazon - narrow</div></div></div>
+  <div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Amazon - narrow</div></div></div>
+  <div class="cap">Left lean favors Alibaba, right lean favors Amazon; marker position shows how decisive. Scale note: Amazon's revenue is about 4.8x Alibaba's ($716.9bn vs $148.4bn), so the page compares ratios and growth, not absolutes.</div>
+</div>
+
+<h2>The Three Answers</h2>
+<div class="answer">
+  <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+  <div class="w"><span class="chip b">Amazon, clear</span></div>
+  <p>The next five years ride on three Amazon cells with forward visibility. Global cloud: AWS growth reaccelerated to 37% in Q2 2026 with a $496bn backlog (up from $364bn a quarter earlier), and the power build targets doubling capacity by end-2027, so revenue is capacity-constrained rather than demand-constrained (Q2 2026 call). US advertising: $19.8bn, +26%, monetizing the same shopper traffic without new fulfilment cost. North America commerce: +16% in Q2 2026 on faster same-day delivery (over 40% more items same-day or overnight in H1 2026). Alibaba's fastest cells, China cloud (+45%, AI revenue in triple digits for 12 quarters) and quick commerce (+45%), are real but sit on a smaller base and one of them loses money until FY2029 guidance, while the China commerce core that funds both is flat (CMR -7% reported, +1% like-for-like, Jun-Q 2026 release).</p>
+  <div class="chartbox"><svg viewBox="0 0 900 240" role="img" aria-label="Indexed revenue paths">
+<line x1="60" x2="780" y1="184" y2="184" stroke="#E5DDD0"/><text x="52" y="189" text-anchor="end" font-size="13" fill="#6E675C">100</text>
+<line x1="60" x2="780" y1="104" y2="104" stroke="#E5DDD0"/><text x="52" y="109" text-anchor="end" font-size="13" fill="#6E675C">150</text>
+<line x1="60" x2="780" y1="40" y2="40" stroke="#E5DDD0"/><text x="52" y="45" text-anchor="end" font-size="13" fill="#6E675C">190</text>
+<text x="70" y="228" text-anchor="middle" font-size="13" fill="#6E675C">2020 / FY21</text>
+<text x="210" y="228" text-anchor="middle" font-size="13" fill="#6E675C">2021 / FY22</text>
+<text x="350" y="228" text-anchor="middle" font-size="13" fill="#6E675C">2022 / FY23</text>
+<text x="490" y="228" text-anchor="middle" font-size="13" fill="#6E675C">2023 / FY24</text>
+<text x="630" y="228" text-anchor="middle" font-size="13" fill="#6E675C">2024 / FY25</text>
+<text x="770" y="228" text-anchor="middle" font-size="13" fill="#6E675C">2025 / FY26</text>
+<polyline points="70,184 210,149 350,131 490,106 630,80 770,46" fill="none" stroke="#3C6E8F" stroke-width="3"/>
+<circle cx="70" cy="184" r="4" fill="#3C6E8F"/>
+<circle cx="210" cy="149" r="4" fill="#3C6E8F"/>
+<circle cx="350" cy="131" r="4" fill="#3C6E8F"/>
+<circle cx="490" cy="106" r="4" fill="#3C6E8F"/>
+<circle cx="630" cy="80" r="4" fill="#3C6E8F"/>
+<circle cx="770" cy="46" r="4" fill="#3C6E8F"/>
+<text x="782" y="51" font-size="16" font-weight="700" fill="#3C6E8F">Amazon 186</text>
+<polyline points="70,184 210,154 350,150 490,134 630,122 770,115" fill="none" stroke="#C75B39" stroke-width="3"/>
+<circle cx="70" cy="184" r="4" fill="#C75B39"/>
+<circle cx="210" cy="154" r="4" fill="#C75B39"/>
+<circle cx="350" cy="150" r="4" fill="#C75B39"/>
+<circle cx="490" cy="134" r="4" fill="#C75B39"/>
+<circle cx="630" cy="122" r="4" fill="#C75B39"/>
+<circle cx="770" cy="115" r="4" fill="#C75B39"/>
+<text x="782" y="120" font-size="16" font-weight="700" fill="#C75B39">Alibaba 143</text>
+</svg><div class="cap">Revenue indexed to 100 at Amazon 2020 / Alibaba FY2021. Amazon net sales $386.1bn to $716.9bn; Alibaba RMB717.3bn to RMB1,023.7bn, index in RMB so FX does not distort. Alibaba FY2026 is depressed by the Sun Art and Intime disposals (+11% like-for-like). Sources: Amazon Q4 releases 2020, 2022, 2025; Alibaba FY2022, FY2024, FY2026 releases.</div></div>
+</div>
+<div class="answer">
+  <div class="q">2. Who converts that growth into superior margins?</div>
+  <div class="w"><span class="chip b">Amazon, narrow on the 3-year average, clear on direction</span></div>
+  <p>This is where the lenses disagree. On a three-year average Alibaba still shows the fatter engine: 39.2% gross margin vs 33.2% and 10.4% EBIT margin vs 9.4%, because a take-rate marketplace carries no inventory and Amazon ships 40% of units first-party. But the averages describe a fortress that stopped compounding: China E-commerce adjusted EBITA fell 44% in FY2026 (RMB193.2bn to RMB107.5bn) as quick-commerce subsidies and merchant support ate the take rate, and CMR growth faded from +10% (Jun-Q 2025) to +1% like-for-like. Amazon's conversion mechanism runs the other way: the mix shift toward AWS (18% of 2025 revenue but 57% of operating income) and advertising lifts group margin every year, and AWS is raising AI capacity prices 15 to 20% while Alibaba cuts Qwen token prices 10 to 20%.</p>
+  <div class="chartbox"><svg viewBox="0 0 900 230" role="img" aria-label="Margin dumbbells">
+<text x="210" y="45" text-anchor="end" font-size="16" font-weight="700" fill="#2B2B2B">Gross margin, 3y avg</text>
+<line x1="230" x2="815" y1="40" y2="40" stroke="#E5DDD0" stroke-width="2"/>
+<text x="230" y="64" text-anchor="middle" font-size="13" fill="#6E675C">0%</text><text x="815" y="64" text-anchor="middle" font-size="13" fill="#6E675C">45%</text>
+<line x1="661.6" x2="739.6" y1="40" y2="40" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="739.6" cy="40" r="8" fill="#C75B39"/>
+<text x="739.6" y="26" text-anchor="start" font-size="14" font-weight="700" fill="#C75B39">Alibaba 39.2%</text>
+<circle cx="661.6" cy="40" r="8" fill="#3C6E8F"/>
+<text x="661.6" y="26" text-anchor="end" font-size="14" font-weight="700" fill="#3C6E8F">Amazon 33.2%</text>
+<text x="700.6" y="62" text-anchor="middle" font-size="13" fill="#2B2B2B">Alibaba +6.0pts</text>
+<text x="210" y="115" text-anchor="end" font-size="16" font-weight="700" fill="#2B2B2B">EBIT margin, 3y avg</text>
+<line x1="230" x2="815" y1="110" y2="110" stroke="#E5DDD0" stroke-width="2"/>
+<text x="230" y="134" text-anchor="middle" font-size="13" fill="#6E675C">0%</text><text x="815" y="134" text-anchor="middle" font-size="13" fill="#6E675C">45%</text>
+<line x1="352.2" x2="365.20000000000005" y1="110" y2="110" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="365.20000000000005" cy="110" r="8" fill="#C75B39"/>
+<text x="365.20000000000005" y="96" text-anchor="start" font-size="14" font-weight="700" fill="#C75B39">Alibaba 10.4%</text>
+<circle cx="352.2" cy="110" r="8" fill="#3C6E8F"/>
+<text x="352.2" y="96" text-anchor="end" font-size="14" font-weight="700" fill="#3C6E8F">Amazon 9.4%</text>
+<text x="358.70000000000005" y="132" text-anchor="middle" font-size="13" fill="#2B2B2B">Alibaba +1.0pts</text>
+<text x="210" y="185" text-anchor="end" font-size="16" font-weight="700" fill="#2B2B2B">EBIT margin, latest FY</text>
+<line x1="230" x2="815" y1="180" y2="180" stroke="#E5DDD0" stroke-width="2"/>
+<text x="230" y="204" text-anchor="middle" font-size="13" fill="#6E675C">0%</text><text x="815" y="204" text-anchor="middle" font-size="13" fill="#6E675C">45%</text>
+<line x1="293.7" x2="375.6" y1="180" y2="180" stroke="#2B2B2B" stroke-width="2"/>
+<circle cx="293.7" cy="180" r="8" fill="#C75B39"/>
+<text x="293.7" y="166" text-anchor="end" font-size="14" font-weight="700" fill="#C75B39">Alibaba 4.9%</text>
+<circle cx="375.6" cy="180" r="8" fill="#3C6E8F"/>
+<text x="375.6" y="166" text-anchor="start" font-size="14" font-weight="700" fill="#3C6E8F">Amazon 11.2%</text>
+<text x="334.65" y="202" text-anchor="middle" font-size="13" fill="#2B2B2B">Amazon +6.3pts</text>
+</svg><div class="cap">Gross margin: Alibaba cost of revenue vs Amazon cost of sales plus fulfillment. EBIT: GAAP operating income. Alibaba FY2024 to FY2026, Amazon 2023 to 2025. Sources: annual results releases, both.</div></div>
+</div>
+<div class="answer">
+  <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+  <div class="w"><span class="chip a">Alibaba breaks first</span></div>
+  <p>Alibaba's exposure is a funding loop: the China commerce profit pool pays for quick-commerce losses and a cloud capex run-rate that hit RMB67.7bn in one quarter (+75%), free cash flow was -RMB44.7bn that quarter, and the gap was closed with a HK$80bn new-share placement in August 2026. If CMR slips from +1% to negative, the loop has no internal funder. Amazon's exposure is concentration inside AI demand: 2026 capex of about $220bn against trailing free cash flow of -$7.6bn, with a large part of the backlog tied to OpenAI and Anthropic, both of which Amazon also finances. Amazon breaks later because its capex sits against signed commitments and a positive-margin retail business, while Alibaba's spend sits against uncontracted share defence in a price war regulators are already policing.</p>
+</div>
+
+<h2>Segment-Geography Scorecard</h2>
+<p>The two companies barely meet head-on: their cells are mostly separated by geography, so this table shows where each is strong rather than a cell-by-cell fight. The six rows carry essentially all revenue of both groups.</p>
+<table>
+<tr><th>Cell (product x region)</th><th class="ca">Alibaba</th><th class="cb">Amazon</th><th>Why (one clause, sourced)</th></tr>
+<tr><td>E-commerce x US</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Amazon about 40% of US e-commerce (eMarketer) with ads +26%; AliExpress lost the de minimis channel 29 Aug 2025 (Federal Register), Alibaba US share ND</td></tr>
+<tr><td>Cloud x ex-China (global)</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>AWS 28% share, #1 (Synergy Q2 2026), backlog $496bn; Alibaba outside the global top three (inferred from Synergy ranking)</td></tr>
+<tr><td>Cloud x China</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Alibaba 37% of China cloud infrastructure, next Huawei 17% (Omdia Q4 2025); AWS not in Omdia's top four</td></tr>
+<tr><td>E-commerce marketplace x China</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Alibaba still the largest by CMR base but CMR +1% LFL and share vs PDD/Douyin ND; Amazon closed its China domestic marketplace in 2019 (approx., unverified)</td></tr>
+<tr><td>Commerce x International (Europe, Japan, RoW)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Amazon International $161.9bn, +11%/yr at a 2.9% margin; AIDC $20.9bn near break-even with a EUR550m EU DSA fine (EC, Jul 2026)</td></tr>
+<tr><td>Quick commerce x China</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Revenue +47% in FY2026 but loss-making, profitability guided for FY2029 (Jun-Q 2026 call); share vs Meituan ND</td></tr>
+</table>
+<div class="rubric"><b>How to read the scores:</b>
+<span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+<span><b>4</b> advantaged and gaining share</span>
+<span><b>3</b> holds position; grows with the market</span>
+<span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+<span><b>1</b> weak and losing share, or exiting</span>
+<span><b>0</b> no meaningful presence</span></div>
+<p class="score-note">Scores are anchored to the exhibits in the three tabs. Scores are per cell and are not summed.</p>
+
+<div class="tabs">
+  <button class="on" onclick="show(0,this)">Growth Map</button>
+  <button onclick="show(1,this)">Power Map</button>
+  <button onclick="show(2,this)">Cost Engine</button>
+</div>
+
+<div class="view on" id="v0">
+  <div class="frame">Amazon's growth cells are large, priced up and capacity-limited; Alibaba's are small, fast, and financed by a home-commerce cell that has stopped growing.</div>
+  <p>Normalization: Alibaba's China E-commerce Group less quick commerce is aligned to Amazon's North America segment as "home commerce"; AIDC to International; Cloud Intelligence to AWS. Amazon's North America figure includes its US advertising and subscriptions, Alibaba's China figure includes CMR (advertising plus commission) and direct sales. Alibaba resegmented again from the June 2026 quarter (E-commerce Group, AI Cloud &amp; Compute, AI Labs &amp; Applications, All Others), so FY2026 is the last year on the older basis used here.</p>
+  <p>The cell picture has one headline: all of Amazon's revenue sits in three cells growing 10 to 20% a year, and its most profitable cell is the fastest. At Alibaba the fastest cells (cloud, quick commerce) are about 23% of segment revenue, and the cell that earned nearly all group profit (China commerce, RMB193bn EBITA in FY2025) is the one being taxed to fund them.</p>
+  <div class="chartbox"><svg viewBox="0 0 900 288" role="img" aria-label="Butterfly chart of revenue cells">
+<text x="354" y="24" text-anchor="end" font-size="17" font-weight="700" fill="#C75B39">Alibaba FY26</text>
+<text x="546" y="24" font-size="17" font-weight="700" fill="#3C6E8F">Amazon FY25</text>
+<rect x="311.4" y="48" width="48.6" height="26" fill="#C75B39"/>
+<text x="305.4" y="66" text-anchor="end" font-size="15" fill="#2B2B2B">$69.0bn <tspan fill="#6E675C">| CMR +5%</tspan></text>
+<rect x="540" y="48" width="300.0" height="26" fill="#3C6E8F"/>
+<text x="834.0" y="66" text-anchor="end" font-size="15" fill="#fff">$426.3bn <tspan fill="#fff">| +10%/yr</tspan></text>
+<text x="450.0" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Home commerce</text>
+<text x="450.0" y="77" text-anchor="middle" font-size="13" fill="#6E675C">China ex-QC / North America</text>
+<rect x="345.3" y="94" width="14.7" height="26" fill="#C75B39"/>
+<text x="339.3" y="112" text-anchor="end" font-size="15" fill="#2B2B2B">$20.9bn <tspan fill="#6E675C">| +9%</tspan></text>
+<rect x="540" y="94" width="113.9" height="26" fill="#3C6E8F"/>
+<text x="659.9" y="112" text-anchor="start" font-size="15" fill="#2B2B2B">$161.9bn <tspan fill="#6E675C">| +11%/yr</tspan></text>
+<text x="450.0" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">International commerce</text>
+<text x="450.0" y="123" text-anchor="middle" font-size="13" fill="#6E675C">AIDC / International</text>
+<rect x="343.9" y="140" width="16.1" height="26" fill="#C75B39"/>
+<text x="337.9" y="158" text-anchor="end" font-size="15" fill="#2B2B2B">$22.9bn <tspan fill="#6E675C">| +34%</tspan></text>
+<rect x="540" y="140" width="90.6" height="26" fill="#3C6E8F"/>
+<text x="636.6" y="158" text-anchor="start" font-size="15" fill="#2B2B2B">$128.7bn <tspan fill="#6E675C">| +19%/yr</tspan></text>
+<text x="450.0" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Cloud</text>
+<text x="450.0" y="169" text-anchor="middle" font-size="13" fill="#6E675C">Alibaba Cloud / AWS</text>
+<rect x="334.0" y="186" width="26.0" height="26" fill="#C75B39"/>
+<text x="328.0" y="204" text-anchor="end" font-size="15" fill="#2B2B2B">$36.9bn <tspan fill="#6E675C">| -25%</tspan></text>
+<text x="546" y="204" font-size="15" fill="#6E675C">no presence</text>
+<text x="450.0" y="198" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">All other</text>
+<text x="450.0" y="215" text-anchor="middle" font-size="13" fill="#6E675C">Amap, Health, media / none</text>
+<rect x="352.0" y="232" width="8.0" height="26" fill="#C75B39"/>
+<text x="346.0" y="250" text-anchor="end" font-size="15" fill="#2B2B2B">$11.4bn <tspan fill="#6E675C">| +47%</tspan></text>
+<text x="546" y="250" font-size="15" fill="#6E675C">no presence</text>
+<text x="450.0" y="244" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Quick commerce, China</text>
+<text x="450.0" y="261" text-anchor="middle" font-size="13" fill="#6E675C">Taobao Instant Commerce</text>
+</svg><div class="cap">USD bn. Alibaba FY2026 (to 31 Mar 2026) segment revenue at RMB6.898, growth is FY2026 YoY; Amazon 2025 segment revenue, growth is 2023 to 2025 CAGR. Alibaba segments sum to more than group revenue before RMB89.6bn eliminations. Sources: Alibaba FY2026 release; Amazon Q4 2025 release and 10-K segment note.</div></div>
+  <h3>The cells that matter</h3>
+  <table>
+  <tr><th>Cell</th><th class="num ca">Alibaba rev</th><th class="num ca">growth</th><th class="num cb">Amazon rev</th><th class="num cb">growth</th><th>Margin signal / leader</th></tr>
+  <tr><td>Home commerce</td><td class="num ca">$69.0bn</td><td class="num ca">CMR +5% FY26; +1% LFL Jun-Q26</td><td class="num cb">$426.3bn</td><td class="num cb">+10%/yr; +16% Q2'26</td><td>Alibaba China E-com EBITA 19.4% (FY25: 38.0%) vs Amazon NA 6.9%; Alibaba richer but falling</td></tr>
+  <tr><td>Cloud</td><td class="num ca">$22.9bn</td><td class="num ca">+34%; +45% Jun-Q26</td><td class="num cb">$128.7bn</td><td class="num cb">+19%/yr; +37% Q2'26</td><td>AWS 35.4% op. margin (39.4% Q2'26) vs Alibaba 9.0% EBITA (12% Jun-Q); Amazon</td></tr>
+  <tr><td>International commerce</td><td class="num ca">$20.9bn</td><td class="num ca">+9%</td><td class="num cb">$161.9bn</td><td class="num cb">+11%/yr</td><td>AIDC -1.4% vs Amazon Intl 2.9%; Amazon</td></tr>
+  <tr><td>Quick commerce, China</td><td class="num ca">$11.4bn</td><td class="num ca">+47%</td><td class="num cb">0</td><td class="num cb">n/a</td><td>Loss-making, loss ND (company does not disclose)</td></tr>
+  <tr><td>All other</td><td class="num ca">$36.9bn</td><td class="num ca">-25%</td><td class="num cb">0</td><td class="num cb">n/a</td><td>EBITA -RMB35.7bn; disposals of Sun Art, Intime</td></tr>
+  <tr><td>Memo: advertising engine</td><td class="num ca">CMR $49.9bn</td><td class="num ca">+5%</td><td class="num cb">$68.6bn</td><td class="num cb">+21%/yr</td><td>Subset of home commerce rows above; Amazon's is growing four times faster</td></tr>
+  </table>
+  <div class="iik"><b>Insight:</b> Amazon's highest-margin cells (AWS, ads) are also its fastest; Alibaba's highest-margin cell is its slowest. <b>Implication:</b> Amazon's mix improves margin as it grows; Alibaba's mix dilutes margin as it grows until cloud and quick commerce mature. <span class="kpi">KPI: Alibaba E-commerce Group EBITA YoY growth back above zero by the Mar-2027 quarter (Alibaba quarterly release).</span> [Source: FY2026 releases, both; Jun-Q 2026 / Q2 2026 releases]</div>
+  <h3>Segment growth engines</h3>
+  <p>Cloud. AWS growth is supply-led: Jassy said capacity will be short in 2026 and 2027, capex guidance rose to about $220bn, and multi-year commitments from OpenAI ($38bn Nov 2025, expanded Feb 2026) and Anthropic ($100bn+ over 10 years, up to 5GW of Trainium, Apr 2026) pre-sell it. Alibaba Cloud growth is demand-led and model-led: AI product revenue RMB12.4bn in the quarter, MaaS ARR above RMB16bn with a RMB30bn year-end target, and 151,448 Qwen derivative models on Hugging Face (2.6x Meta's). Alibaba's driver is durable in China but chip-constrained; Amazon's is contracted.</p>
+  <div class="iik"><b>Insight:</b> AWS sells scarce capacity; Alibaba sells cheap tokens to win share. <b>Implication:</b> AWS margin expands with growth, Alibaba's grows only as scale absorbs price cuts. <span class="kpi">KPI: AWS operating margin at or above 35% and Alibaba AI Cloud &amp; Compute EBITA margin at or above 12% through the Jun-2027 quarter.</span> [Source: Q2 2026 call; Jun-Q 2026 release; Hugging Face, 14 Aug 2026]</div>
+  <p>Home commerce. Amazon's engine is speed and ads: rural same-day expansion ($4bn+) and Amazon Now in 80+ cities lift frequency, and ads monetize the traffic at no fulfilment cost. Alibaba's engine was take rate (0.6% software service fee from Sep 2024, Quanzhantui adoption), which lifted CMR to +10% and has now lapped; the new growth lever is quick commerce, which buys frequency with subsidies. All growth here is organic for both; Alibaba's revenue decline in All Others is disposal-driven, not operating.</p>
+  <h3>Price control and route-to-market</h3>
+  <p>Both own their demand channels (apps, membership). The difference is what they are doing with price. Amazon raised 2026 FBA fees about $0.08 per unit with no referral fee increase and added a 3.5% fuel surcharge in April 2026 (secondary source), while 3P share of units held at 60 to 61%, so sellers absorbed it without leaving. Alibaba reclassified merchant support into contra-revenue in FY2027, turning CMR from +1% to -7% reported: the platform is now paying merchants to stay active.</p>
+  <div class="iik"><b>Insight:</b> Amazon realizes net price from sellers; Alibaba is rebating it back. <b>Implication:</b> Amazon's take rate compounds, Alibaba's is capped by PDD and Douyin competition. <span class="kpi">KPI: Amazon 3P seller services growth above unit growth and 3P unit share at or above 60%; Alibaba reported CMR growth positive again by the Mar-2027 quarter.</span> [Source: Amazon seller fee notice, 15 Oct 2025; Amazon Q2 2026 release; Alibaba Jun-Q 2026 release]</div>
+  <h3>Supply resilience</h3>
+  <table>
+  <tr><th>Input</th><th class="ca">Alibaba</th><th class="cb">Amazon</th></tr>
+  <tr><td>AI accelerators</td><td class="ca">US H200 licences granted May 2026 but deals stalled on Beijing guidance; T-Head Zhenwu at scale, 650+ external customers</td><td class="cb">Nvidia GB200/GB300 plus own Trainium and Graviton5; memory costs pushed capex up</td></tr>
+  <tr><td>Logistics</td><td class="ca">Asset-light (Cainiao, third-party couriers) except quick-commerce riders</td><td class="cb">Owned network, 1.595m employees, NLRB joint-employer settlement May 2026</td></tr>
+  <tr><td>Inventory</td><td class="ca">Marketplace, 1P share ND</td><td class="cb">About 40% of units 1P</td></tr>
+  <tr><td>Cross-border</td><td class="ca">AliExpress Choice hit by US de minimis end</td><td class="cb">Not importer of record for most items; about $600m tariff refunds Q2 2026</td></tr>
+  </table>
+  <div class="iik"><b>Insight:</b> Amazon's supply risk is cost (memory, labour); Alibaba's is access (chips). <b>Implication:</b> cost can be priced through, access cannot. <span class="kpi">KPI: Alibaba quarterly capex sustained above RMB60bn with cloud growth above 40% signals chips are flowing.</span> [Source: TrendForce 14 May 2026; Alibaba Jun-Q 2026 release; Amazon Q2 2026 release]</div>
+  <h3>Competitive context</h3>
+  <p>Global cloud: AWS 28%, Microsoft 20%, Google 15%, market $143.4bn growing 43% (Synergy Q2 2026); AWS is growing slower than the market, a share donor at the margin despite reacceleration. China cloud: Alibaba 37%, Huawei 17%, ByteDance about 13%, Tencent 10% (Omdia Q4 2025), Alibaba gaining. US e-commerce: Amazon about 40%, Amazon plus Walmart about 51% (eMarketer). China e-commerce shares for Alibaba, PDD, JD and Douyin: ND from a free credible source; CMR at +1% like-for-like is consistent with Alibaba donating share (inferred).</p>
+  <h3>Risks by segment</h3>
+  <p>AWS: a large share of backlog comes from two model labs Amazon also funds, so a capital crunch at either would hit bookings and the depreciation base together. Alibaba Cloud: US export controls and Beijing's purchase guidance decide how fast capacity comes online. Amazon North America: the FTC antitrust trial (29 March 2027) targets seller-fee and Prime-eligibility practices at the core of the flywheel. Alibaba China commerce: SAMR's January 2026 subsidy investigation and June 2026 "Ten Rules" can end the price war, which helps margins, but could also freeze Alibaba's quick-commerce share below Meituan's. Alibaba is more exposed in every pair because its risks are access and policy, not cost.</p>
+  <div class="pull">The growth call: Amazon, because its fastest cells are its highest-margin cells and are pre-sold; Alibaba's are subsidized and supply-constrained.</div>
+</div>
+
+<div class="view" id="v1">
+  <div class="frame">In both industries the terms are set by whoever controls scarce supply and habitual demand; Amazon holds both, Alibaba holds demand in China and is losing price.</div>
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Amazon - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">Amazon - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">Amazon - clear</div></div></div>
+    <div class="cap">Who sets the terms, lever by lever.</div>
+  </div>
+  <h3>Moats: what rivals cannot copy</h3>
+  <div class="duo">
+    <div class="col a"><h3>Alibaba</h3><p>China AI cloud leadership: 38.1% AI-cloud share (Omdia) and the largest open-model ecosystem (151k Qwen derivatives), durability High inside China because foreign clouds are excluded. Membership base: 64m 88VIP members growing double digits, durability Med (PDD and Douyin compete on price). Own silicon (T-Head), durability Med, years to replicate but not yet at Nvidia parity. Ant Group stake (about 33%, current % unconfirmed) adds payments data.</p></div>
+    <div class="col b"><h3>Amazon</h3><p>AWS installed base and backlog: 28% global share, $496bn backlog, durability High (migration and retraining costs, multi-year commits). Fulfilment density: same-day to 4,000+ small communities, over 40% more same-day items in H1 2026, durability High (years of build, not money alone). Advertising on first-party purchase data ($68.6bn in 2025), durability High. Prime about 203m US members (CIRP estimate; Amazon does not disclose).</p></div>
+  </div>
+  <div class="iik"><b>Insight:</b> both have one High-durability moat that rivals need years to copy (China cloud vs global cloud plus fulfilment); Amazon has two more. <b>Implication:</b> Alibaba's moats are strongest where geopolitics shields them, Amazon's where scale compounds. <span class="kpi">KPI: Alibaba China cloud share at or above 35% and AWS global share at or above 27% in 2027 Omdia / Synergy data.</span> [Source: Omdia Q4 2025; Synergy Q2 2026; Hugging Face Aug 2026; Amazon Q2 2026 release]</div>
+  <h3>Customers: who controls net price and access</h3>
+  <p>Alibaba: no disclosed customer above 10% of revenue (ND, inferred none); merchants gained a 0.6% fee in 2024 but now receive merchant support booked as contra-revenue; cloud customers got 10 to 20% Qwen price cuts in August 2026 (secondary source). Amazon: no disclosed customer above 10%; sellers took a 2026 FBA increase and a surcharge while 3P unit share stayed at 60 to 61%; AI customers took 15% and 20% GPU reservation price rises in January and July 2026 (secondary source). Prime held at $139 since 2022, so consumer pricing power is exercised through ads, not the fee.</p>
+  <div class="iik"><b>Insight:</b> Amazon raised price to both sellers and cloud buyers in 2026; Alibaba cut or rebated to both. <b>Implication:</b> when demand softens, margin pressure lands on Alibaba first. <span class="kpi">KPI: sign of Alibaba reported CMR growth and AWS operating margin over the next four quarters.</span> [Source: Amazon seller notice; Converge Digest; BYDFi; Alibaba Jun-Q 2026 release]</div>
+  <h3>Suppliers: who absorbs shocks</h3>
+  <p>Alibaba: dual sourcing of AI chips is Low to Med (domestic T-Head plus restricted Nvidia); pass-through Weak, since cloud prices are falling while capex rose 75%. Amazon: dual sourcing High (Nvidia plus Trainium plus Graviton); pass-through Strong in cloud (GPU price increases) and Partial in retail (fee surcharge). Incident: Amazon's 2026 capex rise was blamed on memory prices, a cost shock it is passing on; Alibaba's May 2026 H200 approvals stalled on its own government's guidance, an access shock it cannot price.</p>
+  <div class="iik"><b>Insight:</b> Amazon's supplier shocks become price; Alibaba's become lost capacity. <b>Implication:</b> Alibaba Cloud's growth ceiling is set by policy, not demand. <span class="kpi">KPI: disclosed Nvidia shipments to Alibaba under US licences in 2027, or T-Head share of Alibaba Cloud AI capacity (neither published today, watch the 20-F).</span> [Source: TrendForce; Nvidia 26 Aug 2026 statement via timeline source; Amazon Q2 2026 call]</div>
+  <h3>The price/power triangle: top 3 cells</h3>
+  <table>
+  <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+  <tr><td>Global cloud (AWS) vs China cloud (Alibaba)</td><td>Both direct</td><td>AWS rising; Alibaba falling on AI tokens</td><td>AWS capacity-short; Alibaba chip-gated</td><td>AWS share flat, margin up; Alibaba share up, margin up slowly from 12%</td><td>Segment margins quarterly</td></tr>
+  <tr><td>US commerce (Amazon)</td><td>Amazon direct, Prime</td><td>Fees up modestly, ads +26%</td><td>FTC trial Mar 2027</td><td>Share flat to up, margin up</td><td>NA operating margin at or above 8% in 2027</td></tr>
+  <tr><td>China commerce (Alibaba)</td><td>Alibaba direct, 88VIP</td><td>Take rate rebated via contra-revenue</td><td>SAMR subsidy rules</td><td>Share down (inferred), margin down</td><td>CMR like-for-like growth above +5%</td></tr>
+  </table>
+  <p>The tension: Alibaba grows fastest exactly where it has the least pricing power (AI tokens, quick commerce), and Amazon grows fastest where it has the most (AI capacity, ads). That is the single most useful finding of the run.</p>
+  <h3>The causal gap</h3>
+  <p>1. Competitive intensity of the home market: Alibaba faces PDD, Douyin, JD and Meituan simultaneously; Amazon's nearest rival Walmart is a partial overlap. Impact Major. Alibaba cannot change the market; the fix is regulatory (subsidy caps) and would take 12 to 24 months to show in CMR. 2. Chip access: Impact Major for cloud; closing it means T-Head reaching frontier parity, a multi-year project money alone does not buy. 3. Fulfilment ownership: Amazon's owned network turns speed into share; Alibaba's asset-light model kept margins high but gave Meituan the instant-delivery beachhead. Impact Moderate; Alibaba is buying its way in, which is the cost showing in S&amp;M.</p>
+  <div class="pull">The power call: Amazon holds the stronger position; watch Alibaba's reported CMR sign and AWS's operating margin as the two erosion signals.</div>
+</div>
+
+<div class="view" id="v2">
+  <div class="frame">Alibaba's engine is cheaper at the gross line and far heavier below it: it spends to acquire demand that Amazon's network retains.</div>
+  <p>Mapping. Alibaba reports by function, but its cost of revenue already includes logistics, payment processing and data-centre depreciation, so Amazon's COGS proxy is cost of sales plus fulfillment. R&amp;D is not clean: Amazon's technology and infrastructure line includes AWS data-centre depreciation, so its 14.6% overstates true R&amp;D against Alibaba's product development. SG&amp;A is sales and marketing plus G&amp;A for both. EBIT is GAAP operating income; Alibaba's includes intangible amortization and goodwill impairment (RMB14.6bn in FY2026). Alibaba FY2024 to FY2026 (to March), Amazon 2023 to 2025: a one-quarter offset. No group-level restatements found.</p>
+  <h3>Three years, five ratios</h3>
+  <table>
+  <tr><th>% of sales, 3y avg</th><th class="num ca">Alibaba</th><th class="num cb">Amazon</th><th class="num">Gap</th><th>What drives it</th></tr>
+  <tr><td>COGS</td><td class="num ca">60.8</td><td class="num cb">66.8</td><td class="num">-6.0</td><td>Marketplace take-rate vs 40% first-party units and owned fulfilment</td></tr>
+  <tr><td>R&amp;D (Amazon: T&amp;I)</td><td class="num ca">5.9</td><td class="num cb">14.6</td><td class="num">-8.7</td><td>Not comparable: Amazon line includes AWS infrastructure</td></tr>
+  <tr><td>SG&amp;A</td><td class="num ca">20.9</td><td class="num cb">8.9</td><td class="num">+12.0</td><td>Alibaba buys traffic and quick-commerce frequency</td></tr>
+  <tr><td>Gross margin</td><td class="num ca">39.2</td><td class="num cb">33.2</td><td class="num">+6.0</td><td>Mirror of COGS</td></tr>
+  <tr><td>EBIT margin</td><td class="num ca">10.4</td><td class="num cb">9.4</td><td class="num">+1.0</td><td>Alibaba ahead on average, behind in the latest year (4.9 vs 11.2)</td></tr>
+  </table>
+  <div class="chartbox"><svg viewBox="0 0 900 290" role="img" aria-label="Cost engine grouped bars">
+<rect x="60" y="64" width="56" height="176" fill="#C75B39"/>
+<text x="88" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">60.8%</text>
+<rect x="122" y="46" width="56" height="194" fill="#3C6E8F"/>
+<text x="150" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">66.8%</text>
+<text x="119" y="264" text-anchor="middle" font-size="15" fill="#2B2B2B">COGS</text>
+<rect x="228" y="223" width="56" height="17" fill="#C75B39"/>
+<text x="256" y="217" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">5.9%</text>
+<rect x="290" y="198" width="56" height="42" fill="#3C6E8F"/>
+<text x="318" y="192" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">14.6%</text>
+<text x="287" y="264" text-anchor="middle" font-size="15" fill="#2B2B2B">R&D</text>
+<rect x="396" y="179" width="56" height="61" fill="#C75B39"/>
+<text x="424" y="173" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">20.9%</text>
+<rect x="458" y="214" width="56" height="26" fill="#3C6E8F"/>
+<text x="486" y="208" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">8.9%</text>
+<text x="455" y="264" text-anchor="middle" font-size="15" fill="#2B2B2B">SG&A</text>
+<rect x="564" y="126" width="56" height="114" fill="#C75B39"/>
+<text x="592" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">39.2%</text>
+<rect x="626" y="144" width="56" height="96" fill="#3C6E8F"/>
+<text x="654" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">33.2%</text>
+<text x="623" y="264" text-anchor="middle" font-size="15" fill="#2B2B2B">Gross margin</text>
+<rect x="732" y="210" width="56" height="30" fill="#C75B39"/>
+<text x="760" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">10.4%</text>
+<rect x="794" y="213" width="56" height="27" fill="#3C6E8F"/>
+<text x="822" y="207" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">9.4%</text>
+<text x="791" y="264" text-anchor="middle" font-size="15" fill="#2B2B2B">EBIT margin</text>
+<line x1="40" x2="880" y1="240" y2="240" stroke="#2B2B2B"/>
+<text x="880" y="20" text-anchor="end" font-size="14" fill="#6E675C">% of sales, 3-year average</text></svg><div class="cap">Sources: Alibaba FY2024, FY2025, FY2026 results releases; Amazon Q4 2024 and Q4 2025 releases.</div></div>
+  <table>
+  <tr><th>Year</th><th class="num">COGS</th><th class="num">R&amp;D</th><th class="num">SG&amp;A</th><th class="num">Gross margin</th><th class="num">EBIT margin</th></tr>
+  <tr><td class="ca">Alibaba FY2024</td><td class="num">62.3</td><td class="num">5.6</td><td class="num">16.7</td><td class="num">37.7</td><td class="num">12.0</td></tr>
+  <tr><td class="ca">Alibaba FY2025</td><td class="num">60.0</td><td class="num">5.7</td><td class="num">18.9</td><td class="num">40.0</td><td class="num">14.1</td></tr>
+  <tr><td class="ca">Alibaba FY2026</td><td class="num">60.2</td><td class="num">6.5</td><td class="num">27.2</td><td class="num">39.8</td><td class="num">4.9</td></tr>
+  <tr><td class="cb">Amazon 2023</td><td class="num">68.8</td><td class="num">14.9</td><td class="num">9.8</td><td class="num">31.2</td><td class="num">6.4</td></tr>
+  <tr><td class="cb">Amazon 2024</td><td class="num">66.6</td><td class="num">13.9</td><td class="num">8.7</td><td class="num">33.4</td><td class="num">10.8</td></tr>
+  <tr><td class="cb">Amazon 2025</td><td class="num">64.9</td><td class="num">15.1</td><td class="num">8.1</td><td class="num">35.1</td><td class="num">11.2</td></tr>
+  </table>
+  <h3>The structural gap</h3>
+  <p>SG&amp;A is the persistent gap: Alibaba is higher in all three years and the gap widened from 6.9 to 19.1 points, as Alibaba's sales and marketing rose from RMB115bn to RMB245bn while Amazon's stayed near $44 to 47bn on a revenue base growing 12% a year. The mechanism is the power map: Amazon's owned fulfilment and Prime retain demand, and its spend shows up as fulfilment and infrastructure, which are assets that also cut unit cost; Alibaba, without an owned instant-delivery network, pays in marketing and subsidies that leave no asset behind. The gap confirms the power map. The one contradiction is gross margin, where Alibaba leads by six points; that reflects a marketplace model, not pricing power, and it is being eroded from below the line rather than at it. A new cost discipline at Alibaba could close part of the gap once SAMR's subsidy rules bind, which is the main route to reversing this verdict.</p>
+  <div class="pull">The cost call: Alibaba runs leaner at the gross line, Amazon runs leaner overall and is getting leaner; Alibaba is getting heavier.</div>
+</div>
+
+<div class="flip">
+  <h3>What would flip the call</h3>
+  <ul>
+    <li>The China subsidy war ends by rule rather than by attrition: SAMR's June 2026 limits cap quick-commerce spend, Alibaba's S&amp;M falls back toward 17 to 19% of revenue, and China commerce EBITA recovers toward FY2025's RMB193bn while cloud compounds at 40%. <span style="color:var(--good);font-weight:700;">Early warning: Alibaba E-commerce Group EBITA growth positive YoY in the Dec-2026 quarter (release, Feb/Mar 2027).</span></li>
+    <li>AWS's AI backlog proves to be financing, not demand: OpenAI or Anthropic slows commitments, depreciation on $220bn of 2026 capex lands on idle capacity, and AWS margin falls back toward 30%. <span style="color:var(--good);font-weight:700;">Early warning: AWS operating margin below 32% for two quarters, or backlog growth below revenue growth (Amazon quarterly releases).</span></li>
+    <li>Domestic chips close the gap: T-Head Zhenwu reaches frontier-class training performance, Alibaba Cloud takes AI share at 40%+ with rising margins while AWS stays capacity-short through 2027. <span style="color:var(--good);font-weight:700;">Early warning: Alibaba AI-related product revenue above RMB20bn per quarter and AI Cloud &amp; Compute EBITA margin above 15% by the Jun-2027 quarter.</span></li>
+  </ul>
+</div>
+
+<h2>The KPI pack: 12-24 months</h2>
+<table>
+<tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+<tr><td>AWS revenue growth and operating margin</td><td>Growth at or above 30% with margin at or above 35%</td><td>Q2 2027 (reported ~Jul 2027)</td><td>Amazon</td><td>Amazon quarterly release</td></tr>
+<tr><td>Alibaba reported CMR growth</td><td>Back above +5% (like-for-like and reported)</td><td>Jun-2027 quarter</td><td>Alibaba</td><td>Alibaba quarterly release</td></tr>
+<tr><td>Alibaba E-commerce Group adjusted EBITA</td><td>YoY growth positive for two straight quarters</td><td>Mar-2027 quarter</td><td>Alibaba</td><td>Alibaba quarterly release</td></tr>
+<tr><td>Alibaba AI Cloud &amp; Compute EBITA margin</td><td>At or above 15% with growth at or above 40%</td><td>Jun-2027 quarter</td><td>Alibaba</td><td>Alibaba quarterly release</td></tr>
+<tr><td>Amazon trailing free cash flow</td><td>Positive again after the $220bn 2026 capex year</td><td>Q4 2027</td><td>Amazon (negative with AWS growth below 25% favors neither)</td><td>Amazon quarterly release</td></tr>
+</table>
+
+<div class="timeverdict"><div class="label">Where to spend your time</div>Spend the first deep-dive hours on Amazon, specifically AWS incremental returns on the $220bn capex and how much of the $496bn backlog is OpenAI and Anthropic, because that single question decides whether Amazon's lead widens or narrows. Alibaba can wait for two quarters of CMR and E-commerce EBITA data after SAMR's subsidy rules bite.</div>
+
+<div class="footer">
+<p><b>Method.</b> Three lenses (growth cells, power, cost engine), each forced into an Alibaba-vs-Amazon contrast, then a verdict that must survive all three. Cells were cut 80/20 by revenue and aligned to common labels; USD throughout, Alibaba at RMB6.898. ND means not publicly disclosed or not found in a credible free source; (inferred) marks reasoned conclusions; "secondary source" marks figures not yet checked against filings. This is a business-strength comparison, not a valuation, and says nothing about either stock's price.</p>
+<p class="sources"><b>Sources.</b></p>
+<ul class="sources">
+<li>Alibaba Group, March Quarter and FY2026 results, 13 May 2026: https://www.sec.gov/Archives/edgar/data/1577552/000110465926060224/tm2614494d1_ex99-1.htm</li>
+<li>Alibaba Group, June Quarter 2026 results, 20 Aug 2026: https://www.sec.gov/Archives/edgar/data/1577552/000110465926099220/tm2623667d1_ex99-1.htm</li>
+<li>Alibaba FY2025 results, 15 May 2025: https://www.businesswire.com/news/home/20250514856295/en/ ; FY2024 results: https://www.businesswire.com/news/home/20240513641121/en/ ; FY2022 results: https://www.businesswire.com/news/home/20220525006070/en/</li>
+<li>Alibaba FY2026 Form 20-F: https://www.sec.gov/Archives/edgar/data/1577552/000119312526231755/baba-20260331.htm</li>
+<li>Alibaba Q1 FY2027 earnings call transcript, Motley Fool: https://www.fool.com/earnings/call-transcripts/2026/08/27/alibaba-baba-q1-2027-earnings-call-transcript/</li>
+<li>TechNode, Alibaba HK$80bn placement, 24 Aug 2026: https://technode.com/2026/08/24/alibaba-raises-hk80-billion-through-a-share-placement-to-fund-ai-infrastructure/</li>
+<li>Amazon Q4 2025 results, 5 Feb 2026: https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/ ; Q4 2024 results: https://ir.aboutamazon.com/news-release/news-release-details/2025/Amazon-com-Announces-Fourth-Quarter-Results/default.aspx</li>
+<li>Amazon Q2 2026 results, 30 Jul 2026: https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm ; call transcript: https://www.fool.com/earnings/call-transcripts/2026/08/07/amazon-amzn-q2-2026-earnings-call-transcript/</li>
+<li>Amazon 10-K segment, product-line and geography data via edgar.tools: https://app.edgar.tools/companies/AMZN/disclosures/segments</li>
+<li>Amazon US seller fee update for 2026, 15 Oct 2025: https://sellingpartners.aboutamazon.com/update-to-u-s-referral-and-fulfillment-by-amazon-fees-for-2026</li>
+<li>Synergy Research, Q2 2026 cloud market: https://www.srgresearch.com/articles/q2-cloud-market-passes-143-billion-highest-growth-rate-in-eight-years</li>
+<li>Omdia via DatacenterDynamics, China cloud Q4 2025: https://www.datacenterdynamics.com/en/news/chinese-cloud-infrastructure-spend-up-26-in-q4-2025/</li>
+<li>Hugging Face, State of Open Models Summer 2026, 14 Aug 2026: https://huggingface.co/blog/state-of-open-models-summer-2026</li>
+<li>eMarketer, Amazon US e-commerce share: https://www.emarketer.com/content/amazon-will-surpass-40-of-us-ecommerce-sales-this-year</li>
+<li>CIRP, US Prime membership estimate, 14 Jul 2026: https://cirpamazon.substack.com/p/us-amazon-prime-membership-estimate</li>
+<li>Converge Digest, AWS GPU reservation price increase (secondary): https://convergedigest.com/aws-raises-ec2-prices-by-about-20-for-ai-gpu-reservations/ ; BYDFi, Qwen price cut (secondary): https://www.bydfi.com/en/crypto-news/alibaba-cloud-cuts-qwen3-8-flash-pricing-99402</li>
+<li>TrendForce, US approves H200 sales to Chinese firms, 14 May 2026: https://www.trendforce.com/news/2026/05/14/news-u-s-reportedly-approves-nvidia-h200-sales-to-10-chinese-firms-including-alibaba-bytedance-but-deals-stall/</li>
+<li>Xinhua, SAMR investigation into platform subsidies, 9 Jan 2026: https://english.news.cn/20260109/f801a8c228d04dffafb6923720a9909e/c.html</li>
+<li>European Commission, AliExpress DSA fine, Jul 2026: https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1654</li>
+<li>WilmerHale, DoD 1260H list additions, 11 Jun 2026: https://www.wilmerhale.com/en/insights/client-alerts/20260611-pentagon-adds-65-new-entities-to-the-1260h-list-of-chinese-military-companies</li>
+<li>FTC, $2.5bn Prime settlement, 25 Sep 2025: https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-secures-historic-25-billion-settlement-against-amazon ; MLex, trial moved to 29 Mar 2027: https://www.mlex.com/mlex/antitrust/articles/2422758</li>
+<li>Federal Register, suspension of de minimis, 2 Sep 2025: https://www.federalregister.gov/documents/2025/09/02/2025-16802</li>
+<li>GeekWire, Amazon Anthropic and OpenAI deals, 2026: https://www.geekwire.com/2026/amazon-doubles-down-on-anthropic-with-25b-investment-mirroring-its-openai-cloud-deal/</li>
+<li>GuruFocus, Amazon sterling bond, Sep 2026: https://www.gurufocus.com/news/9072707/amazon-amzn-plans-425-billion-bond-issuance-amid-strong-demand</li>
+</ul>
+</div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
