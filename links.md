@@ -1,3 +1,4 @@
+- [AXP vs Visa Peer Duel](https://xk152004.github.io/investechery/stocks/AXP-vs-Visa-Peer-Duel.html)
 - [BABA vs AMZN Peer Duel](https://xk152004.github.io/investechery/stocks/BABA_vs_AMZN_peer_duel.html)
 - [Tencent vs Alibaba Peer Duel](https://xk152004.github.io/investechery/stocks/Tencent-vs-Alibaba-Peer-Duel.html)
 - [Visa vs Mastercard Peer Duel](https://xk152004.github.io/investechery/stocks/Visa-vs-Mastercard-Peer-Duel.html)

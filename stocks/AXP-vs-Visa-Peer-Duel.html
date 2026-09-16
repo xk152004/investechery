@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>American Express vs Visa: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.10);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.10);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+<style>
+  .note{font-size:15px;color:var(--muted);margin:4px 0 18px;}
+  .tblwrap{overflow-x:auto;}
+  td.ca,td.cb{white-space:nowrap;}
+  @media(max-width:600px){.rubric span{white-space:normal;} .tabs button{padding:10px 12px;font-size:17px;} .chartbox{padding:10px;} td.ca,td.cb{white-space:normal;}.leanrow{grid-template-columns:1fr;} .leanrow .lbl{text-align:left;} body{font-size:18px;} .wrap{padding:28px 16px 60px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Peer Duel, Compound With AI</div>
+<h1>American Express vs Visa: who wins the next decade?</h1>
+<p class="source">Payments: card networks and issuers. AXP / V. Run 16 September 2026. Built from AXP 10-Ks FY2023 and FY2025, AXP 10-Q Q2 2026, Visa 10-Ks FY2023 and FY2025, Visa 10-Q Q3 FY2026, Q2 2026 (AXP) and Q3 FY2026 (Visa) earnings-call transcripts, and cited web sources for regulation. Events swept through 16 September 2026; most recent event checked: Visa Q3 FY2026 results and guidance plus role eliminations (28 July 2026) and the MDL 1720 final-approval motion (15 July 2026). Figures in USD as reported. AXP fiscal year ends 31 December, Visa 30 September (one-quarter offset). Not a valuation and not a recommendation.</p>
+<div class="chips"><span class="chip a">American Express</span><span class="chip b">Visa</span></div>
+
+<div class="verdict-banner">
+  <div class="label">The Call</div>
+  <div class="verdict">Visa is the stronger business for the next 5 to 10 years; American Express is the better premium franchise, but it is running a model that has to hand back more of each dollar and carry the credit risk itself.</div>
+  <div class="why">Visa earns a 66.8% average operating margin before litigation with no credit exposure, on $13.9T of payments volume. 61% of its revenue is international and growing about 15% a year. AXP's 18.7% pretax margin depends on handing 42.8% of revenue back as rewards, partner payments and benefits (FY2025 10-Ks, both).</div>
+</div>
+
+<div class="reasons">
+  <div class="col"><span class="n">1</span><br>Visa's growth comes from outside the US: international net revenue went from $18.5B to $24.4B, a 14.7% CAGR over FY23 to FY25. AXP earns 77.6% of its revenue in the US, where Visa's own US revenue grew 5.2% (Visa FY2025 10-K; AXP Note 23).</div>
+  <div class="col"><span class="n">2</span><br>The margin gap comes from the business model, not from overhead. SG&amp;A is about 31% of revenue at both companies. The roughly 48-point gap in the gross-margin proxy is AXP's rewards, benefits and credit losses (computed from both 10-Ks).</div>
+  <div class="col"><span class="n">3</span><br>AXP earns more on each dollar of spend (0.83% pretax on billed business vs 0.17% for Visa). The price is a $152.5B deposit balance sheet, a 10.5% CET1 requirement and cobrand concentration: Delta alone is 13% of billed business (AXP FY2025 10-K).</div>
+</div>
+
+<div class="duelwrap">
+  <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Visa - narrow</div></div></div>
+  <div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">Visa - clear</div></div></div>
+  <div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Visa - narrow</div></div></div>
+  <div class="cap">The three answers, argued below. A marker on the left favors American Express, on the right Visa. The further from center, the more decisive.</div>
+</div>
+
+<h2>The Three Answers</h2>
+<div class="answer">
+  <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+  <div class="w"><span class="chip b">Visa, narrowly</span></div>
+  <p>Visa's next five years rest on three cells. The first is international consumer payments, where debit and commercial volume grew 12% and 13% in constant dollars in FY25 as cards keep replacing cash. The second is cross-border travel and e-commerce, up 12% excluding intra-Europe in Q3 FY26 and priced through international transaction fees. The third is value-added services, $10.9B in FY25 and up 34% in constant dollars in Q3 FY26, sold into the issuers and acquirers Visa already serves (Visa FY2025 10-K; Q3 FY26 call). AXP clearly wins one large cell, US premium consumer. There its Platinum refresh took average fee per card from $92 (2023) to $131 (Q2 2026), and 65% of new consumer accounts come from Millennials and Gen Z (AXP 10-Q Q2 2026; Q2 2026 call). But that cell is 48% of AXP's revenue and is being bought with benefits: Card Member services expense rose 50% in Q2 2026. Meanwhile US Commercial Services has stalled at +3% billed business with flat card counts.</p>
+  <div class="chartbox">
+    <svg viewBox="0 0 900 240" role="img" aria-label="Indexed revenue"><line x1="60" x2="750" y1="180.0" y2="180.0" stroke="#E5DDD0"/><text x="52" y="185.0" text-anchor="end" font-size="14" fill="#6E675C">100</text><line x1="60" x2="750" y1="130.0" y2="130.0" stroke="#E5DDD0"/><text x="52" y="135.0" text-anchor="end" font-size="14" fill="#6E675C">125</text><line x1="60" x2="750" y1="80.0" y2="80.0" stroke="#E5DDD0"/><text x="52" y="85.0" text-anchor="end" font-size="14" fill="#6E675C">150</text><line x1="60" x2="750" y1="30.0" y2="30.0" stroke="#E5DDD0"/><text x="52" y="35.0" text-anchor="end" font-size="14" fill="#6E675C">175</text><text x="60.0" y="228" text-anchor="middle" font-size="14" fill="#6E675C">2021</text><text x="232.5" y="228" text-anchor="middle" font-size="14" fill="#6E675C">2022</text><text x="405.0" y="228" text-anchor="middle" font-size="14" fill="#6E675C">2023</text><text x="577.5" y="228" text-anchor="middle" font-size="14" fill="#6E675C">2024</text><text x="750.0" y="228" text-anchor="middle" font-size="14" fill="#6E675C">2025</text><polyline points="60.0,180.0 232.5,130.0 405.0,94.0 577.5,68.0 750.0,40.0" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="60.0" cy="180.0" r="4" fill="#C75B39"/><circle cx="232.5" cy="130.0" r="4" fill="#C75B39"/><circle cx="405.0" cy="94.0" r="4" fill="#C75B39"/><circle cx="577.5" cy="68.0" r="4" fill="#C75B39"/><circle cx="750.0" cy="40.0" r="4" fill="#C75B39"/><text x="762.0" y="39.0" font-size="16" font-weight="700" fill="#C75B39">AXP 170</text><polyline points="60.0,180.0 232.5,136.0 405.0,110.0 577.5,82.0 750.0,48.0" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="60.0" cy="180.0" r="4" fill="#3C6E8F"/><circle cx="232.5" cy="136.0" r="4" fill="#3C6E8F"/><circle cx="405.0" cy="110.0" r="4" fill="#3C6E8F"/><circle cx="577.5" cy="82.0" r="4" fill="#3C6E8F"/><circle cx="750.0" cy="48.0" r="4" fill="#3C6E8F"/><text x="762.0" y="69.0" font-size="16" font-weight="700" fill="#3C6E8F">Visa 166</text></svg>
+    <div class="cap">Revenue indexed to 100 at 2021. AXP: total revenues net of interest expense, $42.4B (2021) to $72.2B (2025), calendar years (AXP FY2023 and FY2025 10-K, Note 23). Visa: net revenue, $24.1B (FY21) to $40.0B (FY25), fiscal years ending September (Visa FY2023 and FY2025 10-K). AXP's 2021 base is depressed by pandemic travel spending, which flatters its path. Over the cleaner 2023 to 2025 window the CAGR is AXP 9.3% vs Visa 10.7%. Latest periods: AXP H1 2026 +11%, Visa 9M FY26 +15%.</div>
+  </div>
+</div>
+<div class="answer">
+  <div class="q">2. Who converts that growth into superior margins?</div>
+  <div class="w"><span class="chip b">Visa, clearly</span></div>
+  <p>Visa turns growth into margin because each extra transaction mostly costs processing capacity. Network and processing expense was 2.2% of net revenue across FY23 to FY25. Operating margin before litigation held at 66.4% to 67.2% even as opex grew in the teens (Visa FY2025 10-K). AXP's extra revenue carries its own variable cost. Rewards, business development and Card Member services rose from 41.3% to 42.8% of revenue between 2023 and 2025, and provisions added another 7.3% to 8.1%. AXP's operating leverage therefore comes only from marketing and salaries, which fell from 33.2% to 30.8% (AXP FY2025 10-K). The two answers do not split, but the profit-pool view is worth noting: per dollar of spend, AXP makes about five times what Visa makes. What AXP lacks is Visa's scale and freedom from capital.</p>
+  <div class="chartbox">
+    <svg viewBox="0 0 900 170" role="img" aria-label="Margin dumbbells"><text x="136" y="50" text-anchor="end" font-size="16" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">Gross margin (proxy)</text><line x1="150.0" x2="860.0" y1="45" y2="45" stroke="#E5DDD0" stroke-width="2"/><text x="150.0" y="71" font-size="13" fill="#6E675C" text-anchor="middle">0%</text><text x="860.0" y="71" font-size="13" fill="#6E675C" text-anchor="middle">100%</text><line x1="507.8" x2="844.4" y1="45" y2="45" stroke="#2B2B2B" stroke-width="2"/><circle cx="507.8" cy="45" r="9" fill="#C75B39"/><circle cx="844.4" cy="45" r="9" fill="#3C6E8F"/><text x="507.8" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">AXP 50.4%</text><text x="844.4" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">Visa 97.8%</text><text x="676.1" y="67" text-anchor="middle" font-size="14" fill="#2B2B2B">+47.4 pts Visa</text><text x="136" y="125" text-anchor="end" font-size="16" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">EBIT margin</text><line x1="150.0" x2="860.0" y1="120" y2="120" stroke="#E5DDD0" stroke-width="2"/><text x="150.0" y="146" font-size="13" fill="#6E675C" text-anchor="middle">0%</text><text x="860.0" y="146" font-size="13" fill="#6E675C" text-anchor="middle">100%</text><line x1="282.8" x2="599.4" y1="120" y2="120" stroke="#2B2B2B" stroke-width="2"/><circle cx="282.8" cy="120" r="9" fill="#C75B39"/><circle cx="599.4" cy="120" r="9" fill="#3C6E8F"/><text x="282.8" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">AXP 18.7%</text><text x="599.4" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">Visa 63.3%</text><text x="441.1" y="142" text-anchor="middle" font-size="14" fill="#2B2B2B">+44.6 pts Visa</text></svg>
+    <div class="cap">Three-year averages. AXP FY2023 to FY2025 (calendar); Visa FY2023 to FY2025 (fiscal, September). Gross margin proxy = revenue less (AXP: rewards + business development + Card Member services + credit provisions; Visa: network and processing). EBIT = AXP pretax income, Visa GAAP operating income. Visa before litigation provisions averages 66.8%. Computed from both 10-Ks; see the Cost Engine tab for the mapping.</div>
+  </div>
+</div>
+<div class="answer">
+  <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+  <div class="w"><span class="chip a">American Express breaks first</span></div>
+  <p>AXP's weak point is its own balance sheet in a consumer or small-business downturn. It holds $151.8B of Card Member loans, and small business and corporate clients generate 41% of billed business. CS loan net write-offs (principal only) already climbed from 1.7% to 2.6% between 2023 and 2025, and T&amp;E is 26% of spend. A recession therefore hits volume, credit losses and discount revenue together, and the proposed 10% card APR cap (10 January 2026, not enacted) would hit the $17.4B of net interest income directly (AXP FY2025 10-K; Barchart). Visa's weak point is regulatory and slower-moving. The amended MDL 1720 settlement (preliminary approval 9 June 2026) cuts rates 10bp for five years, caps standard consumer credit at 1.25% and lets merchants decline premium cards and surcharge. The DOJ debit monopolization suit is still live, and the Credit Card Competition Act was reintroduced on 13 January 2026 (Visa 10-Q Q3 FY26; Payments Dive; Senate). These trim Visa's yield over years. A credit cycle hits AXP's earnings within quarters.</p>
+</div>
+
+<h2>Segment-Geography Scorecard</h2>
+<p>These six cells account for effectively all of both companies' revenue. Visa's revenue is disclosed only by US versus international and by revenue line, so Visa cell sizes come from payments volume. Each score is argued in the tabs.</p>
+<div class="tblwrap"><table>
+<tr><th>Cell (product x region)</th><th class="ca">AXP</th><th class="cb">Visa</th><th>Why (one clause, sourced)</th></tr>
+<tr><td>US consumer credit and charge</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>AXP USCS revenue +11.3% CAGR 2023-25 with fee per card +27%, gaining premium spend; Visa carries $2.49T of US credit volume, about 2x AXP's US billed business, growing +6% with a rising yield (both FY2025 10-Ks)</td></tr>
+<tr><td>US debit</td><td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>AXP has no debit product; Visa's largest volume cell at $3.21T, +7% FY25, with the DOJ suit as the key risk (Visa FY2025 10-K)</td></tr>
+<tr><td>US commercial and SME</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>AXP CS billed +3% with proprietary cards 15.4M to 15.3M; Visa US commercial volume +10% and CMS revenue +17% cc in Q3 FY26 (AXP 10-K; Visa 10-Q, call)</td></tr>
+<tr><td>International consumer card</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>AXP ICS billed +14% but pretax margin only 12.3% and subscale versus the networks per its own 10-K; Visa international revenue +14.7% CAGR FY23-25</td></tr>
+<tr><td>Cross-border travel and FX</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>AXP T&amp;E is 26% of billed (+8%), with FX fees not split out (ND); Visa international transaction revenue $14.2B, +10.3% CAGR, cross-border +12% in Q3 FY26</td></tr>
+<tr><td>Network, merchant and value-added services</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>AXP GMNS revenue +2.4% CAGR while the discount rate slid from 2.29% to 2.24%; Visa VAS grew from $7.2B to $10.9B, +34% cc in Q3 FY26</td></tr>
+</table></div>
+<div class="rubric">
+  <b>How to read the scores:</b>
+  <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+  <span><b>4</b> advantaged and gaining share</span>
+  <span><b>3</b> holds position; grows with the market</span>
+  <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+  <span><b>1</b> weak and losing share, or exiting</span>
+  <span><b>0</b> no meaningful presence</span>
+</div>
+<p class="score-note">Each score is tied to an exhibit in the three tabs. Scores are per cell and are not summed. The lens verdicts are in the Three Answers above.</p>
+
+<div class="tabs">
+  <button class="on" onclick="show(0,this)">Growth Map</button>
+  <button onclick="show(1,this)">Power Map</button>
+  <button onclick="show(2,this)">Cost Engine</button>
+</div>
+
+<div class="view on" id="v0">
+  <div class="frame">Both companies grow at about 10%, but in different places: AXP's growth is US premium consumers paying higher fees, and Visa's is the rest of the world moving off cash.</div>
+  <p>Normalization: AXP's segments map directly onto cells (USCS = US consumer, CS = US commercial and SME, ICS = international card, GMNS = network and merchant services). Visa reports revenue only by US and international and by revenue line (service, data processing, international transaction, other, less client incentives). It also gives value-added services as an overlapping cut. Visa cell sizes below product level are therefore ND, and US payments volume by product is the size signal. Revenue bases also differ. AXP reports revenue net of interest expense, with cardholder rewards and partner payments below the line. Visa reports net of client incentives, which were $15.8B in FY25.</p>
+  <div class="chartbox">
+    <svg viewBox="0 0 900 202" role="img" aria-label="Butterfly cell chart"><text x="290.0" y="22" text-anchor="end" font-size="17" font-weight="700" fill="#C75B39">AXP</text><text x="610.0" y="22" font-size="17" font-weight="700" fill="#3C6E8F">Visa</text><rect x="130.8" y="44" width="169.2" height="30" fill="#C75B39"/><text x="122.8" y="64" text-anchor="end" font-size="15" font-weight="700" fill="#2B2B2B">$51.7B <tspan fill="#6E675C" font-weight="400" font-size="13">+9.8%</tspan></text><rect x="600.0" y="44" width="51.1" height="30" fill="#3C6E8F"/><text x="659.1" y="64" font-size="15" font-weight="700" fill="#2B2B2B">$15.6B <tspan fill="#6E675C" font-weight="400" font-size="13">+5.2%</tspan></text><text x="450.0" y="49" text-anchor="middle" font-size="14" fill="#2B2B2B">US card</text><text x="450.0" y="66" text-anchor="middle" font-size="14" fill="#2B2B2B">consumer + commercial</text><rect x="257.5" y="98" width="42.5" height="30" fill="#C75B39"/><text x="249.5" y="118" text-anchor="end" font-size="15" font-weight="700" fill="#2B2B2B">$13.0B <tspan fill="#6E675C" font-weight="400" font-size="13">+11.6%</tspan></text><rect x="600.0" y="98" width="79.9" height="30" fill="#3C6E8F"/><text x="687.9" y="118" font-size="15" font-weight="700" fill="#2B2B2B">$24.4B <tspan fill="#6E675C" font-weight="400" font-size="13">+14.7%</tspan></text><text x="450.0" y="103" text-anchor="middle" font-size="14" fill="#2B2B2B">International card and</text><text x="450.0" y="120" text-anchor="middle" font-size="14" fill="#2B2B2B">cross-border</text><rect x="274.5" y="152" width="25.5" height="30" fill="#C75B39"/><text x="266.5" y="172" text-anchor="end" font-size="15" font-weight="700" fill="#2B2B2B">$7.8B <tspan fill="#6E675C" font-weight="400" font-size="13">+2.4%</tspan></text><rect x="600.0" y="152" width="35.7" height="30" fill="#3C6E8F" fill-opacity="0.55"/><text x="643.7" y="172" font-size="15" font-weight="700" fill="#2B2B2B">$10.9B <tspan fill="#6E675C" font-weight="400" font-size="13">+23.0% (overlaps)</tspan></text><text x="450.0" y="157" text-anchor="middle" font-size="14" fill="#2B2B2B">Network, merchant and</text><text x="450.0" y="174" text-anchor="middle" font-size="14" fill="#2B2B2B">value-added services</text></svg>
+    <div class="cap">FY2025 revenue in $B with 2023-25 CAGR. AXP: USCS $34.8B + CS $16.9B; ICS $13.0B; GMNS $7.8B. Segments sum to $72.5B against $72.2B consolidated because of corporate eliminations. Visa: US net revenue $15.6B; international $24.4B; VAS $10.9B shown faded because it overlaps the two geography rows and is not additive. Sources: AXP FY2025 10-K Tables 8-14; Visa FY2025 10-K MD&amp;A.</div>
+  </div>
+  <h3>The cells that matter</h3>
+  <div class="tblwrap"><table>
+    <tr><th>Cell</th><th class="num ca">AXP rev (% of total)</th><th class="num ca">AXP growth</th><th class="num cb">Visa size</th><th class="num cb">Visa growth</th><th>Margin signal / leader</th></tr>
+    <tr><td>US consumer credit and charge</td><td class="num ca">$34.8B (48%)</td><td class="num ca">+11.3% CAGR</td><td class="num cb">$2.49T credit PV; US rev $15.6B (39%) spans all US cells</td><td class="num cb">PV +6%; US rev +5.2%</td><td>AXP pretax 19.6%; Visa cell margin ND (company 66.8%). AXP leads on growth and economics per account</td></tr>
+    <tr><td>US commercial and SME</td><td class="num ca">$16.9B (23%)</td><td class="num ca">+7.0%</td><td class="num cb">$1.08T PV</td><td class="num cb">+4% FY25; +10% Q3 FY26</td><td>AXP pretax 21.7% but growth now mostly interest income (+16%); Visa gaining</td></tr>
+    <tr><td>US debit</td><td class="num ca">0</td><td class="num ca">n/a</td><td class="num cb">$3.21T PV</td><td class="num cb">+7%</td><td>Visa only</td></tr>
+    <tr><td>International card and cross-border</td><td class="num ca">$13.0B (18%)</td><td class="num ca">+11.6%</td><td class="num cb">$24.4B (61%), incl. $14.2B intl transaction</td><td class="num cb">+14.7%</td><td>AXP ICS pretax 12.3%; Visa leads clearly</td></tr>
+    <tr><td>Network, merchant and VAS</td><td class="num ca">$7.8B (11%)</td><td class="num ca">+2.4%</td><td class="num cb">VAS $10.9B (overlap)</td><td class="num cb">+23% CAGR</td><td>AXP GMNS pretax 51.1% but shrinking profit (-10% in 2025); Visa leads</td></tr>
+  </table></div>
+  <p class="note">AXP by region, 2025: US $56.0B (pretax margin 23.3%), EMEA $7.1B (17.7%), APAC $5.2B (15.9%), LACC $4.2B (21.6%). International revenue grew 10.2% CAGR 2023-25 vs 9.0% in the US (AXP FY2025 10-K Note 23). Visa volume is for the twelve months to 30 June of each fiscal year.</p>
+  <div class="iik"><b>Insight:</b> AXP's biggest cell is the only one where it outgrows Visa, and it makes up half its revenue. Visa's biggest and fastest cell is international, where AXP is subscale. <b>Implication:</b> Visa's growth rides a decade-long shift from cash to cards in markets AXP barely reaches. AXP's growth depends on continually reinventing a US premium product. <span class="kpi">KPI: Visa international net revenue growth of 12% or more in FY2027 vs AXP USCS revenue growth of 10% or more in 2027 (10-K segment tables).</span> [Source: AXP FY2025 10-K Tables 8-14, Note 23; Visa FY2025 10-K]</div>
+
+  <h3>Segment growth engines</h3>
+  <p><b>AXP US consumer (organic).</b> The growth comes from price and mix. The refreshed Platinum cards launched late in Q3 2025, and net card fees rose 18% in 2025 and 15% in Q2 2026. Proprietary new cards held at 12.5M in 2025 despite higher fees. The cost is benefits: Card Member services expense rose 27% in 2025 and 50% in Q2 2026. Management says benefits cost growth should slow and fees should keep rising as the refresh is lapped (Q2 2026 call).</p>
+  <p><b>Visa international (organic, with small tuck-ins).</b> The growth comes from volume and processing penetration. International consumer debit grew 12% and commercial 13% in constant dollars in FY25, and Q3 FY26 international volume was +10% in constant dollars. Renewals such as Bradesco show data processing spreading across Latin America (Visa FY2025 10-K; Q3 FY26 call). It costs little to grow: FY26 opex is guided to low-teens growth, and roles were cut in July 2026.</p>
+  <p><b>Visa value-added services and CMS.</b> These are sold into the existing client base: VAS grew from $7.2B to $10.9B over FY23-25, and CMS revenue was +17% in constant dollars in Q3 FY26. <b>AXP international.</b> ICS billed business +14% on expanding merchant coverage. Swisscard became wholly owned on 12 January 2026, so from 2026 part of ICS growth is acquired and should be read separately.</p>
+  <div class="iik"><b>Insight:</b> AXP's fastest engine grows by raising price and then funding benefits to justify it. Visa's grows on volume plus services sold on top. <b>Implication:</b> AXP's growth needs a new round of benefits each product cycle, and Visa's does not. <span class="kpi">KPI: AXP net card fee growth of 15% or more with Card Member services growth below revenue growth in 2027 (AXP quarterly releases).</span> [Source: AXP 10-Q Q2 2026; AXP FY2025 10-K Table 5; Visa 10-Q Q3 FY26]</div>
+
+  <h3>Price control and route-to-market</h3>
+  <p>AXP sets both prices, the merchant discount and the cardholder fee, because it runs a closed loop. The merchant price is slipping: discount revenue fell from 2.29% to 2.24% of billed business over 2023-25 on geographic and merchant mix and on competitors' capped interchange. Merchant surcharging on Amex cards is rising in the US (AXP 10-Q Q2 2026). The cardholder price is rising fast, from $92 to $117 average fee per card. Visa's route runs through issuers and acquirers. Its yield on payments volume rose from 0.270% to 0.288% over FY23-25, while client incentives rose from 27.4% to 28.3% of gross revenue (computed from Visa FY2025 10-K). Visa is gaining net price, but pays a growing share back to keep large issuers.</p>
+  <div class="iik"><b>Insight:</b> AXP's pricing power sits with cardholders, Visa's with the system. Merchant-side pressure hits AXP's discount rate directly, and hits Visa through litigated interchange that it mostly passes to issuers. <b>Implication:</b> The June 2026 settlement relaxes honor-all-cards and allows surcharging, a model for steering that AXP has lived with for years. That narrows AXP's relative disadvantage at checkout. <span class="kpi">KPI: AXP discount revenue at 2.20% of billed business or higher through 2027; Visa client incentives at or below 29% of gross revenue in FY2027.</span> [Source: AXP FY2025 10-K Table 5; Visa FY2025 10-K; Payments Dive, 9 June 2026]</div>
+
+  <h3>Supply resilience</h3>
+  <p>For payments companies the critical inputs are funding, partners and technology. AXP funds $224.8B of loans and receivables with $152.5B of customer deposits and $56.4B of long-term debt at 10.5% CET1. Its cardholder value partly comes from cobrand partners, which account for 26% of billed business and 36% of loans (Delta 13% and 21%, contract through 2029). Visa needs no credit funding, runs its own VisaNet processing, and carried $1.5B of FY25 capex against $2.4B at AXP (both 10-Ks). Visa is clearly more resilient. AXP's single largest input dependency is the Delta renewal.</p>
+
+  <h3>Competitive context</h3>
+  <p>In US premium consumer cards AXP competes with bank issuers (Chase, Capital One, Citi) that run on Visa or Mastercard. AXP is taking share there, per its fee and spend growth. In most countries AXP states that Visa and Mastercard are larger than it by purchase volume (AXP FY2025 10-K). Visa's rivals are Mastercard, domestic real-time and government schemes (the US, Brazil and India are named in its 10-K), and new rails including stablecoins. Visa is responding by building a stablecoin settlement platform and joining the OpenUSD consortium (Q3 FY26 call). Discover now sits inside Capital One (approx., unverified), which adds a third US credit network owned by a large issuer.</p>
+
+  <h3>Risks by segment</h3>
+  <p><b>US consumer:</b> an APR cap would hit AXP's $12.5B of USCS net interest income; Visa has no direct exposure. <b>US commercial and SME:</b> AXP carries the credit, with CS loan write-offs up from 2.0% to 3.0% including interest and fees; Visa does not. <b>US debit and credit network pricing:</b> the DOJ case, CCCA routing and the settlement fall on Visa. AXP's three-party model is not directly capped, but "downward pressure on our discount rate" follows its competitors' caps (AXP 10-K). <b>International:</b> AXP faces the EU cobrand interchange case (CJEU, KLM) and the Australian review of three-party networks that began in June 2026. Visa faces domestic schemes and RTP.</p>
+  <div class="pull">On cells alone, Visa's path is more likely to hold: its fastest cells are big, international and cheap to grow, while AXP's fastest cell is US premium, where growth has to be re-bought with benefits every product cycle.</div>
+</div>
+
+<div class="view" id="v1">
+  <div class="frame">In card payments, whoever owns the rails sets the terms for the system, and whoever owns the cardholder sets the terms for that cardholder. Visa owns the first, AXP the second.</div>
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Visa - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">AXP - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">Visa - clear</div></div></div>
+    <div class="cap">Who sets the terms, lever by lever. Each call is argued below.</div>
+  </div>
+  <h3>Moats: what rivals cannot copy</h3>
+  <div class="duo">
+    <div class="col a"><h3>American Express</h3><p><b>Premium membership brand plus closed loop (High).</b> Average proprietary basic card spend is $25,453, and 12.5M new proprietary cards were added in 2025 while fees rose 14% (FY2025 10-K Table 5). Rivals spent years on lounges and credits without breaking this. <b>Rewards currency and partner web (Medium).</b> Delta, Marriott, Hilton and BA co-fund the value, but contracts are portable, as the loss of Costco in 2016 showed. <b>Credit selection (Medium-High).</b> The principal-only consumer and small-business write-off rate was 2.0% in 2025.</p></div>
+    <div class="col b"><h3>Visa</h3><p><b>Two-sided ubiquity (High).</b> $13.9T of payments volume and 257.5B processed transactions in FY25 (FY2025 10-K). Money cannot buy acceptance and issuance at that scale. <b>Rules, tokens and processing (High, but litigated).</b> VisaNet plus network rules sit at the center of every issuer and acquirer relationship, which is exactly what the DOJ and MDL cases target. <b>Services attached to the base (Medium-High).</b> $10.9B of VAS sold to clients already on the network.</p></div>
+  </div>
+  <div class="iik"><b>Insight:</b> Visa's moat is structural ubiquity. AXP's is a premium brand kept up partly by paying for rewards and partners. <b>Implication:</b> Visa's moat erodes only through regulation. AXP's erodes if a better-funded issuer outbids it on benefits or partners. <span class="kpi">KPI: AXP proprietary new cards acquired of 12M or more a year in 2027 with rewards plus business development plus Card Member services at or below 43% of revenue.</span> [Source: both FY2025 10-Ks]</div>
+
+  <h3>Customers: who controls net price and access</h3>
+  <p><b>AXP:</b> it has no dominant merchant, but its partners are concentrated: cobrands make up 26% of billed business and 36% of loans, and partner payments are rising "particularly in the United States". It has exercised pricing power over cardholders, with fee per card up 12% to 14% a year and very high retention (Q2 2026 call). On the merchant side it is losing price: the discount rate is down 5bp in two years, surcharging is rising, and it will stop allowing surcharging in Australia from 1 October 2026 to match the networks (10-Q Q2 2026). <b>Visa:</b> "a significant portion of our net revenue is concentrated among our largest clients", who can issue non-Visa products on short notice (FY2025 10-K). Client incentives at 28.3% of gross revenue are the price of keeping them. Yield on volume is still rising.</p>
+  <div class="iik"><b>Insight:</b> AXP controls its end customer. Visa controls the system but rents access to the end customer from banks. <b>Implication:</b> When demand softens, AXP's margin pressure lands on rewards and credit. Visa's lands on incentives at renewal. <span class="kpi">KPI: Visa client incentives at or below 29% of gross revenue in FY2027; AXP average fee per card growth of 8% or more in 2027.</span> [Source: Visa FY2025 10-K; AXP 10-Q Q2 2026]</div>
+
+  <h3>Suppliers: who absorbs shocks</h3>
+  <p><b>AXP:</b> its inputs are funding, partners and technology. Interest expense was $8.2B in 2025, and deposit pricing competes with banks. Pass-through is partial: fees reprice as cards renew, but partner contracts are fixed for years. <b>Visa:</b> its inputs are technology and people, with no funding need. Pass-through is strong: operating margin was 64.3% in FY23 through the inflation period, and FY26 opex growth is guided to low teens with July 2026 role cuts (Visa FY2023 and FY2025 10-Ks; Q3 FY26 call).</p>
+  <div class="iik"><b>Insight:</b> Visa has almost no input that can be shocked. AXP has two, the cost of funds and partner economics. <b>Implication:</b> In a rate or partner shock, Visa's margin barely moves and AXP's does. <span class="kpi">KPI: AXP Delta cobrand renewal terms ahead of the end-2029 expiry; AXP net interest yield holding at 8% or more.</span> [Source: AXP FY2025 10-K]</div>
+
+  <h3>The price/power triangle: top 3 cells</h3>
+  <div class="tblwrap"><table>
+    <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+    <tr><td>US consumer credit</td><td>AXP direct to cardholder and merchant; Visa through issuers</td><td>AXP well above (2.24% discount rate plus $117 fee)</td><td>AXP: partner renewals; Visa: settlement and CCCA</td><td>AXP share up, margin flat as benefits absorb fees; Visa share flat, margin slightly down (10bp settlement cut)</td><td>USCS billed growth vs Visa US credit PV growth</td></tr>
+    <tr><td>International</td><td>AXP proprietary plus GMNS partners, subscale; Visa through local issuers</td><td>AXP above; Visa at network parity</td><td>Visa high; AXP exposed to EU cobrand rules</td><td>Visa share and margin up; AXP share up from a small base, pretax margin 9.3% to 12.3% (2023-25)</td><td>Visa international revenue growth; ICS pretax margin</td></tr>
+    <tr><td>Network and services</td><td>AXP GMNS partners; Visa VAS on its base</td><td>AXP discount rate falling; Visa yield rising</td><td>Visa high</td><td>Visa up and up; AXP flat and down (GMNS pretax -10% in 2025, partly the Accertify gain in 2024)</td><td>VAS growth; GMNS revenue</td></tr>
+  </table></div>
+  <p class="note">Tension: AXP grows fastest in US premium, where its pricing power is strongest, yet that is also where it must spend most to keep it (Card Member services +50% in Q2 2026).</p>
+
+  <h3>The causal gap</h3>
+  <p><b>1. Balance sheet vs toll road (Major).</b> AXP carries credit and funding: provisions were 7.3% of revenue and interest expense $8.2B in 2025. Visa carries neither. This is the model itself and cannot be closed. <b>2. Recycled value (Moderate).</b> AXP returns 42.8% of revenue as rewards, partner payments and benefits, while Visa returns 28.3% of gross revenue as incentives. AXP narrows this only if fee growth outruns benefits after the refresh is lapped, which management puts at one to two years after launch (Q2 2026 call). <b>3. Scale (Major).</b> Visa's payments volume is 8.3x AXP's billed business ($13.9T vs $1.67T). No amount of money closes that within a decade.</p>
+  <div class="pull">Visa holds the stronger position in the payments system, and AXP holds stronger pricing power over its own customers. Visa's position is the more durable of the two. Early warning signs: for AXP, rewards, partner and benefits cost above 44% of revenue; for Visa, incentives above 29.5% of gross revenue or US net revenue growth below 4%.</div>
+</div>
+
+<div class="view" id="v2">
+  <div class="frame">Overhead is nearly identical at about 31% of revenue. The whole gap is what AXP pays cardholders, partners and credit losses to own the customer.</div>
+  <p>Mapping, with R&amp;D ND for both because neither reports it. <b>AXP</b> (calendar year): revenue = total revenues net of interest expense. COGS proxy = Card Member rewards + business development + Card Member services + provisions for credit losses. SG&amp;A = marketing + salaries and employee benefits + other, net. EBIT = pretax income. <b>Visa</b> (fiscal year to September): revenue = net revenue after client incentives. COGS proxy = network and processing. SG&amp;A = personnel + marketing + professional fees + D&amp;A + G&amp;A. EBIT = GAAP operating income, which includes litigation provisions of $927M, $462M and $2,562M. The two companies book customer payments differently: Visa nets incentives out of revenue while AXP books rewards and partner payments as expenses. That asymmetry understates Visa's revenue base, so a gross-basis check is shown below.</p>
+  <h3>Three years, five ratios</h3>
+  <div class="tblwrap"><table>
+    <tr><th>% of revenue, 3y avg</th><th class="num ca">American Express</th><th class="num cb">Visa</th><th class="num">Gap</th><th>What drives it</th></tr>
+    <tr><td>COGS (proxy)</td><td class="num ca">49.6%</td><td class="num cb">2.2%</td><td class="num">47.4 pts</td><td>AXP pays rewards, benefits and credit losses; Visa's marginal cost is processing</td></tr>
+    <tr><td>R&amp;D</td><td class="num ca">ND</td><td class="num cb">ND</td><td class="num">ND</td><td>Not reported by either</td></tr>
+    <tr><td>SG&amp;A</td><td class="num ca">31.7%</td><td class="num cb">30.9%</td><td class="num">0.8 pts</td><td>Near parity: AXP falling (33.2 to 30.8), Visa rising (30.6 to 31.4)</td></tr>
+    <tr><td>Gross margin (proxy)</td><td class="num ca">50.4%</td><td class="num cb">97.8%</td><td class="num">47.4 pts</td><td>Business model, persistent in all three years</td></tr>
+    <tr><td>EBIT margin</td><td class="num ca">18.7%</td><td class="num cb">63.3%</td><td class="num">44.6 pts</td><td>Visa 66.8% before litigation; AXP improved from 17.4% to 19.1%</td></tr>
+  </table></div>
+  <div class="chartbox">
+    <svg viewBox="0 0 900 280" role="img" aria-label="Cost ratios"><line x1="0" x2="900" y1="230" y2="230" stroke="#2B2B2B"/><text x="90.0" y="252" text-anchor="middle" font-size="15" fill="#2B2B2B">COGS proxy</text><rect x="33.0" y="125.8" width="54" height="104.2" fill="#C75B39"/><text x="60.0" y="119.8" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">49.6%</text><rect x="93.0" y="225.4" width="54" height="4.6" fill="#3C6E8F"/><text x="120.0" y="219.4" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">2.2%</text><text x="270.0" y="252" text-anchor="middle" font-size="15" fill="#2B2B2B">R&amp;D</text><text x="270.0" y="216" text-anchor="middle" font-size="15" fill="#6E675C">ND for both</text><text x="450.0" y="252" text-anchor="middle" font-size="15" fill="#2B2B2B">SG&amp;A</text><rect x="393.0" y="163.4" width="54" height="66.6" fill="#C75B39"/><text x="420.0" y="157.4" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">31.7%</text><rect x="453.0" y="165.1" width="54" height="64.9" fill="#3C6E8F"/><text x="480.0" y="159.1" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">30.9%</text><text x="630.0" y="252" text-anchor="middle" font-size="15" fill="#2B2B2B">Gross margin</text><rect x="573.0" y="124.2" width="54" height="105.8" fill="#C75B39"/><text x="600.0" y="118.2" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">50.4%</text><rect x="633.0" y="24.6" width="54" height="205.4" fill="#3C6E8F"/><text x="660.0" y="18.6" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">97.8%</text><text x="810.0" y="252" text-anchor="middle" font-size="15" fill="#2B2B2B">EBIT margin</text><rect x="753.0" y="190.7" width="54" height="39.3" fill="#C75B39"/><text x="780.0" y="184.7" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">18.7%</text><rect x="813.0" y="97.1" width="54" height="132.9" fill="#3C6E8F"/><text x="840.0" y="91.1" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">63.3%</text></svg>
+    <div class="cap">Three-year averages, AXP FY2023-25 and Visa FY2023-25. AXP in terracotta, Visa in blue. Computed from both FY2025 10-K income statements.</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>Year</th><th class="num ca">AXP rev $M</th><th class="num ca">COGS p.</th><th class="num ca">SG&amp;A</th><th class="num ca">EBIT</th><th class="num cb">Visa rev $M</th><th class="num cb">COGS p.</th><th class="num cb">SG&amp;A</th><th class="num cb">EBIT (ex-lit.)</th></tr>
+    <tr><td>FY2023</td><td class="num ca">60,515</td><td class="num ca">49.4%</td><td class="num ca">33.2%</td><td class="num ca">17.4%</td><td class="num cb">32,653</td><td class="num cb">2.3%</td><td class="num cb">30.6%</td><td class="num cb">64.3% (67.2%)</td></tr>
+    <tr><td>FY2024</td><td class="num ca">65,949</td><td class="num ca">49.2%</td><td class="num ca">31.2%</td><td class="num ca">19.6%</td><td class="num cb">35,926</td><td class="num cb">2.2%</td><td class="num cb">30.9%</td><td class="num cb">65.7% (67.0%)</td></tr>
+    <tr><td>FY2025</td><td class="num ca">72,229</td><td class="num ca">50.1%</td><td class="num ca">30.8%</td><td class="num ca">19.1%</td><td class="num cb">40,000</td><td class="num cb">2.2%</td><td class="num cb">31.4%</td><td class="num cb">60.0% (66.4%)</td></tr>
+  </table></div>
+  <p class="note">Gross-basis check: in FY25 Visa's incentives plus network and processing were 29.9% of gross revenue ($16.6B of $55.8B). AXP's rewards, business development and Card Member services were 42.8% of revenue, plus 7.3% in provisions. Even on the most generous comparison, AXP returns about 13 more points to the customer side before credit. Profit per dollar of volume, FY25: AXP 0.83% of billed business, Visa 0.17% of payments volume (0.19% before litigation). Return on equity: AXP 33.9% as reported; Visa about 52% on average FY24-25 equity (computed).</p>
+  <h3>The structural gap</h3>
+  <p>The most persistent difference is the gross-margin proxy: about 48 points in every year from 2023 to 2025, driven by the Step 1 and Step 2 mechanisms, not by one-offs. AXP owns the cardholder, the credit line and the reward liability. Visa rents its rails to banks that carry all three. Because SG&amp;A is at parity, this is not a discipline gap a new management team could close. It is the model. The cost data confirm the power map in both directions. Visa's power over the system shows up as margin. AXP's power over its customers shows up as fee growth and five times Visa's profit per spend dollar, earned with a regulated bank balance sheet. The one cost line to watch at AXP is the rewards, partner and benefits ratio. It rose 1.5 points in 2025 during the Platinum investment, and management expects it to ease as the refresh is lapped.</p>
+  <div class="pull">Visa runs the far leaner engine, and the gap is structural. AXP's cost story comes down to whether card fees outgrow benefits once the Platinum refresh is lapped.</div>
+</div>
+
+<div class="flip">
+  <h3>What would flip the call</h3>
+  <ul>
+    <li><b>US network repricing lands on Visa, not AXP.</b> Final approval of the MDL settlement plus CCCA routing or a DOJ remedy on debit would cut Visa's US yield. AXP's three-party model sits outside the routing mandate (inferred from the bill's scope). <span style="color:var(--good);font-weight:700;">Early warning: Visa US net revenue growth below 4% in FY2027 (FY2027 10-K, November 2027).</span></li>
+    <li><b>The Platinum payback arrives and compounds.</b> If fee growth outpaces benefits after the refresh is lapped, AXP's cost of growth falls and its pretax margin moves toward the low 20s. That would make AXP the better growth-to-profit converter per unit of risk. <span style="color:var(--good);font-weight:700;">Early warning: AXP rewards plus business development plus Card Member services at or below 41.5% of revenue with pretax margin at 21% or more in 2027.</span></li>
+    <li><b>International rails bypass the card networks.</b> Domestic real-time schemes, government platforms and stablecoin rails take the cash-displacement growth Visa is counting on. <span style="color:var(--good);font-weight:700;">Early warning: Visa international payments volume growth below 7% in constant dollars for four straight quarters.</span></li>
+  </ul>
+</div>
+
+<h2>The KPI pack: 12-24 months</h2>
+<div class="tblwrap"><table>
+  <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+  <tr><td>AXP rewards + business development + Card Member services as % of revenue net of interest expense</td><td>41.5% or below (vs 42.8% in 2025)</td><td>FY2027 (Feb 2028)</td><td>AXP</td><td>AXP 10-K income statement</td></tr>
+  <tr><td>AXP net card fee growth</td><td>15% or more</td><td>FY2027</td><td>AXP</td><td>AXP quarterly earnings releases</td></tr>
+  <tr><td>AXP consumer and small-business net write-off rate (principal only)</td><td>Above 2.6% in any quarter</td><td>Through Q2 2028</td><td>Visa</td><td>AXP 10-Q credit statistics</td></tr>
+  <tr><td>Visa client incentives as % of gross revenue</td><td>29.5% or above (vs 28.3% FY25)</td><td>FY2027 (Nov 2027)</td><td>AXP</td><td>Visa 10-K revenue note</td></tr>
+  <tr><td>Visa VAS revenue growth and cross-border volume ex intra-Europe (constant $)</td><td>VAS 20% or more and cross-border 10% or more</td><td>FY2027</td><td>Visa</td><td>Visa earnings calls and 10-K</td></tr>
+  <tr><td>Visa US net revenue growth after the MDL settlement takes effect</td><td>Below 4%</td><td>FY2027</td><td>AXP</td><td>Visa 10-K geographic revenue</td></tr>
+</table></div>
+
+<div class="timeverdict">
+  <div class="label">Where to spend your time</div>
+  Spend the next deep-dive hours on Visa. Read the FY2026 10-K (due November 2026) litigation note and US revenue line to size the settlement and DOJ exposure, which is the only thing that bends the call. AXP's open question is narrower and dated: whether the Platinum cohort's fees outgrow its benefits in the Q4 2026 and 2027 results.
+</div>
+
+<div class="footer">
+  <p><b>Method.</b> The duel runs three lenses: a growth map by product x geography cell, a power map of moats, customers and suppliers, and a cost engine of five ratios over three years. Cells were filtered 80/20 and labels normalized; Visa does not disclose revenue below US and international, so its cell sizes use payments volume and are marked ND where revenue is not reported. All figures are USD as reported, with Visa on a September fiscal year; "computed" means derived here from reported lines, "approx., unverified" means not checked against a primary filing, and ND means not disclosed. This compares business strength only. It is not a valuation and says nothing about either stock's price.</p>
+  <p class="sources"><b>Sources.</b></p>
+  <ul class="sources">
+    <li>American Express Company, Form 10-K FY2025 (filed 6 Feb 2026) and FY2023 (filed 9 Feb 2024): Tables 1-14, Note 23 segments and geography, risk factors. Local: AXP_AMERICAN_EXPRESS_CO/sources/Annual_Reports.</li>
+    <li>American Express Company, Form 10-Q Q2 2026 (filed 24 Jul 2026); Q2 2026 earnings call transcript (24 Jul 2026).</li>
+    <li>Visa Inc., Form 10-K FY2025 (filed 6 Nov 2025) and FY2023 (filed 15 Nov 2023): net revenue components, payments volume, operating expenses, legal matters. Local: V_VISA_INC./sources/Annual_Reports.</li>
+    <li>Visa Inc., Form 10-Q Q3 FY2026 (filed 29 Jul 2026); Q3 FY2026 earnings call transcript (28 Jul 2026); Form 8-K 12 May 2026 (exchange offer settlement).</li>
+    <li>Payments Dive, "Court approves Visa-Mastercard settlement", 9 June 2026: https://www.paymentsdive.com/news/court-approves-visa-mastercard-settlement/822440/</li>
+    <li>Barchart, Trump calls for one-year 10% cap on credit card interest rates, 10 January 2026: https://www.barchart.com/story/news/36980287/trump-calls-for-one-year-cap-on-credit-card-interest-rates-at-10-starting-january-2026</li>
+    <li>Senator Durbin press release, Credit Card Competition Act reintroduced, 13 January 2026: https://www.durbin.senate.gov/newsroom/press-releases/durbin-marshall-reintroduce-the-credit-card-competition-act</li>
+  </ul>
+</div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
