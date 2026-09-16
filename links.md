@@ -1,3 +1,4 @@
+- [WDC Business Overview](https://xk152004.github.io/investechery/stocks/WDC-Business-Overview.html)
 - [Teradyne Business Overview](https://xk152004.github.io/investechery/stocks/Teradyne-Business-Overview.html)
 - [LRCX vs AMAT Peer Duel](https://xk152004.github.io/investechery/stocks/LRCX-vs-AMAT-Peer-Duel.html)
 - [AMAT Business Overview](https://xk152004.github.io/investechery/stocks/AMAT-Business-Overview.html)
