@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adyen vs PayPal: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.10);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.10);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Adyen vs PayPal: who wins the next decade?</h1>
+  <p class="source">Digital payments: merchant acceptance and consumer wallets. ADYEN (Euronext Amsterdam) / PYPL (Nasdaq). Run 17 September 2026. Built from the research folders: Adyen ESEF annual reports FY2023 to FY2025, H2 2025 and H1 2026 shareholder letters, Talon.One announcement (23 Apr 2026), Investor Day Nov 2025 transcript; PayPal 10-K FY2023 to FY2025, 8-Ks through May 2026, Q4 2025, Q1 2026 and Q2 2026 call transcripts. Events swept through 17 Sep 2026; most recent events checked: Adyen closed Talon.One and Orb on 1 Jul 2026 and named an interim CFO from 1 Sep 2026; PayPal raised 2026 guidance on 28 Jul 2026 and declined to comment on M&A speculation. Adyen figures in EUR, PayPal in USD, growth in native currency; for scale only, EUR 1 = USD 1.1539 (ECB reference rate, 15 Sep 2026). Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Adyen</span><span class="chip b">PayPal</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Adyen is the stronger business for the next 5 to 10 years: its growth comes from enterprise cells it is still taking share in, and it turns each euro of net revenue into more operating profit than PayPal does.</div>
+    <div class="why">The load-bearing fact: Adyen's net revenue after pass-through costs rose from EUR 1,001.5m in 2021 to EUR 2,364.2m in 2025 (+24% a year), while PayPal's transaction margin dollars rose from $14.0bn to $15.5bn (+2.5% a year), and Adyen still earned 46.9% EBIT on that base versus PayPal's 39.2% (ESEF FY2022 and FY2025; 10-K FY2023 and FY2025).</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Growth sits in cells Adyen is winning: Unified Commerce net revenue +27% CC and Platforms +40% CC in H1 2026. PayPal's largest profit pool, online branded checkout, grew volume only 2% (Adyen H1 2026 letter; PayPal Q2 2026 call).</div>
+    <div class="col"><span class="n">2</span><br>Adyen runs one platform, so its operating costs take 53.1% of net revenue against PayPal's 60.8% of transaction margin dollars. PayPal's own fix is a $1.5bn cost programme to merge three payment stacks (ESEF FY2025; 10-K FY2025; Q2 2026 call).</div>
+    <div class="col"><span class="n">3</span><br>PayPal carries $7.3bn of consumer and merchant loans and books about $1.1bn of interest on customer balances inside transaction margin. Adyen's lending is limited to Capital advances for platform users (book size ND), and its interest on float sits below EBIT (10-K FY2025; Q2 2026 guidance; H2 2025 letter).</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Adyen, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Adyen, clear on level</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Adyen, clear</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors Adyen, right lean favors PayPal; marker position shows how decisive. On margin direction in 2026 the gap narrows (see Answer 2).</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip a">Adyen, clear</span></div>
+    <p>Three Adyen cells carry the next five years. (1) Unified Commerce, where large retailers and food chains move store and online payments onto one platform: 486 customers already process at least EUR 10m on both channels, and 838K terminals are live (+27%). (2) Platforms, where software companies embed payments, cards and loans for their small-business users: 37 platforms now process over EUR 1bn a year, up from 32. (3) North America, +30% CC in H1 2026, driven by the same share-of-wallet mechanism: Adyen's share of a merchant's volume typically climbs from under 20% in years 3 to 7 to over 40% after year 12, so today's cohort funds growth for years (Adyen H1 2026 letter). PayPal's forward engine is narrower. Management says financial services (Venmo, BNPL, credit) will be the largest driver of future transaction margin growth, and PSP volume grew 13%. But online branded checkout, over half of profit dollars, is guided to low-single-digit volume growth for 2026, and 2027 targets were withdrawn (PayPal Q4 2025 and Q2 2026 calls). The new growth is either thin-margin processing or balance-sheet credit.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 250" role="img" aria-label="Indexed revenue after pass-through costs"><line x1="50" x2="640" y1="187.6" y2="187.6" stroke="#E5DDD0"/><text x="42" y="192.6" font-size="13" fill="#6E675C" text-anchor="end">100</text><line x1="50" x2="640" y1="131.8" y2="131.8" stroke="#E5DDD0"/><text x="42" y="136.8" font-size="13" fill="#6E675C" text-anchor="end">150</text><line x1="50" x2="640" y1="75.9" y2="75.9" stroke="#E5DDD0"/><text x="42" y="80.9" font-size="13" fill="#6E675C" text-anchor="end">200</text><line x1="50" x2="640" y1="20.0" y2="20.0" stroke="#E5DDD0"/><text x="42" y="25.0" font-size="13" fill="#6E675C" text-anchor="end">250</text><text x="50.0" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2021</text><text x="197.5" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2022</text><text x="345.0" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2023</text><text x="492.5" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2024</text><text x="640.0" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2025</text><polyline points="50.0,187.6 197.5,150.8 345.0,118.4 492.5,77.0 640.0,35.6" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="50.0" cy="187.6" r="4" fill="#C75B39"/><circle cx="197.5" cy="150.8" r="4" fill="#C75B39"/><circle cx="345.0" cy="118.4" r="4" fill="#C75B39"/><circle cx="492.5" cy="77.0" r="4" fill="#C75B39"/><circle cx="640.0" cy="35.6" r="4" fill="#C75B39"/><text x="650.0" y="40.6" font-size="15" font-weight="700" fill="#C75B39">Adyen 236</text><polyline points="50.0,187.6 197.5,189.9 345.0,189.9 492.5,182.1 640.0,176.5" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="50.0" cy="187.6" r="4" fill="#3C6E8F"/><circle cx="197.5" cy="189.9" r="4" fill="#3C6E8F"/><circle cx="345.0" cy="189.9" r="4" fill="#3C6E8F"/><circle cx="492.5" cy="182.1" r="4" fill="#3C6E8F"/><circle cx="640.0" cy="176.5" r="4" fill="#3C6E8F"/><text x="650.0" y="181.5" font-size="15" font-weight="700" fill="#3C6E8F">PayPal 110</text></svg>
+      <div class="cap">Indexed to 100 in 2021. Adyen: net revenue, EUR m: 1,001.5 / 1,330.2 / 1,626.1 / 1,996.1 / 2,364.2 (ESEF xBRL FY2022 to FY2025, "gross profit" line equals net revenue). PayPal: transaction margin dollars = net revenues less transaction expense and transaction and credit losses, USD m: 13,996 / 13,773 / 13,704 / 14,658 / 15,465 (10-K FY2023 and FY2025). Each in its own reporting currency. PayPal reported net revenues indexed to 131 on the same basis.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip a">Adyen, clear on level, narrow on direction</span></div>
+    <p>Adyen converts through architecture. One codebase and one ledger mean each new channel, region or product runs on infrastructure it already pays for, so operating costs fell from 58.1% to 53.1% of net revenue over FY2023 to FY2025 while net revenue rose 45% (ESEF FY2023 to FY2025). PayPal's conversion has been driven by cost cuts, not mix. Its EBIT on transaction margin moved from 36.7% to 39.2%, and 2023 included a $339m gain on selling Happy Returns (10-K FY2025). Its growth cells dilute margin: Braintree carries higher transaction expense rates, and branded checkout is buying presentment with merchant incentives that cut take rate by 7bps to 1.61% (Q2 2026 call). The direction is closer than the level. Adyen guides 2026 EBITDA margin about 1pt below 2025 because of the acquisitions, while PayPal targets at least $1.5bn of gross run-rate savings over two to three years. So PayPal's margin trend could improve while Adyen's pauses. Adyen's 2028 target of above 55% EBITDA is the test (H1 2026 letter).</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 210" role="img" aria-label="Margin dumbbells"><text x="60" y="21" font-size="15" fill="#2B2B2B" font-weight="700">EBIT % of net revenue, FY2025 (higher is better)</text><line x1="60" x2="700" y1="45" y2="45" stroke="#E5DDD0" stroke-width="2"/><text x="52" y="50" font-size="13" fill="#6E675C" text-anchor="end">20%</text><text x="708" y="50" font-size="13" fill="#6E675C">60%</text><line x1="490.4" x2="367.2" y1="45" y2="45" stroke="#2B2B2B" stroke-width="2"/><circle cx="490.4" cy="45" r="8" fill="#C75B39"/><circle cx="367.2" cy="45" r="8" fill="#3C6E8F"/><text x="490.4" y="73" font-size="14" fill="#C75B39" font-weight="700" text-anchor="middle">Adyen 46.9%</text><text x="367.2" y="73" font-size="14" fill="#3C6E8F" font-weight="700" text-anchor="middle">PayPal 39.2%</text><text x="428.8" y="39" font-size="13" fill="#6E675C" text-anchor="middle">7.7pts</text><text x="60" y="116" font-size="15" fill="#2B2B2B" font-weight="700">Operating costs % of net revenue, FY2025 (lower is better)</text><line x1="60" x2="700" y1="140" y2="140" stroke="#E5DDD0" stroke-width="2"/><text x="52" y="145" font-size="13" fill="#6E675C" text-anchor="end">40%</text><text x="708" y="145" font-size="13" fill="#6E675C">70%</text><line x1="339.5" x2="503.7" y1="140" y2="140" stroke="#2B2B2B" stroke-width="2"/><circle cx="339.5" cy="140" r="8" fill="#C75B39"/><circle cx="503.7" cy="140" r="8" fill="#3C6E8F"/><text x="339.5" y="168" font-size="14" fill="#C75B39" font-weight="700" text-anchor="middle">Adyen 53.1%</text><text x="503.7" y="168" font-size="14" fill="#3C6E8F" font-weight="700" text-anchor="middle">PayPal 60.8%</text><text x="421.6" y="134" font-size="13" fill="#6E675C" text-anchor="middle">7.7pts</text></svg>
+      <div class="cap">Basis: Adyen net revenue; PayPal transaction margin dollars, both revenue after pass-through costs. Adyen operating costs = wages, social charges, D&amp;A and other operating expenses (EUR 1,255.3m); PayPal = customer support, sales and marketing, technology and development, G&amp;A, restructuring ($9,400m). Reported gross margins are left out because Adyen books interchange net and PayPal books it gross. Sources: ESEF FY2025; 10-K FY2025.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip b">PayPal breaks first</span></div>
+    <p>PayPal's exposure is credit plus consumer spending. It holds $5.5bn of consumer loans and $1.8bn of merchant loans. Merchant net charge-offs rose from 5.3% to 7.3% during 2025, and revenue share from its US credit partner drops to zero if returns fall below a minimum threshold. On top of that, about $1.1bn of 2026 transaction margin is interest on customer balances, which shrinks when rates fall (10-K FY2025; Q2 2026 guidance). A downturn would hit volume, losses and interest income together, and the core branded checkout franchise is already growing below the market. Adyen's exposure is different: pricing tiers. The largest merchants earn lower rates as they grow, and take rate fell from 17.1bps in H2 2025 to 16.2bps in H1 2026. In 2025 one large customer cut processed volume growth from 21% to 8%. With 300 merchants still driving about 60% of growth, a slowdown at a handful of enterprises would show up quickly (H2 2025 and H1 2026 letters). But Adyen carries little credit risk on its balance sheet (inferred: bad debts and provisions were EUR 16.1m in H1 2026, mostly one counterparty impairment and a legacy account clean-up), and its costs are mostly people it chooses to hire (550 to 650 net new in 2026). PayPal breaks first because three shocks can land together.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These five cells carry all of Adyen's net revenue and, on disclosed evidence, most of PayPal's profit. Neither company discloses a product x region cross-tab, so each cell names its dominant region. Every score is argued in the tabs below.</p>
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">Adyen</th><th class="cb">PayPal</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>Unified commerce: enterprise in-store + online, EMEA and North America</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</span></td><td>Adyen UC +33% CC in H2 2025 and +27% in H1 2026 with 486 cross-channel customers at scale; PayPal has no enterprise POS line, only consumer debit and tap-to-pay on a small base (Adyen letters; PayPal Q2 2026 call)</td></tr>
+    <tr><td>Enterprise online acceptance, EMEA and North America</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</span></td><td>Adyen Digital +15% CC in H1 2026 despite tiering; Braintree grows volume mid-teens after shedding unprofitable merchants, but at higher transaction expense rates (Adyen H1 2026 letter; PayPal 10-K FY2025)</td></tr>
+    <tr><td>Platforms / embedded payments for SMB software, North America and EMEA</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</span></td><td>Adyen Platforms +40% CC, 293K active business customers (+51%); PayPal calls platforms and marketplaces under-penetrated (H1 2026 letter; Q2 2026 call)</td></tr>
+    <tr><td>Branded wallet checkout, US, UK, Germany</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</span></td><td>Over half of PayPal's profit dollars, but volume +2% CC and holding through merchant incentives that cut take rate (Q4 2025 and Q2 2026 calls); Adyen processes wallets but owns none</td></tr>
+    <tr><td>Consumer money: Venmo, BNPL, credit, US-led</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</span></td><td>Venmo revenue about $1.7bn (+20%), BNPL volume +26%, financial services revenue growing at least twice company rate in 2026 (Q4 2025 and Q2 2026 calls); Adyen is not in consumer finance</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs. They are per cell and are not summed; the three lenses get their verdicts in the Three Answers above.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Adyen grows by taking a bigger share of large merchants' volume across channels. PayPal grows by adding consumer finance and processing volume around a checkout button that has stopped growing.</div>
+    <p>Normalization first. Adyen reports "net revenue": IFRS revenue less costs paid to card schemes and banks and terminal costs, plus net interest income. PayPal reports revenue gross of interchange, so the comparable line is transaction margin dollars (TM$): net revenues less transaction expense and transaction and credit losses. Both measure what the company keeps after passing through the cost of moving money. Segment labels are mapped onto five business cells: Adyen's Digital, Unified Commerce and Platforms pillars; PayPal's Braintree/PSP, branded checkout, and Venmo plus credit. Regions are EMEA vs PayPal's "other countries" and North America vs the US.</p>
+    <p>The data gap is one-sided. Adyen publishes net revenue by pillar and by region every half-year. PayPal reports only US vs other countries revenue and transaction vs other value added services revenue. Product-line economics come from call commentary (volume growth, "over half of profit dollars", Venmo revenue). Where PayPal numbers do not exist, the page says ND.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 376" role="img" aria-label="Butterfly chart of cell growth"><text x="290.0" y="22" font-size="17" font-weight="700" fill="#C75B39" text-anchor="end">Adyen: net revenue growth</text><text x="610.0" y="22" font-size="17" font-weight="700" fill="#3C6E8F">PayPal: volume or revenue growth</text><text x="450.0" y="62" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Enterprise online acceptance</text><rect x="259.5" y="48" width="40.5" height="20" fill="#C75B39"/><text x="253.5" y="63" font-size="13" fill="#6E675C" text-anchor="end">Digital +15% CC, 56% of net rev</text><rect x="600.0" y="48" width="35.1" height="20" fill="#3C6E8F"/><text x="641.1" y="63" font-size="13" fill="#6E675C">Braintree/PSP TPV +13%</text><line x1="300.0" x2="600.0" y1="82" y2="82" stroke="#E5DDD0"/><text x="450.0" y="108" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Unified commerce (in-store + online)</text><rect x="227.1" y="94" width="72.9" height="20" fill="#C75B39"/><text x="221.1" y="109" font-size="13" fill="#6E675C" text-anchor="end">UC +27% CC, 32%</text><text x="606.0" y="109" font-size="13" fill="#6E675C">ND (no enterprise POS line)</text><line x1="300.0" x2="600.0" y1="128" y2="128" stroke="#E5DDD0"/><text x="450.0" y="154" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Platforms / embedded SMB</text><rect x="192.0" y="140" width="108.0" height="20" fill="#C75B39"/><text x="186.0" y="155" font-size="13" fill="#6E675C" text-anchor="end">Platforms +40% CC, 11%</text><text x="606.0" y="155" font-size="13" fill="#6E675C">ND (not disclosed)</text><line x1="300.0" x2="600.0" y1="174" y2="174" stroke="#E5DDD0"/><text x="450.0" y="200" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Branded wallet checkout</text><text x="294.0" y="201" font-size="13" fill="#6E675C" text-anchor="end">no presence</text><rect x="600.0" y="186" width="5.4" height="20" fill="#3C6E8F"/><text x="611.4" y="201" font-size="13" fill="#6E675C">Branded TPV +2% CC, over half of profit $</text><line x1="300.0" x2="600.0" y1="220" y2="220" stroke="#E5DDD0"/><text x="450.0" y="246" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Consumer money: Venmo, BNPL, credit</text><text x="294.0" y="247" font-size="13" fill="#6E675C" text-anchor="end">no presence</text><rect x="600.0" y="232" width="37.8" height="20" fill="#3C6E8F"/><text x="643.8" y="247" font-size="13" fill="#6E675C">Venmo TPV +14%; BNPL +26%</text><line x1="300.0" x2="600.0" y1="266" y2="266" stroke="#E5DDD0"/><text x="450.0" y="292" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">North America (region)</text><rect x="219.0" y="278" width="81.0" height="20" fill="#C75B39"/><text x="213.0" y="293" font-size="13" fill="#6E675C" text-anchor="end">NA net rev +30% CC, 27%</text><rect x="600.0" y="278" width="8.1" height="20" fill="#3C6E8F"/><text x="614.1" y="293" font-size="13" fill="#6E675C">US revenue +3%, FY25</text><line x1="300.0" x2="600.0" y1="312" y2="312" stroke="#E5DDD0"/><text x="450.0" y="338" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Europe / EMEA (region)</text><rect x="259.5" y="324" width="40.5" height="20" fill="#C75B39"/><text x="253.5" y="339" font-size="13" fill="#6E675C" text-anchor="end">EMEA +15% CC, 55%</text><rect x="600.0" y="324" width="16.2" height="20" fill="#3C6E8F"/><text x="622.2" y="339" font-size="13" fill="#6E675C">Non-US revenue +6%, FY25</text><line x1="300.0" x2="600.0" y1="358" y2="358" stroke="#E5DDD0"/></svg>
+      <div class="cap">Adyen bars: net revenue growth at constant currency, H1 2026 vs H1 2025, with share of H1 2026 net revenue (Adyen H1 2026 letter). PayPal bars: currency-neutral volume growth, Q2 2026 (Q2 2026 call), except regional rows, which are reported revenue growth FY2025 (10-K FY2025). PayPal revenue by product line is not disclosed, so PayPal bars are volume, not revenue. Mixed periods are shown as reported; read directionally.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">Adyen size</th><th class="num ca">Adyen growth</th><th class="num cb">PayPal size</th><th class="num cb">PayPal growth</th><th>Margin signal / leader</th></tr>
+      <tr><td>Enterprise online acceptance</td><td class="num ca">EUR 1,335.0m, 56% (FY25)</td><td class="num ca">+10% CC H2 25; +15% CC H1 26</td><td class="num cb">ND revenue; Braintree revenue +~$150m FY25</td><td class="num cb">TPV +13% Q2 26</td><td>Adyen: prices per merchant tier on its own stack; Braintree's transaction expense rate is above PayPal average (10-K FY2025)</td></tr>
+      <tr><td>Branded wallet checkout</td><td class="num ca">0</td><td class="num ca">n/a</td><td class="num cb">&gt;50% of profit $ (Q4 25 call)</td><td class="num cb">TPV +2% CC Q2 26</td><td>PayPal only; highest-margin cell, now diluted by merchant incentives</td></tr>
+      <tr><td>Unified commerce</td><td class="num ca">EUR 765.4m, 32% (FY25)</td><td class="num ca">+33% CC H2 25; +27% CC H1 26</td><td class="num cb">ND; debit and tap-to-pay "small portion"</td><td class="num cb">&gt;60% on small base</td><td>Adyen: in-person volume EUR 175.7bn, 22% of total (H1 26 letter)</td></tr>
+      <tr><td>Consumer money (Venmo, credit, BNPL)</td><td class="num ca">0</td><td class="num ca">n/a</td><td class="num cb">Venmo rev ~$1.7bn; OVAS $3,374m (10% of rev)</td><td class="num cb">Venmo +20%; OVAS +14% FY25</td><td>PayPal only; margin depends on credit losses and rates</td></tr>
+      <tr><td>Platforms / embedded</td><td class="num ca">EUR 263.8m, 11% (FY25)</td><td class="num ca">+49% CC H2 25; +40% CC H1 26</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Adyen: 31% of Platforms volume at point of sale, up from 25% (H2 25 letter)</td></tr>
+      <tr><td>Region: EMEA / non-US</td><td class="num ca">EUR 1,360.7m, 58%</td><td class="num ca">+15% CC H1 26</td><td class="num cb">$14,304m, 43%</td><td class="num cb">+5.7% FY25</td><td>Adyen's home region growing well ahead of PayPal's non-US revenue (periods differ)</td></tr>
+      <tr><td>Region: North America / US</td><td class="num ca">EUR 633.3m, 27%</td><td class="num ca">+30% CC H1 26</td><td class="num cb">$18,868m, 57%</td><td class="num cb">+3.3% FY25</td><td>Adyen still a share-taker in PayPal's home market</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Every Adyen cell grows double digits; PayPal's only double-digit cells are its lower-margin or credit-exposed ones. <b>Implication:</b> Adyen's mix improves as it grows, while PayPal's growth dilutes its best cell. <span class="kpi">KPI: Adyen UC net revenue CC growth at or above 25% in H2 2026 and H1 2027 (shareholder letters); PayPal branded checkout TPV growth vs the 2026 low-single-digit guide (quarterly calls).</span> Sources: Adyen H2 2025 and H1 2026 letters; PayPal 10-K FY2025, Q4 2025 and Q2 2026 calls. FY2025 Adyen pillar and region figures are H1 plus H2.</div>
+
+    <h3>Segment growth engines</h3>
+    <p>Unified Commerce (Adyen). Growth comes from moving existing online customers into their stores and signing multi-country retailers. Examples: Starbucks in 943 European stores, LVMH, Lufthansa. The cost is terminals and implementation teams. The driver lasts because merchants that consolidate channels share customer identity data across them, which a store-only or online-only rival cannot offer (H2 2025 letter). PayPal has no equivalent enterprise product. Its omnichannel push is consumer-side debit and tap-to-pay (Q2 2026 call).</p>
+    <p>Enterprise online (Adyen Digital vs Braintree). Both win large e-commerce and subscription merchants. Adyen's Digital growth ex the single large-volume customer was 11% by volume in H2 2025 and reaccelerated to +15% CC revenue in H1 2026. Braintree renegotiated or dropped unprofitable merchants in H1 2025, then grew volume mid-teens (10-K FY2025; Q2 2026 call). Braintree's revenue rose about $150m in 2025 on a base PayPal does not disclose.</p>
+    <p>Consumer money (PayPal). Venmo monetizes through its debit card and Pay with Venmo: users of both generate more than 9x the revenue per account of P2P-only users. BNPL grows through upstream presentment at merchants like Temu and Home Depot Canada. This is organic, but funded partly by the balance sheet: $1.7bn of BNPL receivables were held for sale at year-end 2025 under forward-flow agreements (Q2 2026 call; 10-K FY2025).</p>
+    <p>Acquired growth. Adyen's Talon.One (EUR 750m, about EUR 60m ARR, growing 30 to 40%) and Orb closed on 1 July 2026. They add about 1pt to 2026 growth and 1 to 2pts to 2027, so read 2026 organic growth as 20 to 22% CC (Talon.One call; H1 2026 letter). PayPal's January 2026 purchase of Cymbio (agentic commerce) is immaterial to growth (Wikipedia, PayPal article).</p>
+    <div class="iik"><b>Insight:</b> Adyen's organic engine is recurring share-of-wallet expansion: two thirds of H1 2026 growth came from customers onboarded in 2024 or earlier. <b>Implication:</b> Growth is visible 6 to 12 months out and does not need new logos. <span class="kpi">KPI: share of growth from the top 300 merchants, now about 60%, falling further by H2 2027.</span> Source: Adyen H1 2026 letter.</div>
+
+    <h3>Price control and route-to-market</h3>
+    <p>Adyen sells directly to enterprises and platforms with volume-tiered pricing. It lowers its own price as merchants scale: take rate fell to 16.2bps in H1 2026 from 16.8bps a year earlier. It gives price to buy volume it can retain. PayPal's net price is set at two doors. Merchants pay a percentage fee, and PayPal is now funding "calculated deals" with strategic merchants (nearly 25% of branded checkout volume) and co-marketing for better button placement. Transaction take rate fell 7bps to 1.61% in Q2 2026, and the investments cost about 3 points of 2026 TM$ growth (Q4 2025 and Q2 2026 calls).</p>
+    <div class="iik"><b>Insight:</b> Both are cutting price. Adyen does it for merchants whose volume is rising; PayPal does it to defend a slowing button. <b>Implication:</b> Adyen's discounts buy durable share of wallet, while PayPal's buy presentment that must be repaid each contract cycle. <span class="kpi">KPI: Adyen net revenue CC growth minus processed volume growth (H1 2026: 21% vs 24%, -3pts); PayPal transaction take rate ex hedges (Q2 2026: -7bps YoY).</span> Sources: Adyen H1 2026 letter; PayPal Q2 2026 call.</div>
+
+    <h3>Supply resilience</h3>
+    <table>
+      <tr><th>Input</th><th class="ca">Adyen</th><th class="cb">PayPal</th></tr>
+      <tr><td>Card schemes and issuers</td><td class="ca">Passes through: costs from financial institutions EUR 193.0m, 7% of IFRS revenue FY25 (ESEF)</td><td class="cb">Absorbs: transaction expense $15,987m, 48% of revenue, 0.89% of TPV, sensitive to funding mix (10-K FY25)</td></tr>
+      <tr><td>Compute and data centers</td><td class="ca">Owns data centers; capex raised to 7% of net revenue in 2026 to lock compute amid supply-chain issues (H1 26 letter)</td><td class="cb">Migrating from owned data centers to cloud (Q2 26 call)</td></tr>
+      <tr><td>Balance-sheet funding</td><td class="ca">Own EU banking licence; EUR 4.9bn own cash (H1 26 letter)</td><td class="cb">Partner bank for US credit; forward-flow buyers for BNPL; $13.4bn debt; PayPal Bank application Dec 2025</td></tr>
+      <tr><td>Hardware</td><td class="ca">Terminals, inventory EUR 77.0m (FY25 balance sheet)</td><td class="cb">Small (Zettle readers); ND</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> PayPal's largest cost is set by card networks and consumer funding choices. Adyen passes that cost to merchants. <b>Implication:</b> A shift in funding mix toward cards squeezes PayPal's margin, not Adyen's. <span class="kpi">KPI: PayPal transaction expense rate above 0.92% of TPV in any 2027 quarter.</span> Sources: 10-K FY2025; Adyen H2 2025 financial statements.</div>
+
+    <h3>Competitive context</h3>
+    <p>In enterprise acceptance, both compete with other global processors and bank-owned acquirers. PayPal's 10-K names the category broadly (card processors, digital wallets, BNPL, real-time payment systems). Share data by cell is ND in the sources. Adyen describes itself as outgrowing the market because it solves more of each customer's problems (H1 2026 letter). PayPal's aim for branded checkout is "narrowing the gap with the market over time", which admits share loss today (Q4 2025 call). On this evidence Adyen is a share-taker in its three cells, PayPal a share-donor in branded checkout and a share-taker in Venmo and BNPL (inferred from growth vs stated market context).</p>
+
+    <h3>Risks by segment</h3>
+    <p>Unified Commerce: implementation capacity. Multi-country store rollouts need people and terminals, and Adyen plans 550 to 650 hires in 2026. Enterprise online: tiering and single-customer swings, as the 2025 volume drop from one customer showed. More exposed: Adyen. Branded checkout: agentic and in-app checkouts that bypass the web button. Management says agentic will not matter for 2026 growth, but it must become "the default payment option" as AI shopping scales. More exposed: PayPal. Consumer money: credit cycle and rates, as covered in Answer 3. More exposed: PayPal (Adyen H1 2026 letter; PayPal Q4 2025 call; 10-K FY2025).</p>
+    <div class="pull">On cells alone, Adyen has the higher-probability growth path. Its three enterprise cells grow 15 to 40% on compounding wallet share, while PayPal's highest-margin cell grows 2% and its growth cells carry thinner margins or credit risk.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">PayPal owns the consumer side of the network; Adyen owns the merchant's plumbing. In 2026 the merchant is setting the terms.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Adyen, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Adyen, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Adyen, clear</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Each call is argued below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Adyen</h3><p>Single global stack plus own banking licence. Proof: 99.9999% uptime through 837m Black Friday / Cyber Monday transactions, recognizing about 95% of 400m shoppers across online and in-store (H2 2025 letter). Durability: High. It took a decade to build and cannot be bought quickly. Cross-channel identity data (Dynamic Identification). Proof: pilots lifted conversion up to 6% and cut payment costs up to 3%. Durability: Med-High (inferred), because it depends on staying the single provider across channels.</p></div>
+      <div class="col b"><h3>PayPal</h3><p>Two-sided consumer network: 439m active accounts, 228m monthly actives. Proof: buyer and seller protection and a trusted brand; BNPL shown upstream lifts branded volume by more than 10% (10-K FY2025; Q4 2025 call). Durability: Med. The habit is weakening at the web checkout, with payment transactions per active account at 57.7 vs 60.6 in 2024, though ex-PSP engagement grew 7% in Q2 2026. Venmo P2P network. Proof: TPV up double digits for seven straight quarters. Durability: High in the US.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Both have real moats, but PayPal's is under attack in its most profitable use (web checkout), while Adyen's deepens as merchants add channels. <b>Implication:</b> Adyen's moat supports pricing discipline; PayPal is paying to defend its own. <span class="kpi">KPI: Adyen customers processing across channels at scale, 486 in H1 2026, rising; PayPal monthly active accounts growth above 1%.</span> Sources: Adyen H1 2026 letter; PayPal Q2 2026 call.</div>
+    <h3>Customers: who controls net price and access</h3>
+    <p>Adyen: enterprise and platform merchants on tiered contracts. Big customers hold real bargaining power: 300 merchants drive about 60% of growth, and one large customer's volume shift in 2025 took total processed volume growth from 21% to 8%. The offset is switching cost, which rises with each added channel and product, and long-standing customers still expanding after a decade (H2 2025 and H1 2026 letters). PayPal: merchants can always offer other wallets. PayPal is paying for presentment through strategic-merchant deals and co-marketing, and its Braintree merchants can move volume, as the 2025 repricing showed (Q4 2025 call; 10-K FY2025). Consumers set PayPal's volume through button choice, which management calls "selection".</p>
+    <div class="iik"><b>Insight:</b> Adyen concedes price per unit to large customers but keeps them and grows with them. PayPal concedes price to win placement it once had by default. <b>Implication:</b> When demand softens, margin pressure lands on PayPal's branded checkout first. <span class="kpi">KPI: PayPal branded checkout TPV CC growth vs e-commerce growth; Adyen take rate holding at or above 15.5bps in H2 2026.</span> Sources as above.</div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Adyen passes scheme and interchange costs through to merchants: costs from financial institutions plus terminal costs were 11.5% of gross revenue in FY2025, and the ratio barely moved as volume grew. Its key supply risk is compute, handled by pre-buying 2027 capex in 2026 (ESEF FY2025; H1 2026 letter). PayPal absorbs funding costs: its transaction expense rate is 0.89% of TPV, and cheaper funding (balances, bank, own credit) is a margin lever it controls only partly. US credit depends on a partner institution whose revenue share can drop to zero, and BNPL growth depends on forward-flow buyers (10-K FY2025). Pass-through: Adyen Strong; PayPal Partial.</p>
+    <div class="iik"><b>Insight:</b> A card-cost or funding shock flows straight into PayPal's P&amp;L and past Adyen's. <b>Implication:</b> PayPal's gross economics are cyclical in a way Adyen's are not. <span class="kpi">KPI: PayPal transaction and credit loss rate above 0.11% of TPV (the 2023 level) in 2027.</span> Source: 10-K FY2025.</div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>Enterprise online acceptance, EMEA + NA</td><td>Both direct to merchant</td><td>Adyen low bps, tiered; Braintree repriced upward in 2025 (inferred from dropped volume)</td><td>Adyen single stack; Braintree being merged with PPCP and Hyperwallet</td><td>Adyen share up, margin flat (tiering); PayPal share flat-up, margin thin but improving</td><td>Adyen Digital CC growth at or above 13%; Braintree "profitable growth" streak continuing</td></tr>
+      <tr><td>Branded wallet checkout, US / UK / DE</td><td>PayPal owns the consumer route; merchant controls placement</td><td>PayPal premium take rate, falling (1.61%, -7bps)</td><td>Strong brand; presentment bought</td><td>PayPal share down, margin down</td><td>Branded TPV growth at or above 4% CC by Q4 2027</td></tr>
+      <tr><td>Unified commerce, EMEA + NA</td><td>Adyen direct plus own terminals</td><td>Adyen above online-only take (inferred from rising take rate with UC mix in H2 2025)</td><td>Adyen 838K terminals; PayPal no enterprise POS</td><td>Adyen share up, margin up</td><td>UC net revenue CC growth at or above 25%</td></tr>
+    </table>
+    <p>The tension: PayPal is growing fastest (PSP, Venmo, BNPL) exactly where it has the least pricing power or the most credit exposure. Adyen is growing fastest (UC, Platforms) where it has the most.</p>
+    <h3>The causal gap</h3>
+    <p>(1) Architecture. Adyen runs one platform; PayPal is unifying Braintree, PayPal Complete Payments and Hyperwallet and moving to the cloud. Impact: Major. Laggard fix: already underway under the $1.5bn savings plan, realistic horizon 2 to 3 years or more (Q2 2026 call). (2) Enterprise cross-channel presence. Adyen has 486 merchants at scale on both channels; PayPal has no enterprise POS. Impact: Major. Not closable with money inside 18 months, because it requires terminal estates and in-store implementations. (3) Consumer network, which cuts the other way. PayPal's 439m accounts and Venmo are an asset Adyen cannot replicate. Impact: Moderate for PayPal, since it has not stopped branded checkout decelerating. Gaps (1) and (2) favor Adyen and neither is money-buyable quickly, so the moat story holds.</p>
+    <div class="pull">Adyen holds the stronger power position. Its moat compounds with each channel a merchant adds, it passes supplier costs through, and its discounts buy retention; PayPal's network is real but now costs money to defend. Early warning: for Adyen, take rate below 15bps with no volume acceleration; for PayPal, monthly active accounts turning negative.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">Adyen spends about 7 points less of each net-revenue dollar to run the business, every year of the three. The gap comes from one stack and no consumer marketing.</div>
+    <p>Mapping. Adyen reports costs by nature under IFRS (wages, social charges, D&amp;A, other operating expenses). PayPal reports by function under US GAAP. No functional split exists for Adyen, so its R&amp;D share is ND. "Pass-through costs" = Adyen's costs incurred from financial institutions, terminal cost of goods sold and interest expense, against IFRS revenue plus interest income; for PayPal, transaction expense plus transaction and credit losses, against net revenues. Adyen's revenue is net of interchange, while PayPal books payments gross as principal, so the pass-through and gross-margin rows are structurally not comparable. The duel runs on the two clean rows: operating costs and EBIT, both as % of net revenue (Adyen) or TM$ (PayPal). PayPal's 2023 includes a $339m Happy Returns gain in restructuring and other; excluding it, 2023 EBIT would be about 34.2% of TM$ (inferred: (5,028 - 339) / 13,704). Adyen's IFRS revenue presentation changed in FY2023 (the FY2023 file shows 2022 revenue of EUR 8,935.6m against EUR 1,863.4m for 2023), which is why gross ratios before 2023 are not used.</p>
+    <h3>Three years, five ratios</h3>
+    <table>
+      <tr><th>FY2023 to FY2025, 3y avg</th><th class="num ca">Adyen</th><th class="num cb">PayPal</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>Pass-through costs % gross revenue (COGS proxy)</td><td class="num ca">11.9%</td><td class="num cb">53.7%</td><td class="num">not comparable</td><td>Interchange booked net (Adyen) vs gross (PayPal)</td></tr>
+      <tr><td>R&amp;D (technology and development) % net revenue</td><td class="num ca">ND</td><td class="num cb">20.7%</td><td class="num">ND</td><td>Adyen discloses no functional split</td></tr>
+      <tr><td>Operating costs (SG&amp;A + R&amp;D equivalent) % net revenue</td><td class="num ca">55.7%</td><td class="num cb">62.6%</td><td class="num">-6.9pts</td><td>One stack; no consumer brand advertising or support centers</td></tr>
+      <tr><td>Gross margin (net revenue / gross revenue)</td><td class="num ca">88.1%</td><td class="num cb">46.3%</td><td class="num">not comparable</td><td>Same presentation difference</td></tr>
+      <tr><td>EBIT % net revenue</td><td class="num ca">44.0%</td><td class="num cb">37.4%</td><td class="num">+6.6pts</td><td>Mirror of the operating-cost gap</td></tr>
+    </table>
+    <div class="chartbox">
+      <svg viewBox="0 0 860 330" role="img" aria-label="Cost engine grouped bars"><text x="288" y="36" font-size="14" fill="#2B2B2B" text-anchor="end">Pass-through costs % gross revenue*</text><rect x="300" y="14" width="57.1" height="18" fill="#C75B39"/><text x="363.1" y="28" font-size="13" fill="#C75B39" font-weight="700">11.9%</text><rect x="300" y="36" width="257.8" height="18" fill="#3C6E8F"/><text x="563.8" y="50" font-size="13" fill="#3C6E8F" font-weight="700">53.7%</text><text x="288" y="98" font-size="14" fill="#2B2B2B" text-anchor="end">Gross margin*</text><rect x="300" y="76" width="422.9" height="18" fill="#C75B39"/><text x="728.9" y="90" font-size="13" fill="#C75B39" font-weight="700">88.1%</text><rect x="300" y="98" width="222.2" height="18" fill="#3C6E8F"/><text x="528.2" y="112" font-size="13" fill="#3C6E8F" font-weight="700">46.3%</text><text x="288" y="160" font-size="14" fill="#2B2B2B" text-anchor="end">R&D (tech & development) % net revenue</text><text x="304" y="151" font-size="13" fill="#C75B39">Adyen ND (costs reported by nature)</text><rect x="300" y="160" width="99.4" height="18" fill="#3C6E8F"/><text x="405.4" y="174" font-size="13" fill="#3C6E8F" font-weight="700">20.7%</text><text x="288" y="222" font-size="14" fill="#2B2B2B" text-anchor="end">Operating costs % net revenue</text><rect x="300" y="200" width="267.4" height="18" fill="#C75B39"/><text x="573.4" y="214" font-size="13" fill="#C75B39" font-weight="700">55.7%</text><rect x="300" y="222" width="300.5" height="18" fill="#3C6E8F"/><text x="606.5" y="236" font-size="13" fill="#3C6E8F" font-weight="700">62.6%</text><text x="288" y="284" font-size="14" fill="#2B2B2B" text-anchor="end">EBIT % net revenue</text><rect x="300" y="262" width="211.2" height="18" fill="#C75B39"/><text x="517.2" y="276" font-size="13" fill="#C75B39" font-weight="700">44.0%</text><rect x="300" y="284" width="179.5" height="18" fill="#3C6E8F"/><text x="485.5" y="298" font-size="13" fill="#3C6E8F" font-weight="700">37.4%</text></svg>
+      <div class="cap">3-year averages, FY2023 to FY2025. Rows marked * are shown for completeness but are not comparable across the two companies (see mapping note). Sources: Adyen ESEF xBRL FY2023 to FY2025; PayPal 10-K FY2025 (FY2023 to FY2025 income statements).</div>
+    </div>
+    <table>
+      <tr><th>By year</th><th class="num ca">Adyen opex % net rev</th><th class="num ca">Adyen EBIT % net rev</th><th class="num cb">PayPal opex % TM$</th><th class="num cb">PayPal EBIT % TM$</th><th class="num cb">PayPal T&amp;D % TM$</th></tr>
+      <tr><td>FY2023</td><td class="num ca">58.1%</td><td class="num ca">40.4%</td><td class="num cb">63.3%</td><td class="num cb">36.7%</td><td class="num cb">21.7%</td></tr>
+      <tr><td>FY2024</td><td class="num ca">55.9%</td><td class="num ca">44.5%</td><td class="num cb">63.7%</td><td class="num cb">36.3%</td><td class="num cb">20.3%</td></tr>
+      <tr><td>FY2025</td><td class="num ca">53.1%</td><td class="num ca">46.9%</td><td class="num cb">60.8%</td><td class="num cb">39.2%</td><td class="num cb">20.1%</td></tr>
+    </table>
+    <p class="source">Raw values. Adyen, EUR m, FY23 / FY24 / FY25: net revenue 1,626.1 / 1,996.1 / 2,364.2; operating costs 944.2 / 1,115.3 / 1,255.3; EBIT 657.6 / 887.8 / 1,109.9. PayPal, USD m: net revenues 29,771 / 31,797 / 33,172; transaction expense 14,385 / 15,697 / 15,987; transaction and credit losses 1,682 / 1,442 / 1,720; TM$ 13,704 / 14,658 / 15,465; non-transaction opex 8,676 / 9,333 / 9,400; operating income 5,028 / 5,325 / 6,065.</p>
+    <h3>The structural gap</h3>
+    <p>The persistent gap is operating cost per unit of net revenue. Adyen was lower in all three years (5.2 to 7.8pts), and the gap widened in FY2024 and FY2025 as Adyen's ratio fell 5pts while PayPal's fell 2.5pts. The mechanism comes from Steps 1 and 2. Adyen runs one platform and sells to enterprises through a direct sales force with little consumer marketing. PayPal funds consumer brand campaigns (sales and marketing up $282m in 2025, mostly advertising), global customer support ($1.7bn), and multiple technology stacks. This confirms the power map: the company that passes supplier costs through and grows inside existing customers carries a lighter cost base. Two caveats cut both ways. PayPal's TM$ includes about $1.1bn of interest on customer balances (2026 guide), which flatters its ratio; Adyen's EUR 267.6m of finance income on float sits below EBIT. And PayPal's $1.5bn savings plan targets exactly this gap, but management intends to reinvest a significant portion, so the savings may not reach the EBIT line (Q2 2026 call).</p>
+    <div class="pull">Adyen runs the leaner engine: about 7pts less operating cost per unit of net revenue in each of three years, structural to a single-platform, merchant-only model.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li>Adyen's tiering outruns its share-of-wallet gains. If large merchants' price tiers keep cutting take rate (17.1bps H2 2025 to 16.2bps H1 2026) while volume growth slows, net revenue growth converges toward PayPal-like levels. <span style="color:var(--good);font-weight:700;">Early warning: net revenue CC growth below processed volume growth by more than 5pts for two consecutive halves, or FY2027 net revenue CC growth below 17% (shareholder letters).</span></li>
+      <li>Adyen's first acquisitions and leadership change break its cost discipline. Talon.One and Orb bring separate stacks into a one-platform company, and the CFO left on 31 Aug 2026. <span style="color:var(--good);font-weight:700;">Early warning: FY2027 EBITDA margin below 50% (vs guided 1pt dilution) or 2028 target of above 55% withdrawn (H2 2026 and FY2027 letters).</span></li>
+      <li>PayPal's reset works. Consumer-first branded checkout, Venmo monetization and $1.5bn of savings reaccelerate TM$ while the credit book holds. <span style="color:var(--good);font-weight:700;">Early warning: online branded checkout TPV growth at or above 5% CC and TM$ ex interest on customer balances at or above 6% in FY2027, with non-transaction opex growing slower than TM$ (quarterly results).</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12-24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>Adyen Unified Commerce net revenue growth, CC</td><td>at or above 25% in each half</td><td>H2 2026 and H1 2027</td><td class="ca">Adyen</td><td>Adyen shareholder letters (Feb and Aug 2027)</td></tr>
+    <tr><td>Adyen EBITDA margin, including acquisitions</td><td>at or above 51% FY2027; path to above 55% in 2028 intact</td><td>FY2027 (Feb 2028)</td><td class="ca">Adyen</td><td>H2 2027 shareholder letter</td></tr>
+    <tr><td>PayPal online branded checkout TPV growth, CC</td><td>at or above 4%</td><td>Q4 2027</td><td class="cb">PayPal</td><td>PayPal quarterly call / slides</td></tr>
+    <tr><td>PayPal TM$ ex interest on customer balances</td><td>growth at or above 6% with opex growth below it</td><td>FY2027</td><td class="cb">PayPal</td><td>Q4 2027 release</td></tr>
+    <tr><td>PayPal merchant loan net charge-off rate</td><td>above 8% (vs 7.3% Q4 2025)</td><td>any quarter to Q4 2027</td><td class="ca">Adyen (confirms PayPal fragility)</td><td>PayPal 10-Q / 10-K credit tables</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the deep-dive hours on Adyen first. The call rests on its take-rate and tiering mechanics and on whether the first acquisitions stay inside a one-platform cost base, so read the H1 2026 note on bad debts and acquisitions and the FY2025 annual report pillar disclosures before touching PayPal's turnaround.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> Three lenses: growth by product x region cell, power over customers and suppliers, and a three-year cost engine, then a synthesis that names a winner per question. Cells were filtered to those carrying most of each company's economics. Adyen net revenue and PayPal transaction margin dollars serve as the common "revenue after pass-through" base, in native currencies with an ECB spot rate given for scale only. ND means not publicly disclosed in the sources; (inferred) marks reasoned conclusions with the logic stated. This is a business-strength comparison, not a valuation, and says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b> Local files are in Research/Equity/ADYEN_Adyen_NV/sources and Research/Equity/PYPL_PayPal_Holdings_Inc./sources.</p>
+    <ul class="sources">
+      <li>Adyen N.V., Annual Reports FY2023, FY2024, FY2025 (ESEF inline XBRL facts), filings.xbrl.org, LEI 724500973ODKK3IFQ447</li>
+      <li>Adyen N.V., H2 2025 Shareholder Letter, 12 Feb 2026; H1 2026 Shareholder Letter, Aug 2026; investors.adyen.com</li>
+      <li>Adyen N.V., "Adyen to Acquire Talon.One" transaction document and M&amp;A call transcript, 23 Apr 2026 (Quartr via stockanalysis.com, third-party transcription)</li>
+      <li>Adyen N.V., Investor Day transcript, 11 Nov 2025 (Quartr via stockanalysis.com)</li>
+      <li>PayPal Holdings, Inc., Form 10-K FY2025 (filed 3 Feb 2026) and FY2023 (filed 8 Feb 2024), sec.gov CIK 0001633917</li>
+      <li>PayPal Holdings, Inc., Form 8-K 3 Feb 2026 (CEO appointment, Enrique Lores), 25 Mar 2026 (board changes), 21 May 2026 (Consumer Group GM departure)</li>
+      <li>PayPal Holdings, Inc., Q4 2025 (3 Feb 2026), Q1 2026 (5 May 2026), Q2 2026 (28 Jul 2026) earnings call transcripts (Quartr via stockanalysis.com)</li>
+      <li>European Central Bank, euro foreign exchange reference rates, USD, 15 Sep 2026, ecb.europa.eu</li>
+      <li>Wikipedia, "Adyen" and "PayPal" articles, accessed 17 Sep 2026 (event sweep: Cymbio acquisition, takeover interest Feb 2026, PayPal Bank application, Adyen interim CFO)</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

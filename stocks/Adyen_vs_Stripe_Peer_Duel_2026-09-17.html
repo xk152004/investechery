@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adyen vs Stripe: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.10);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.10);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+.note{font-size:15px;color:var(--muted);margin:2px 0 14px;}
+@media(max-width:600px){.leanrow{grid-template-columns:1fr;}.leanrow .lbl{text-align:left;}.wrap{padding:28px 16px 60px;}table{display:block;overflow-x:auto;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Peer Duel, Compound With AI</div>
+<h1>Adyen vs Stripe: who wins the next decade?</h1>
+<p class="source">Merchant acquiring and payment infrastructure. ADYEN (Euronext Amsterdam) / Stripe, Inc. (private, no audited financials published). Run 17 September 2026. Adyen evidence: annual reports FY2023 to FY2025, shareholder letters H2 2025 and H1 2026, Talon.One deal document and call transcripts (research folder sources). Stripe evidence: Stripe annual updates for 2022 to 2025, Stripe newsroom, and press reporting (The Information, Axios, TechCrunch, American Banker), labeled press or inferred. Events swept through 17 Sep 2026; most recent events checked: Stripe Link integration with Meta's Muse agent (8 Sep 2026) and Adyen India expansion report (9 Sep 2026). Figures in EUR; Stripe USD converted at ECB average EUR/USD 1.0824 for 2024 and approx. 1.13 for 2025 (approx., unverified). Not a valuation and not a recommendation.</p>
+<div class="chips"><span class="chip a">Adyen</span><span class="chip b">Stripe</span></div>
+
+<div class="verdict-banner">
+  <div class="label">The Call</div>
+  <div class="verdict">Stripe is the stronger business for the next 5 to 10 years, by a narrow margin, and the confidence is capped by the fact that none of its profit figures are audited.</div>
+  <div class="why">Stripe is the default payments stack for the businesses being founded now, AI companies above all, and earns about twice Adyen's take rate on each unit of volume. Adyen answers with a leaner cost engine and deeper enterprise lock-in, which wins on margin and resilience but not on where the next decade's volume is born.</div>
+</div>
+
+<div class="reasons">
+  <div class="col"><span class="n">1</span><br>Scale has flipped. Stripe's $1.9T 2025 volume (about EUR 1.68T) now exceeds Adyen's EUR 1.39T, growing 34% vs 8% reported (21% excluding one large customer). (Stripe 2025 update; Adyen H2 2025 letter)</div>
+  <div class="col"><span class="n">2</span><br>Monetization gap. Stripe net revenue of about $6.8B on $1.9T implies about 36 bps vs Adyen's 17.0 bps. The gap is mix and pricing model, not a one-off. (The Information, 22 Jul 2026, press; Adyen AR 2025)</div>
+  <div class="col"><span class="n">3</span><br>Adyen's counter is real but defensive. It posts a 53% EBITDA margin, 838K terminals, and share of wallet rising from under 20% to over 40%, yet it bought Orb and Talon.One in 2026 to reach software and AI businesses that Stripe already serves. (Adyen H1 2026 letter)</div>
+</div>
+
+<div class="duelwrap">
+  <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">Stripe - clear</div></div></div>
+  <div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Adyen - narrow</div></div></div>
+  <div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Adyen - narrow</div></div></div>
+  <div class="cap">The three answers, argued below. Left lean favors Adyen, right lean favors Stripe; marker position shows how decisive.</div>
+</div>
+
+<h2>The Three Answers</h2>
+<div class="answer">
+  <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+  <div class="w"><span class="chip b">Stripe, clear</span></div>
+  <p>Three cells should carry the next five years, and Stripe holds the structural driver in two of them.</p>
+  <ul style="margin:8px 0 12px 22px;font-size:18px;">
+    <li><b>Internet-native and AI businesses, global.</b> Stripe was the default for every major AI launch of 2025, including ChatGPT and Claude, so its volume compounds as those companies grow. The press reports that the AI and crypto share of Stripe revenue more than doubled in H1 2026. (Stripe 2025 update; Axios, 19 Aug 2026, press)</li>
+    <li><b>Long-tail and ex-US new businesses.</b> 57% of businesses joining Stripe in 2025 were outside the US, and the Revenue suite (Billing, Invoicing, Tax) is heading toward a $1B run-rate. That adds revenue per customer on top of volume. (Stripe 2025 update)</li>
+    <li><b>Unified commerce, where Adyen is the engine.</b> In-person volume reached EUR 175.7B (+28%) on 838K terminals, and Adyen's share of wallet with a merchant typically climbs from under 20% to over 40% after year 12. That makes Adyen's growth a harvest of scaled enterprises, not a capture of new ones. (Adyen H1 2026 letter)</li>
+  </ul>
+  <p>Adyen's guide of 21 to 23% constant-currency growth for 2026 includes about 1 point from acquisitions. (H1 2026 letter)</p>
+  <div class="chartbox"><svg viewBox="0 0 880 240" role="img" aria-label="Payment volume indexed to 2022"><line x1="70" x2="800" y1="200" y2="200" stroke="#E5DDD0"/><text x="62" y="205" font-size="13" fill="#6E675C" text-anchor="end">100</text><line x1="70" x2="800" y1="139" y2="139" stroke="#E5DDD0"/><text x="62" y="144" font-size="13" fill="#6E675C" text-anchor="end">150</text><line x1="70" x2="800" y1="79" y2="79" stroke="#E5DDD0"/><text x="62" y="84" font-size="13" fill="#6E675C" text-anchor="end">200</text><text x="90" y="228" font-size="14" fill="#6E675C" text-anchor="middle">2022</text><text x="330" y="228" font-size="14" fill="#6E675C" text-anchor="middle">2023</text><text x="570" y="228" font-size="14" fill="#6E675C" text-anchor="middle">2024</text><text x="790" y="228" font-size="14" fill="#6E675C" text-anchor="middle">2025</text><polyline points="90,200 330,168 570,119 790,102" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="90" cy="200" r="4" fill="#C75B39"/><circle cx="330" cy="168" r="4" fill="#C75B39"/><circle cx="570" cy="119" r="4" fill="#C75B39"/><circle cx="790" cy="102" r="4" fill="#C75B39"/><text x="800" y="116" font-size="15" font-weight="700" fill="#C75B39" text-anchor="start">Adyen 181</text><polyline points="90,200 330,173 570,114 790,38" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="90" cy="200" r="4" fill="#3C6E8F"/><circle cx="330" cy="173" r="4" fill="#3C6E8F"/><circle cx="570" cy="114" r="4" fill="#3C6E8F"/><circle cx="790" cy="38" r="4" fill="#3C6E8F"/><text x="800" y="44" font-size="15" font-weight="700" fill="#3C6E8F" text-anchor="start">Stripe 233</text><text x="90" y="190" font-size="14" fill="#2B2B2B" text-anchor="start">both 100</text></svg>
+    <div class="cap">Payment volume indexed to 2022 = 100, each in its own reporting currency. Adyen: 2023 EUR 970.1B (+26%, so 2022 base about EUR 770B, inferred), 2024 EUR 1,285.9B, 2025 EUR 1,394.3B (AR 2023, AR 2024, H2 2025 letter; 2025 depressed by one large customer, +21% excluding it). Stripe: 2022 $817B, 2023 about $1.0T, 2024 $1.4T, 2025 $1.9T (Stripe annual letters). Volume is used because Stripe revenue before 2024 is not reliably reported.</div>
+  </div>
+</div>
+<div class="answer">
+  <div class="q">2. Who converts that growth into superior margins?</div>
+  <div class="w"><span class="chip a">Adyen, narrow, and not the growth winner</span></div>
+  <p>Adyen's conversion is audited and mechanical, and it comes from a single platform and a thin head count. Personnel costs fell from 36.5% to 32.0% of net revenue between 2023 and 2025 as FTEs rose 14% and net revenue 45%, lifting EBITDA margin from 45.7% to 52.7%. Adyen processes about EUR 296M of volume per employee vs about EUR 151M at Stripe (2024, inferred) (AR 2023 to 2025; TechCrunch, 21 Jan 2025).</p>
+  <p>Stripe converts through price instead: roughly double the take rate on a long-tail, list-priced mix, and a press-reported free cash flow of about 47% of net revenue in 2025. Those Stripe figures are unaudited and on an undisclosed definition.</p>
+  <p>This is the run's central tension. The growth winner monetizes each unit better, while the margin winner runs each unit at lower cost. If Stripe's take rate compresses as its AI and enterprise customers scale into custom interchange-plus pricing, Adyen's cost engine becomes the decisive advantage.</p>
+  <div class="chartbox"><svg viewBox="0 0 880 200" role="img" aria-label="Cash margin and take rate"><text x="0" y="65" font-size="15" font-weight="700" fill="#2B2B2B">FCF / net revenue</text><line x1="180" x2="840" y1="60" y2="60" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/><text x="180" y="86" font-size="13" fill="#6E675C" text-anchor="middle">30%</text><text x="840" y="86" font-size="13" fill="#6E675C" text-anchor="middle">60%</text><line x1="525" x2="556" y1="60" y2="60" stroke="#2B2B2B" stroke-width="2"/><circle cx="525" cy="60" r="9" fill="#C75B39"/><circle cx="556" cy="60" r="9" fill="#3C6E8F"/><text x="513" y="44" font-size="14" font-weight="700" fill="#C75B39" text-anchor="end">Adyen 45.7%</text><text x="556" y="44" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="start">Stripe ~47% (press)</text><text x="541" y="86" font-size="13" fill="#2B2B2B" text-anchor="middle">gap ~1.4 pts, definitions differ</text><text x="0" y="155" font-size="15" font-weight="700" fill="#2B2B2B">Take rate, FY2025</text><line x1="180" x2="840" y1="150" y2="150" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/><text x="180" y="176" font-size="13" fill="#6E675C" text-anchor="middle">10bps</text><text x="840" y="176" font-size="13" fill="#6E675C" text-anchor="middle">40bps</text><line x1="334" x2="748" y1="150" y2="150" stroke="#2B2B2B" stroke-width="2"/><circle cx="334" cy="150" r="9" fill="#C75B39"/><circle cx="748" cy="150" r="9" fill="#3C6E8F"/><text x="334" y="134" font-size="14" font-weight="700" fill="#C75B39" text-anchor="start">Adyen 17.0 bps</text><text x="748" y="134" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="end">Stripe ~35.8 bps (inferred)</text><text x="541" y="176" font-size="13" fill="#2B2B2B" text-anchor="middle">~2.1x</text></svg>
+    <div class="cap">Adyen FCF (EBITDA less capex and leases, pre-tax) EUR 1,081.3M / net revenue EUR 2,364.2M (AR 2025). Stripe FCF $3.2B / net revenue $6.8B (The Information, 22 Jul 2026, press; definition ND). Take rate = net revenue / volume: Adyen 17.0 bps (AR 2025); Stripe $6.8B / $1.9T (inferred; Stripe "total volume" definition may not match Adyen "processed volume"). EBIT and EBITDA margin: Adyen 46.9% and 52.7%, Stripe ND, so no dumbbell.</div>
+  </div>
+</div>
+<div class="answer">
+  <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+  <div class="w"><span class="chip b">Stripe breaks first, narrowly</span></div>
+  <p><b>Stripe.</b> Its growth is increasingly carried by a small, fast-scaling AI cohort whose largest members can multi-source or insource. OpenAI added Adyen in H1 2026, and Anthropic is reported to be building billing and fraud tools in-house. Its long tail of startups is the first volume to shrink in a downturn. (Adyen H1 2026 letter; The Information, 4 Sep 2026, press)</p>
+  <p><b>Adyen.</b> Its exposure is volume tiering and concentration. 300 merchants account for about 60% of growth, and management calls tiering "the only explanation" for take-rate moves. One large customer cut FY2025 volume growth from 21% to 8%, and EMEA growth has slowed from 26% to 15%. (H1 2026 letter and call; H2 2025 letter)</p>
+  <p>Adyen's blue-chip base bends, where Stripe's cohort-driven growth snaps.</p>
+</div>
+
+<h2>Segment-Geography Scorecard</h2>
+<p>These six cells carry the bulk of both companies' economics. Every score is argued in the tabs below. Cell revenue is not disclosed as a cross-tab by either company, so the cells are normalized from Adyen's pillars and regions and from Stripe's disclosed customer metrics.</p>
+<table>
+  <tr><th>Cell (product x region)</th><th class="ca">Adyen</th><th class="cb">Stripe</th><th>Why (one clause, sourced)</th></tr>
+  <tr><td>Enterprise online payments x EMEA</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Adyen EMEA EUR 1,360.7M, 57% of FY25 net revenue, still +15% in H1 2026 (AR 2025, H1 2026 letter); Stripe counts half the DAX 40 and CAC 40 as users, but share of wallet is ND (Stripe Tour Berlin, Paris 2026)</td></tr>
+  <tr><td>Enterprise online payments x North America</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Adyen NA +30% cc, 27% of net revenue (H1 2026 letter); Stripe home market, used by 90% of the Dow and 80% of the Nasdaq 100, US share ND (Stripe 2025 update)</td></tr>
+  <tr><td>Unified commerce (in-person + online) x global retail, F&amp;B</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Adyen in-person EUR 175.7B +28%, 838K terminals, 486 cross-channel merchants at scale (H1 2026 letter); Stripe Terminal volume undisclosed since 2022</td></tr>
+  <tr><td>Platforms / embedded payments x NA + EMEA</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Adyen Platforms +40% cc, 37 platforms above EUR 1B (H1 2026 letter); Stripe serves 5M+ businesses directly or via platforms and powers Shopify (Stripe 2025 update; share lead inferred)</td></tr>
+  <tr><td>AI and software-native monetization (payments + billing) x global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Stripe is the default for major AI launches, with a Revenue suite near $1B run-rate plus Metronome (Stripe 2025 update, Jan 2026 close); Adyen's OpenAI win and Orb purchase are from a small base (H1 2026 letter)</td></tr>
+  <tr><td>Long-tail SMB and startups, self-serve x global</td><td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Stripe: 57% of 2025 new businesses were ex-US (Stripe 2025 update); Adyen is merchant-side enterprise by choice and reaches SMBs only through platforms (H1 2026 call)</td></tr>
+</table>
+<div class="rubric">
+  <b>How to read the scores:</b>
+  <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+  <span><b>4</b> advantaged and gaining share</span>
+  <span><b>3</b> holds position; grows with the market</span>
+  <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+  <span><b>1</b> weak and losing share, or exiting</span>
+  <span><b>0</b> no meaningful presence</span>
+</div>
+<p class="score-note">Scores are anchored to the exhibits in the three tabs and are not summed. The three lenses get their verdicts in the Three Answers above.</p>
+
+<div class="tabs">
+  <button class="on" onclick="show(0,this)">Growth Map</button>
+  <button onclick="show(1,this)">Power Map</button>
+  <button onclick="show(2,this)">Cost Engine</button>
+</div>
+
+<div class="view on" id="v0">
+  <div class="frame">Adyen grows by deepening what it already owns, while Stripe grows by being present when new businesses are born.</div>
+  <p>Normalization first. Adyen reports net revenue by pillar (Digital, Unified Commerce, Platforms) and by billing region (EMEA, North America, APAC, LatAm), but never as a cross-tab. Stripe discloses only total volume, customer counts and product run-rates, and its revenue comes from press reports. So the cell view below mixes disclosed Adyen figures with Stripe signals. Where a Stripe number does not exist it is ND, and the butterfly plots growth rates rather than cell revenue, because Stripe cell revenue would have to be invented.</p>
+  <p>The headline contrast is not the growth gap itself but where it comes from. Adyen's fastest cells are Platforms (+40% cc) and North America (+30% cc), while its largest cell, Digital in EMEA, is where growth has slowed most. Stripe's growth is broad at the total level and disproportionately fed by AI and software-native customers.</p>
+  <div class="chartbox"><svg viewBox="0 0 900 350" role="img" aria-label="Growth by cell, butterfly"><text x="310" y="22" font-size="16" font-weight="700" fill="#C75B39" text-anchor="end">Adyen</text><text x="590" y="22" font-size="16" font-weight="700" fill="#3C6E8F" text-anchor="start">Stripe</text><text x="450" y="64" font-size="14" fill="#2B2B2B" text-anchor="middle">Payment volume, FY2025</text><rect x="280" y="50" width="40" height="22" fill="#C75B39"/><text x="274" y="66" font-size="13" fill="#2B2B2B" text-anchor="end">+8% (+21% ex one customer)</text><rect x="580" y="50" width="170" height="22" fill="#3C6E8F"/><text x="756" y="66" font-size="13" fill="#2B2B2B" text-anchor="start">+34%</text><text x="450" y="102" font-size="14" fill="#2B2B2B" text-anchor="middle">Net revenue, FY2025</text><rect x="215" y="88" width="105" height="22" fill="#C75B39"/><text x="209" y="104" font-size="13" fill="#2B2B2B" text-anchor="end">+21% cc</text><rect x="580" y="88" width="165" height="22" fill="#3C6E8F"/><text x="751" y="104" font-size="13" fill="#2B2B2B" text-anchor="start">+33% (press)</text><text x="450" y="140" font-size="14" fill="#2B2B2B" text-anchor="middle">Net revenue, H1 2026</text><rect x="215" y="126" width="105" height="22" fill="#C75B39"/><text x="209" y="142" font-size="13" fill="#2B2B2B" text-anchor="end">+21% cc</text><rect x="580" y="126" width="205" height="22" fill="#3C6E8F"/><text x="791" y="142" font-size="13" fill="#2B2B2B" text-anchor="start">+41% (press)</text><text x="450" y="178" font-size="14" fill="#2B2B2B" text-anchor="middle">North America, H1 2026</text><rect x="170" y="164" width="150" height="22" fill="#C75B39"/><text x="164" y="180" font-size="13" fill="#2B2B2B" text-anchor="end">+30% cc</text><text x="586" y="180" font-size="13" fill="#6E675C" text-anchor="start">ND</text><text x="450" y="216" font-size="14" fill="#2B2B2B" text-anchor="middle">EMEA, H1 2026</text><rect x="245" y="202" width="75" height="22" fill="#C75B39"/><text x="239" y="218" font-size="13" fill="#2B2B2B" text-anchor="end">+15% cc</text><text x="586" y="218" font-size="13" fill="#6E675C" text-anchor="start">ND</text><text x="450" y="254" font-size="14" fill="#2B2B2B" text-anchor="middle">Unified commerce, H1 2026</text><rect x="185" y="240" width="135" height="22" fill="#C75B39"/><text x="179" y="256" font-size="13" fill="#2B2B2B" text-anchor="end">+27% cc</text><text x="586" y="256" font-size="13" fill="#6E675C" text-anchor="start">ND</text><text x="450" y="292" font-size="14" fill="#2B2B2B" text-anchor="middle">Platforms, H1 2026</text><rect x="120" y="278" width="200" height="22" fill="#C75B39"/><text x="114" y="294" font-size="13" fill="#2B2B2B" text-anchor="end">+40% cc</text><text x="586" y="294" font-size="13" fill="#6E675C" text-anchor="start">ND</text><text x="450" y="330" font-size="14" fill="#2B2B2B" text-anchor="middle">Billing / revenue suite</text><text x="314" y="332" font-size="13" fill="#6E675C" text-anchor="end">ND (Orb from Jul 2026)</text><rect x="580" y="316" width="250" height="22" fill="#3C6E8F" fill-opacity="0.55"/><text x="836" y="332" font-size="13" fill="#2B2B2B" text-anchor="start">~2x run-rate (inferred)</text></svg>
+    <div class="cap">Bar length = latest disclosed growth rate (capped at 50% for scale; Stripe revenue suite shown at the cap, inferred from $500M+ run-rate in the 2024 update to "on track" for $1B in the 2025 update). Adyen: H2 2025 and H1 2026 letters, constant currency where noted. Stripe: 2025 update (volume), The Information 22 Jul 2026 and Axios 19 Aug 2026 (revenue, press). ND = not disclosed.</div>
+  </div>
+  <h3>The cells that matter</h3>
+  <table>
+    <tr><th>Cell</th><th class="num ca">Adyen net rev (share)</th><th class="num ca">Adyen growth</th><th class="num cb">Stripe rev (share)</th><th class="num cb">Stripe growth</th><th>Margin signal / leader</th></tr>
+    <tr><td>Digital (enterprise online), all regions</td><td class="num ca">EUR 1,334.9M (56%) FY25</td><td class="num ca">+15% cc H1'26</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Adyen take rate on large digital merchants tiers down with volume; Stripe leads new logos, Adyen leads scaled share of wallet</td></tr>
+    <tr><td>Unified Commerce, all regions</td><td class="num ca">EUR 765.4M (32%) FY25</td><td class="num ca">+27% cc H1'26</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Adyen leads: terminal plus acquiring plus data on one stack</td></tr>
+    <tr><td>Platforms, all regions</td><td class="num ca">EUR 263.8M (11%) FY25</td><td class="num ca">+40% cc H1'26</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Stripe leads on breadth (Connect, Shopify); Adyen grows faster from a smaller base</td></tr>
+    <tr><td>Region: EMEA</td><td class="num ca">EUR 1,360.7M (57%)</td><td class="num ca">+15% cc</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Adyen incumbent; Stripe penetrating (800K French and 300K+ German businesses)</td></tr>
+    <tr><td>Region: North America</td><td class="num ca">EUR 633.3M (27%)</td><td class="num ca">+30% cc</td><td class="num cb">ND</td><td class="num cb">ND</td><td>Stripe home market; Adyen gaining share of wallet</td></tr>
+    <tr><td>Total</td><td class="num ca">EUR 2,364.2M</td><td class="num ca">+21% cc FY25</td><td class="num cb">~EUR 6.0B ($6.8B, press)</td><td class="num cb">+33% FY25, +41% H1'26 (press)</td><td>Adyen 53% EBITDA margin (audited); Stripe "robustly profitable" (company)</td></tr>
+  </table>
+  <p class="note">Adyen pillar shares from AR 2025 note on net revenue; H1 2026 growth from H1 2026 letter. APAC EUR 236.5M (10%) and LatAm EUR 133.8M (6%) collapsed into the total.</p>
+  <div class="iik"><b>Insight:</b> Adyen's two fastest cells (Platforms, NA) are also the cells where Stripe is strongest, while its largest cell (EMEA Digital) is decelerating. <b>Implication:</b> Adyen's growth rate over 5 years depends on taking share in Stripe's home ground, not on defending Europe. <span class="kpi">KPI: Adyen Digital pillar cc growth at or above 15% and EMEA at or above 17% in the FY2026 letter (Feb 2027).</span> [Source: Adyen AR 2025; H1 2026 letter]</div>
+  <h3>Segment growth engines</h3>
+  <p><b>AI and software monetization.</b> Stripe's driver is default adoption plus attach: Billing, Metronome for usage-based billing (closed 14 Jan 2026), Link with 250M+ users, and the Agentic Commerce Protocol with OpenAI (29 Sep 2025). Adyen's response is acquired rather than organic: Orb (usage billing) and Talon.One (EUR 750M, loyalty), both closed 1 Jul 2026 and expected to add about 1 point to 2026 growth and 1 to 2 points in 2027 at about 1 point of margin dilution. It also launched Adyen Agentic and won OpenAI. Durability favors Stripe: an integrated default is harder to dislodge than a bolted-on alternative. (Stripe newsroom; Adyen deal call 23 Apr 2026; H1 2026 letter)</p>
+  <p><b>Unified commerce.</b> Adyen's driver is cross-channel retailers consolidating online and in-store acquiring (Tod's moved 100+ stores and 35 markets in under three months), with 838K terminals up 27%. Stripe has Terminal (S710, T600) but no disclosed volume. The cost to grow here is hardware certification and local acquiring licenses, a multi-year build that favors Adyen. (H1 2026 letter; Stripe Sessions 2026)</p>
+  <p><b>Platforms.</b> Both grow through vertical SaaS. Adyen has 293K active business customers (+51%) and expanded Toast into the US. Stripe runs Connect at far larger breadth, including Shopify. Adyen's growth here is organic. (H1 2026 letter; Stripe 2025 update)</p>
+  <div class="iik"><b>Insight:</b> Stripe's new growth lines are organic defaults, while Adyen's newest lines beyond payments are two 2026 acquisitions, its first ever. <b>Implication:</b> Adyen is paying to enter Stripe's software layer; integration risk now sits on the side that historically never did M&A. <span class="kpi">KPI: Adyen disclosure of Orb/Talon.One-attached customers, or 2027 growth contribution of at least 1 point as guided, in the H1 2027 letter (Aug 2027).</span> [Source: Adyen M&A call 23 Apr 2026; H1 2026 letter; Stripe newsroom 14 Jan 2026]</div>
+  <h3>Price control and route-to-market</h3>
+  <p>Stripe sells self-serve at list price (US 2.9% + 30c online, EEA 1.5% + EUR 0.25 for standard cards) to its long tail, and custom interchange-plus to enterprise. So every long-tail customer pays a blended price that includes the scheme cost. Adyen sells direct to enterprises on interchange-plus with volume tiers, which is why its take rate falls as merchants scale ("our existing merchants give us more volume and therefore come to lower tiers", co-CEO, H1 2026 call). Stripe controls net price at the bottom of the market; Adyen trades price for share of wallet at the top. (Stripe pricing pages, Sep 2026; Adyen H1 2026 call transcript, third-party)</p>
+  <div class="iik"><b>Insight:</b> The take-rate gap (about 36 bps vs 17 bps) is a route-to-market difference, not a pricing-power difference within the same customer. <b>Implication:</b> As Stripe moves up-market its take rate should drift toward Adyen's, which is the main lever that could erode Stripe's margin lead. <span class="kpi">KPI: Stripe net revenue / total volume at or above 0.34% in 2026 (press revenue plus company volume, around mid-2027).</span> [Source: Stripe pricing; The Information 22 Jul 2026; Adyen AR 2025]</div>
+  <h3>Supply resilience</h3>
+  <table>
+    <tr><th>Input</th><th class="ca">Adyen</th><th class="cb">Stripe</th></tr>
+    <tr><td>Scheme and rail access</td><td class="ca">Own banking licenses EU/US/UK; direct CB and STET participant in France; UAE Category II license (2026)</td><td class="cb">In-house processing per press (Payments Dive, 1 May 2024); license detail ND</td></tr>
+    <tr><td>Compute</td><td class="ca">Own data centers; 2026 capex raised to 7% of net revenue to lock in supply</td><td class="cb">ND</td></tr>
+    <tr><td>Balance sheet rails</td><td class="ca">EUR 4.9B own cash, EUR 12.4B total incl. merchant funds (H1 2026)</td><td class="cb">Bridge OCC trust charter conditionally approved 18 Feb 2026 (American Banker)</td></tr>
+    <tr><td>Hardware</td><td class="ca">Terminals sourced; inventory costs in COGS EUR 102.3M FY25</td><td class="cb">BBPOS acquired 2022 (own reader maker)</td></tr>
+  </table>
+  <h3>Competitive context</h3>
+  <p>Both compete with PayPal/Braintree (Stripe's $53B+ bid with Advent was dropped on 27 Aug 2026, press), Worldpay, Checkout.com, Fiserv and JPMorgan in enterprise acquiring. Market shares are not disclosed by either company in a comparable form. Adyen claims to grow faster than the market (H1 2026 letter); Stripe's growth against global e-commerce implies it is a share-taker (inferred).</p>
+  <h3>Risks by segment</h3>
+  <p><b>AI cell.</b> Stripe is more exposed. Large AI labs can split volume (OpenAI to Adyen) or insource (Anthropic, press 4 Sep 2026), and the cell is Stripe's fastest. <b>EMEA enterprise.</b> Adyen is more exposed. It is 57% of net revenue, growth has halved from 26%, and management attributes some of the slowdown to global merchants shifting where they sell (H1 2026 call). <b>Unified commerce.</b> Adyen is exposed only if Stripe proves in-person scale, and no evidence of that has been disclosed.</p>
+  <div class="pull">On cells alone, Stripe has the higher-probability growth path because it owns the entry point of new internet and AI businesses. Adyen has the higher-quality growth path because its revenue arrives through expanding, multi-year enterprise relationships.</div>
+</div>
+
+<div class="view" id="v1">
+  <div class="frame">In payments, power means owning the relationship the merchant cannot easily re-integrate, and each company owns a different one.</div>
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Stripe - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">Stripe - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Adyen - narrow</div></div></div>
+    <div class="cap">Who sets the terms, lever by lever. Each call is argued in the sections below.</div>
+  </div>
+  <h3>Moats: what rivals cannot copy</h3>
+  <div class="duo">
+    <div class="col a"><h3>Adyen</h3>
+    <p><b>Single global platform plus own licenses (High).</b> Its banking licenses in the EU, US and UK and direct rail memberships take years of regulatory work, not money (AR 2025; H1 2026 letter).</p>
+    <p><b>Unified commerce footprint (High).</b> 838K transacting terminals on the same stack as online, with 486 merchants at scale across both channels.</p>
+    <p><b>Enterprise share-of-wallet curve (Med).</b> Share of wallet runs from under 20% to over 40% after year 12, but its large customers can and do reallocate (one customer cut FY25 volume growth by 13 points).</p></div>
+    <div class="col b"><h3>Stripe</h3>
+    <p><b>Developer and new-business default (High).</b> All major 2025 AI launches used it, and 57% of new businesses are ex-US. Habit is set at company formation (Stripe 2025 update).</p>
+    <p><b>Two-sided network (Med to High).</b> Link has 250M+ consumers, and there is a 92% chance Stripe has seen a card before, which feeds Radar and conversion (Sessions 2026; 2024 update).</p>
+    <p><b>Suite breadth (Med).</b> Billing, Tax, Capital, Issuing and stablecoins via Bridge; much of it is buyable, as Adyen's Orb deal shows.</p></div>
+  </div>
+  <div class="iik"><b>Insight:</b> Adyen's moat is infrastructure that takes years to license and build; Stripe's is distribution and network that takes years to earn. <b>Implication:</b> Distribution decides who gets the next cohort, while infrastructure decides who keeps the largest merchants. Stripe's moat is better placed for volume origination. <span class="kpi">KPI: Link users (Stripe Sessions, each spring) and Adyen transacting terminals (each half-year letter): Link above 300M and terminals above 1M by mid-2027.</span> [Source: Stripe 2025 update, Sessions 2026; Adyen H1 2026 letter]</div>
+  <h3>Customers: who controls net price and access</h3>
+  <p><b>Adyen:</b> direct enterprise sales, merchant-side only by choice ("large merchants consider their shoppers their domain", co-CEO, H1 2026 call), with 300 merchants at about 60% of growth. Net price falls with volume through tiers, so its customers hold price power as they scale. <b>Stripe:</b> self-serve list pricing to millions of businesses gives it net-price control in the long tail. Its largest customers negotiate custom pricing and, in AI, multi-source. <b>Implication:</b> margin pressure sits with Adyen's top merchants in a soft market and with Stripe's top AI accounts in a competitive one.</p>
+  <div class="iik"><b>Insight:</b> Stripe sets price for most of its customers by count; Adyen's customers set price with Adyen as they grow. <b>Implication:</b> Stripe has more pricing power per customer; Adyen has more revenue durability per customer. <span class="kpi">KPI: Adyen take rate holding at or above 16 bps through H2 2026 (Feb 2027 letter); Stripe named AI-lab processor changes.</span> [Source: Adyen H1 2026 letter and call; Stripe pricing; The Information 4 Sep 2026]</div>
+  <h3>Suppliers: who absorbs shocks</h3>
+  <p><b>Adyen:</b> it owns its licenses, scheme connections and data centers. Its costs from financial institutions ran between 6.7% and 7.9% of gross revenue across 2023 to 2025, and it pulled 2027 data-center capex forward amid supply constraints (AR 2025; H1 2026 letter). <b>Stripe:</b> it is reported to process in-house, but its license footprint and cost of scheme fees are ND. Its list pricing passes scheme fee changes straight through to the long tail (inferred). <b>Implication:</b> Adyen is more insulated from partner failure; Stripe is more able to pass cost increases through.</p>
+  <div class="iik"><b>Insight:</b> Both control their core rails; Adyen's control is disclosed and audited. <b>Implication:</b> A supplier shock is not the differentiator here, and it tilts only narrowly to Adyen. <span class="kpi">KPI: Adyen capex back to 5% of net revenue or below after 2026, as guided (FY2027 letter).</span> [Source: Adyen H1 2026 letter; Payments Dive 1 May 2024]</div>
+  <h3>The price/power triangle: top 3 cells</h3>
+  <table>
+    <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+    <tr><td>Enterprise online x NA</td><td>Both direct</td><td>Stripe above Adyen (blended vs tiered IC++)</td><td>Both high</td><td>Adyen share up, margin flat; Stripe share flat to up, margin down slightly as mix rises</td><td>Adyen NA cc growth at or above 25% (H2 2026 letter)</td></tr>
+    <tr><td>Enterprise online x EMEA</td><td>Adyen direct incumbent; Stripe direct challenger</td><td>Parity for large merchants (inferred)</td><td>Adyen higher (local rails)</td><td>Adyen share flat, margin flat; Stripe share up</td><td>Adyen EMEA cc growth at or above 17% (FY2026 letter)</td></tr>
+    <tr><td>Platforms x NA + EMEA</td><td>Via SaaS partners for both</td><td>Stripe above (Connect pricing)</td><td>Both high</td><td>Both share up; Adyen margin up from scale</td><td>Adyen platforms above EUR 1B at 45+ (H1 2027 letter)</td></tr>
+  </table>
+  <p class="note">Tension: Adyen grows fastest in NA and Platforms, exactly where Stripe holds the stronger access position. That growth is won by lower pocket price through tiering, not by price power.</p>
+  <h3>The causal gap</h3>
+  <p><b>1. Merchant mix and pricing model (Major).</b> Stripe serves the long tail at list price, while Adyen serves enterprise on tiers. Closing this would take Adyen a self-serve motion it rejects culturally, so it is effectively not closable. <b>2. Software layer beyond payments (Moderate).</b> Stripe built Billing organically and added Metronome; Adyen bought Orb and Talon.One in 2026, with integration likely to take 2 to 3 years (inferred). <b>3. In-person scale (Major, favors Adyen).</b> Stripe would need certified hardware, local acquiring and retail sales capacity across dozens of markets, a multi-year build that money alone does not shortcut.</p>
+  <div class="pull">Stripe holds the narrowly stronger power position for the next decade because it controls access and net price for the merchants being created. Adyen holds the stronger position with the merchants that already exist at scale.</div>
+</div>
+
+<div class="view" id="v2">
+  <div class="frame">Adyen runs the leaner engine per unit of volume, while Stripe earns more per unit, and only one of those is audited.</div>
+  <p><b>Mapping note.</b> Adyen presents costs by nature under IFRS: costs from financial institutions and terminal COGS, wages, social costs, D&amp;A, and other operating expenses. It has no R&amp;D or SG&amp;A lines. COGS proxy = costs incurred from financial institutions + costs of goods sold, as % of non-interest (gross) revenue. Because Adyen books most interchange net, this gross margin is not comparable to a card acquirer that books gross. SG&amp;A proxy = other operating expenses (which include IT and advisory), as % of net revenue. R&amp;D is ND; the best proxy is that tech roles are 55% of FTE in 2025 and 56% in 2024. <b>Stripe publishes no income statement</b>, so every Stripe P&amp;L ratio is ND. The comparable metrics are cash margin, take rate and per-employee productivity, built from press revenue and company volume and headcount, and labeled inferred.</p>
+  <h3>Three years, five ratios</h3>
+  <table>
+    <tr><th>Metric, 3y avg (2023 to 2025)</th><th class="num ca">Adyen</th><th class="num cb">Stripe</th><th>Gap</th><th>What drives it</th></tr>
+    <tr><td>COGS proxy (% gross revenue)</td><td class="num ca">11.5%</td><td class="num cb">ND</td><td class="num">ND</td><td>Scheme/bank costs plus terminal COGS; net interchange presentation</td></tr>
+    <tr><td>R&amp;D (% net revenue)</td><td class="num ca">ND (tech FTE 55%, 2y)</td><td class="num cb">ND</td><td class="num">ND</td><td>By-nature statement; development mostly expensed in wages</td></tr>
+    <tr><td>SG&amp;A proxy (other opex % NR)</td><td class="num ca">15.7%</td><td class="num cb">ND</td><td class="num">ND</td><td>Sales &amp; marketing only 2.8% of NR in 2025: direct enterprise sales, little advertising</td></tr>
+    <tr><td>Gross margin proxy</td><td class="num ca">88.5%</td><td class="num cb">ND</td><td class="num">ND</td><td>Not comparable across presentations</td></tr>
+    <tr><td>EBIT margin (% NR)</td><td class="num ca">44.0%</td><td class="num cb">ND</td><td class="num">ND</td><td>Personnel fell from 36.5% to 32.0% of NR</td></tr>
+    <tr><td>FCF (% NR)</td><td class="num ca">42.7%</td><td class="num cb">~45.1% (2y avg, press)</td><td class="num">~2 pts to Stripe</td><td>Definitions differ; Adyen pre-tax, Stripe ND</td></tr>
+    <tr><td>Take rate (bps)</td><td class="num ca">16.4</td><td class="num cb">~36.1 (2y avg, inferred)</td><td class="num">~2.2x</td><td>Long-tail list pricing vs enterprise tiers</td></tr>
+  </table>
+  <div class="chartbox"><svg viewBox="0 0 900 250" role="img" aria-label="Cost engine comparison"><text x="110" y="228" font-size="13" fill="#2B2B2B" text-anchor="middle">FCF / net revenue</text><text x="110" y="245" font-size="13" fill="#6E675C" text-anchor="middle">%</text><rect x="40" y="100" width="60" height="100" fill="#C75B39"/><text x="70" y="92" font-size="13" fill="#2B2B2B" text-anchor="middle">42.7</text><rect x="120" y="95" width="60" height="105" fill="#3C6E8F" fill-opacity="0.55"/><text x="150" y="87" font-size="13" fill="#2B2B2B" text-anchor="middle">~45.1</text><line x1="30" x2="200" y1="200" y2="200" stroke="#2B2B2B"/><text x="335" y="228" font-size="13" fill="#2B2B2B" text-anchor="middle">Take rate</text><text x="335" y="245" font-size="13" fill="#6E675C" text-anchor="middle">bps</text><rect x="265" y="143" width="60" height="57" fill="#C75B39"/><text x="295" y="135" font-size="13" fill="#2B2B2B" text-anchor="middle">16.4</text><rect x="345" y="74" width="60" height="126" fill="#3C6E8F" fill-opacity="0.55"/><text x="375" y="66" font-size="13" fill="#2B2B2B" text-anchor="middle">~36.1</text><line x1="255" x2="425" y1="200" y2="200" stroke="#2B2B2B"/><text x="560" y="228" font-size="13" fill="#2B2B2B" text-anchor="middle">Net revenue per employee</text><text x="560" y="245" font-size="13" fill="#6E675C" text-anchor="middle">EUR k, 2024</text><rect x="490" y="101" width="60" height="99" fill="#C75B39"/><text x="520" y="93" font-size="13" fill="#2B2B2B" text-anchor="middle">459</text><rect x="570" y="81" width="60" height="119" fill="#3C6E8F" fill-opacity="0.55"/><text x="600" y="73" font-size="13" fill="#2B2B2B" text-anchor="middle">~551</text><line x1="480" x2="650" y1="200" y2="200" stroke="#2B2B2B"/><text x="785" y="228" font-size="13" fill="#2B2B2B" text-anchor="middle">Volume per employee</text><text x="785" y="245" font-size="13" fill="#6E675C" text-anchor="middle">EUR m, 2024</text><rect x="715" y="82" width="60" height="118" fill="#C75B39"/><text x="745" y="74" font-size="13" fill="#2B2B2B" text-anchor="middle">296</text><rect x="795" y="140" width="60" height="60" fill="#3C6E8F" fill-opacity="0.55"/><text x="825" y="132" font-size="13" fill="#2B2B2B" text-anchor="middle">~151</text><line x1="705" x2="875" y1="200" y2="200" stroke="#2B2B2B"/></svg>
+    <div class="cap">Adyen from AR 2023 to 2025 consolidated statements and FTE tables (year-end FTE 4,196 / 4,345 / 4,771). Stripe: FCF and net revenue press (The Information, Axios); volume from Stripe letters; headcount about 8,550 (TechCrunch, 21 Jan 2025). Lighter blue bars are press or inferred. 2023 Adyen FCF uses the pre-2024 capex definition.</div>
+  </div>
+  <table>
+    <tr><th>Adyen, by year</th><th class="num">COGS / gross rev</th><th class="num">Personnel % NR</th><th class="num">Other opex % NR</th><th class="num">EBIT %</th><th class="num">EBITDA %</th><th class="num">Take rate bps</th></tr>
+    <tr><td>2023</td><td class="num">12.7</td><td class="num">36.5</td><td class="num">16.3</td><td class="num">40.4</td><td class="num">45.7</td><td class="num">16.8</td></tr>
+    <tr><td>2024</td><td class="num">10.7</td><td class="num">35.1</td><td class="num">15.5</td><td class="num">44.5</td><td class="num">49.7</td><td class="num">15.5</td></tr>
+    <tr><td>2025</td><td class="num">11.2</td><td class="num">32.0</td><td class="num">15.4</td><td class="num">46.9</td><td class="num">52.7</td><td class="num">17.0</td></tr>
+  </table>
+  <p class="note">EUR M: net revenue 1,626.1 / 1,996.1 / 2,364.2; personnel 594.0 / 701.2 / 756.2; other opex 264.7 / 309.6 / 363.3; EBIT 657.6 / 887.8 / 1,109.9 (AR 2024, AR 2025). 2023 EBIT includes EUR 24.3M other expense. Stripe per-year ratios: all ND.</p>
+  <h3>The structural gap</h3>
+  <p>The most persistent structural difference is the take rate: roughly 36 bps at Stripe vs 15.5 to 17.0 bps at Adyen in both years where Stripe data exist. It is explained by the route-to-market mechanism in the Growth Map, long-tail list pricing vs enterprise interchange-plus tiers. Adyen's offset is productivity. It handled about EUR 296M of volume per employee in 2024 vs about EUR 151M at Stripe, which is why a half-size take rate still yields a similar cash margin.</p>
+  <p>This confirms the power map in both directions. Stripe's access power shows up as price, and Adyen's infrastructure ownership shows up as cost. It also exposes a weakness in Stripe's evidence: its margin claim rests on press figures with no disclosed definition, stock-based compensation, or tax treatment. That caps confidence in any Stripe margin advantage.</p>
+  <div class="pull">Adyen runs the leaner, auditable engine. Stripe runs a richer-priced one whose true operating margin is ND.</div>
+</div>
+
+<div class="flip">
+  <h3>What would flip the call</h3>
+  <ul>
+    <li><b>Stripe's AI cohort multi-sources.</b> If the largest AI companies route a growing share of volume to Adyen or in-house, as OpenAI and Anthropic have started to, Stripe's fastest cell slows and its take rate compresses at the same time. <span style="color:var(--good);font-weight:700;">Early warning: Stripe 2026 total volume growth below 25% in the 2026 annual update (around Feb 2027), or two or more named AI-lab processor additions at Adyen.</span></li>
+    <li><b>Stripe capital allocation drifts.</b> After the dropped $53B+ PayPal bid (27 Aug 2026, press) and a reported $7B to $10B, mostly-stock OpenRouter deal (Aug 2026, press), a large deal would add dilution and integration drag to an unaudited business. <span style="color:var(--good);font-weight:700;">Early warning: any announced acquisition above $10B, or Stripe's investor letters no longer stating a falling share count (next letter around Feb 2027).</span></li>
+    <li><b>Adyen's software layer lands.</b> If Orb, Talon.One and Adyen Agentic lift Digital growth and open AI-native wins, Adyen adds Stripe's best growth driver to a superior cost engine. <span style="color:var(--good);font-weight:700;">Early warning: Adyen Digital pillar cc growth at or above 18%, with 2027 guidance at or above 23% cc, in the FY2026 letter (Feb 2027).</span></li>
+  </ul>
+</div>
+
+<h2>The KPI pack: 12 to 24 months</h2>
+<table>
+  <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+  <tr><td>Stripe total volume growth, 2026</td><td>30% or above on $1.9T base</td><td>Feb 2027</td><td>Stripe</td><td>Stripe 2026 annual update</td></tr>
+  <tr><td>Stripe take rate (press net revenue / volume)</td><td>0.34% or above</td><td>Mid 2027</td><td>Stripe (below 0.30% favors Adyen)</td><td>Press plus Stripe update</td></tr>
+  <tr><td>Adyen Digital pillar cc growth</td><td>18% or above</td><td>Feb 2027 (FY2026 letter)</td><td>Adyen (below 12% favors Stripe)</td><td>Adyen H2 2026 letter</td></tr>
+  <tr><td>Adyen EMEA net revenue cc growth</td><td>17% or above</td><td>Aug 2027 (H1 2027 letter)</td><td>Adyen</td><td>Adyen shareholder letter</td></tr>
+  <tr><td>Adyen EBITDA margin path</td><td>Underlying at or above 53% in 2026, above 55% by 2028</td><td>Feb 2027 / Feb 2029</td><td>Adyen</td><td>Adyen shareholder letters</td></tr>
+</table>
+
+<div class="timeverdict">
+  <div class="label">Where to spend your time</div>
+  Spend the deep-dive hours on Adyen first. It is the investable company with ten years of audited filings in the research folder, and the question that decides its thesis is exactly this duel: can its share-of-wallet curve and cost engine hold while Stripe captures the next generation of merchants? Next piece of work: a filing-level read of Adyen's Digital pillar and take-rate tiering across H1 2024 to H1 2026. Track Stripe through the KPI pack, since it publishes nothing deeper to read.
+</div>
+
+<div class="footer">
+  <p><b>Method.</b> Three lenses (growth by product x geography, power over customers and suppliers, cost engine) run on both companies and converged into one call, keeping only the cells that carry most of the economics. All figures are in EUR, with Stripe USD converted at yearly average rates. Adyen figures come from audited IFRS statements and shareholder letters in the research folder. Stripe figures are company-disclosed volume and customer metrics plus press-reported revenue and cash flow. ND means not publicly disclosed, and (inferred) means reasoned from disclosed figures with the logic stated. This is a business-strength comparison, not a valuation, and says nothing about either company's price.</p>
+  <p><b>Open questions the public record cannot answer.</b> Stripe audited operating margin, stock-based compensation, US vs non-US revenue, in-person volume, gross revenue, and top-customer concentration. Adyen pillar x region cross-tab, Orb purchase price, and the identity and economics of the large Digital customer that cut FY2025 volume growth.</p>
+  <p class="sources"><b>Sources.</b></p>
+  <ul class="sources">
+    <li>Adyen N.V., Shareholder Letter H1 2026, 13 Aug 2026 (research folder: sources/Shareholder_Letters)</li>
+    <li>Adyen N.V., Shareholder Letter H2 2025, 12 Feb 2026 (sources/Shareholder_Letters)</li>
+    <li>Adyen N.V., Annual Reports 2023, 2024, 2025: consolidated statement of comprehensive income, notes on net revenue, employee benefits, other operating expenses (sources/Annual_Reports)</li>
+    <li>Adyen N.V., Talon.One transaction document and M&amp;A call transcript, 23 Apr 2026; H1 2026 earnings call transcript, 13 Aug 2026 (third-party transcription via Quartr/stockanalysis.com)</li>
+    <li>Adyen press release, Adyen closes Talon.One and Orb acquisitions, announces leadership updates, 1 Jul 2026, adyen.com/press-and-media</li>
+    <li>ad-hoc-news.de, Adyen India expansion report, 9 Sep 2026 (low-grade secondary source, context only)</li>
+    <li>Stripe, 2025 annual update, 24 Feb 2026, stripe.com/newsroom/news/stripe-2025-update</li>
+    <li>Stripe, 2024 annual update, 27 Feb 2025, stripe.com/newsroom/news/stripe-2024-update; 2023 annual letter, 13 Mar 2024</li>
+    <li>TechCrunch, Stripe processed $817B in 2022, 5 Apr 2023; Stripe layoffs and headcount, 21 Jan 2025</li>
+    <li>The Information, Stripe minted $3.2 billion cash in 2025, 22 Jul 2026 (press); Stripe 2024 revenue, via Axios Pro, 27 Mar 2025 (press)</li>
+    <li>Axios, Stripe investor letter and OpenRouter, 19 Aug 2026; Stripe and Advent PayPal bid, 15 Jul 2026 and 28 Aug 2026 (press)</li>
+    <li>The Information, Anthropic's in-house payments tech push, 4 Sep 2026 (press)</li>
+    <li>Stripe newsroom: Sessions 2026 (29 Apr 2026), OpenAI Instant Checkout (29 Sep 2025), Metronome close (14 Jan 2026), Tour Berlin, Paris and London 2026, Black Friday Cyber Monday 2025</li>
+    <li>American Banker, Bridge trust charter, 18 Feb 2026; Payments Dive, Stripe processing and unbundling, 1 May 2024</li>
+    <li>Stripe pricing pages (US and Ireland), accessed Sep 2026</li>
+  </ul>
+</div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

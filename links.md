@@ -1,3 +1,6 @@
+- [Adyen vs Stripe Peer Duel 2026 09 17](https://xk152004.github.io/investechery/stocks/Adyen_vs_Stripe_Peer_Duel_2026-09-17.html)
+- [Adyen Valuation Premium Check](https://xk152004.github.io/investechery/stocks/Adyen-Valuation-Premium-Check.html)
+- [Adyen vs Pay Pal Peer Duel](https://xk152004.github.io/investechery/stocks/Adyen-vs-PayPal-Peer-Duel.html)
 - [ADYEN Payments Sector Overview 2026 09 17](https://xk152004.github.io/investechery/stocks/ADYEN_Payments_Sector_Overview_2026-09-17.html)
 - [Pay Pal Business Overview](https://xk152004.github.io/investechery/stocks/PayPal-Business-Overview.html)
 - [Merchant Payments Learning Packet](https://xk152004.github.io/investechery/stocks/merchant-payments-learning-packet.html)
