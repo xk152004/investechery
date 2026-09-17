@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micron vs Sandisk: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Micron vs Sandisk: who wins the next decade?</h1>
+  <p class="source">Semiconductor memory. MU / SNDK. Run 14 September 2026. Built from Micron's FY2023 to FY2025 10-Ks and its Q3 FY2026 10-Q, Sandisk's 10-Ks for the years ended 27 June 2025 and 3 July 2026, both companies' earnings calls, conference appearances and investor days through September 2026, company press releases, SEC 8-K filings, and TrendForce share and pricing data. Events swept through 14 September 2026; most recent event checked: Kioxia and Sandisk announce over $31bn of Japan investment through 2032 and Kioxia begins Kitakami Fab3 site preparation, 27 August 2026. Micron has not yet reported Q4 FY2026, which is due 30 September 2026. Figures in US dollars, both companies' reporting currency, so no FX conversion applies. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Micron</span><span class="chip b">Sandisk</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Micron is the stronger business for the next five to ten years, but narrowly, and for one reason: it owns the only memory product that is escaping commodity pricing, and Sandisk cannot build it.</div>
+    <div class="why">Every HBM bit Micron sells removes three conventional DRAM bits from industry supply, rising toward four at HBM4E. Micron's growth product tightens the base market Micron also sells into. Nothing in NAND does that.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Micron earns 58.8% of revenue in the data centre against Sandisk's 25.4%, and its data-centre SSD line alone, over $5bn in Q3 FY2026, out-earns Sandisk's entire Datacenter segment at $2,977m. Micron is taking the cell Sandisk's growth case depends on, and Sandisk cannot reciprocate in DRAM.</div>
+    <div class="col"><span class="n">2</span><br>Micron's contracts carry no walk-away clause: "There is no provision in this agreement to enable a customer or allow a customer to walk away" (Sadana, 24 June 2026). Sandisk's are exit-able for a fee against a $16.5bn guarantee pool of which only $2.5bn is actually in its bank.</div>
+    <div class="col"><span class="n">3</span><br>Sandisk gets 100% of its wafers from a joint venture it owns 49.9% of, cannot direct, cannot leave, must half-fund whether or not it takes the output, and which expires on 31 December 2034.</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:2%">Micron, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">Sandisk, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:30%">Micron breaks last, narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favours Micron, right lean favours Sandisk; marker position shows how decisive. The middle row is the finding: the growth winner and the margin winner are different companies. Resilience leans to Micron only because Sandisk breaks first; Micron breaks later and harder, which is why the lean is narrow.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product and geography?</div>
+    <div class="w"><span class="chip a">Micron</span></div>
+    <p>Three cells carry Micron's next five years and each has a structural driver rather than a price tailwind. Data centre DRAM and HBM is the largest: HBM4 12-high has been in high-volume production for NVIDIA's Vera Rubin since 16 March 2026, with over $1bn already shipped and a ramp management says is running twice as fast as HBM3E. The driver is the trade ratio, not the price. To produce 100 bits of HBM, Micron gives up 300 bits of conventional DDR supply, and that ratio worsens toward 4:1 at HBM4E (Sadana, 10 August 2026), so Micron's fastest-growing product mechanically tightens the market for everything else it sells. Data centre NAND is the second and the one that matters for this duel: Micron's data-centre SSD revenue exceeded $5bn in the third quarter of fiscal 2026 alone and more than doubled sequentially, which makes one product line inside Micron larger than the whole of Sandisk's Datacenter segment. Auto, industrial and embedded is the third, at $9,062m over nine months and a 64.0% operating margin.</p>
+    <p>Sandisk's counter-cells are genuine. Datacenter went from roughly 12% to 38% of its bits in a single year, TLC enterprise SSD and QLC Stargate are both qualified at major hyperscalers, and High Bandwidth Flash has taped out with first samples due in calendar 2027. But 74.6% of Sandisk's revenue still sits in Edge and Consumer, where its own disclosure shows Consumer bits fell mid-teens and Edge bits grew only high single digits. The revenue growth in both was price, not volume, against a PC and mobile unit base declining mid-teens. Sandisk's growth is one cell deep, and the counterparty in that cell is Micron plus Samsung, SK hynix and Kioxia.</p>
+    <div class="chartbox">
+<svg viewBox="0 0 860 250" role="img" aria-label="Revenue indexed to 100 at calendar 2024">
+<line x1="58" y1="195.7" x2="710" y2="195.7" stroke="#E5DDD0" stroke-width="1"/>
+<text x="50" y="200.7" text-anchor="end" font-size="13" fill="#6E675C">100</text>
+<line x1="58" y1="134.4" x2="710" y2="134.4" stroke="#F0EAE0" stroke-width="1"/>
+<text x="50" y="139.4" text-anchor="end" font-size="13" fill="#6E675C">200</text>
+<line x1="58" y1="73.1" x2="710" y2="73.1" stroke="#F0EAE0" stroke-width="1"/>
+<text x="50" y="78.1" text-anchor="end" font-size="13" fill="#6E675C">300</text>
+<text x="58.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">CY2024</text>
+<text x="384.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">CY2025</text>
+<text x="710.0" y="236" text-anchor="middle" font-size="14" fill="#6E675C">CY2026</text>
+<path d="M58.0,195.7 L384.0,189.4 L710.0,70.7" fill="none" stroke="#3C6E8F" stroke-width="2.6"/>
+<path d="M58.0,195.7 L384.0,165.8 L710.0,36.6" fill="none" stroke="#C75B39" stroke-width="2.6"/>
+<circle cx="58.0" cy="195.7" r="4.5" fill="#C75B39"/>
+<circle cx="384.0" cy="165.8" r="4.5" fill="#C75B39"/>
+<circle cx="710.0" cy="36.6" r="4.5" fill="#C75B39"/>
+<circle cx="58.0" cy="195.7" r="4.5" fill="#3C6E8F"/>
+<circle cx="384.0" cy="189.4" r="4.5" fill="#3C6E8F"/>
+<circle cx="710.0" cy="70.7" r="4.5" fill="#3C6E8F"/>
+<text x="720.0" y="41.6" font-size="15" font-weight="700" fill="#C75B39">Micron 359</text>
+<text x="720.0" y="75.7" font-size="15" font-weight="700" fill="#3C6E8F">Sandisk 304</text>
+</svg>
+      <div class="cap">Revenue indexed to 100 at calendar 2024. Micron: FY2024 $25,111m, FY2025 $37,378m, LTM to 28 May 2026 $90,274m. Sandisk: FY2024 $6,663m, FY2025 $7,355m, FY2026 $20,248m. Fiscal years are mapped to the calendar year in which they end and are offset by about two months. Sources: Micron FY2025 10-K and Q3 FY2026 10-Q; Sandisk 10-K for the year ended 3 July 2026. Sandisk FY2023 was not obtained and is ND, so the series starts at the first common year.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip b">Sandisk</span> <span style="font-size:16px;color:var(--muted)">on cash conversion, and this differs from Answer 1 on purpose</span></div>
+    <p>This is the most valuable finding in the run, because the growth winner and the margin winner are different companies. At the aligned cycle peak the two are effectively tied on the income statement: gross margin of 72.6% for Micron against 71.5% for Sandisk. All of Micron's 4.3-point EBIT edge comes from spreading operating expense over 4.5 times the revenue, R&amp;D at 5.3% against 6.6% and SG&amp;A at 1.6% against 3.3%, not from any advantage in what it costs to make a bit.</p>
+    <p>The divergence is entirely below the operating line. Micron spent 35.0% of revenue on net capital expenditure in fiscal 2025, about 21% in fiscal 2026, and guides fiscal 2027 to "above $45 billion even", more than half of it construction that its own operations chief says will not produce bits before calendar 2028, while its chief executive states that blended DRAM cost per bit will rise from here. Sandisk spends about 6% of revenue, grows bits through nodal transitions on an array base it already owns, and its wafer starts have been falling. Sandisk also quantifies its downside where Micron does not: about 80% gross margin at floor pricing on roughly two-thirds of fiscal 2028 bits, against Micron's unquantified claim that floor margins run "well above" a prior peak that was 59% in fiscal 2018. In one line: Micron is the compounder with the heavy engine, and Sandisk is the lighter engine in the weaker market. The caveat that stops this from flipping the call is that Sandisk's capital-lightness is partly a function of owning 49.9% of its fabs rather than 100%. The fixed costs are shared, not small.</p>
+    <div class="chartbox">
+<svg viewBox="0 0 880 330" role="img" aria-label="Margin and capital intensity dumbbells">
+<text x="30" y="32" font-size="15" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">Gross margin</text>
+<line x1="30" y1="66" x2="640" y2="66" stroke="#E5DDD0" stroke-width="2"/>
+<line x1="380.8" y1="66" x2="414.3" y2="66" stroke="#2B2B2B" stroke-width="2"/>
+<line x1="414.3" y1="58" x2="414.3" y2="51" stroke="#C75B39" stroke-width="1.5"/>
+<text x="414.3" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">Micron 72.6%</text>
+<line x1="380.8" y1="74" x2="380.8" y2="81" stroke="#3C6E8F" stroke-width="1.5"/>
+<text x="380.8" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">Sandisk 71.5%</text>
+<circle cx="414.3" cy="66" r="7.5" fill="#C75B39"/>
+<circle cx="380.8" cy="66" r="7.5" fill="#3C6E8F"/>
+<text x="658" y="71" font-size="14" font-weight="700" fill="#2B2B2B">Micron ahead by 1.1pts</text>
+<text x="30" y="116" font-size="12" fill="#6E675C">60%</text>
+<text x="640" y="116" text-anchor="end" font-size="12" fill="#6E675C">80%</text>
+<text x="30" y="136" font-size="15" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">EBIT margin</text>
+<line x1="30" y1="170" x2="640" y2="170" stroke="#E5DDD0" stroke-width="2"/>
+<line x1="374.6" y1="170" x2="505.8" y2="170" stroke="#2B2B2B" stroke-width="2"/>
+<line x1="505.8" y1="162" x2="505.8" y2="155" stroke="#C75B39" stroke-width="1.5"/>
+<text x="505.8" y="149" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">Micron 65.6%</text>
+<line x1="374.6" y1="178" x2="374.6" y2="185" stroke="#3C6E8F" stroke-width="1.5"/>
+<text x="374.6" y="199" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">Sandisk 61.3%</text>
+<circle cx="505.8" cy="170" r="7.5" fill="#C75B39"/>
+<circle cx="374.6" cy="170" r="7.5" fill="#3C6E8F"/>
+<text x="658" y="175" font-size="14" font-weight="700" fill="#2B2B2B">Micron ahead by 4.3pts</text>
+<text x="30" y="220" font-size="12" fill="#6E675C">50%</text>
+<text x="640" y="220" text-anchor="end" font-size="12" fill="#6E675C">70%</text>
+<text x="30" y="240" font-size="15" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">Capital intensity, capex as % of revenue</text>
+<line x1="30" y1="274" x2="640" y2="274" stroke="#E5DDD0" stroke-width="2"/>
+<line x1="121.5" y1="274" x2="348.7" y2="274" stroke="#2B2B2B" stroke-width="2"/>
+<line x1="348.7" y1="266" x2="348.7" y2="259" stroke="#C75B39" stroke-width="1.5"/>
+<text x="348.7" y="253" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">Micron 20.9%</text>
+<line x1="121.5" y1="282" x2="121.5" y2="289" stroke="#3C6E8F" stroke-width="1.5"/>
+<text x="121.5" y="303" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">Sandisk 6.0%</text>
+<circle cx="348.7" cy="274" r="7.5" fill="#C75B39"/>
+<circle cx="121.5" cy="274" r="7.5" fill="#3C6E8F"/>
+<text x="658" y="279" font-size="14" font-weight="700" fill="#2B2B2B">Sandisk lighter by 14.9pts</text>
+<text x="30" y="324" font-size="12" fill="#6E675C">0%</text>
+<text x="640" y="324" text-anchor="end" font-size="12" fill="#6E675C">40%</text>
+</svg>
+      <div class="cap">Micron: LTM to 28 May 2026, computed as FY2025 less the nine months to 29 May 2025 plus the nine months to 28 May 2026. Sandisk: FY2026, the 53 weeks to 3 July 2026. Capital intensity: Micron is about $27bn of net capex on fiscal 2026 revenue of roughly $129bn (inferred: nine months actual plus the company's Q4 guidance midpoint of $50bn); Sandisk is gross capex of 6.3% of revenue in Q4 FY2026 and about 6% guided for the full year. Sources: Micron FY2025 10-K, Q3 FY2026 10-Q and Q3 FY2026 call; Sandisk FY2026 10-K and Q4 FY2026 call.</div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip b">Sandisk breaks first</span> <span class="chip a">Micron breaks worse</span></div>
+    <p>Sandisk's most damaging exposure is that it does not control its own production. Every flash wafer it sells comes from Flash Ventures, which it owns 49.9% of, cannot unilaterally direct, is contractually barred from bypassing, and must fund half the fixed costs of regardless of the output it chooses to purchase. All three joint ventures co-terminate on 31 December 2034. In a demand shock Sandisk eats half of a fixed-cost base it does not control on the day demand falls, and 74.6% of its revenue sits in the most price-elastic cells in memory. It breaks first.</p>
+    <p>Micron's most damaging exposure is capital timing. More than $45bn of fiscal 2027 capital expenditure, the majority of it construction, is being committed against demand estimated during an acute shortage, into cleanrooms that produce bits from calendar 2028, and the resulting depreciation is fixed whether or not prices hold. The precedent is its own: fiscal 2023 took revenue to $15.5bn, gross margin to minus 9.1% and EBIT to minus 37.0% in four quarters. Micron breaks later and worse, because it carries 100% of its own fixed cost. Note the asymmetry that follows. In the last trough Sandisk's business held a gross margin of plus 16.1% while Micron printed minus 9.1%. The company with the weaker moat has the stronger floor, and that is the single best argument against this verdict.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These are the cells that carry essentially all of the combined end-market economics and about 95% of the geographic revenue. Every score is argued in the tabs below.</p>
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">Micron</th><th class="cb">Sandisk</th><th>Why (sourced)</th></tr>
+    <tr><td>Data centre DRAM and HBM, global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Micron: HBM4 12-high in volume production for NVIDIA Vera Rubin since 16 Mar 2026, over $1bn HBM4 already shipped; 23.3% of 2Q26 industry DRAM revenue and the fastest grower of the big three. Sandisk: no DRAM product at all, and bought 3.9% of Nanya in March 2026 to secure DRAM supply rather than make it.</td></tr>
+    <tr><td>Data centre NAND and enterprise SSD, global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Micron: third-largest enterprise SSD supplier, share from 5 to 7 percent in 2022 to about 15 percent exiting 2025, first to volume on PCIe Gen6, data-centre SSD revenue above $5bn in Q3 FY2026. Sandisk: TLC eSSD and QLC Stargate both qualified at major hyperscalers, data centre from about 12% to 38% of bits in one year.</td></tr>
+    <tr><td>Mobile and client / Edge, global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Micron: 75.5% operating margin on MCBU over nine months, and it is deliberately starving the cell to feed data centre, so bits fell. Sandisk: 60.1% of revenue sits here, but bits grew only high single digits against a mid-teens decline in PC and mobile units.</td></tr>
+    <tr><td>Auto, industrial and embedded, global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Micron: $9,062m over nine months at a 64.0% operating margin, reported and managed as its own business unit, with L2+ vehicles carrying over five times average memory content. Sandisk: folded inside Edge, size not disclosed, and sold without a DRAM attach.</td></tr>
+    <tr><td>Consumer retail, global</td><td class="ca"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Micron: exited. The Crucial wind-down was announced 3 Dec 2025 and completed in Feb 2026, with supply redirected to data centre and enterprise. Sandisk: the only branded retail franchise in memory, $2,935m and up 29% on price even as its bits fell mid-teens.</td></tr>
+    <tr><td>Greater China, ship-to</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Micron: barred by China's CAC since May 2023 from selling to critical information infrastructure operators, disclosed as having an adverse impact on its ability to compete; 10.1% of FY2025 revenue by customer headquarters. Sandisk: China plus Hong Kong was $9,629m, or 47.6% of FY2026 revenue.</td></tr>
+    <tr><td>United States, supply origin and demand</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Micron: 64.5% of FY2025 revenue by customer headquarters, a US investment plan raised to over $250bn through 2035, a goal of making 40% of its DRAM in the US, and a US-supply premium written into its customer agreements. Sandisk: $3,714m ship-to, 18.3% of revenue, and 100% of its wafers made in Japan.</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share, price and growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are per cell and are not summed. The three lenses get their verdicts in the Three Answers above, not here. The two geography rows use different attribution bases, Micron by customer headquarters and Sandisk by ship-to location, and so are scored on presence and control rather than on a like-for-like revenue comparison.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Two companies riding the same price spike, with the money coming from opposite ends of the data centre.</div>
+    <p>Normalisation first, because the two companies do not use the same words. Micron reports four business units. Sandisk reports three end markets, renamed in fiscal 2026 from Cloud, Client and Consumer to Datacenter, Edge and Consumer. Sandisk's Edge contains automotive and industrial, which Micron reports separately as AEBU, so the like-for-like pairing is Micron's MCBU plus AEBU against Sandisk's Edge. Micron has no consumer cell at all since the Crucial wind-down completed in February 2026. On geography the definitions genuinely do not reconcile: Micron attributes revenue by customer headquarters, Sandisk by ship-to location. Micron's own 10-K bridges it usefully, stating that about 80% of fiscal 2025 revenue was shipped outside the United States, which puts it near Sandisk's 18.3% US ship-to share. Micron does not disclose geography in its 10-Qs, so its latest geographic data is fiscal 2025 against Sandisk's fiscal 2026, and that limit is flagged wherever it is used.</p>
+    <p>The aligned window throughout is Micron's last twelve months to 28 May 2026 against Sandisk's fiscal 2026 to 3 July 2026, an offset of about five weeks. On that basis Micron earned $90,274m and Sandisk $20,248m. Micron has not yet reported its fourth quarter of fiscal 2026, which is due on 30 September 2026 and guided to $50bn of revenue at about an 86% gross margin, so this comparison is against a Micron that is still accelerating.</p>
+    <p>What the cell table shows is a single dominant contrast. Micron is a data-centre company that also sells to phones and cars. Sandisk is an edge and consumer company that is becoming a data-centre company quickly. Both statements are true and only one of them describes a durable position, because the data-centre cell contains DRAM and HBM, which Sandisk has no product for at all.</p>
+    <div class="chartbox">
+<svg viewBox="0 0 900 266" role="img" aria-label="Revenue by normalised cell on one shared scale, Micron left, Sandisk right">
+<text x="452" y="30" text-anchor="end" font-size="16" font-weight="700" fill="#C75B39" font-family="Georgia,serif">MICRON</text>
+<text x="488" y="30" text-anchor="start" font-size="16" font-weight="700" fill="#3C6E8F" font-family="Georgia,serif">SANDISK</text>
+<line x1="470" y1="40" x2="470" y2="256" stroke="#E5DDD0" stroke-width="1"/>
+<rect x="194.0" y="54" width="266.0" height="22" fill="#C75B39" rx="2"/>
+<text x="188.0" y="70" text-anchor="end" font-size="14" font-weight="700" fill="#2B2B2B">$52,512m</text>
+<text x="108.0" y="70" text-anchor="end" font-size="12" fill="#6E675C">+217%</text>
+<rect x="480" y="54" width="26.1" height="22" fill="#3C6E8F" rx="2"/>
+<text x="512.1" y="70" text-anchor="start" font-size="14" font-weight="700" fill="#2B2B2B">$5,153m</text>
+<text x="592.1" y="70" text-anchor="start" font-size="12" fill="#6E675C">+437%</text>
+<text x="470" y="93" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Georgia,serif">Data centre (all memory)</text>
+<rect x="322.0" y="102" width="138.0" height="22" fill="#C75B39" rx="2"/>
+<text x="316.0" y="118" text-anchor="end" font-size="14" font-weight="700" fill="#2B2B2B">$27,247m</text>
+<text x="236.0" y="118" text-anchor="end" font-size="12" fill="#6E675C">+190%</text>
+<rect x="480" y="102" width="61.6" height="22" fill="#3C6E8F" rx="2"/>
+<text x="547.6" y="118" text-anchor="start" font-size="14" font-weight="700" fill="#2B2B2B">$12,160m</text>
+<text x="627.6" y="118" text-anchor="start" font-size="12" fill="#6E675C">+195%</text>
+<text x="470" y="141" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Georgia,serif">Mobile and client / Edge</text>
+<rect x="406.8" y="150" width="53.2" height="22" fill="#C75B39" rx="2"/>
+<text x="400.8" y="166" text-anchor="end" font-size="14" font-weight="700" fill="#2B2B2B">$10,496m</text>
+<text x="320.8" y="166" text-anchor="end" font-size="12" fill="#6E675C">+173%</text>
+<text x="486" y="166" text-anchor="start" font-size="13" fill="#6E675C">ND, reported inside Edge</text>
+<text x="470" y="189" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Georgia,serif">Auto, industrial, embedded</text>
+<text x="454.0" y="214" text-anchor="end" font-size="13" fill="#6E675C">no presence, exited Feb 2026</text>
+<rect x="480" y="198" width="14.9" height="22" fill="#3C6E8F" rx="2"/>
+<text x="500.9" y="214" text-anchor="start" font-size="14" font-weight="700" fill="#2B2B2B">$2,935m</text>
+<text x="580.9" y="214" text-anchor="start" font-size="12" fill="#6E675C">+29%</text>
+<text x="470" y="237" text-anchor="middle" font-size="13" fill="#2B2B2B" font-family="Georgia,serif">Consumer retail</text>
+<text x="194.0" y="264" font-size="11" fill="#6E675C">both wings on one shared scale: full bar width = $52,512m</text>
+</svg>
+      <div class="cap">Revenue by normalised cell, US dollars, millions. Micron: LTM to 28 May 2026 by business unit, computed as FY2025 less nine months to 29 May 2025 plus nine months to 28 May 2026. Data centre is CMBU plus CDBU. Sandisk: FY2026 to 3 July 2026 by end market. Growth rates are the nine-month year-on-year change for Micron and the full-year change for Sandisk, as each company reports them. Sandisk's automotive and industrial revenue is reported inside Edge and is not separately disclosed, so that row is ND on the Sandisk side and Sandisk's Edge bar is correspondingly overstated relative to Micron's MCBU. Both wings are drawn on one shared scale, so the width gap is the revenue gap. Sources: Micron FY2025 10-K and Q3 FY2026 10-Q; Sandisk 10-K for the year ended 3 July 2026.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">Micron revenue (% of LTM)</th><th class="num ca">Growth</th><th class="num cb">Sandisk revenue (% of FY26)</th><th class="num cb">Growth</th><th>Margin signal and leader</th></tr>
+    <tr><td>Data centre, all memory</td><td class="num ca">$52,512m (58.2%)</td><td class="num ca">+217%</td><td class="num cb">$5,153m (25.4%)</td><td class="num cb">+437%</td><td><b>Micron.</b> CMBU 70.2% and CDBU 72.6% operating margin over nine months; Sandisk reports one segment and no cell margin (ND)</td></tr>
+    <tr><td>&nbsp;&nbsp;of which data centre SSD / NAND</td><td class="num ca">over $5,000m in Q3 FY26 alone</td><td class="num ca">more than doubled q/q</td><td class="num cb">$2,977m in Q4 FY26</td><td class="num cb">+103% q/q</td><td><b>Micron on size, Sandisk on trajectory.</b> One Micron product line out-earns Sandisk's whole Datacenter segment</td></tr>
+    <tr><td>Mobile and client / Edge</td><td class="num ca">$27,247m (30.2%)</td><td class="num ca">+190%, bits DOWN</td><td class="num cb">$12,160m (60.1%)</td><td class="num cb">+195%, bits +high single digit</td><td><b>Micron.</b> 75.5% operating margin and only 30% revenue dependence, against Sandisk's 60%</td></tr>
+    <tr><td>Auto, industrial and embedded</td><td class="num ca">$10,496m (11.6%)</td><td class="num ca">+173%</td><td class="num cb">ND, inside Edge</td><td class="num cb">ND</td><td><b>Micron.</b> 64.0% operating margin, separately disclosed and managed</td></tr>
+    <tr><td>Consumer retail</td><td class="num ca">$0, exited Feb 2026</td><td class="num ca">n/a</td><td class="num cb">$2,935m (14.5%)</td><td class="num cb">+29%, bits −mid-teens</td><td><b>Sandisk.</b> The only branded retail franchise in memory; Micron judged the bits better used elsewhere</td></tr>
+    <tr><td>Greater China, ship-to</td><td class="num ca">ND ship-to; 10.1% of FY2025 by customer HQ</td><td class="num ca">ND</td><td class="num cb">$9,629m (47.6%)</td><td class="num cb">China +121%, HK +294%</td><td><b>Sandisk on presence.</b> Micron is barred from China's critical infrastructure operators</td></tr>
+    <tr><td>United States</td><td class="num ca">$24,113m FY2025 by customer HQ (64.5%); about 20% ship-to</td><td class="num ca">ND</td><td class="num cb">$3,714m ship-to (18.3%)</td><td class="num cb">+157%</td><td><b>Micron.</b> US demand and US fabs, with a supply premium written into contracts</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Micron earns 58.8% of revenue in the data centre against Sandisk's 25.4%, and Micron's data-centre SSD line alone out-earns Sandisk's entire Datacenter segment. <b>Implication:</b> Micron is taking share in the one cell Sandisk's growth story depends on, from a DRAM-attach position Sandisk cannot reciprocate, because it has no DRAM product. <span class="kpi">KPI: Micron quarterly data-centre SSD revenue against Sandisk quarterly Datacenter revenue; four consecutive quarters of Micron above Sandisk confirms it.</span> [Micron Q3 FY2026 10-Q and Q3 FY2026 call, 24 June 2026; Sandisk FY2026 10-K and Q4 FY2026 call, 5 August 2026]</div>
+
+    <h3>Segment growth engines</h3>
+    <p><b>Data centre DRAM and HBM, Micron only.</b> The driver is the trade ratio, which is a supply mechanism rather than a demand forecast: every HBM bit sold removes three conventional DDR bits from supply, worsening toward four to one at HBM4E. The HBM addressable market is now expected to cross $100bn in calendar 2027, a year earlier than Micron previously said. Durability is high because HBM is qualification-gated and moving toward custom single-sourced SKUs. The cost to grow is severe: fiscal 2026 net capex of about $27bn and fiscal 2027 above $45bn. All organic; the $1.8bn PSMC Tongluo fab closed in March 2026 buys capacity, not revenue.</p>
+    <div class="iik"><b>Insight:</b> Micron's fastest-growing product mechanically shrinks the conventional DRAM supply it also sells. <b>Implication:</b> a self-reinforcing loop that Sandisk has no analogue for, and the single reason this is not a cost-engine verdict. <span class="kpi">KPI: HBM4E ramping in calendar 2027 as guided, and the disclosed HBM4E trade ratio; any slip removes the loop.</span> [Mehrotra and Sadana, Micron Q3 FY2026 call and Technology Leadership Forum, 10 August 2026]</div>
+    <p><b>Data centre NAND and enterprise SSD, contested.</b> Micron has moved from 5 to 7 percent enterprise SSD share in 2022 to about 15% exiting 2025, is first to volume on PCIe Gen6, is lead-qualified on NVIDIA's STX platform and leads QLC at 245TB. Sandisk has both TLC enterprise SSD and QLC Stargate qualified at major hyperscalers and has demonstrated a 256TB drive in E3 form factor. Durability for Sandisk is medium: this is a five-supplier market with no HBM-style qualification lock, where calendar 2Q26 NAND revenue share ran Samsung 29.3%, SK hynix about 18.2%, Micron about 15.1%, Kioxia 13.6% and SanDisk about 11.4%. Micron moved up to third, passing Kioxia, on the fastest sequential growth of the top five.</p>
+    <div class="iik"><b>Insight:</b> Sandisk's fastest cell is the one Micron entered from a position of DRAM strength and is now scaling faster in absolute dollars. <b>Implication:</b> Sandisk's growth is real but contested on the only front it cannot diversify away from. <span class="kpi">KPI: Sandisk Datacenter reaching over 50% of bits by fiscal 2028 without a gross-margin concession.</span> [TrendForce, 18 August 2026; Micron J.P. Morgan appearance, 20 May 2026; Sandisk Investor Day, 13 August 2026]</div>
+    <p><b>Edge and mobile, both.</b> Micron's MCBU revenue rose 190% over nine months while its bit shipments fell, because supply was deliberately redirected to higher-value segments. Sandisk's Edge rose 195% with bits up only high single digits, against a PC and mobile unit base declining mid-teens, all of it at the low end. Both cells grew on price alone. As a growth engine, durability is low for either.</p>
+    <div class="iik"><b>Insight:</b> 60.1% of Sandisk's revenue sits in a cell whose unit base is shrinking, against 30.2% for Micron. <b>Implication:</b> when price mean-reverts, Sandisk loses proportionally more revenue to a cell with no volume growth underneath it. <span class="kpi">KPI: Sandisk Edge exabytes shipped turning negative year on year.</span> [Micron FY2025 10-K and Q3 FY2026 10-Q; Sandisk FY2026 10-K; Cherrstrom, Sandisk Investor Day]</div>
+    <p><b>Consumer retail, Sandisk only.</b> Micron announced the exit from Crucial on 3 December 2025 and completed the wind-down in February 2026, redirecting the supply to data centre and enterprise. Sandisk kept its franchise, growing revenue 29% on price while its bits fell mid-teens, and describes its global consumer presence as a meaningful differentiator. Its chief executive also concedes the mechanism that limits it: in markets moving this fast, consumer pricing cannot be raised as quickly as the transactional ones.</p>
+    <div class="iik"><b>Insight:</b> the two managements read the same facts oppositely, and Micron exited the cell at the top of the cycle. <b>Implication:</b> Micron treated consumer as a claim on scarce bits, Sandisk treats it as a franchise; only one of those reasonings survives a cycle in which bits stop being scarce. <span class="kpi">KPI: Sandisk Consumer falling below 10% of revenue, or Consumer gross margin being disclosed separately.</span> [Micron press release, 3 December 2025; Goeckeler, Sandisk Q4 FY2026 call]</div>
+
+    <h3>Price control and route to market</h3>
+    <p>Micron sells at fixed, negotiated, generally short-term prices and offers price protection to its distributors, with the amount undisclosed. Over that it has now layered sixteen strategic customer agreements: take-or-pay, typically five years from calendar 2026 to 2030, with a ceiling at the calendar Q2 2026 market price and a floor through the term, covering about 20% of DRAM volume and a third of NAND volume, or close to 25% of revenue. Price is renegotiated quarterly inside the band and can move neither above the ceiling nor below the floor. Crucially, there is no walk-away provision. Micron holds $22bn of commitments, about $18bn of it unrestricted cash deposits.</p>
+    <p>Sandisk publishes the thing Micron does not: its sales incentive and price-protection programmes ran at 11% of gross revenue in fiscal 2026, down from 19% in each of fiscal 2025 and fiscal 2024. That is a direct, disclosed measure of how much list price the channel claws back, and it halved. Over that sit eight New Business Model agreements with a weighted average duration above four years, covering more than 50% of fiscal 2027 bits and about two-thirds of fiscal 2028 bits, with fixed and variable elements subject to floors and ceilings. But they are exit-able. The chief executive describes the mechanic plainly: a customer forgoes billions held by a third party and the contract ends. The pool is $16.5bn, of which only $2.9bn is deposits and credits and only $2.5bn is actually in Sandisk's bank.</p>
+    <div class="iik"><b>Insight:</b> Sandisk's disclosed price give-back fell from 19% to 11% of gross revenue, evidence that its net-price realisation improved materially, but its contracts can be exited for a fee while Micron's carry no walk-away provision. <b>Implication:</b> Sandisk converts list price to net price better today; Micron's paper is harder if the cycle turns, which is when contract hardness is the only thing that matters. <span class="kpi">KPI: Sandisk sales-incentive programmes as a percentage of gross revenue in the FY2027 10-K, about August 2027; a move back above 15% signals the channel reclaiming price.</span> [Sandisk FY2026 10-K; Goeckeler at Bernstein, 28 May 2026; Sadana, Micron Q3 FY2026 post-call]</div>
+
+    <h3>Supply resilience</h3>
+    <p>This is where the two businesses stop resembling each other. Micron owns its fabs in the United States, Japan, Taiwan and Singapore, carrying more than $46.7bn of long-lived assets. Sandisk owns $674m of long-lived assets in total and no wafer fab at all: 100% of its flash wafers come from Flash Ventures, three joint ventures with Kioxia across eight Japanese fabs, in which Sandisk holds 49.9%. It cannot unilaterally direct most of the venture's activities, is contractually restricted from having flash fabricated anywhere else, must pay half of the venture's fixed costs regardless of the output it takes, guarantees half of the venture's sale-leaseback obligations, and buys its wafers in yen while selling substantially in dollars. All three ventures co-terminate on 31 December 2034. Sandisk's answer to its DRAM gap was to buy about 3.9% of Nanya for roughly $1.0bn in March 2026 with a multi-year supply arrangement attached, which secures access rather than capability.</p>
+    <div class="iik"><b>Insight:</b> Sandisk carries $674m of long-lived assets against $20.2bn of revenue because its production base is an equity-method joint venture it does not control and cannot leave. <b>Implication:</b> the asset-light income statement is real, but the operating leverage was moved off balance sheet rather than removed, and the counterparty risk is concentrated in a single partner whose ownership has changed repeatedly. <span class="kpi">KPI: any announced change of control at Kioxia, or Sandisk disclosing a Flash Ventures capital plan it did not jointly agree.</span> [Sandisk FY2026 10-K, business and risk-factor sections; Micron FY2025 10-K, geographic long-lived assets]</div>
+
+    <h3>Competitive context</h3>
+    <p>In calendar 2Q26 NAND revenue share ran Samsung 29.3%, SK hynix group about 18.2%, Micron about 15.1%, Kioxia 13.6% and SanDisk about 11.4%, on a market of roughly $78.8bn. Only Samsung's and Kioxia's shares were published explicitly; the others are implied from the same revenue base. Micron grew 99.2% sequentially, the fastest of the top five, and SanDisk 50.7%, the slowest. In DRAM, Samsung held 39.4%, SK hynix 24.9% and Micron 23.3%, with Micron growing fastest of the three and sitting 1.6 points behind second place. Sandisk has no DRAM presence. CXMT grew 99.3% sequentially but TrendForce published no share for it; its December 2025 listing prospectus put it at roughly 4% of global DRAM.</p>
+
+    <h3>Risks by segment</h3>
+    <p>In data centre DRAM and HBM the risk is Micron's alone, and it is that a missed generation forfeits a socket for years in a market moving toward single-sourced custom SKUs: the same mechanism that is the moat is also the concentration. In data centre NAND the more exposed party is Sandisk, because that cell carries its entire growth case while its competitor there can cross-subsidise from DRAM. In Edge and mobile the more exposed party is Sandisk again, at 60.1% of revenue against Micron's 30.2%, in a cell whose units are falling. In consumer the exposure is Sandisk's by definition, since Micron exited. In Greater China the asymmetry cuts both ways: Micron has been barred since May 2023 from selling to China's critical information infrastructure operators, disclosed as adversely affecting its ability to compete, while Sandisk ships 47.6% of revenue to China and Hong Kong, which is both its largest geographic dependency and the market most exposed to domestic substitution by CXMT and YMTC.</p>
+    <div class="pull">Micron is a data-centre company that also sells to phones and cars; Sandisk is an edge and consumer company becoming a data-centre company quickly, and only one of those descriptions contains a product nobody else can make.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In memory, nobody sets price. The question is who comes closest, and for how long.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:14%">Micron, clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker b" style="right:30%">Sandisk, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div>
+        <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+          <div class="marker a" style="left:2%">Micron, clear</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Each call is argued in the sections below.</div>
+    </div>
+
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Micron</h3><p><b>HBM sockets. Durability: high.</b> HBM4 12-high in high-volume production for NVIDIA Vera Rubin since 16 March 2026, over $1bn already shipped, ramping twice as fast as HBM3E. Management expects HBM4E to bring custom SKUs and a market that is "a two-supplier market, and oftentimes, just a single-sourced opportunity". A well-funded rival needs years of co-design and qualification, not money.</p><p><b>Process and capacity. High on know-how, medium on capacity.</b> First EUV DRAM node and G9 NAND both ramping, described as the highest-volume nodes in Micron's history, on fabs in four countries carrying over $46.7bn of long-lived assets.</p><p><b>Supply origin. Medium-high.</b> Over $250bn of US investment through 2035, a goal of 40% of DRAM made in the US, up to $6.4bn of CHIPS grants and a 35% investment tax credit, converted into price through a US-supply premium written into the customer agreements. Policy-dependent, but policy is moving toward it.</p><p><b>Not a moat:</b> Micron takes prices. Its returns are set by aggregate industry supply behaviour, of which it controls about 23%.</p></div>
+      <div class="col b"><h3>Sandisk</h3><p><b>Shared fab access. High as an asset, but not controlled.</b> Three joint ventures, eight Japanese fabs, roughly 80% of Kioxia's owned capacity; together the two produce about a third of the world's NAND. Extended to 31 December 2034 in January 2026 for $1,165m payable through 2029. The barrier is real, as its chief executive puts it: duplicate Yokkaichi and "find a lot of money and I'll see you in about 10 years". But Sandisk owns 49.9% of it. See the supplier section.</p><p><b>Capital efficiency. Medium.</b> The claim is that the industry spent 2.66 times more capital per unit of output in 2025, and that over five years the pair produced 29% of industry bits on 13% of the capital. Note that this is measured for Sandisk and Kioxia combined, not Sandisk standalone (inferred: the standalone figure is less flattering, since the 6% capital intensity excludes the venture's leased and subsidy-funded equipment). It is a roadmap advantage, replicable in principle by any supplier willing to trade growth for capital.</p><p><b>Consumer brand. Medium.</b> The only branded retail franchise in memory; it held price on a declining volume base, up 29% on revenue with bits down mid-teens. Real, but it sits in a 14.5% cell.</p><p><b>High Bandwidth Flash. Unproven.</b> First die taped out, samples to inference-device customers in calendar 2027, first OCP specification published with SK hynix on 3 August 2026 with Google and Tenstorrent in the consortium. Sandisk's own model excludes HBF revenue entirely.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Micron holds a qualification-gated moat in a product Sandisk cannot build; Sandisk holds a capital-efficiency moat that is partly an artefact of owning 49.9% of its fabs and is measured jointly with its partner. <b>Implication:</b> Micron's moat produces price, Sandisk's produces cash per unit of growth, and only one of those survives a competitor deciding to spend. <span class="kpi">KPI: whether Sandisk publishes standalone rather than venture-combined capital intensity, and whether HBF enters its published revenue model, by end of calendar 2027.</span> [Micron press release, 16 March 2026; Sadana, 10 August 2026; Ilkbahar and Visoso, Sandisk Investor Day, 13 August 2026]</div>
+
+    <h3>Customers: who controls net price and access</h3>
+    <p>Sandisk has the better book. No single customer exceeded 10% of net revenue in any of fiscal 2024, 2025 or 2026, and its top ten were 44% of revenue in fiscal 2026. Micron discloses that approximately one half of its total revenue came from its top ten customers in each of the last three years, that approximately one half of revenue is concentrated in the data-centre end market, and that one customer was 17% of fiscal 2025 revenue. Micron's receivables also rose to $31.0bn at 28 May 2026 from $9.3bn at fiscal 2025 year end, a large credit concentration by any standard, against Sandisk's $4.7bn with three customers at 19%, 12% and 10% of the balance.</p>
+    <p>Micron has the harder paper and the bigger backstop. Its agreements cannot be cancelled and it holds about $18bn of unrestricted customer cash. Sandisk's can be exited for a fee, and only $2.5bn of its $16.5bn guarantee pool is actually on its balance sheet, the rest sitting with third-party institutions. Against that, Sandisk is the only one of the two to have quantified its floor economics, at about 80% gross margin on roughly two-thirds of fiscal 2028 bits, and confirmed the arithmetic publicly. Micron has twice declined to quantify its equivalent, saying only that floor margins run well above a prior peak that was 59% in fiscal 2018.</p>
+    <div class="iik"><b>Insight:</b> Sandisk is safer from any single customer defecting, Micron is safer from all of them renegotiating at once, and only Sandisk has put a number on what the floor actually pays. <b>Implication:</b> buyer power is genuinely split, which is why this lever leans to Sandisk only narrowly and why the verdict does not rest on it. <span class="kpi">KPI: whether Micron's largest-customer percentage in the FY2026 10-K, due about October 2026, climbs back toward 17%; and whether Sandisk's guarantee pool grows in proportion to new NBM remaining performance obligations each quarter.</span> [Micron FY2025 10-K and Q3 FY2026 10-Q; Sandisk FY2026 10-K; Visoso, Sandisk Investor Day and Goldman Sachs, 9 September 2026]</div>
+
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Micron, decisively, on control; Sandisk, on the evidence of the last downturn, on outcome. Micron makes its own wafers and can idle them, which is exactly what it did in fiscal 2023, printing a minus 9.1% gross margin and a minus 37.0% EBIT margin. Sandisk gets every wafer from a venture it owns 49.9% of, cannot direct, cannot bypass, must half-fund regardless of offtake, and which expires in 2034; its predecessor's equivalent down year produced a plus 16.1% gross margin, with underutilisation charges of $75m and inventory write-downs of $24m in fiscal 2025 rather than a negative margin. The 10-K also names the instability plainly: Kioxia's stakeholders "may include, or have included in the past, competitors, customers, a private equity firm, government entities or public stockholders", and Western Digital and Kioxia merger talks were reported on 15 July 2026 without primary-source confirmation.</p>
+    <div class="iik"><b>Insight:</b> Sandisk absorbed the last downturn far better than Micron, but the reason is that its fixed costs are shared rather than small, and the sharing is with a counterparty it does not control. <b>Implication:</b> Sandisk's downside protection is genuine and is also the single largest uninsurable risk in the name. <span class="kpi">KPI: any announced change of control at Kioxia, by end of calendar 2027.</span> [Sandisk FY2026 10-K risk factors; Micron FY2023 10-K]</div>
+
+    <h3>The price and power triangle: top three cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome</th><th>Confirming KPI</th></tr>
+    <tr><td>Data centre DRAM and HBM</td><td>Micron direct to hyperscalers and accelerator vendors. Sandisk absent</td><td>Micron above, on single and dual-sourced sockets with custom SKUs coming at HBM4E. Sandisk ND</td><td>Micron constrained by its own greenfield timing: ID.1 mid-CY2027, ID.2 late CY2028. Sandisk n/a</td><td><b>Micron share up, margin up.</b> Uncontested, because Sandisk cannot enter</td><td>HBM4E ramping on schedule in CY2027; Micron closing the 1.6pp DRAM gap to SK hynix</td></tr>
+    <tr><td>Data centre NAND and enterprise SSD</td><td>Both direct. Sandisk has three US hyperscalers inside its eight NBMs; Micron is lead-qualified on NVIDIA's STX platform</td><td>Parity to Micron-above. Micron is first to volume on PCIe Gen6 and leads QLC at 245TB; Sandisk has TLC and QLC qualified and demonstrated 256TB in E3</td><td>Micron can flex wafers between DRAM and NAND and is deliberately growing NAND slower than the industry. Sandisk cannot flex: its fab plan is fixed years ahead</td><td><b>Micron share up, margin flat to up. Sandisk share up, margin exposed.</b> Sandisk grows into a cell where a larger rival can subsidise from DRAM</td><td>Micron quarterly data-centre SSD revenue against Sandisk Datacenter revenue</td></tr>
+    <tr><td>Mobile and client / Edge</td><td>Micron direct plus distributors with price protection, amount undisclosed. Sandisk OEM plus channel, give-back disclosed and halved to 11% of gross revenue</td><td>Micron above on disclosed margin, 75.5% operating margin over nine months. Sandisk ND at cell level</td><td>Micron is starving the cell on purpose and its bits fell. Sandisk depends on it for 60.1% of revenue</td><td><b>Micron share down by choice, margin up. Sandisk share up, margin exposed.</b> Sandisk inherits volume Micron does not want</td><td>Sandisk Edge exabytes turning negative year on year</td></tr>
+    </table>
+    <p>The tension this exposes is worth stating plainly, because it usually runs the other way. Sandisk's two largest revenue cells, Edge at 60.1% and Consumer at 14.5%, are the two where it has the least pricing leverage and where unit demand is shrinking, while its strongest cell by trajectory is the one where Micron has both the deeper attach and the larger absolute business. Growth and power point the same direction here, which makes the call firmer than a four-and-a-half-times size gap alone would.</p>
+
+    <h3>The causal gap</h3>
+    <p><b>Product scope. Major, and not closable.</b> DRAM was 77% of Micron's third-quarter fiscal 2026 revenue, with HBM in volume for Vera Rubin and an addressable market crossing $100bn in calendar 2027. Sandisk has no DRAM product and bought 3.9% of Nanya in March 2026 specifically to secure DRAM supply rather than to make it. To close the gap Sandisk would have to build or buy a DRAM franchise, which takes a decade, and its Flash Ventures agreements restrict what it can build.</p>
+    <p><b>Control of the production base. Major, and structural in both directions.</b> Micron owns its fabs and therefore its capital bill: $27bn in fiscal 2026, above $45bn in fiscal 2027. Sandisk owns $674m of long-lived assets and spends about 6% of revenue. Neither can close this, and neither wants to: Micron's capex is the price of the HBM moat, and Sandisk's asset-lightness is the price of not having one.</p>
+    <p><b>Customer diversification. Moderate, and closable.</b> Micron has one customer at 17% of fiscal 2025 revenue and about half of revenue in the data centre; Sandisk has none above 10% and 44% in the top ten. Micron is already closing it, expecting approximately half or more of company revenue under strategic customer agreements once all planned agreements execute, which is twelve to twenty-four months of work. Because it can be closed with money and time, it is a current condition for Sandisk, not a moat.</p>
+    <div class="pull">Micron holds the stronger power position, narrowly: it wins moats and suppliers, loses customers, and the one lever it loses is the one a competitor can buy back.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">On the income statement these are the same business within a rounding error. The real cost engine is the capital account.</div>
+    <p>No reconciliation problem arises here. Both companies report by function under US GAAP with directly comparable captions, so all five ratios are clean for both and none is ND. Three mapping notes apply consistently across every year. First, neither company's exceptional operating lines are reclassified and EBIT is as-reported operating income for both; Sandisk's fiscal 2025 EBIT margin of minus 18.7% includes an $1,830m goodwill impairment, and excluding it the figure was plus 6.2%, so both are shown. Second, Sandisk separated from Western Digital in February 2025, so fiscal 2024 and part of fiscal 2025 are carve-out financials; fiscal 2023 was not obtained and is ND. Third, and most important, the two fiscal windows capture different parts of the same cycle.</p>
+    <p>That third point governs how this tab should be read. Micron's last three completed fiscal years end on 28 August 2025, before its price spike. Sandisk's last three end on 3 July 2026, fully inside it. A three-year average across those windows would say Sandisk earned a 51.8% aggregate gross margin against Micron's 24.4%, which is true and meaningless. The table below therefore uses calendar-aligned pairs instead, and the headline pair is Micron's last twelve months to 28 May 2026 against Sandisk's fiscal 2026 to 3 July 2026, an offset of about five weeks.</p>
+    <h3>The aligned peak: five ratios</h3>
+    <table>
+      <tr><th>% of sales</th><th class="num ca">Micron, LTM to 28 May 26</th><th class="num cb">Sandisk, FY26 to 3 Jul 26</th><th class="num">Gap</th><th>What drives it</th></tr>
+    <tr><td>COGS</td><td class="num ca">27.4%</td><td class="num cb">28.5%</td><td class="num">Micron 1.1pp lower</td><td>Near parity. Micron's DRAM mix is offset by Sandisk's cost-plus wafer pricing from the joint venture</td></tr>
+    <tr><td>Gross margin</td><td class="num ca">72.6%</td><td class="num cb">71.5%</td><td class="num">Micron +1.1pp</td><td>Effectively a tie at the peak. Neither has a durable advantage in what it costs to make a bit</td></tr>
+    <tr><td>R&amp;D</td><td class="num ca">5.3%</td><td class="num cb">6.6%</td><td class="num">Micron 1.3pp lower</td><td>Scale. Micron spreads a larger absolute bill ($4,784m vs $1,328m) over 4.5 times the revenue</td></tr>
+    <tr><td>SG&amp;A</td><td class="num ca">1.6%</td><td class="num cb">3.3%</td><td class="num">Micron 1.7pp lower</td><td>Sandisk carries a retail and channel selling organisation that Micron exited in February 2026</td></tr>
+    <tr><td>EBIT margin</td><td class="num ca">65.6%</td><td class="num cb">61.3%</td><td class="num">Micron +4.3pp</td><td>Entirely operating leverage. The gross-margin edge is only 1.1pp of it</td></tr>
+    </table>
+    <div class="chartbox">
+<svg viewBox="0 0 860 300" role="img" aria-label="Five cost ratios, Micron versus Sandisk">
+<line x1="46" y1="248.0" x2="846" y2="248.0" stroke="#F0EAE0"/>
+<text x="38" y="252.0" text-anchor="end" font-size="12" fill="#6E675C">0%</text>
+<line x1="46" y1="192.5" x2="846" y2="192.5" stroke="#F0EAE0"/>
+<text x="38" y="196.5" text-anchor="end" font-size="12" fill="#6E675C">20%</text>
+<line x1="46" y1="137.0" x2="846" y2="137.0" stroke="#F0EAE0"/>
+<text x="38" y="141.0" text-anchor="end" font-size="12" fill="#6E675C">40%</text>
+<line x1="46" y1="81.5" x2="846" y2="81.5" stroke="#F0EAE0"/>
+<text x="38" y="85.5" text-anchor="end" font-size="12" fill="#6E675C">60%</text>
+<line x1="46" y1="26.0" x2="846" y2="26.0" stroke="#F0EAE0"/>
+<text x="38" y="30.0" text-anchor="end" font-size="12" fill="#6E675C">80%</text>
+<rect x="88.0" y="172.0" width="34" height="76.0" fill="#C75B39" rx="2"/>
+<rect x="128.0" y="168.9" width="34" height="79.1" fill="#3C6E8F" rx="2"/>
+<text x="105.0" y="166.0" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">27.4</text>
+<text x="145.0" y="162.9" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">28.5</text>
+<text x="125.0" y="268.0" text-anchor="middle" font-size="14" fill="#2B2B2B" font-family="Georgia,serif">COGS</text>
+<rect x="246.0" y="46.5" width="34" height="201.5" fill="#C75B39" rx="2"/>
+<rect x="286.0" y="49.6" width="34" height="198.4" fill="#3C6E8F" rx="2"/>
+<text x="263.0" y="40.5" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">72.6</text>
+<text x="303.0" y="43.6" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">71.5</text>
+<text x="283.0" y="268.0" text-anchor="middle" font-size="14" fill="#2B2B2B" font-family="Georgia,serif">Gross margin</text>
+<rect x="404.0" y="233.3" width="34" height="14.7" fill="#C75B39" rx="2"/>
+<rect x="444.0" y="229.7" width="34" height="18.3" fill="#3C6E8F" rx="2"/>
+<text x="421.0" y="227.3" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">5.3</text>
+<text x="461.0" y="223.7" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">6.6</text>
+<text x="441.0" y="268.0" text-anchor="middle" font-size="14" fill="#2B2B2B" font-family="Georgia,serif">R&D</text>
+<rect x="562.0" y="243.6" width="34" height="4.4" fill="#C75B39" rx="2"/>
+<rect x="602.0" y="238.8" width="34" height="9.2" fill="#3C6E8F" rx="2"/>
+<text x="579.0" y="237.6" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">1.6</text>
+<text x="619.0" y="232.8" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">3.3</text>
+<text x="599.0" y="268.0" text-anchor="middle" font-size="14" fill="#2B2B2B" font-family="Georgia,serif">SG&A</text>
+<rect x="720.0" y="66.0" width="34" height="182.0" fill="#C75B39" rx="2"/>
+<rect x="760.0" y="77.9" width="34" height="170.1" fill="#3C6E8F" rx="2"/>
+<text x="737.0" y="60.0" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">65.6</text>
+<text x="777.0" y="71.9" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">61.3</text>
+<text x="757.0" y="268.0" text-anchor="middle" font-size="14" fill="#2B2B2B" font-family="Georgia,serif">EBIT margin</text>
+<line x1="46" y1="248" x2="846" y2="248" stroke="#2B2B2B" stroke-width="1.5"/>
+<text x="46" y="286" font-size="13" fill="#C75B39" font-weight="700">Micron, LTM to 28 May 2026</text>
+<text x="846" y="286" text-anchor="end" font-size="13" fill="#3C6E8F" font-weight="700">Sandisk, FY2026 to 3 Jul 2026</text>
+</svg>
+      <div class="cap">Micron: LTM to 28 May 2026, computed as FY2025 less the nine months to 29 May 2025 plus the nine months to 28 May 2026, on revenue of $90,274m. Sandisk: the 53 weeks to 3 July 2026, on revenue of $20,248m. Sources: Micron FY2025 10-K and Q3 FY2026 10-Q; Sandisk 10-K for the year ended 3 July 2026.</div>
+    </div>
+    <h3>The other two windows</h3>
+    <table>
+      <tr><th>Window</th><th class="num ca">Micron</th><th class="num cb">Sandisk</th><th>Reading</th></tr>
+      <tr><td>Cycle recovery: Micron FY2025 against Sandisk FY2025, about two months offset</td><td class="num ca">Gross margin 39.8%, EBIT 26.1%</td><td class="num cb">Gross margin 30.1%, EBIT minus 18.7% (plus 6.2% excluding goodwill)</td><td>Micron converted the recovery and Sandisk did not. Micron's DRAM and HBM mix recovered first and further.</td></tr>
+      <tr><td>Cycle trough: Micron FY2023 against Sandisk FY2024, the nearest overlapping down years, <b>not a clean pair</b> because Micron's FY2023 is a pure trough while Sandisk's FY2024 already contains recovery months</td><td class="num ca">Gross margin minus 9.1%, EBIT minus 37.0%</td><td class="num cb">Gross margin 16.1%, EBIT minus 7.0%</td><td>Sandisk far better. Micron carries 100% of its own fixed cost and idled owned fabs; Sandisk shares half of Flash Ventures' fixed cost and takes underutilisation charges rather than a negative margin.</td></tr>
+    </table>
+    <h3>The capital line, which the income statement does not show</h3>
+    <table>
+      <tr><th></th><th class="ca">Micron</th><th class="cb">Sandisk</th></tr>
+      <tr><td>FY2025 capital expenditure</td><td class="ca">About $13.1bn net on $37,378m revenue, or 35.0%</td><td class="cb">Not stated on a comparable basis</td></tr>
+      <tr><td>FY2026 capital expenditure</td><td class="ca">About $27bn net on roughly $129bn of revenue, about 20.9% (inferred: nine months actual plus the company's Q4 guidance midpoint)</td><td class="cb">Gross capex 6.3% of revenue in Q4, about 6% for the full year</td></tr>
+      <tr><td>FY2027 plan</td><td class="ca">"above $45 billion even", more than half of the increase from construction</td><td class="cb">About 6% of revenue, rising in dollars as BiCS8 and BiCS10 ramp</td></tr>
+      <tr><td>Long-lived assets</td><td class="ca">Over $46.7bn across four countries</td><td class="cb">$674m</td></tr>
+      <tr><td>Direction of unit cost</td><td class="ca">Rising. Blended DRAM cost per bit "to rise from current levels"</td><td class="cb">Falling. 27% bits-per-wafer compound growth; wafer starts have come down</td></tr>
+      <tr><td>When new capacity produces bits</td><td class="ca">Greenfield capacity "really starts to contribute to bits in calendar 2028"</td><td class="cb">Continuously, through nodal transitions on existing arrays</td></tr>
+    </table>
+    <p>Four caveats on Sandisk's figure, stated because they materially soften it. The 6% is gross capital expenditure on Sandisk's own books; Flash Ventures' equipment is separately funded through depreciation recovered in cost of revenue, sale-leaseback financing Sandisk guarantees half of, and government subsidies, a decomposition the company itself gave on its November 2025 call. The 2.66 times capital-efficiency claim is Sandisk and Kioxia combined, not Sandisk standalone. The $1,165m joint-venture extension payment is expensed through cost of revenue over nine years rather than capitalised, so it sits outside the 6% entirely. And management contradicted itself at its own investor day, with the chief financial officer saying "mid-single digits capital intensity" in the model and "low single digits" minutes later in question and answer.</p>
+    <h3>The structural gap</h3>
+    <p>The most persistent structural difference is not in any of the five income-statement ratios; it is in capital intensity, and it is present in every year of both records. At the cycle peak the two companies are within 1.1 percentage points on gross margin and within 4.3 points on EBIT margin, and the whole of Micron's EBIT edge comes from spreading operating expense over four and a half times the revenue rather than from any advantage in what it costs to make a bit. Below that line the businesses diverge completely: Micron spent 35.0% of revenue on net capital expenditure in fiscal 2025 and guides above $45bn for fiscal 2027, more than half of it construction that its own operations chief says will not produce bits before calendar 2028, while its chief executive states that blended DRAM cost per bit will rise from here; Sandisk spends about 6% of revenue and grows bits through nodal transitions on an array base it already owns, with wafer starts falling. Strategically this says Micron is buying a position and Sandisk is harvesting one. It confirms the power map in one direction, because Micron's capital bill is the price of the HBM moat, so the spending is a consequence of the advantage rather than a substitute for it. It contradicts the power map in the other, because Sandisk absorbed the last trough far better, at a plus 16.1% gross margin against Micron's minus 9.1%, which means the company with the weaker moat has the stronger floor. That lowers the confidence in any verdict resting on Micron outperforming through a full cycle rather than through this part of one.</p>
+    <div class="pull">On the income statement these are the same business within a rounding error; the real cost engine is the capital account, and there Sandisk converts a near-identical gross margin into materially more free cash.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>Micron's fiscal 2027 and 2028 capital wave lands into surplus.</b> Over $45bn of fiscal 2027 capital expenditure, more than half of it construction, producing bits from calendar 2028, while blended DRAM cost per bit rises and the resulting depreciation becomes fixed. The precedent is Micron's own fiscal 2023: revenue to $15.5bn, gross margin to minus 9.1% and EBIT to minus 37.0% in four quarters. <span style="color:var(--good);font-weight:700;">Early warning: the fiscal 2027 capex figure given on the Q4 FY2026 call on 30 September 2026, with above $50bn confirming it; and any single quarter of negative DRAM average selling price in the 10-Q.</span></li>
+      <li><b>High Bandwidth Flash converts, and NAND starts substituting for DRAM at the margin.</b> Sandisk's first HBF die is taped out with samples to inference-silicon customers due in calendar 2027, and Micron's own executives concede that when a system lacks DRAM capacity, workloads such as KV cache spill onto flash. If HBF scales it simultaneously enlarges Sandisk's addressable market and relieves the DRAM tightness on which Micron's entire case rests. <span style="color:var(--good);font-weight:700;">Early warning: a named HBF design win at a merchant inference-silicon vendor, or Sandisk putting HBF revenue into its published model, which currently excludes it, by end of calendar 2027.</span></li>
+      <li><b>Kioxia changes hands, and Sandisk's cost base moves under a counterparty it does not control.</b> Sandisk's 10-K names Kioxia's stakeholders as having included competitors, customers, a private equity firm, government entities and public stockholders, and Western Digital and Kioxia merger talks were reported on 15 July 2026 without primary-source confirmation. A change of control puts Sandisk's entire production base, technology roadmap and 2034 renewal under new ownership. This one flips the call toward Micron, not away from it. <span style="color:var(--good);font-weight:700;">Early warning: any announced change of control at Kioxia, or Sandisk disclosing a Flash Ventures capital plan it did not jointly agree, by end of calendar 2027.</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12 to 24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favours</th><th>Where published</th></tr>
+    <tr><td>Micron FY2027 net capex guidance</td><td>Above $50bn</td><td>30 Sep 2026, Q4 FY2026 call</td><td><span class="chip b">Sandisk</span></td><td>Micron earnings call, then FY2026 10-K</td></tr>
+    <tr><td>Micron DRAM average selling price, change q/q</td><td>First negative quarter</td><td>Any quarter from 30 Sep 2026</td><td><span class="chip b">Sandisk</span></td><td>Micron 10-Q, MD&A</td></tr>
+    <tr><td>Sandisk NBM coverage of FY2028 bits, and the guarantee pool</td><td>Reaches about two thirds as guided, with the $16.5bn pool growing alongside RPO</td><td>Q1 FY2027, about Nov 2026, and each quarter after</td><td><span class="chip a">Micron</span> if it falls short</td><td>Sandisk earnings call and 10-Q</td></tr>
+    <tr><td>Micron quarterly data-centre SSD revenue versus Sandisk quarterly Datacenter revenue</td><td>Micron above Sandisk for four consecutive quarters</td><td>Through Q4 FY2027</td><td><span class="chip a">Micron</span></td><td>Both companies' earnings calls</td></tr>
+    <tr><td>Sandisk full-year gross capital intensity</td><td>Above 9% of revenue</td><td>FY2027 results, about Aug 2027</td><td><span class="chip a">Micron</span></td><td>Sandisk 10-K</td></tr>
+    <tr><td>CXMT or YMTC qualified in leading-edge DRAM or HBM at a top-three non-Chinese customer</td><td>Any confirmed qualification</td><td>Any date</td><td>Neither. Damages both, Micron more</td><td>TrendForce, Counterpoint, customer disclosure</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the hours on Micron, and spend them on one number: what gross margin the strategic customer agreements actually produce at floor pricing. It is the single largest swing factor in either name, Micron has declined to quantify it twice on the record, and it is the only variable that decides whether the fiscal 2027 capital wave is an investment or the next cycle's depreciation problem. Sandisk has already published its answer to the same question, about 80% gross margin at floor on two thirds of fiscal 2028 bits, which means the Sandisk work converges and the Micron work does not. That is precisely why Micron is where the research time earns its return.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> This is a three-step duel: a growth and profitability map that breaks both companies out of their consolidated totals into product and geography cells and keeps the cells that explain roughly 80% of the economics; a power map comparing moats, customer relationships and supplier links and forcing the conclusion into the top three cells; and a cost engine reconciling three years of five cost ratios. Both companies report in US dollars and by function under US GAAP, so no currency conversion and no by-nature reconciliation is required; fiscal years are offset by about two months and, more importantly, capture different parts of the same cycle, so every comparison here uses calendar-aligned pairs rather than fiscal-year averages, and the headline pair is Micron's last twelve months to 28 May 2026 against Sandisk's fiscal 2026 to 3 July 2026. ND marks data that does not exist publicly, and (inferred) marks a figure reasoned to rather than reported, with the logic stated at the point of use. This is a comparison of business strength, not a valuation: it contains no multiples, no fair value, no price target and no view of any kind on either share price.</p>
+    <p><b>Open questions the sources could not answer.</b> Micron's implied gross margin at strategic-customer-agreement floor pricing, and the share of fiscal 2027 to 2029 volume sitting under floors rather than market pricing, are not quantified in any filing or transcript. Sandisk reports one segment and discloses no operating margin by end market. Micron does not disclose revenue by geography in its 10-Qs, so its latest geographic data is fiscal 2025. Sandisk's fiscal 2023 income statement was not obtained, so no clean trough pair exists. Kitakami Fab3's investment amount, capacity, node and Sandisk's participation share are undisclosed. The enactment status of the MATCH Act, which would restrict equipment and servicing at CXMT and YMTC, was not found.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Micron Technology, Form 10-K for fiscal 2025, filed 3 October 2025. Business description, competition, technology roadmap, risk factors, FY2023 to FY2025 income statement, revenue by business unit and by technology, geographic revenue, customer concentration.</li>
+      <li>Micron Technology, Form 10-Q for the third quarter of fiscal 2026, quarter ended 28 May 2026, filed 25 June 2026. Nine-month income statement, revenue and operating income by business unit, revenue by technology, strategic customer agreements, remaining performance obligations.</li>
+      <li>Micron Technology, Forms 10-K for fiscal 2018 and fiscal 2023. Prior-peak and prior-trough gross margin.</li>
+      <li>Sandisk Corporation, Form 10-K for the fiscal year ended 3 July 2026, filed 17 August 2026. Income statement for fiscal 2024 to 2026, revenue by end market and by geography, customer concentration, Flash Ventures structure and restrictions, capital expenditure, risk factors. Note: this document is filed in the research folder under the label FY2027; the document itself states the fiscal year ended 3 July 2026.</li>
+      <li>Sandisk Corporation, Form 10-K for the fiscal year ended 27 June 2025, filed 21 August 2025.</li>
+      <li>Sandisk Corporation, Form 8-K filed 25 March 2026. Purchase of approximately 139m shares of Nanya Technology for about US$1.0bn, roughly 3.9% fully diluted, with a concurrent multi-year DRAM supply arrangement.</li>
+      <li>Micron Q3 FY2026 earnings call and post-call, 24 June 2026. Strategic customer agreement terms, floor and ceiling pricing, capex, HBM4, data-centre SSD revenue, supply outlook.</li>
+      <li>Micron Technology Leadership Forum, 10 August 2026, and Six Five Summit, 27 August 2026. HBM trade ratio, evergreen SCA structure, FY2027 capex above $45bn, US supply premium.</li>
+      <li>Sandisk Q4 FY2026 earnings call, 5 August 2026, and Investor Day, 13 August 2026. New Business Model agreements, floor pricing at about 80% gross margin, capital intensity, BiCS10, High Bandwidth Flash, long-term model for FY2028 to FY2030.</li>
+      <li>Sandisk at Bernstein, 28 May 2026; Citi Global TMT, 8 September 2026; Goldman Sachs Communacopia, 9 September 2026. Contract exit mechanics, capital discipline, Kioxia and Nanya rationale.</li>
+      <li>Micron press releases: exit from the Crucial consumer business, 3 December 2025; HBM4 in high-volume production for NVIDIA Vera Rubin, 16 March 2026; completion of the PSMC Tongluo P5 acquisition, 15 March 2026; US investment raised to over $250bn, 9 July 2026.</li>
+      <li>Kioxia and Sandisk joint announcements: Yokkaichi joint venture extended to 31 December 2034 for $1,165m, 29 January 2026; BiCS10 production begins at Kitakami Fab2, 2 to 3 July 2026; over $31bn Japan investment through 2032 and Kitakami Fab3 site preparation, 27 August 2026.</li>
+      <li>TrendForce, NAND flash supplier revenue and share for calendar 2Q26, published 18 August 2026; DRAM supplier revenue and share for calendar 2Q26, published 7 September 2026; contract price outlooks published 2 February, 3 July and 25 August 2026.</li>
+      <li>Micron Form 8-K, 26 August 2026. Appointment of Manish Bhatia as President and COO and Scott DeBoer as President and Chief Technology and Products Officer.</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

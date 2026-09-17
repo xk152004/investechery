@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adyen vs American Express: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.09);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.09);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Adyen vs American Express: who wins the next decade?</h1>
+  <p class="source">Payments. ADYEN (Euronext Amsterdam) / AXP (NYSE). Run 17 September 2026. Built from Adyen annual reports FY2023-25, shareholder letters H2 2024 to H1 2026, Investor Day 2025 and M&amp;A call transcripts; American Express 10-Ks FY2021-25, Q2 2026 10-Q and 2026 earnings-call transcripts; plus cited web sources for the event sweep. Events swept through 17 September 2026; most recent events checked: Amex CFO comments at an investor conference (16 Sep 2026) and Adyen CFO Ethan Tandowsky's exit effective 31 Aug 2026. Adyen figures in EUR, Amex in USD; the duel compares ratios and growth rates, not absolutes (size gap at ~1.13 USD/EUR, approx., unverified: Adyen net revenue ~$2.7bn vs Amex $72.2bn, roughly 27x). Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Adyen</span><span class="chip b">American Express</span></div>
+  <p style="font-size:17px;color:#6E675C">Pairing note: these two sit at opposite ends of the same card transaction. Adyen is a merchant-side processor and acquirer earning a take rate; Amex is a closed-loop issuer, network and acquirer earning merchant discount, card fees and interest. They compete for the same pool (what merchants pay to accept a payment), so the duel asks which economic position compounds better, not who has more share of one product.</p>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Adyen is the stronger business for the next 5-10 years: American Express owns the deeper moat, but it pays for its growth with rewards, credit and partner payments, while Adyen compounds share of wallet on a capital-light stack.</div>
+    <div class="why">The load-bearing fact: Amex hands back 49.6% of revenue in rewards, card benefits, partner payments and credit losses (3-year average) to grow about 10%; Adyen keeps 88% of revenue after pass-through costs and grew net revenue 21% a year, 2022-25 (Adyen AR FY2023-25; Amex 10-K FY2025).</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Runway: Adyen's typical merchant goes from under 20% share of wallet in years 3-7 to over 40% after year 12, and it holds about 5% of its market opportunity (H1 2026 letter; Investor Day 2025 transcript). Amex's premium base is deep but already mature in the US.</div>
+    <div class="col"><span class="n">2</span><br>Conversion: Adyen EBITDA margin on net revenue rose 45.7% to 52.7% in 2023-25 with a 2028 target above 55%; Amex's variable customer engagement costs rose from 41.3% to 42.8% of revenue while pretax margin stayed near 19% (AR FY2025; 10-K FY2025).</div>
+    <div class="col"><span class="n">3</span><br>Risk shape: Adyen carries no consumer credit and no deposit funding; in 2020 its net revenue grew 28% while Amex revenue fell 17% (Adyen H2 2020 letter; Amex 10-K FY2021).</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Adyen - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Adyen - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Adyen breaks last - narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors Adyen, right lean favors American Express; marker position shows how decisive.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip a">Adyen, clear</span></div>
+    <p>Three Adyen cells carry the next five years. North American enterprise acceptance (+30% cc in H1 2026, 27% of net revenue) grows by moving large US merchants and platforms such as Toast and OpenAI onto a stack they have not used before, so growth is share gain rather than market growth. Unified Commerce (+27% cc, 32% of net revenue) grows because the same identity and settlement stack runs online and in-store: 838K transacting terminals (+27%) and 486 merchants at scale on both channels, now with Talon.One loyalty bolted on. Platforms (+40% cc) adds issuing, capital and accounts to vertical SaaS, a second revenue layer on volume Adyen already processes (H1 2026 letter). Amex's forward engine is the premium membership refresh cycle, which works (Platinum is its fastest-growing US consumer portfolio, Q2 2026 call), but each cycle costs more in benefits and lifts a mature base by high single digits; the 2026 guide is about 10% revenue growth.</p>
+    <div class="chartbox"><svg viewBox="0 0 860 250" role="img" aria-label="Indexed revenue"><line x1="60" x2="710" y1="191.0" y2="191.0" stroke="#E5DDD0"/><text x="52" y="196.0" font-size="14" fill="#6E675C" text-anchor="end">100</text><line x1="60" x2="710" y1="143.5" y2="143.5" stroke="#E5DDD0"/><text x="52" y="148.5" font-size="14" fill="#6E675C" text-anchor="end">125</text><line x1="60" x2="710" y1="96.0" y2="96.0" stroke="#E5DDD0"/><text x="52" y="101.0" font-size="14" fill="#6E675C" text-anchor="end">150</text><line x1="60" x2="710" y1="48.5" y2="48.5" stroke="#E5DDD0"/><text x="52" y="53.5" font-size="14" fill="#6E675C" text-anchor="end">175</text><text x="60.0" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2022</text><text x="276.7" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2023</text><text x="493.3" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2024</text><text x="710.0" y="238" font-size="14" fill="#6E675C" text-anchor="middle">2025</text><polyline points="60.0,191.0 276.7,148.8 493.3,95.8 710.0,43.4" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="60.0" cy="191.0" r="4" fill="#C75B39"/><circle cx="276.7" cy="148.8" r="4" fill="#C75B39"/><circle cx="493.3" cy="95.8" r="4" fill="#C75B39"/><circle cx="710.0" cy="43.4" r="4" fill="#C75B39"/><text x="720.0" y="48.4" font-size="15" font-weight="700" fill="#C75B39">Adyen 178</text><polyline points="60.0,191.0 276.7,163.4 493.3,143.9 710.0,121.5" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="60.0" cy="191.0" r="4" fill="#3C6E8F"/><circle cx="276.7" cy="163.4" r="4" fill="#3C6E8F"/><circle cx="493.3" cy="143.9" r="4" fill="#3C6E8F"/><circle cx="710.0" cy="121.5" r="4" fill="#3C6E8F"/><text x="720.0" y="126.5" font-size="15" font-weight="700" fill="#3C6E8F">Amex 137</text></svg>
+      <div class="cap">Revenue indexed to 100 in 2022. Adyen net revenue EUR 1,330m (2022, sum of regions in H2 2022 letter), 1,626m, 1,996m, 2,364m (AR FY2024, FY2025). Amex revenues net of interest expense $52,862m, $60,515m, $65,949m, $72,229m (10-K FY2023, FY2025). H1 2026: Adyen +19% reported, Amex +11%.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip a">Adyen, clear</span></div>
+    <p>Adyen converts through operating leverage on one platform: interchange and scheme fees are passed through, so 88% of mapped revenue is gross profit, and the heavier line (people, 44% of revenue) is falling as a share because the same code serves every region; SG&amp;A-equivalent went from 46.1% to 41.9% of revenue in two years. Amex converts through pricing power on card fees ($92 to $117 average fee per card, 2023-25, $131 in Q2 2026) but recycles it: rewards, card-member services and partner payments grew faster than revenue in 2025, and the company chose to reinvest its 2026 revenue beat rather than raise EPS guidance (Q2 2026 call). The tension worth noting is that Amex wins the power lens yet loses the margin lens: its moat is real, but it is paid for every year.</p>
+    <div class="chartbox"><svg viewBox="0 0 860 170" role="img" aria-label="Margin dumbbells"><text x="136" y="55" font-size="16" font-weight="700" fill="#2B2B2B" text-anchor="end" font-family="Georgia">Gross margin</text><line x1="150.0" x2="820.0" y1="50" y2="50" stroke="#E5DDD0" stroke-width="2"/><text x="150.0" y="74" font-size="13" fill="#6E675C">0%</text><text x="820.0" y="74" font-size="13" fill="#6E675C" text-anchor="end">100%</text><line x1="487.7" x2="740.3" y1="50" y2="50" stroke="#2B2B2B" stroke-width="2"/><circle cx="740.3" cy="50" r="8" fill="#C75B39"/><circle cx="487.7" cy="50" r="8" fill="#3C6E8F"/><text x="740.3" y="36" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">Adyen 88.1%</text><text x="487.7" y="36" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">Amex 50.4%</text><text x="614.0" y="74" font-size="14" fill="#2B2B2B" text-anchor="middle">+37.7pts</text><text x="136" y="130" font-size="16" font-weight="700" fill="#2B2B2B" text-anchor="end" font-family="Georgia">EBIT margin</text><line x1="150.0" x2="820.0" y1="125" y2="125" stroke="#E5DDD0" stroke-width="2"/><text x="150.0" y="149" font-size="13" fill="#6E675C">0%</text><text x="820.0" y="149" font-size="13" fill="#6E675C" text-anchor="end">100%</text><line x1="275.3" x2="409.3" y1="125" y2="125" stroke="#2B2B2B" stroke-width="2"/><circle cx="409.3" cy="125" r="8" fill="#C75B39"/><circle cx="275.3" cy="125" r="8" fill="#3C6E8F"/><text x="409.3" y="111" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">Adyen 38.7%</text><text x="275.3" y="111" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">Amex 18.7%</text><text x="342.3" y="149" font-size="14" fill="#2B2B2B" text-anchor="middle">+20.0pts</text></svg>
+      <div class="cap">3-year averages FY2023-25 on a mapped basis (see Cost Engine tab). Gross margin: Adyen revenue less costs from financial institutions, terminal COGS and interest expense; Amex revenue less provisions, rewards, card-member services and business development. EBIT: Adyen income before net finance income; Amex pretax income. Adyen AR FY2024-25; Amex 10-K FY2025.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip b">American Express breaks first in a downturn</span> <span class="chip a">Adyen breaks first in a price war</span></div>
+    <p>Amex's exposure is the balance sheet behind the spend: $151.8bn of card-member loans funded largely by $152.5bn of deposits, provisions already 7-8% of revenue, and discount revenue (52% of revenue) tied to consumer spending; in 2020 revenue fell 17% (10-K FY2025, FY2021). Adyen's exposure is price: tiered pricing hands take rate back as merchants scale (Platforms take rate about 12bps vs 17bps in Unified Commerce, H1 2026, inferred from letter volumes and revenue), and a few hundred enterprise merchants drive about 60% of growth, so a Stripe-led price war on the largest accounts would show up as growth and take rate falling together. In a cyclical downturn Amex breaks first because credit losses and spend fall at once; in a structural disruption (merchants steering shoppers to cheaper methods, surcharging) Amex is also more exposed, and Adyen is building the steering tool (Personalize, H2 2025 letter).</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These five cells carry roughly 80% of the combined economics of both firms; every score is argued in the tabs below.</p>
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">Adyen</th><th class="cb">Amex</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>US consumer premium spend</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i></i><i></i><i></i><i></i><i></i></span>0</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</span></td><td>Adyen has no consumer product; Amex USCS is 48% of revenue, fees +20% and Platinum its fastest grower (10-K FY2025; Q2 2026 call).</td></tr>
+    <tr><td>Enterprise merchant acceptance, EMEA</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</span></td><td>Adyen EMEA 58% of net revenue, +22% a year 2023-25 on own EU license; Amex exited its EU network business under fee-cap regulation (AR FY2025; 10-Q Q2 2026).</td></tr>
+    <tr><td>Merchant acceptance, North America</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</span></td><td>Adyen NA +30% cc in H1 2026 from share gains; Amex network volumes +7% but discount rate slipping 2.29% to 2.24% and surcharging rising (letter H1 2026; 10-K FY2025).</td></tr>
+    <tr><td>Commercial and platform payments, US-led</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</span></td><td>Adyen Platforms +40% cc, issuing volume 8x in 2025 from a small base; Amex CS billed business +3%, revenue +7% (letters H2 2025, H1 2026; 10-K FY2025).</td></tr>
+    <tr><td>International cards and acceptance, APAC, LatAm, Canada, Japan</td><td class="ca"><span style="white-space:nowrap"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</span></td><td class="cb"><span style="white-space:nowrap"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</span></td><td>Adyen APAC +14% and LatAm +12% a year 2023-25, below group; Amex ICS billed business +14% and pretax income +55% in 2025 (AR FY2025; 10-K FY2025).</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs. Scores are per cell and are not summed; the three lenses get their verdicts in the Three Answers above.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Adyen runs one engine (merchant fees) across three fast cells; Amex runs four engines (discount revenue, card fees, interest, service fees) that each grow near 10%.</div>
+    <p>The filings do not line up, so the map is normalized. Adyen reports pillars (Digital, Unified Commerce, Platforms) and regions (EMEA, North America, APAC, LatAm) separately, with no pillar x region matrix, so pillar-region cells are ND and the two dimensions are shown side by side. Adyen's regions follow merchant billing location, and North America includes APAC-headquartered merchants billed there (H2 2025 letter). Amex segments are already product x geography: US Consumer (USCS), Commercial (CS, US), International Card Services (ICS, all cards outside the US including Canada) and Global Merchant and Network Services (GMNS).</p>
+    <p>The contrast is stark. Adyen's two newer cells are 44% of net revenue and grew 30% and 50% in 2025; its largest cell, Digital, grew 9% reported, held back by one large customer moving volume away (volume +8% in 2025, +21% excluding that customer, H2 2025 letter). Amex's largest cell, US Consumer, is also its best: 11% a year 2023-25 with rising card fees. Its merchant and network cell is the laggard at 4%, which matters because merchant economics are exactly where Adyen operates.</p>
+    <div class="chartbox"><svg viewBox="0 0 900 324" role="img" aria-label="Butterfly chart of revenue engines"><text x="365.0" y="22" font-size="17" font-weight="700" fill="#C75B39" text-anchor="end" font-family="Georgia">Adyen (% of net revenue, FY25)</text><text x="535.0" y="22" font-size="17" font-weight="700" fill="#3C6E8F" font-family="Georgia">American Express (% of revenue, FY25)</text><text x="450.0" y="65" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Engine 1 (largest)</text><rect x="223.2" y="50" width="151.8" height="24" fill="#C75B39"/><text x="215.2" y="67" font-size="14" fill="#2B2B2B" text-anchor="end">Digital 56.5% <tspan fill="#6E675C">| +9%</tspan></text><rect x="525.0" y="50" width="129.0" height="24" fill="#3C6E8F"/><text x="662.0" y="67" font-size="14" fill="#2B2B2B">US Consumer 48.0% <tspan fill="#6E675C">| +11%</tspan></text><text x="450.0" y="109" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Engine 2</text><rect x="287.9" y="94" width="87.1" height="24" fill="#C75B39"/><text x="279.9" y="111" font-size="14" fill="#2B2B2B" text-anchor="end">Unified Commerce 32.4% <tspan fill="#6E675C">| +30%</tspan></text><rect x="525.0" y="94" width="62.6" height="24" fill="#3C6E8F"/><text x="595.6" y="111" font-size="14" fill="#2B2B2B">Commercial (US) 23.3% <tspan fill="#6E675C">| +7%</tspan></text><text x="450.0" y="153" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Engine 3</text><rect x="344.9" y="138" width="30.1" height="24" fill="#C75B39"/><text x="336.9" y="155" font-size="14" fill="#2B2B2B" text-anchor="end">Platforms 11.2% <tspan fill="#6E675C">| +50%</tspan></text><rect x="525.0" y="138" width="48.1" height="24" fill="#3C6E8F"/><text x="581.1" y="155" font-size="14" fill="#2B2B2B">International Cards 17.9% <tspan fill="#6E675C">| +13%</tspan></text><text x="450.0" y="197" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Engine 4</text><text x="367.0" y="197" font-size="14" fill="#6E675C" text-anchor="end">no fourth engine</text><rect x="525.0" y="182" width="28.8" height="24" fill="#3C6E8F"/><text x="561.8" y="199" font-size="14" fill="#2B2B2B">Merchant and Network 10.7% <tspan fill="#6E675C">| +4%</tspan></text><line x1="20" x2="880" y1="216" y2="216" stroke="#E5DDD0" stroke-dasharray="4 4"/><text x="450.0" y="241" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Home region</text><rect x="220.2" y="226" width="154.8" height="24" fill="#C75B39"/><text x="212.2" y="243" font-size="14" fill="#2B2B2B" text-anchor="end">EMEA 57.6% <tspan fill="#6E675C">| +19%</tspan></text><rect x="525.0" y="226" width="209.6" height="24" fill="#3C6E8F"/><text x="742.6" y="243" font-size="14" fill="#2B2B2B">United States 78.0% <tspan fill="#6E675C">| ND</tspan></text><text x="450.0" y="285" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Outside home region</text><rect x="261.1" y="270" width="114.0" height="24" fill="#C75B39"/><text x="253.1" y="287" font-size="14" fill="#2B2B2B" text-anchor="end">NA, APAC, LatAm 42.4% <tspan fill="#6E675C">| +18%</tspan></text><rect x="525.0" y="270" width="59.1" height="24" fill="#3C6E8F"/><text x="592.1" y="287" font-size="14" fill="#2B2B2B">Outside US 22.0% <tspan fill="#6E675C">| ND</tspan></text></svg>
+      <div class="cap">Each company's reported cells ranked by share of revenue (FY2025), mirrored on a shared percentage scale. Growth is FY2025 year on year, reported currency. Amex segment shares use segment revenue before eliminations ($72,499m). Amex US share is derived from "approximately 22 percent ... outside the United States" (10-K FY2025 risk factors); regional growth ND. Adyen AR FY2025 note 2.2; Amex 10-K FY2025 segment tables.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">Adyen FY25 (% of NR)</th><th class="num ca">Growth</th><th class="num cb">Amex FY25 (% of rev)</th><th class="num cb">Growth, 2y CAGR</th><th>Margin signal / leader</th></tr>
+      <tr><td>Engine 1: Digital / US Consumer</td><td class="num ca">EUR 1,335m (56%)</td><td class="num ca">+9% (+15% cc H1'26)</td><td class="num cb">$34,814m (48%)</td><td class="num cb">+11%</td><td>Adyen Digital take rate 16.8bps (inferred); Amex USCS pretax margin 19.6%. Amex leads on pricing, Adyen on growth.</td></tr>
+      <tr><td>Engine 2: Unified Commerce / Commercial</td><td class="num ca">EUR 765m (32%)</td><td class="num ca">+30% (+27% cc)</td><td class="num cb">$16,926m (23%)</td><td class="num cb">+7%</td><td>Adyen UC 17.3bps, highest pillar take rate (inferred); Amex CS pretax 21.7%. Adyen leads.</td></tr>
+      <tr><td>Engine 3: Platforms / International Cards</td><td class="num ca">EUR 264m (11%)</td><td class="num ca">+50% (+40% cc)</td><td class="num cb">$13,000m (18%)</td><td class="num cb">+12%</td><td>Adyen Platforms 12.3bps, tiering visible (inferred); Amex ICS pretax 12.3%, lowest segment margin. Split.</td></tr>
+      <tr><td>Engine 4: none / Merchant and Network</td><td class="num ca">ND</td><td class="num ca">ND</td><td class="num cb">$7,759m (11%)</td><td class="num cb">+2%</td><td>Amex GMNS pretax 51% on allocated segment revenue; discount rate 2.29% to 2.24%, 2023-25.</td></tr>
+      <tr><td>Geography: home / outside</td><td class="num ca">EMEA 58% / 42%</td><td class="num ca">+19% / +18%</td><td class="num cb">US ~78% / ~22%</td><td class="num cb">ND / ICS +13%</td><td>Adyen is the more global business; Amex is a US franchise with a growing international card book.</td></tr>
+    </table>
+    <div class="iik"><b>Insight:</b> Adyen's growth sits in cells that are still small and compounding at 27-40% cc; Amex's largest cell is also its best, but its merchant cell grows 4%. <b>Implication:</b> Adyen's mix shifts toward faster cells each year, while Amex's merchant-side economics, the pool the two share, grow slowest. <span class="kpi">KPI: Adyen Unified Commerce plus Platforms above 47% of net revenue in FY2027 (44% in FY2025); Amex GMNS revenue growth above 5%.</span> [Source: Adyen AR FY2025 note 2.2, H1 2026 letter; Amex 10-K FY2025 segment tables]</div>
+    <h3>Segment growth engines</h3>
+    <p><b>Adyen, share of wallet.</b> About two thirds of H1 2026 growth came from customers onboarded in 2024 and earlier; the rest from the 2025 cohort, new wins and financial products, net of volume tiering (H1 2026 letter). Management's Investor Day framing is that newer cohorts contribute 2-3x more growth in year two than in year one (Investor Day 2025 transcript). Acquired growth is now in the mix: Talon.One (EUR 750m, about EUR 60m ARR growing 30-40%) and Orb ($335m) closed on 1 July 2026 and add about 1 point to 2026 growth and 1-2 points to 2027 (M&amp;A call 23 Apr 2026; H1 2026 letter).</p>
+    <p><b>Amex, membership refresh.</b> Net card fees grew 18% in 2025 and 17% in H1 2026 on new premium acquisition, retention and product refreshes; proprietary new cards acquired fell from 13.0m (2024) to 12.5m (2025), so the lift is price and mix more than volume (10-K FY2025; 10-Q Q2 2026). ICS growth in 2026 is partly inorganic: Swisscard became wholly owned on 12 January 2026 (10-Q Q2 2026).</p>
+    <div class="iik"><b>Insight:</b> Adyen grows by deepening existing merchants, now with bought loyalty and billing; Amex grows by repricing premium cards more than by adding them. <b>Implication:</b> Adyen's driver compounds with its base; Amex's driver needs a new refresh every few years to keep fees rising. <span class="kpi">KPI: Adyen share of growth from 2024-and-earlier cohorts stays near two thirds; Amex proprietary new cards acquired back above 13m a year.</span> [Source: H1 2026 letter; 10-K FY2025 Table 5]</div>
+    <h3>Price control and route-to-market</h3>
+    <p>Adyen sells direct to enterprises and through platforms, prices interchange-plus with volume tiers, and passes scheme and interchange costs through, so it controls its margin but not its take rate: take rate moved 16.2bps (H2 2024), 17.1bps (H2 2025), 16.2bps (H1 2026) on mix and tiering (letters). Amex sets both prices in a closed loop, card fees to consumers and merchant discount to merchants, but the merchant side is being contested: discount revenue as a share of billed business slipped from 2.29% to 2.24% over 2023-25 and 2.23% in H1 2026, merchant surcharging is rising where allowed, and Australia's central bank ends the requirement to permit surcharging on 1 October 2026 and opened a review of three-party networks in June 2026 (10-K FY2025; 10-Q Q2 2026).</p>
+    <div class="iik"><b>Insight:</b> Amex controls both prices but its merchant price is eroding; Adyen controls neither interchange nor tiers but passes the first through and chooses the second. <b>Implication:</b> Merchant-side pricing power is migrating away from premium networks toward whoever controls checkout routing, which favors Adyen. <span class="kpi">KPI: Amex discount revenue as % of billed business at or above 2.20% through FY2027; Adyen take rate at or above 15.5bps.</span> [Source: 10-K FY2025 Table 5; 10-Q Q2 2026; Adyen letters H2 2024-H1 2026]</div>
+    <h3>Supply resilience</h3>
+    <table>
+      <tr><th>Input</th><th class="ca">Adyen</th><th class="cb">American Express</th></tr>
+      <tr><td>Card network access</td><td class="ca">Depends on Visa and Mastercard scheme licenses and rules (AR FY2025 risk section)</td><td class="cb">Owns its network; exited EU and Australia network licensing under regulation</td></tr>
+      <tr><td>Funding / licenses</td><td class="ca">Own banking licenses in EU, US, UK; net cash EUR 4.9bn excluding merchant balances (H1 2026)</td><td class="cb">Customer deposits $152.5bn fund $151.8bn of loans (10-K FY2025)</td></tr>
+      <tr><td>Compute</td><td class="ca">Own data centers; capex pulled forward to 7% of net revenue in 2026 to lock in supply</td><td class="cb">Not a disclosed constraint</td></tr>
+      <tr><td>Partners</td><td class="ca">No single customer disclosed as material; concentration "within risk appetite"</td><td class="cb">Delta cobrand ~13% of billed business, ~21% of loans, contract to end-2029</td></tr>
+    </table>
+    <h3>Competitive context</h3>
+    <p>Adyen's cells are contested by Stripe (payment volume +34% in 2025, approx., unverified), Checkout.com, JPMorgan and the legacy acquirers Fiserv and Worldpay/Global Payments, which are flat to shrinking (approx., unverified); Adyen is a share-taker. Amex's premium cells are contested by bank issuers on Visa and Mastercard rails, notably JPMorgan and Capital One (which now owns the Discover network); Amex holds share in premium and takes share internationally, with Millennials and Gen Z about 65% of new accounts (investor conference, 16 Sep 2026, via Yahoo Finance).</p>
+    <h3>Risks by segment</h3>
+    <p>Adyen Digital: large merchants renegotiating tiers while Stripe moves up-market would compress take rate faster than wallet share rises; this is where Adyen is more exposed. Amex US Consumer: each refresh adds fixed benefit costs (card-member services +27% in 2025, +49% in H1 2026) that must be covered by fee growth; if premium consumers trade down in a slowdown, costs stay and fees soften. Amex Merchant and Network: regulation of three-party pricing (Australia review, EU cobrand fee-cap case in the Netherlands after the April 2026 CJEU ruling) cuts discount rate directly; Adyen gains from the same shift.</p>
+    <div class="pull">Adyen has the higher-probability growth path: its fastest cells are already 44% of net revenue, its core grows by share of wallet in a fragmented market, and Amex's roughly 10% engine needs rising benefit spend to hold its pace.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">Amex sets the terms with consumers; Adyen sets the terms with nobody, but it is also beholden to nobody for funding.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">American Express - narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">American Express - narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Adyen - clear</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever; each call argued below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Adyen</h3><p>1) One global stack plus own banking licenses in the EU, US and UK; replicating licensed, single-code acquiring across regions takes years (Medium-High). 2) Cross-channel identity data: about 95% of roughly 400m Black Friday shoppers recognized in real time across online and in-store (H2 2025 letter) (Medium). 3) Peak reliability, 99.9999% uptime on 837m BFCM transactions (Medium). Stripe is building the same with money and time, so none is High.</p></div>
+      <div class="col b"><h3>American Express</h3><p>1) Premium membership brand with proven pricing: 86.6m proprietary cards, average fee per card up 12-14% a year, $10.0bn of card fees in 2025 (High). 2) Closed-loop network seeing both sides of $1,897bn of network volume (High). 3) Rewards and cobrand ecosystem (Delta, Marriott, Hilton, Membership Rewards) (High, partner-dependent). Sources: 10-K FY2025.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Amex's advantages take decades and a brand to copy; Adyen's take years and engineering, and a funded rival is doing it. <b>Implication:</b> Amex's moat is more durable; Adyen must keep out-executing to keep its lead. <span class="kpi">KPI: Amex average fee per card growth above 10%; Adyen merchants at scale on both channels above 550 by H1 2027 (486 in H1 2026).</span> [Source: 10-K FY2025; H1 2026 letter]</div>
+    <h3>Customers: who controls net price and access</h3>
+    <p>Adyen: enterprises multi-source by design, which is why share of wallet rises slowly from under 20% to over 40% over a decade; the same fact means merchants keep live alternatives and win lower tiers as they grow, so Adyen's pricing power is exercised on value-added products, not on core processing (H1 2026 letter; H1 2026 call). Amex: consumers pay rising annual fees without volume collapse (fees +18%, cards-in-force +4% in 2025), which is pricing power exercised; merchants, the other side, push back through surcharging and lower discount rates, and one partner (Delta) carries 21% of loans (10-K FY2025).</p>
+    <div class="iik"><b>Insight:</b> Amex exercises pricing power on consumers and loses it on merchants; Adyen concedes core price to its biggest merchants by design. <b>Implication:</b> When demand softens, Amex's margin pressure lands on merchant discount and credit; Adyen's lands on take rate. <span class="kpi">KPI: Amex card-fee growth vs discount-rate change each year; Adyen top-300 merchant share of growth below 60%.</span> [Source: 10-K FY2025; 10-Q Q2 2026; H1 2026 letter]</div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Adyen's critical suppliers are the card schemes, but their fees are passed through (costs from financial institutions 7.2% of IFRS revenue in 2025), and it funds itself from equity and float, holding EUR 4.9bn of own cash (AR FY2025; H1 2026 letter). Amex's critical inputs are funding and partners: interest expense and deposit pricing move with rates, and business development payments to partners reached $6.5bn in 2025, rising with volumes (10-K FY2025). In a rate or credit shock Amex absorbs it in provisions and funding cost; Adyen's finance income falls (EUR 268m in 2025 vs 350m in 2024) but operating margin is untouched.</p>
+    <div class="iik"><b>Insight:</b> Adyen passes supplier costs through and needs no external funding; Amex's inputs, deposits and partners, are rate- and contract-sensitive. <b>Implication:</b> In a shock Adyen keeps supplying at stable net price; Amex's economics move with credit and rates. <span class="kpi">KPI: Amex provisions for credit losses below 8% of revenue; Delta cobrand renewal announced before end-2029.</span> [Source: AR FY2025; 10-K FY2025]</div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>Enterprise acceptance, North America</td><td>Adyen direct to merchant; Amex direct via GMNS and OptBlue acquirers</td><td>Adyen below legacy acquirers on tiers; Amex above bankcard rates</td><td>Both high</td><td>Adyen share up, margin flat; Amex share flat, discount rate down</td><td>Adyen NA cc growth at or above 25%; Amex discount rate at or above 2.20%</td></tr>
+      <tr><td>US consumer premium spend</td><td>Amex direct to consumer; Adyen absent</td><td>Amex fee per card rising</td><td>Amex high, Delta to 2029</td><td>Amex share up, margin flat (VCE absorbs fees)</td><td>Amex VCE at or below 43% of revenue</td></tr>
+      <tr><td>Enterprise acceptance, EMEA</td><td>Adyen direct, own license; Amex capped by EU rules</td><td>Adyen parity to below; Amex capped</td><td>Adyen high; Amex regulatory risk</td><td>Adyen share up, margin up; Amex flat</td><td>Adyen EMEA growth at or above 15%</td></tr>
+    </table>
+    <h3>The causal gap</h3>
+    <p>1) Balance-sheet model (Major): Amex carries credit and funding risk as the price of issuing; Adyen carries neither. The gap is the business model, so neither side closes it. 2) Who pays for growth (Major): Amex spends about 43% of revenue on rewards, benefits and partner payments to grow near 10%; Adyen gives price back through tiers but keeps 88% after pass-through. Not closable without Amex weakening its value proposition. 3) Consumer pricing power (Moderate): Amex's is real and Adyen has none; Adyen's route to comparable lock-in is moving into loyalty and billing (Talon.One, Orb, Intelligent Money Movement), a 3-5 year project that money alone does not finish.</p>
+    <div class="pull">Amex holds the stronger moat and the only proven pricing power in this pair; Adyen holds the cleaner supplier and funding position. Early warnings: Adyen take rate under 15bps with growth under 18% cc; Amex discount rate under 2.18% or card-fee growth under 12%.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">Adyen runs leaner at the gross line by 38 points and at the operating line by 20; the gap is made of rewards and credit, not efficiency.</div>
+    <p>The statements are not like-for-like and the mapping is stated once. Adyen presents costs by nature under IFRS: revenue = non-interest revenue plus interest income; COGS proxy = costs incurred from financial institutions + cost of goods sold (terminals) + interest expense, so gross profit equals Adyen's net revenue; SG&amp;A = wages, social security and pension, and other operating expenses; D&amp;A (4.6-5.1%) sits outside; EBIT = income before net finance income and taxes, which excludes EUR 268m of 2025 finance income. Amex presents by function as a bank: revenue = total revenues net of interest expense; COGS proxy = provisions for credit losses + card-member rewards + card-member services + business development; SG&amp;A = marketing + salaries and benefits + other, net; EBIT proxy = pretax income. Neither company discloses R&amp;D, so it is ND for both.</p>
+    <h3>Three years, five ratios</h3>
+    <table>
+      <tr><th>% of mapped revenue, 3y avg FY2023-25</th><th class="num ca">Adyen</th><th class="num cb">American Express</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS proxy</td><td class="num ca">11.9%</td><td class="num cb">49.6%</td><td class="num">-37.7pts</td><td>Amex pays rewards, benefits, partners and credit losses; Adyen passes interchange through</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">ND</td><td class="num cb">ND</td><td class="num">ND</td><td>Not disclosed; technology sits in staff and other costs at both</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">44.3%</td><td class="num cb">31.7%</td><td class="num">+12.5pts</td><td>Adyen is people-centric (5,020 FTE); Amex spreads fixed cost over a far larger revenue base</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">88.1%</td><td class="num cb">50.4%</td><td class="num">+37.7pts</td><td>Position in the value chain</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">38.7%</td><td class="num cb">18.7%</td><td class="num">+20.0pts</td><td>Gross gap only partly offset by Amex's lighter overhead</td></tr>
+    </table>
+    <div class="chartbox"><svg viewBox="0 0 860 300" role="img" aria-label="Cost engine grouped bars"><line x1="40" x2="840" y1="250" y2="250" stroke="#2B2B2B"/><text x="120.0" y="272" font-size="15" fill="#2B2B2B" text-anchor="middle" font-weight="700">COGS proxy</text><rect x="69.0" y="223.8" width="48" height="26.2" fill="#C75B39"/><text x="93.0" y="217.8" font-size="14" fill="#C75B39" font-weight="700" text-anchor="middle">11.9%</text><rect x="123.0" y="140.9" width="48" height="109.1" fill="#3C6E8F"/><text x="147.0" y="134.9" font-size="14" fill="#3C6E8F" font-weight="700" text-anchor="middle">49.6%</text><text x="280.0" y="272" font-size="15" fill="#2B2B2B" text-anchor="middle" font-weight="700">R&amp;D</text><text x="280.0" y="236" font-size="14" fill="#6E675C" text-anchor="middle">ND for both</text><text x="440.0" y="272" font-size="15" fill="#2B2B2B" text-anchor="middle" font-weight="700">SG&amp;A</text><rect x="389.0" y="152.5" width="48" height="97.5" fill="#C75B39"/><text x="413.0" y="146.5" font-size="14" fill="#C75B39" font-weight="700" text-anchor="middle">44.3%</text><rect x="443.0" y="180.3" width="48" height="69.7" fill="#3C6E8F"/><text x="467.0" y="174.3" font-size="14" fill="#3C6E8F" font-weight="700" text-anchor="middle">31.7%</text><text x="600.0" y="272" font-size="15" fill="#2B2B2B" text-anchor="middle" font-weight="700">Gross margin</text><rect x="549.0" y="56.2" width="48" height="193.8" fill="#C75B39"/><text x="573.0" y="50.2" font-size="14" fill="#C75B39" font-weight="700" text-anchor="middle">88.1%</text><rect x="603.0" y="139.1" width="48" height="110.9" fill="#3C6E8F"/><text x="627.0" y="133.1" font-size="14" fill="#3C6E8F" font-weight="700" text-anchor="middle">50.4%</text><text x="760.0" y="272" font-size="15" fill="#2B2B2B" text-anchor="middle" font-weight="700">EBIT margin</text><rect x="709.0" y="164.9" width="48" height="85.1" fill="#C75B39"/><text x="733.0" y="158.9" font-size="14" fill="#C75B39" font-weight="700" text-anchor="middle">38.7%</text><rect x="763.0" y="208.9" width="48" height="41.1" fill="#3C6E8F"/><text x="787.0" y="202.9" font-size="14" fill="#3C6E8F" font-weight="700" text-anchor="middle">18.7%</text><text x="40" y="18" font-size="14" fill="#C75B39" font-weight="700">Adyen</text><text x="100" y="18" font-size="14" fill="#3C6E8F" font-weight="700">American Express</text><text x="240" y="18" font-size="14" fill="#6E675C">3-year average, FY2023-25, % of mapped revenue</text></svg>
+      <div class="cap">Adyen AR FY2024 and FY2025 consolidated statements of comprehensive income; Amex 10-K FY2025 Tables 1, 3 and 4.</div>
+    </div>
+    <table>
+      <tr><th>Year</th><th class="num ca">Adyen revenue (EURm)</th><th class="num ca">COGS</th><th class="num ca">SG&amp;A</th><th class="num ca">GM</th><th class="num ca">EBIT</th><th class="num cb">Amex revenue ($m)</th><th class="num cb">COGS</th><th class="num cb">SG&amp;A</th><th class="num cb">GM</th><th class="num cb">EBIT</th></tr>
+      <tr><td>2023</td><td class="num ca">1,863</td><td class="num ca">12.7%</td><td class="num ca">46.1%</td><td class="num ca">87.3%</td><td class="num ca">35.3%</td><td class="num cb">60,515</td><td class="num cb">49.4%</td><td class="num cb">33.2%</td><td class="num cb">50.6%</td><td class="num cb">17.4%</td></tr>
+      <tr><td>2024</td><td class="num ca">2,253</td><td class="num ca">11.4%</td><td class="num ca">44.9%</td><td class="num ca">88.6%</td><td class="num ca">39.4%</td><td class="num cb">65,949</td><td class="num cb">49.2%</td><td class="num cb">31.2%</td><td class="num cb">50.8%</td><td class="num cb">19.6%</td></tr>
+      <tr><td>2025</td><td class="num ca">2,672</td><td class="num ca">11.5%</td><td class="num ca">41.9%</td><td class="num ca">88.5%</td><td class="num ca">41.5%</td><td class="num cb">72,229</td><td class="num cb">50.1%</td><td class="num cb">30.8%</td><td class="num cb">49.9%</td><td class="num cb">19.1%</td></tr>
+    </table>
+    <h3>The structural gap</h3>
+    <p>The persistent gap is gross margin: about 38 points in every year, explained by position rather than one-offs. Amex earns the full merchant discount and card fees but returns roughly half to cardmembers, partners and credit losses, and that share rose to 50.1% in 2025 as the Platinum refresh added benefits. Adyen's gross line is stable near 88% because scheme and interchange costs pass through, and its operating leverage shows in SG&amp;A falling 4.2 points in two years. This confirms the power map rather than contradicting it: Amex's pricing power is visible in card fees, but it is spent on the value proposition that creates it. The confidence caveat is Adyen's 2026 step: EBITDA margin guided about 1 point lower with acquisitions and capex at 7%, so the next two years test whether leverage survives the move beyond payments.</p>
+    <div class="pull">Adyen runs the leaner engine by a wide, persistent margin; Amex's engine is efficient in overhead but structurally committed to paying for spend.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li>Tiering outruns wallet share at Adyen: the largest merchants renegotiate as Stripe moves up-market, so take rate and growth fall together. <span style="color:#3E6B4F;font-weight:700;">Early warning: take rate below 15bps with cc net revenue growth below 15% for two consecutive halves (shareholder letters, Feb and Aug 2027).</span></li>
+      <li>Adyen's move beyond payments dilutes instead of compounding, with leadership churn (CFO exit August 2026, North America head exit November 2025) weakening execution. <span style="color:#3E6B4F;font-weight:700;">Early warning: FY2027 EBITDA margin below 50% or the above-55% 2028 target withdrawn; Talon.One ARR growth below 25% (annual report FY2027).</span></li>
+      <li>Amex proves the membership engine compounds without rising cost: fee growth persists after lapping the Platinum refresh while benefit costs flatten. <span style="color:#3E6B4F;font-weight:700;">Early warning: net card fees +15% or more in FY2027 with rewards, services and business development below 41% of revenue and revenue growth at or above 10% (10-K FY2027).</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12-24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>Adyen net revenue growth, constant currency</td><td>FY2026 at or above 21% (guide 21-23%); H1 2027 at or above 18%</td><td>Feb 2027 / Aug 2027</td><td class="ca">Adyen</td><td>Shareholder letters</td></tr>
+    <tr><td>Adyen take rate</td><td>At or above 15.5bps in H2 2026 and H1 2027 (H1 2026: 16.2bps)</td><td>Aug 2027</td><td class="ca">Adyen (below 15bps favors Amex)</td><td>Shareholder letters</td></tr>
+    <tr><td>Adyen EBITDA margin</td><td>FY2027 at or above 52%; FY2028 above 55%</td><td>Feb 2028 / Feb 2029</td><td class="ca">Adyen</td><td>Annual report</td></tr>
+    <tr><td>Amex net card fee growth and average fee per card</td><td>FY2026 at or above 15%; fee per card at or above $140 by Q4 2027 (Q2 2026: $131)</td><td>Jan 2027 / Jan 2028</td><td class="cb">American Express</td><td>10-Q, 10-K</td></tr>
+    <tr><td>Amex discount revenue as % of billed business</td><td>Holds at or above 2.20% (FY2025: 2.24%)</td><td>FY2027 10-K</td><td class="cb">Amex if held; below 2.18% favors Adyen</td><td>10-K Table 5</td></tr>
+    <tr><td>Amex net write-off rate, principal, consumer and small business</td><td>At or below 2.3% (FY2025: 2.0%)</td><td>FY2027 10-K</td><td class="cb">American Express</td><td>10-K Table 7</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the next hours on Adyen: a filing read of the H2 2025 and H1 2026 letters and interim statements focused on take rate by pillar and cohort, the Talon.One and Orb purchase accounting, and what the CFO transition means for the 2028 margin target. Amex's franchise is well understood; Adyen's forward mechanism is the one still open to being wrong.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> The duel runs three lenses: growth and profitability by reported product x geography cells, a power map of moats, customers and suppliers, and a cost engine of five ratios over FY2023-25 with an explicit by-nature vs by-function mapping. Cells were filtered to those explaining about 80% of each company's revenue; Adyen in EUR and Amex in USD, compared in ratios and growth rates. ND means not publicly disclosed; (inferred) marks figures computed from disclosed inputs, such as pillar take rates from H1 2026 volume and revenue. This is a business-strength comparison, not a valuation, and says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Adyen N.V., Annual Report 2025 and Annual Report 2024 (consolidated statement of comprehensive income; note 2.2 non-IFRS measures; note 5 other operating expenses; risk management).</li>
+      <li>Adyen N.V., Shareholder Letters H2 2020, H2 2022, H2 2024, H2 2025 (12 Feb 2026) and H1 2026 (13 Aug 2026).</li>
+      <li>Adyen N.V., Investor Day 2025 transcript (11 Nov 2025); Talon.One M&amp;A announcement call transcript and transaction summary (23 Apr 2026); H1 2026 earnings call transcript (13 Aug 2026). Third-party transcriptions.</li>
+      <li>American Express Company, Form 10-K FY2025 (filed 6 Feb 2026), FY2023 and FY2021; Form 10-Q Q2 2026 (filed 24 Jul 2026); Q4 2025 and Q2 2026 earnings-call transcripts.</li>
+      <li>Payments Dive, "Adyen CFO heads for exit," 28 May 2026. https://www.paymentsdive.com/news/adyen-cfo-heads-for-exit/821365/</li>
+      <li>Adyen, "Adyen to acquire Orb" and "Adyen completes acquisitions of Talon.One and Orb," 2026. https://www.adyen.com/knowledge-hub/talon-one-orb-acquisitions ; The Paypers on the $335m Orb price: https://thepaypers.com/mergers-aquisitions-and-investments/news/adyen-to-acquire-enterprise-billing-platform-orb-for-usd-335-million</li>
+      <li>Yahoo Finance, "American Express Sees Strong Spending, Raises Revenue Outlook at Conference," 16 Sep 2026. https://finance.yahoo.com/markets/stocks/articles/american-express-sees-strong-spending-150205858.html</li>
+      <li>Competitor growth figures (Stripe, Fiserv, Worldpay/GPN): prior web research dated 17 Sep 2026, approx., unverified.</li>
+    </ul>
+  </div>
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+
+</body>
+</html>

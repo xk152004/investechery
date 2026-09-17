@@ -1,3 +1,6 @@
+- [Micron vs Sandisk Peer Duel](https://xk152004.github.io/investechery/stocks/Micron_vs_Sandisk_Peer_Duel.html)
+- [Adyen vs AXP Peer Duel](https://xk152004.github.io/investechery/stocks/Adyen-vs-AXP-Peer-Duel.html)
+- [Adyen vs Visa Peer Duel](https://xk152004.github.io/investechery/stocks/Adyen-vs-Visa-Peer-Duel.html)
 - [Adyen vs Stripe Peer Duel 2026 09 17](https://xk152004.github.io/investechery/stocks/Adyen_vs_Stripe_Peer_Duel_2026-09-17.html)
 - [Adyen Valuation Premium Check](https://xk152004.github.io/investechery/stocks/Adyen-Valuation-Premium-Check.html)
 - [Adyen vs Pay Pal Peer Duel](https://xk152004.github.io/investechery/stocks/Adyen-vs-PayPal-Peer-Duel.html)
