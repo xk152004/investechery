@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merchant Payments — Interactive Learning Packet</title>
+<style>
+  :root {
+    --bg: #0d1220;
+    --panel: #131a2c;
+    --panel-2: #1a2238;
+    --text: #e7ecf5;
+    --muted: #94a0b8;
+    --accent: #5fb0ff;
+    --accent-2: #7fe0c1;
+    --warn: #ffb86b;
+    --bad: #ff7a8a;
+    --good: #6fe28a;
+    --border: rgba(255,255,255,0.08);
+    --highlight: rgba(127,224,193,0.25);
+    --maxw: 980px;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--text); margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", system-ui, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55; }
+  header { position: sticky; top:0; z-index: 50; background: rgba(13,18,32,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+  .header-inner { max-width: var(--maxw); margin: 0 auto; padding: 14px 20px 10px; }
+  h1.brand { margin: 0; font-size: 18px; letter-spacing: 0.3px; color: var(--accent); }
+  h1.brand small { color: var(--muted); font-weight: 500; margin-left: 8px; }
+  .progress-wrap { margin-top: 10px; height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; }
+  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0%; transition: width 0.4s ease; }
+  nav.steps { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; padding-bottom: 4px; }
+  nav.steps button { background: var(--panel); color: var(--muted); border: 1px solid var(--border); padding: 6px 10px; border-radius: 999px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+  nav.steps button:hover { color: var(--text); border-color: var(--accent); }
+  nav.steps button.active { background: var(--accent); color: #06101f; font-weight: 600; border-color: var(--accent); }
+  nav.steps button.done { color: var(--good); border-color: rgba(111,226,138,0.4); }
+  main { max-width: var(--maxw); margin: 0 auto; padding: 28px 20px 60px; }
+  section.phase { display: none; animation: fade 0.35s ease; }
+  section.phase.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .phase-tag { display:inline-block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-2); padding: 2px 8px; border: 1px solid rgba(127,224,193,0.3); border-radius: 4px; margin-bottom: 10px; }
+  h1, h2, h3, h4 { line-height: 1.25; }
+  h1 { font-size: 30px; margin: 0 0 12px; }
+  h2 { font-size: 22px; margin: 28px 0 10px; padding-top: 6px; color: var(--text); border-top: 1px solid var(--border); }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 17px; margin: 22px 0 8px; color: var(--accent); }
+  h4 { font-size: 14px; color: var(--muted); margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0 12px; padding-left: 22px; }
+  li { margin: 4px 0; }
+  strong { color: #fff; }
+  em { color: var(--muted); }
+  a { color: var(--accent); }
+  hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 13px; background: var(--panel); border-radius: 6px; overflow: hidden; }
+  th, td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+  th { background: var(--panel-2); color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  tr:last-child td { border-bottom: none; }
+  td code, p code, li code { background: rgba(95,176,255,0.12); color: var(--accent); padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+  blockquote { border-left: 3px solid var(--accent); padding: 6px 14px; color: var(--muted); margin: 12px 0; }
+
+  /* Jargon link styling - dotted underline, cursor pointer */
+  .jlink {
+    color: inherit;
+    border-bottom: 1px dotted var(--accent);
+    cursor: help;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .jlink:hover {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    background: rgba(95,176,255,0.08);
+  }
+
+  /* Row highlight when jumped to */
+  tr.flash { animation: flashRow 1.6s ease; }
+  @keyframes flashRow {
+    0% { background: var(--highlight); }
+    50% { background: var(--highlight); }
+    100% { background: transparent; }
+  }
+
+  .controls { display: flex; justify-content: space-between; gap: 10px; margin: 36px 0 0; padding-top: 20px; border-top: 1px solid var(--border); }
+  .btn { background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 10px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); color: #06101f; border-color: var(--accent); font-weight: 600; }
+  .btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); color: #06101f; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .card { background: var(--panel); border: 1px solid var(--border); padding: 16px; border-radius: 8px; margin: 12px 0; }
+  .meta-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 12px 0 20px; }
+  .meta-row .card { margin: 0; }
+  .meta-row .card .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; }
+  .meta-row .card .val { font-size: 16px; font-weight: 600; margin-top: 4px; }
+
+  .table-tools { margin: 14px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+  .table-tools input { background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 6px; font-size: 13px; min-width: 220px; }
+  .hidden-row { display: none !important; }
+
+  .quiz-q { background: var(--panel); border: 1px solid var(--border); padding: 18px 20px; border-radius: 8px; margin: 14px 0; }
+  .quiz-q .qhead { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .quiz-q .qbody { font-weight: 600; margin-bottom: 14px; }
+  .choices { display: flex; flex-direction: column; gap: 6px; }
+  .choices label { display: flex; gap: 10px; align-items: flex-start; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+  .choices label:hover { border-color: var(--accent); }
+  .choices input[type=radio] { accent-color: var(--accent); margin-top: 3px; }
+  .choices label.correct { border-color: var(--good); background: rgba(111,226,138,0.08); }
+  .choices label.wrong { border-color: var(--bad); background: rgba(255,122,138,0.08); }
+  .choices label.disabled { cursor: default; }
+  .quiz-feedback { margin-top: 12px; padding: 10px 14px; border-radius: 6px; font-size: 13px; display: none; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.good { background: rgba(111,226,138,0.1); border: 1px solid rgba(111,226,138,0.4); color: var(--good); }
+  .quiz-feedback.bad { background: rgba(255,122,138,0.1); border: 1px solid rgba(255,122,138,0.4); color: var(--bad); }
+  .quiz-feedback .why { color: var(--text); margin-top: 6px; font-size: 13px; }
+  .score-card { background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%); border: 1px solid var(--accent); padding: 22px; border-radius: 10px; margin: 18px 0; text-align: center; display: none; }
+  .score-card.show { display: block; }
+  .score-card .score-num { font-size: 48px; font-weight: 700; color: var(--accent); }
+  .score-card .score-label { color: var(--muted); margin-top: 6px; font-size: 14px; }
+  .score-card .verdict { margin-top: 10px; font-size: 14px; }
+
+  details { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; margin: 8px 0; }
+  details summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+  details[open] summary { margin-bottom: 8px; }
+
+  .info-banner { background: rgba(95,176,255,0.07); border: 1px solid rgba(95,176,255,0.25); padding: 10px 14px; border-radius: 6px; font-size: 13px; color: var(--muted); margin: 14px 0; }
+  .info-banner strong { color: var(--accent); }
+
+  /* External source citations: small, muted, no underline — recede behind prose. */
+  .linkable a:not(.jlink) {
+    color: var(--muted);
+    font-size: 0.78em;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(148,160,184,0.35);
+    padding: 0 1px;
+    opacity: 0.75;
+    transition: opacity 0.15s, color 0.15s;
+  }
+  .linkable a:not(.jlink):hover {
+    color: var(--accent);
+    opacity: 1;
+    border-bottom-color: var(--accent);
+  }
+  /* Tighter line-height inside list items so they read like a list, not prose. */
+  .linkable ul, .linkable ol { margin: 10px 0 14px; }
+  .linkable ul li, .linkable ol li { margin: 6px 0; }
+
+
+  @media (max-width: 600px) {
+    .meta-row { grid-template-columns: 1fr; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 19px; }
+    nav.steps button { font-size: 11px; padding: 5px 8px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1 class="brand">Merchant Payments — Learning Packet <small>3 phases · 6 sections · interactive</small></h1>
+    <div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
+    <nav class="steps" id="stepNav"></nav>
+  </div>
+</header>
+
+<main>
+  <section class="phase" id="phase-welcome">
+    <span class="phase-tag">Start here</span>
+    <h1>Welcome to the Merchant Payments learning packet</h1>
+    <p>This is a guided onboarding sprint that takes a generalist investor from zero to base competence on the Merchant Payments sector — designed to be done in a weekend instead of a month.</p>
+    <div class="meta-row">
+      <div class="card"><div class="lbl">Phase 1</div><div class="val">Decode jargon</div></div>
+      <div class="card"><div class="lbl">Phase 2</div><div class="val">Map the cycle</div></div>
+      <div class="card"><div class="lbl">Phase 3</div><div class="val">Apply &amp; quiz</div></div>
+    </div>
+    <h3>How to use this</h3>
+    <ol>
+      <li>Click <strong>Next</strong> to move through each section in order — you can also jump using the pills at the top.</li>
+      <li>Throughout the prose you'll see <span class="jlink">terms with a dotted underline</span> — click any of them to jump straight to its definition in the jargon table, then click "Back" to return.</li>
+      <li>The jargon table is searchable. The quiz is interactive — click an answer to see whether you got it right and why.</li>
+      <li>The annual-report guide is your application phase: pull the named filings and walk through the template questions yourself.</li>
+    </ol>
+    <h3>Recommended order</h3>
+    <p>Jargon → One-pager → Full report → Quiz (test your understanding) → Annual-report guide.</p>
+    <div class="controls">
+      <span></span>
+      <button class="btn primary" onclick="nextStep()">Begin Phase 1 →</button>
+    </div>
+  </section>
+
+  <section class="phase" id="phase-jargon">
+    <span class="phase-tag">Phase 1 · Decode jargon</span>
+    <h1>Core jargon</h1>
+    <p>The cluster-head terms and formulas you need to read filings in this sector. Use the search box to filter as you go. Other sections of this packet link back to this table — when you click a jargon term elsewhere, the relevant row will flash here.</p>
+    <div class="table-tools">
+      <input type="text" id="jargonSearch" placeholder="Search the jargon table…" oninput="filterJargon()" />
+    </div>
+    <div id="jargonContent" class="no-link"><h1>A) Core Jargon Table — Merchant Payments (Acquiring &amp; Processing)</h1>
+<p>Ordered to learn fast: actors → volume/flow → pricing → unit economics → operations → competition → regulation. All numeric examples are illustrative. Unit: USD unless stated; bps = basis points (1 bp = 0.01%).</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain definition</th>
+<th>Investor relevance</th>
+<th>Small numeric example</th>
+<th>Synonyms/variants</th>
+<th>Tags</th>
+</tr>
+</thead>
+<tbody>
+<tr id="row-four-party-model">
+<td><strong>Four-party model</strong></td>
+<td>A card payment links four parties: shopper, shopper's bank, merchant, merchant's payment provider — connected by a card network.</td>
+<td>Tells you who takes which slice of each fee. The shopper's bank usually takes the largest slice; the merchant's provider keeps a thin one.</td>
+<td>Example only: $100 sale, $2.00 total fee → issuer $1.50, network $0.15, acquirer/PSP $0.35.</td>
+<td>Open-loop model. Variant: three-party / closed-loop (Amex, Discover) where network also issues and acquires.</td>
+<td>[Level: Basic | Driver: Structure | Confidence H | Region: Global | Units: $]</td>
+</tr>
+<tr id="row-card-scheme">
+<td><strong>Card scheme</strong></td>
+<td>The network (Visa, Mastercard, UnionPay) that sets rules, routes messages, and sets interchange schedules. Does not lend or hold merchant money.</td>
+<td>Schemes set the rules every other player lives under. Rule or fee changes shift economics for the whole value chain overnight.</td>
+<td>Example only: scheme charges 0.13% of volume → on $1bn volume = $1.3m in scheme fees.</td>
+<td>Card network, brand, payment network.</td>
+<td>[Level: Basic | Driver: Structure/Pricing | Confidence H | Region: Global | Units: bps]</td>
+</tr>
+<tr id="row-issuer">
+<td><strong>Issuer</strong></td>
+<td>The bank or fintech that gives the shopper the card, approves spending, and carries credit and fraud risk on the shopper side.</td>
+<td>Receives interchange. Issuer approval decisions drive merchant conversion — a key battleground for acquirers selling higher approval rates.</td>
+<td>Example only: issuer earns 1.5% interchange on $100 = $1.50 per transaction.</td>
+<td>Card issuer, issuing bank.</td>
+<td>[Level: Basic | Driver: Revenue pool | Confidence H | Region: Global | Units: $]</td>
+</tr>
+<tr id="row-acquirer">
+<td><strong>Acquirer</strong></td>
+<td>The licensed institution that signs the merchant, receives card funds from the network, and pays the merchant. Holds merchant risk.</td>
+<td>Acquiring licence and direct scheme membership are slow to obtain; they determine who controls pricing and data versus renting it from a bank.</td>
+<td>Example only: merchant sells $1m in a month; acquirer settles $980k after $20k fees.</td>
+<td>Merchant acquirer, merchant bank, sponsor bank. Variant: "principal member" (direct scheme member) vs sponsored.</td>
+<td>[Level: Basic | Driver: Structure/Risk | Confidence H | Region: Global | Units: $]</td>
+</tr>
+<tr id="row-payment-service-provider-psp">
+<td><strong>Payment service provider (PSP)</strong></td>
+<td>Company that sells merchants the full payment stack: gateway (connection), processing (message handling), and often acquiring.</td>
+<td>Full-stack PSPs keep more margin and data than gateway-only players who pass volume to third-party acquirers.</td>
+<td>Example only: gateway-only fee $0.05/txn vs full-stack 0.25% on $80 ticket = $0.20/txn.</td>
+<td>Processor, gateway, merchant services. Ambiguous — Variant A: PSP = gateway only. Variant B: PSP = gateway + acquiring. When used: EU regulation uses B broadly.</td>
+<td>[Level: Basic | Driver: Competition | Confidence M | Region: Global | Units: $/txn, bps]</td>
+</tr>
+<tr id="row-embedded-payments-payfac">
+<td><strong>Embedded payments (PayFac)</strong></td>
+<td>A software platform (marketplace, booking app) offers payments to its own users by acting as a "payment facilitator" on top of a PSP.</td>
+<td>Platforms control merchant distribution; the PSP shares economics with them, lowering take rate but gaining sticky, aggregated volume.</td>
+<td>Example only: platform charges seller 2.9%; PSP charges platform 2.3%; platform keeps 0.6%.</td>
+<td>Payment facilitator, sub-merchant model, platform payments, embedded finance (broader).</td>
+<td>[Level: Intermediate | Driver: Distribution | Confidence M | Region: Global | Units: %]</td>
+</tr>
+<tr id="row-total-payment-volume-tpv">
+<td><strong>Total payment volume (TPV)</strong></td>
+<td>Total money value of payments a provider handles in a period. The top-line volume metric, not revenue.</td>
+<td>Revenue ≈ TPV × take rate. TPV growth driven by nominal spending, share gains, and new merchants. Definitions differ by company — compare carefully.</td>
+<td>Example only: TPV $500bn × 0.16% = $800m net revenue.</td>
+<td>Processed volume (Adyen), GPV (Square), payment volume (Visa). Ambiguous — some include gateway-only volume, some don't.</td>
+<td>[Level: Basic | Driver: Volume | Confidence M | Region: Global | Units: $bn]</td>
+</tr>
+<tr id="row-authorization-clearing-and-settlement">
+<td><strong>Authorization, clearing and settlement</strong></td>
+<td>The three steps of a card payment: ask the issuer "approve?", exchange final transaction records, then move the money.</td>
+<td>Settlement timing creates float and credit exposure; each step is a processing fee opportunity.</td>
+<td>Example only: authorize Monday, clear Monday night, merchant paid Wednesday (T+2).</td>
+<td>Auth/capture, clearing, funding, payout.</td>
+<td>[Level: Basic | Driver: Operations | Confidence H | Region: Global | Units: days]</td>
+</tr>
+<tr id="row-authorization-rate">
+<td><strong>Authorization rate</strong></td>
+<td>Share of attempted payments the issuer approves.</td>
+<td>Higher approval = more merchant sales. The main performance metric PSPs sell on to large merchants; worth more than small fee differences.</td>
+<td>Example only: $10bn attempts; auth rate up 90%→91% = $100m extra sales.</td>
+<td>Approval rate, acceptance rate, conversion (broader).</td>
+<td>[Level: Intermediate | Driver: Merchant value | Confidence H | Region: Global | Units: %]</td>
+</tr>
+<tr id="row-tokenization">
+<td><strong>Tokenization</strong></td>
+<td>Replacing the real card number with a stand-in code (token), often issued by the network, for stored cards.</td>
+<td>Tokens reduce fraud and failed payments from expired cards; raises approval rates and deepens merchant lock-in with the provider storing tokens.</td>
+<td>Example only: 1m stored cards, 15% expire yearly; tokens auto-update → 150k fewer failed renewals.</td>
+<td>Network tokens, credential-on-file, vaulting.</td>
+<td>[Level: Intermediate | Driver: Merchant value/Lock-in | Confidence H | Region: Global | Units: %]</td>
+</tr>
+<tr id="row-merchant-discount-rate-mdr">
+<td><strong>Merchant discount rate (MDR)</strong></td>
+<td>The all-in fee the merchant pays per sale, as a percentage and/or fixed amount.</td>
+<td>MDR is the gross revenue pool split among issuer, network, and acquirer. Merchants push it down; regulators cap parts of it.</td>
+<td>Example only: 2.0% + $0.10 on $50 sale = $1.10.</td>
+<td>Merchant service charge (MSC), processing fee, discount fee.</td>
+<td>[Level: Basic | Driver: Pricing | Confidence H | Region: Global | Units: %, $/txn]</td>
+</tr>
+<tr id="row-interchange">
+<td><strong>Interchange</strong></td>
+<td>Fee the acquirer pays the issuer on each card sale, set by the network, varying by card type, channel, and region.</td>
+<td>Usually the largest cost in MDR. A pass-through for most acquirers, so cap changes move gross revenue more than profit.</td>
+<td>Example only: premium credit card 2.1% vs debit 0.3% on $100 → $2.10 vs $0.30.</td>
+<td>Interchange fee, IF, swipe fee (US).</td>
+<td>[Level: Basic | Driver: Pricing/Regulation | Confidence H | Region: Global | Units: bps]</td>
+</tr>
+<tr id="row-scheme-fees">
+<td><strong>Scheme fees</strong></td>
+<td>Fees the network charges acquirers and issuers for access, processing, and services.</td>
+<td>Networks raise scheme fees unilaterally and with complexity; acquirers must pass through or absorb, squeezing margins.</td>
+<td>Example only: scheme fees rise 0.02 pp on $1bn TPV = $200k extra cost.</td>
+<td>Network fees, assessment fees, brand fees.</td>
+<td>[Level: Intermediate | Driver: Cost | Confidence H | Region: Global | Units: bps]</td>
+</tr>
+<tr id="row-interchange-pricing">
+<td><strong>Interchange++ pricing</strong></td>
+<td>Pricing that passes actual interchange and scheme fees through, plus a separate acquirer markup.</td>
+<td>Separates the acquirer's real earnings from pass-through; favoured by enterprises. Makes net revenue visible and comparable.</td>
+<td>Example only: IC 0.30% + scheme 0.10% + markup 0.12% = 0.52% total; acquirer keeps 0.12%.</td>
+<td>IC++, cost-plus. Contrast: blended/flat pricing (e.g., single 2.9% + $0.30).</td>
+<td>[Level: Intermediate | Driver: Pricing | Confidence H | Region: Global | Units: bps]</td>
+</tr>
+<tr id="row-take-rate">
+<td><strong>Take rate</strong></td>
+<td>Revenue divided by TPV, in basis points. Shows how much of each processed dollar a provider keeps.</td>
+<td>Falls with volume discounts to large customers and rises with value-added products. Drift explains revenue growth gaps vs volume growth.</td>
+<td>Example only: $1.62bn net revenue / $1,000bn TPV = 16.2 bps.</td>
+<td>Yield, monetization rate. Ambiguous — gross vs net revenue basis; always check denominator.</td>
+<td>[Level: Basic | Driver: Unit economics | Confidence H | Region: Global | Units: bps]</td>
+</tr>
+<tr id="row-net-revenue">
+<td><strong>Net revenue</strong></td>
+<td>Revenue after subtracting pass-through costs (interchange, scheme fees) paid to others.</td>
+<td>The honest top line for acquirers. Gross revenue swings with pass-through costs; compare companies on net.</td>
+<td>Example only: gross $2.00 − interchange $1.50 − scheme $0.15 = $0.35 net.</td>
+<td>Net revenue (IFRS/GAAP presentation varies), revenue less transaction expense.</td>
+<td>[Level: Basic | Driver: Revenue | Confidence M | Region: Global | Units: $]</td>
+</tr>
+<tr id="row-transaction-margin">
+<td><strong>Transaction margin</strong></td>
+<td>Revenue left after all per-transaction costs: pass-through fees, processing costs, and fraud/credit losses.</td>
+<td>Captures profit per unit of volume. A company can grow volume while shrinking this metric — a common value trap.</td>
+<td>Example only: revenue 2.9% − costs 1.9% − losses 0.1% = 0.9% margin on $1bn = $9m.</td>
+<td>Transaction margin dollars (PayPal), gross profit (Block).</td>
+<td>[Level: Intermediate | Driver: Unit economics | Confidence M | Region: Global | Units: $, bps]</td>
+</tr>
+<tr id="row-settlement-float">
+<td><strong>Settlement float</strong></td>
+<td>Merchant money a provider holds between receiving funds and paying out. It can earn interest.</td>
+<td>Adds interest income when rates are high; falls when rates drop. Also a liability, not the company's own cash.</td>
+<td>Example only: $5bn average float × 3% rate = $150m interest per year.</td>
+<td>Merchant balances, funds held for customers, customer deposits.</td>
+<td>[Level: Intermediate | Driver: Rates | Confidence H | Region: Global | Units: $bn, %]</td>
+</tr>
+<tr id="row-chargeback">
+<td><strong>Chargeback</strong></td>
+<td>Shopper disputes a charge; issuer reverses funds from the merchant via the acquirer.</td>
+<td>If the merchant can't repay (fails, fraud), the acquirer takes the loss. Chargeback ratios signal merchant risk and trigger scheme penalties.</td>
+<td>Example only: $1m sales, 0.5% disputed = $5k clawed back from merchant.</td>
+<td>Dispute, reversal, "friendly fraud".</td>
+<td>[Level: Basic | Driver: Risk | Confidence H | Region: Global | Units: %, $]</td>
+</tr>
+<tr id="row-card-present-vs-card-not-present">
+<td><strong>Card-present vs card-not-present</strong></td>
+<td>In-store payments (card or phone tapped) vs online/app/phone payments where the card isn't physically there.</td>
+<td>Online carries more fraud and pricing, in-store needs terminals and local acquiring. Providers offering both win "unified commerce" retailers.</td>
+<td>Example only: retailer $1bn: $600m in-store, $400m online → one provider sees shopper across both.</td>
+<td>CP/CNP, POS vs e-commerce, in-person vs digital, omnichannel/unified commerce.</td>
+<td>[Level: Basic | Driver: Mix | Confidence H | Region: Global | Units: $, %]</td>
+</tr>
+<tr id="row-cross-border-and-fx">
+<td><strong>Cross-border and FX</strong></td>
+<td>Payments where shopper and merchant (or acquirer) are in different countries, often with currency conversion.</td>
+<td>Earns higher fees and FX spreads; highly exposed to travel and trade shocks and to tariff policy.</td>
+<td>Example only: $100 cross-border sale, 1% extra fee + 1% FX spread = $2 extra revenue pool.</td>
+<td>International, cross-currency, DCC (dynamic currency conversion).</td>
+<td>[Level: Intermediate | Driver: Mix/Shock | Confidence H | Region: Global | Units: bps]</td>
+</tr>
+<tr id="row-digital-wallet">
+<td><strong>Digital wallet</strong></td>
+<td>App storing payment credentials (Apple Pay, Google Pay, PayPal, Alipay) that pays via cards or bank accounts.</td>
+<td>Wallets sit between shopper and merchant; some ride card rails (no disruption to acquirers), others route around them.</td>
+<td>Example only: wallet pays with stored card: acquirer still processes $50 card sale; wallet takes 0.15% from issuer.</td>
+<td>E-wallet, mobile wallet, pass-through vs staged wallet. Ambiguous — pass-through wallets vs stored-balance wallets.</td>
+<td>[Level: Basic | Driver: Substitution | Confidence M | Region: Global | Units: %]</td>
+</tr>
+<tr id="row-account-to-account-a2a-payments">
+<td><strong>Account-to-account (A2A) payments</strong></td>
+<td>Payments moving directly between bank accounts, often in real time (Pix, UPI, Wero), without card networks.</td>
+<td>Lower fees threaten card interchange and scheme revenue; PSPs can still earn by processing these methods for merchants.</td>
+<td>Example only: $100 card sale fee $1.50 vs A2A fee $0.20 → $1.30 less revenue pool.</td>
+<td>Real-time payments (RTP), instant payments, open banking payments, local payment methods (APMs, broader).</td>
+<td>[Level: Intermediate | Driver: Substitution | Confidence H | Region: Brazil/India/EU | Units: $, txns]</td>
+</tr>
+<tr id="row-multi-acquiring-and-orchestration">
+<td><strong>Multi-acquiring and orchestration</strong></td>
+<td>Large merchants split volume across several providers and route each payment to the best one via software.</td>
+<td>Keeps pricing pressure permanent; winners gain volume share by performing better, not by exclusivity.</td>
+<td>Example only: merchant $10bn TPV: Provider A 60%, B 40%; better auth rate shifts 10% → A.</td>
+<td>Payment orchestration, smart routing, redundancy.</td>
+<td>[Level: Intermediate | Driver: Competition | Confidence H | Region: Global | Units: %]</td>
+</tr>
+<tr id="row-share-of-wallet">
+<td><strong>Share of wallet</strong></td>
+<td>Share of a given merchant's total payment volume a provider handles.</td>
+<td>Main growth lever for enterprise PSPs: grow inside existing customers across countries, channels, and products.</td>
+<td>Example only: merchant TPV $20bn; provider handles $4bn = 20%; rises to $8bn = 40%.</td>
+<td>Wallet share, volume share, land-and-expand.</td>
+<td>[Level: Intermediate | Driver: Growth | Confidence H | Region: Global | Units: %]</td>
+</tr>
+<tr id="row-interchange-caps">
+<td><strong>Interchange caps</strong></td>
+<td>Laws limiting interchange fees: EU caps consumer debit at 0.2% and credit at 0.3%; US caps large-bank debit per transaction.</td>
+<td>Caps shrink issuer revenue and can shift schemes to raise other fees. Pending US changes can reshape the revenue pool.</td>
+<td>Example only: US debit cap $0.21 + 0.05% on $40 sale = $0.23 max.</td>
+<td>EU Interchange Fee Regulation (IFR), Durbin Amendment / Regulation II (US).</td>
+<td>[Level: Intermediate | Driver: Regulation | Confidence H | Region: EU/US | Units: %, $/txn]</td>
+</tr>
+<tr id="row-scheme-rules-honor-all-cards-surcharging">
+<td><strong>Scheme rules (honor-all-cards, surcharging)</strong></td>
+<td>Network rules forcing merchants to accept all cards of a brand and limiting fees they add at checkout.</td>
+<td>Loosening these rules gives merchants leverage to steer to cheaper payments, pressuring premium card interchange.</td>
+<td>Example only: merchant surcharges premium card 2% on $100 → shopper pays $102 or switches to debit.</td>
+<td>Honor all cards (HAC), anti-steering, no-surcharge rules.</td>
+<td>[Level: Advanced | Driver: Regulation/Pricing | Confidence H | Region: US/EU | Units: %]</td>
+</tr>
+<tr id="row-merchant-underwriting-kyc-aml">
+<td><strong>Merchant underwriting (KYC/AML)</strong></td>
+<td>Checking who merchants are, what they sell, and monitoring for fraud, illegal goods, or money laundering.</td>
+<td>Weak underwriting brings fast growth from risky merchants — then fines, losses, scheme sanctions, and reputational collapse.</td>
+<td>Example only: 1.5% of $400bn TPV from high-risk sectors = $6bn exposed to sudden offboarding.</td>
+<td>Know Your Customer/Business (KYC/KYB), anti-money laundering (AML), risk &amp; compliance, high-risk merchants.</td>
+<td>[Level: Intermediate | Driver: Risk | Confidence H | Region: Global | Units: $bn, %]</td>
+</tr>
+</tbody>
+</table>
+<h1>C) Key Formulas &amp; KPIs</h1>
+<p><strong>Unit legend:</strong> $bn (volume) · bps (basis points of volume; 100 bps = 1%) · % (rates, growth) · $/txn (per-transaction fees) · txns bn (transaction counts) · days (settlement lag). Company data may be in EUR — never mix currencies in one calculation.</p>
+<ol>
+<li><strong>Net revenue = TPV × net take rate</strong> — Example only: $800bn × 0.162% = $1.296bn. Why it matters: separates volume growth from pricing/mix drift.</li>
+<li><strong>Take rate (bps) = Net revenue ÷ TPV × 10,000</strong> — Example only: $1.3bn ÷ $800bn × 10,000 = 16.25 bps. Why it matters: falling take rate may be healthy (big-customer growth) or competitive pressure — check mix.</li>
+<li><strong>MDR = Interchange + Scheme fees + Acquirer markup</strong> — Example only: 1.50% + 0.15% + 0.35% = 2.00%. Why it matters: shows which slice regulation or competition actually hits.</li>
+<li><strong>Transaction margin = Revenue − Pass-through − Processing cost − Losses</strong> — Example only: $2.00 − $1.65 − $0.05 − $0.02 = $0.28. Why it matters: profit per unit; volume growth without it destroys value.</li>
+<li><strong>EBITDA margin = EBITDA ÷ Net revenue</strong> — Example only: $640m ÷ $1,300m = 49%. Why it matters: operating leverage of a fixed-cost platform over growing volume.</li>
+<li><strong>Net revenue growth ≈ (1 + TPV growth) × (1 + take-rate change) − 1</strong> — Example only: (1.24 × 0.96) − 1 = 19%. Why it matters: decomposes growth into volume vs pricing.</li>
+<li><strong>Float income = Average merchant balances × Yield</strong> — Example only: $5bn × 3% = $150m. Why it matters: rate-sensitive, non-operational earnings; strip out to judge core growth.</li>
+<li><strong>Incremental sales from approval uplift = Attempted volume × Δ authorization rate</strong> — Example only: $10bn × 1pp = $100m. Why it matters: the value a PSP sells; justifies premium over lowest-price rivals.</li>
+</ol></div>
+    <div class="controls">
+      <button class="btn" onclick="prevStep()">← Back</button>
+      <button class="btn primary" onclick="nextStep()">Continue to one-pager →</button>
+    </div>
+  </section>
+
+  <section class="phase" id="phase-onepager">
+    <span class="phase-tag">Phase 2A · The 1-pager</span>
+    <h1>The whole sector in one page</h1>
+    <p>If you only have ten minutes, this is what you read. The mental model.</p>
+    <div class="info-banner"><strong>Tip:</strong> Click any underlined term to jump to its definition. Click "Back to one-pager" to return.</div>
+    <div id="onepagerContent" class="linkable"><h1>Merchant Payments — One-Pager (as of 17 Sep 2026)</h1>
+<p><strong>What it is.</strong> A toll on electronic spending. Revenue = payment volume (TPV) × take rate. Merchants pay a merchant discount rate; most goes to the card issuer (interchange) and network (scheme fees); acquirers/PSPs keep a thin net slice. Units: $bn, bps, % YoY.</p>
+<p><strong>The setup.</strong> Global payments revenue $2.5tn in 2024, growing only 4% (McKinsey, Oct 2025), forecast ~4%/yr to $3.0tn by 2029. Inside a slow pool, dispersion is huge: modern single-platform PSPs grow ~20%+ (Stripe TPV $1.9tn, +34% in 2025; Adyen H1 2026 volume +24%, EBITDA margin 49%) while legacy acquirers reset (Fiserv cut organic growth guidance from ~10% to 3.5–4.5%, Oct 2025) or re-consolidate (Global Payments–Worldpay, $24.3bn, closed Jan 2026).</p>
+<h2>Top 3 demand drivers</h2>
+<ol>
+<li><strong>Nominal spending</strong> — sets the tide; recessions dent growth, not volume (Visa FY2009 volume −1.7% nominal, revenue +10%).</li>
+<li><strong>Cash → digital, store → online</strong> — cash still 46% of global payments (McKinsey); card purchase transactions +12.4% in 2024 (Nilson).</li>
+<li><strong>Share-of-wallet gains</strong> — large merchants consolidate to best-performing global platforms (Adyen: share of wallet from &lt;20% in years 3–7 to &gt;40% after year 12).</li>
+</ol>
+<h2>Top 3 supply drivers ("supply" = competitive capacity)</h2>
+<ol>
+<li><strong>Price competition &amp; multi-acquiring</strong> — enterprises split and re-tender volume; take rates drift down with volume tiers.</li>
+<li><strong>Consolidation and exits</strong> — 2019 mega-mergers unwound (FIS wrote down Worldpay $17.6bn); now retested by GPN–Worldpay.</li>
+<li><strong>Cheaper rails and rules</strong> — A2A systems (Pix 79.7bn txns, UPI 228.3bn txns in 2025; Wero POS launch planned end-2026) and US settlement/Regulation II changes redirect the fee pool.</li>
+</ol>
+<h2>Where the cycle sits</h2>
+<p><strong>Base demand × Normal-to-Loose supply.</strong> Current episode (2025–26) is a <em>growth-expectation reset</em>, not a volume bust: legacy players cut guidance; modern PSPs still expand profits. Resembles 2022–23 in valuation behaviour, but fundamentals at leaders are stronger (Adyen EBITDA +18% YoY in H1 2026 vs −10% in H1 2023). Rate cuts trim float income; tariffs weigh on cross-border e-commerce.</p>
+<h2>Catalysts (6–18 months)</h2>
+<ol>
+<li>Final approval of amended Visa/Mastercard US merchant settlement (preliminary approval 9 Jun 2026): −10 bps interchange for 5 yrs, 1.25% cap on standard consumer credit, surcharging and card-decline rights.</li>
+<li>Eighth Circuit ruling on US debit cap (Reg II) + Fed's 14.4¢ proposal.</li>
+<li>GPN–Worldpay integration delivery ($600m cost synergies).</li>
+<li>Wero point-of-sale rollout in Europe.</li>
+<li>Adyen FY2026 results and 2027 outlook (Feb 2027); capex normalisation after 2026's ~7% data-centre pull-forward.</li>
+</ol>
+<h2>Watch-metrics</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Unit</th>
+<th>Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa/Mastercard payments volume</td>
+<td>% YoY constant $</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Cross-border volume ex intra-Europe</td>
+<td>% YoY</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Leading PSP TPV growth</td>
+<td>% YoY</td>
+<td>Quarterly/half-yearly</td>
+</tr>
+<tr>
+<td>Take rate (net revenue ÷ TPV)</td>
+<td>bps</td>
+<td>Half-yearly</td>
+</tr>
+<tr>
+<td>EBITDA / transaction margin</td>
+<td>%</td>
+<td>Half-yearly</td>
+</tr>
+<tr>
+<td>Policy rates (float income)</td>
+<td>%</td>
+<td>Per meeting</td>
+</tr>
+<tr>
+<td>Pix / UPI / Wero adoption</td>
+<td>bn txns, m users</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Merchant risk events (fines, offboarding)</td>
+<td>Event</td>
+<td>Ad hoc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key lesson from past cycles.</strong> Value is destroyed by expectations, leverage and trust failures (Wirecard 2020, Worldline −41% in June 2025) — not by volume collapse.</p></div>
+    <div class="controls">
+      <button class="btn" onclick="prevStep()">← Back</button>
+      <button class="btn primary" onclick="nextStep()">Continue to full report →</button>
+    </div>
+  </section>
+
+  <section class="phase" id="phase-report">
+    <span class="phase-tag">Phase 2B · Full report</span>
+    <h1>The full sector report — 11 sections</h1>
+    <p>Re-read whichever section the quiz exposed weakness on. §11 (Booms &amp; Busts) is the most important; read it twice.</p>
+    <div class="info-banner"><strong>Tip:</strong> Click any underlined term to jump to its definition.</div>
+    <div id="reportContent" class="linkable"><h1>Merchant Payments — Supply, Demand &amp; Cycles Report</h1>
+<h2>0) Sector &amp; Scope</h2>
+<ul>
+<li><strong>Sector:</strong> Merchant payments — acquiring, processing, gateways and payment platforms that help merchants accept payments. Card networks and issuers are covered only where they set merchant economics.</li>
+<li><strong>Region:</strong> Global, with emphasis on the US and Europe (where Adyen, Fiserv, Global Payments, PayPal and Worldline earn most revenue).</li>
+<li><strong>As-of:</strong> 17 September 2026.</li>
+<li><strong>Currency &amp; units:</strong> USD for industry figures. Company figures stay in their reporting currency (EUR for Adyen and Worldline) to avoid FX-conversion error; flagged inline. Units: $bn volume · bps of volume · % growth · transactions (bn) · days.</li>
+</ul>
+<h2>1) Executive Summary</h2>
+<p><strong>The 80/20 of this sector.</strong> Merchant payments is a toll on nominal consumer and business spending. Revenue = volume × take rate. Volume grows with nominal spending plus the shift from cash to electronic and from in-store to online. Take rate is under steady pressure from large-merchant bargaining, multi-acquiring, regulation and cheaper rails. Winners grow volume faster than take rate falls, on a fixed-cost platform, without blowing up on merchant risk.</p>
+<p><strong>Five drivers explain most outcomes:</strong></p>
+<ol>
+<li><strong>Nominal spending growth</strong> (inflation + real consumption) — sets the base volume tide.</li>
+<li><strong>Secular digitisation</strong> — cash still 46% of global payments per McKinsey (Oct 2025), down from 50% in 2023; e-commerce and wallets keep taking share.</li>
+<li><strong>Share shift between providers</strong> — modern single-platform players (Stripe $1.9tn TPV, +34% in 2025; Adyen processed volume +24% in H1 2026) have taken share from legacy bank-owned and roll-up acquirers.</li>
+<li><strong>Pricing and mix</strong> — take rates drift down as large customers scale into volume tiers; value-added services (fraud, data, financial products) push back.</li>
+<li><strong>Regulation and rails</strong> — interchange caps, US scheme-rule settlement, and real-time account-to-account (A2A) systems (Pix, UPI, Wero) redirect the revenue pool.</li>
+</ol>
+<p><strong>Today's setup (Sep 2026).</strong> Industry revenue growth has slowed: McKinsey puts 2024 global payments revenue at $2.5tn, up only 4% (vs 7% average 2019–24; 12% in 2023), and projects ~4% a year to $3.0tn in 2029, with "monetization pressures increasing." Inside that slow pool, dispersion is extreme. Legacy acquirers are resetting (Fiserv cut organic growth guidance from ~10% to 3.5–4.5% in Oct 2025; Global Payments closed its $24.3bn Worldpay purchase on 13 Jan 2026 on a "scale matters" thesis). Modern platforms still grow ~20%+, but even they have recalibrated (Adyen guided 20–22% constant-currency growth for 2026, later 21–23% including acquisitions). Rates are falling from 2023–24 highs, trimming float income. New channels (agentic commerce, stablecoins) are real but immaterial to revenue today — Adyen said agentic transactions were "still immaterial on our platform" (Feb 2026).</p>
+<p><strong>Catalysts (next 6–18 months):</strong></p>
+<ol>
+<li>Final court approval of the amended Visa/Mastercard US merchant settlement (preliminary approval 9 June 2026).</li>
+<li>Eighth Circuit decision on US debit interchange (Regulation II) plus the Fed's pending 14.4¢ cap proposal.</li>
+<li>Global Payments–Worldpay integration results ($600m cost-synergy target) — test of the legacy "scale" thesis.</li>
+<li>Wero point-of-sale launch in Europe (planned end-2026) — first real A2A challenge to cards at European checkouts.</li>
+<li>Adyen FY2026 results / 2027 outlook (Feb 2027) — read-through on enterprise share gains and data-centre capex normalisation.</li>
+</ol>
+<p><strong>Watch-metrics:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Unit</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa / Mastercard payments volume growth (constant $)</td>
+<td>% YoY</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Cross-border volume growth (ex intra-Europe)</td>
+<td>% YoY</td>
+<td>Quarterly/monthly</td>
+</tr>
+<tr>
+<td>Leading PSP TPV growth (Adyen, Stripe, PayPal, Square)</td>
+<td>% YoY</td>
+<td>Quarterly / half-yearly / annual</td>
+</tr>
+<tr>
+<td>Take rate (net revenue ÷ TPV)</td>
+<td>bps</td>
+<td>Half-yearly/quarterly</td>
+</tr>
+<tr>
+<td>US retail &amp; e-commerce sales</td>
+<td>% YoY</td>
+<td>Monthly / quarterly</td>
+</tr>
+<tr>
+<td>Policy rates (ECB, Fed)</td>
+<td>%</td>
+<td>~6–8 meetings/yr</td>
+</tr>
+<tr>
+<td>Pix / UPI transaction counts</td>
+<td>bn txns</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table>
+<h2>2) Definitions &amp; Scope</h2>
+<p><strong>Boundaries.</strong> Included: merchant acquirers, processors, gateways, payment facilitators and full-stack PSPs; the merchant-side fees paid to card networks. Excluded: issuing/consumer lending economics (except interchange), core banking software, remittances and B2B treasury except where PSPs sell them.</p>
+<p><strong>Sub-segments.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>What it is</th>
+<th>Examples (2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enterprise / global PSP</td>
+<td>Single platform for large multinational merchants, online + in-store</td>
+<td>Adyen, Stripe, Checkout.com (private), Worldpay</td>
+</tr>
+<tr>
+<td>SMB acquiring &amp; POS software</td>
+<td>Small merchants, bundled terminals/software, sold via banks or ISOs (independent sales organisations)</td>
+<td>Fiserv Clover, Square (Block), Global Payments Genius, Toast</td>
+</tr>
+<tr>
+<td>Bank-owned acquiring</td>
+<td>Acquiring arms of large banks</td>
+<td>JPMorgan Payments, bank JV acquirers in Europe (Data gap: verified share ranking)</td>
+</tr>
+<tr>
+<td>Branded checkout / wallets</td>
+<td>Consumer-facing checkout buttons</td>
+<td>PayPal, Apple Pay, Klarna (BNPL)</td>
+</tr>
+<tr>
+<td>Platforms / embedded payments</td>
+<td>Payments embedded in software platforms and marketplaces</td>
+<td>Stripe Connect, Adyen for Platforms, PayPal Braintree</td>
+</tr>
+<tr>
+<td>Networks (context)</td>
+<td>Card rules, interchange, scheme fees</td>
+<td>Visa, Mastercard, UnionPay, Amex</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Units &amp; assumptions.</strong> TPV definitions vary (gross vs net of refunds; gateway-only volume included or not). Take rates are only comparable on a net-revenue basis. Ambiguous — Variant A: "revenue" includes interchange pass-through (gross, e.g., many US acquirers). Variant B: revenue is net of interchange and scheme fees (Adyen net revenue). When used: always convert to net before comparing.</p>
+<p><strong>Data gaps.</strong> Data gap: no free, authoritative global ranking of merchant acquirers by volume (Nilson Report data is subscriber-only). Data gap: global merchant-acquiring revenue pool size separately from McKinsey's total payments revenue ($2.5tn includes interest on cards and deposits).</p>
+<h2>3) DEMAND</h2>
+<p>Demand = the value of payments merchants need to accept electronically. It rises with spending and with the share of spending that is electronic.</p>
+<h3>D1. Nominal consumer and business spending (Cyclical)</h3>
+<ul>
+<li><strong>Mechanism:</strong> More spending → more volume → more fee revenue; inflation raises ticket size, lifting ad-valorem (percentage) fees automatically.</li>
+<li><strong>Quantification:</strong> In the 2008–09 recession Visa's fiscal 2009 payments volume fell 1.7% nominally but rose 0.9% in constant dollars; processed transactions still grew 8% and net operating revenue grew 10% (Visa FY09 release). Volume shocks are shallow; revenue is cushioned by secular shift and pricing.</li>
+<li><strong>Indicators:</strong> retail sales (% YoY, monthly); Visa/Mastercard volume (% YoY, quarterly); consumer confidence (index, monthly).</li>
+<li><strong>Lead/lag:</strong> Coincident.</li>
+<li><strong>So-what:</strong> Recession hurts growth rates, rarely absolute volume; valuation compression, not earnings collapse, is the usual damage.</li>
+</ul>
+<h3>D2. Cash-to-digital and in-store-to-online shift (Structural)</h3>
+<ul>
+<li><strong>Mechanism:</strong> Each cash sale converting to card/wallet/A2A is new volume for someone; online sales use more fee-bearing steps (gateway, fraud tools, tokens).</li>
+<li><strong>Quantification:</strong> Cash 46% of global payments per McKinsey (Oct 2025), down from 50% in 2023; digital wallets ~30% of point-of-sale volume. Global network card purchase transactions +12.4% to 772.7bn in 2024 (Nilson). Data gap: McKinsey's basis for "46%" (count vs value) not confirmed from free sources.</li>
+<li><strong>Indicators:</strong> network transaction growth (% YoY, quarterly); e-commerce share of retail (% , quarterly); cash usage surveys (% , annual).</li>
+<li><strong>Lead/lag:</strong> Slow structural trend; lags consumer behaviour shocks (COVID accelerated it).</li>
+<li><strong>So-what:</strong> Provides the "floor" growth that makes the sector grow faster than GDP; weakest in already card-saturated markets.</li>
+</ul>
+<h3>D3. Cross-border commerce and travel (Cyclical / Shock-Policy)</h3>
+<ul>
+<li><strong>Mechanism:</strong> Cross-border payments carry higher fees and FX spreads; a small share of volume, a larger share of profit.</li>
+<li><strong>Quantification:</strong> COVID: Visa cross-border volume −16% in fiscal 2020 and −29% in fiscal Q4 2020; excluding intra-Europe, −22% and −41% (Visa Q4 FY20 release). Visa's net revenue fell 5% in FY20 while total payments volume still rose 2% — the mix hit profit more than volume.</li>
+<li><strong>Indicators:</strong> cross-border volume ex intra-Europe (% YoY, quarterly/monthly); airline passenger traffic (% YoY, monthly); tariff actions (event).</li>
+<li><strong>Lead/lag:</strong> Coincident with travel; policy shocks lead.</li>
+<li><strong>So-what:</strong> Tariffs on cross-border e-commerce (e.g., US tariffs on Chinese platforms, raised on Adyen's Feb 2026 call) hit PSPs serving global sellers directly.</li>
+</ul>
+<h3>D4. Merchant outsourcing and share-of-wallet expansion (Structural, provider-level)</h3>
+<ul>
+<li><strong>Mechanism:</strong> Large merchants consolidate from many local providers to fewer global platforms, and move more countries/channels to the best performer.</li>
+<li><strong>Quantification:</strong> Adyen: share of wallet with merchants often rises from under 20% in years 3–7 to over 40% after 12 years; top 300 customers = 60% of revenue (H1 2026 call). Adyen's Unified Commerce net revenue +25% YoY in H1 2026; in-person volume +28% to €175.7bn (EUR, H1 2026 shareholder letter).</li>
+<li><strong>Indicators:</strong> provider TPV growth vs network volume growth (pp gap, quarterly); new enterprise wins disclosed (count, half-yearly).</li>
+<li><strong>Lead/lag:</strong> Leads provider revenue by 1–3 years (onboarding and ramp).</li>
+<li><strong>So-what:</strong> Explains why providers can grow 20%+ in a 4%-growth pool — and why growth is lumpy when a single large customer shifts volume (Adyen Digital processed volume −1% in H2 2025 including one large customer; +11% excluding it).</li>
+</ul>
+<h3>D5. Embedded payments and platforms (Structural)</h3>
+<ul>
+<li><strong>Mechanism:</strong> Software platforms (marketplaces, vertical SaaS) bundle payments; volume flows to the PSP serving the platform.</li>
+<li><strong>Quantification:</strong> Adyen Platforms net revenue +37% YoY, volume +42% to €135.0bn in H1 2026 (EUR). Stripe: &gt;5m businesses directly or via platforms (2025 letter).</li>
+<li><strong>Indicators:</strong> platform segment growth (% YoY, half-yearly); count of platforms &gt;€1bn volume (Adyen: 37 vs 32 a year earlier).</li>
+<li><strong>Lead/lag:</strong> Leading (platform wins ramp over years).</li>
+<li><strong>So-what:</strong> High growth but lower take rate — platforms negotiate hard and keep a share.</li>
+</ul>
+<h3>D6. New channels: agentic commerce and stablecoins (Shock-Policy / Optionality)</h3>
+<ul>
+<li><strong>Mechanism:</strong> AI agents buying on behalf of shoppers need identity, tokens and payment routing; stablecoins offer an alternative settlement rail.</li>
+<li><strong>Quantification:</strong> Adyen: agentic transactions "still immaterial" (Feb 2026); signed OpenAI as Adyen Agentic partner and customer (H1 2026 call). Stripe cites ~$400bn stablecoin payments volume in 2025, doubled YoY (Ambiguous — scope of "stablecoin payments" not defined as merchant payments). US GENIUS Act (stablecoin law) signed July 2025.</li>
+<li><strong>Indicators:</strong> disclosed agentic volume (none yet); stablecoin supply ($bn, daily); merchant stablecoin acceptance announcements (event).</li>
+<li><strong>Lead/lag:</strong> Leading, long-dated.</li>
+<li><strong>So-what:</strong> Option value and narrative risk today; not a revenue driver in 2026 guidance.</li>
+</ul>
+<p><strong>Exhibit D1 — Demand drivers at a glance</strong> (as-of Sep 2026; takeaway: structural drivers dominate, cyclical ones move growth rates)</p>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Type</th>
+<th>Direction now</th>
+<th>Evidence unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nominal spending</td>
+<td>Cyclical</td>
+<td>Positive, slowing</td>
+<td>% YoY</td>
+</tr>
+<tr>
+<td>Cash→digital</td>
+<td>Structural</td>
+<td>Positive</td>
+<td>% cash share</td>
+</tr>
+<tr>
+<td>Cross-border</td>
+<td>Cyclical/shock</td>
+<td>Positive but tariff-exposed</td>
+<td>% YoY</td>
+</tr>
+<tr>
+<td>Share of wallet</td>
+<td>Structural</td>
+<td>Positive for modern PSPs</td>
+<td>pp gap vs market</td>
+</tr>
+<tr>
+<td>Platforms</td>
+<td>Structural</td>
+<td>Strong</td>
+<td>% YoY</td>
+</tr>
+<tr>
+<td>Agentic / stablecoins</td>
+<td>Optionality</td>
+<td>Immaterial revenue</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<h2>4) SUPPLY</h2>
+<p>"Supply" in payments is not physical capacity. It is <strong>competitive capacity</strong>: how many credible providers can serve a merchant at what price. Software scales cheaply, so supply is elastic in the short run — except where licences, scheme membership, local acquiring and trust take years.</p>
+<h3>S1. Capacity &amp; utilisation</h3>
+<ul>
+<li>Processing capacity is data-centre compute and network connectivity; marginal cost per transaction is low. Utilisation is not a disclosed industry metric. Data gap: industry utilisation.</li>
+<li>New bottleneck: compute and storage. Adyen raised 2026 capex guidance from ~5% to ~7% of net revenue to pull 2027 data-centre spend forward "to secure compute and storage availability and lock in price amid an unprecedented demand environment" (H1 2026 call). It did similar "smart buying" in 2022.</li>
+</ul>
+<h3>S2. Lead-times &amp; barriers</h3>
+<ul>
+<li>Acquiring licences, direct scheme memberships and local acquiring in many countries take years to assemble. Data gap: verified licence lead-time bands.</li>
+<li>Enterprise merchant integrations take months to years to ramp (D4), which slows how fast a new entrant can take share even when pricing is lower.</li>
+</ul>
+<h3>S3. Builds / new entrants</h3>
+<ul>
+<li>Venture-funded entrants expanded competitive supply in 2015–2021. Stripe reached $1.9tn TPV in 2025 and a $159bn tender valuation — the largest private competitor.</li>
+<li>Bank-owned acquirers invest to defend (JPMorgan Payments). Data gap: comparable disclosed volume.</li>
+</ul>
+<h3>S4. Exits &amp; consolidation</h3>
+<ul>
+<li>2019 mega-mergers: FIS–Worldpay ($43bn), plus Fiserv–First Data and Global Payments–TSYS. Unwind: FIS took a $17.6bn goodwill impairment on Worldpay (2023) and sold 55% to GTCR at an $18.5bn valuation (July 2023).</li>
+<li>2025–26 re-consolidation: Global Payments bought Worldpay ($24.3bn) and sold issuer processing to FIS ($13.5bn), closed 13 Jan 2026 — combined &gt;$3.7tn volume, 94bn transactions, &gt;6m merchant locations.</li>
+<li>Forced exits via risk failure: Wirecard insolvency (June 2020); Worldline's 2025 offboarding of merchants worth €130m annual revenue (2024) after compliance scrutiny.</li>
+</ul>
+<h3>S5. Regulation effects on supply</h3>
+<ul>
+<li>Licensing, anti-money-laundering (AML) and scheme compliance raise fixed costs → favour scale and punish weak underwriting.</li>
+<li>Cheaper public rails (Pix, UPI, Wero) add "supply" of low-cost payment options that bypass card economics.</li>
+</ul>
+<h3>S6. Bottlenecks &amp; timing risks</h3>
+<table>
+<thead>
+<tr>
+<th>Bottleneck</th>
+<th>Why it matters</th>
+<th>Timing risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute / storage availability</td>
+<td>Platform reliability and cost</td>
+<td>2026 capex pull-forward (Adyen)</td>
+</tr>
+<tr>
+<td>Local acquiring licences</td>
+<td>Needed to win domestic merchants</td>
+<td>Multi-year; Data gap: specific durations</td>
+</tr>
+<tr>
+<td>Engineering talent</td>
+<td>Product velocity</td>
+<td>Adyen adding 550–650 net hires in 2026</td>
+</tr>
+<tr>
+<td>Compliance capacity</td>
+<td>Avoids Worldline-type events</td>
+<td>Immediate if lapses surface</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exhibit S1 — Supply regime</strong> (as-of Sep 2026; takeaway: pricing competition is structural, but licences + reliability + trust keep the enterprise tier concentrated)</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Supply elasticity</th>
+<th>Pricing pressure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMB acquiring</td>
+<td>High (many bundlers)</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Enterprise global</td>
+<td>Low–medium (few full-stack global platforms)</td>
+<td>Medium, via multi-acquiring</td>
+</tr>
+<tr>
+<td>Platforms</td>
+<td>Medium</td>
+<td>High (platform bargaining)</td>
+</tr>
+</tbody>
+</table>
+<h2>5) PRICE &amp; CONTRACTS</h2>
+<h3>P1. Contract types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Benchmark</th>
+<th>Venue</th>
+<th>Tenor</th>
+<th>Settlement lag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blended / flat (e.g., % + fixed fee)</td>
+<td>Provider list price</td>
+<td>SMB, online self-serve</td>
+<td>Monthly rolling / 1–3 yr (Data gap: verified tenor)</td>
+<td>T+1 to T+3 (Data gap: by provider)</td>
+</tr>
+<tr>
+<td>Interchange++ (cost-plus)</td>
+<td>Scheme interchange schedule + markup</td>
+<td>Enterprise</td>
+<td>Multi-year negotiated</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Tiered volume pricing</td>
+<td>Volume bands reset markup lower</td>
+<td>Enterprise/platforms</td>
+<td>Multi-year</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Revenue share</td>
+<td>Platform keeps share of MDR</td>
+<td>Platforms/PayFacs</td>
+<td>Multi-year</td>
+<td>Varies</td>
+</tr>
+</tbody>
+</table>
+<p>"Spot" pricing does not exist as in commodities; the equivalent is the <strong>renegotiation moment</strong> — contract renewals and RFPs where large merchants re-tender volume.</p>
+<h3>P2. Pass-through map</h3>
+<ul>
+<li><strong>Interchange and scheme fees:</strong> passed through under interchange++; absorbed (at least temporarily) under blended pricing. Blended-price providers gain when interchange is cut and lose when scheme fees rise.</li>
+<li><strong>Regulatory caps:</strong> EU Interchange Fee Regulation caps consumer debit at 0.2% and credit at 0.3% (intra-EEA). US Regulation II caps large-issuer debit at 21¢ + 0.05% (+1¢ fraud adjustment); vacated by a North Dakota court on 6 Aug 2025 but stayed pending Eighth Circuit appeal; the Fed separately proposed cutting the base to 14.4¢.</li>
+<li><strong>US settlement (amended Nov 2025; preliminary approval 9 June 2026):</strong> interchange cut of 10 bps for 5 years; standard consumer credit capped at 1.25% for 8 years; merchants may decline premium/commercial cards; surcharging up to 3%. Final approval pending.</li>
+<li><strong>FX:</strong> company revenue translation; Adyen H1 2026 net revenue +19% reported vs +21% constant currency.</li>
+</ul>
+<h3>P3. Pricing power by phase</h3>
+<ul>
+<li>Pricing power sits with whoever controls something scarce: networks (acceptance ubiquity), issuers (card-holder), top PSPs (approval rates, global reach, unified data), platforms (merchant distribution).</li>
+<li>Merchant bargaining power rises in cost-cutting phases. Adyen H1 2023: North American customers shifted "prioritization from growth to cost savings," pressuring pricing (CFO, Aug 2023).</li>
+<li>Ambiguous — there is no "utilisation threshold" in payments comparable to commodities. Use proxies: merchant cost-focus in earnings calls, multi-acquiring RFP activity.</li>
+</ul>
+<h3>P4. Invoice price stack</h3>
+<p><strong>Exhibit P1 — Merchant fee stack on a $100 card sale</strong> (Example only, illustrative percentages; takeaway: the acquirer's net slice is small, so interchange changes move gross revenue far more than profit)</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Example rate</th>
+<th>$ on $100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interchange → issuer</td>
+<td>1.50%</td>
+<td>$1.50</td>
+</tr>
+<tr>
+<td>Scheme fees → network</td>
+<td>0.15%</td>
+<td>$0.15</td>
+</tr>
+<tr>
+<td>Acquirer/PSP markup (net revenue)</td>
+<td>0.35%</td>
+<td>$0.35</td>
+</tr>
+<tr>
+<td><strong>Merchant discount rate</strong></td>
+<td><strong>2.00%</strong></td>
+<td><strong>$2.00</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>P5. Realised vs list take rate</h3>
+<ul>
+<li>Realised take rates fall as merchants move into lower volume tiers. Adyen H1 2026 take rate 16.2 bps (EUR basis). Management: "Our existing merchants give us more and more volume and therefore come to lower tiers, and that's the only explanation behind the take rate developments" (H1 2026 call). Treat as management claim; test against segment mix.</li>
+<li>Mix moves take rate both ways: Adyen's group take rate rose to 17.1 bps in H2 2025 (from 16.2 bps in H2 2024 and 16.8 bps in H1 2025), "driven by changes in the overall merchant mix" (H2 2025 shareholder letter), then landed at 16.2 bps in H1 2026 as volume grew 24%. Half-to-half swings of ~1 bp are therefore normal for Adyen — mix, not necessarily pricing.</li>
+<li>Repricing works both ways: PayPal raised Braintree pricing from late 2024, accepting lower unbranded volume for better margin.</li>
+</ul>
+<h3>P6. Hedge overlay</h3>
+<ul>
+<li>Float income is naturally exposed to rates; most providers do not disclose hedges. Data gap: sector hedging practice.</li>
+<li>FX translation: companies generally report constant-currency growth rather than hedge translation.</li>
+</ul>
+<h2>6) UNIT ECONOMICS &amp; OPERATING LEVERAGE</h2>
+<h3>U1. Unit model</h3>
+<p>Net revenue per transaction = ticket × take rate + fixed fees. Cost per transaction = processing/compute + risk losses + support. Most costs are people and infrastructure, largely fixed in the short run → strong operating leverage when volume grows faster than headcount.</p>
+<p><strong>Exhibit U1 — Illustrative modern PSP margin stack</strong> (Example only; takeaway: once pass-through is removed, the business is a high-margin software-like platform whose main cost is people)</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Example</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TPV</td>
+<td>$800bn</td>
+<td>Volume</td>
+</tr>
+<tr>
+<td>× take rate</td>
+<td>16 bps</td>
+<td>Net</td>
+</tr>
+<tr>
+<td>= Net revenue</td>
+<td>$1.28bn</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Personnel</td>
+<td>$0.45bn</td>
+<td>~35%</td>
+</tr>
+<tr>
+<td>Other opex (IT, marketing, other)</td>
+<td>$0.18bn</td>
+<td>~14%</td>
+</tr>
+<tr>
+<td>= EBITDA</td>
+<td>$0.65bn</td>
+<td>~51%</td>
+</tr>
+<tr>
+<td>Capex</td>
+<td>$0.06bn</td>
+<td>~5%</td>
+</tr>
+</tbody>
+</table>
+<p>Company-specific reference (EUR, sourced): Adyen H1 2026 — net revenue €1,302.9m; EBITDA €641.5m (49% margin; 50% ex one-time deal costs); capex €64.1m (5%); 86% EBITDA-to-free-cash-flow conversion; FTEs 5,020. Target: EBITDA margin above 55% by 2028.</p>
+<h3>U2. Contrast: legacy / SMB models</h3>
+<ul>
+<li>Legacy acquirers report gross revenue including pass-through and carry larger distribution costs (bank partners, ISOs) and technology debt. Data gap: comparable net-revenue margins across legacy acquirers from free sources.</li>
+<li>PayPal FY2025: TPV $1.79tn (+7%), revenue $33.2bn (+4%) — volume outgrowing revenue signals take-rate compression.</li>
+<li>Square Q4 2025: GPV $67.2bn (+10%); Square gross profit $993m (+7%).</li>
+</ul>
+<h3>U3. Throughput</h3>
+<ul>
+<li>Volume per employee rises as automation scales. Example only: €800bn H1 volume / 5,020 FTEs ≈ €159m per FTE per half-year.</li>
+</ul>
+<h3>U4. Sensitivities on the three biggest drivers</h3>
+<p><strong>Exhibit U2 — Sensitivities</strong> (Example only, on U1 base: $800bn TPV, 16 bps, $0.63bn fixed-ish costs; takeaway: take rate and volume are equally powerful; cost growth decides whether leverage shows)</p>
+<table>
+<thead>
+<tr>
+<th>Shock</th>
+<th>Net revenue</th>
+<th>EBITDA</th>
+<th>EBITDA margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>$1.28bn</td>
+<td>$0.65bn</td>
+<td>51%</td>
+</tr>
+<tr>
+<td>TPV +10%</td>
+<td>$1.41bn</td>
+<td>$0.78bn</td>
+<td>55%</td>
+</tr>
+<tr>
+<td>TPV −10%</td>
+<td>$1.15bn</td>
+<td>$0.52bn</td>
+<td>45%</td>
+</tr>
+<tr>
+<td>Take rate −1 bp (16→15)</td>
+<td>$1.20bn</td>
+<td>$0.57bn</td>
+<td>48%</td>
+</tr>
+<tr>
+<td>Opex +10%</td>
+<td>$1.28bn</td>
+<td>$0.59bn</td>
+<td>46%</td>
+</tr>
+</tbody>
+</table>
+<p>Math (Example only): TPV +10% → $880bn × 0.0016 = $1.408bn; minus $0.63bn = $0.778bn.</p>
+<h2>7) ELASTICITIES &amp; SUBSTITUTES</h2>
+<h3>E1. Demand elasticity</h3>
+<ul>
+<li><strong>Shopper demand for electronic payment:</strong> Low price elasticity (shoppers rarely see fees). <strong>H confidence.</strong></li>
+<li><strong>Merchant demand for a given provider:</strong> Medium–High for commoditised SMB/online acquiring; Medium for enterprise where approval rates, reach and reliability matter. Triggers: merchant cost-cutting phases, RFPs, orchestration tools making switching easier.</li>
+<li><strong>Surcharging trigger:</strong> if US settlement gets final approval, visible surcharges could make shoppers price-sensitive to premium credit cards for the first time.</li>
+</ul>
+<h3>E2. Supply elasticity</h3>
+<table>
+<thead>
+<tr>
+<th>Horizon</th>
+<th>Elasticity</th>
+<th>Lead-time band</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Short run (processing capacity)</td>
+<td>High</td>
+<td>Weeks–months (compute), but 2026 data-centre supply tight</td>
+</tr>
+<tr>
+<td>Medium run (products, new countries)</td>
+<td>Medium</td>
+<td>Data gap: verified bands</td>
+</tr>
+<tr>
+<td>Long run (licences, trust, enterprise references)</td>
+<td>Low</td>
+<td>Multi-year; Data gap: verified bands</td>
+</tr>
+</tbody>
+</table>
+<h3>E3. Substitute matrix</h3>
+<p><strong>Exhibit E1 — Substitutes to card acquiring</strong> (as-of Sep 2026; takeaway: A2A is a real threat to card economics in specific countries; PSPs can still process it, networks and issuers lose more)</p>
+<table>
+<thead>
+<tr>
+<th>Substitute</th>
+<th>Scale evidence</th>
+<th>Who loses</th>
+<th>Who can still win</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pix (Brazil A2A)</td>
+<td>79.7bn txns in 2025 (+26%), BRL 35.3tn</td>
+<td>Card issuers/networks in Brazil</td>
+<td>PSPs offering Pix acceptance</td>
+</tr>
+<tr>
+<td>UPI (India A2A)</td>
+<td>228.3bn txns in 2025 (+33%), ~$3.4tn</td>
+<td>Cards</td>
+<td>Local PSPs</td>
+</tr>
+<tr>
+<td>Wero (EU A2A wallet)</td>
+<td>43m registered users, €7.5bn transferred in first year; e-commerce live DE (Nov 2025), FR/BE (Jan 2026); POS planned end-2026</td>
+<td>Card schemes in Europe (if it scales)</td>
+<td>Acquirers integrating Wero (e.g., Worldline)</td>
+</tr>
+<tr>
+<td>Digital wallets</td>
+<td>~30% of POS volume (McKinsey)</td>
+<td>Depends — card-based wallets keep card rails</td>
+<td>PSPs with wallet integrations</td>
+</tr>
+<tr>
+<td>Stablecoins</td>
+<td>~$400bn payments volume 2025 (Stripe letter; scope ambiguous)</td>
+<td>Cross-border correspondent banks first</td>
+<td>PSPs with orchestration (Stripe Bridge)</td>
+</tr>
+<tr>
+<td>Cash</td>
+<td>46% of global payments</td>
+<td>n/a (declining)</td>
+<td>All electronic providers</td>
+</tr>
+</tbody>
+</table>
+<p>Wero states its merchant cost at ~0.7% vs 1–3% for international card schemes (EPI claim, not independently verified).</p>
+<h2>8) SCENARIO GRID (Demand × Supply)</h2>
+<p>Supply here = competitive intensity. <strong>Tight</strong> = few credible providers/rational pricing; <strong>Loose</strong> = price war / new entrants / cheap rails. Data gap: no sourced industry margin bands — directions only.</p>
+<p><strong>Exhibit G — Scenario grid</strong> (as-of Sep 2026; takeaway: current setup sits near Base demand × Normal-to-Loose supply)</p>
+<table>
+<thead>
+<tr>
+<th>Demand \ Supply</th>
+<th>Tight</th>
+<th>Normal</th>
+<th>Loose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weak</strong> (recession, tariffs, travel shock)</td>
+<td>Take rate stable; margins dip on deleverage; volume growth slows to low single digit for networks. Confirm: card volume % YoY, cross-border ↓.</td>
+<td>Take rate slight ↓; margins ↓; legacy players cut guidance. Confirm: guidance cuts, merchant cost-focus on calls.</td>
+<td>Take rate ↓↓; margins ↓↓; consolidation/exits. Confirm: repricing, impairments, distressed M&amp;A.</td>
+</tr>
+<tr>
+<td><strong>Base</strong> (nominal spend mid-single digit, digitisation continues)</td>
+<td>Take rate stable; margins ↑ via leverage. Confirm: PSP growth ≥20%, stable bps.</td>
+<td>Take rate gentle ↓ from tiering; margins ↑ slowly. Confirm: volume outgrowing revenue by a few pp.</td>
+<td>Take rate ↓; margins flat; share shifts to best performers. Confirm: multi-acquiring RFPs, orchestration adoption.</td>
+</tr>
+<tr>
+<td><strong>Strong</strong> (inflation + travel boom + e-commerce surge)</td>
+<td>Take rate ↑ on cross-border mix; margins ↑↑. Confirm: cross-border % YoY high, float income ↑ (if rates high).</td>
+<td>Take rate stable; margins ↑; hiring accelerates. Confirm: headcount growth, high PSP growth.</td>
+<td>Take rate ↓ but volume boom masks it; valuations peak; new entrants funded. Confirm: VC funding, IPO window, mega-M&amp;A.</td>
+</tr>
+</tbody>
+</table>
+<h2>9) INDICATOR DASHBOARD</h2>
+<p><strong>Leading</strong></p>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Unit</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Merchant cost-focus language on earnings calls</td>
+<td>Qualitative</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Enterprise wins / platform count &gt;€1bn (Adyen)</td>
+<td>Count</td>
+<td>Half-yearly</td>
+</tr>
+<tr>
+<td>Headcount plans of leading PSPs</td>
+<td>FTE, net hires</td>
+<td>Half-yearly</td>
+</tr>
+<tr>
+<td>Regulatory/legal milestones (US settlement, Reg II, EU rules)</td>
+<td>Event</td>
+<td>Ad hoc</td>
+</tr>
+<tr>
+<td>A2A adoption (Pix/UPI counts; Wero users, POS rollout)</td>
+<td>bn txns; m users</td>
+<td>Monthly / ad hoc</td>
+</tr>
+<tr>
+<td>Policy-rate expectations</td>
+<td>%</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>Tariff and trade actions on cross-border e-commerce</td>
+<td>Event</td>
+<td>Ad hoc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Coincident</strong></p>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Unit</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa/Mastercard payments volume (constant $)</td>
+<td>% YoY</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Cross-border volume ex intra-Europe</td>
+<td>% YoY</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Retail and e-commerce sales</td>
+<td>% YoY</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>PSP TPV growth</td>
+<td>% YoY</td>
+<td>Quarterly/half-yearly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lagging</strong></p>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Unit</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Take rate</td>
+<td>bps</td>
+<td>Quarterly/half-yearly</td>
+</tr>
+<tr>
+<td>EBITDA / transaction margin</td>
+<td>%, $</td>
+<td>Quarterly/half-yearly</td>
+</tr>
+<tr>
+<td>Goodwill impairments, divestitures</td>
+<td>$bn</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>Fines, scheme penalties, merchant offboarding</td>
+<td>$, event</td>
+<td>Ad hoc</td>
+</tr>
+</tbody>
+</table>
+<h2>10) RISK REGISTER</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mechanism</th>
+<th>Early-warning indicator</th>
+<th>Mitigation / hedge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price competition / take-rate compression</td>
+<td>Large merchants multi-acquire and re-tender</td>
+<td>Take rate falling faster than mix explains; volume ≫ revenue growth</td>
+<td>Differentiated products (auth rates, unified commerce, financial products)</td>
+</tr>
+<tr>
+<td>Customer concentration</td>
+<td>One large customer shifts volume</td>
+<td>Segment volume swings; "excluding one customer" disclosures</td>
+<td>Diversification; long share-of-wallet runway</td>
+</tr>
+<tr>
+<td>Merchant risk / compliance failure</td>
+<td>Fraud, illegal merchants, AML breaches</td>
+<td>Rising chargebacks, press investigations, regulator inquiries</td>
+<td>Underwriting discipline; exit high-risk verticals</td>
+</tr>
+<tr>
+<td>Accounting fraud (outlier)</td>
+<td>Fake cash/partners</td>
+<td>Auditor issues, unverifiable third-party acquirers</td>
+<td>Diligence on cash and partner structures (Wirecard lesson)</td>
+</tr>
+<tr>
+<td>Regulation of fees</td>
+<td>Interchange/scheme caps, surcharging rules</td>
+<td>Court rulings, Fed rulemaking, EU legislation</td>
+<td>Interchange++ pass-through limits direct hit</td>
+</tr>
+<tr>
+<td>A2A / public rails substitution</td>
+<td>Cheaper rails bypass cards</td>
+<td>Pix/UPI/Wero growth; merchant incentives to steer</td>
+<td>Accept and process A2A methods</td>
+</tr>
+<tr>
+<td>Cross-border / tariff shock</td>
+<td>Trade policy, travel collapse</td>
+<td>Cross-border % YoY; tariff announcements</td>
+<td>Geographic diversification</td>
+</tr>
+<tr>
+<td>Rate cuts</td>
+<td>Float income falls</td>
+<td>Policy-rate path</td>
+<td>Report core ex-interest; limited hedging</td>
+</tr>
+<tr>
+<td>Execution in M&amp;A integration</td>
+<td>Tech migration, customer churn</td>
+<td>Synergy slippage, attrition</td>
+<td>Clear integration milestones (GPN–Worldpay)</td>
+</tr>
+<tr>
+<td>Capex / compute cost inflation</td>
+<td>Data-centre supply squeeze</td>
+<td>Capex % of revenue guidance ↑</td>
+<td>Pull-forward buying (Adyen 2026)</td>
+</tr>
+<tr>
+<td>Technology outage</td>
+<td>Platform downtime loses merchant trust</td>
+<td>Incident reports</td>
+<td>Redundant architecture; own infrastructure</td>
+</tr>
+</tbody>
+</table>
+<h2>11) BOOMS &amp; BUSTS</h2>
+<p>Payments has not had commodity-style price cycles. Its cycles are <strong>growth-expectation cycles</strong> (valuation), <strong>consolidation cycles</strong> (M&amp;A), <strong>mix shocks</strong> (cross-border) and <strong>trust shocks</strong> (fraud/compliance). Revenue rarely collapses; value does.</p>
+<h3>B1. 2008–09 Global Financial Crisis — the volume dip that barely hurt</h3>
+<ul>
+<li><strong>Years:</strong> 2008–2009.</li>
+<li><strong>Trigger:</strong> Credit crisis and recession.</li>
+<li><strong>Pre-conditions:</strong> Visa IPO (2008); card penetration still rising; consumer credit stretched.</li>
+<li><strong>Indicators flashing:</strong> Falling nominal spending; cross-border pressure.</li>
+<li><strong>Price/margin path:</strong> Visa FY2009 payments volume −1.7% nominal (+0.9% constant $); processed transactions +8%; net operating revenue +10%. US payments volume −2.6% in fiscal Q4 2009.</li>
+<li><strong>Duration:</strong> ~4–6 quarters of weak volume. Data gap: verified acquirer-level margin paths.</li>
+<li><strong>Lesson:</strong> Transaction count kept growing because the cash-to-card shift continued; networks proved defensive.</li>
+</ul>
+<h3>B2. 2019 consolidation top → 2023 unwind — "scale" is not a moat</h3>
+<ul>
+<li><strong>Years:</strong> Boom 2019; bust 2022–2023.</li>
+<li><strong>Trigger (boom):</strong> Legacy processors merged for scale: FIS–Worldpay ($43bn), Fiserv–First Data, Global Payments–TSYS.</li>
+<li><strong>Pre-conditions:</strong> Low rates; acquirers valued on synergies; modern PSPs still small in the US.</li>
+<li><strong>Indicators flashing:</strong> Leverage up; organic growth of legacy players trailing modern PSPs.</li>
+<li><strong>Price/margin path:</strong> FIS recorded a $17.6bn goodwill impairment on Worldpay (2023) and sold 55% to GTCR at $18.5bn valuation (July 2023) — vs $43bn paid.</li>
+<li><strong>Duration:</strong> ~4 years from peak deal to write-down.</li>
+<li><strong>Lesson:</strong> Stitched-together platforms lost share to single-platform providers. The same "scale" thesis is being retested now by Global Payments–Worldpay (closed Jan 2026).</li>
+</ul>
+<h3>B3. 2020 COVID shock — cross-border crash, e-commerce boom, and Wirecard</h3>
+<ul>
+<li><strong>Years:</strong> 2020 (recovery 2021–22).</li>
+<li><strong>Trigger:</strong> Pandemic lockdowns and travel bans.</li>
+<li><strong>Pre-conditions:</strong> High cross-border profit dependence at networks; in-store-heavy SMB acquirers.</li>
+<li><strong>Indicators flashing:</strong> Airline traffic collapse; cross-border volume.</li>
+<li><strong>Price/margin path:</strong> Visa cross-border ex intra-Europe −41% in fiscal Q4 2020; net revenue −5% FY20. Online PSPs gained. Separately, Wirecard filed for insolvency on 25 June 2020 after €1.9bn of reported cash likely did not exist (KPMG special audit could not verify profits, April 2020); ~€17bn market value erased.</li>
+<li><strong>Duration:</strong> Cross-border recovered over ~2 years. Data gap: exact recovery date.</li>
+<li><strong>Lesson:</strong> Mix shocks hit profit more than volume; trust shocks are binary.</li>
+</ul>
+<h3>B4. 2021–2023 fintech boom and bust — growth reset at modern PSPs</h3>
+<ul>
+<li><strong>Years:</strong> Boom 2020–21; bust 2022–23.</li>
+<li><strong>Trigger (bust):</strong> Rate rises, end of e-commerce pull-forward, merchants shifting to cost-cutting.</li>
+<li><strong>Pre-conditions:</strong> Very high growth expectations; heavy hiring; new entrants funded by venture capital.</li>
+<li><strong>Indicators flashing:</strong> Merchant "growth → cost savings" commentary; take-rate pressure in North America enterprise; opex growth &gt; revenue growth.</li>
+<li><strong>Price/margin path:</strong> Adyen H1 2023: net revenue €739.1m (+21%, vs ~40% expected by analysts); EBITDA €320m, down 10% YoY; shares fell ~28% on the day (17 Aug 2023). PayPal repriced Braintree from late 2024, accepting lower unbranded volume for margin.</li>
+<li><strong>Duration:</strong> ~18–24 months of reset. Data gap: consistent peak-to-trough valuation data from free sources.</li>
+<li><strong>Lesson:</strong> Hiring ahead of revenue in a pricing downturn compresses margins fast; growth companies rerate on the second derivative.</li>
+</ul>
+<h3>B5. 2025 trust shock — Worldline "Dirty Payments"</h3>
+<ul>
+<li><strong>Years:</strong> 2023–2025 (build-up), June 2025 (event).</li>
+<li><strong>Trigger:</strong> Investigation by 21 European media outlets alleging Worldline covered up client fraud among high-risk merchants.</li>
+<li><strong>Pre-conditions:</strong> Growth from high-risk verticals; weak organic growth; prior share-price decline (&gt;96% below mid-2021 levels by June 2025).</li>
+<li><strong>Indicators flashing:</strong> Disclosure that 1.5% of acquired volume came from "high-brand-risk" sectors; offboarding merchants worth €130m annual revenue in 2024.</li>
+<li><strong>Price/margin path:</strong> Shares −41% on 25 June 2025.</li>
+<li><strong>Duration:</strong> Ongoing restructuring. Data gap: final regulatory outcomes.</li>
+<li><strong>Lesson:</strong> Underwriting quality is a balance-sheet and franchise risk, not just a compliance cost.</li>
+</ul>
+<h3>B6. 2025–2026 legacy reset and growth recalibration — the current episode</h3>
+<ul>
+<li><strong>Years:</strong> April 2025 – present.</li>
+<li><strong>Trigger:</strong> Slowing SMB volume, competitive gaps at legacy acquirers, tariffs on cross-border e-commerce, and investor scepticism of scale M&amp;A.</li>
+<li><strong>Pre-conditions:</strong> Legacy guidance embedding "outsized" growth (Fiserv CEO, Oct 2025); expensive enterprise growth expectations.</li>
+<li><strong>Indicators flashing:</strong> Guidance cuts; organic growth divergence; single-customer volume swings.</li>
+<li><strong>Price/margin path:</strong> Global Payments shares −17% on Worldpay deal announcement (17 Apr 2025). Fiserv cut organic growth guidance to 3.5–4.5% from ~10%, shares −44% on 29 Oct 2025 (record worst day). Adyen shares fell ~15–20% on 12 Feb 2026 after H2 2025 processed volume (€745.3bn, +12% YoY; +19% excluding one large customer) missed consensus and 2026 guidance (20–22% cc) trailed expectations.</li>
+<li><strong>Duration:</strong> Unfolding. Data gap: end-point.</li>
+<li><strong>Lesson so far:</strong> Market is repricing growth durability, not absolute profitability; fundamentals at modern PSPs (Adyen H1 2026 volume +24%, EBITDA margin 49–50%) remain intact.</li>
+</ul>
+<p><strong>Exhibit B1 — Episode summary</strong> (takeaway: busts come from expectations, leverage, or trust — not from volume collapse)</p>
+<table>
+<thead>
+<tr>
+<th>Episode</th>
+<th>Type</th>
+<th>Volume hit</th>
+<th>Value hit</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1 GFC</td>
+<td>Macro</td>
+<td>Small (Visa −1.7% nominal FY09)</td>
+<td>Moderate</td>
+<td>4–6 qtrs</td>
+</tr>
+<tr>
+<td>B2 Consolidation unwind</td>
+<td>Strategy/M&amp;A</td>
+<td>None (share loss)</td>
+<td>Large ($17.6bn impairment)</td>
+<td>~4 yrs</td>
+</tr>
+<tr>
+<td>B3 COVID + Wirecard</td>
+<td>Mix shock + fraud</td>
+<td>Cross-border −41% (Q4)</td>
+<td>Wirecard total loss</td>
+<td>~2 yrs</td>
+</tr>
+<tr>
+<td>B4 Fintech reset</td>
+<td>Expectations/pricing</td>
+<td>Growth slowed</td>
+<td>Large for high-growth names</td>
+<td>18–24 mos</td>
+</tr>
+<tr>
+<td>B5 Worldline</td>
+<td>Trust/compliance</td>
+<td>Offboarding</td>
+<td>−41% in a day</td>
+<td>Ongoing</td>
+</tr>
+<tr>
+<td>B6 Legacy reset</td>
+<td>Expectations/competition</td>
+<td>Growth slowed</td>
+<td>Large, dispersed</td>
+<td>Ongoing</td>
+</tr>
+</tbody>
+</table>
+<h3>Checklist — Top vs Bottom</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Near a top</th>
+<th>Near a bottom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Growth guidance</td>
+<td>Raised; embeds "record" activity</td>
+<td>Cut; reset "critical and necessary"</td>
+</tr>
+<tr>
+<td>M&amp;A</td>
+<td>Mega-mergers on scale synergies</td>
+<td>Divestitures, impairments, carve-outs</td>
+</tr>
+<tr>
+<td>Hiring</td>
+<td>Headcount growth ≥ revenue growth</td>
+<td>Hiring freezes, automation focus</td>
+</tr>
+<tr>
+<td>Merchant tone</td>
+<td>"Growth first", expansion budgets</td>
+<td>"Cost savings", RFPs, repricing</td>
+</tr>
+<tr>
+<td>Risk appetite</td>
+<td>Growth from high-risk verticals</td>
+<td>Offboarding, compliance spend</td>
+</tr>
+<tr>
+<td>Entrants</td>
+<td>Heavy venture funding, IPO window</td>
+<td>Down rounds, entrant consolidation</td>
+</tr>
+<tr>
+<td>Take rate narrative</td>
+<td>Ignored because volume booms</td>
+<td>Scrutinised every half</td>
+</tr>
+</tbody>
+</table>
+<h3>Tripwires (IF/THEN)</h3>
+<p>Illustrative tripwires — analyst-chosen thresholds, not industry norms. Calibrate to your own view.</p>
+<ul>
+<li><strong>IF</strong> a leading PSP's take rate falls &gt;1 bp half-on-half for two consecutive halves <strong>and</strong> management cannot attribute it to disclosed mix/tiering, <strong>THEN</strong> treat as competitive repricing and cut long-term take-rate assumptions.</li>
+<li><strong>IF</strong> Visa/Mastercard constant-dollar volume growth drops below low single digits for two quarters, <strong>THEN</strong> assume a demand downturn and stress-test PSP growth guidance.</li>
+<li><strong>IF</strong> the US settlement receives final approval <strong>and</strong> surcharging of premium cards becomes visible at large merchants, <strong>THEN</strong> expect lower premium-card interchange and shifting card mix; check blended-pricing acquirers first.</li>
+<li><strong>IF</strong> Wero launches at POS and a large European retailer steers customers to it with incentives, <strong>THEN</strong> raise A2A-substitution risk for European card economics.</li>
+<li><strong>IF</strong> a PSP discloses rising high-risk vertical exposure or regulator inquiries, <strong>THEN</strong> apply a trust discount regardless of growth.</li>
+<li><strong>IF</strong> capex stays above ~7% of net revenue beyond 2026 at Adyen (management says it returns towards historical levels), <strong>THEN</strong> revisit the "asset-light" assumption.</li>
+</ul>
+<h3>Last cycle vs Now</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Last cycle (2021–23 fintech reset)</th>
+<th>Now (2025–26)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rates</td>
+<td>Rising fast from zero</td>
+<td>Falling from highs (float income fading)</td>
+</tr>
+<tr>
+<td>Merchant tone</td>
+<td>Pivot to cost savings</td>
+<td>Priorities split: LatAm expansion, agentic commerce, cost (Adyen Feb 2026)</td>
+</tr>
+<tr>
+<td>Competitive supply</td>
+<td>Venture-funded entrants flush</td>
+<td>Stripe scaled ($1.9tn); legacy re-consolidating (GPN–Worldpay)</td>
+</tr>
+<tr>
+<td>Modern PSP profitability</td>
+<td>Adyen EBITDA fell 10% YoY (H1 2023)</td>
+<td>Adyen EBITDA +18% YoY, 49% margin (H1 2026)</td>
+</tr>
+<tr>
+<td>Legacy players</td>
+<td>Unwinding 2019 mergers</td>
+<td>Guidance resets (Fiserv), integration (GPN)</td>
+</tr>
+<tr>
+<td>New narrative</td>
+<td>Embedded finance</td>
+<td>Agentic commerce, stablecoins, A2A (Wero)</td>
+</tr>
+<tr>
+<td>Regulation</td>
+<td>Stable</td>
+<td>Active: US settlement, Reg II litigation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read:</strong> Today resembles 2022–23 in valuation behaviour (growth rerating) but differs in fundamentals: modern PSPs are expanding profits rather than shrinking them, and the pressure is concentrated at legacy acquirers and in regulatory/rail substitution.</p></div>
+    <div class="controls">
+      <button class="btn" onclick="prevStep()">← Back</button>
+      <button class="btn primary" onclick="nextStep()">Take the quiz →</button>
+    </div>
+  </section>
+
+  <section class="phase" id="phase-quiz">
+    <span class="phase-tag">Phase 3 · Quiz</span>
+    <h1>10 questions — test your understanding</h1>
+    <p>Click an answer; you'll see whether it was right and why immediately. Anything you got wrong is a flag for which section to dig into next.</p>
+    <div id="quizContainer"></div>
+    <div class="score-card" id="scoreCard">
+      <div class="score-num" id="scoreNum">0 / 10</div>
+      <div class="score-label">Correct on first try</div>
+      <div class="verdict" id="scoreVerdict"></div>
+    </div>
+    <div class="controls">
+      <button class="btn" onclick="prevStep()">← Back</button>
+      <button class="btn primary" onclick="nextStep()">Continue to annual-report guide →</button>
+    </div>
+  </section>
+
+  <section class="phase" id="phase-guide">
+    <span class="phase-tag">Phase 4 · Apply</span>
+    <h1>Annual-report guide</h1>
+    <p>This is the application phase. Pick at least 3 of the named companies in the guide below, pull their most recent annual reports, and walk through the template questions yourself. This is where the framework becomes actual sector competence.</p>
+    <div class="info-banner"><strong>Tip:</strong> Underlined sector terms link back to the jargon table.</div>
+    <div id="guideContent" class="linkable"><h1>Annual Report Guide — Five Companies to Study Next</h1>
+<p>Chosen for sector relevance to an Adyen investor, not ranked by market capitalisation (Unknown — needs verification: current market-cap ranking). Read their latest annual reports yourself; use these questions to apply the sector framework. Stripe is private and publishes only an annual letter — read it as a competitive benchmark (TPV $1.9tn in 2025).</p>
+<h2>1. Visa Inc. (NYSE: V) — the largest card network; sets the rules and fees everyone else lives under</h2>
+<ol>
+<li>How much of net revenue comes from service, data processing, international transaction and other revenues — and how fast is international (cross-border) growing vs domestic?</li>
+<li>What does "payments volume" include, and how does constant-dollar growth compare with processed-transaction growth?</li>
+<li>How large are client incentives as a share of gross revenue, and are they rising faster than revenue (a hidden pricing concession)?</li>
+<li>What does the filing say about the US merchant settlement (interchange cut, honor-all-cards, surcharging) and estimated revenue impact?</li>
+<li>How is Visa responding to A2A rails (Pix, UPI, Wero) and stablecoins — revenue from "value-added services" vs core?</li>
+<li>What share of volume is tokenized, and how does Visa monetize tokens?</li>
+<li>How exposed is revenue to cross-border travel shocks (compare FY2020 disclosures)?</li>
+<li>How much litigation provision/escrow remains, and for which cases?</li>
+</ol>
+<h2>2. Fiserv, Inc. (NYSE: FI) — largest US legacy acquirer + bank processor; owner of Clover SMB platform</h2>
+<ol>
+<li>What explains the October 2025 guidance cut from ~10% to 3.5–4.5% organic growth — volume, pricing, or one-offs?</li>
+<li>Clover: revenue vs gross payment volume growth — how much growth comes from pricing and value-added services vs volume?</li>
+<li>How much merchant revenue is gross of pass-through (interchange) — can you reconstruct a net revenue and take rate?</li>
+<li>What is the mix of distribution: bank partners, ISOs, direct? How dependent is growth on bank referral channels?</li>
+<li>How much of the business is enterprise vs SMB, and where is share being lost to modern PSPs?</li>
+<li>What capex and technology investment is planned to close "competitive gaps," and does it pressure margins?</li>
+<li>How large are goodwill and intangibles from the First Data merger, and any impairment testing sensitivities?</li>
+<li>How much debt is there, maturity profile, and how are buybacks balanced against reinvestment?</li>
+</ol>
+<h2>3. Global Payments Inc. (NYSE: GPN) — newly "pure-play" merchant company after buying Worldpay (closed Jan 2026)</h2>
+<ol>
+<li>What is pro-forma net revenue, volume (&gt;$3.7tn), and take rate for the combined merchant business?</li>
+<li>How are $600m cost synergies and $200m revenue synergies scheduled, and what integration costs are excluded from adjusted figures?</li>
+<li>Worldpay's enterprise/e-commerce book: is it growing faster or slower than Adyen/Stripe? What churn is disclosed?</li>
+<li>How much leverage did the deal add, and what are debt covenants and maturity ladder?</li>
+<li>What share of revenue is software-led (Genius POS, vertical software) vs pure acquiring?</li>
+<li>What goodwill was recognized, and what assumptions support it given FIS's prior $17.6bn impairment on the same asset?</li>
+<li>How exposed is the combined book to US SMB spending vs international and cross-border?</li>
+<li>What technology migrations (platform consolidation) are planned, and what outage/customer-attrition risks are flagged?</li>
+</ol>
+<h2>4. PayPal Holdings (Nasdaq: PYPL) — branded checkout + Braintree unbranded processing; volume vs margin trade-off</h2>
+<ol>
+<li>Split TPV ($1.79tn in 2025, +7%) between branded checkout, Braintree, Venmo and P2P — which grows and which earns?</li>
+<li>Transaction margin dollars vs TPV growth: is the Braintree repricing lifting profit per unit?</li>
+<li>What is the transaction expense rate and transaction loss rate trend?</li>
+<li>How much revenue comes from interest on customer balances and credit, and how sensitive is it to rates?</li>
+<li>How is branded checkout share trending against Apple Pay and other wallets?</li>
+<li>What is Fastlane / guest-checkout adoption, and does it change conversion (authorization and checkout success)?</li>
+<li>How does management frame competition with Adyen and Stripe in enterprise?</li>
+<li>What changes does the new CEO signal in capital allocation (buybacks vs investment)?</li>
+</ol>
+<h2>5. Adyen N.V. (Euronext: ADYEN) — strategic outlier: single global platform for enterprise, online + in-store + platforms</h2>
+<ol>
+<li>Decompose net revenue growth (FY2025 +21% cc) into volume growth and take-rate change by segment (Digital, Unified Commerce, Platforms).</li>
+<li>What drove take rate from 16.2 bps (H2 2024) to 17.1 bps (H2 2025) to 16.2 bps (H1 2026)? Is it tiering, mix, or pricing?</li>
+<li>How concentrated is revenue (top 300 customers = 60%), and what disclosures exist on single large-customer volume swings?</li>
+<li>What evidence supports share-of-wallet expansion (&lt;20% in years 3–7 to &gt;40% after year 12) — cohort data, retention, churn?</li>
+<li>How does in-person/unified commerce growth (in-person volume +28% in H1 2026) change the risk profile vs digital?</li>
+<li>What are the economics of the Talon.One and Orb acquisitions, and how do they affect margin (≈1 pp lower in 2026)?</li>
+<li>How much cash is truly free (€4.9bn ex merchant balances) vs needed for licences and regulatory capital?</li>
+<li>What is the path from 49–50% EBITDA margin to &gt;55% by 2028 — headcount growth vs revenue growth?</li>
+<li>Capex rising to ~7% of net revenue in 2026 for data centres: what is the evidence it normalises?</li>
+<li>How exposed is the business to cross-border e-commerce tariffs, A2A substitution in Europe (Wero), and interchange/scheme-rule changes?</li>
+</ol></div>
+    <div class="controls">
+      <button class="btn" onclick="prevStep()">← Back</button>
+      <button class="btn primary" onclick="nextStep()">Finish →</button>
+    </div>
+  </section>
+
+  <section class="phase" id="phase-done">
+    <span class="phase-tag">Done</span>
+    <h1>Packet complete.</h1>
+    <p>You now have:</p>
+    <ul>
+      <li>A working vocabulary of the cluster-head Merchant Payments terms.</li>
+      <li>A supply/demand framework with current data points.</li>
+      <li>The pattern recognition for the sector's historical booms and busts.</li>
+      <li>A quiz score telling you exactly where you're soft.</li>
+      <li>A list of named companies with sector-specific questions to ask of their filings.</li>
+    </ul>
+    <p><strong>What's next.</strong> Pull the most recent annual report for the companies in the guide. Open the guide section in this packet and walk through the template questions. Budget ~2 hours per company.</p>
+    <p style="color: var(--muted); margin-top: 24px;">After three filings you will know more about Merchant Payments than 95% of generalist investors.</p>
+    <div class="controls">
+      <button class="btn" onclick="prevStep()">← Back to guide</button>
+      <button class="btn primary" onclick="goTo(0)">Start over from the top</button>
+    </div>
+  </section>
+</main>
+
+<script>
+const QUIZ_DATA = [{"id": 1, "question": "On a $100 card sale with a 2.00% merchant discount rate, which party usually receives the largest slice of the fee?", "choices": ["The merchant's acquirer/PSP", "The card network (scheme fees)", "The card issuer (interchange)", "The payment gateway"], "answer": "C", "short": "The card issuer (interchange)", "explanation": "Interchange is usually the largest cost in the merchant discount rate; the acquirer keeps a thin net slice. See Jargon: Four-party model, Interchange; Report §5 Exhibit P1."}, {"id": 2, "question": "A PSP processes $800bn of volume and reports $1.3bn of net revenue. What is its take rate?", "choices": ["1.6 bps", "16.25 bps", "162.5 bps", "0.16 bps"], "answer": "B", "short": "16.25 bps", "explanation": "Take rate = $1.3bn ÷ $800bn × 10,000 = 16.25 bps. See Jargon §C formula 2."}, {"id": 3, "question": "Why do enterprise merchants prefer interchange++ pricing over blended pricing?", "choices": ["It guarantees the lowest total fee in every transaction", "It separates pass-through costs from the provider's markup, making the real price visible", "It removes interchange from the transaction", "It lets the merchant avoid scheme fees"], "answer": "B", "short": "It separates pass-through costs from the provider's markup, making the real price visible", "explanation": "Interchange++ passes interchange and scheme fees through at cost and adds a separate markup. See Jargon: Interchange++ pricing; Report §5 P1."}, {"id": 4, "question": "A leading PSP's volume grows 24% but net revenue grows only 19%. What is the most likely explanation to test first?", "choices": ["Interchange was cut by regulators", "Float income collapsed", "Take rate fell as large merchants moved into lower volume-pricing tiers or mix shifted", "The PSP double-counted volume last year"], "answer": "C", "short": "Take rate fell as large merchants moved into lower volume-pricing tiers or mix shifted", "explanation": "Net revenue growth ≈ volume growth × take-rate change; Adyen H1 2026 volume +24%, net revenue +19%, take rate 16.2 bps, attributed by management to tiering. See Report §5 P5 and Jargon §C formula 6."}, {"id": 5, "question": "In fiscal 2009, during the financial crisis, Visa's nominal payments volume fell 1.7%. What happened to its net operating revenue?", "choices": ["Fell about 20%", "Was flat", "Rose about 10%", "Fell about 5%"], "answer": "C", "short": "Rose about 10%", "explanation": "Transactions still grew 8% as cash-to-card shift continued. Recessions dent growth, rarely revenue. See Report §3 D1 and §11 B1."}, {"id": 6, "question": "During COVID, what hit Visa's fiscal 2020 net revenue hardest?", "choices": ["Collapse in cross-border volume, a high-yield part of the mix", "Collapse in domestic debit volume", "New interchange caps in the US", "Loss of Apple Pay transactions"], "answer": "A", "short": "Collapse in cross-border volume, a high-yield part of the mix", "explanation": "Cross-border ex intra-Europe fell 41% in fiscal Q4 2020; total volume still rose 2% but net revenue fell 5%. See Report §3 D3 and §11 B3."}, {"id": 7, "question": "What does \"multi-acquiring and orchestration\" mean for pricing power in the enterprise segment?", "choices": ["Merchants lock into one provider for a decade, raising pricing power", "Merchants split and route volume across providers, keeping pricing pressure permanent and rewarding the best performer", "Networks set the acquirer's markup", "It only matters for small merchants"], "answer": "B", "short": "Merchants split and route volume across providers, keeping pricing pressure permanent and rewarding the best performer", "explanation": "See Jargon: Multi-acquiring and orchestration; Report §7 E1 and §10."}, {"id": 8, "question": "Which past episode best illustrates that \"scale\" through mergers is not a durable moat in merchant payments?", "choices": ["Visa's 2008 IPO", "The launch of Pix in Brazil", "FIS buying Worldpay for $43bn in 2019, then taking a $17.6bn impairment and selling 55% at an $18.5bn valuation in 2023", "Stripe's 2025 tender offer"], "answer": "C", "short": "FIS buying Worldpay for $43bn in 2019, then taking a $17.6bn impairment and selling 55% at an $18.5bn valuation in 2023", "explanation": "Stitched-together platforms lost share to single-platform PSPs. See Report §4 S4 and §11 B2."}, {"id": 9, "question": "What threat do account-to-account systems such as Pix, UPI and Wero pose, and to whom most directly?", "choices": ["They raise interchange, hurting merchants", "They bypass card rails and fees, hurting card network and issuer economics most; PSPs can still earn by processing them", "They eliminate the need for merchant underwriting", "They only affect cross-border payments"], "answer": "B", "short": "They bypass card rails and fees, hurting card network and issuer economics most; PSPs can still earn by processing them", "explanation": "See Jargon: Account-to-account (A2A) payments; Report §7 Exhibit E1."}, {"id": 10, "question": "Which checklist signal points to being nearer a *bottom* than a top in the payments valuation cycle?", "choices": ["Mega-mergers justified by scale synergies", "Headcount growing faster than revenue", "Guidance cuts described as \"critical and necessary,\" divestitures and impairments", "Heavy venture funding and an open IPO window"], "answer": "C", "short": "Guidance cuts described as \"critical and necessary,\" divestitures and impairments", "explanation": "See Report §11 Checklist — Top vs Bottom (Fiserv Oct 2025 reset language)."}];
+const LINK_MAP = [{"pattern": "[Ff]our-party model", "slug": "four-party-model"}, {"pattern": "[Tt]hree-party", "slug": "four-party-model"}, {"pattern": "[Cc]ard schemes?", "slug": "card-scheme"}, {"pattern": "[Cc]ard networks?", "slug": "card-scheme"}, {"pattern": "[Mm]erchant acquiring", "slug": "acquirer"}, {"pattern": "[Pp]ayment service providers?", "slug": "payment-service-provider-psp"}, {"pattern": "\\bPSPs?\\b", "slug": "payment-service-provider-psp"}, {"pattern": "[Ee]mbedded payments", "slug": "embedded-payments-payfac"}, {"pattern": "[Pp]ayment facilitators?", "slug": "embedded-payments-payfac"}, {"pattern": "\\bPayFacs?\\b", "slug": "embedded-payments-payfac"}, {"pattern": "[Tt]otal payment volume", "slug": "total-payment-volume-tpv"}, {"pattern": "\\bTPV\\b", "slug": "total-payment-volume-tpv"}, {"pattern": "\\bGPV\\b", "slug": "total-payment-volume-tpv"}, {"pattern": "[Pp]rocessed volume", "slug": "total-payment-volume-tpv"}, {"pattern": "\\b[Ss]ettlement lag", "slug": "authorization-clearing-and-settlement"}, {"pattern": "[Aa]uthori[sz]ation rates?", "slug": "authorization-rate"}, {"pattern": "[Aa]pproval rates?", "slug": "authorization-rate"}, {"pattern": "[Aa]uth rates?", "slug": "authorization-rate"}, {"pattern": "[Tt]okeni[sz](ation|ed)", "slug": "tokenization"}, {"pattern": "[Mm]erchant discount rate", "slug": "merchant-discount-rate-mdr"}, {"pattern": "\\bMDR\\b", "slug": "merchant-discount-rate-mdr"}, {"pattern": "[Ii]nterchange\\+\\+", "slug": "interchange-pricing"}, {"pattern": "[Bb]lended pricing", "slug": "interchange-pricing"}, {"pattern": "[Ii]nterchange caps?", "slug": "interchange-caps"}, {"pattern": "[Ii]nterchange Fee Regulation", "slug": "interchange-caps"}, {"pattern": "Regulation II", "slug": "interchange-caps"}, {"pattern": "\\bReg II\\b", "slug": "interchange-caps"}, {"pattern": "Durbin", "slug": "interchange-caps"}, {"pattern": "\\b[Ii]nterchange\\b", "slug": "interchange"}, {"pattern": "[Ss]cheme fees", "slug": "scheme-fees"}, {"pattern": "[Tt]ake rates?", "slug": "take-rate"}, {"pattern": "[Pp]ass-through", "slug": "net-revenue"}, {"pattern": "[Tt]ransaction margin", "slug": "transaction-margin"}, {"pattern": "[Ff]loat income", "slug": "settlement-float"}, {"pattern": "[Mm]erchant balances", "slug": "settlement-float"}, {"pattern": "[Cc]hargebacks?", "slug": "chargeback"}, {"pattern": "[Uu]nified [Cc]ommerce", "slug": "card-present-vs-card-not-present"}, {"pattern": "[Cc]ross-border", "slug": "cross-border-and-fx"}, {"pattern": "[Dd]igital wallets?", "slug": "digital-wallet"}, {"pattern": "[Aa]ccount-to-account", "slug": "account-to-account-a2a-payments"}, {"pattern": "\\bA2A\\b", "slug": "account-to-account-a2a-payments"}, {"pattern": "[Mm]ulti-acquiring", "slug": "multi-acquiring-and-orchestration"}, {"pattern": "[Oo]rchestration", "slug": "multi-acquiring-and-orchestration"}, {"pattern": "[Ss]hare[- ]of[- ]wallet", "slug": "share-of-wallet"}, {"pattern": "[Hh]onor-all-cards", "slug": "scheme-rules-honor-all-cards-surcharging"}, {"pattern": "[Ss]urcharg(ing|es?)", "slug": "scheme-rules-honor-all-cards-surcharging"}, {"pattern": "[Uu]nderwriting", "slug": "merchant-underwriting-kyc-aml"}, {"pattern": "[Hh]igh-risk (merchants|verticals)", "slug": "merchant-underwriting-kyc-aml"}, {"pattern": "\\bAML\\b", "slug": "merchant-underwriting-kyc-aml"}, {"pattern": "\\bKYC\\b", "slug": "merchant-underwriting-kyc-aml"}, {"pattern": "[Cc]ard issuers?", "slug": "issuer"}, {"pattern": "[Aa]cquiring licen[cs]es?", "slug": "acquirer"}, {"pattern": "[Ll]egacy acquirers?", "slug": "acquirer"}, {"pattern": "[Cc]ard-not-present", "slug": "card-present-vs-card-not-present"}, {"pattern": "[Rr]eal-time payments", "slug": "account-to-account-a2a-payments"}];
+const KNOWN_SLUGS = new Set(LINK_MAP.map(x => x.slug));
+
+const PHASES = [
+  { id: 'phase-welcome', label: '0 · Start' },
+  { id: 'phase-jargon', label: '1 · Jargon' },
+  { id: 'phase-onepager', label: '2A · 1-Pager' },
+  { id: 'phase-report', label: '2B · Full Report' },
+  { id: 'phase-quiz', label: '3 · Quiz' },
+  { id: 'phase-guide', label: '4 · AR Guide' },
+  { id: 'phase-done', label: 'Done' },
+];
+
+let currentStep = 0;
+let lastNonJargonStep = 0;
+const visited = new Set([0]);
+
+function renderNav() {
+  const nav = document.getElementById('stepNav');
+  nav.innerHTML = '';
+  PHASES.forEach((p, i) => {
+    const b = document.createElement('button');
+    b.textContent = p.label;
+    if (i === currentStep) b.classList.add('active');
+    if (visited.has(i) && i !== currentStep) b.classList.add('done');
+    b.onclick = () => goTo(i);
+    nav.appendChild(b);
+  });
+  const pct = (currentStep / (PHASES.length - 1)) * 100;
+  document.getElementById('pbar').style.width = pct + '%';
+}
+
+function goTo(n, opts) {
+  // opts.preserveScroll = true skips the auto scroll-to-top.
+  // Needed when jumpToTerm() is moving the user to a specific row in the
+  // jargon table — a smooth scroll-to-top here would race with the row's own
+  // scrollIntoView and the user lands on the wrong row (or no row).
+  opts = opts || {};
+  if (n < 0 || n >= PHASES.length) return;
+  document.querySelectorAll('section.phase').forEach(s => s.classList.remove('active'));
+  document.getElementById(PHASES[n].id).classList.add('active');
+  currentStep = n;
+  visited.add(n);
+  renderNav();
+  if (!opts.preserveScroll) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+function nextStep() { goTo(currentStep + 1); }
+function prevStep() { goTo(currentStep - 1); }
+
+// Jump to jargon row from prose.
+// Two things have to happen reliably here:
+//   1) The window must NOT be smooth-scrolling to top — that fights us.
+//   2) The new section must be laid out before we measure the row's position.
+// We accomplish (1) by passing preserveScroll to goTo, and (2) by waiting two
+// animation frames so the section's display:block + fade-in CSS has settled.
+// We also use behavior:'auto' (instant) for the row scroll — 'smooth' interacts
+// badly with the section fade animation and often lands a few hundred pixels
+// off; instant is precise.
+function jumpToTerm(slug, fromStep) {
+  if (typeof fromStep === 'number') lastNonJargonStep = fromStep;
+  // Cancel any in-flight smooth scrolling immediately.
+  window.scrollTo({ top: window.scrollY, behavior: 'auto' });
+  // Navigate to jargon phase WITHOUT scrolling to top.
+  goTo(1, { preserveScroll: true });
+  // Wait for the section to be visible AND the row to have a real bounding
+  // box. Double rAF guarantees the browser has done a layout pass in between.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const row = document.getElementById('row-' + slug);
+      if (row) {
+        row.scrollIntoView({ behavior: 'auto', block: 'center' });
+        row.classList.remove('flash');
+        void row.offsetWidth; // restart animation
+        row.classList.add('flash');
+        // Add a "back" affordance at top of jargon temporarily
+        showBackToProseHint();
+      }
+    });
+  });
+}
+function showBackToProseHint() {
+  let hint = document.getElementById('back-hint');
+  const phase = document.getElementById('phase-jargon');
+  if (!hint) {
+    hint = document.createElement('div');
+    hint.id = 'back-hint';
+    hint.className = 'info-banner';
+    hint.innerHTML = '↩ <a href="#" onclick="goTo(lastNonJargonStep);return false;" style="color:var(--accent);font-weight:600">Back to ' + PHASES[lastNonJargonStep].label + '</a>';
+    phase.insertBefore(hint, phase.children[2]); // after tag + h1
+  } else {
+    hint.style.display = 'block';
+    hint.innerHTML = '↩ <a href="#" onclick="goTo(lastNonJargonStep);return false;" style="color:var(--accent);font-weight:600">Back to ' + PHASES[lastNonJargonStep].label + '</a>';
+  }
+}
+
+// Wrap matching terms in linkable elements (text nodes only, skip headings + anchors + tables in jargon)
+function decorateLinkable(rootEl, fromStep) {
+  if (!rootEl) return;
+  const SKIP_TAGS = new Set(['SCRIPT','STYLE','A','CODE','PRE','H1','H2','H3','H4','H5','H6','BUTTON']);
+  // Compile regex per term
+  const compiled = LINK_MAP.map(({pattern, slug}) => ({
+    re: new RegExp(pattern, 'gi'),
+    slug
+  }));
+  function walk(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.nodeValue;
+      // Find earliest match across all patterns
+      let best = null;
+      for (const c of compiled) {
+        c.re.lastIndex = 0;
+        const m = c.re.exec(text);
+        if (m && (!best || m.index < best.index)) best = { m, slug: c.slug };
+      }
+      if (!best) return;
+      const before = text.slice(0, best.m.index);
+      const matched = best.m[0];
+      const after = text.slice(best.m.index + matched.length);
+      const span = document.createElement('span');
+      span.className = 'jlink';
+      span.dataset.slug = best.slug;
+      span.dataset.from = fromStep;
+      span.title = 'Click for definition';
+      span.textContent = matched;
+      span.addEventListener('click', (e) => {
+        e.preventDefault();
+        jumpToTerm(best.slug, parseInt(span.dataset.from, 10));
+      });
+      const parent = node.parentNode;
+      if (before) parent.insertBefore(document.createTextNode(before), node);
+      parent.insertBefore(span, node);
+      if (after) {
+        const afterNode = document.createTextNode(after);
+        parent.insertBefore(afterNode, node);
+        parent.removeChild(node);
+        walk(afterNode);
+      } else {
+        parent.removeChild(node);
+      }
+      return;
+    }
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+    if (SKIP_TAGS.has(node.tagName)) return;
+    if (node.classList && node.classList.contains('jlink')) return;
+    const children = Array.from(node.childNodes);
+    children.forEach(walk);
+  }
+  walk(rootEl);
+}
+
+// Filter jargon table by search
+function filterJargon() {
+  const q = document.getElementById('jargonSearch').value.toLowerCase().trim();
+  const rows = document.querySelectorAll('#jargonContent table tbody tr');
+  rows.forEach(r => {
+    if (!q) { r.classList.remove('hidden-row'); return; }
+    const txt = r.textContent.toLowerCase();
+    if (txt.includes(q)) r.classList.remove('hidden-row');
+    else r.classList.add('hidden-row');
+  });
+}
+
+function buildQuiz() {
+  const c = document.getElementById('quizContainer');
+  c.innerHTML = '';
+  const firstTry = {};
+  QUIZ_DATA.forEach((q) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-q';
+    const letters = ['A','B','C','D'];
+    card.innerHTML = `
+      <div class="qhead">Question ${q.id} of ${QUIZ_DATA.length}</div>
+      <div class="qbody">${q.question}</div>
+      <div class="choices" id="choices-${q.id}">
+        ${q.choices.map((ch, i) => `
+          <label data-letter="${letters[i]}" data-q="${q.id}">
+            <input type="radio" name="q${q.id}" value="${letters[i]}">
+            <div><strong>${letters[i]}.</strong> ${ch}</div>
+          </label>`).join('')}
+      </div>
+      <div class="quiz-feedback" id="fb-${q.id}"></div>
+    `;
+    c.appendChild(card);
+    card.querySelectorAll('.choices label').forEach(lab => {
+      lab.addEventListener('click', () => {
+        const correct = q.answer;
+        const picked = lab.dataset.letter;
+        const choicesEl = document.getElementById(`choices-${q.id}`);
+        choicesEl.querySelectorAll('label').forEach(l => {
+          l.classList.add('disabled');
+          l.style.pointerEvents = 'none';
+          if (l.dataset.letter === correct) l.classList.add('correct');
+        });
+        if (picked !== correct) lab.classList.add('wrong');
+        if (!(q.id in firstTry)) firstTry[q.id] = picked === correct;
+        const fb = document.getElementById(`fb-${q.id}`);
+        fb.classList.add('show');
+        if (picked === correct) {
+          fb.classList.add('good');
+          fb.innerHTML = `<strong>Correct — ${correct}. ${q.short}</strong><div class="why">${q.explanation}</div>`;
+        } else {
+          fb.classList.add('bad');
+          fb.innerHTML = `<strong>Not quite. The answer is ${correct}. ${q.short}</strong><div class="why">${q.explanation}</div>`;
+        }
+        const allAnswered = Object.keys(firstTry).length === QUIZ_DATA.length;
+        if (allAnswered) {
+          const score = Object.values(firstTry).filter(v => v).length;
+          const sc = document.getElementById('scoreCard');
+          sc.classList.add('show');
+          document.getElementById('scoreNum').textContent = `${score} / ${QUIZ_DATA.length}`;
+          let verdict = '';
+          if (score >= 9) verdict = "You're ready to read the annual reports. Move on to the AR guide.";
+          else if (score >= 6) verdict = 'Re-read the one-pager and the jargon formulas before tackling the annual reports.';
+          else verdict = 'Re-read the full sector report — especially §6 (unit economics) and §11 (booms & busts) — and re-take.';
+          document.getElementById('scoreVerdict').textContent = verdict;
+        }
+      });
+    });
+  });
+  // also decorate quiz feedback explanations later if desired (skipped for now to avoid clutter)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildQuiz();
+  // Decorate prose sections with jargon links — pass the source step index so "back" works
+  decorateLinkable(document.getElementById('onepagerContent'), 2); // step 2 = onepager
+  decorateLinkable(document.getElementById('reportContent'), 4);   // step 4 = report
+  decorateLinkable(document.getElementById('guideContent'), 5);    // step 5 = guide
+  renderNav();
+  goTo(0);
+});
+</script>
+</body>
+</html>

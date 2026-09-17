@@ -1,3 +1,8 @@
+- [ADYEN Payments Sector Overview 2026 09 17](https://xk152004.github.io/investechery/stocks/ADYEN_Payments_Sector_Overview_2026-09-17.html)
+- [Pay Pal Business Overview](https://xk152004.github.io/investechery/stocks/PayPal-Business-Overview.html)
+- [Merchant Payments Learning Packet](https://xk152004.github.io/investechery/stocks/merchant-payments-learning-packet.html)
+- [Adyen Business Overview](https://xk152004.github.io/investechery/stocks/Adyen-Business-Overview.html)
+- [Verisk Business Overview](https://xk152004.github.io/investechery/stocks/Verisk-Business-Overview.html)
 - [WDC Business Overview](https://xk152004.github.io/investechery/stocks/WDC-Business-Overview.html)
 - [Teradyne Business Overview](https://xk152004.github.io/investechery/stocks/Teradyne-Business-Overview.html)
 - [LRCX vs AMAT Peer Duel](https://xk152004.github.io/investechery/stocks/LRCX-vs-AMAT-Peer-Duel.html)
