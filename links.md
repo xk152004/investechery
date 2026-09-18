@@ -1,3 +1,4 @@
+- [GPN Business Overview](https://xk152004.github.io/investechery/stocks/GPN-Business-Overview.html)
 - [STX Business Overview](https://xk152004.github.io/investechery/stocks/STX-Business-Overview.html)
 - [Memory Semiconductors Industry Growth Outlook Report](https://xk152004.github.io/investechery/stocks/Memory-Semiconductors-Industry-Growth-Outlook-Report.html)
 - [Micron vs Sandisk Peer Duel](https://xk152004.github.io/investechery/stocks/Micron_vs_Sandisk_Peer_Duel.html)
