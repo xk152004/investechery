@@ -1,3 +1,5 @@
+- [STX Business Overview](https://xk152004.github.io/investechery/stocks/STX-Business-Overview.html)
+- [Memory Semiconductors Industry Growth Outlook Report](https://xk152004.github.io/investechery/stocks/Memory-Semiconductors-Industry-Growth-Outlook-Report.html)
 - [Micron vs Sandisk Peer Duel](https://xk152004.github.io/investechery/stocks/Micron_vs_Sandisk_Peer_Duel.html)
 - [Adyen vs AXP Peer Duel](https://xk152004.github.io/investechery/stocks/Adyen-vs-AXP-Peer-Duel.html)
 - [Adyen vs Visa Peer Duel](https://xk152004.github.io/investechery/stocks/Adyen-vs-Visa-Peer-Duel.html)
