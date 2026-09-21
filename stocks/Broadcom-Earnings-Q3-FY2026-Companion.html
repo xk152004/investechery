@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Broadcom Q3 FY2026 Teardown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<style>
+:root{
+  --ground:#F6F7F9; --surface:#FCFCFD; --surface-2:#F0F2F5; --rule:#DCE0E6;
+  --ink:#131A21; --ink-2:#4A5665; --muted:#7B8795; --chrome:#24405C;
+  --s1:#2a78d6; --s2:#eb6834; --ord-lo:#86b6ef; --ord-hi:#1c5cab;
+  --good:#0ca30c; --warn:#fab219; --crit:#d03b3b; --good-ink:#006300; --crit-ink:#9B2C22;
+  --grid:#E6E9EE; --axis:#C6CCD4;
+  --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 1px 2px rgba(19,26,33,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1318; --surface:#151B22; --surface-2:#1B222B; --rule:#262F3A;
+    --ink:#EAEEF3; --ink-2:#A8B4C1; --muted:#7B8795; --chrome:#8FB3D9;
+    --s1:#3987e5; --s2:#d95926; --ord-lo:#184f95; --ord-hi:#86b6ef;
+    --good:#0ca30c; --warn:#fab219; --crit:#d03b3b; --good-ink:#31b331; --crit-ink:#e07b72;
+    --grid:#232B34; --axis:#333D48;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1318; --surface:#151B22; --surface-2:#1B222B; --rule:#262F3A;
+  --ink:#EAEEF3; --ink-2:#A8B4C1; --muted:#7B8795; --chrome:#8FB3D9;
+  --s1:#3987e5; --s2:#d95926; --ord-lo:#184f95; --ord-hi:#86b6ef;
+  --good:#0ca30c; --warn:#fab219; --crit:#d03b3b; --good-ink:#31b331; --crit-ink:#e07b72;
+  --grid:#232B34; --axis:#333D48;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+     font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:20px;padding-block:0 56px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+p{margin:0 0 .7em}
+a{color:var(--chrome)}
+:focus-visible{outline:2px solid var(--s1);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- sticky bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--surface);
+     border-bottom:1px solid var(--rule)}
+.bar-in{max-width:1060px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;
+        gap:14px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.06em;color:var(--ink)}
+.bar nav{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
+.bar nav a{font-size:12.5px;text-decoration:none;color:var(--ink-2);padding:3px 7px;border-radius:3px}
+.bar nav a:hover{background:var(--surface-2);color:var(--ink)}
+.chip-status{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.09em;
+  padding:3px 8px;border-radius:3px;background:rgba(250,178,25,.16);color:#7A5200;
+  border:1px solid rgba(250,178,25,.5)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip-status{color:#F0C25A}}
+:root[data-theme="dark"] .chip-status{color:#F0C25A}
+
+/* ---------- masthead ---------- */
+header.mast{padding-block:34px 22px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+         color:var(--muted)}
+header.mast h1{font-size:clamp(28px,5.2vw,44px);line-height:1.1;margin:8px 0 6px;letter-spacing:-.01em}
+.mast-sub{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.mast-sub b{color:var(--ink);font-weight:500}
+
+/* ---------- tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+       border:1px solid var(--rule);margin-block:24px}
+.tile{background:var(--surface);padding:15px 16px 14px;display:flex;flex-direction:column;gap:3px}
+.tile .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+           color:var(--muted)}
+.tile .fig{font-family:var(--sans);font-size:clamp(22px,3.4vw,29px);font-weight:700;
+           line-height:1.1;letter-spacing:-.015em}
+.tile .fig small{font-size:.58em;font-weight:600;color:var(--ink-2);letter-spacing:0}
+.tile .note{font-size:12.5px;color:var(--ink-2);line-height:1.4}
+.tile .cite{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:auto;padding-top:6px}
+.delta{font-family:var(--mono);font-size:11.5px;font-weight:500}
+.up{color:var(--good-ink)} .down{color:var(--crit-ink)} .flat{color:var(--muted)}
+@media(max-width:820px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.tiles{grid-template-columns:1fr}}
+
+/* ---------- sections ---------- */
+section{padding-block:30px 6px}
+h2{font-size:clamp(20px,3.1vw,26px);letter-spacing:-.008em;margin-bottom:4px}
+.sec-head{border-top:1px solid var(--ink);padding-top:12px;margin-bottom:18px}
+.sec-head .eyebrow{display:block;margin-bottom:5px}
+.lede{font-size:15.5px;color:var(--ink-2);max-width:66ch}
+
+/* ---------- finding blocks ---------- */
+.finding{background:var(--surface);border:1px solid var(--rule);box-shadow:var(--shadow);
+         padding:20px;margin-bottom:18px}
+.mat{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:500;
+     letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px;
+     border:1px solid currentColor;margin-bottom:10px}
+.mat.high{color:var(--crit-ink)} .mat.mon{color:#7A5200}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mat.mon{color:#F0C25A}}
+:root[data-theme="dark"] .mat.mon{color:#F0C25A}
+.finding h3{font-size:clamp(18px,2.6vw,22px);line-height:1.25;margin-bottom:8px}
+.finding > p{font-size:14.5px;color:var(--ink-2);max-width:70ch}
+.cite{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.6}
+.impl{margin-top:14px;padding-top:11px;border-top:1px solid var(--rule);
+      font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);max-width:70ch}
+.impl::before{content:"→ ";font-style:normal;color:var(--s1);font-family:var(--sans);font-weight:700}
+
+/* ---------- quote ---------- */
+blockquote{margin:14px 0;padding:12px 16px;background:var(--surface-2);
+           border-left:3px solid var(--chrome);font-family:var(--serif);font-size:15.5px;line-height:1.5}
+blockquote .attr{display:block;margin-top:7px;font-family:var(--mono);font-size:10.5px;
+                 font-style:normal;color:var(--muted);letter-spacing:.03em}
+
+/* ---------- charts ---------- */
+.chart-card{margin-block:14px}
+.chart-title{font-family:var(--sans);font-size:13.5px;font-weight:600;margin-bottom:2px}
+.chart-sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-bottom:9px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2)}
+.swatch{width:11px;height:11px;border-radius:2px;flex:0 0 auto}
+.svg-hold{overflow-x:auto}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+svg text.val{font-family:var(--sans);font-size:10.5px;font-weight:600}
+.toggle-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+button.tg{font-family:var(--sans);font-size:12.5px;padding:4px 11px;border:1px solid var(--rule);
+  background:var(--surface);color:var(--ink-2);border-radius:3px;cursor:pointer}
+button.tg[aria-pressed="true"]{background:var(--chrome);border-color:var(--chrome);color:var(--surface);font-weight:600}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button.tg[aria-pressed="true"]{color:#0E1318}}
+:root[data-theme="dark"] button.tg[aria-pressed="true"]{color:#0E1318}
+.tip{position:fixed;pointer-events:none;z-index:60;background:var(--ink);color:var(--ground);
+  font-family:var(--mono);font-size:11px;line-height:1.5;padding:6px 9px;border-radius:3px;
+  opacity:0;transition:opacity .09s;max-width:240px}
+.tip b{font-weight:500}
+
+/* ---------- tables ---------- */
+.tbl-hold{overflow-x:auto;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:540px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+thead th{background:var(--chrome);color:#fff;font-size:11px;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;position:sticky;top:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) thead th{background:#1E2B3A;color:var(--ink)}}
+:root[data-theme="dark"] thead th{background:#1E2B3A;color:var(--ink)}
+tbody tr:nth-child(even){background:var(--surface-2)}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.met{font-weight:600}
+.tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:1px 5px;border-radius:2px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
+.pill{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.05em;padding:2px 6px;
+  border-radius:2px;white-space:nowrap;display:inline-block}
+.pill.beat{background:rgba(12,163,12,.14);color:var(--good-ink)}
+.pill.miss{background:rgba(208,59,59,.14);color:var(--crit-ink)}
+.pill.line{background:var(--surface-2);color:var(--ink-2)}
+.pill.gone{background:rgba(208,59,59,.14);color:var(--crit-ink)}
+
+/* ---------- dashboard controls ---------- */
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.ctrl input[type=search]{font-family:var(--sans);font-size:13px;padding:5px 9px;border:1px solid var(--rule);
+  background:var(--surface);color:var(--ink);border-radius:3px;min-width:170px;flex:1 1 170px;max-width:260px}
+.ctrl label.cb{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.count{font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+/* ---------- grid matrix ---------- */
+.matrix{border:1px solid var(--rule);background:var(--surface);overflow-x:auto}
+.mx{border-collapse:collapse;min-width:600px;width:100%;font-size:12.5px}
+.mx th{background:var(--surface);color:var(--ink-2);font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.04em;text-transform:none;font-weight:500;border-bottom:1px solid var(--rule);
+  padding:7px 8px;position:static}
+.mx th.rowh{text-align:left;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink);min-width:172px}
+.mx td{text-align:center;padding:5px 6px;border-bottom:1px solid var(--rule);border-left:1px solid var(--rule)}
+.mk{display:inline-flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--mono);font-size:10px}
+.mk i{font-style:normal;font-size:15px;line-height:1.1;font-weight:700}
+.mk.g i{color:var(--good-ink)} .mk.p i{color:#7A5200} .mk.n i{color:var(--crit-ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mk.p i{color:#F0C25A}}
+:root[data-theme="dark"] .mk.p i{color:#F0C25A}
+.mk span{color:var(--muted);font-size:10.5px}
+.mk.n span{color:var(--crit-ink)}
+
+/* ---------- diff rows ---------- */
+details.diff{border:1px solid var(--rule);background:var(--surface);margin-bottom:6px}
+details.diff summary{cursor:pointer;padding:9px 12px;display:flex;gap:10px;align-items:baseline;
+  flex-wrap:wrap;font-size:13.5px}
+details.diff summary::marker{color:var(--muted)}
+details.diff summary b{font-weight:600}
+details.diff .body{padding:0 12px 12px;border-top:1px solid var(--rule);margin-top:0}
+.wordpair{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:10px}
+.wordpair > div{background:var(--surface-2);padding:9px 11px}
+.wordpair .h{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:4px}
+.wordpair q{font-family:var(--serif);font-size:13.5px;line-height:1.45;color:var(--ink)}
+.wordpair .was q{color:var(--ink-2)}
+@media(max-width:620px){.wordpair{grid-template-columns:1fr}}
+
+/* ---------- checklist ---------- */
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.checks > div{background:var(--surface);padding:15px 16px}
+.checks h3{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:9px;color:var(--chrome)}
+.checks .trip h3{color:var(--crit-ink)}
+.checks ul{margin:0;padding-left:16px}
+.checks li{font-size:13px;line-height:1.45;margin-bottom:7px;color:var(--ink-2)}
+.checks li b{color:var(--ink);font-weight:600}
+@media(max-width:700px){.checks{grid-template-columns:1fr}}
+
+/* ---------- ledger ---------- */
+.ledger{border-top:1px solid var(--rule);margin-top:34px;padding-top:16px}
+.ledger h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:9px}
+.ledger p,.ledger li{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--ink-2)}
+.ledger ul{margin:0 0 10px;padding-left:15px}
+.no-print{}
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="tkr">AVGO · Q3 FY2026</span>
+    <span class="chip-status">THESIS: MONITORING</span>
+    <nav>
+      <a href="#findings">Findings</a>
+      <a href="#visibility">Visibility</a>
+      <a href="#guidance">Guidance</a>
+      <a href="#dash">Dashboard</a>
+      <a href="#risk">Risk language</a>
+      <a href="#watch">Watchlist</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header class="mast">
+  <span class="eyebrow">Broadcom Inc. · Nasdaq AVGO · earnings teardown</span>
+  <h1>What actually changed in the third quarter</h1>
+  <div class="mast-sub">
+    Fiscal Q3 2026, <b>quarter ended 2 August 2026</b> · results released <b>2 September 2026</b> ·
+    Form 10-Q filed <b>10 September 2026</b><br>
+    Companion to <b>Broadcom_Earnings_Q3_FY2026.docx</b> · every figure traced to a primary
+    document · prepared 21 September 2026
+  </div>
+</header>
+
+<div class="tiles">
+  <div class="tile">
+    <span class="lab">Net revenue</span>
+    <span class="fig">$29.6<small>B</small></span>
+    <span class="delta up">▲ 86% y/y</span>
+    <span class="note">Exceeded the whole of FY2019 in one quarter.</span>
+    <span class="cite">10-Q: $29,591M</span>
+  </div>
+  <div class="tile">
+    <span class="lab">Operating margin</span>
+    <span class="fig">67.9<small>%</small></span>
+    <span class="delta up">▲ 240 bp y/y</span>
+    <span class="note">A record, achieved <em>through</em> a 210 bp gross-margin fall.</span>
+    <span class="cite">2 Sep call · non-GAAP</span>
+  </div>
+  <div class="tile">
+    <span class="lab">Software growth, ex-upfront</span>
+    <span class="fig">+8.6<small>%</small></span>
+    <span class="delta down">vs. +29% reported</span>
+    <span class="note">Consumption revenue was flat sequentially.</span>
+    <span class="cite">computed · 10-Q Note 2</span>
+  </div>
+  <div class="tile">
+    <span class="lab">Share repurchases</span>
+    <span class="fig">$0</span>
+    <span class="delta flat">$10.1B authorised, unused</span>
+    <span class="note">Against record $13.7B of free cash flow.</span>
+    <span class="cite">10-Q Note 7</span>
+  </div>
+</div>
+
+<section id="findings">
+  <div class="sec-head">
+    <span class="eyebrow">The 20% that moves understanding</span>
+    <h2>Four findings</h2>
+    <p class="lede">Ordered by how much each changes the long-term case, not by how much
+    attention it got on the call. Every one of them is visible only by putting the
+    transcript beside the filing.</p>
+  </div>
+
+  <!-- FINDING 1 -->
+  <article class="finding">
+    <span class="mat high">High impact · earnings quality</span>
+    <h3>All of the sequential software growth is recognition timing</h3>
+    <p>Upfront licence revenue — recognised at signature on contracts without
+    termination-for-convenience rights, and booked inside <em>products</em> revenue rather than
+    subscriptions — was $3,465M, or 40% of the infrastructure software segment against 28% a year
+    ago. Software revenue rose $1,530M sequentially. Upfront licence revenue rose $1,501M.</p>
+
+    <div class="chart-card">
+      <div class="chart-title">Infrastructure software revenue, split by how it is recognised</div>
+      <div class="chart-sub">$ millions · fiscal quarters, period-end dates as filed</div>
+      <div class="toggle-row" role="group" aria-label="Chart view">
+        <button class="tg" id="sw-a" aria-pressed="true">As reported</button>
+        <button class="tg" id="sw-b" aria-pressed="false">Consumption only</button>
+      </div>
+      <div class="legend" id="sw-leg">
+        <span><i class="swatch" style="background:var(--s1)"></i>Revenue ex-upfront licence (consumption) — the base</span>
+        <span id="sw-leg2"><i class="swatch" style="background:var(--s2)"></i>Upfront licence revenue — the cap</span>
+      </div>
+      <div class="svg-hold"><svg id="sw-chart" viewBox="0 0 640 260" role="img"
+        aria-label="Stacked columns: software revenue split into consumption revenue, roughly flat at 4,870 to 5,287 million dollars, and upfront licence revenue, which rises from 1,916 to 3,465 million dollars."></svg></div>
+      <p class="cite">Upfront licence revenue per Form 10-Q, Note 2, “Reclassifications to Condensed
+      Consolidated Statements of Operations”: $3,465M in Q3 FY2026, $1,964M in Q2 FY2026, $1,916M in
+      Q3 FY2025. Segment revenue per the 10-Q segment note; Q2 FY2026 segment revenue of c.$7,200M
+      per the 3 June 2026 call. Consumption line computed as the difference.</p>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Annual recurring revenue growth, as disclosed on the call</div>
+      <div class="chart-sub">per cent year on year · the consumption measure management still gives</div>
+      <div class="svg-hold"><svg id="arr-chart" viewBox="0 0 640 130" role="img"
+        aria-label="Line falling from 19 per cent in Q1 FY2026 to 17 per cent in Q2 to 15 per cent in Q3."></svg></div>
+    </div>
+
+    <p>The Q4 guide of $8.7B is described as software revenue that will “stabilize”, which is a
+    sequential decline — and holding it needs roughly another $3.4B upfront quarter. The $8.9B Q3
+    guide came in at $8.8B, the first clear shortfall in this sequence.</p>
+    <div class="impl">The 94%-gross-margin, uncorrelated half of the business is growing at
+    single digits on consumption and decelerating on ARR. The reported 29% is a signature calendar,
+    not a demand signal — and it is the half of Broadcom that was supposed to survive a downturn.</div>
+  </article>
+
+  <!-- FINDING 2 -->
+  <article class="finding">
+    <span class="mat high">High impact · disclosure</span>
+    <h3>Four routine disclosures ended at once, in the new CFO’s first quarter</h3>
+    <p>Amie Thuener, previously Alphabet’s chief accounting officer, replaced Kirsten Spears
+    effective 12 June 2026. Q3 FY2026 is her first reported quarter. Four series that had appeared
+    in every prior call are absent from both the results and the guidance.</p>
+
+    <div class="chart-card">
+      <div class="chart-title">Was it disclosed on the earnings call?</div>
+      <div class="chart-sub">five recurring metrics × five quarters · figure shown where given</div>
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--good)"></i>✓ Given, with a figure</span>
+        <span><i class="swatch" style="background:var(--warn)"></i>◐ Mentioned, no figure</span>
+        <span><i class="swatch" style="background:var(--crit)"></i>✕ Not given</span>
+      </div>
+      <div class="matrix"><table class="mx" id="mxt"></table></div>
+      <p class="cite">Counted directly in the archived transcripts of 4 Sep 2025, 11 Dec 2025,
+      4 Mar 2026, 3 Jun 2026 and 2 Sep 2026.</p>
+    </div>
+
+    <p>Days sales outstanding is the useful complication: it had already lapsed after Q4 FY2025,
+    two quarters before the CFO change. So the thinning is a trend that predates the new CFO rather
+    than her doing — which makes it more, not less, worth watching.</p>
+    <p>The withdrawal is not obviously concealment. Both working-capital metrics <em>improved</em>
+    when computed independently: days of inventory fell to about 59 from 86 at Q2, and DSO of about
+    42 days is unremarkable. What is gone is the ability to check.</p>
+
+    <div class="chart-card">
+      <div class="chart-title">Days of inventory on hand</div>
+      <div class="chart-sub">days · solid markers as disclosed on each call; the hollow marker is computed</div>
+      <div class="svg-hold"><svg id="doi-chart" viewBox="0 0 640 170" role="img"
+        aria-label="Days of inventory: 69, 66, 58, 68, peaking at 86 in Q2 FY2026, then falling to a computed 59 in Q3 FY2026."></svg></div>
+      <p class="cite">Disclosed figures per each quarter’s call. Q3 FY2026 computed on the company’s
+      own basis — inventory ÷ cost of products sold × days — from the 10-Q: 4,523 ÷ 6,983 × 91.</p>
+    </div>
+
+    <div class="impl">With consolidated backlog, bookings and total contract value all gone, the
+    only forward bridge left is the 10-Q’s remaining performance obligations — and its twelve-month
+    share has fallen for two consecutive quarters. The FY2027 and FY2028 AI numbers now rest on
+    management’s word, which management has said it will not refresh quarterly.</div>
+  </article>
+
+  <!-- FINDING 3 -->
+  <article class="finding">
+    <span class="mat mon">Monitoring · capital allocation</span>
+    <h3>No buybacks in a record cash quarter, and the share count is rising</h3>
+    <p>Repurchases went $7,850M in Q1 to $600M in Q2 to nothing in Q3, with $10.1B of
+    authorisation available and $13.7B of free cash flow in hand. Shares outstanding rose to 4,774M
+    from 4,741M at the year end — up 33M, or 0.7% — because 58M shares vested against 25M retired.</p>
+
+    <div class="tbl-hold">
+      <table>
+        <thead><tr><th>Fiscal 2026</th><th class="num">Q1</th><th class="num">Q2</th>
+          <th class="num">Q3</th><th class="num">Nine months</th><th class="num">9M FY2025</th></tr></thead>
+        <tbody>
+          <tr><td class="met">Repurchases ($M)</td><td class="num">7,850</td><td class="num">600</td>
+            <td class="num">0</td><td class="num">8,450</td><td class="num">2,450</td></tr>
+          <tr><td class="met">Shares retired (M)</td><td class="num">23</td><td class="num">2</td>
+            <td class="num">0</td><td class="num">25</td><td class="num">16</td></tr>
+          <tr><td class="met">Shares issued on vesting (M)</td><td class="num">18</td><td class="num">24</td>
+            <td class="num">16</td><td class="num">58</td><td class="num">n/d</td></tr>
+          <tr><td class="met">Shares outstanding, period end (M)</td><td class="num">4,736</td>
+            <td class="num">4,758</td><td class="num">4,774</td><td class="num">4,774</td><td class="num">n/d</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cite">Form 10-Q, condensed consolidated statements of stockholders’ equity and Note 7.
+    Cash went to debt instead: $5.6B of long-term debt repaid in the quarter plus $1.5B of senior
+    notes after quarter end; aggregate indebtedness $61,079M against $66,720M at 3 May.</p>
+
+    <p>The reason is on the record, six days after the call — and so is a divergence between the
+    two executives who run the balance sheet.</p>
+    <blockquote>Give me three months. We usually do the capital allocation annually in the December
+    board meeting. … The other likelihood is we’ll do a stock buyback. These are probably the only
+    two choices we have.
+      <span class="attr">Hock Tan, CEO · Goldman Sachs Communacopia, 8 September 2026</span></blockquote>
+    <blockquote>To probably bring down debt makes sense, but our total debt of about $56 billion was
+    taken on when interest rates were much lower. So it’s almost like, why would I want to prepay
+    low cost interest or debt?
+      <span class="attr">Hock Tan, CEO · same session — six days after the CFO reported $7.1B of debt reduction</span></blockquote>
+
+    <div class="impl">Per-share compounding in FY2026 is coming entirely from earnings growth, not
+    from a shrinking share count, and the Q4 guide of 4.94B diluted shares assumes none. Against an
+    indicated “mid-40s” of billions of FY2027 free cash flow, the December board decision matters
+    more to a long-term owner than the difference between $115B and $130B of FY2027 AI revenue.</div>
+  </article>
+
+  <!-- FINDING 4 -->
+  <article class="finding">
+    <span class="mat mon">Monitoring · competitive position</span>
+    <h3>A rival TPU design partner was named for the first time</h3>
+    <p>Across all forty archived Broadcom transcripts going back to 2016, a competing custom-silicon
+    design partner had never been named in an AI context. On 2 September, unprompted, it was.</p>
+    <blockquote>Just to reiterate the major technology challenges of developing these complex
+    accelerators, Broadcom is now shipping the TPU v8i ahead of the MediaTek version v8t, which in
+    fact was initiated earlier.
+      <span class="attr">Hock Tan, CEO · Q3 FY2026 earnings call, 2 September 2026</span></blockquote>
+    <p>The framing matters as much as the fact. Multi-sourcing on Google’s TPU line is no longer
+    deflected; it is reframed as a time-to-market race Broadcom is winning, with the stated moat
+    being first-pass silicon — “consistently … delivered the fastest time to market for TPUs from
+    product definition to production without the need for respins.”</p>
+    <div class="impl">Google is the oldest and most profitable socket in the portfolio, and the
+    FY2028 outlook rests on locks already set rather than new wins. Whether the next generation
+    stays sole-source is now the single most valuable checkable fact in the coverage.</div>
+  </article>
+</section>
+
+<section id="visibility">
+  <div class="sec-head">
+    <span class="eyebrow">Forward visibility</span>
+    <h2>The backlog grew; the near end of it shrank</h2>
+    <p class="lede">Remaining performance obligations are the only committed-revenue figure left in
+    the public record now that consolidated backlog has gone. The total is up more than six-fold in
+    a year — and the slice arriving within twelve months has fallen in both share and dollars.</p>
+  </div>
+
+  <div class="finding">
+    <div class="chart-card">
+      <div class="chart-title">Remaining performance obligations, split by timing</div>
+      <div class="chart-sub">$ billions · as filed at each period end · the 12-month dollar figure is shown where the segment fits it, and in every tooltip</div>
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--ord-hi)"></i>Expected within 12 months</span>
+        <span><i class="swatch" style="background:var(--ord-lo)"></i>Expected beyond 12 months</span>
+      </div>
+      <div class="svg-hold"><svg id="rpo-chart" viewBox="0 0 640 250" role="img"
+        aria-label="Stacked columns: total remaining performance obligations rise from 27.5 to 164.6 to 179.2 billion dollars, while the portion expected within twelve months falls from 49.4 to 44.8 billion between the last two periods."></svg></div>
+      <p class="cite">Form 10-Q Note 2 at each date: $27.5B with 34% due within 12 months
+      (3 Aug 2025), $164.6B with c.30% (3 May 2026), $179.2B with c.25% (2 Aug 2026). The
+      twelve-month dollar amounts are computed from those percentages. The company cautions the
+      figures “are not indicative of revenue for future periods”.</p>
+    </div>
+
+    <p>The step from $45B to $164.6B came from a single contract — “obligations under a long-term
+    contract for custom AI accelerators entered in the fiscal quarter ended May 3, 2026”. Against
+    that, the supply side has not moved to match the FY2028 ambition.</p>
+
+    <div class="tbl-hold">
+      <table>
+        <thead><tr><th>Non-cancellable purchase commitments</th><th class="num">At 3 May 2026</th>
+          <th class="num">At 2 Aug 2026</th><th class="num">Change</th></tr></thead>
+        <tbody>
+          <tr><td class="met">FY2026 remainder</td><td class="num">22</td><td class="num">1,110</td><td class="num">+1,088</td></tr>
+          <tr><td class="met">FY2027</td><td class="num">55,214</td><td class="num">52,674</td><td class="num">−2,540</td></tr>
+          <tr><td class="met">FY2028</td><td class="num">72,870</td><td class="num">72,952</td><td class="num">+82</td></tr>
+          <tr><td class="met">FY2029</td><td class="num">4</td><td class="num">85</td><td class="num">+81</td></tr>
+          <tr><td class="met">Total ($M)</td><td class="num">128,110</td><td class="num">126,821</td><td class="num">−1,289</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cite">Form 10-Q Note 12. Purchase commitments are, by the company’s own definition,
+    “enforceable and legally binding” and exclude anything “cancelable without penalty”.</p>
+    <div class="impl">FY2028 commitments of $72.95B sit against a stated ~$230B of FY2028 AI revenue,
+    and total commitments fell 1.0% in the quarter. Management’s gigawatt arithmetic is internally
+    consistent — 30 GW across FY2027–28 at $20–30B of content brackets the $345B guided — but the
+    commitment table is where that number gets settled, and it has not moved.</div>
+  </div>
+</section>
+
+<section id="guidance">
+  <div class="sec-head">
+    <span class="eyebrow">Guidance drift</span>
+    <h2>The beat was entirely AI; both misses were not</h2>
+    <p class="lede">June’s guidance, scored against what was delivered. Two of the four revenue
+    lines missed, and both are the parts of Broadcom that are supposed to be uncorrelated with the
+    AI build.</p>
+  </div>
+  <div class="tbl-hold">
+    <table>
+      <thead><tr><th>Line</th><th class="num">Guided in June</th><th class="num">Delivered</th>
+        <th>Outcome</th><th>What it says</th></tr></thead>
+      <tbody id="gtb"></tbody>
+    </table>
+  </div>
+  <p class="cite" style="margin-top:8px">Guidance per the 3 June 2026 call; results per the
+  2 September 2026 call and the Form 10-Q. No sell-side consensus exists in the archive, so
+  performance is scored against company guidance only.</p>
+</section>
+
+<section id="dash">
+  <div class="sec-head">
+    <span class="eyebrow">Facts only · no interpretation</span>
+    <h2>KPI dashboard</h2>
+    <p class="lede">Every figure as filed or as stated on the call. Rows marked
+    <span class="tag">computed</span> are the analyst’s arithmetic from filed data; the method is in
+    the companion document.</p>
+  </div>
+  <div class="ctrl">
+    <button class="tg" data-cat="all" aria-pressed="true">All</button>
+    <button class="tg" data-cat="ops" aria-pressed="false">Operating</button>
+    <button class="tg" data-cat="cash" aria-pressed="false">Cash &amp; balance sheet</button>
+    <button class="tg" data-cat="conc" aria-pressed="false">Concentration</button>
+    <input type="search" id="kfilter" placeholder="Filter metrics…" aria-label="Filter metrics">
+    <label class="cb"><input type="checkbox" id="konly"> Computed only</label>
+    <span class="count" id="kcount"></span>
+  </div>
+  <div class="tbl-hold">
+    <table>
+      <thead><tr><th>Metric</th><th class="num">Q3 FY26</th><th class="num">Q2 FY26</th>
+        <th class="num">Q3 FY25</th><th>Read</th></tr></thead>
+      <tbody id="ktb"></tbody>
+    </table>
+  </div>
+
+  <div class="chart-card" style="margin-top:22px">
+    <div class="chart-title">Customer concentration, as disclosed in the 10-Q</div>
+    <div class="chart-sub">per cent of net revenue · both up about ten points in two quarters · axis truncated at 25%</div>
+    <div class="legend">
+      <span><i class="swatch" style="background:var(--s1)"></i>One distributor</span>
+      <span><i class="swatch" style="background:var(--s2)"></i>Top five end customers</span>
+    </div>
+    <div class="svg-hold"><svg id="conc-chart" viewBox="0 0 640 220" role="img"
+      aria-label="Two rising lines: one distributor from 32 to 42 to 50 per cent of net revenue, and top five end customers from 40 to 45 to 55 per cent."></svg></div>
+    <p class="cite">Form 10-Q, Management’s Discussion and Analysis, “Net Revenue” concentration
+    paragraph, each period. Distributor sales were 56% of nine-month net revenue.</p>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="sec-head">
+    <span class="eyebrow">Risk emergence</span>
+    <h2>What the risk factors now say that they did not</h2>
+    <p class="lede">The risk-factor summary bullets are identical quarter on quarter. The body text
+    is not. These six changes were found by diffing the Q2 and Q3 filings sentence by sentence —
+    open each to see the wording either side.</p>
+  </div>
+  <div id="diffs"></div>
+  <p class="cite" style="margin-top:10px">Part II, Item 1A of the Q2 FY2026 (filed 9 June 2026) and
+  Q3 FY2026 (filed 10 September 2026) Forms 10-Q. Forty-five sentences were added and forty-three
+  removed; these are the six that change what an owner should believe.</p>
+</section>
+
+<section id="watch">
+  <div class="sec-head">
+    <span class="eyebrow">Actionable close</span>
+    <h2>What to watch, and what would change the call</h2>
+  </div>
+  <div class="checks">
+    <div>
+      <h3>Five signals to track</h3>
+      <ul>
+        <li><b>Upfront licence revenue in the FY2026 10-K</b> against $3,465M — the only disclosed
+          way to separate software consumption from signature timing.</li>
+        <li><b>FY2028 purchase commitments</b> against $72,952M, every 10-Q — the supply test for
+          the $230B AI outlook.</li>
+        <li><b>Distributor share</b> against 50% and <b>top five end customers</b> against 55%.</li>
+        <li><b>Gross margin</b> against the ~73% Q4 guide, read with the <b>XPU share of AI
+          revenue</b> against 73%.</li>
+        <li><b>The December board capital-allocation decision</b>: dividend increase, buyback size,
+          or neither.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Risks building</h3>
+      <ul>
+        <li><b>Concentration</b> — one distributor at 50% of revenue, top five at 55%, both up about
+          ten points in two quarters.</li>
+        <li><b>Customer credit</b> — roughly $71B of support behind revenue booked at full value:
+          a $29B backstop plus a new $42B facility under which the customer may issue Broadcom
+          convertible notes.</li>
+        <li><b>Software deceleration</b> — ARR growth 15% from 19%, consumption flat sequentially,
+          first clear guidance shortfall.</li>
+        <li><b>Disclosure thinning</b> — four series ended this quarter, a fifth already lapsed.</li>
+        <li><b>Non-AI semiconductors</b> — the recovery called in June has failed to arrive twice.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Confirmation signals</h3>
+      <ul>
+        <li>FY2028 purchase commitments rising materially toward what $230B would consume.</li>
+        <li>Buybacks resuming above the rate of dilution after the December review.</li>
+        <li>Software meeting the $8.7B Q4 guide with ARR stabilising at or above 15%.</li>
+        <li>Backstop exposure staying at or below $29B as gigawatts deploy, nothing drawn.</li>
+        <li>The next Google TPU generation staying sole-source; non-AI revenue above $4.3B with
+          wireless recovering.</li>
+      </ul>
+    </div>
+    <div class="trip">
+      <h3>Conviction tripwires</h3>
+      <ul>
+        <li>Any disclosed loss of an XPU programme generation to <b>MediaTek, Marvell or a
+          customer’s in-house team</b>.</li>
+        <li>Any amount <b>paid, or provision taken, under the Backstop</b>.</li>
+        <li>Any <b>issuance of the customer convertible promissory notes</b> — facility $42B,
+          currently drawn nil.</li>
+        <li>A reduction or withdrawal of the <b>FY2027 $115B or FY2028 $230B</b> figures. Management
+          has said it will not update them quarterly, so any change is itself the signal.</li>
+        <li><b>Software revenue ex-upfront licence declining year on year</b>, or purchase
+          commitments falling materially while the AI outlook is maintained.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="ledger">
+  <h3>Source ledger</h3>
+  <ul>
+    <li>Form 10-Q, fiscal Q3 2026, period ended 2 August 2026 — filed 10 September 2026, accession 0001730168-26-000080.</li>
+    <li>Q3 FY2026 earnings call transcript, 2 September 2026 · Goldman Sachs Communacopia transcript, 8 September 2026.</li>
+    <li>Forms 10-Q for Q2 FY2026 and Q3 FY2025; calls of 3 June 2026, 4 March 2026, 11 December 2025 and 4 September 2025.</li>
+    <li>Form 8-K of 2 April 2026 — chief financial officer transition.</li>
+  </ul>
+  <p><b>Not retrieved:</b> the Q3 FY2026 press release itself (Exhibit 99.1). Figures published only
+  there — non-GAAP EPS, segment margins, free cash flow — are taken from the earnings call.
+  No sell-side consensus exists in the archive, so nothing here is scored against consensus.
+  Q4 FY2026 reports on 9 December 2026.</p>
+  <p>Analytical companion to the Q3 FY2026 earnings update · prepared for Kun Xia · not a
+  recommendation and not a valuation.</p>
+</div>
+
+</div>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+const NS="http://www.w3.org/2000/svg";
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const $=s=>document.querySelector(s);
+const fmt=n=>n.toLocaleString("en-US");
+/* rounded 4px data-end on the far side, square where it meets the baseline */
+function topPath(x,y,w,h,r){
+  r=Math.max(0,Math.min(r,h,w/2));
+  return `M${x} ${y+h} L${x} ${y+r} Q${x} ${y} ${x+r} ${y} L${x+w-r} ${y} Q${x+w} ${y} ${x+w} ${y+r} L${x+w} ${y+h} Z`;
+}
+
+/* ---------------- tooltip ---------------- */
+const tip=$("#tip");
+function showTip(e,html){tip.innerHTML=html;tip.style.opacity="1";moveTip(e);}
+function moveTip(e){
+  const pad=12,r=tip.getBoundingClientRect();
+  let x=e.clientX+pad,y=e.clientY+pad;
+  if(x+r.width>innerWidth-8)x=e.clientX-r.width-pad;
+  if(y+r.height>innerHeight-8)y=e.clientY-r.height-pad;
+  tip.style.left=x+"px";tip.style.top=y+"px";
+}
+function hideTip(){tip.style.opacity="0";}
+function hoverable(node,html){
+  node.style.cursor="default";
+  node.addEventListener("mouseenter",e=>showTip(e,html));
+  node.addEventListener("mousemove",moveTip);
+  node.addEventListener("mouseleave",hideTip);
+}
+
+/* ---------------- chart 1 : software split ---------------- */
+const SW=[
+ {k:"3 Aug 2025",q:"Q3 FY2025",base:4870,up:1916,tot:6786},
+ {k:"3 May 2026",q:"Q2 FY2026",base:5236,up:1964,tot:7200},
+ {k:"2 Aug 2026",q:"Q3 FY2026",base:5287,up:3465,tot:8752}
+];
+let swMode="a";
+function drawSW(){
+  const svg=$("#sw-chart");svg.innerHTML="";
+  const W=640,H=260,L=52,R=18,T=14,B=44;
+  const pw=W-L-R,ph=H-T-B,maxY=9000,ticks=[0,2000,4000,6000,8000];
+  const y=v=>T+ph-(v/maxY)*ph;
+  ticks.forEach(t=>{
+    svg.appendChild(el("line",{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:"var(--grid)","stroke-width":1}));
+    const tx=el("text",{x:L-8,y:y(t)+3.5,"text-anchor":"end"});tx.textContent=fmt(t);svg.appendChild(tx);
+  });
+  svg.appendChild(el("line",{x1:L,x2:W-R,y1:y(0),y2:y(0),stroke:"var(--axis)","stroke-width":1}));
+  const bw=46,step=pw/SW.length;
+  SW.forEach((d,i)=>{
+    const cx=L+step*i+step/2, x=cx-bw/2;
+    if(swMode==="a"){
+      /* consumption is the base, upfront licence is the cap: the flat part sits underneath */
+      const rB=el("rect",{x:x,y:y(d.base),width:bw,height:Math.max(y(0)-y(d.base),0),fill:"var(--s1)"});
+      svg.appendChild(rB);
+      hoverable(rB,`<b>${d.q}</b><br>Consumption ${fmt(d.base)}<br>Total ${fmt(d.tot)}`);
+      const capTop=y(d.tot), capBot=y(d.base)-2;                 /* 2px surface gap */
+      const rU=el("path",{d:topPath(x,capTop,bw,Math.max(capBot-capTop,0),4),fill:"var(--s2)"});
+      svg.appendChild(rU);
+      hoverable(rU,`<b>${d.q}</b><br>Upfront licence ${fmt(d.up)}<br>${Math.round(d.up/d.tot*100)}% of segment`);
+      const lt=el("text",{x:cx,y:y(d.tot)-7,"text-anchor":"middle",class:"val"});
+      lt.setAttribute("fill","var(--ink)");lt.textContent=fmt(d.tot);svg.appendChild(lt);
+    }else{
+      const rB=el("path",{d:topPath(x,y(d.base),bw,Math.max(y(0)-y(d.base),0),4),fill:"var(--s1)"});
+      svg.appendChild(rB);
+      hoverable(rB,`<b>${d.q}</b><br>Consumption ${fmt(d.base)}`);
+      const lt=el("text",{x:cx,y:y(d.base)-7,"text-anchor":"middle",class:"val"});
+      lt.setAttribute("fill","var(--ink)");lt.textContent=fmt(d.base);svg.appendChild(lt);
+    }
+    const a=el("text",{x:cx,y:H-B+16,"text-anchor":"middle"});a.textContent=d.q;svg.appendChild(a);
+    const b=el("text",{x:cx,y:H-B+29,"text-anchor":"middle"});
+    b.setAttribute("fill","var(--axis)");b.textContent="ended "+d.k;svg.appendChild(b);
+  });
+  if(swMode==="b"){
+    const note=el("text",{x:L,y:T+10});note.setAttribute("fill","var(--ink-2)");
+    note.textContent="Flat sequentially: +51M, or +1.0%";svg.appendChild(note);
+  }
+}
+$("#sw-a").addEventListener("click",()=>setSW("a"));
+$("#sw-b").addEventListener("click",()=>setSW("b"));
+function setSW(m){
+  swMode=m;
+  $("#sw-a").setAttribute("aria-pressed",String(m==="a"));
+  $("#sw-b").setAttribute("aria-pressed",String(m==="b"));
+  $("#sw-leg2").hidden=(m==="b");
+  drawSW();
+}
+
+/* ---------------- ARR line ---------------- */
+function drawARR(){
+  const svg=$("#arr-chart");svg.innerHTML="";
+  const W=640,H=130,L=62,R=52,T=16,B=34,pw=W-L-R,ph=H-T-B;
+  const D=[{q:"Q1 FY2026",v:19},{q:"Q2 FY2026",v:17},{q:"Q3 FY2026",v:15}];
+  const maxY=21,ticks=[0,5,10,15];
+  const y=v=>T+ph-(v/maxY)*ph, x=i=>L+(pw/(D.length-1))*i;
+  ticks.forEach(t=>{
+    svg.appendChild(el("line",{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:"var(--grid)","stroke-width":1}));
+    const tx=el("text",{x:L-8,y:y(t)+3.5,"text-anchor":"end"});tx.textContent=t+"%";svg.appendChild(tx);
+  });
+  let p="";D.forEach((d,i)=>{p+=(i?" L":"M")+x(i)+" "+y(d.v);});
+  svg.appendChild(el("path",{d:p,fill:"none",stroke:"var(--s1)","stroke-width":2,"stroke-linejoin":"round"}));
+  D.forEach((d,i)=>{
+    const c=el("circle",{cx:x(i),cy:y(d.v),r:5,fill:"var(--s1)",stroke:"var(--surface)","stroke-width":2});
+    svg.appendChild(c);hoverable(c,`<b>${d.q}</b><br>ARR growth ${d.v}% y/y`);
+    const a=el("text",{x:x(i),y:H-B+16,"text-anchor":"middle"});a.textContent=d.q;svg.appendChild(a);
+  });
+  [[0,"19%",-11,"end"],[2,"15%",11,"start"]].forEach(([i,t,dx,anc])=>{
+    const lab=el("text",{x:x(i)+dx,y:y(D[i].v)+4,class:"val","text-anchor":anc});
+    lab.setAttribute("fill","var(--ink)");lab.textContent=t;svg.appendChild(lab);
+  });
+}
+
+/* ---------------- disclosure matrix ---------------- */
+const MXQ=["Q3 FY2025","Q4 FY2025","Q1 FY2026","Q2 FY2026","Q3 FY2026"];
+const MXR=[
+ {m:"Consolidated backlog",c:[["g","$110B"],["g","$162B"],["n","—"],["p","no figure"],["n","—"]]},
+ {m:"Bookings / contract value",c:[["g","$8.4B"],["g","$10.4B"],["g","$9.2B"],["g","$30B"],["n","—"]]},
+ {m:"Adjusted EBITDA",c:[["g","67%"],["g","68%"],["g","68%"],["g","69%"],["n","—"]]},
+ {m:"Days of inventory",c:[["g","66 d"],["g","58 d"],["g","68 d"],["g","86 d"],["n","—"]]},
+ {m:"Days sales outstanding",c:[["g","37 d"],["g","36 d"],["n","—"],["n","—"],["n","—"]]}
+];
+const GLY={g:"✓",p:"◐",n:"✕"},SNAME={g:"Given",p:"Mentioned, no figure",n:"Not given"};
+(function drawMX(){
+  const t=$("#mxt");
+  let h="<thead><tr><th class='rowh'>Metric</th>"+MXQ.map(q=>`<th>${q}</th>`).join("")+"</tr></thead><tbody>";
+  MXR.forEach(r=>{
+    h+=`<tr><th class="rowh">${r.m}</th>`;
+    r.c.forEach((c,i)=>{
+      h+=`<td><span class="mk ${c[0]}" tabindex="0" data-tip="${r.m} · ${MXQ[i]}: ${SNAME[c[0]]}${c[0]!=="n"?" — "+c[1]:""}"><i>${GLY[c[0]]}</i><span>${c[1]}</span></span></td>`;
+    });
+    h+="</tr>";
+  });
+  t.innerHTML=h+"</tbody>";
+  t.querySelectorAll(".mk").forEach(n=>hoverable(n,n.dataset.tip));
+})();
+
+/* ---------------- RPO chart ---------------- */
+function drawRPO(){
+  const svg=$("#rpo-chart");svg.innerHTML="";
+  const D=[{q:"3 Aug 2025",l:"Q3 FY2025",tot:27.5,pc:34},
+           {q:"3 May 2026",l:"Q2 FY2026",tot:164.6,pc:30},
+           {q:"2 Aug 2026",l:"Q3 FY2026",tot:179.2,pc:25}];
+  const W=640,H=250,L=48,R=18,T=18,B=46,pw=W-L-R,ph=H-T-B;
+  const maxY=185,ticks=[0,50,100,150];
+  const y=v=>T+ph-(v/maxY)*ph;
+  ticks.forEach(t=>{
+    svg.appendChild(el("line",{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:"var(--grid)","stroke-width":1}));
+    const tx=el("text",{x:L-8,y:y(t)+3.5,"text-anchor":"end"});tx.textContent=t;svg.appendChild(tx);
+  });
+  svg.appendChild(el("line",{x1:L,x2:W-R,y1:y(0),y2:y(0),stroke:"var(--axis)","stroke-width":1}));
+  const bw=52,step=pw/D.length;
+  D.forEach((d,i)=>{
+    const near=d.tot*d.pc/100, cx=L+step*i+step/2, x=cx-bw/2;
+    const rN=el("rect",{x:x,y:y(near),width:bw,height:Math.max(y(0)-y(near),0),fill:"var(--ord-hi)"});
+    svg.appendChild(rN);
+    hoverable(rN,`<b>${d.l}</b><br>Within 12 months $${near.toFixed(1)}B<br>${d.pc}% of total`);
+    const top=y(d.tot),bot=y(near)-2;
+    const rF=el("path",{d:topPath(x,top,bw,Math.max(bot-top,0),4),fill:"var(--ord-lo)"});
+    svg.appendChild(rF);
+    hoverable(rF,`<b>${d.l}</b><br>Beyond 12 months $${(d.tot-near).toFixed(1)}B<br>Total $${d.tot}B`);
+    const lt=el("text",{x:cx,y:y(d.tot)-7,"text-anchor":"middle",class:"val"});
+    lt.setAttribute("fill","var(--ink)");lt.textContent="$"+d.tot+"B";svg.appendChild(lt);
+    const segH=y(0)-y(near);
+    if(segH>=18){                                   /* label inside only where it fits */
+      const ln=el("text",{x:cx,y:y(near)+15,"text-anchor":"middle",class:"val"});
+      ln.setAttribute("fill","var(--surface)");
+      ln.textContent="$"+near.toFixed(1)+"B";svg.appendChild(ln);
+    }
+    const a=el("text",{x:cx,y:H-B+16,"text-anchor":"middle"});a.textContent=d.l;svg.appendChild(a);
+    const b=el("text",{x:cx,y:H-B+29,"text-anchor":"middle"});
+    b.setAttribute("fill","var(--axis)");b.textContent=d.q;svg.appendChild(b);
+  });
+}
+
+/* ---------------- days of inventory ---------------- */
+function drawDOI(){
+  const svg=$("#doi-chart");svg.innerHTML="";
+  const D=[{q:"Q2 FY25",v:69},{q:"Q3 FY25",v:66},{q:"Q4 FY25",v:58},
+           {q:"Q1 FY26",v:68},{q:"Q2 FY26",v:86},{q:"Q3 FY26",v:59,c:true}];
+  const W=640,H=170,L=44,R=58,T=20,B=34,pw=W-L-R,ph=H-T-B;
+  const maxY=92,ticks=[0,30,60];
+  const y=v=>T+ph-(v/maxY)*ph, x=i=>L+(pw/(D.length-1))*i;
+  ticks.forEach(t=>{
+    svg.appendChild(el("line",{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:"var(--grid)","stroke-width":1}));
+    const tx=el("text",{x:L-8,y:y(t)+3.5,"text-anchor":"end"});tx.textContent=t;svg.appendChild(tx);
+  });
+  let p="";D.forEach((d,i)=>{p+=(i?" L":"M")+x(i)+" "+y(d.v);});
+  svg.appendChild(el("path",{d:p,fill:"none",stroke:"var(--s1)","stroke-width":2,"stroke-linejoin":"round"}));
+  D.forEach((d,i)=>{
+    const c=el("circle",{cx:x(i),cy:y(d.v),r:d.c?5:4.5,
+      fill:d.c?"var(--surface)":"var(--s1)",stroke:"var(--s1)","stroke-width":d.c?2.2:2});
+    svg.appendChild(c);
+    hoverable(c,`<b>${d.q}</b><br>${d.v} days${d.c?"<br>computed by analyst":"<br>as disclosed"}`);
+    const a=el("text",{x:x(i),y:H-B+16,"text-anchor":"middle"});a.textContent=d.q;svg.appendChild(a);
+  });
+  const l1=el("text",{x:x(4),y:y(86)-9,"text-anchor":"middle",class:"val"});
+  l1.setAttribute("fill","var(--ink)");l1.textContent="86";svg.appendChild(l1);
+  const l2=el("text",{x:x(5)+11,y:y(59)+4,class:"val"});
+  l2.setAttribute("fill","var(--ink)");l2.textContent="59";svg.appendChild(l2);
+
+}
+
+/* ---------------- concentration ---------------- */
+function drawConc(){
+  const svg=$("#conc-chart");svg.innerHTML="";
+  const X=["Q3 FY2025","Q2 FY2026","Q3 FY2026"];
+  const S=[{n:"One distributor",c:"var(--s1)",v:[32,42,50]},
+           {n:"Top five end customers",c:"var(--s2)",v:[40,45,55]}];
+  const W=640,H=200,L=44,R=150,T=20,B=38,pw=W-L-R,ph=H-T-B;
+  const lo=25,hi=58,ticks=[30,40,50];
+  const y=v=>T+ph-((v-lo)/(hi-lo))*ph, x=i=>L+(pw/(X.length-1))*i;
+  ticks.forEach(t=>{
+    svg.appendChild(el("line",{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:"var(--grid)","stroke-width":1}));
+    const tx=el("text",{x:L-8,y:y(t)+3.5,"text-anchor":"end"});tx.textContent=t+"%";svg.appendChild(tx);
+  });
+  svg.appendChild(el("line",{x1:L,x2:L,y1:T,y2:T+ph,stroke:"var(--axis)","stroke-width":1}));
+  S.forEach(s=>{
+    let p="";s.v.forEach((v,i)=>{p+=(i?" L":"M")+x(i)+" "+y(v);});
+    svg.appendChild(el("path",{d:p,fill:"none",stroke:s.c,"stroke-width":2,"stroke-linejoin":"round"}));
+    s.v.forEach((v,i)=>{
+      const c=el("circle",{cx:x(i),cy:y(v),r:5,fill:s.c,stroke:"var(--surface)","stroke-width":2});
+      svg.appendChild(c);hoverable(c,`<b>${s.n}</b><br>${X[i]}: ${v}% of net revenue`);
+    });
+    const lab=el("text",{x:x(2)+12,y:y(s.v[2])+4,class:"val"});
+    lab.setAttribute("fill","var(--ink)");
+    lab.textContent=s.v[2]+"%  "+(s.n==="One distributor"?"one distributor":"top five customers");
+    svg.appendChild(lab);
+  });
+  X.forEach((q,i)=>{const a=el("text",{x:x(i),y:H-B+16,"text-anchor":"middle"});a.textContent=q;svg.appendChild(a);});
+}
+
+/* ---------------- guidance scorecard ---------------- */
+const G=[
+ ["Consolidated revenue","$29.4B","$29.6B","beat","Beat","Third consecutive acceleration; implies FY2026 of about $105.9B, +65.7%."],
+ ["Semiconductor solutions","$20.5B","$20.8B","beat","Beat","AI is 80% of the segment now; the rest is flat."],
+ ["AI semiconductor","$16.0B","$16.7B","beat","Beat","+221% y/y. Four programmes shipping at once for the first time."],
+ ["Non-AI semiconductor","$4.5B","$4.2B","miss","Miss","Guided +12% y/y, delivered +5%. Second straight quarter the June recovery call has not landed."],
+ ["Infrastructure software","$8.9B","$8.8B","miss","Miss","First clear shortfall in this sequence — and 40% of what did arrive was signature-timed."],
+ ["Gross margin","74%","75.0%","beat","Beat","Mix ran slightly better than feared; segment margin unchanged at c.67%."],
+ ["Operating margin","67%","67.9%","beat","Beat","The durable line: semiconductor opex +22% against segment revenue +127%."],
+ ["Adjusted EBITDA","68%","not disclosed","gone","Withdrawn","An eight-quarter guided series ended without comment."]
+];
+$("#gtb").innerHTML=G.map(r=>`<tr><td class="met">${r[0]}</td><td class="num">${r[1]}</td>
+  <td class="num">${r[2]}</td><td><span class="pill ${r[3]}">${r[4]}</span></td>
+  <td style="color:var(--ink-2)">${r[5]}</td></tr>`).join("");
+
+/* ---------------- KPI dashboard ---------------- */
+const K=[
+ ["ops","Net revenue ($B)","29.6","22.2","16.0","+86% y/y",0],
+ ["ops","AI semiconductor revenue ($B)","16.7","10.8","5.2","+221% y/y",0],
+ ["ops","XPU share of AI revenue","73%","c.60%","65%","Networking fell to 27%",0],
+ ["ops","Non-AI semiconductor revenue ($B)","4.2","4.2","4.0","Flat sequentially",0],
+ ["ops","Infrastructure software revenue ($B)","8.8","7.2","6.8","+29% reported",0],
+ ["ops","— upfront licence revenue ($B)","3.47","1.96","1.92","40% of the segment",0],
+ ["ops","— software revenue ex-upfront ($B)","5.29","5.24","4.87","+8.6% y/y",1],
+ ["ops","Software ARR growth","15%","17%","n/d","Decelerating",0],
+ ["ops","Gross margin","75.0%","77.1%","78.4%","Falling on mix",0],
+ ["ops","Operating margin","67.9%","67.3%","65.5%","Record",0],
+ ["ops","Gross / operating margin, GAAP","69.1% / 53.9%","n/d","67.1% / 36.9%","Both rising",1],
+ ["ops","Semiconductor segment gross margin","67%","70%","67%","Unchanged y/y",0],
+ ["ops","Semiconductor segment operating margin","61%","62%","57%","Rising",0],
+ ["ops","Software segment operating margin","84%","79%","77%","Rising",0],
+ ["ops","Diluted EPS (GAAP $2.68)","$3.32","n/d","$1.69","+96% y/y",1],
+ ["ops","Stock compensation, % of revenue","6.8%","n/d","14.6%","Halved as a share",1],
+ ["ops","Adjusted EBITDA","not disclosed","69%","67%","Series ended",0],
+ ["cash","Free cash flow ($B) / margin","13.7 / 46%","10.3 / 46%","7.0 / 44%","Record",0],
+ ["cash","Free cash flow per diluted share","$2.80","$2.11","$1.44","+95% y/y",1],
+ ["cash","Capital expenditure ($M)","532","231","142","Guided $1.4B in Q4",0],
+ ["cash","Cash and equivalents ($B)","24.0","19.6","10.7","Rising",0],
+ ["cash","Aggregate indebtedness ($B)","61.1","66.7","66.3","Falling",0],
+ ["cash","Inventory ($B) / days","4.52 / 59","4.33 / 86","2.25 / 66","Dollars up, days down",1],
+ ["cash","Days sales outstanding","42","n/d","37","Last given Q4 FY2025",1],
+ ["cash","Trade receivables ($B)","13.7","n/d","7.1 at Nov-25","+92% year to date",0],
+ ["cash","Contract assets ($B)","11.9","n/d","8.9 at Nov-25","+33% year to date",0],
+ ["cash","Receivables sold under factoring ($B)","1.6","n/d","1.7","9M down 30%",0],
+ ["cash","Share repurchases ($M)","0","600","n/d","Halted",0],
+ ["cash","Shares outstanding / diluted (M)","4,774 / 4,887","4,758 / n/d","n/d / 4,860","Rising",0],
+ ["cash","Dividend per share","$0.65","$0.65","$0.59","+10%",0],
+ ["cash","Tangible book value ($B)","−24.4","n/d","−48.8 at Nov-25","Improving fast",1],
+ ["conc","One distributor, % of net revenue","50%","42%","32%","Rising fast",0],
+ ["conc","Top five end customers, % of net revenue","55%","45%","40%","Rising fast",0],
+ ["conc","Wafers sourced from TSMC","c.95%","c.95%","c.95%","Unchanged",0],
+ ["conc","Remaining performance obligations ($B)","179.2","164.6","27.5","Step-change",0],
+ ["conc","RPO expected within 12 months","c.25%","c.30%","34%","Lengthening",0],
+ ["conc","Purchase commitments, total ($B)","126.8","128.1","n/d","−1.0% q/q",0],
+ ["conc","— of which FY2028 ($B)","72.95","72.87","n/d","Flat",0],
+ ["conc","Backstop, maximum exposure ($B)","29.0","29.0","none","Unchanged",0],
+ ["conc","Customer convertible note facility ($B)","42.0","none","none","New this quarter",0]
+];
+const CATN={ops:"Operating",cash:"Cash",conc:"Concentration"};
+let kcat="all";
+function renderK(){
+  const q=$("#kfilter").value.trim().toLowerCase(), only=$("#konly").checked;
+  const rows=K.filter(r=>(kcat==="all"||r[0]===kcat)&&(!only||r[6])&&
+    (!q||r[1].toLowerCase().includes(q)||r[5].toLowerCase().includes(q)));
+  $("#ktb").innerHTML=rows.length?rows.map(r=>`<tr>
+    <td class="met">${r[1]} ${r[6]?'<span class="tag">computed</span>':''}</td>
+    <td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td>
+    <td style="color:var(--ink-2)">${r[5]}</td></tr>`).join("")
+    :`<tr><td colspan="5" style="color:var(--muted);padding:14px">No metric matches that filter. Clear it to see all ${K.length}.</td></tr>`;
+  $("#kcount").textContent=rows.length+" of "+K.length+" metrics";
+}
+document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>{
+  kcat=b.dataset.cat;
+  document.querySelectorAll("[data-cat]").forEach(o=>o.setAttribute("aria-pressed",String(o===b)));
+  try{localStorage.setItem("avgo-kcat",kcat);}catch(e){}
+  renderK();
+}));
+$("#kfilter").addEventListener("input",renderK);
+$("#konly").addEventListener("change",renderK);
+
+/* ---------------- risk diffs ---------------- */
+const DF=[
+ ["AI demand sustainability","Named risk added",
+  "The semiconductor industry is undergoing profound change due to the adoption and proliferation of AI and has experienced a significant upturn, which may not be sustainable.",
+  "…which may not be sustainable due to a market correction, the perceived existence of an AI spending “bubble” or other factors.",
+  "The first filing in which Broadcom concedes the bubble framing. Management rarely adds a named risk unless it is real."],
+ ["Counterparty credit and residual value","Sharpened in five places",
+  "…which could result in additional credit or customer default risks and may negatively impact our business, financial condition or results of operations.",
+  "…which could cause additional counterparty credit risk and a decrease in value of the underlying assets…",
+  "Residual-value risk on customer-specific silicon is now named. On default Broadcom owes the gap between 85% of the lease balance and the resale value of the racks — in exactly the conditions that caused the default."],
+ ["Foundry capacity rights","Reversed",
+  "We do not generally have long-term capacity commitments with our CMs and substantially all of our manufacturing services are on a purchase order basis with no minimum quantities.",
+  "We may enter into long-term capacity commitments with our CMs, but generally our manufacturing services are on a purchase order basis with no minimum quantities.",
+  "Broadcom has stopped denying that it holds capacity rights without confirming that it has them. No counterparty, term, volume or prepayment is disclosed. TSMC remains c.95% of wafers."],
+ ["Memory as a constraint","Widened",
+  "…and have had and may continue to have capacity constraints in times of unprecedented demand.",
+  "…and have had and may continue to have capacity and memory constraints in times of unprecedented demand.",
+  "Memory now sits inside both the gross-margin explanation and the supply risk factor. Whether Broadcom or its customers buy the high-bandwidth memory is still undisclosed."],
+ ["Credit rating","Newly linked to the guarantees",
+  "…any downgrade in our credit rating or the ratings of our indebtedness, or adverse conditions in the debt capital markets, could materially adversely affect our business…",
+  "…any downgrade in our credit rating or the ratings of our indebtedness, including due to backstops or guarantees and other financing arrangements…",
+  "The financing structures are now an acknowledged input to the cost of Broadcom’s own debt — a second-order cost of supporting customer credit that does not appear anywhere in the income statement."],
+ ["Price erosion","Removed",
+  "Our gross margin is dependent on a number of factors, including our product mix, adoption of a new business model, price erosion, level of capacity utilization and commodity prices.",
+  "Our gross margin is dependent on a number of factors, including our product mix, spending priorities, supply constraints and adoption of a new business model.",
+  "Price erosion, capacity utilisation and commodity prices all dropped out of the gross-margin driver list. Consistent with a supply-constrained market, and a soft but real indication of pricing power in this cycle."]
+];
+$("#diffs").innerHTML=DF.map(d=>`<details class="diff">
+  <summary><b>${d[0]}</b><span class="pill line">${d[1]}</span></summary>
+  <div class="body">
+    <div class="wordpair">
+      <div class="was"><div class="h">Q2 FY2026, filed 9 June</div><q>${d[2]}</q></div>
+      <div><div class="h">Q3 FY2026, filed 10 September</div><q>${d[3]}</q></div>
+    </div>
+    <p style="margin-top:11px;font-size:13.5px;color:var(--ink-2)">${d[4]}</p>
+  </div></details>`).join("");
+
+/* ---------------- boot ---------------- */
+try{const c=localStorage.getItem("avgo-kcat");
+  if(c){const b=document.querySelector(`[data-cat="${c}"]`);if(b){kcat=c;
+    document.querySelectorAll("[data-cat]").forEach(o=>o.setAttribute("aria-pressed",String(o===b)));}}
+}catch(e){}
+setSW("a");drawARR();drawRPO();drawDOI();drawConc();renderK();
+
+/* redraw charts when the theme flips so token colours resolve */
+if(window.matchMedia){
+  const mq=window.matchMedia("(prefers-color-scheme: dark)");
+  const redo=()=>{drawSW();drawARR();drawRPO();drawDOI();drawConc();};
+  mq.addEventListener?mq.addEventListener("change",redo):mq.addListener(redo);
+}
+new MutationObserver(()=>{drawSW();drawARR();drawRPO();drawDOI();drawConc();})
+  .observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+</script>
+
+</body>
+</html>

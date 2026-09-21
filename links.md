@@ -1,3 +1,4 @@
+- [Broadcom Earnings Q3 FY2026 Companion](https://xk152004.github.io/investechery/stocks/Broadcom-Earnings-Q3-FY2026-Companion.html)
 - [GPN Business Overview](https://xk152004.github.io/investechery/stocks/GPN-Business-Overview.html)
 - [STX Business Overview](https://xk152004.github.io/investechery/stocks/STX-Business-Overview.html)
 - [Memory Semiconductors Industry Growth Outlook Report](https://xk152004.github.io/investechery/stocks/Memory-Semiconductors-Industry-Growth-Outlook-Report.html)
