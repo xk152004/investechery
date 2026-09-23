@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S&amp;P Global vs Moody's: who wins the next decade?</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Peer Duel</div>
+  <h1>S&amp;P Global vs Moody's: who wins the next decade?</h1>
+  <p class="source">Credit ratings, benchmarks and financial data. SPGI / MCO. Run 23 September 2026. Built from both companies' FY2023 to FY2025 10-Ks, Q2 2026 10-Qs, Q4 2025 and Q2 2026 earnings-call transcripts and 2026 8-Ks (the sources/ folders), plus the SEC Office of Credit Ratings 2025 staff report. Events swept through 23 September 2026; most recent events checked: S&amp;P Global closed the sale of its upstream energy software to SLB (1 September 2026); Moody's added a director (8-K, 12 August 2026). Figures in US$ millions as reported; no FX conversion needed. S&amp;P Global is shown ex Mobility (spun off 1 July 2026) unless stated. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">S&amp;P Global (A)</span><span class="chip b">Moody's (B)</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">S&amp;P Global is the stronger business for the next 5 to 10 years: it owns three benchmark franchises where Moody's owns one, and runs both of the businesses they share at a higher margin.</div>
+    <div class="why">The one load-bearing fact: replaying the 2022 issuance collapse on FY2025 mix would cut about 16% of S&amp;P Global's segment profit but about 27% of Moody's, because ratings are 48% of S&amp;P's profit and 70% of Moody's (inferred from FY2025 segment data and the 2022 decline in both 10-Ks).</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Ratings is a shared tide, not a contest. The two agencies grew US ratings revenue at 22% a year from FY2023 to FY2025 and both lost about 90 cents of profit per dollar of revenue in 2022 (FY2023 and FY2025 10-Ks, both). Neither wins the ratings cell on growth; S&amp;P wins it on margin and on a larger annuity share.</div>
+    <div class="col"><span class="n">2</span><br>S&amp;P Global has two more benchmarks Moody's cannot build: S&amp;P Dow Jones Indices ($1,850m revenue, 69% margin, +14% in FY2025) and Platts price assessments inside Energy ($2,299m, 41% margin) (SPGI FY2025 10-K).</div>
+    <div class="col"><span class="n">3</span><br>Moody's wins one cell outright: its analytics arm grows ARR 8 to 9% with 95% retention against about 6% ACV growth at S&amp;P's Market Intelligence (MCO Q2 2026 call; SPGI Q2 2026 call). That is Moody's route to closing the gap, and the thing to watch.</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">Moody's - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:26%">S&amp;P Global - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:2%">S&amp;P Global - clear</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors S&amp;P Global, right lean favors Moody's; marker position shows how decisive.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip b">Moody's, narrowly, on rate; S&amp;P Global on breadth</span></div>
+    <p>Three cells carry the next five years. First, ratings in both regions, where growth comes from refinancing walls and new borrowers: S&amp;P expects about $11 trillion of rated debt to refinance over the next four and a half years, and AI infrastructure is adding hyperscaler, data-centre and power issuance (S&amp;P guides $250 to 300bn of hyperscaler issuance for 2026) (SPGI Q2 2026 call). Both agencies ride that equally, but Moody's gets more of it per dollar of revenue because 67% of its ratings revenue is transaction-based against 52% at S&amp;P (FY2025 10-Ks). Second, the data and workflow cell, where Moody's Analytics grows ARR 8 to 9% on KYC (+13%), lending and insurance cloud migration, while S&amp;P's Market Intelligence platforms (Capital IQ and similar) grow low single digits and only its Kensho data feeds grow high single to low double digits (Q2 2026 calls, both). Third, equity indices, where S&amp;P alone collects asset-linked fees on $6.35tn of ETF assets that grow with markets and the shift to passive (SPGI Q2 2026 call). Weighting each cell's run-rate by its revenue share gives roughly 7.7% a year for Moody's against 7.2% for S&amp;P ex Mobility (inferred), a gap inside the noise; S&amp;P's 2026 organic guide is 6 to 8% (SPGI Q2 2026 call).</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 260" role="img" aria-label="Indexed ratings revenue"><line x1="70" x2="760" y1="208.3" y2="208.3" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="213.3" text-anchor="end" font-size="14" fill="#6E675C">70</text><line x1="70" x2="760" y1="158.3" y2="158.3" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="163.3" text-anchor="end" font-size="14" fill="#6E675C">85</text><line x1="70" x2="760" y1="108.3" y2="108.3" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="113.3" text-anchor="end" font-size="14" fill="#6E675C">100</text><line x1="70" x2="760" y1="58.3" y2="58.3" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="63.3" text-anchor="end" font-size="14" fill="#6E675C">115</text><text x="70.0" y="252" text-anchor="middle" font-size="14" fill="#6E675C">FY21</text><text x="242.5" y="252" text-anchor="middle" font-size="14" fill="#6E675C">FY22</text><text x="415.0" y="252" text-anchor="middle" font-size="14" fill="#6E675C">FY23</text><text x="587.5" y="252" text-anchor="middle" font-size="14" fill="#6E675C">FY24</text><text x="760.0" y="252" text-anchor="middle" font-size="14" fill="#6E675C">FY25</text><polyline points="70.0,108.3 242.5,193.7 415.0,170.7 587.5,86.0 760.0,57.3" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="70.0" cy="108.3" r="4" fill="#C75B39"/><circle cx="242.5" cy="193.7" r="4" fill="#C75B39"/><circle cx="415.0" cy="170.7" r="4" fill="#C75B39"/><circle cx="587.5" cy="86.0" r="4" fill="#C75B39"/><circle cx="760.0" cy="57.3" r="4" fill="#C75B39"/><polyline points="70.0,108.3 242.5,201.0 415.0,186.3 587.5,107.7 760.0,80.0" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="70.0" cy="108.3" r="4" fill="#3C6E8F"/><circle cx="242.5" cy="201.0" r="4" fill="#3C6E8F"/><circle cx="415.0" cy="186.3" r="4" fill="#3C6E8F"/><circle cx="587.5" cy="107.7" r="4" fill="#3C6E8F"/><circle cx="760.0" cy="80.0" r="4" fill="#3C6E8F"/><text x="772.0" y="62.3" font-size="15" font-weight="700" fill="#C75B39">S&amp;P Ratings 115</text><text x="772.0" y="85.0" font-size="15" font-weight="700" fill="#3C6E8F">Moody's MIS 109</text><text x="250.5" y="221.0" font-size="14" fill="#6E675C">FY22 trough: 74 vs 72</text></svg>
+      <div class="cap">Ratings segment revenue, indexed to 100 at FY2021 (the prior peak). S&amp;P Global Ratings: 4,097 / 3,050 / 3,332 / 4,370 / 4,724; Moody's MIS: 3,977 / 2,873 / 3,046 / 3,986 / 4,317, both including intersegment royalties. Sources: SPGI FY2023 and FY2025 10-Ks, Ratings MD&amp;A; MCO FY2023 and FY2025 10-Ks, segment note. Ratings is used because it is the only like-for-like, largely organic series: S&amp;P's consolidated line is distorted by the 2022 IHS Markit merger.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip a">S&amp;P Global, narrowly, and on better quality</span></div>
+    <p>The consolidated statements point the wrong way: Moody's shows a 72.8% gross-margin proxy against 68.8% at S&amp;P (3-year averages, 10-Ks). The segment data reverses it. On a like basis S&amp;P Ratings earned 63.8% in FY2025 against 61.6% at Moody's MIS, and S&amp;P led in every year since FY2023, though the lead has narrowed from 3.9 to 2.2 points (inferred basis: MIS adjusted operating income less its D&amp;A). Market Intelligence earns about 32% before acquisition amortization against about 28% for Moody's Analytics on a comparable basis (MCO figure inferred). Mix then adds Indices at 69% and Energy at 41% GAAP. Cash confirms it: free cash flow was 35.6% of revenue at S&amp;P and 33.4% at Moody's in FY2025, partly because Moody's capitalizes more software (capex 4.2% of revenue against 1.3%) (FY2025 10-Ks). The tension: Moody's grows a little faster, S&amp;P keeps a little more of each dollar. S&amp;P is the fortress with a slower data arm; Moody's is the more levered ratings compounder with a faster but thinner analytics arm.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 320" role="img" aria-label="Margin dumbbells"><text x="390.0" y="314" text-anchor="middle" font-size="13" fill="#6E675C">20%</text><text x="550.0" y="314" text-anchor="middle" font-size="13" fill="#6E675C">40%</text><text x="710.0" y="314" text-anchor="middle" font-size="13" fill="#6E675C">60%</text><text x="870.0" y="314" text-anchor="middle" font-size="13" fill="#6E675C">80%</text><text x="0" y="43" font-size="14" fill="#2B2B2B">Ratings segment margin, FY25 (like basis)</text><line x1="390" x2="870" y1="38" y2="38" stroke="#E5DDD0" stroke-width="2"/><line x1="722.8" x2="740.4" y1="38" y2="38" stroke="#2B2B2B" stroke-width="2"/><circle cx="740.4" cy="38" r="7" fill="#C75B39"/><text x="750.4" y="28" text-anchor="start" font-size="13" font-weight="700" fill="#C75B39">63.8%</text><circle cx="722.8" cy="38" r="7" fill="#3C6E8F"/><text x="712.8" y="28" text-anchor="end" font-size="13" font-weight="700" fill="#3C6E8F">61.6%</text><text x="731.6" y="58" text-anchor="middle" font-size="13" fill="#6E675C">S&amp;P +2.2pts</text><text x="0" y="101" font-size="14" fill="#2B2B2B">Data arm ex acquired amort., FY25 (MCO inferred)</text><line x1="390" x2="870" y1="96" y2="96" stroke="#E5DDD0" stroke-width="2"/><line x1="455.6" x2="486.8" y1="96" y2="96" stroke="#2B2B2B" stroke-width="2"/><circle cx="486.8" cy="96" r="7" fill="#C75B39"/><text x="496.8" y="86" text-anchor="start" font-size="13" font-weight="700" fill="#C75B39">32.1%</text><circle cx="455.6" cy="96" r="7" fill="#3C6E8F"/><text x="445.6" y="86" text-anchor="end" font-size="13" font-weight="700" fill="#3C6E8F">28.2%</text><text x="471.2" y="116" text-anchor="middle" font-size="13" fill="#6E675C">S&amp;P +3.9pts</text><text x="0" y="159" font-size="14" fill="#2B2B2B">Group EBIT ex acquired amort., FY25</text><line x1="390" x2="870" y1="154" y2="154" stroke="#E5DDD0" stroke-width="2"/><line x1="599.6" x2="609.2" y1="154" y2="154" stroke="#2B2B2B" stroke-width="2"/><circle cx="609.2" cy="154" r="7" fill="#C75B39"/><text x="619.2" y="144" text-anchor="start" font-size="13" font-weight="700" fill="#C75B39">47.4%</text><circle cx="599.6" cy="154" r="7" fill="#3C6E8F"/><text x="589.6" y="144" text-anchor="end" font-size="13" font-weight="700" fill="#3C6E8F">46.2%</text><text x="604.4" y="174" text-anchor="middle" font-size="13" fill="#6E675C">S&amp;P +1.2pts</text><text x="0" y="217" font-size="14" fill="#2B2B2B">Free cash flow margin, FY25</text><line x1="390" x2="870" y1="212" y2="212" stroke="#E5DDD0" stroke-width="2"/><line x1="497.2" x2="514.8" y1="212" y2="212" stroke="#2B2B2B" stroke-width="2"/><circle cx="514.8" cy="212" r="7" fill="#C75B39"/><text x="524.8" y="202" text-anchor="start" font-size="13" font-weight="700" fill="#C75B39">35.6%</text><circle cx="497.2" cy="212" r="7" fill="#3C6E8F"/><text x="487.2" y="202" text-anchor="end" font-size="13" font-weight="700" fill="#3C6E8F">33.4%</text><text x="506.0" y="232" text-anchor="middle" font-size="13" fill="#6E675C">S&amp;P +2.2pts</text><text x="0" y="275" font-size="14" fill="#2B2B2B">Gross margin proxy, 3y avg</text><line x1="390" x2="870" y1="270" y2="270" stroke="#E5DDD0" stroke-width="2"/><line x1="780.4" x2="812.4" y1="270" y2="270" stroke="#2B2B2B" stroke-width="2"/><circle cx="780.4" cy="270" r="7" fill="#C75B39"/><text x="770.4" y="260" text-anchor="end" font-size="13" font-weight="700" fill="#C75B39">68.8%</text><circle cx="812.4" cy="270" r="7" fill="#3C6E8F"/><text x="822.4" y="260" text-anchor="start" font-size="13" font-weight="700" fill="#3C6E8F">72.8%</text><text x="796.4" y="290" text-anchor="middle" font-size="13" fill="#6E675C">Moody&#39;s +4.0pts</text></svg>
+      <div class="cap">S&amp;P Global terracotta, Moody's blue. Ratings like basis: S&amp;P Ratings GAAP segment operating profit / segment revenue; Moody's MIS adjusted operating income less MIS D&amp;A / MIS revenue (inferred basis). Data arm: S&amp;P MI segment profit plus $588m acquired amortization; Moody's MA adjusted operating income less MA D&amp;A plus the group's $215m acquired amortization (inferred: assumes all acquired amortization sits in MA, so the MA figure is an upper bound). Group EBIT ex acquired amortization also excludes S&amp;P's $273m disposal gain. Gross margin proxy = revenue less operating(-related) expenses, D&amp;A excluded for both. Sources: FY2025 10-Ks, both.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip b">Moody's breaks first</span></div>
+    <p>Moody's single exposure is the issuance cycle: ratings are 53% of revenue and about 70% of adjusted operating income, and two-thirds of ratings revenue is transaction fees (FY2025 10-K). In 2022 MIS revenue fell 28% and adjusted operating income fell 40%, about 89 cents of profit per lost dollar (FY2023 10-K). S&amp;P's ratings behaved the same way (revenue -26%, profit -36%), but ratings are now only 48% of S&amp;P's segment profit and 52% transaction. Replaying 2022 on FY2025 mix costs Moody's about 27% of adjusted operating income and S&amp;P about 16% of segment profit (inferred). S&amp;P's own weak points are different: a bear market hits Indices asset-linked fees ($1,206m) almost one for one, and its balance sheet is now more stretched, with gross leverage guided to 2.8x at end-2026, above its 2.0 to 2.5x target, to fund more than $7bn of 2026 buybacks (SPGI Q2 2026 call). Moody's carried $6.9bn of debt against $3.2bn of equity at 30 June 2026 (MCO Q2 2026 10-Q). In an issuance downturn Moody's breaks first; in an equity bear market combined with tighter credit, S&amp;P's leverage leaves less room.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These six cells are 100% of both companies' continuing revenue (S&amp;P ex Mobility); every score is argued in the tabs below.</p>
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">S&amp;P Global</th><th class="cb">Moody's</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>Credit ratings, US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Co-dominant: $2,711m vs $2,623m, both +22% a year FY23 to FY25; the big three held 93.4% of all NRSRO ratings at end-2024 (10-Ks; SEC OCR 2025 report)</td></tr>
+    <tr><td>Data, research &amp; workflow, US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>MI grows with the market (+6% a year) against MA +8% and ARR +9% with 95% retention (10-Ks; Q2 2026 calls)</td></tr>
+    <tr><td>Data, research &amp; workflow, Intl</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>MA is larger outside the US ($2,051m vs $1,992m) and faster (+9% vs +6%), on Orbis entity data and KYC (10-Ks)</td></tr>
+    <tr><td>Credit ratings, Intl</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Both +16% a year; S&amp;P larger ($2,013m vs $1,496m) partly via Crisil; both buying African agencies (10-Ks; Q2 2026 calls)</td></tr>
+    <tr><td>Equity indices, US and Intl</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>$1,850m at 69% margin, 13 straight record quarters, first $1tn ETF tracks the S&amp;P 500; Moody's has no index business (SPGI 10-K; Q2 2026 call)</td></tr>
+    <tr><td>Energy &amp; commodity benchmarks, global</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Platts assessments settle exchange contracts; 2026 slowed to +3% on Iran-related renewals and sanctions; Moody's absent (SPGI 10-K; Q2 2026 call)</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs; a score with no exhibit behind it does not ship. Scores are per cell and are not summed; the three lenses get their verdicts in the Three Answers above, not here. Mobility (S&amp;P, $1,747m in FY2025) was spun off on 1 July 2026 and is excluded.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">The two engines are identical where they overlap in ratings and differ everywhere else: S&amp;P adds equity and commodity benchmarks, Moody's adds a faster-growing risk-software arm.</div>
+    <p>Normalization: both companies report two regions at segment level (US and non-US), so cells use that grain. S&amp;P's Market Intelligence and Moody's Analytics are merged into one "data, research and workflow" label; Moody's splits it further into Decision Solutions, Research and Insights, and Data and Information, which S&amp;P does not. S&amp;P's regional splits are of segment revenue including intersegment royalties (Ratings $175m); Moody's are of external revenue. Growth is FY2023 to FY2025 CAGR on reported revenue, which includes small acquisitions and divestitures on both sides.</p>
+    <p>The table shows the whole duel in miniature. In ratings the two grow at the same rate in both regions, so the shared tide explains nearly all of both companies' recent acceleration. In data, Moody's is the faster grower in both regions. The remaining S&amp;P cells, Indices and Energy, have no Moody's counterpart and together are 30% of S&amp;P's revenue ex Mobility.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 334" role="img" aria-label="Butterfly chart of cells"><text x="351" y="20" text-anchor="end" font-size="16" font-weight="700" fill="#C75B39">S&amp;P Global (ex Mobility)</text><text x="549" y="20" font-size="16" font-weight="700" fill="#3C6E8F">Moody's</text><text x="450" y="61.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Ratings, US</text><rect x="123.2" y="44" width="231.8" height="24" fill="#C75B39"/><text x="117.2" y="61.0" text-anchor="end" font-size="13" fill="#2B2B2B">2,711 <tspan fill="#6E675C">| +22%</tspan></text><rect x="545" y="44" width="224.3" height="24" fill="#3C6E8F"/><text x="775.3" y="61.0" font-size="13" fill="#2B2B2B">2,623 <tspan fill="#6E675C">| +22%</tspan></text><text x="450" y="97.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Data &amp; workflow, US</text><rect x="105.0" y="80" width="250.0" height="24" fill="#C75B39"/><text x="99.0" y="97.0" text-anchor="end" font-size="13" fill="#2B2B2B">2,924 <tspan fill="#6E675C">| +6%</tspan></text><rect x="545" y="80" width="132.4" height="24" fill="#3C6E8F"/><text x="683.4" y="97.0" font-size="13" fill="#2B2B2B">1,548 <tspan fill="#6E675C">| +8%</tspan></text><text x="450" y="133.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Data &amp; workflow, Intl</text><rect x="184.7" y="116" width="170.3" height="24" fill="#C75B39"/><text x="178.7" y="133.0" text-anchor="end" font-size="13" fill="#2B2B2B">1,992 <tspan fill="#6E675C">| +6%</tspan></text><rect x="545" y="116" width="175.4" height="24" fill="#3C6E8F"/><text x="726.4" y="133.0" font-size="13" fill="#2B2B2B">2,051 <tspan fill="#6E675C">| +9%</tspan></text><text x="450" y="169.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Ratings, Intl</text><rect x="182.9" y="152" width="172.1" height="24" fill="#C75B39"/><text x="176.9" y="169.0" text-anchor="end" font-size="13" fill="#2B2B2B">2,013 <tspan fill="#6E675C">| +16%</tspan></text><rect x="545" y="152" width="127.9" height="24" fill="#3C6E8F"/><text x="678.9" y="169.0" font-size="13" fill="#2B2B2B">1,496 <tspan fill="#6E675C">| +16%</tspan></text><text x="450" y="205.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Equity indices, US</text><rect x="228.3" y="188" width="126.7" height="24" fill="#C75B39"/><text x="222.3" y="205.0" text-anchor="end" font-size="13" fill="#2B2B2B">1,482 <tspan fill="#6E675C">| +14%</tspan></text><text x="551" y="205.0" font-size="13" fill="#6E675C">no presence</text><text x="450" y="241.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Energy &amp; commodities, Intl</text><rect x="234.1" y="224" width="120.9" height="24" fill="#C75B39"/><text x="228.1" y="241.0" text-anchor="end" font-size="13" fill="#2B2B2B">1,414 <tspan fill="#6E675C">| +10%</tspan></text><text x="551" y="241.0" font-size="13" fill="#6E675C">no presence</text><text x="450" y="277.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Energy &amp; commodities, US</text><rect x="279.3" y="260" width="75.7" height="24" fill="#C75B39"/><text x="273.3" y="277.0" text-anchor="end" font-size="13" fill="#2B2B2B">885 <tspan fill="#6E675C">| +7%</tspan></text><text x="551" y="277.0" font-size="13" fill="#6E675C">no presence</text><text x="450" y="313.0" text-anchor="middle" font-size="13" fill="#2B2B2B">Equity indices, Intl</text><rect x="323.5" y="296" width="31.5" height="24" fill="#C75B39"/><text x="317.5" y="313.0" text-anchor="end" font-size="13" fill="#2B2B2B">368 <tspan fill="#6E675C">| +20%</tspan></text><text x="551" y="313.0" font-size="13" fill="#6E675C">no presence</text></svg>
+      <div class="cap">FY2025 revenue by cell, US$ millions, with FY2023 to FY2025 revenue CAGR. S&amp;P ex Mobility. No cells inferred. Sources: SPGI FY2025 10-K, segment MD&amp;A US/international splits; MCO FY2025 10-K, revenue by line of business and geography.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">S&amp;P rev (% of total)</th><th class="num ca">S&amp;P CAGR</th><th class="num cb">Moody's rev (% of total)</th><th class="num cb">Moody's CAGR</th><th>Margin signal / leader</th></tr>
+      <tr><td>Ratings, US</td><td class="num ca">2,711 (20%)</td><td class="num ca">21.9%</td><td class="num cb">2,623 (34%)</td><td class="num cb">22.4%</td><td>Segment margins 64% vs 62% (like basis); tie on growth</td></tr>
+      <tr><td>Data &amp; workflow, US</td><td class="num ca">2,924 (21%)</td><td class="num ca">6.0%</td><td class="num cb">1,548 (20%)</td><td class="num cb">8.3%</td><td>Moody's on growth, S&amp;P on margin (32% vs ~28%)</td></tr>
+      <tr><td>Data &amp; workflow, Intl</td><td class="num ca">1,992 (14%)</td><td class="num ca">5.9%</td><td class="num cb">2,051 (27%)</td><td class="num cb">8.7%</td><td>Moody's: KYC and Orbis entity data</td></tr>
+      <tr><td>Ratings, Intl</td><td class="num ca">2,013 (15%)</td><td class="num ca">15.5%</td><td class="num cb">1,496 (19%)</td><td class="num cb">16.1%</td><td>Tie on growth; S&amp;P larger</td></tr>
+      <tr><td>Equity indices</td><td class="num ca">1,850 (13%)</td><td class="num ca">14.8%</td><td class="num cb">0</td><td class="num cb">ND</td><td>S&amp;P only, 69% margin</td></tr>
+      <tr><td>Energy &amp; commodities</td><td class="num ca">2,299 (17%)</td><td class="num ca">8.7%</td><td class="num cb">0</td><td class="num cb">ND</td><td>S&amp;P only, 41% GAAP margin</td></tr>
+    </table>
+    <p class="score-note">S&amp;P % of total uses FY2025 segment revenue ex Mobility ($13,789m before $200m eliminations); Moody's uses external revenue ($7,718m). Sources: FY2023 and FY2025 10-Ks, both.</p>
+    <div class="iik"><b>Insight:</b> 34% of Moody's revenue sits in one cell (US ratings) against 20% at S&amp;P, and ratings growth is identical at the two agencies. <b>Implication:</b> Over a full cycle the growth gap is decided in data, where Moody's leads, and in indices, where only S&amp;P plays. <span class="kpi">KPI: Moody's MA ARR growth vs S&amp;P MI organic revenue growth, quarterly; a gap under 2 points for four quarters removes Moody's growth edge.</span> [Source: FY2025 10-Ks; Q2 2026 calls]</div>
+    <h3>Segment growth engines</h3>
+    <p><b>Ratings.</b> Growth is issuance volume times price. Both disclose the same drivers for FY2025: tight spreads, refinancing, AI-related investment-grade issuance, CLOs and private credit (S&amp;P private-market ratings +60% in Q2 2026; Moody's private-credit transactions +40%) (Q2 2026 calls). S&amp;P's billed issuance was $4.3tn in FY2025 (+11%); Moody's rated more than $2tn in each of Q1 and Q2 2026. Price shows up in the annuity line at both: Moody's recurring revenue rose on "annual price increases and higher monitored credits", S&amp;P's on "improved contract terms" (FY2025 10-Ks). Ratings growth is essentially organic at both.</p>
+    <p><b>Data and workflow.</b> Moody's MA grows through embedding in regulated workflows: KYC ARR +15% in FY2025, insurance cat modelling migrating to its cloud platform with less than half of customers moved, and lending suites repriced on renewal (MCO FY2025 10-K; Q2 2026 call). S&amp;P's MI is being split into a fast Kensho data business (about a third of the Kensho Data and Platforms line, growing high single to low double digits) and slower platforms (low single digit) to be consolidated for margin (SPGI Q2 2026 call). Both are partly bought: S&amp;P added Visible Alpha (2024) and With Intelligence (2025); Moody's spent $227m on acquisitions in FY2025 and sold its Learning Solutions business in Q4 2025 (MCO FY2025 10-K).</p>
+    <p><b>Indices.</b> Asset-linked fees rose 22% in FY2024 and 15% in FY2025 as average ETF assets grew 33% and 24% (SPGI FY2025 10-K). Market levels do most of the work; net inflows of more than $600bn over the last year and asset-manager switches to S&amp;P add the structural part (SPGI Q2 2026 call).</p>
+    <div class="iik"><b>Insight:</b> S&amp;P's fastest-growing cell (Indices, +15% a year) is also its highest-margin cell; Moody's fastest-growing cell (KYC and Decision Solutions) sits in its lowest-margin segment. <b>Implication:</b> Each point of growth is worth more profit at S&amp;P than at Moody's. <span class="kpi">KPI: S&amp;P asset-linked fees / average ETF AUM, 2.73bps in FY2024 and 2.53bps in FY2025 (inferred); a fall below 2.3bps signals fee compression.</span> [Source: SPGI FY2025 10-K, Indices MD&amp;A]</div>
+    <h3>Price control and route-to-market</h3>
+    <p>Both sell direct. In ratings the issuer pays and has no substitute for the big-agency ratings that index and mandate rules require, so both exercise annual price increases. The difference is how price is packaged: 48% of S&amp;P Ratings revenue is non-transaction (surveillance, annual relationship fees, Crisil) against 33% recurring at Moody's (FY2025 10-Ks). Moody's also notes that frequent issuers on pricing programs carry lower average revenue yields, so higher volume from banks and data-centre issuers did not lift its 2026 revenue guide (MCO Q2 2026 call). In indices S&amp;P prices by basis points on assets, a meter that runs with markets rather than with negotiations.</p>
+    <div class="iik"><b>Insight:</b> S&amp;P has converted more of its ratings pricing into annuity fees. <b>Implication:</b> Its ratings revenue falls less in a drought and its net price is less dependent on deal flow. <span class="kpi">KPI: MIS recurring revenue share of ratings revenue (33% FY2025); above 38% by FY2028 would close the gap.</span> [Source: FY2025 10-Ks]</div>
+    <h3>Supply resilience</h3>
+    <p>Neither company has physical supply risk; the inputs are analysts, engineers, data and cloud capacity. Compensation is the largest cost at Moody's ($2,574m of $3,776m operating and SG&amp;A) (MCO FY2025 10-K); S&amp;P does not split its cost base this way at group level. S&amp;P's one partner dependency is CME Group, which co-owns S&amp;P Dow Jones Indices and holds a put on at least 20% of its stake ($4.9bn redeemable non-controlling interest); Moody's depends on AWS and Microsoft as distribution partners for its AI and cloud products (SPGI FY2025 10-K; MCO Q2 2026 call).</p>
+    <h3>Risks by segment</h3>
+    <p><b>Ratings:</b> an issuance drought hits both, but Moody's more (see Answer 3). <b>Data:</b> AI tools that let clients combine feeds from several vendors threaten stand-alone platforms first, which is S&amp;P's slow-growing Capital IQ-type estate more than Moody's workflow-embedded KYC and insurance software; an analyst raised exactly this on S&amp;P's Q2 2026 call. <b>Indices:</b> a bear market cuts asset-linked fees directly, and switching by large asset managers works in both directions. <b>Energy:</b> geopolitics; S&amp;P chose to be flexible on price with customers affected by the Iran conflict in 2026 (SPGI Q2 2026 call).</p>
+    <div class="pull">On cells alone Moody's has the slightly faster engine, because its data arm outgrows S&amp;P's; S&amp;P has the broader one, because two of its cells have no Moody's counterpart.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In this industry the power sits with whoever other people's rules point to: index eligibility rules, investment mandates, futures contracts and ETF prospectuses.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">S&amp;P Global - clear</div></div></div><div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">S&amp;P Global - narrow</div></div></div><div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">S&amp;P Global - narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever; each call argued in the sections below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>S&amp;P Global</h3><p>Ratings: named in bond-index and mandate rules alongside Moody's and Fitch; the SEC staff report identifies these guidelines, index rules and the QIB certification requirement as barriers to entry. Durability High. Indices: the S&amp;P 500 underlies the first $1tn ETF, four of the five ETFs the US Treasury selected for Thrift accounts and SPX derivatives; replacing it means rebuilding a liquid market. Durability High. Platts: price assessments settle exchange contracts. Durability High, with 2026 geopolitical noise.</p></div>
+      <div class="col b"><h3>Moody's</h3><p>Ratings: the same mandate-driven moat, with an identical 2022 to 2025 path. Durability High. Analytics: Orbis ownership data on more than 630m entities, cat models for insurers, credit models embedded in bank lending workflows, 95% retention. Durability Medium: valuable and sticky, but money and time can buy a competitor; margins in the low 30s are the evidence the market does not treat it as a benchmark.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Both own the ratings moat equally; only S&amp;P owns two further references (the S&amp;P 500 family and Platts) that third parties have written into products and contracts. <b>Implication:</b> S&amp;P's profit pool has three independent protections against one at Moody's; Moody's second business is protected by switching costs, not by mandates. <span class="kpi">KPI: Net ETF flows captured by S&amp;P DJI indices and asset-manager switches disclosed each quarter; any large switch away is the first crack.</span> [Source: SEC OCR 2025 Staff Report pp.18, 29-30; SPGI Q2 2026 call; MCO Q2 2026 call]</div>
+    <h3>Customers: who controls net price and access</h3>
+    <p>S&amp;P: no customer above 10% of revenue; in ratings 48% of revenue is non-transaction; in indices it is paid by asset managers on their assets and by exchanges on volume, and management reports asset managers switching to S&amp;P benchmarks in Q2 2026 (SPGI FY2025 10-K; Q2 2026 call). Moody's: no customer above 10% of receivables; ratings recurring share 33%; MA 96% to 99% recurring with 95% retention and upsell on platform migrations, but lower-yield pricing programs for frequent issuers dilute ratings price per dollar issued (MCO FY2025 10-K; Q2 2026 call). Both raise ratings prices annually; neither discloses the price contribution.</p>
+    <div class="iik"><b>Insight:</b> S&amp;P has turned more of its issuer relationships into annual fees and is paid by asset-based meters in indices; Moody's has the stickier software customer base (95% retention). <b>Implication:</b> In a downturn S&amp;P's net price holds better in ratings; in data Moody's holds customers better. <span class="kpi">KPI: MIS recurring share (33%) vs S&amp;P non-transaction share (48%); MA retention stays at or above 94%.</span> [Source: FY2025 10-Ks; MCO Q2 2026 call]</div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>S&amp;P: people and data; low capital intensity (capex 1.3% of revenue); CME partnership in indices. Moody's: people and cloud; capex 4.2% of revenue as it capitalizes software for MA's cloud shift, and it is sunsetting on-premise insurance models, which makes AWS a critical platform (FY2025 10-Ks; MCO Q2 2026 call). Pass-through: both held or raised margins through the 2022 to 2023 wage inflation once issuance recovered; neither shows input-cost stress.</p>
+    <div class="iik"><b>Insight:</b> Neither has a supplier that can dictate terms; S&amp;P's lower capital intensity and Moody's cloud migration are the only real differences. <b>Implication:</b> Moody's carries more execution risk in moving insurance customers to its cloud platform on AWS. <span class="kpi">KPI: Moody's capex as % of revenue falling below 3.5% once migration peaks; S&amp;P capex stays under 2%.</span> [Source: FY2025 10-Ks, cash flow statements; MCO Q2 2026 call]</div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>Ratings, US</td><td>Both direct to issuer; mandate-protected</td><td>S&amp;P above (more annuity, higher margin)</td><td>Both high</td><td>Share flat both; margin up both, S&amp;P lead narrowing</td><td>Ratings like-basis margin gap stays above 1.5pts in FY2026</td></tr>
+      <tr><td>Data &amp; workflow, US</td><td>Both direct; Moody's also via AWS and Microsoft</td><td>S&amp;P above on margin, Moody's above on growth</td><td>Both high; Moody's 95% retention disclosed</td><td>Moody's share up, S&amp;P margin up</td><td>MA ARR growth 2+ pts above MI organic growth</td></tr>
+      <tr><td>Data &amp; workflow, Intl</td><td>Both direct</td><td>Parity (inferred)</td><td>Both high</td><td>Moody's share up</td><td>MA non-US revenue growth vs MI international growth</td></tr>
+    </table>
+    <p class="score-note">The tension: Moody's grows fastest exactly where its pricing power is weakest (data at about 28 to 34% margins), while S&amp;P's pricing power is concentrated in cells Moody's does not contest.</p>
+    <h3>The causal gap</h3>
+    <p><b>1. The index franchise (Major).</b> S&amp;P: $1,850m, 69% margin; Moody's: none. Not closable: it would take decades and a liquid derivatives market. <b>2. Ratings annuity mix (Moderate).</b> S&amp;P 48% non-transaction vs Moody's 33% recurring. Partly closable over 3 to 5 years through relationship pricing and first-time mandates (Moody's expects 750 to 850 in 2026), but it is also a legacy of how each agency priced for decades. <b>3. Data arm economics (Moderate, and moving toward Moody's).</b> MI is larger and more profitable; MA grows faster and targets mid to high 30s margins by end-2027 (MCO Q2 2026 call). If MA gets there while holding 9% ARR growth, this cause flips to Moody's within about two years.</p>
+    <div class="pull">S&amp;P Global holds the stronger power position because it owns three references others must use; Moody's owns one, plus a good software business that must still earn its margins.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">On the consolidated statements Moody's looks leaner; on like-for-like segments and on cash, S&amp;P is.</div>
+    <p>Both present costs by function under US GAAP, with depreciation and amortization on separate lines, so the mapping is clean: "operating-related expenses" (S&amp;P) and "operating" (Moody's) are used as the cost-of-revenue proxy; "selling and general" and "SG&amp;A" as SG&amp;A. Neither discloses R&amp;D, so that row is ND for both. S&amp;P's reported EBIT carries $1.0 to 1.1bn a year of IHS Markit-related intangible amortization and disposal gains or losses; Moody's carries $198 to 215m of acquired amortization plus restructuring. A second EBIT line removes acquired amortization (and S&amp;P's disposal gains) from both. S&amp;P figures include Mobility (not restated); fiscal years both end 31 December.</p>
+    <h3>Three years, five ratios</h3>
+    <table>
+      <tr><th>% of sales, 3y avg FY23 to FY25</th><th class="num ca">S&amp;P Global</th><th class="num cb">Moody's</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS (operating expense proxy)</td><td class="num ca">31.2</td><td class="num cb">27.2</td><td class="num">+4.0</td><td>Mix (Energy, Mobility, MI content costs) plus more software capitalized at Moody's</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">ND</td><td class="num cb">ND</td><td class="num">ND</td><td>Not disclosed by either</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">23.4</td><td class="num cb">25.1</td><td class="num">-1.7</td><td>S&amp;P's larger scale spreads corporate cost</td></tr>
+      <tr><td>Gross margin proxy</td><td class="num ca">68.8</td><td class="num cb">72.8</td><td class="num">-4.0</td><td>Moody's mix is 53% ratings</td></tr>
+      <tr><td>EBIT margin, reported</td><td class="num ca">37.9</td><td class="num cb">40.0</td><td class="num">-2.1</td><td>IHS Markit amortization at S&amp;P</td></tr>
+      <tr><td>EBIT ex acquired amortization</td><td class="num ca">45.0</td><td class="num cb">43.0</td><td class="num">+2.0</td><td>Higher segment margins and Indices at S&amp;P</td></tr>
+    </table>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 300" role="img" aria-label="Cost engine grouped bars"><line x1="0" x2="900" y1="250" y2="250" stroke="#2B2B2B" stroke-width="1"/><rect x="41.0" y="164.2" width="30" height="85.8" fill="#C75B39"/><text x="56.0" y="158.2" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">31.2</text><rect x="79.0" y="175.2" width="30" height="74.8" fill="#3C6E8F"/><text x="94.0" y="169.2" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">27.2</text><text x="75.0" y="270" text-anchor="middle" font-size="13" fill="#2B2B2B">Cost of</text><text x="75.0" y="287" text-anchor="middle" font-size="13" fill="#2B2B2B">revenue proxy</text><text x="225.0" y="230" text-anchor="middle" font-size="14" fill="#6E675C">ND for both</text><text x="225.0" y="270" text-anchor="middle" font-size="13" fill="#2B2B2B">R&amp;D</text><rect x="341.0" y="185.7" width="30" height="64.3" fill="#C75B39"/><text x="356.0" y="179.7" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">23.4</text><rect x="379.0" y="181.0" width="30" height="69.0" fill="#3C6E8F"/><text x="394.0" y="175.0" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">25.1</text><text x="375.0" y="270" text-anchor="middle" font-size="13" fill="#2B2B2B">SG&amp;A</text><rect x="491.0" y="60.8" width="30" height="189.2" fill="#C75B39"/><text x="506.0" y="54.8" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">68.8</text><rect x="529.0" y="49.8" width="30" height="200.2" fill="#3C6E8F"/><text x="544.0" y="43.8" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">72.8</text><text x="525.0" y="270" text-anchor="middle" font-size="13" fill="#2B2B2B">Gross margin</text><text x="525.0" y="287" text-anchor="middle" font-size="13" fill="#2B2B2B">proxy</text><rect x="641.0" y="145.8" width="30" height="104.2" fill="#C75B39"/><text x="656.0" y="139.8" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">37.9</text><rect x="679.0" y="140.0" width="30" height="110.0" fill="#3C6E8F"/><text x="694.0" y="134.0" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">40.0</text><text x="675.0" y="270" text-anchor="middle" font-size="13" fill="#2B2B2B">EBIT margin,</text><text x="675.0" y="287" text-anchor="middle" font-size="13" fill="#2B2B2B">reported</text><rect x="791.0" y="126.2" width="30" height="123.8" fill="#C75B39"/><text x="806.0" y="120.2" text-anchor="middle" font-size="13" font-weight="700" fill="#C75B39">45.0</text><rect x="829.0" y="131.8" width="30" height="118.2" fill="#3C6E8F"/><text x="844.0" y="125.8" text-anchor="middle" font-size="13" font-weight="700" fill="#3C6E8F">43.0</text><text x="825.0" y="270" text-anchor="middle" font-size="13" fill="#2B2B2B">EBIT ex</text><text x="825.0" y="287" text-anchor="middle" font-size="13" fill="#2B2B2B">acquired amort.</text></svg>
+      <div class="cap">3-year averages, FY2023 to FY2025, % of revenue. S&amp;P Global terracotta, Moody's blue. Sources: consolidated statements of income in the FY2025 10-Ks, both.</div>
+    </div>
+    <table>
+      <tr><th>By year</th><th class="num ca">S&amp;P FY23</th><th class="num ca">FY24</th><th class="num ca">FY25</th><th class="num cb">Moody's FY23</th><th class="num cb">FY24</th><th class="num cb">FY25</th></tr>
+      <tr><td>Revenue ($m)</td><td class="num ca">12,497</td><td class="num ca">14,208</td><td class="num ca">15,336</td><td class="num cb">5,916</td><td class="num cb">7,088</td><td class="num cb">7,718</td></tr>
+      <tr><td>COGS proxy %</td><td class="num ca">33.1</td><td class="num ca">30.7</td><td class="num ca">29.8</td><td class="num cb">28.5</td><td class="num cb">27.4</td><td class="num cb">25.6</td></tr>
+      <tr><td>SG&amp;A %</td><td class="num ca">25.3</td><td class="num ca">22.5</td><td class="num ca">22.3</td><td class="num cb">27.6</td><td class="num cb">24.5</td><td class="num cb">23.4</td></tr>
+      <tr><td>Gross margin proxy %</td><td class="num ca">66.9</td><td class="num ca">69.3</td><td class="num ca">70.2</td><td class="num cb">71.5</td><td class="num cb">72.6</td><td class="num cb">74.4</td></tr>
+      <tr><td>EBIT margin %</td><td class="num ca">32.2</td><td class="num ca">39.3</td><td class="num ca">42.2</td><td class="num cb">36.1</td><td class="num cb">40.6</td><td class="num cb">43.4</td></tr>
+      <tr><td>EBIT ex acquired amort. %</td><td class="num ca">41.1</td><td class="num ca">46.4</td><td class="num ca">47.4</td><td class="num cb">39.5</td><td class="num cb">43.4</td><td class="num cb">46.2</td></tr>
+      <tr><td>Capex %</td><td class="num ca">1.1</td><td class="num ca">0.9</td><td class="num ca">1.3</td><td class="num cb">4.6</td><td class="num cb">4.5</td><td class="num cb">4.2</td></tr>
+    </table>
+    <p class="score-note">Sources: SPGI FY2025 10-K (income statement, cash flow statement); MCO FY2025 10-K (statement of operations, cash flow statement, Note on acquired intangible amortization).</p>
+    <h3>The structural gap</h3>
+    <p>The most persistent gap is the operating-expense ratio: Moody's ran 3 to 5 points lower in each of the three years. It is not a cost-discipline story. It comes from mix, since Moody's is 53% ratings while S&amp;P's cost base carried Energy, Mobility and Market Intelligence content operations, and from accounting, since Moody's capitalizes about three times as much of its revenue as capex, moving software cost from operating expense into amortization (inferred). At segment level the gap reverses: S&amp;P Ratings out-earns MIS by 2 to 4 points every year and MI out-earns MA by about 4 points on a comparable basis. That confirms the power map: the company with more benchmark pricing power shows it where the businesses overlap, and in free cash flow (35.6% vs 33.4%). Moody's lead in consolidated gross margin is a mix effect a reader should not mistake for a cheaper engine.</p>
+    <div class="pull">S&amp;P Global runs the leaner engine segment for segment; Moody's looks leaner only because of what it does not own and what it capitalizes.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li>Moody's Analytics becomes a second benchmark-quality business: ARR growth holds at 9% or better while adjusted margin reaches the mid to high 30s by end-2027, making Moody's the faster grower with comparable conversion. <span style="color:var(--good);font-weight:700;">Early warning: MA adjusted margin at or above 36% with ARR growth at or above 9% in FY2027 (MCO 10-K).</span></li>
+      <li>AI hollows out S&amp;P's Market Intelligence platforms, the 36% of revenue ex Mobility that grows slowest: clients use AI front ends to mix feeds from several vendors and consolidate away from Capital IQ-type platforms. <span style="color:var(--good);font-weight:700;">Early warning: MI organic growth below 4% or ACV growth below 5% for two consecutive quarters (SPGI earnings calls).</span></li>
+      <li>Index fee compression or a bear market removes S&amp;P's third engine while its leverage is above target: asset-linked fees fall faster than assets, or AUM falls sharply with gross leverage still near 2.8x. <span style="color:var(--good);font-weight:700;">Early warning: asset-linked fees / average ETF AUM below 2.3bps, or gross leverage not back inside 2.0 to 2.5x by end-2027 (SPGI 10-K; Q2 2026 call guidance).</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12-24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>MA ARR growth minus MI organic revenue growth</td><td>Gap of 2 pts or more, four quarters running</td><td>Q2 2027</td><td>Moody's</td><td>Quarterly 10-Q / earnings calls</td></tr>
+    <tr><td>MA adjusted operating margin</td><td>36% or higher</td><td>FY2027</td><td>Moody's</td><td>MCO 10-K segment MD&amp;A</td></tr>
+    <tr><td>Ratings like-basis margin gap (S&amp;P Ratings minus MIS adj. OI less D&amp;A)</td><td>Stays above 1.5 pts (2.2 pts in FY2025)</td><td>FY2026</td><td>S&amp;P Global</td><td>Both 10-Ks, segment notes</td></tr>
+    <tr><td>S&amp;P asset-linked fees / average ETF AUM</td><td>Holds at 2.4bps or above</td><td>FY2027</td><td>S&amp;P Global</td><td>SPGI 10-K, Indices MD&amp;A</td></tr>
+    <tr><td>MIS recurring revenue share of MIS external revenue</td><td>Rises above 38% (33% in FY2025)</td><td>FY2028</td><td>Moody's</td><td>MCO 10-K revenue note</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the first deep-dive hours on S&amp;P Global, and specifically on Market Intelligence: it is the one segment that could break the call, and the new two-line reporting from Q3 2026 will show whether the platforms are shrinking. For Moody's, one question is enough to track: whether MA's margin reaches the mid-30s without its growth slowing.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> The duel runs three lenses: a growth map by product x region cell, a power map of moats, customers and suppliers, and a cost engine of five ratios over three years, then converges on a call. Cells cover 100% of continuing revenue for both companies; segment labels are normalized as described in the Growth Map tab; all figures are US$ as reported, so no FX conversion was needed. ND means not publicly disclosed; "inferred" marks a figure reasoned from disclosed data, with the logic stated. This is a comparison of business strength, not a valuation, and it says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>S&amp;P Global, Form 10-K FY2025 (filed 11 Feb 2026), FY2024 (11 Feb 2025) and FY2023 (9 Feb 2024); Form 10-Q Q2 2026 (28 Jul 2026); 8-K on Mobility separation (2 Jul 2026). Research folder sources/.</li>
+      <li>S&amp;P Global earnings-call transcripts, Q4 2025 (10 Feb 2026) and Q2 2026 (28 Jul 2026). Research folder sources/Transcripts.</li>
+      <li>Moody's Corporation, Form 10-K FY2025 (18 Feb 2026) and FY2023 (14 Feb 2024); Form 10-Q Q2 2026 (23 Jul 2026); 8-Ks of 12 Jan 2026 and 12 Aug 2026. Research folder sources/.</li>
+      <li>Moody's earnings-call transcripts, Q4 2025 (18 Feb 2026) and Q2 2026 (22 Jul 2026); investor update on AI (8 Jun 2026). Research folder sources/Transcripts.</li>
+      <li>SEC Office of Credit Ratings, 2025 Staff Report on NRSROs (April 2026), https://www.sec.gov/files/2025-ocr-staff-report-compliant-4-24-26.pdf</li>
+      <li>S&amp;P Global press release, "S&amp;P Global Completes Divestiture of Upstream Energy Software Portfolio to SLB" (1 Sep 2026), https://www.prnewswire.com/news-releases/sp-global-completes-divestiture-of-upstream-energy-software-portfolio-to-slb-302866534.html</li>
+      <li>Moody's Q2 2026 earnings release (22 Jul 2026), https://www.sec.gov/Archives/edgar/data/1059556/000162828026049104/a2q26earningsrelease.htm (checked in the event sweep)</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

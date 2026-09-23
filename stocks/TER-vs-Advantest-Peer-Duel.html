@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teradyne vs Advantest: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Peer Duel, Compound With AI</div>
+<h1>Teradyne vs Advantest: who wins the next decade?</h1>
+<p class="source">Semiconductor automated test equipment (ATE). Nasdaq TER / TSE 6857. Run 17 September 2026. Built from Teradyne 10-Ks FY2022 to FY2025 and earnings call transcripts through Q2 2026 (research folder sources/), and Advantest tanshin FY2023 to Q1 FY2026, results slides, notes and Q&amp;A, and the 84th securities report (advantest.com). Events swept through 17 Sep 2026; most recent events checked: Teradyne India office and Goldman Sachs conference remarks (9 to 14 Sep 2026), Advantest completion of its 150bn yen buyback (20 Aug 2026). Figures in USD; Advantest converted at its own disclosed average USD/JPY for each year (143 FY2023, 153 FY2024, 150 FY2025). Advantest's fiscal year ends in March, one quarter after Teradyne's December year. Not a valuation and not a recommendation.</p>
+<div class="chips"><span class="chip a">Teradyne</span><span class="chip b">Advantest</span></div>
+
+<div class="verdict-banner">
+  <div class="label">The Call</div>
+  <div class="verdict">Advantest is the stronger business for the next 5 to 10 years; Teradyne is the faster share-gainer attacking it from a smaller base.</div>
+  <div class="why">Advantest owns about two thirds of the SoC tester market at the exact point where AI chips are tested. That installed base turns into a 44% EBIT margin, against 20% at Teradyne.</div>
+</div>
+
+<div class="reasons">
+  <div class="col"><span class="n">1</span><br>Position in the biggest cell. Advantest's SoC tester sales were 767bn yen (about $5.1bn) in FY2025, 95% of it computing and communications, at 66% share of a $6.9bn SoC market (Advantest FY2025 slides and notes). Teradyne's SoC sales were $1.89bn, about half of it compute (TER 2025 10-K Note E; Q4 2025 call).</div>
+  <div class="col"><span class="n">2</span><br>Conversion. In the latest fiscal year Advantest's Test System segment earned 50.9% of sales, and Teradyne's Semiconductor Test segment earned 27.8% pre-tax (Advantest FY2025 tanshin; TER 2025 10-K segment note). Even with Robotics stripped out, the gap is 23 points.</div>
+  <div class="col"><span class="n">3</span><br>The counter-trend is real but slow. Teradyne describes a customer's move to dual-vendor supply as a 9 to 12 month qualification, then "a few years" to go from 0% to about 30% share. It has one compute customer at the mature stage, one ramping as a fast follower, and one in qualification (TER Q2 2026 call).</div>
+</div>
+
+<div class="duelwrap">
+  <div class="leanrow"><div class="lbl">Growth profile</div>
+    <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+      <div class="marker a" style="left:26%">Teradyne - narrow</div></div></div>
+  <div class="leanrow"><div class="lbl">Margin conversion</div>
+    <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+      <div class="marker b" style="right:2%">Advantest - clear</div></div></div>
+  <div class="leanrow"><div class="lbl">Resilience</div>
+    <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+      <div class="marker a" style="left:26%">Teradyne breaks last - narrow</div></div></div>
+  <div class="cap">The three answers, argued below. A left lean favors Teradyne and a right lean favors Advantest; the marker's position shows how decisive the call is. The lenses split, and Advantest wins the call because in ATE, installed base and scale decide who keeps the economics.</div>
+</div>
+
+<h2>The Three Answers</h2>
+<div class="answer">
+  <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+  <div class="w"><span class="chip a">Teradyne, narrowly, on rate. Advantest on absolute dollars.</span></div>
+  <p>Three cells carry the next five years. The first is compute SoC shipped to Taiwan and other Asian OSATs: AI accelerators, custom ASICs, server CPUs and networking. The second is DRAM and HBM memory test in Korea. The third is optical and system-level test for data centers. Advantest grows with the first cell almost mechanically: it holds about 66% SoC share, and it is building capacity toward about 10,000 SoC systems a year (FY2025 and Q1 FY2026 Q&amp;A). Teradyne's growth has a second driver on top of the market, which is share. Compute customers are qualifying a second test vendor for supply security; Teradyne expects "about 30%" of merchant compute over 3 to 5 years (Goldman Sachs conference, 9 Sep 2026, secondary summary; approx., unverified). It is also gaining share in HBM and DRAM final test, where Advantest itself expects to lose some share (TER 2025 10-K; Advantest Q1 FY2026 Q&amp;A). Guidance points the same way for 2026. Teradyne's first half of $2.61bn is 50 to 52% of the year, which implies about $5.0 to 5.2bn, or +57 to 64% (inferred from Q2 2026 call). Advantest guides 1,714bn yen, +52% (Q1 FY2026 slides).</p>
+  <div class="chartbox">
+    <svg viewBox="0 0 760 260" role="img" aria-label="Indexed revenue"><line x1="70" x2="600" y1="190.8" y2="190.8" stroke="#E5DDD0"/><text x="62" y="195.76923076923077" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">100</text><line x1="70" x2="600" y1="117.7" y2="117.7" stroke="#E5DDD0"/><text x="62" y="122.6923076923077" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">200</text><line x1="70" x2="600" y1="44.6" y2="44.6" stroke="#E5DDD0"/><text x="62" y="49.61538461538461" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">300</text><text x="70.0" y="246" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">2022</text><text x="202.5" y="246" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">2023</text><text x="335.0" y="246" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">2024</text><text x="467.5" y="246" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">2025</text><text x="600.0" y="246" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">2026 guide</text><polyline points="70,190.8 202,201.9 335,198.5 468,190.0" fill="none" stroke="#C75B39" stroke-width="3"/><line x1="468" y1="190.0" x2="600" y2="145.8" stroke="#C75B39" stroke-width="3" stroke-dasharray="6 5"/><circle cx="70" cy="190.8" r="4" fill="#C75B39"/><circle cx="202" cy="201.9" r="4" fill="#C75B39"/><circle cx="335" cy="198.5" r="4" fill="#C75B39"/><circle cx="468" cy="190.0" r="4" fill="#C75B39"/><circle cx="600" cy="145.8" r="4" fill="#C75B39"/><text x="610.0" y="150.75384615384615" text-anchor="start" fill="#C75B39" font-size="14" font-weight="bold">Teradyne 162</text><text x="459.5" y="209.9653846153846" text-anchor="end" fill="#C75B39" font-size="13" font-weight="normal">101</text><polyline points="70,190.8 202,200.4 335,162.1 468,116.6" fill="none" stroke="#3C6E8F" stroke-width="3"/><line x1="468" y1="116.6" x2="600" y2="40.2" stroke="#3C6E8F" stroke-width="3" stroke-dasharray="6 5"/><circle cx="70" cy="190.8" r="4" fill="#3C6E8F"/><circle cx="202" cy="200.4" r="4" fill="#3C6E8F"/><circle cx="335" cy="162.1" r="4" fill="#3C6E8F"/><circle cx="468" cy="116.6" r="4" fill="#3C6E8F"/><circle cx="600" cy="40.2" r="4" fill="#3C6E8F"/><text x="610.0" y="45.230769230769226" text-anchor="start" fill="#3C6E8F" font-size="14" font-weight="bold">Advantest 306</text><text x="459.5" y="106.59615384615385" text-anchor="end" fill="#3C6E8F" font-size="13" font-weight="normal">202</text></svg>
+    <div class="cap">Revenue indexed to 100 in 2022, each in its reporting currency (USD for Teradyne, yen for Advantest), so FX does not distort the comparison. Teradyne CY2022 to 2025: $3,155m, $2,676m, $2,820m, $3,190m (10-Ks). Advantest FY2022 to FY2025: 560.2bn, 486.5bn, 779.7bn, 1,128.6bn yen (tanshin). The dashed 2026 segment is guidance, not actuals: Teradyne about $5.1bn (inferred midpoint), Advantest 1,714bn yen.</div>
+  </div>
+</div>
+<div class="answer">
+  <div class="q">2. Who converts that growth into superior margins?</div>
+  <div class="w"><span class="chip b">Advantest, clearly. The margin winner is not the growth winner.</span></div>
+  <p>Advantest turns incremental SoC volume into profit through mix and scale. FY2025 sales rose 349bn yen on only 34bn yen more SG&amp;A and 7bn yen more R&amp;D, so EBIT margin went from 29.3% to 44.2% and gross margin from 57.1% to 64.3%. Q1 FY2026 gross margin reached 69.5% (tanshin; Q1 FY2026 slides). Teradyne's Semiconductor Test segment grew 19% in 2025, but its pre-tax margin moved only from 26.3% to 27.8%. Group gross margin has sat inside a 57 to 59% band for four years, because Teradyne is adding R&amp;D and go-to-market spending to win second-source sockets, and its CFO cites "pricing elements" and memory mix as margin strains (2025 10-K; Q2 2026 call). That leaves an uncomfortable combination. Teradyne's growth edge comes from share won as the challenger, and challengers price to win; Advantest's margin edge comes from being the incumbent those customers are diversifying away from. Teradyne's own target model tops out at a 30 to 34% operating margin on about $6bn of revenue. Advantest guides 49.4% for FY2026.</p>
+  <div class="chartbox">
+    <svg viewBox="0 0 760 270" role="img" aria-label="Margin dumbbells"><text x="214" y="55" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="bold">Gross margin, latest FY</text><line x1="230" x2="700" y1="50" y2="50" stroke="#E5DDD0" stroke-width="2"/><text x="230" y="76" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">40%</text><text x="700" y="76" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">80%</text><line x1="443.9" x2="515.5" y1="50" y2="50" stroke="#2B2B2B" stroke-width="2"/><circle cx="443.9" cy="50" r="8" fill="#C75B39"/><circle cx="515.5" cy="50" r="8" fill="#3C6E8F"/><text x="443.85" y="36" text-anchor="end" fill="#C75B39" font-size="14" font-weight="bold">TER 58.2%</text><text x="515.525" y="36" text-anchor="start" fill="#3C6E8F" font-size="14" font-weight="bold">ADV 64.3%</text><text x="479.6875" y="74" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="normal">+6.1pts ADV</text><text x="214" y="125" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="bold">EBIT margin, latest FY</text><line x1="230" x2="700" y1="120" y2="120" stroke="#E5DDD0" stroke-width="2"/><text x="230" y="146" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">0%</text><text x="700" y="146" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">60%</text><line x1="389.8" x2="576.2" y1="120" y2="120" stroke="#2B2B2B" stroke-width="2"/><circle cx="389.8" cy="120" r="8" fill="#C75B39"/><circle cx="576.2" cy="120" r="8" fill="#3C6E8F"/><text x="389.79999999999995" y="106" text-anchor="end" fill="#C75B39" font-size="14" font-weight="bold">TER 20.4%</text><text x="576.2333333333333" y="106" text-anchor="start" fill="#3C6E8F" font-size="14" font-weight="bold">ADV 44.2%</text><text x="483.01666666666665" y="144" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="normal">+23.8pts ADV</text><text x="214" y="195" text-anchor="end" fill="#2B2B2B" font-size="14" font-weight="bold">Test segment profit margin</text><line x1="230" x2="700" y1="190" y2="190" stroke="#E5DDD0" stroke-width="2"/><text x="230" y="216" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">0%</text><text x="700" y="216" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">60%</text><line x1="447.8" x2="628.7" y1="190" y2="190" stroke="#2B2B2B" stroke-width="2"/><circle cx="447.8" cy="190" r="8" fill="#C75B39"/><circle cx="628.7" cy="190" r="8" fill="#3C6E8F"/><text x="447.76666666666665" y="176" text-anchor="end" fill="#C75B39" font-size="14" font-weight="bold">TER 27.8%</text><text x="628.7166666666667" y="176" text-anchor="start" fill="#3C6E8F" font-size="14" font-weight="bold">ADV 50.9%</text><text x="538.2416666666667" y="214" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="normal">+23.1pts ADV</text></svg>
+    <div class="cap">Latest fiscal year. Teradyne CY2025 GAAP; its cost of revenues excludes acquired intangible amortization. Advantest FY2025 IFRS. Test segment margins: Teradyne Semiconductor Test pre-tax income $700.7m on $2,523.7m; Advantest Test System segment income 518.8bn on 1,019.4bn yen. Sources: TER 2025 10-K; Advantest FY2025 tanshin.</div>
+  </div>
+</div>
+<div class="answer">
+  <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+  <div class="w"><span class="chip b">Advantest breaks first on earnings; Teradyne breaks first on a single account.</span></div>
+  <p>Advantest's exposure is volume leverage concentrated in one end market. In FY2025, 95% of SoC tester sales were computing and communications and 50% of group sales shipped to Taiwan, and its margin moves with volume. In the last downturn, FY2023, sales fell 13%, gross margin dropped from 57.0% to 50.6%, and EBIT margin fell from 29.9% to 16.8%. Over the same stretch Teradyne's gross margin held at 57.4% (tanshin; TER 2023 10-K). Teradyne's exposure is the specifier-and-purchaser structure. Its top five direct customers rose to 44% of 2025 revenue from 32% in 2023; one direct purchaser took 19%, and two chip designers each specified 10 to 12%. Losing one hyperscaler program would cost more than a cyclical dip (TER 2025 10-K). On the evidence Advantest breaks first in a broad AI capex digestion. Teradyne breaks first if one named program moves, and its losing Robotics unit (-$99m pre-tax in 2025) is a cushion that costs money rather than one that pays.</p>
+</div>
+
+<h2>Segment-Geography Scorecard</h2>
+<p>Five cells carry most of the two companies' combined test economics; each score is argued in the tabs below. Neither company discloses product-by-region revenue, so the cells pair each product line with the region its sales ship to (inferred).</p>
+<table>
+  <tr><th>Cell (product x region)</th><th class="ca">Teradyne</th><th class="cb">Advantest</th><th>Why (one clause, sourced)</th></tr>
+  <tr><td>Compute SoC x Taiwan and Asian OSATs</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>Advantest holds 66% SoC share, up from 56%, and ships 51% of sales to Taiwan (FY2025 notes); Teradyne's compute share is "stabilizing and starting to inflect", mostly from 2027 (Q2 2026 call).</td></tr>
+  <tr><td>Memory test (DRAM, HBM) x Korea</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Teradyne is gaining HBM and DRAM final-test share with memory book-to-bill above 2 (10-K; Q2 2026 call); Advantest expects to lose memory share from about 60% (Q1 FY2026 Q&amp;A).</td></tr>
+  <tr><td>China mainstream SoC and memory</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>China is 19% of Advantest sales and growing, though local vendors weigh on the low end; Teradyne says trade restrictions limit its competitiveness and it moved manufacturing out of China (10-K; FY2024 and Q1 FY2026 notes).</td></tr>
+  <tr><td>Non-compute SoC (auto, industrial, mobile) x US, Europe, Japan IDMs</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>This is about half of Teradyne's SoC sales and its historical stronghold, where it keeps share (Q4 2025 call); about 5% of Advantest SoC sales (inferred from 95% compute).</td></tr>
+  <tr><td>Data-center system, optical and storage test x US and Asia</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Teradyne's IST grew 2.5x quarter on quarter in Q2 2026, and it added Quantifi, the MultiLane JV and TestInsight; Advantest's other systems fell 5% in FY2025, after a 21.4bn yen Essai impairment in FY2024.</td></tr>
+</table>
+<div class="rubric">
+  <b>How to read the scores:</b>
+  <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+  <span><b>4</b> advantaged and gaining share</span>
+  <span><b>3</b> holds position; grows with the market</span>
+  <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+  <span><b>1</b> weak and losing share, or exiting</span>
+  <span><b>0</b> no meaningful presence</span>
+</div>
+<p class="score-note">Scores are anchored to the exhibits in the three tabs; a score with no exhibit behind it does not ship. Scores are per cell and are not summed. The cells differ in size by a factor of ten and overlap where China crosses product lines.</p>
+
+<div class="tabs">
+  <button class="on" onclick="show(0,this)">Growth Map</button>
+  <button onclick="show(1,this)">Power Map</button>
+  <button onclick="show(2,this)">Cost Engine</button>
+</div>
+
+<div class="view on" id="v0">
+  <div class="frame">Both companies ride the same AI test wave, but Advantest earns roughly five times Teradyne's revenue in the cell that is compounding, while Teradyne is spread across memory, legacy SoC and adjacencies.</div>
+  <p>Normalization. Teradyne reports three segments (Semiconductor Test, Product Test, Robotics) and splits Semiconductor Test into SoC, Memory and IST (2025 10-K Note E). Advantest merged Mechatronics into a Test System segment in FY2025, which it splits into SoC, Memory and Other systems, plus Services and Others (FY2025 tanshin; Q1 FY2026 slides). We map Advantest's "Other systems" (handlers, device interfaces) against Teradyne's IST as the nearest equivalent; the two are not the same product set. Neither company splits compute from non-compute SoC in its filings. We use Teradyne's call remark that 2025 was "nearly 50% compute" and Advantest's slide showing 95% of SoC sales in computing and communications, which overstates pure compute because it includes phone chips.</p>
+  <p>The headline contrast is where revenue sits. About 65% of Advantest's revenue is compute-oriented SoC test (inferred). Teradyne's compute SoC is about 28% of its revenue (inferred), and about 21% sits in Robotics and Product Test, which Advantest does not have at all.</p>
+  <div class="chartbox">
+    <svg viewBox="0 0 900 336" role="img" aria-label="Butterfly chart"><text x="330" y="26" text-anchor="end" fill="#C75B39" font-size="15" font-weight="bold">Teradyne CY2025, $bn</text><text x="570" y="26" text-anchor="start" fill="#3C6E8F" font-size="15" font-weight="bold">Advantest FY2025, $bn</text><text x="450" y="60" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="bold">Compute SoC</text><text x="450" y="76" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">(GPU, ASIC, CPU, networking)</text><rect x="300.2" y="50" width="39.8" height="26" fill="#C75B39" fill-opacity="0.55"/><text x="294.18518518518516" y="63" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">0.90 (inferred)</text><text x="294.18518518518516" y="78" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">~50% of SoC</text><rect x="560.0" y="50" width="215.0" height="26" fill="#3C6E8F" fill-opacity="0.55"/><text x="781.0" y="63" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">4.86 (inferred)</text><text x="781.0" y="78" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">~95% of SoC</text><text x="450" y="106" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="bold">Memory test</text><text x="450" y="122" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">(DRAM, HBM, NAND)</text><rect x="317.7" y="96" width="22.3" height="26" fill="#C75B39" fill-opacity="1"/><text x="311.65946502057614" y="109" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">0.51</text><text x="311.65946502057614" y="124" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">+14%</text><rect x="560.0" y="96" width="50.4" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="616.4320987654321" y="109" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">1.14</text><text x="616.4320987654321" y="124" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">+41%</text><text x="450" y="152" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="bold">Non-compute SoC</text><text x="450" y="168" text-anchor="middle" fill="#6E675C" font-size="13" font-weight="normal">(auto, industrial, mobile)</text><rect x="298.0" y="142" width="42.0" height="26" fill="#C75B39" fill-opacity="0.55"/><text x="291.9732510288066" y="155" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">0.95 (inferred)</text><text x="291.9732510288066" y="170" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">~50% of SoC</text><rect x="560.0" y="142" width="11.5" height="26" fill="#3C6E8F" fill-opacity="0.55"/><text x="577.5020576131687" y="155" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">0.26 (inferred)</text><text x="577.5020576131687" y="170" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">~5% of SoC</text><text x="450" y="198" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="bold">Services and other</text><text x="334" y="206" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">ND</text><rect x="560.0" y="188" width="32.3" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="598.2942386831276" y="201" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">0.73</text><text x="598.2942386831276" y="216" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">+13% 1y</text><text x="450" y="244" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="bold">Robotics + Product Test</text><rect x="310.5" y="234" width="29.5" height="26" fill="#C75B39" fill-opacity="1"/><text x="304.537037037037" y="247" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">0.67</text><text x="304.537037037037" y="262" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">-4%</text><text x="566" y="252" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">no presence</text><text x="450" y="290" text-anchor="middle" fill="#2B2B2B" font-size="13" font-weight="bold">System-level / other systems</text><rect x="334.3" y="280" width="5.7" height="26" fill="#C75B39" fill-opacity="1"/><text x="328.2932098765432" y="293" text-anchor="end" fill="#C75B39" font-size="13" font-weight="bold">0.13</text><text x="328.2932098765432" y="308" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">-3%</text><rect x="560.0" y="280" width="23.9" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="589.8888888888889" y="293" text-anchor="start" fill="#3C6E8F" font-size="13" font-weight="bold">0.54</text><text x="589.8888888888889" y="308" text-anchor="start" fill="#6E675C" font-size="13" font-weight="normal">-5% 1y</text></svg>
+    <div class="cap">Latest fiscal year revenue, USD bn (Advantest converted at 150 yen). Pale bars are inferred splits of SoC revenue. Growth rates are two-year CAGRs in reporting currency (Teradyne CY2023 to 2025; Advantest FY2023 to 2025) unless marked one-year. Sources: TER 2025 10-K Note E and Q4 2025 call; Advantest FY2025 tanshin, FY2024 and FY2025 slides, Q1 FY2026 slides.</div>
+  </div>
+  <h3>The cells that matter</h3>
+  <table>
+    <tr><th>Cell</th><th class="num ca">TER rev (% total)</th><th class="num ca">TER 2y CAGR</th><th class="num cb">ADV rev (% total)</th><th class="num cb">ADV 2y CAGR</th><th>Margin signal / leader</th></tr>
+    <tr><td>SoC test (all)</td><td class="num ca">$1,890m (59%)</td><td class="num ca">+14.9%</td><td class="num cb">$5,116m (68%)</td><td class="num cb">+76.8%</td><td>Advantest; SoC drives its 50.9% segment margin</td></tr>
+    <tr><td>Memory test</td><td class="num ca">$505m (16%)</td><td class="num ca">+14.4%</td><td class="num cb">$1,143m (15%)</td><td class="num cb">+41.3%</td><td>Advantest by size, Teradyne on share momentum; both call memory margin-dilutive (Q2 2026 call; Q1 FY2026 Q&amp;A)</td></tr>
+    <tr><td>System-level / other systems</td><td class="num ca">$129m (4%)</td><td class="num ca">-3.4%</td><td class="num cb">$537m (7%)</td><td class="num cb">ND (restated)</td><td>Mixed; Teradyne IST inflecting on HDD in 2026</td></tr>
+    <tr><td>Services and others</td><td class="num ca">ND</td><td class="num ca">ND</td><td class="num cb">$728m (10%)</td><td class="num cb">+12.7% 1y</td><td>Advantest segment profit only 8.8bn yen, low margin</td></tr>
+    <tr><td>Robotics + Product Test</td><td class="num ca">$666m (21%)</td><td class="num ca">-3.7%</td><td class="num cb">none</td><td class="num cb">none</td><td>Teradyne only; Robotics pre-tax -$99.4m, Product Test +$60.7m</td></tr>
+  </table>
+  <div class="iik"><b>Insight:</b> Advantest's SoC engine grew 3.1x in two years, while Teradyne's grew 1.3x and its adjacencies shrank. <b>Implication:</b> Advantest's operating leverage sits in the cell the whole industry is expanding; Teradyne must win share there to change the picture. <span class="kpi">KPI: Teradyne compute share of SoC above 70% on a full-year basis in 2027, and Advantest SoC share in its CY2026 estimate (published Apr 2027).</span> [Sources: TER 2025 10-K Note E; Advantest FY2023 and FY2025 slides. Advantest SoC FY2025 total of 767.4bn yen is summed from quarterly slide data.]</div>
+
+  <h3>The geography behind the cells</h3>
+  <table>
+    <tr><th>Ship-to region, latest FY</th><th class="num ca">Teradyne</th><th class="num ca">YoY</th><th class="num cb">Advantest</th><th class="num cb">YoY (yen)</th></tr>
+    <tr><td>Taiwan</td><td class="num ca">$1,155m (36%)</td><td class="num ca">+92%</td><td class="num cb">$3,797m (51%)</td><td class="num cb">+74%</td></tr>
+    <tr><td>China</td><td class="num ca">$451m (14%)</td><td class="num ca">+20%</td><td class="num cb">$1,422m (19%)</td><td class="num cb">+22%</td></tr>
+    <tr><td>Korea</td><td class="num ca">$446m (14%)</td><td class="num ca">-36%</td><td class="num cb">$1,202m (16%, label inferred)</td><td class="num cb">+15%</td></tr>
+    <tr><td>US / Americas</td><td class="num ca">$361m US (11%)</td><td class="num ca">-4%</td><td class="num cb">$297m Americas (4%)</td><td class="num cb">-6%</td></tr>
+    <tr><td>Europe</td><td class="num ca">$215m (7%)</td><td class="num ca">-14%</td><td class="num cb">$154m (2%)</td><td class="num cb">+16%</td></tr>
+    <tr><td>Japan</td><td class="num ca">$66m (2%)</td><td class="num ca">-59%</td><td class="num cb">$167m (2%)</td><td class="num cb">+59%</td></tr>
+  </table>
+  <div class="iik"><b>Insight:</b> Both engines are pointed at Taiwan, where US fabless AI chips are wafer-tested and packaged. Teradyne's Korea sales fell 36% in the year after Samsung drove about 12.5% of its 2024 revenue (2024 10-K). <b>Implication:</b> Teradyne's geographic mix swings with individual programs, while every Asian region at Advantest grew. <span class="kpi">KPI: Teradyne Korea revenue back above $600m in the 2026 10-K, as HBM and DRAM orders convert.</span> [Sources: TER 2025 10-K Note V; Advantest FY2025 tanshin (Asia total) and slide quarterly regions, which sum to the tanshin Asia figure. Korea versus China labels in the Advantest slide are inferred from co-movement with memory sales.]</div>
+
+  <h3>Segment growth engines</h3>
+  <p>Compute SoC. Advantest's driver is volume on an incumbent platform: rising test intensity from 3D packaging and longer final-test times, plus capacity going from 5,000 to about 10,000 systems a year, a plan it is pulling forward (FY2025 and Q1 FY2026 Q&amp;A). Teradyne's driver is customers adding a second vendor. It has majority share at its first hyperscaler, is qualified as second source at a second, and shipped its first merchant GPU order in Q2 2026 (Q2 2026 call; Goldman conference, secondary). Advantest's driver lasts as long as AI capex does. Teradyne's lasts as long as customers keep valuing supply security enough to pay for correlating a second platform. Both are organic; Teradyne's small 2025 to 2026 acquisitions sit mostly outside SoC (Quantifi $127.2m, the Infineon ATE team $18.3m, 75% of the MultiLane JV for $157m, TestInsight undisclosed).</p>
+  <p>Memory. Teradyne's Magnum testers can also run logic tests, which lets memory makers switch the same tool between uses (Q2 2026 call). Teradyne expects the 2026 memory market to be 40% larger than 2025. Advantest's memory sales were 90% DRAM in FY2025, and it expects to lose share, especially in NAND.</p>
+  <div class="iik"><b>Insight:</b> Advantest grows with the market, Teradyne grows with the market plus share. <b>Implication:</b> Teradyne's growth rate can exceed Advantest's for several years without Advantest's economics breaking, because Teradyne starts from a much lower share. <span class="kpi">KPI: Teradyne's second hyperscaler reaching "meaningful production share" in 2027, as the company has guided (Q4 2026 and Q1 2027 calls).</span> [Sources: as cited.]</div>
+
+  <h3>Price control and route-to-market</h3>
+  <p>Both sell direct. Teradyne sells test systems through its own sales force; only Robotics goes through distributors (2025 10-K). Advantest sells through its own regional subsidiaries; Advantest America and Advantest Taiwan each exceed 10% of consolidated sales (84th securities report). The difference is who holds the decision. At Teradyne a "specifying customer" (the chip designer) picks the platform and an OSAT or foundry buys it (10-K), so the pricing conversation is with the most powerful chip companies in the world. Advantest calls the V93000 the de facto standard in the foundry and OSAT space (FY2025 Q&amp;A), so the purchaser's existing test floor defaults to it. Neither discloses a price and volume split.</p>
+  <div class="iik"><b>Insight:</b> Advantest's installed base at the purchaser is a pricing anchor; Teradyne has to win at the specifier, and specifiers are the ones pushing for a second vendor. <b>Implication:</b> Advantest keeps price while it keeps the default slot; Teradyne gives some price to earn share. <span class="kpi">KPI: Advantest quarterly gross margin at or above 65% through Q4 FY2026, despite DRAM input costs.</span> [Sources: TER 2025 10-K; Advantest FY2025 Q&amp;A, 84th securities report.]</div>
+
+  <h3>Supply resilience</h3>
+  <table>
+    <tr><th></th><th class="ca">Teradyne</th><th class="cb">Advantest</th></tr>
+    <tr><td>Manufacturing</td><td class="ca">Contract manufacturers Flex, Plexus and SAM Meerkat in Malaysia and Thailand, plus an internal FLEX line in Cebu (10-K)</td><td class="cb">Gunma factory plus outsourced partners; a contract manufacturer is ramping a second Southeast Asia plant (84th securities report; Q1 FY2026 Q&amp;A)</td></tr>
+    <tr><td>Single-source risk</td><td class="ca">"Certain items are obtained from sole sources" (10-K)</td><td class="cb">Materials availability during expansion flagged; specific parts ND</td></tr>
+    <tr><td>Lead time / capacity</td><td class="ca">12 to 16 weeks held while UltraFLEXplus shipments more than doubled (Q1 2026 call)</td><td class="cb">Target of about 10,000 SoC systems a year, being pulled in</td></tr>
+    <tr><td>Input cost pressure</td><td class="ca">Memory mix a margin "strain" into 2027</td><td class="cb">DRAM inside testers is the "main headwind"; pass-through under evaluation</td></tr>
+  </table>
+  <div class="iik"><b>Insight:</b> Supply is not what separates the two, and both are scaling on outsourced Southeast Asian capacity. <b>Implication:</b> capacity is now a competitive weapon, since customers dual-source partly to guarantee supply (Q2 2026 call). <span class="kpi">KPI: lead times at either company above 26 weeks on a call, a sign that a customer's second vendor is really a supply fix.</span></div>
+
+  <h3>Competitive context</h3>
+  <p>Advantest estimates its CY2025 share at 66% of SoC and about 60% of memory testers, about 65% overall of a $9.0bn market (FY2025 notes). An analyst on Teradyne's Q2 2026 call put Teradyne near 37% of a test market defined to include burn-in, and management did not dispute the figure (approx., unverified; the two companies' market definitions do not reconcile). Teradyne's 10-K names Advantest, SPEA and Cohu as competitors. Chinese domestic vendors such as Hangzhou Changchuan are growing fast at home (36Kr, Aug 2026; approx., unverified), and Advantest said in April 2025 that they had weighed on its low-end SoC share.</p>
+
+  <h3>Risks by segment</h3>
+  <p>Compute SoC: the mechanism is customers dual-sourcing. Advantest is more exposed because it holds the share being redistributed; a move toward 30% second-vendor share at merchant GPU would take roughly a fifth to a third of the socket volume away from the incumbent (inferred). Memory: DRAM price inflation raises tester input costs while HBM programs are lumpy; Advantest names DRAM as its main margin headwind, and Teradyne's memory growth dilutes its margin. China: export licensing and local substitution. Advantest is more exposed in dollars (19% of sales), and Teradyne has already lost ground there. Adjacencies: Robotics has lost money in each of the last three years (2023 -$54.3m, 2024 -$77.6m, 2025 -$99.4m pre-tax), which is Teradyne's self-inflicted drag.</p>
+  <div class="pull">On cells alone, Teradyne has the higher growth rate ahead because it is taking share in compute and memory from a low base, and Advantest has the larger, better-positioned engine because it already owns the compounding cell.</div>
+</div>
+
+<div class="view" id="v1">
+  <div class="frame">In ATE the terms are set by whoever owns the test floor's default platform, and in AI compute that is Advantest, until customers decide that one vendor is a risk.</div>
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Moats</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:2%">Advantest - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Customers</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker b" style="right:26%">Advantest - narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Suppliers</div>
+      <div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div>
+        <div class="marker a" style="left:26%">Teradyne - narrow</div></div></div>
+    <div class="cap">Who sets the terms, lever by lever; each call is argued in the sections below.</div>
+  </div>
+  <h3>Moats: what rivals cannot copy</h3>
+  <div class="duo">
+    <div class="col a"><h3>Teradyne</h3><p>1. VIP compute position on UltraFLEXplus. It held about 50% of vertically integrated compute in 2025 (Q4 2025 call) and has majority share at its first hyperscaler, having moved from qualification in 2023 (Goldman conference, secondary). Durability: Med. It is programme-specific and re-competed each chip generation.</p><p>2. Magnum memory test. It is taking HBM and DRAM final-test share (2025 10-K), and the logic-capable tool lets memory makers move it between uses. Durability: Med.</p><p>3. Data-center breadth across photonics, copper interconnect and HDD system-level test. It was largely bought (Quantifi, MultiLane, TestInsight), so durability is Low; money can copy it.</p></div>
+    <div class="col b"><h3>Advantest</h3><p>1. V93000 installed base at foundries and OSATs. It calls the platform the "de facto standard" (FY2025 Q&amp;A), and its estimated SoC share rose from 56% to 66% in CY2025 (company estimate). Teradyne's own description of the 9 to 12 month dual-vendor correlation process corroborates the switching cost. Durability: High.</p><p>2. Capacity scale. It plans about 10,000 SoC systems a year and is weighing 15,000+ (Q1 FY2026 Q&amp;A). Durability: Med, since capacity can be bought but takes years.</p><p>3. Memory incumbency at about 60% share, 90% of it DRAM. Durability: Med, and eroding by its own guidance.</p></div>
+  </div>
+  <div class="iik"><b>Insight:</b> Advantest's moat is test programs and correlated floors that take quarters to replicate; Teradyne's strongest asset is a customer relationship won through a two-to-three-year qualification. <b>Implication:</b> Advantest's advantage erodes socket by socket, never all at once. <span class="kpi">KPI: the number of compute customers Teradyne reports at the "mature dual-vendor" stage (one today) reaching three by end-2027.</span> [Sources: TER Q2 2026 call; Advantest FY2025 notes and Q&amp;A.]</div>
+  <h3>Customers: who controls net price and access</h3>
+  <p>Teradyne: in 2025 its top five direct customers were 44% of revenue (36% in 2024, 32% in 2023). One direct purchaser took 19%, two specifiers drove 12% and 10%, and two customers held 22% and 20% of receivables (2025 10-K). Advantest: no end customer above 10% was found in the 84th securities report or the tanshin, and its investor guide calls the base well-diversified. Its own Q&amp;A, though, says US fabless SoC business is concentrated in Taiwan, so the true concentration is probably hidden by the OSAT layer (inferred). Evidence of pricing power: Advantest's gross margin went from 57.1% to 69.5% in five quarters with no price-driven share loss. Teradyne's CFO lists "pricing elements" among the margin variables (Q2 2026 call).</p>
+  <div class="iik"><b>Insight:</b> Both face concentrated buyers, but Teradyne's filing makes the concentration visible and rising, while Advantest's buyers use it as the default. <b>Implication:</b> when demand softens, margin pressure lands first on the challenger's price concessions and the incumbent's volume. <span class="kpi">KPI: Teradyne top-five share in the FY2026 10-K (Feb 2027) above 50%.</span> [Sources: TER 2025 10-K; Advantest 84th securities report, Investors Guide Apr 2025.]</div>
+  <h3>Suppliers: who absorbs shocks</h3>
+  <p>Teradyne runs an asset-light model on several contract manufacturers, with an in-house backup line in Cebu. Its gross margin stayed between 57.4% and 59.2% through the 2022 to 2023 component inflation and downturn (10-Ks), a sign of Partial-to-Strong pass-through. Advantest mixes in-house Gunma production with outsourcing and makes more of its memory testers in-house. Its gross margin fell 6.4 points in FY2023, which we read as volume absorption rather than input cost (inferred), and it now names DRAM costs as the main headwind, with pass-through only "under evaluation". Teradyne exited Chinese manufacturing in 2023 (about $1bn of equipment moved; Asia Financial, Jan 2024; approx., unverified), so it has already paid for geopolitical supply insurance.</p>
+  <div class="iik"><b>Insight:</b> Teradyne's supply model has proven more margin-stable through a shock. <b>Implication:</b> this is a Teradyne edge, but a small one next to the moat gap. <span class="kpi">KPI: Advantest Q3 FY2026 gross margin versus the Q1 69.5% as DRAM costs flow through (Jan 2027).</span></div>
+  <h3>The price/power triangle: top 3 cells</h3>
+  <table>
+    <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+    <tr><td>Compute SoC x Taiwan</td><td>Advantest default at OSAT; Teradyne via specifier</td><td>Advantest above Teradyne (inferred from 69.5% vs 59.8% gross margin)</td><td>Both outsourced in SE Asia</td><td>Advantest share flat to down, margin up; Teradyne share up, margin flat</td><td>Advantest CY2026 SoC share estimate, Apr 2027</td></tr>
+    <tr><td>Memory x Korea</td><td>Direct, both; memory makers specify and buy</td><td>ND</td><td>DRAM input costs hit both</td><td>Teradyne share up, margin down; Advantest share down, margin down</td><td>Teradyne 2026 memory revenue above $800m (vs $505m in 2025)</td></tr>
+    <tr><td>China mainstream</td><td>Advantest direct; Teradyne constrained by trade rules</td><td>Parity to below vs local vendors</td><td>Licensing risk for both</td><td>Advantest share flat, margin flat; Teradyne share down</td><td>Advantest China share of sales staying at 18 to 20%</td></tr>
+  </table>
+  <p>The tension. Teradyne grows fastest in memory, where it has the least pricing power; both companies call memory margin-dilutive. It also wins compute share by being the second vendor, a role that customers value precisely because it caps the incumbent's pricing. Teradyne's growth therefore comes packaged with weaker net price by construction.</p>
+  <h3>The causal gap</h3>
+  <p>1. Installed base in compute SoC. Advantest holds about 66% share; Teradyne has one mature dual-vendor compute account. Impact: Major. Teradyne needs 3 to 5 years of socket-by-socket correlation, and that time cannot be bought. 2. Portfolio drag. Robotics lost $99.4m pre-tax in 2025, against Advantest's zero. Impact: Moderate, about 3 points of group margin, and fixable in 18 to 24 months by restructuring or exit, so it is not a moat either way. 3. Buyer structure. Teradyne's specifier model concentrates negotiating power; impact Moderate, and structural as long as AI silicon is designed by a handful of firms.</p>
+  <div class="pull">Advantest holds the stronger power position: it owns the default platform where AI chips are tested, and Teradyne's best lever is the buyers' wish to weaken that default.</div>
+</div>
+
+<div class="view" id="v2">
+  <div class="frame">Advantest runs leaner because one platform earns across a much larger revenue base, while Teradyne carries three businesses' worth of R&amp;D and selling cost on a third of the SoC revenue.</div>
+  <p>Mapping. Both present costs by function. Teradyne (US GAAP) reports cost of revenues excluding acquired intangible amortization, selling and administrative, and engineering and development, with restructuring and intangible amortization on separate lines. Advantest (IFRS) reports cost of sales and SG&amp;A and no R&amp;D line; R&amp;D is disclosed separately (65.5bn, 71.4bn and 78.1bn yen). We assume R&amp;D sits inside SG&amp;A and subtract it (inferred; the placement was not confirmed in the securities report). If part of R&amp;D sits in cost of sales, Advantest's true gross margin is higher still. EBIT is reported operating income: Teradyne 2024 includes a $57.1m gain on sale of a business, and Advantest FY2024 includes a 21.4bn yen Essai impairment. Fiscal years are offset by one quarter.</p>
+  <h3>Three years, five ratios</h3>
+  <table>
+    <tr><th>% of sales, 3y avg</th><th class="num ca">Teradyne CY23-25</th><th class="num cb">Advantest FY23-25</th><th class="num">Gap</th><th>What drives it</th></tr>
+    <tr><td>COGS</td><td class="num ca">42.0</td><td class="num cb">42.7</td><td class="num">-0.7</td><td>Averages hide Advantest's swing from 49.4 to 35.7</td></tr>
+    <tr><td>R&amp;D</td><td class="num ca">15.9</td><td class="num cb">9.9</td><td class="num">+6.0</td><td>Teradyne funds three segments and second-source compute efforts</td></tr>
+    <tr><td>SG&amp;A (ex R&amp;D)</td><td class="num ca">21.3</td><td class="num cb">16.2 (inferred)</td><td class="num">+5.1</td><td>Robotics selling cost ($135m in 2025) and a smaller revenue base</td></tr>
+    <tr><td>Gross margin</td><td class="num ca">58.0</td><td class="num cb">57.3</td><td class="num">+0.7</td><td>Teradyne is stable; Advantest is volume-levered</td></tr>
+    <tr><td>EBIT margin</td><td class="num ca">20.1</td><td class="num cb">30.1</td><td class="num">-10.0</td><td>Opex intensity, then scale</td></tr>
+  </table>
+  <div class="chartbox">
+    <svg viewBox="0 0 760 280" role="img" aria-label="Cost engine bars"><line x1="40" x2="740" y1="230" y2="230" stroke="#2B2B2B"/><rect x="60" y="122.0" width="46" height="108.0" fill="#C75B39"/><text x="83" y="115.99999999999999" text-anchor="middle" fill="#C75B39" font-size="13" font-weight="bold">42.0%</text><rect x="112" y="120.2" width="46" height="109.8" fill="#3C6E8F"/><text x="135" y="114.19999999999999" text-anchor="middle" fill="#3C6E8F" font-size="13" font-weight="bold">42.7%</text><text x="109" y="252" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="bold">COGS</text><rect x="200" y="189.1" width="46" height="40.9" fill="#C75B39"/><text x="223" y="183.1142857142857" text-anchor="middle" fill="#C75B39" font-size="13" font-weight="bold">15.9%</text><rect x="252" y="204.5" width="46" height="25.5" fill="#3C6E8F"/><text x="275" y="198.54285714285714" text-anchor="middle" fill="#3C6E8F" font-size="13" font-weight="bold">9.9%</text><text x="249" y="252" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="bold">R&D</text><rect x="340" y="175.2" width="46" height="54.8" fill="#C75B39"/><text x="363" y="169.22857142857143" text-anchor="middle" fill="#C75B39" font-size="13" font-weight="bold">21.3%</text><rect x="392" y="188.3" width="46" height="41.7" fill="#3C6E8F"/><text x="415" y="182.34285714285716" text-anchor="middle" fill="#3C6E8F" font-size="13" font-weight="bold">16.2%</text><text x="389" y="252" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="bold">SG&A</text><rect x="480" y="80.9" width="46" height="149.1" fill="#C75B39"/><text x="503" y="74.85714285714283" text-anchor="middle" fill="#C75B39" font-size="13" font-weight="bold">58.0%</text><rect x="532" y="82.7" width="46" height="147.3" fill="#3C6E8F"/><text x="555" y="76.65714285714284" text-anchor="middle" fill="#3C6E8F" font-size="13" font-weight="bold">57.3%</text><text x="529" y="252" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="bold">Gross margin</text><rect x="620" y="178.3" width="46" height="51.7" fill="#C75B39"/><text x="643" y="172.31428571428572" text-anchor="middle" fill="#C75B39" font-size="13" font-weight="bold">20.1%</text><rect x="672" y="152.6" width="46" height="77.4" fill="#3C6E8F"/><text x="695" y="146.6" text-anchor="middle" fill="#3C6E8F" font-size="13" font-weight="bold">30.1%</text><text x="669" y="252" text-anchor="middle" fill="#2B2B2B" font-size="14" font-weight="bold">EBIT margin</text><text x="740" y="20" text-anchor="end" fill="#6E675C" font-size="13" font-weight="normal">3-year averages. Teradyne CY2023-25, Advantest FY2023-25</text></svg>
+    <div class="cap">Sources: TER FY2023 and FY2025 10-K consolidated statements of operations; Advantest FY2023, FY2024 and FY2025 tanshin, with R&amp;D from FY2024 and FY2025 results slides. Advantest SG&amp;A is shown excluding R&amp;D (inferred placement).</div>
+  </div>
+  <table>
+    <tr><th>Year</th><th class="num ca">TER COGS</th><th class="num ca">TER R&amp;D</th><th class="num ca">TER S&amp;A</th><th class="num ca">TER GM</th><th class="num ca">TER EBIT</th><th class="num cb">ADV COGS</th><th class="num cb">ADV R&amp;D</th><th class="num cb">ADV SG&amp;A</th><th class="num cb">ADV GM</th><th class="num cb">ADV EBIT</th></tr>
+    <tr><td>2023</td><td class="num ca">42.6</td><td class="num ca">15.6</td><td class="num ca">21.6</td><td class="num ca">57.4</td><td class="num ca">18.7</td><td class="num cb">49.4</td><td class="num cb">13.5</td><td class="num cb">19.2</td><td class="num cb">50.6</td><td class="num cb">16.8</td></tr>
+    <tr><td>2024</td><td class="num ca">41.5</td><td class="num ca">16.3</td><td class="num ca">21.9</td><td class="num ca">58.5</td><td class="num ca">21.1</td><td class="num cb">42.9</td><td class="num cb">9.2</td><td class="num cb">15.9</td><td class="num cb">57.1</td><td class="num cb">29.3</td></tr>
+    <tr><td>2025</td><td class="num ca">41.8</td><td class="num ca">15.8</td><td class="num ca">20.3</td><td class="num ca">58.2</td><td class="num ca">20.4</td><td class="num cb">35.7</td><td class="num cb">6.9</td><td class="num cb">13.4</td><td class="num cb">64.3</td><td class="num cb">44.2</td></tr>
+  </table>
+  <p class="score-note">Raw values, Teradyne $m, 2023/2024/2025: revenue 2,676.3 / 2,819.9 / 3,190.0; cost of revenues 1,139.6 / 1,171.0 / 1,332.7; E&amp;D 418.1 / 460.9 / 504.6; S&amp;A 577.3 / 617.0 / 648.9; operating income 501.1 / 593.8 / 650.1. Advantest bn yen, FY2023/2024/2025: sales 486.5 / 779.7 / 1,128.6; cost of sales 240.5 / 334.6 / 402.5; SG&amp;A 159.0 / 195.4 / 229.6; R&amp;D 65.5 / 71.4 / 78.1; operating income 81.6 / 228.2 / 499.1.</p>
+  <h3>The structural gap</h3>
+  <p>The most persistent gap is operating expense intensity. R&amp;D plus SG&amp;A was 37.2%, 38.2% and 36.1% of sales at Teradyne against 32.7%, 25.1% and 20.3% at Advantest, so Teradyne is heavier in every year. The gap is not only Robotics. Teradyne's Semiconductor Test segment alone spent 26.6% of sales on E&amp;D, selling and G&amp;A in 2025 and earned 27.8% pre-tax, against 50.9% for Advantest's Test System segment. The mechanism is scale on a shared platform. Advantest spends 78bn yen of R&amp;D (about $520m) across $7.5bn of sales, while Teradyne spends $505m across $3.2bn and three segments. Gross margin does not show a persistent gap: Teradyne was ahead in 2023, Advantest in 2025. This partly contradicts the power map, since Advantest's pricing power appears only at high volume, and it confirms Answer 3: Advantest's margin is operating leverage, which runs both ways. Teradyne's gap is part structural (subscale SoC) and part self-inflicted (Robotics), and a management focused on the second part could recover about 3 points.</p>
+  <div class="pull">Advantest runs the leaner engine by about 10 points of EBIT on average and 24 points in the latest year; the gap is opex scale, not gross margin.</div>
+</div>
+
+<div class="flip">
+  <h3>What would flip the call</h3>
+  <ul>
+    <li>Dual-vendoring spreads faster than "a few years". If merchant GPU and a second hyperscaler both give Teradyne volume share in 2027, Advantest's default status becomes a shared standard, and its pricing anchor weakens with it. <span style="color:var(--good);font-weight:700;">Early warning: Advantest's CY2026 SoC share estimate below 62% (Apr 2027 results), or Teradyne reporting a second mature dual-vendor compute customer.</span></li>
+    <li>An AI capex digestion hits a volume-levered engine. Advantest's EBIT margin fell 13 points in FY2023 on a 13% sales decline, and today 95% of its SoC sales ride one end market. <span style="color:var(--good);font-weight:700;">Early warning: Advantest quarterly orders or sales below 280bn yen for two consecutive quarters, or operating margin below 35%.</span></li>
+    <li>Teradyne fixes its self-inflicted cost gap. Robotics at breakeven, plus Semiconductor Test opex scaling toward the 27 to 29% target model, would close 5 points or more of the EBIT gap without any share gain (inferred: Robotics loss is 3.1 points of 2025 sales). <span style="color:var(--good);font-weight:700;">Early warning: Robotics segment pre-tax loss under $30m in the FY2026 10-K (Feb 2027) and a full-year non-GAAP operating margin of 32% or more.</span></li>
+  </ul>
+</div>
+
+<h2>The KPI pack: 12-24 months</h2>
+<table>
+  <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+  <tr><td>Advantest SoC tester share, CY2026 estimate</td><td>66% or more / below 62%</td><td>Apr 2027</td><td>Advantest / Teradyne</td><td>Advantest FY2026 results notes</td></tr>
+  <tr><td>Teradyne compute customers at mature dual-vendor stage</td><td>3 (from 1)</td><td>Q4 2027 call</td><td>Teradyne</td><td>Teradyne earnings calls</td></tr>
+  <tr><td>Advantest quarterly gross margin under DRAM cost pressure</td><td>65% or more each quarter</td><td>Q4 FY2026 (Apr 2027)</td><td>Advantest</td><td>Advantest quarterly slides</td></tr>
+  <tr><td>Teradyne top-five customer concentration</td><td>above 50%</td><td>FY2026 10-K, Feb 2027</td><td>Advantest (raises Teradyne fragility)</td><td>Teradyne 10-K, customer note</td></tr>
+  <tr><td>Teradyne memory test revenue</td><td>above $800m for 2026</td><td>Feb 2027</td><td>Teradyne</td><td>10-K Note E</td></tr>
+  <tr><td>Teradyne Robotics pre-tax result</td><td>loss under $30m</td><td>FY2026 10-K, Feb 2027</td><td>Teradyne</td><td>10-K segment note</td></tr>
+</table>
+
+<div class="timeverdict">
+  <div class="label">Where to spend your time</div>
+  Spend the next deep-dive hours on Advantest, since the Teradyne overview is already done: read the 84th securities report for the business risks and customer disclosure that could not be extracted here, and test how durable V93000 lock-in is against the dual-vendor push.
+</div>
+
+<div class="footer">
+  <p><b>Method.</b> The duel runs three lenses: product x geography growth cells, a power map (moats, customers, suppliers), and a three-year cost engine of five ratios. It keeps the cells that explain most of the combined revenue and normalizes segment labels, regions and currency (USD at Advantest's disclosed yearly average rates; revenue indices in reporting currency). ND means not publicly disclosed or not found; (inferred) marks a reasoned estimate with its logic stated, and "approx., unverified" marks secondary sources. This is a business-strength comparison, not a valuation, and it says nothing about either stock's price.</p>
+  <p class="sources"><b>Sources.</b></p>
+  <ul class="sources">
+    <li>Teradyne Form 10-K FY2025 (filed 19 Feb 2026), FY2024 (20 Feb 2025), FY2023 (22 Feb 2024); research folder sources/Annual_Reports; SEC EDGAR CIK 97210.</li>
+    <li>Teradyne earnings call transcripts: Q4 2025 (3 Feb 2026), Q1 2026 (29 Apr 2026), Q2 2026 (29 Jul 2026); research folder sources/Transcripts.</li>
+    <li>Teradyne Q2 2026 results release, Business Wire, 28 Jul 2026: https://www.businesswire.com/news/home/20260728522201/en/</li>
+    <li>Teradyne press releases (TestInsight 16 Apr 2026; MultiLane JV Jan 2026; Tokyo Electron 8 Jun 2026; India office 14 Sep 2026): https://investors.teradyne.com/news-events/press-releases</li>
+    <li>Teradyne at Goldman Sachs Communacopia, Investing.com summary, 9 Sep 2026 (secondary): https://ca.investing.com/news/stock-market-news/teradyne-at-goldman-sachs-communacopia--technology-conference-ai-push-widens-93CH-4833825</li>
+    <li>Advantest Consolidated Financial Results (tanshin) FY2023, FY2024, FY2025 and Q1 FY2026: https://www.advantest.com/document/en/investors/ir-library/result/E_FR_FY2025_FN.pdf (and FY2023, FY2024, FY2026_1Q equivalents)</li>
+    <li>Advantest results slides, notes and Q&amp;A: 25 Apr 2025, 27 Apr 2026, 29 Jul 2026: https://www.advantest.com/document/en/investors/ir-library/result/JE_BIZ_260729_slide.pdf</li>
+    <li>Advantest 84th Annual Securities Report, 26 Jun 2026: https://www.advantest.com/document/en/investors/ir-library/report/IR_SecuritiesandBusinessReport_84th_en.pdf</li>
+    <li>Advantest mid-term plan revision, 28 Oct 2025; buyback completion, 20 Aug 2026: https://www.advantest.com/en/news/</li>
+    <li>Asia Financial, "Teradyne pulled $1bn of chip testing equipment out of China", 30 Jan 2024 (secondary).</li>
+    <li>36Kr on Hangzhou Changchuan, 13 Aug 2026 (secondary): https://eu.36kr.com/en/p/3937330363602825</li>
+  </ul>
+</div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
