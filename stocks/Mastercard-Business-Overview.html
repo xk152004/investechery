@@ -2,161 +2,389 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mastercard Business Overview</title>
 <style>
-:root{--cream:#FAF6EF;--ink:#2B2B2B;--terracotta:#C75B39;--terracotta-soft:#F3E2DA;--line:#E5DDD0;--muted:#6E675C;--good:#3E6B4F;--gold:#C79A3A;--blue:#3C6E8F}
+:root{
+  --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+  --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);font:19px/1.58 Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums}
+html,body{margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;-webkit-font-smoothing:antialiased}
 .wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
-h1,h2,h3{font-family:Georgia,serif;font-weight:700;line-height:1.2}
-h1{font-size:38px;margin:6px 0 10px}h2{font-size:27px;margin:52px 0 14px;padding-top:18px;border-top:1px solid var(--line)}h3{font-size:21px;margin:28px 0 8px}
-.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:14px;color:var(--terracotta);font-weight:700}
-.src{color:var(--muted);font-size:15px}
-.restate{font-family:Georgia,serif;font-size:24px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 20px;margin:30px 0}
-.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 28px;margin:28px 0}
-.engine .lab{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#E8B9A6}
-.engine p{margin:8px 0 0;font-size:20px}.engine b{color:#fff}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
-.kpi .v{font-family:Georgia,serif;color:var(--terracotta);font-size:30px;font-weight:700;line-height:1.1}
-.kpi .l{font-size:15px;color:var(--muted);margin-top:6px;line-height:1.35}
-.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:12px 18px;margin:12px 0}
-.lever .tag{font-size:13px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--terracotta)}
-.lever.s{border-left-color:var(--good)}.lever.s .tag{color:var(--good)}
-.lever.m{border-left-color:var(--gold)}.lever.m .tag{color:var(--gold)}
-.lever.c{border-left-color:var(--blue)}.lever.c .tag{color:var(--blue)}
-.quote{background:var(--terracotta-soft);border-radius:10px;padding:16px 22px;margin:22px 0;font-family:Georgia,serif;font-size:20px}
-.quote cite{display:block;font-family:Calibri,'Segoe UI',Arial;font-style:normal;font-size:14px;color:var(--muted);margin-top:6px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.two ul{margin:6px 0 0;padding-left:20px;font-size:17px}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:16px;margin:14px 0 6px}
-th,td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{background:#F1EAE0;font-weight:700}td.n,th.n{text-align:right}
-.tw{overflow-x:auto}
-.cap{font-size:14px;color:var(--muted);margin:4px 0 18px}
-.chart{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 16px 6px;margin:18px 0 6px}
-.chart h3{margin:0 0 6px;font-size:18px}
-footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
-@media(max-width:640px){body{font-size:17px}.wrap{padding:28px 16px 60px}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.restate{font-size:20px}}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.2}
+h1{font-size:38px;margin:6px 0 10px}
+h2{font-size:27px;margin:52px 0 14px}
+h3{font-size:21px;margin:32px 0 10px}
+p{margin:0 0 16px}
+a{color:var(--terracotta)}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:700}
+.srcline{color:var(--muted);font-size:15px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+.restate{font-family:Georgia,serif;font-size:23px;line-height:1.5;border-left:5px solid var(--terracotta);padding:4px 0 4px 22px;margin:0 0 34px;color:#333}
+.engine{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 30px;margin:0 0 30px}
+.engine .lbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#B9AE9C;font-weight:700;margin-bottom:10px}
+.engine .unit{font-family:Georgia,serif;font-size:30px;line-height:1.25;margin-bottom:12px}
+.engine .unit em{color:#E8A889;font-style:normal}
+.engine p{margin:0;font-size:17px;color:#E4DCCE;line-height:1.55}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .k{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.kpi .v{font-family:Georgia,serif;font-size:29px;color:var(--terracotta);font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi .s{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.4}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin:22px 0}
+.lever{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:10px;padding:15px 20px;margin:12px 0}
+.lever.structural{border-left-color:var(--good)}
+.lever.mgmt{border-left-color:var(--gold)}
+.lever.cyclical{border-left-color:var(--blue)}
+.lever .tag{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+.lever.structural .tag{color:var(--good)}
+.lever.mgmt .tag{color:var(--gold)}
+.lever.cyclical .tag{color:var(--blue)}
+.lever .h{font-family:Georgia,serif;font-size:19px;font-weight:700;margin:3px 0 5px}
+.lever p{margin:0;font-size:17px;line-height:1.5}
+.pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 24px;margin:24px 0;font-family:Georgia,serif;font-size:20px;line-height:1.5;color:#5A2A17}
+.pull .attr{display:block;font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:14px;color:#8A5A45;margin-top:10px;font-style:normal}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.two .card{margin:0}
+.two h4{font-family:Georgia,serif;font-size:18px;margin:0 0 10px}
+.two ul{margin:0;padding-left:20px}
+.two li{margin-bottom:9px;font-size:16.5px;line-height:1.45}
+.tblwrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#F1EADD;font-weight:700;font-size:14px;letter-spacing:.03em;color:#4A443A}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+.snap td:first-child{font-weight:700;width:26%;color:#3A342C}
+.snap td{font-size:16.5px}
+.cap{font-size:14.5px;color:var(--muted);line-height:1.5;margin:-4px 0 26px}
+figure{margin:26px 0}
+figure svg{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+ul.plain{padding-left:20px}
+ul.plain li{margin-bottom:10px}
+.sec{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:54px}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:24px;font-size:15px;color:var(--muted)}
+footer h3{font-size:17px;margin:0 0 10px}
+.nf{color:var(--muted);font-style:italic}
+@media(max-width:680px){.kpis{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}h1{font-size:31px}h2{font-size:23px}body{font-size:17.5px}}
 </style></head><body><div class="wrap">
+
 <div class="kicker">Business Overview</div>
-<h1>Mastercard Incorporated (NYSE: MA)</h1>
-<div class="src">15 September 2026 · Built from Mastercard 10-Ks FY2016–FY2025, 2026 10-Qs, transcripts to 10 Sep 2026 and the Nov 2025 US settlement agreement, plus independent industry sources (Federal Reserve, UK PSR, Nilson, BCB, RBI, Visa/AmEx/Capital One filings) · Not a valuation and not a recommendation.</div>
-
-<div class="restate">Mastercard is a toll on card payments that it does not have to fund: banks carry the cardholders, the credit and the merchants, while Mastercard sets the rules, runs the switch and bills both sides a few basis points on every dollar.</div>
-
-<div class="engine"><div class="lab">The engine</div>
-<p>The unit is <b>one dollar of gross dollar volume</b>. In FY2025, $10.6T of it produced $32.8B of net revenue — <b>about 31 basis points per dollar</b> — at a 57.6% GAAP operating margin, so roughly <b>18 basis points of operating profit on every dollar spent on a Mastercard</b> (inferred from FY2025 10-K).</p></div>
-
-<div class="kpis">
-<div class="card kpi"><div class="v">~31 bps</div><div class="l">Unit price: net revenue per $ of GDV, FY2025 (22 bps in FY2016)</div></div>
-<div class="card kpi"><div class="v">~18 bps</div><div class="l">Unit profit: operating profit per $ of GDV, FY2025 (inferred)</div></div>
-<div class="card kpi"><div class="v">$15.0B</div><div class="l">FY2025 net income; diluted EPS $16.52 (+19%)</div></div>
-<div class="card kpi"><div class="v">$24.6B</div><div class="l">Total debt Jun-2026, up from $19.0B at Dec-2025; cash & investments $11.6B</div></div>
-<div class="card kpi"><div class="v">61.0%</div><div class="l">Cycle position: record adjusted op. margin H1 2026 (trough 53.3% FY2020)</div></div>
-<div class="card kpi"><div class="v">+12% / +15%</div><div class="l">H1 2026 revenue growth: currency-neutral organic vs reported (0 pts M&A)</div></div>
+<h1>Mastercard Incorporated <span style="color:var(--muted);font-weight:400">(NYSE: MA)</span></h1>
+<div class="srcline">
+23 September 2026 · Built from Mastercard's Forms 10-K for FY2016–FY2025, the Forms 10-Q for the quarters ended 31 March and 30 June 2026, earnings and conference transcripts through 10 September 2026 and the Rule 23(b)(2) class settlement agreement of 10 November 2025, with industry structure taken from the Federal Reserve, the UK Payment Systems Regulator, the European Commission, the Nilson Report, Banco Central do Brasil, the Reserve Bank of India, McKinsey and the filings of Visa, American Express and Capital One. <strong>This is not a valuation and not a recommendation.</strong>
 </div>
 
-<h2>1. Executive snapshot</h2>
-<div class="tw"><table><tbody>
-<tr><th style="width:32%">What the business is</th><td>A global four-party card network with an attached services business. It sets the rules, runs the switch and bills both the issuing and the acquiring bank; it does not issue cards, lend, or set the rates merchants pay. FY2025 net revenue $32.8bn; 39,800 employees.</td></tr>
-<tr><th>Industry</th><td>Card payment networks — a Visa–Mastercard duopoly outside China, carrying about 99% of UK card payments, 61% of euro-area card payments and roughly 77% of US credit volume (UK PSR; ECB; Nilson via Payments Dive), contested at the edges by state-run instant-payment rails and issuer-owned networks.</td></tr>
-<tr><th>How it makes money</th><td>It charges issuing and acquiring banks a few basis points on every dollar and a fee on every transaction carried on its brand, hands roughly half of that list price back to large issuers as incentives, and sells fraud, tokenization and data services on the same transaction flow.</td></tr>
-<tr><th>The unit of economics</th><td>One dollar of gross dollar volume, with one switched transaction as its companion. FY2025: $10.6tn of GDV and 175.5bn switched transactions, on 3.7bn Mastercard and Maestro cards. It earns about 31 basis points of net revenue per dollar, roughly 18 of them operating profit.</td></tr>
-<tr><th>What protects it</th><td>Two-sided acceptance and issuance scale a new private network cannot assemble quickly; issuer contracts of up to ten years paid for with incentives; the settlement guarantee ($76.7bn net exposure at June 2026); and licences where the state controls access — its China joint venture is licensed and live, Visa's is not.</td></tr>
-<tr><th>What drives earnings</th><td>Cross-border volume (+15% local in FY2025; 30% of gross network assessments); pricing and mix running 2–8 points ahead of volume; services growth (+18% currency-neutral excluding acquisitions).</td></tr>
-<tr><th>What to watch</th><td>Rebates as a share of gross network assessments (49.0% in FY2023 to 52.8% in H1 2026); regulators moving from interchange to network fees (UK PSR, the Credit Card Competition Act); Capital One moving card volume onto Discover.</td></tr>
-<tr><th>Cycle exposure</th><td>Medium — domestic volume held flat in 2020 while cross-border volume fell 29% and net revenue fell 9%; revenue yield and operating margin are both at records today.</td></tr>
+<div class="restate">
+Mastercard is a toll on card payments it neither funds nor underwrites — paid by the bank on each side of a transaction, on $10.6 trillion of volume a year, at 31 basis points.
+</div>
+
+<div class="engine">
+  <div class="lbl">The economic engine</div>
+  <div class="unit">One dollar of gross dollar volume earns <em>31 basis points</em> of net revenue.</div>
+  <p>Mastercard carried $10.6tn of it in FY2025, up 9% in local currency, across 175.5bn switched transactions. Carrying one more dollar costs almost nothing — the expense base is people and technology, so revenue growth of 16% against opex growth of 10% lifted the adjusted operating margin to 59.2%. The real variable cost never appears in that expense line: $20.5bn of rebates and incentives is netted off before revenue is reported.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">Price per unit</div><div class="v">31bp</div><div class="s">Net revenue per dollar of GDV, FY2025, against 22bp in FY2016 (inferred)</div></div>
+  <div class="kpi"><div class="k">Profit per unit</div><div class="v">18bp</div><div class="s">Operating profit per dollar of GDV at a 57.6% GAAP margin (inferred)</div></div>
+  <div class="kpi"><div class="k">Net income FY2025</div><div class="v">$15.0bn</div><div class="s">On $32.8bn net revenue; diluted EPS $16.52, up 19%</div></div>
+  <div class="kpi"><div class="k">Leverage</div><div class="v">$24.6bn</div><div class="s">Total debt at 30 Jun 2026, from $19.0bn at Dec 2025; cash and investments $11.6bn</div></div>
+  <div class="kpi"><div class="k">Cycle position</div><div class="v">At peak</div><div class="s">Adjusted margin 61.0% in H1 2026 against a 53.3% trough in FY2020; yield at a ten-year high</div></div>
+  <div class="kpi"><div class="k">Reported vs organic</div><div class="v">+15% / +12%</div><div class="s">H1 2026 net revenue, reported and currency-neutral. Acquisitions contributed nothing</div></div>
+</div>
+
+<div class="sec">Section 1</div>
+<h2>Executive snapshot</h2>
+<div class="tblwrap"><table class="snap"><tbody>
+<tr><td>What the business is</td><td>A four-party card network with an attached services business. Mastercard sets the rules, runs the switch and is paid by both the issuing and the acquiring bank on transactions it authorises, clears and settles; it does not issue cards, lend, or set the rates merchants pay. FY2025 net revenue $32.8bn; 39,800 employees. (FY2025 10-K)</td></tr>
+<tr><td>Industry</td><td>Global card schemes and payment network services. Visa and Mastercard together carry about 99% of UK card payments, 61% of euro-area card payments and roughly 77% of US credit volume (UK PSR; ECB data; Nilson via Payments Dive).</td></tr>
+<tr><td>How it makes money</td><td>It charges assessments on the domestic and cross-border dollar volume carried on its brands, a fee on every transaction it switches, and higher-yielding fees on cross-border activity and the currency conversion inside it; it then returns $20.5bn — 38.5% of gross revenue — to large issuers as rebates and incentives before revenue is reported.</td></tr>
+<tr><td>Unit of economics</td><td>One dollar of gross dollar volume — $10.6tn of it in FY2025, across 175.5bn switched transactions — earning about 31 basis points of net revenue, of which roughly 18 basis points is operating profit. (FY2025 10-K; yields inferred)</td></tr>
+<tr><td>What protects it</td><td>Two-sided scale no entrant can assemble incrementally: 3.7bn cards against an acceptance base a new network cannot build before it has cardholders. Reinforced by issuer contracts running up to ten years, a settlement guarantee backed by its own credit, and licences where the state controls access — its China joint venture is licensed and live, Visa's is not.</td></tr>
+<tr><td>What drives earnings</td><td>Cross-border volume, which carries 30% of gross network assessments; pricing and mix, running 2 to 8 points ahead of volume; switched transaction growth; and the attach rate of value-added services, now about 40% of net revenue.</td></tr>
+<tr><td>What to watch</td><td>Rebates and incentives as a share of gross network assessments, 52.8% in H1 2026 against 49.0% in FY2023; whether regulators move from interchange to network fees (UK PSR remedies, the Credit Card Competition Act); and how much credit volume Capital One moves onto the Discover network.</td></tr>
+<tr><td>Cycle exposure</td><td>Low on domestic volume, high on cross-border — and currently at a cycle high on margin and yield. GDV was flat through 2020 while cross-border volume fell 29% and net revenue fell 9%. (FY2020 10-K)</td></tr>
 </tbody></table></div>
+<p class="cap">All figures are US dollars. Mastercard's fiscal year ends 31 December; the latest reported period is the quarter ended 30 June 2026. Figures marked <em>inferred</em> are computed from disclosed figures, never estimated.</p>
 
-<h2>2. What the company does</h2>
-<p>A merchant needs to be sure a stranger's card from an unfamiliar bank will pay, sometimes in another currency. Mastercard supplies the rules both banks sign, the brand that promises settlement, and the switch that authorises, clears and settles. Its customers are banks on contracts "generally up to 10 years", and it states plainly that it does not issue cards, extend credit or earn interest (FY2025 10-K).</p>
-<p>Trace a $100 purchase. The acquirer asks for authorisation over Mastercard's switch and the issuer approves. Interchange flows from acquirer to issuer — issuer revenue. Mastercard separately bills both banks assessments on the volume plus per-transaction processing fees, generally weekly, and guarantees settlement between them. In FY2025 that ran $10.6T of GDV and 175.5B switched transactions into $32.8B of net revenue.</p>
-<p>Payment network revenue of $19.5B (+12%) is what remains of $40.0B of gross assessments after $20.5B of rebates and incentives paid back to customers. Services (VAS) of $13.3B (+23%) are about 40% of revenue, with around 60% "network-linked" by management's definition (FY2025 10-K; Nov 2024 Investor Update). Cross-border fees are 30% of gross network assessments (inferred) — the highest-yield flow. Half of branded GDV is consumer debit and prepaid ($5.35T), 37% consumer credit and 13% commercial; that mix matters because debit is the product regulators cap and state rails replace.</p>
+<div class="sec">Section 2</div>
+<h2>What the company does</h2>
+<p>The problem is trust between strangers. A merchant in Lisbon cannot know whether a card presented by a visitor from Seoul is good for the money, and has no practical way to collect if it is not. Mastercard's answer is a rulebook every participating bank signs in advance, a switch that carries the authorisation to the issuing bank and back in under a second, and a settlement guarantee that stands behind the money moving between them. What is sold is not technology. It is the certainty that the payment will complete.</p>
+<p>The four-party structure determines the economics. The cardholder pays the merchant in full; the merchant's acquiring bank credits the merchant that amount less the merchant discount rate; out of that, the acquirer remits interchange to the issuing bank and network fees to Mastercard, and the issuer pays its own network fees as well. Mastercard is paid by both sides of its own platform on a transaction it neither funded nor underwrote. Interchange is not its revenue: "we do not issue cards, extend credit, determine or receive revenue from interest rates or other fees charged to account holders by issuers" (FY2025 10-K).</p>
 
-<div class="tw"><table>
-<tr><th>Exposure (FY2025)</th><th class="n">Value</th><th class="n">Share</th><th class="n">Growth</th></tr>
-<tr><td>Consumer debit &amp; prepaid GDV</td><td class="n">$5,349B</td><td class="n">50%</td><td class="n">+9% local</td></tr>
-<tr><td>Consumer credit GDV</td><td class="n">$3,878B</td><td class="n">37%</td><td class="n">+8% local</td></tr>
-<tr><td>Commercial GDV</td><td class="n">$1,405B</td><td class="n">13%</td><td class="n">+11% local</td></tr>
-<tr><td>Net revenue — Americas</td><td class="n">$14,044M</td><td class="n">43%</td><td class="n">+13% rep.</td></tr>
-<tr><td>Net revenue — Asia Pacific, Europe, Middle East, Africa</td><td class="n">$18,747M</td><td class="n">57%</td><td class="n">+19% rep.</td></tr>
-<tr><td>Net revenue — United States alone</td><td class="n">~$9.5B</td><td class="n">~29%</td><td class="n">—</td></tr>
-</table></div>
-<div class="cap">Source: FY2025 10-K (region shares and US $ inferred). Mastercard-branded GDV excludes Maestro and Cirrus.</div>
+<h3>Follow one transaction</h3>
+<p>A cardholder taps. The acquirer routes the authorisation over Mastercard's switch, which applies the issuer's rules and Mastercard's own risk scoring and returns an approval. Mastercard earns a transaction processing fee on that switch, billed to both sides, plus a domestic assessment on the volume itself. If the issuer sits in a different country from the merchant, the same transaction also generates a cross-border assessment covering the currency conversion — the highest-yielding fee in the business. Clearing and settlement follow within days, banks are billed weekly, and Mastercard guarantees settlement between them: $76.7bn of net exposure at 30 June 2026, short-dated, with historically low losses (Q2 FY2026 10-Q).</p>
+<div class="tblwrap"><table>
+<thead><tr><th>FY2025 gross network assessments</th><th class="n">$m</th><th>What it is assessed on</th></tr></thead>
+<tbody>
+<tr><td>Transaction processing</td><td class="n">15,930</td><td>The number of switched transactions — authorisation, clearing, settlement, connectivity</td></tr>
+<tr><td>Cross-border volume</td><td class="n">12,021</td><td>Cross-border dollar volume and the currency conversion inside it</td></tr>
+<tr><td>Domestic assessments</td><td class="n">11,029</td><td>Domestic dollar volume, and in places the number of cards issued</td></tr>
+<tr><td>Other network assessments</td><td class="n">1,018</td><td>Licensing, implementation and franchise fees</td></tr>
+<tr><td><strong>Less rebates and incentives</strong></td><td class="n"><strong>(20,522)</strong></td><td>Paid to issuers and merchants to win and keep volume; deducted before revenue is reported</td></tr>
+<tr><td><strong>Payment network net revenue</strong></td><td class="n"><strong>19,476</strong></td><td>Up 12%, of which 12 points operational (FY2025 10-K)</td></tr>
+</tbody></table></div>
+<p>Cross-border is the line that changes the character of the business. It is 30% of gross assessments (inferred) on a volume base far smaller than domestic, because Mastercard is paid for the conversion as well as the switch, and because the domestic alternatives to cards largely do not exist across borders. Section 6 shows it is also the cyclical leg.</p>
 
-<h2>3. Industry, competitive position &amp; moat</h2>
-<p>Networks take a small slice of the fee but the best-returning one. On US debit in 2023, issuers received $34.1B of interchange while networks collected $12.95B from both sides — about 28 cents of network fee per dollar of interchange (Federal Reserve Reg II data, Dec 2025; inferred). Issuers keep more revenue but carry credit, fraud, rewards and funding, so Visa earned a 60% GAAP operating margin in FY2025 and Mastercard 57.6%, against about 19% pretax at the three-party American Express (company releases; inferred).</p>
-<p>Outside China the market is a duopoly with Visa larger: calendar-2024 payments volume was $13.4T for Visa and $8.0T for Mastercard (Visa FY2025 10-K). The pair carry about 99% of UK card payments, 61% of euro-area card payments and about 77% of US credit volume. The rules, though, are national — China, India, EU caps and Durbin each redraw what networks may charge.</p>
-<p>The barriers that bind are two-sided acceptance, multi-year issuer contracts and licences. Discover, owned by top issuer Capital One, still cites acceptance gaps before moving credit cards. Technology alone does not bind: Brazil built Pix, India built UPI, and Capital One moved its debit portfolio onto Discover within a year. The moat is strong against private rivals, weaker against sovereigns and network-owning issuers (inferred).</p>
-<p>Mastercard's distinct position is with governments rather than scale. Its China joint venture is licensed and live while Visa's is not; it builds and runs the UAE's domestic switch with the central bank, processing "almost 100%" of debit; it owns Vocalink and, since August 2026, stablecoin platform BVNK. As the smaller network it appears to pay more for issuers — rebates at 38.5% of gross revenue versus Visa's incentives at 28.3%, on differing definitions (inferred).</p>
-<div class="quote">"There's clear utility for stablecoins… in some B2B and P2P flows, but no problem to solve in P2M."<cite>Mastercard CEO, Q2 FY2026 earnings call, 30 July 2026</cite></div>
-<p>Outside evidence supports pricing power: the UK PSR found scheme and processing fees rose "more than 25% in real terms" in 2017–2023. It only partly supports the view that account-to-account rails are an opportunity: where they scaled, debit suffered — Brazil debit card volume +0.2% in 2025 versus credit +14.5% (ABECS), India debit card transactions down from 4.09B to 1.34B over 2021–25 (RBI). The winners in this industry are asset-light, weighted to credit, commercial and cross-border, and neutral across rails; Mastercard fits on three counts but is smaller than Visa and half debit.</p>
+<h3>What has been added to the same transaction</h3>
+<p>Mastercard has stopped selling only the switch. Value-added services and solutions — fraud and security, tokenization and authentication, consumer engagement, data and open finance — generated $13.3bn in FY2025, up 23%, and about 40% of net revenue (FY2025 10-K; Goldman conference, 10 September 2026). Roughly 60% of that is what management calls network-linked, meaning it is priced on switched transactions, tokens or card-not-present activity (November 2024 Investor Update). Tokens now carry over 40% of all switched transactions, which enlarges the base those services are sold against (Q2 FY2026 call).</p>
+<p>The portfolio has moved the same way. Mastercard bought Recorded Future for $2.7bn in December 2024 and now sells its threat intelligence "priced through the network"; it sold SessionM, a loyalty business, in the second quarter of 2026; and it closed the $1.5bn acquisition of stablecoin platform BVNK on 3 August 2026. Half of branded volume is consumer debit and prepaid ($5.35tn), 37% consumer credit and 13% commercial — a mix that matters because debit is the product regulators cap and state-run rails replace.</p>
 
-<h2>4. Growth engine</h2>
-<p>Reported growth is close to organic; FX is the bigger distortion. Inside the network line, price runs well ahead of volume and issuers take much of it back. In Q2 2026 domestic assessments rose 10% on 8% GDV growth and cross-border assessments 20% on 12% volume, "primarily" price and mix — but rebates rose 20% currency-neutral, leaving payment network net revenue up 8% (Q2 FY2026 call and 10-Q).</p>
-<div class="tw"><table>
-<tr><th>Net revenue growth</th><th class="n">FY2025</th><th class="n">H1 2026</th><th class="n">Network FY25</th><th class="n">VAS FY25</th></tr>
+<div class="sec">Section 3</div>
+<h2>Industry, competitive position and moat</h2>
+<p>The industry exists because bilateral trust does not scale: without a scheme, every issuer would have to contract with every acquirer in every country, and the number of agreements grows as the square of the participants. A scheme replaces that with one rulebook and one switch, which makes it a two-sided platform, and two-sided platforms consolidate — the value of joining rises with the number already joined. The consequence is a duopoly everywhere except China.</p>
+
+<h3>Where the profit pool sits</h3>
+<p>The only regulator-measured split of a card fee is US debit. In 2023, issuers received $34.12bn of interchange while the networks collected $12.95bn of fees — $4.54bn from issuers and $8.40bn from acquirers and merchants — on $4.66tn of volume (Federal Reserve Regulation II data, December 2025). The networks take about 28 cents for every dollar of interchange (inferred), and they charge both sides. They also take it without carrying credit losses, fraud liability, rewards or funding costs, which is why the network sits at the high-return end of a chain whose gross revenue mostly accrues elsewhere.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Position in the chain</th><th>Company, latest fiscal year</th><th class="n">Revenue</th><th class="n">Operating margin</th></tr></thead>
+<tbody>
+<tr><td>Four-party network</td><td>Visa, FY2025 (Sep year-end)</td><td class="n">$40.0bn</td><td class="n">60% GAAP (inferred)</td></tr>
+<tr><td>Four-party network</td><td>Mastercard, FY2025</td><td class="n">$32.8bn</td><td class="n">57.6% GAAP</td></tr>
+<tr><td>Three-party issuer-network</td><td>American Express, FY2025</td><td class="n">$72.2bn</td><td class="n">~19% pretax (inferred)</td></tr>
+<tr><td>Whole industry</td><td>Global payments revenue pool, 2024</td><td class="n">~$2.5tn</td><td class="n">18.9% average ROE</td></tr>
+</tbody></table></div>
+<p>American Express is the useful control. It is issuer, acquirer and network at once, earns $37.4bn of discount revenue on $1.67tn of billed business — about 2.2% of volume, seven times Mastercard's take — and converts it at roughly a third of the network's margin, because it funds the rewards and carries the receivable. Visa and Mastercard together earn about $73bn, roughly 3% of the global payments revenue pool, at the highest returns in it (McKinsey Global Payments Report 2025; inferred).</p>
+
+<h3>What actually binds as a barrier</h3>
+<p>Three barriers get cited and only two bind. Brand does not: American Express, Discover and JCB all have brands and none has scale outside its home flows. Technology does not: Brazil's central bank built Pix, India built UPI, and Capital One moved its entire debit portfolio onto Discover within a year of closing that acquisition in May 2025. What binds is two-sided acceptance — Discover, owned by a top-ten US issuer, still names acceptance gaps as the reason it cannot move credit cards across — and the issuer contract itself, which runs up to ten years and is bought with incentives.</p>
+<div class="pull">Visa and Mastercard raised core scheme and processing fees to acquirers by more than 25% in real terms between 2017 and 2023, costing merchants about £170m a year — and the regulator's July 2026 remedy imposes governance and transparency, not a price cap.
+<span class="attr">UK Payment Systems Regulator, market review MR22/1.10 (March 2025) and final decision PS26/1 (July 2026)</span></div>
+<p>That is the clearest outside evidence on pricing power, and it cuts both ways: the fees held and rose where interchange was capped, and the documentation of that fact is now the raw material for the next intervention.</p>
+
+<h3>Named competitors, and the one that is different</h3>
+<div class="tblwrap"><table>
+<thead><tr><th>Competitor</th><th class="n">Scale</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>Visa</td><td class="n">$13.4tn payments volume (CY2024)</td><td>Larger on volume and cheaper on incentives: 28.3% of gross revenue against Mastercard's 38.5% (definitions differ; inferred)</td></tr>
+<tr><td>Mastercard</td><td class="n">$8.0tn payments volume (CY2024)</td><td>The smaller network, so it pays more to win issuers — and is licensed in China, where Visa is not</td></tr>
+<tr><td>American Express</td><td class="n">$1.75tn (CY2024)</td><td>Closed loop; competes for premium credentials, not for network processing</td></tr>
+<tr><td>Discover, owned by Capital One</td><td class="n">~$190bn network volume per quarter</td><td>The live threat: an issuer that owns a network, already migrated debit, now testing credit</td></tr>
+<tr><td>UnionPay, JCB, local debit schemes</td><td class="n">Domestic dominance</td><td>In many markets the local brand runs domestic volume and Mastercard is used for the cross-border leg</td></tr>
+</tbody></table></div>
+<p>Volumes for Visa, Mastercard and American Express are as disclosed in Visa's FY2025 10-K. Mastercard's own share of global purchase volume is behind the Nilson paywall <span class="nf">(unknown)</span>; management describes its share of the carded market as "about a third" (November 2024 Investor Update).</p>
+
+<h3>The substitution question, and what the evidence shows</h3>
+<p>The genuine threat is not a better card network. It is a rail that moves money without one. Two countries have run that experiment at national scale, and the result is the same in both: account-to-account payments take debit and leave credit alone.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Rail</th><th>Scale reached</th><th>Effect on debit</th><th>Effect on credit</th></tr></thead>
+<tbody>
+<tr><td>Pix (Brazil)</td><td>~80bn transactions in 2025, +25.7%; 42% of e-commerce against 40% for credit cards</td><td>Debit card volume +0.2% in 2025</td><td>Credit card volume +14.5%</td></tr>
+<tr><td>UPI (India)</td><td>24.51bn transactions in August 2026; 85.5% of digital payment volume</td><td>Debit card transactions fell from 4.09bn (2021) to 1.34bn (2025)</td><td>Credit card transactions rose from 2.16bn to 5.70bn</td></tr>
+<tr><td>FedNow (US)</td><td>~5m payments a quarter, average ~$55,000</td><td>Immaterial at the point of sale</td><td>None observed</td></tr>
+<tr><td>UK open banking</td><td>351m payments in 2025, +57%</td><td>Under 1% of UK payments (inferred)</td><td>None observed</td></tr>
+<tr><td>Stablecoins</td><td>GENIUS Act signed July 2025; Visa settling at a $3.5bn annualised run rate</td><td colspan="2">No evidence of consumer card displacement <span class="nf">(NOT FOUND)</span></td></tr>
+</tbody></table></div>
+<p>Half of Mastercard's volume is the product these rails take. Management's position is that the rails are a distribution opportunity rather than a substitute — it owns Vocalink, runs the UAE's domestic switch for the central bank, and bought BVNK to sit across fiat, stablecoins and tokenised deposits. No source shows a network earning material fees on those flows at scale <span class="nf">(NOT FOUND)</span>, so the claim is a strategy, not yet a revenue line.</p>
+
+<h3>Does Mastercard's account of itself survive?</h3>
+<div class="tblwrap"><table>
+<thead><tr><th>Company claim</th><th>Outside evidence</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>The network is hard to replicate</td><td>99% of UK card payments and 61% of euro-area card payments run on the two schemes; Discover still cites acceptance gaps</td><td>Supported against private rivals; contradicted by sovereigns and by issuers that own a network</td></tr>
+<tr><td>It has pricing power</td><td>UK PSR: scheme fees +25% in real terms, 2017–2023; the European Commission's own study found schemes gained about €550m a year after interchange caps</td><td>Supported — and now documented by the regulators who could act on it</td></tr>
+<tr><td>Account-to-account rails are an opportunity</td><td>Where they scaled, debit lost volume; no evidence of network monetisation at scale</td><td>Partly supported</td></tr>
+<tr><td>Services diversify the business</td><td>60% of services revenue is network-linked by the company's own definition</td><td>Diversifies revenue lines, not the underlying risk</td></tr>
+<tr><td>The cash-to-card runway is large</td><td>Cash is 46% of global transactions by count (McKinsey) and 52% of euro-area point-of-sale transactions (ECB), but 9% of UK payments</td><td>True by count; contested in the largest remaining pools</td></tr>
+</tbody></table></div>
+<p>The industry rewards asset-light networks weighted to credit, commercial and cross-border volume, loyal to issuers and neutral across rails. Mastercard is that kind of company on three counts. It is not on two: it is the smaller network, and half its volume sits in the product that state rails displace.</p>
+
+<div class="sec">Section 4</div>
+<h2>Growth engine</h2>
+<p>Reported growth is close to organic, because acquisitions are small. The distortion to strip out is currency. In FY2025 net revenue grew 16% reported — 14 points operational, one point acquisitions, one point currency. In the first half of 2026 it grew 15% reported and 12% currency-neutral, with acquisitions contributing nothing at all (FY2025 10-K; Q2 FY2026 10-Q).</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Net revenue growth</th><th class="n">FY2025</th><th class="n">H1 2026</th><th class="n">Payment network FY2025</th><th class="n">Services FY2025</th></tr></thead>
+<tbody>
 <tr><td>Reported</td><td class="n">+16%</td><td class="n">+15%</td><td class="n">+12%</td><td class="n">+23%</td></tr>
 <tr><td>Currency</td><td class="n">+1 pt</td><td class="n">+3 pts</td><td class="n">+1 pt</td><td class="n">+2 pts</td></tr>
 <tr><td>Acquisitions</td><td class="n">+1 pt</td><td class="n">0 pts</td><td class="n">0 pts</td><td class="n">+3 pts</td></tr>
-<tr><td><b>Organic (operational)</b></td><td class="n"><b>+14%</b></td><td class="n"><b>+12%</b></td><td class="n"><b>+12%</b></td><td class="n"><b>+18%</b></td></tr>
-</table></div>
-<div class="cap">Source: FY2025 10-K; Q2 FY2026 10-Q.</div>
-<div class="lever s"><div class="tag">1 · Structural</div><b>Nominal spend and cash-to-card.</b> GDV +9% local FY2025, +8% H1 2026; cash still 46% of global transactions by count (McKinsey 2025).</div>
-<div class="lever c"><div class="tag">2 · Cyclical</div><b>Cross-border volume.</b> +15% FY2025, +12% H1 2026; fell 29% in 2020. Card-not-present ex-travel +20% in Q2 2026.</div>
-<div class="lever s"><div class="tag">3 · Structural</div><b>Services on the network.</b> VAS +18% ex-acquisitions FY2025; tokens now carry over 40% of switched transactions.</div>
-<div class="lever m"><div class="tag">4 · Management-driven</div><b>Pricing.</b> 2–8 point gaps of assessments over volume in Q2 2026 — the lever regulators are watching.</div>
-<div class="lever m"><div class="tag">5 · Management-driven</div><b>Share wins and new flows.</b> Hundreds of flips in H1 2026, UAE switch, Move +35% transactions — offset by Capital One debit (US debit +1% vs +8% ex-COF) and Lloyds.</div>
-<div class="lever"><div class="tag">6 · Temporary</div><b>FX translation, Venezuela, fuel.</b> +3 pts FX in H1 2026; Venezuela cross-border now in drivers; fuel lifted US volume.</div>
-<div class="lever m"><div class="tag">7 · Management-driven</div><b>M&amp;A.</b> +1 pt in FY2025; BVNK expected to add minimal revenue.</div>
+<tr><td><strong>Operational (organic)</strong></td><td class="n"><strong>+14%</strong></td><td class="n"><strong>+12%</strong></td><td class="n"><strong>+12%</strong></td><td class="n"><strong>+18%</strong></td></tr>
+</tbody></table></div>
+<p>Inside the network line, price runs well ahead of volume and the issuers take most of it back. In the second quarter of 2026 domestic assessments grew 10% against GDV growth of 8%, and cross-border assessments grew 20% against volume growth of 12%; management attributed both gaps "primarily" to pricing and mix. Rebates grew 20% currency-neutral over the same quarter, and payment network net revenue grew 8%. That is the mechanism to keep in view: gross price rises, net price does not.</p>
+<figure><svg viewBox="0 0 860 380" role="img" aria-label="Net revenue per dollar of gross dollar volume, basis points">
+<text x="24" y="30" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#2B2B2B">Net revenue per dollar of gross dollar volume, basis points</text>
+<text x="24" y="50" font-family="Calibri,Arial" font-size="14" fill="#6E675C">Net revenue divided by GDV, each year as first reported</text>
+<g stroke="#E5DDD0" stroke-width="1">
+<line x1="80" y1="320.0" x2="830" y2="320.0"/>
+<line x1="80" y1="235.3" x2="830" y2="235.3"/>
+<line x1="80" y1="150.7" x2="830" y2="150.7"/>
+<line x1="80" y1="66.0" x2="830" y2="66.0"/>
+</g><g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="end">
+<text x="70" y="324.0">20bp</text>
+<text x="70" y="239.3">24bp</text>
+<text x="70" y="154.7">28bp</text>
+<text x="70" y="70.0">32bp</text>
+</g>
+<polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round" points="110.0,271.3 190.0,239.6 270.0,207.8 350.0,193.0 430.0,229.0 510.0,224.8 590.0,169.7 670.0,152.8 750.0,135.9 830.0,89.3"/>
+<g fill="#C75B39"><circle cx="110.0" cy="271.3" r="4.5"/><circle cx="190.0" cy="239.6" r="4.5"/><circle cx="270.0" cy="207.8" r="4.5"/><circle cx="350.0" cy="193.0" r="4.5"/><circle cx="430.0" cy="229.0" r="4.5"/><circle cx="510.0" cy="224.8" r="4.5"/><circle cx="590.0" cy="169.7" r="4.5"/><circle cx="670.0" cy="152.8" r="4.5"/><circle cx="750.0" cy="135.9" r="4.5"/><circle cx="830.0" cy="89.3" r="4.5"/></g>
+<text x="110.0" y="259.3" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39" text-anchor="start">22.3bp</text>
+<text x="830.0" y="77.3" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39" text-anchor="end">30.9bp</text>
+<line x1="430.0" y1="66" x2="430.0" y2="320" stroke="#3C6E8F" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="436.0" y="312" font-family="Calibri,Arial" font-size="13" fill="#3C6E8F">FY2020: yield fell as cross-border volume collapsed 29%</text>
+<g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="middle">
+<text x="110.0" y="342">FY16</text>
+<text x="190.0" y="342">FY17</text>
+<text x="270.0" y="342">FY18</text>
+<text x="350.0" y="342">FY19</text>
+<text x="430.0" y="342">FY20</text>
+<text x="510.0" y="342">FY21</text>
+<text x="590.0" y="342">FY22</text>
+<text x="670.0" y="342">FY23</text>
+<text x="750.0" y="342">FY24</text>
+<text x="830.0" y="342">FY25</text>
+</g></svg></figure>
+<p class="cap">Net revenue divided by gross dollar volume, each year as first reported (FY2016–FY2018 GDV summed from the product tables). The 2018 adoption of the new revenue standard added $479m to that year without recasting earlier years, so the step from FY2017 to FY2018 is partly definitional (inferred).</p>
 
-<div class="chart"><h3>Net revenue per dollar of GDV, basis points</h3><svg viewBox="0 0 820 300" role="img" aria-label="Net revenue per dollar of GDV, basis points" style="width:100%;height:auto"><line x1="50" x2="790" y1="260.0" y2="260.0" stroke="#E5DDD0"/><text x="42" y="265.0" text-anchor="end" font-size="13" fill="#6E675C">20</text><line x1="50" x2="790" y1="180.0" y2="180.0" stroke="#E5DDD0"/><text x="42" y="185.0" text-anchor="end" font-size="13" fill="#6E675C">24</text><line x1="50" x2="790" y1="100.0" y2="100.0" stroke="#E5DDD0"/><text x="42" y="105.0" text-anchor="end" font-size="13" fill="#6E675C">28</text><line x1="50" x2="790" y1="20.0" y2="20.0" stroke="#E5DDD0"/><text x="42" y="25.0" text-anchor="end" font-size="13" fill="#6E675C">32</text><text x="50.0" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY16</text><text x="132.2" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY17</text><text x="214.4" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY18</text><text x="296.7" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY19</text><text x="378.9" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY20</text><text x="461.1" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY21</text><text x="543.3" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY22</text><text x="625.6" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY23</text><text x="707.8" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY24</text><text x="790.0" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY25</text><polyline points="50.0,214.0 132.2,184.0 214.4,154.0 296.7,140.0 378.9,174.0 461.1,170.0 543.3,118.0 625.6,102.0 707.8,86.0 790.0,42.0" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="50.0" cy="214.0" r="4" fill="#C75B39"/><text x="50.0" y="202.0" text-anchor="start" font-size="14" font-weight="700" fill="#C75B39">22.3</text><circle cx="132.2" cy="184.0" r="4" fill="#C75B39"/><circle cx="214.4" cy="154.0" r="4" fill="#C75B39"/><circle cx="296.7" cy="140.0" r="4" fill="#C75B39"/><circle cx="378.9" cy="174.0" r="4" fill="#C75B39"/><circle cx="461.1" cy="170.0" r="4" fill="#C75B39"/><circle cx="543.3" cy="118.0" r="4" fill="#C75B39"/><circle cx="625.6" cy="102.0" r="4" fill="#C75B39"/><circle cx="707.8" cy="86.0" r="4" fill="#C75B39"/><circle cx="790.0" cy="42.0" r="4" fill="#C75B39"/><text x="790.0" y="30.0" text-anchor="end" font-size="14" font-weight="700" fill="#C75B39">30.9</text><text x="730.0" y="15.6" text-anchor="end" font-size="13" fill="#C75B39">Net revenue per $ of GDV</text></svg></div>
-<div class="cap">Inferred: net revenue ÷ GDV, each year's 10-K. FY2016–18 GDV summed from product tables; ASC 606 (2018) breaks comparability with earlier years.</div>
+<h3>The drivers, ranked</h3>
+<div class="lever structural"><div class="tag">Structural</div><div class="h">Cash displacement and nominal spending</div><p>The slowest and largest driver. GDV grew 9% in local currency in FY2025 and 8% in the first half of 2026, and cash is still 46% of global transactions by count (McKinsey 2025). The medium-term plan assumes 9% carded volume growth (November 2024 Investor Update), so volume alone roughly funds the revenue target.</p></div>
+<div class="lever cyclical"><div class="tag">Cyclical, with a structural floor</div><div class="h">Cross-border volume</div><p>Up 15% in local currency in FY2025 and 12% in the first half of 2026, and 30% of gross network assessments (inferred). Card-not-present cross-border spending excluding travel grew 20% in the June quarter, which is the structural floor under a line that fell 29% in 2020.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="h">Services attach</div><p>Up 18% currency-neutral excluding acquisitions in FY2025 and 18% in the first half of 2026, now about 40% of net revenue. These are sold to the same banks on the same transactions, and no regulator anywhere has capped their price.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven, contested</div><div class="h">Pricing</div><p>Worth 2 points on domestic assessments and 8 points on cross-border in the June quarter. It is the most valuable driver per unit of effort and the most exposed: it is the behaviour the UK regulator measured and the US settlement constrains.</p></div>
+<div class="lever mgmt"><div class="tag">Management-driven</div><div class="h">Share wins, switching share and new flows</div><p>"Several hundred flips and deal expansions" in the first half of 2026; the switching ratio has risen 12 points in five years to 72%; Mastercard Move transactions grew above 35% in FY2025. Offset by losses: US debit grew 1% in the June quarter against 8% excluding Capital One's migration, and Lloyds credit went elsewhere after Mastercard declined the economics.</p></div>
+<div class="lever"><div class="tag">Temporary</div><div class="h">Currency, Venezuela and fuel</div><p>Currency added 3 points to reported growth in the first half of 2026. From 2026 the disclosed drivers include Venezuelan cross-border activity, lifted by greater dollar availability, and higher fuel prices flattered US volume. None of the three repeats by itself.</p></div>
+<div class="lever"><div class="tag">Temporary and small</div><div class="h">Acquisitions</div><p>One point of FY2025 growth, nothing in 2026. BVNK is guided to a "minimal impact from a net revenue standpoint" with about half a point of added opex growth in the third quarter.</p></div>
 
-<h2>5. Margin, cash &amp; capital allocation</h2>
-<p>An extra transaction costs almost nothing. FY2025 opex of $13.9B was mostly personnel ($7.25B) and technology, so revenue growth of 16% against opex growth of 10% lifted adjusted margin to 59.2%, and 61.0% in H1 2026. The true variable cost is the $20.5B of rebates, booked against revenue, so the reported margin hides how much of the gross price is given away (inferred). Capex plus capitalised software was $1.2B (~3.7% of revenue); free cash flow was about $16.4B against $15.0B net income. H1 2026 operating cash flow fell 3% on incentive prepayments and litigation payments (Q2 FY2026 10-Q).</p>
-<div class="chart"><h3>Operating margin: adjusted vs GAAP</h3><svg viewBox="0 0 820 300" role="img" aria-label="Operating margin GAAP and adjusted" style="width:100%;height:auto"><line x1="50" x2="790" y1="260.0" y2="260.0" stroke="#E5DDD0"/><text x="42" y="265.0" text-anchor="end" font-size="13" fill="#6E675C">46%</text><line x1="50" x2="790" y1="200.0" y2="200.0" stroke="#E5DDD0"/><text x="42" y="205.0" text-anchor="end" font-size="13" fill="#6E675C">50%</text><line x1="50" x2="790" y1="140.0" y2="140.0" stroke="#E5DDD0"/><text x="42" y="145.0" text-anchor="end" font-size="13" fill="#6E675C">54%</text><line x1="50" x2="790" y1="80.0" y2="80.0" stroke="#E5DDD0"/><text x="42" y="85.0" text-anchor="end" font-size="13" fill="#6E675C">58%</text><line x1="50" x2="790" y1="20.0" y2="20.0" stroke="#E5DDD0"/><text x="42" y="25.0" text-anchor="end" font-size="13" fill="#6E675C">62%</text><text x="50.0" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY16</text><text x="132.2" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY17</text><text x="214.4" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY18</text><text x="296.7" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY19</text><text x="378.9" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY20</text><text x="461.1" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY21</text><text x="543.3" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY22</text><text x="625.6" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY23</text><text x="707.8" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY24</text><text x="790.0" y="288" text-anchor="middle" font-size="13" fill="#6E675C">FY25</text><polyline points="50.0,132.5 132.2,134.0 214.4,107.0 296.7,92.0 378.9,150.5 461.1,135.5 543.3,95.0 625.6,80.0 707.8,74.0 790.0,62.0" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="50.0" cy="132.5" r="4" fill="#C75B39"/><text x="50.0" y="120.5" text-anchor="start" font-size="14" font-weight="700" fill="#C75B39">54.5%</text><circle cx="132.2" cy="134.0" r="4" fill="#C75B39"/><circle cx="214.4" cy="107.0" r="4" fill="#C75B39"/><circle cx="296.7" cy="92.0" r="4" fill="#C75B39"/><circle cx="378.9" cy="150.5" r="4" fill="#C75B39"/><text x="378.9" y="138.5" text-anchor="middle" font-size="14" font-weight="700" fill="#C75B39">53.3%</text><circle cx="461.1" cy="135.5" r="4" fill="#C75B39"/><circle cx="543.3" cy="95.0" r="4" fill="#C75B39"/><circle cx="625.6" cy="80.0" r="4" fill="#C75B39"/><circle cx="707.8" cy="74.0" r="4" fill="#C75B39"/><circle cx="790.0" cy="62.0" r="4" fill="#C75B39"/><text x="790.0" y="50.0" text-anchor="end" font-size="14" font-weight="700" fill="#C75B39">59.2%</text><text x="730.0" y="35.6" text-anchor="end" font-size="13" fill="#C75B39">Adjusted</text><polyline points="50.0,147.5 132.2,155.0 214.4,219.5 296.7,92.0 378.9,158.0 461.1,149.0 543.3,122.0 625.6,113.0 707.8,120.5 790.0,86.0" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="50.0" cy="147.5" r="4" fill="#3C6E8F"/><text x="50.0" y="167.5" text-anchor="start" font-size="14" font-weight="700" fill="#3C6E8F">53.5%</text><circle cx="132.2" cy="155.0" r="4" fill="#3C6E8F"/><circle cx="214.4" cy="219.5" r="4" fill="#3C6E8F"/><text x="214.4" y="239.5" text-anchor="middle" font-size="14" font-weight="700" fill="#3C6E8F">48.7%</text><circle cx="296.7" cy="92.0" r="4" fill="#3C6E8F"/><circle cx="378.9" cy="158.0" r="4" fill="#3C6E8F"/><circle cx="461.1" cy="149.0" r="4" fill="#3C6E8F"/><circle cx="543.3" cy="122.0" r="4" fill="#3C6E8F"/><circle cx="625.6" cy="113.0" r="4" fill="#3C6E8F"/><circle cx="707.8" cy="120.5" r="4" fill="#3C6E8F"/><circle cx="790.0" cy="86.0" r="4" fill="#3C6E8F"/><text x="790.0" y="106.0" text-anchor="end" font-size="14" font-weight="700" fill="#3C6E8F">57.6%</text><text x="590.0" y="130.0" text-anchor="end" font-size="13" fill="#3C6E8F">GAAP</text></svg></div>
-<div class="cap">Source: each year's 10-K. FY2018 GAAP includes a $1.1B litigation provision.</div>
-<div class="tw"><table>
-<tr><th>$ millions</th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2023</th><th class="n">FY2025</th></tr>
+<div class="sec">Section 5</div>
+<h2>Margin, cash and capital allocation</h2>
+<p>The margin comes from a cost base that barely moves with volume. FY2025 operating expenses of $13.9bn were mostly personnel ($7.25bn) and technology ($1.27bn of data processing), against revenue that arrives transaction by transaction, so 16% revenue growth against 10% expense growth lifted the adjusted margin to 59.2% and then to 61.0% in the first half of 2026. The expense line understates the cost of volume, because the $20.5bn paid to issuers is deducted from revenue rather than reported as an expense (FY2025 10-K).</p>
+<figure><svg viewBox="0 0 860 380" role="img" aria-label="Operating margin, adjusted and GAAP">
+<text x="24" y="30" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#2B2B2B">Operating margin, adjusted and GAAP</text>
+<text x="24" y="50" font-family="Calibri,Arial" font-size="14" fill="#6E675C">Adjusted margin excludes litigation provisions and special items</text>
+<g stroke="#E5DDD0" stroke-width="1">
+<line x1="80" y1="320.0" x2="830" y2="320.0"/>
+<line x1="80" y1="256.5" x2="830" y2="256.5"/>
+<line x1="80" y1="193.0" x2="830" y2="193.0"/>
+<line x1="80" y1="129.5" x2="830" y2="129.5"/>
+<line x1="80" y1="66.0" x2="830" y2="66.0"/>
+</g><g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="end">
+<text x="70" y="324.0">46%</text>
+<text x="70" y="260.5">50%</text>
+<text x="70" y="197.0">54%</text>
+<text x="70" y="133.5">58%</text>
+<text x="70" y="70.0">62%</text>
+</g>
+<polyline fill="none" stroke="#C75B39" stroke-width="3" stroke-linejoin="round" points="110.0,185.1 190.0,186.7 270.0,158.1 350.0,142.2 430.0,204.1 510.0,188.2 590.0,145.4 670.0,129.5 750.0,123.2 830.0,110.4"/>
+<g fill="#C75B39"><circle cx="110.0" cy="185.1" r="4.5"/><circle cx="190.0" cy="186.7" r="4.5"/><circle cx="270.0" cy="158.1" r="4.5"/><circle cx="350.0" cy="142.2" r="4.5"/><circle cx="430.0" cy="204.1" r="4.5"/><circle cx="510.0" cy="188.2" r="4.5"/><circle cx="590.0" cy="145.4" r="4.5"/><circle cx="670.0" cy="129.5" r="4.5"/><circle cx="750.0" cy="123.2" r="4.5"/><circle cx="830.0" cy="110.4" r="4.5"/></g>
+<text x="110.0" y="173.1" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39" text-anchor="start">54.5%</text>
+<text x="830.0" y="98.4" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#C75B39" text-anchor="end">59.2%</text>
+<text x="590.0" y="133.4" font-family="Calibri,Arial" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">Adjusted</text>
+<polyline fill="none" stroke="#3C6E8F" stroke-width="3" stroke-linejoin="round" points="110.0,200.9 190.0,208.9 270.0,277.1 350.0,142.2 430.0,212.1 510.0,202.5 590.0,173.9 670.0,164.4 750.0,172.4 830.0,135.8"/>
+<g fill="#3C6E8F"><circle cx="110.0" cy="200.9" r="4.5"/><circle cx="190.0" cy="208.9" r="4.5"/><circle cx="270.0" cy="277.1" r="4.5"/><circle cx="350.0" cy="142.2" r="4.5"/><circle cx="430.0" cy="212.1" r="4.5"/><circle cx="510.0" cy="202.5" r="4.5"/><circle cx="590.0" cy="173.9" r="4.5"/><circle cx="670.0" cy="164.4" r="4.5"/><circle cx="750.0" cy="172.4" r="4.5"/><circle cx="830.0" cy="135.8" r="4.5"/></g>
+<text x="110.0" y="226.9" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#3C6E8F" text-anchor="start">53.5%</text>
+<text x="830.0" y="161.8" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#3C6E8F" text-anchor="end">57.6%</text>
+<text x="590.0" y="199.9" font-family="Calibri,Arial" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">GAAP</text>
+<line x1="270.0" y1="66" x2="270.0" y2="320" stroke="#6E675C" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="276.0" y="312" font-family="Calibri,Arial" font-size="13" fill="#6E675C">FY2018: $1.1bn litigation provision</text>
+<g font-family="Calibri,Arial" font-size="13" fill="#6E675C" text-anchor="middle">
+<text x="110.0" y="342">FY16</text>
+<text x="190.0" y="342">FY17</text>
+<text x="270.0" y="342">FY18</text>
+<text x="350.0" y="342">FY19</text>
+<text x="430.0" y="342">FY20</text>
+<text x="510.0" y="342">FY21</text>
+<text x="590.0" y="342">FY22</text>
+<text x="670.0" y="342">FY23</text>
+<text x="750.0" y="342">FY24</text>
+<text x="830.0" y="342">FY25</text>
+</g></svg></figure>
+<p class="cap">Adjusted margin excludes litigation provisions, restructuring and other special items as the company defines them. The FY2018 GAAP dip is a $1.1bn litigation provision, not an operating event.</p>
+<h3>The financial spine</h3>
+<div class="tblwrap"><table>
+<thead><tr><th>$m unless stated</th><th class="n">FY2016</th><th class="n">FY2020</th><th class="n">FY2023</th><th class="n">FY2025</th></tr></thead>
+<tbody>
 <tr><td>Net revenue</td><td class="n">10,776</td><td class="n">15,301</td><td class="n">25,098</td><td class="n">32,791</td></tr>
 <tr><td>Adjusted operating margin</td><td class="n">54.5%</td><td class="n">53.3%</td><td class="n">58.0%</td><td class="n">59.2%</td></tr>
 <tr><td>Diluted EPS ($)</td><td class="n">3.69</td><td class="n">6.37</td><td class="n">11.83</td><td class="n">16.52</td></tr>
 <tr><td>Free cash flow (inferred)</td><td class="n">4,102</td><td class="n">6,516</td><td class="n">10,892</td><td class="n">16,433</td></tr>
-<tr><td>Buybacks + dividends</td><td class="n">4,348</td><td class="n">6,078</td><td class="n">11,190</td><td class="n">14,483</td></tr>
+<tr><td>Buybacks and dividends</td><td class="n">4,348</td><td class="n">6,078</td><td class="n">11,190</td><td class="n">14,483</td></tr>
 <tr><td>Total debt</td><td class="n">5,180</td><td class="n">12,672</td><td class="n">15,681</td><td class="n">19,000</td></tr>
-</table></div>
-<div class="cap">ASC 606 (2018) not recast into FY2016; revenue categories redefined 2022; FY2020 is the COVID trough.</div>
-<p>From FY2016 to FY2025 cash went, in order, to buybacks ($69.6B), dividends ($16.8B), acquisitions ($10.9B) and capex plus software ($8.2B), while net debt rose $11.6B. Returns absorbed about 98% of free cash flow, so acquisitions were effectively borrowed, and diluted shares fell 17.7% (inferred totals from 10-Ks). The pattern intensified in 2026: $8.9B of buybacks in H1 at an average $508 and debt up to $24.6B after a $5.0B June bond. BVNK — $1.5B plus up to $300M contingent — closed on 3 August 2026, after the reported balance sheet; its form of payment is not disclosed.</p>
+</tbody></table></div>
+<p class="cap">Each year as reported in its own 10-K. Three breaks in comparability: the 2018 revenue standard added $479m without recasting prior years; the revenue categories were redefined in 2022 with only 2020–21 recast; and FY2020 is the pandemic trough. Free cash flow is operating cash flow less capital expenditure and capitalised software.</p>
+<h3>Cash conversion and where the cash went</h3>
+<p>Capital intensity is minimal: $489m of property and equipment plus $726m of capitalised software in FY2025, about 3.7% of revenue, against $17.6bn of operating cash flow. Conversion is high but not mechanical — in the first half of 2026 operating cash flow fell 3% while operating income rose 18%, on "higher customer incentive payments and cash paid for litigation settlements" (Q2 FY2026 10-Q). Incentives are paid in cash before the volume they buy arrives.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Capital deployed, FY2016–FY2025</th><th class="n">$bn</th><th class="n">Share</th></tr></thead>
+<tbody>
+<tr><td>Share repurchases</td><td class="n">69.6</td><td class="n">66%</td></tr>
+<tr><td>Dividends</td><td class="n">16.8</td><td class="n">16%</td></tr>
+<tr><td>Acquisitions, net of cash</td><td class="n">10.9</td><td class="n">10%</td></tr>
+<tr><td>Capex and capitalised software</td><td class="n">8.2</td><td class="n">8%</td></tr>
+<tr><td>Funded in part by higher net debt</td><td class="n">11.6</td><td class="n">—</td></tr>
+</tbody></table></div>
+<p>Shareholder returns absorbed about 98% of cumulative free cash flow, so the acquisitions were in effect debt-funded, and the diluted share count fell 17.7% (inferred from the 10-Ks). The behaviour intensified in 2026: $8.9bn of buybacks in the first half at an average $508 a share, "accelerated... given current valuation levels", and total debt up from $19.0bn to $24.6bn after a $5.0bn bond issue in June. The BVNK purchase — $1.5bn plus up to $300m contingent — closed on 3 August 2026, after the reported balance sheet date; the form of consideration is not disclosed <span class="nf">(NOT FOUND)</span>.</p>
 
-<h2>6. Cyclicality, constraints &amp; what to monitor</h2>
-<p>Domestic volume tracks nominal spending and held flat in 2020; cross-border is where shocks land (−29% in 2020, taking revenue −9% and EPS −20%). There is no credit risk, only indirect exposure if issuers tighten lending. Today margins are at a record and yield per dollar of GDV is at a ten-year high, while cross-border growth has slowed from 45% (FY2022) through 24%, 18%, 15% to 12% and GDV growth of 8% sits below its pre-COVID range. The business is late in a long yield-and-margin expansion. The downside that bites is a travel shock arriving while regulators cap network or cross-border fees — removing the highest-yield flow and the pricing lever together.</p>
+<div class="sec">Section 6</div>
+<h2>Cyclicality, constraints and what to monitor</h2>
+<p>The cyclicality is asymmetric. Domestic volume follows nominal consumer spending and is close to recession-proof in nominal terms, because falling real spending is partly offset by rising prices and by continued displacement of cash. Cross-border volume is exposed to travel, geopolitics and border closures, and it carries the highest yield in the business — which is why the 2020 shock hit revenue three times harder than it hit volume.</p>
+<div class="pull">In 2020 gross dollar volume was flat and switched transactions grew 3% — but cross-border volume fell 29%, and with it net revenue fell 9%, EPS 20% and the GAAP operating margin to 52.8% from 57.2%.
+<span class="attr">FY2020 Form 10-K</span></div>
+<h3>Where the business sits now</h3>
+<p>Every yield and margin measure is at or above its prior peak while volume growth has normalised. The adjusted operating margin of 61.0% in the first half of 2026 compares with 59.2% in FY2025 and a 53.3% trough in FY2020. Net revenue per dollar of GDV is at a ten-year high of about 31 basis points against 24 in 2020. Cross-border growth has decelerated from 45% in FY2022 through 24%, 18% and 15% to 12%, and GDV growth of 8% sits below the 9–14% range of FY2016–FY2019. This is late in a long expansion of yield, not early in a volume recovery (inferred).</p>
+<p>The downside case that would actually be felt is a combination, not a recession alone: a travel or geopolitical shock that repeats 2020 on cross-border, arriving while a regulator caps network or cross-border fees. That removes the high-yield flow and the pricing lever at once. The Gulf states and Israel are about 6% of cross-border volume today, which is the live version of the same mechanism at small scale (Q1 FY2026 call).</p>
 <div class="two">
-<div class="card"><h3 style="margin-top:0;color:var(--good)">Durable</h3><ul><li>Two-sided acceptance and issuance scale outside China</li><li>Asset-light model, no credit risk</li><li>Cash-to-card shift by count</li><li>Services attached to network flows</li><li>Licensed positions with states (China JV, UAE)</li></ul></div>
-<div class="card"><h3 style="margin-top:0;color:var(--terracotta)">Borrowed</h3><ul><li>FX: +3 pts to H1 2026 growth</li><li>Venezuela cross-border in 2026 drivers</li><li>Pricing gaps of 2–8 pts under scrutiny</li><li>Government grants trimming FY2025–26 opex growth</li><li>Record margin; buybacks partly debt-funded</li></ul></div>
+<div class="card"><h4 style="color:var(--good)">Durable — likely intact in ten years</h4><ul>
+<li>Two-sided scale: 3.7bn cards against an acceptance base built over decades</li>
+<li>Asset-light economics: 3.7% of revenue in capex, no credit risk</li>
+<li>Cash displacement by transaction count, especially outside the US and UK</li>
+<li>Services priced on network flows — tokens now on 40%+ of switched transactions</li>
+<li>Licensed positions where the state controls access: the China joint venture, the UAE switch</li>
+</ul></div>
+<div class="card"><h4 style="color:var(--terracotta)">Borrowed — helping now, may not persist</h4><ul>
+<li>Currency translation: 3 points of reported growth in H1 2026</li>
+<li>Venezuelan cross-border activity, newly included in the 2026 drivers</li>
+<li>Pricing 2–8 points ahead of volume, under active regulatory review</li>
+<li>Government grants trimming operating expense growth through 2026</li>
+<li>A record margin alongside buybacks funded partly with new debt</li>
+</ul></div>
 </div>
-<div class="tw"><table>
-<tr><th>Monitor</th><th>Where published</th></tr>
-<tr><td>Rebates as % of gross network assessments (49.0% FY23 → 52.8% H1 26)</td><td>Mastercard 10-Q / 10-K revenue note</td></tr>
-<tr><td>Cross-border assessments vs cross-border volume growth</td><td>Mastercard 10-Q; earnings call</td></tr>
-<tr><td>Visa incentives growth vs net revenue</td><td>Visa quarterly 8-K release</td></tr>
-<tr><td>US settlement final approval and appeals</td><td>EDNY MDL 1720 docket (hearing Nov 2026)</td></tr>
-<tr><td>UK PSR/FCA remedies; cross-border interchange cap</td><td>PSR / FCA publications</td></tr>
-<tr><td>Capital One credit migration to Discover</td><td>Capital One quarterly earnings and 10-Q</td></tr>
-<tr><td>Pix, UPI volumes; Brazil and India debit card trends</td><td>BCB; NPCI; RBI; ABECS</td></tr>
-<tr><td>Credit Card Competition Act</td><td>Congress.gov S.3623</td></tr>
-</table></div>
+<h3>What to monitor, and where it is published</h3>
+<div class="tblwrap"><table>
+<thead><tr><th>Indicator</th><th>Why it matters</th><th>Where published</th></tr></thead>
+<tbody>
+<tr><td>Rebates as % of gross network assessments</td><td>49.0% in FY2023 to 52.8% in H1 2026 — the price issuers claw back</td><td>Mastercard 10-Q and 10-K, revenue note</td></tr>
+<tr><td>Cross-border assessments vs cross-border volume</td><td>The gap is the pricing contribution on the highest-yield flow</td><td>Mastercard 10-Q; quarterly call</td></tr>
+<tr><td>Visa client incentives vs net revenue growth</td><td>+18% against +14% in Visa's June quarter — the same squeeze, visible earlier</td><td>Visa quarterly 8-K</td></tr>
+<tr><td>US settlement approval and appeals</td><td>Sets surcharging and card-acceptance rules for eight years</td><td>EDNY MDL 1720 docket; hearing November 2026</td></tr>
+<tr><td>UK remedies and the cross-border interchange cap</td><td>Whether conduct rules escalate to price caps</td><td>PSR / FCA publications</td></tr>
+<tr><td>Capital One credit volume on Discover</td><td>Tests whether an issuer-owned network can hold credit</td><td>Capital One quarterly earnings and 10-Q</td></tr>
+<tr><td>Pix and UPI volumes; Brazil and India debit trends</td><td>The only live experiments in card displacement at national scale</td><td>Banco Central do Brasil; NPCI; RBI; ABECS</td></tr>
+</tbody></table></div>
 
-<h2>7. Risks, unknowns &amp; questions</h2>
-<p><b>Issuers are taking back more of the price.</b> Rebates rose from 49.0% of gross network assessments in FY2023 to 52.8% in H1 2026 (inferred); the top five customers are 21% of revenue and can auction multi-year contracts between just two networks. <b>Issuers can own the network:</b> Capital One's debit move cut Mastercard's US debit growth from 8% to 1% in Q2 2026, and it is testing credit — a threat other issuers can wield in negotiations. <b>Regulators are targeting network fees:</b> the PSR has documented real-terms fee increases, the High Court upheld its power to cap cross-border interchange, the Credit Card Competition Act would add credit routing, and the US settlement lets merchants decline premium cards and surcharge up to 3%. These three compound.</p>
-<p><b>State rails absorb debit</b> — half of Mastercard's GDV — and the digital euro (targeted 2029, capped fees) would bring that mechanism to Europe. <b>Litigation:</b> Block and Intuit seek over $5B in single damages, which antitrust law can treble, against $296M accrued at June 2026. <b>Leverage</b> rose $5.6B in H1 2026 just as fee regulation is least settled.</p>
-<p><b>The sources could not answer:</b> network versus services margins (single segment); Mastercard's Nilson market share (paywalled); cross-border dollars and Venezuela's contribution; BVNK's revenue, profit and form of payment; the status of the DOJ investigation into US debit, dropped from 2026 10-Qs without explanation; how much services revenue is independent of card volume; and any evidence networks monetise account-to-account or stablecoin flows at scale.</p>
+<div class="sec">Section 7</div>
+<h2>Risks, unknowns and questions for deeper work</h2>
+<p>These are the risks cyclicality does not capture. The first three compound: each one strengthens the counterparty in the next negotiation.</p>
+<ul class="plain">
+<li><strong>Issuers are reclaiming the price.</strong> Rebates rose from 49.0% of gross network assessments in FY2023 to 52.8% in H1 2026 (inferred), and Visa shows the same pattern. The top five customers are 21% of net revenue, and each can run a multi-year auction between two bidders. The consequence is visible already: gross assessments grew 12–20% in the June quarter and payment network net revenue grew 8%.</li>
+<li><strong>An issuer can now own the network.</strong> Capital One's debit migration cut Mastercard's US debit growth from 8% to 1% in the June quarter, and it is testing credit on Discover. The threat does not need to be executed to be worth money — it only needs to be credible at the next renewal.</li>
+<li><strong>Regulation is moving from interchange to network fees.</strong> Interchange caps left network pricing untouched and it rose; regulators have now measured that. The UK High Court upheld the PSR's power to cap cross-border interchange in January 2026, the Credit Card Competition Act would extend routing mandates to credit, and the November 2025 settlement lets merchants decline premium and commercial credit and surcharge up to 3% — steering away from the highest-yield cards.</li>
+<li><strong>Half the volume is the product state rails replace.</strong> Consumer debit and prepaid is $5.35tn of GDV. Pix and UPI show what happens where a central bank builds the alternative, and the digital euro is targeted for 2029 with merchant fees capped during transition.</li>
+<li><strong>The litigation tail is long and partly uncapped.</strong> Block and Intuit seek over $5bn in single damages, which antitrust law can treble; a new April 2026 class action targets credit interchange from 2019; UK merchant claims exceed £0.5bn and the commercial-card action exceeds £1bn. Accrued litigation on the balance sheet was $296m at 30 June 2026.</li>
+<li><strong>Leverage is being spent at the least settled moment.</strong> Debt rose $5.6bn in the first half of 2026 to fund buybacks and BVNK, at the point where the outcome of the fee-regulation question is least knowable.</li>
+</ul>
+<h3>What the sources could not answer</h3>
+<div class="card"><ul style="margin:0;padding-left:20px">
+<li>Margins for the payment network against services — Mastercard reports a single segment, so the split is <span class="nf">NOT FOUND</span></li>
+<li>Mastercard's own share of global and US purchase volume — the Nilson tables are paywalled <span class="nf">(unknown)</span></li>
+<li>Cross-border volume in dollars, and how much of 2026's growth is Venezuelan <span class="nf">NOT FOUND</span></li>
+<li>BVNK's revenue, profit, accretion and form of consideration <span class="nf">NOT FOUND</span></li>
+<li>The status of the DOJ civil investigative demand into the US debit programme — disclosed in the FY2025 10-K, absent from both 2026 10-Qs without explanation <span class="nf">(unknown)</span></li>
+<li>What share of services revenue would survive if volume moved to other rails <span class="nf">(unknown)</span></li>
+</ul></div>
+<p>Before forming a thesis, three of these would need resolving: which large issuer contracts fall due between 2026 and 2028 and on what terms; whether the settlement's interchange reduction raises issuers' demands on the networks; and how much Capital One credit volume can actually move given acceptance.</p>
 
-<h2>8. Investor takeaways</h2>
-<div class="lever"><b>What it is:</b> an asset-light toll on card payments in a duopoly with Visa, plus a growing services layer on the same flows.</div>
-<div class="lever"><b>The engine:</b> ~31 bps of net revenue per dollar of volume at a ~60% margin, with roughly half of revenue becoming free cash flow, nearly all returned.</div>
-<div class="lever"><b>Main growth lever:</b> high-yield cross-border volume and network-linked services on high-single-digit volume growth.</div>
-<div class="lever"><b>What could break it:</b> issuers, regulators and state rails squeezing the net price at once.</div>
-<div class="lever"><b>What to monitor:</b> rebates vs assessments, cross-border pricing gaps, the US settlement and UK remedies, Capital One's credit migration.</div>
+<div class="sec">Section 8</div>
+<h2>Investor takeaways</h2>
+<ul class="plain">
+<li><strong>What this business really is:</strong> a toll on card payments that Mastercard neither funds nor underwrites, collected from banks on both sides of every transaction.</li>
+<li><strong>The core economic engine:</strong> about 31 basis points of net revenue on each dollar of volume, converted at a ~60% margin and half of revenue into free cash flow, nearly all of it returned.</li>
+<li><strong>The main growth lever:</strong> high-yield cross-border volume and network-linked services layered on high-single-digit volume growth.</li>
+<li><strong>What could break the story:</strong> issuers, regulators and state-built rails compressing the net price at the same time.</li>
+<li><strong>What to monitor:</strong> rebates against assessments, the cross-border pricing gap, the US settlement and UK remedies, and Capital One's credit migration.</li>
+</ul>
 
-<footer>Sources: Mastercard FY2016–FY2025 Forms 10-K; Q1 and Q2 FY2026 Forms 10-Q; earnings calls Q4 FY2025–Q2 FY2026, BVNK announcement call (17 Mar 2026), 2026 AGM, Goldman Sachs Communacopia (10 Sep 2026), Nov 2024 Investor Update; Superseding and Amended Rule 23(b)(2) Class Settlement Agreement (10 Nov 2025); 8-Ks of 8 and 17 Jun 2026. Industry: Federal Reserve Reg II 2023 data (Dec 2025); UK PSR MR22/1.10 and PS26/1; Nilson Report 1310; Visa FY2025 10-K and Q3 FY2026 release; American Express FY2025 release; Capital One releases; McKinsey Global Payments Report 2025; ECB SPACE 2024; ABECS; RBI Payment Systems Report; BCB Pix report. Post-dating the latest filing: BVNK closed 3 Aug 2026; US settlement final approval hearing Nov 2026.</footer>
+<footer>
+<h3>Sources</h3>
+<p><strong>Company (source of truth on Mastercard):</strong> Forms 10-K for FY2016–FY2025; Forms 10-Q for the quarters ended 31 March and 30 June 2026; earnings calls for Q4 FY2025, Q1 and Q2 FY2026; the BVNK announcement call of 17 March 2026; the Goldman Sachs Communacopia conference of 10 September 2026; the 2026 annual meeting; the November 2024 Investment Community Meeting; the Superseding and Amended Rule 23(b)(2) Class Settlement Agreement of 10 November 2025; Forms 8-K of 8 and 17 June 2026.</p>
+<p><strong>Industry (independent):</strong> Federal Reserve Regulation II 2023 interchange data (December 2025); UK Payment Systems Regulator MR22/1.10 and PS26/1; European Commission interchange study; Nilson Report issue 1310; Visa Form 10-K FY2025 and Q3 FY2026 release; American Express FY2025 release; Capital One releases; McKinsey Global Payments Report 2025; ECB SPACE 2024; ABECS and Banco Central do Brasil; Reserve Bank of India payment system data; NPCI.</p>
+<p><strong>Post-dating the filings:</strong> the BVNK acquisition closed on 3 August 2026; the merchant settlement's final approval hearing is set for November 2026.</p>
+</footer>
 </div></body></html>
