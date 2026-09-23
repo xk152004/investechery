@@ -1,3 +1,6 @@
+- [Intel Business Overview](https://xk152004.github.io/investechery/stocks/Intel-Business-Overview.html)
+- [AMD Business Overview](https://xk152004.github.io/investechery/stocks/AMD-Business-Overview.html)
+- [COHR vs LITE Peer Duel](https://xk152004.github.io/investechery/stocks/COHR-vs-LITE-Peer-Duel.html)
 - [SPGI vs MCO Peer Duel](https://xk152004.github.io/investechery/stocks/SPGI-vs-MCO-Peer-Duel.html)
 - [MA vs AXP Peer Duel](https://xk152004.github.io/investechery/stocks/MA-vs-AXP-Peer-Duel.html)
 - [Mastercard Business Overview](https://xk152004.github.io/investechery/stocks/Mastercard-Business-Overview.html)
