@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mastercard vs American Express: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:linear-gradient(to right,rgba(199,91,57,0.16),rgba(199,91,57,0.03));}
+  .lean .half.b{right:0;background:linear-gradient(to left,rgba(60,110,143,0.16),rgba(60,110,143,0.03));}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Mastercard vs American Express: who wins the next decade?</h1>
+  <p class="source">Payments: card networks and card issuers. MA / AXP. Run 23 September 2026. Built from Mastercard 10-Ks FY2023 to FY2025 and 10-Q Q2 2026, American Express 10-Ks FY2023 to FY2025 and 10-Q Q2 2026, both companies' Q2 2026 earnings calls, Mastercard's Goldman Sachs conference remarks (10 September 2026), recent 8-Ks, and cited web sources for regulation. Events swept through 23 September 2026; most recent events checked: AXP CFO update at a 16 September 2026 conference (revenue growth guided to about 10%, Global Business Travel stake sale pending) and Mastercard's close of the BVNK stablecoin acquisition (3 August 2026). Figures in USD as reported; both companies report on calendar years. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Mastercard</span><span class="chip b">American Express</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">Mastercard is the stronger business for the next 5 to 10 years. American Express owns the richer customer, but it has to keep buying its growth back with benefits and it carries the credit risk itself.</div>
+    <div class="why">Mastercard's 3-year average operating margin is 56.3% with no credit exposure, and 71% of its revenue comes from outside the US. AXP's pretax margin is 18.7%, and it hands 42.8% of revenue back as rewards, partner payments and benefits (FY2025 10-Ks, both).</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>Every Mastercard growth engine outgrows AXP's best one. From 2023 to 2025, cross-border assessments grew at a 19.6% CAGR, value-added services at 19.8% and Asia Pacific/Europe/Middle East/Africa revenue at 15.9%. AXP's fastest segment, International Card Services, grew at 11.6% (both FY2025 10-Ks, computed).</div>
+    <div class="col"><span class="n">2</span><br>The margin gap is the business model, not overhead. AXP pays for rewards, card benefits and credit losses out of its own P&amp;L, which is about 50% of revenue. Mastercard's closest cost-of-revenue line, data processing, is 4%. Its customer payments are netted out of revenue as rebates (38.5% of gross revenue in 2025).</div>
+    <div class="col"><span class="n">3</span><br>AXP earns 4.6 times more pretax profit per dollar of spend (0.83% of billed business vs 0.18% of Mastercard GDV). That is AXP's real advantage. The price is $152.5B of deposits, a 10.5% CET1 ratio, and Delta at 13% of billed business (AXP FY2025 10-K).</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Mastercard - clear</div></div></div><div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Mastercard - clear</div></div></div><div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Mastercard - narrow</div></div></div>
+    <div class="cap">The three answers, argued below. A marker on the left favors Mastercard, on the right American Express. The further from center, the more decisive.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip a">Mastercard, clearly</span></div>
+    <p>Three Mastercard cells should carry the next five years, and each has its own structural driver. <b>Cross-border</b> is priced as well as volume-driven: in Q2 2026 cross-border assessments grew 20% on 12% volume growth because of pricing in international markets and mix. <b>Value-added services</b> were $13.3B in 2025 and about 40% of revenue. They are sold into the switched flows Mastercard already carries (about 60% are network-linked) and grow with fraud, tokenization and now agentic-commerce demand. <b>International consumer payments</b> still have cash to displace (roughly 50% of Japanese retail is still cash) and new domestic-switching mandates to serve, such as the UAE (FY2025 10-K; Q2 2026 call; Goldman Sachs conference, 10 September 2026). AXP has one strong cell, US premium consumer: USCS revenue grew at 11.3% a year over 2023 to 2025, and the Platinum refresh pushed US consumer billings up 11.4% in Q2 2026, the fastest since 2018. But that growth is repriced product by product, and US Commercial Services billings grew only 3% in 2025.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 240" role="img" aria-label="Revenue indexed to 2021"><line x1="60" x2="640" y1="180.4" y2="180.4" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="184.4" font-size="13" fill="#6E675C" text-anchor="end">100</text><line x1="60" x2="640" y1="131.6" y2="131.6" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="135.6" font-size="13" fill="#6E675C" text-anchor="end">125</text><line x1="60" x2="640" y1="82.7" y2="82.7" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="86.7" font-size="13" fill="#6E675C" text-anchor="end">150</text><line x1="60" x2="640" y1="33.8" y2="33.8" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="37.8" font-size="13" fill="#6E675C" text-anchor="end">175</text><text x="60.0" y="222" font-size="13" fill="#6E675C" text-anchor="middle">2021</text><text x="205.0" y="222" font-size="13" fill="#6E675C" text-anchor="middle">2022</text><text x="350.0" y="222" font-size="13" fill="#6E675C" text-anchor="middle">2023</text><text x="495.0" y="222" font-size="13" fill="#6E675C" text-anchor="middle">2024</text><text x="640.0" y="222" font-size="13" fill="#6E675C" text-anchor="middle">2025</text><polyline points="60.0,180.4 205.0,145.2 350.0,115.9 495.0,84.6 640.0,35.7" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="60.0" cy="180.4" r="4" fill="#C75B39"/><circle cx="205.0" cy="145.2" r="4" fill="#C75B39"/><circle cx="350.0" cy="115.9" r="4" fill="#C75B39"/><circle cx="495.0" cy="84.6" r="4" fill="#C75B39"/><circle cx="640.0" cy="35.7" r="4" fill="#C75B39"/><text x="650.0" y="31.7" font-size="15" font-weight="700" fill="#C75B39" text-anchor="start">Mastercard 174</text><polyline points="60.0,180.4 205.0,131.6 350.0,96.4 495.0,70.9 640.0,43.6" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="60.0" cy="180.4" r="4" fill="#3C6E8F"/><circle cx="205.0" cy="131.6" r="4" fill="#3C6E8F"/><circle cx="350.0" cy="96.4" r="4" fill="#3C6E8F"/><circle cx="495.0" cy="70.9" r="4" fill="#3C6E8F"/><circle cx="640.0" cy="43.6" r="4" fill="#3C6E8F"/><text x="650.0" y="61.6" font-size="15" font-weight="700" fill="#3C6E8F" text-anchor="start">AXP 170</text></svg>
+      <div class="cap">Revenue indexed to 100 at 2021. Mastercard net revenue: $18.9B (2021) to $32.8B (2025) (MA FY2023 and FY2025 10-K). AXP total revenues net of interest expense: $42.4B to $72.2B (AXP FY2023 and FY2025 10-K). AXP's 2021 base is depressed by the pandemic travel slump, which flatters its path. Over the cleaner 2023 to 2025 window the CAGR is Mastercard 14.3% vs AXP 9.3%. Latest: H1 2026 Mastercard +15% (+12% currency-neutral), AXP +11% (+10% FX-adjusted) (both Q2 2026 10-Qs).</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip a">Mastercard, clearly</span></div>
+    <p>An extra Mastercard transaction mostly costs switching capacity: data processing and telecom stayed at 3.9% to 4.0% of revenue from 2023 to 2025, while operating margin rose from 55.8% to 57.6% and reached 60.2% in Q2 2026 (MA FY2025 10-K; 10-Q Q2 2026). Extra AXP revenue brings its own variable cost with it. Rewards, business development and Card Member services went from 41.3% to 42.8% of revenue between 2023 and 2025 and reached 44.7% in H1 2026, when Card Member services rose 49% as the Platinum refresh was funded (AXP 10-Q Q2 2026, computed). The two answers point the same way, but there is one tension to watch. Mastercard's own net price is increasingly handed back: rebates and incentives rose 22% in Q2 2026, while payment network net revenue rose 10%. Services and pricing are covering that gap for now.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 170" role="img" aria-label="Margin dumbbells"><text x="90" y="24" font-size="14" font-weight="700" fill="#2B2B2B">Gross margin (proxy)</text><line x1="90" x2="720" y1="48" y2="48" stroke="#E5DDD0" stroke-width="2"/><text x="82" y="52" font-size="13" fill="#6E675C" text-anchor="end">0%</text><text x="726" y="52" font-size="13" fill="#6E675C" text-anchor="start">100%</text><line x1="407.5" x2="694.8" y1="48" y2="48" stroke="#2B2B2B" stroke-width="2"/><circle cx="694.8" cy="48" r="8" fill="#C75B39"/><circle cx="407.5" cy="48" r="8" fill="#3C6E8F"/><text x="694.8" y="74" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">Mastercard 96.0%</text><text x="407.5" y="74" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">AXP 50.4%</text><text x="551.2" y="40" font-size="13" fill="#6E675C" text-anchor="middle">+45.6 pts Mastercard</text><text x="90" y="98" font-size="14" font-weight="700" fill="#2B2B2B">EBIT margin</text><line x1="90" x2="720" y1="122" y2="122" stroke="#E5DDD0" stroke-width="2"/><text x="82" y="126" font-size="13" fill="#6E675C" text-anchor="end">0%</text><text x="726" y="126" font-size="13" fill="#6E675C" text-anchor="start">100%</text><line x1="207.8" x2="444.7" y1="122" y2="122" stroke="#2B2B2B" stroke-width="2"/><circle cx="444.7" cy="122" r="8" fill="#C75B39"/><circle cx="207.8" cy="122" r="8" fill="#3C6E8F"/><text x="444.7" y="148" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">Mastercard 56.3%</text><text x="207.8" y="148" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">AXP 18.7%</text><text x="326.2" y="114" font-size="13" fill="#6E675C" text-anchor="middle">+37.6 pts Mastercard</text></svg>
+      <div class="cap">Three-year averages, FY2023 to FY2025. Gross margin proxy = revenue less (Mastercard: data processing and telecommunications; AXP: rewards + business development + Card Member services + credit provisions). EBIT = Mastercard operating income (58.3% before litigation provisions), AXP pretax income. Computed from both 10-Ks; the mapping is in the Cost Engine tab.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip b">American Express breaks first</span></div>
+    <p>AXP's weak point is its balance sheet combined with fixed benefit commitments. It holds $151.8B of Card Member loans and $213.9B of loans and receivables, 41% of billed business comes from small business and corporate clients, and 26% of spend is T&amp;E. In a downturn, discount revenue, credit losses and net interest income ($17.4B) all move against it together, while lounge and statement-credit costs stay fixed for the product cycle. A 10% APR cap has been proposed but not enacted (S.381). If it passed, it would hit that interest income directly (AXP FY2025 10-K; congress.gov). Mastercard's weak point is its net price, and it erodes slowly. The first threat is the rules settlement, preliminarily approved on 9 June 2026 with final approval scheduled for November 2026. It lets US merchants decline premium Mastercard and Visa credit cards and surcharge them. The second is Block and Intuit's opt-out claims of more than $5B. The third is issuers that build or buy their own rails: Capital One's debit portfolio migration off Mastercard was basically complete in Q1 2026 (MA 10-Q Q2 2026; Q2 2026 call; Payments Dive). A recession hits Mastercard only through lower volume. It hits AXP through volume, credit losses and fixed benefit costs within the same few quarters.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These six cells cover effectively all of both companies' revenue. Mastercard does not report revenue by product, so its cell sizes use GDV and reported regional revenue. Each score is argued in the tabs below.</p>
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">Mastercard</th><th class="cb">AXP</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>US consumer credit and charge</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>AXP USCS revenue +11.3% CAGR 2023-25, fee per card $92 to $131, retention flat through a $200 Platinum fee rise; Mastercard US credit GDV +10% in Q2 2026 but premium-card economics exposed to the settlement (both 10-Ks and Q2 2026 calls)</td></tr>
+    <tr><td>US debit</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Mastercard US debit GDV +1% in Q2 2026 after losing Capital One's debit portfolio (+8% excluding it); AXP has no debit product (MA Q2 2026 call)</td></tr>
+    <tr><td>US commercial and SME</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Mastercard commercial GDV +11% and commercial cards +14% in 2025 (worldwide; the US split is ND), with new virtual-card wins (Truist); AXP CS billed +3% and proprietary cards 15.4M to 15.3M (both FY2025 10-Ks)</td></tr>
+    <tr><td>International consumer card</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Mastercard Asia Pacific/Europe/Middle East/Africa revenue $18.7B, +15.9% CAGR, and non-US GDV +10%; AXP ICS +11.6% CAGR at a 12.3% pretax margin, subscale on its own admission (both FY2025 10-Ks)</td></tr>
+    <tr><td>Cross-border travel and e-commerce</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Mastercard cross-border assessments $12.0B, +19.6% CAGR, priced above volume growth; AXP T&amp;E is 26% of billed business, +8% in 2025, with no FX fee split (ND) (both FY2025 10-Ks)</td></tr>
+    <tr><td>Services, network and merchant</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td>Mastercard VAS $13.3B, +19.8% CAGR (about 3 points of 2025 growth acquired); AXP GMNS revenue +2.4% CAGR while the discount rate slid from 2.29% to 2.23% (10-Ks; AXP 10-Q Q2 2026)</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Each score is tied to an exhibit in the three tabs. Scores are per cell and are not summed. The lens verdicts are in the Three Answers above.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">AXP's growth comes from US premium consumers paying higher fees. Mastercard's comes from the rest of the world moving off cash, from cross-border spending, and from services sold on top of its network.</div>
+    <p>Normalization: AXP's segments map directly onto cells (USCS = US consumer, CS = US commercial and SME, ICS = international card, GMNS = network and merchant services). Mastercard reports one segment, with revenue split by category (payment network, value-added services) and by region (Americas; Asia Pacific, Europe, Middle East and Africa). It also says the US was about 29% of 2025 net revenue. Mastercard US and international revenue below are therefore computed from that rounded share and marked approximate. VAS is a separate cut that overlaps both geographies.</p>
+    <p>Revenue bases also differ. Mastercard reports revenue net of $20.5B of rebates and incentives paid to issuers and other customers in 2025. AXP reports revenue net of interest expense, with cardholder rewards and partner payments below the revenue line. Scale is therefore compared on volume: Mastercard GDV was $10.6T in 2025 against AXP billed business of $1.67T, 6.3 times larger.</p>
+    <div class="chartbox">
+      <svg viewBox="0 0 900 228" role="img" aria-label="Cell revenue butterfly chart"><text x="359.0" y="22" font-size="16" font-weight="700" fill="#C75B39" text-anchor="end">Mastercard</text><text x="541.0" y="22" font-size="16" font-weight="700" fill="#3C6E8F" text-anchor="start">American Express</text><rect x="325.5" y="44" width="39.5" height="26" fill="#C75B39" fill-opacity="0.55"/><rect x="535.0" y="44" width="215.0" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="450.0" y="56" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">US card</text><text x="450.0" y="72" font-size="13" fill="#6E675C" text-anchor="middle">consumer + commercial</text><text x="319.5" y="62" font-size="13" fill="#C75B39" text-anchor="end">~$9.5B | US GDV +6%</text><text x="756.0" y="62" font-size="13" fill="#3C6E8F" text-anchor="start">$51.7B | +9.8%</text><rect x="268.1" y="102" width="96.9" height="26" fill="#C75B39" fill-opacity="0.55"/><rect x="535.0" y="102" width="54.1" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="450.0" y="114" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">International card</text><text x="450.0" y="130" font-size="13" fill="#6E675C" text-anchor="middle">incl. cross-border</text><text x="262.1" y="120" font-size="13" fill="#C75B39" text-anchor="end">~$23.3B | +15% (computed)</text><text x="595.1" y="120" font-size="13" fill="#3C6E8F" text-anchor="start">$13.0B | +11.6%</text><rect x="309.7" y="160" width="55.3" height="26" fill="#C75B39" fill-opacity="0.55"/><rect x="535.0" y="160" width="32.4" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="450.0" y="172" font-size="14" font-weight="700" fill="#2B2B2B" text-anchor="middle">Services, network</text><text x="450.0" y="188" font-size="13" fill="#6E675C" text-anchor="middle">and merchant</text><text x="303.7" y="178" font-size="13" fill="#C75B39" text-anchor="end">$13.3B | +19.8% (overlaps)</text><text x="573.4" y="178" font-size="13" fill="#3C6E8F" text-anchor="start">$7.8B | +2.4%</text></svg>
+      <div class="cap">FY2025 revenue in $B with 2023-25 CAGR. Mastercard bars are shaded lighter because they are approximate or overlapping. US and international revenue are computed from the reported 29% US share (approx.); VAS ($13.3B) overlaps both geography rows and is not additive; the US growth shown is GDV. AXP: USCS $34.8B + CS $16.9B; ICS $13.0B; GMNS $7.8B. Sources: MA FY2025 10-K Notes 3 and 22; AXP FY2025 10-K segment tables.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">MA rev (% of total)</th><th class="num ca">MA growth</th><th class="num cb">AXP rev (% of total)</th><th class="num cb">AXP growth</th><th>Margin signal / leader</th></tr>
+      <tr><td>US consumer credit and charge</td><td class="num ca">US total ~$9.5B (29%), all products (approx.)</td><td class="num ca">US GDV +6%; Q2'26 US credit +10%</td><td class="num cb">$34.8B (48%)</td><td class="num cb">+11.3% CAGR</td><td>AXP pretax 19.6%; AXP leads on growth and economics per account</td></tr>
+      <tr><td>US commercial and SME</td><td class="num ca">ND (worldwide commercial GDV $1.4T)</td><td class="num ca">+11% worldwide</td><td class="num cb">$16.9B (23%)</td><td class="num cb">+7.0% CAGR</td><td>AXP pretax 21.7%, but growth is mostly interest income (NII +24% in 2025); Mastercard gaining</td></tr>
+      <tr><td>US debit</td><td class="num ca">in US total</td><td class="num ca">+1% Q2'26 (+8% ex Capital One)</td><td class="num cb">0</td><td class="num cb">n/a</td><td>Mastercard only; losing share to issuer-owned rails</td></tr>
+      <tr><td>International card and cross-border</td><td class="num ca">~$23.3B (71%) (approx.)</td><td class="num ca">~+15% (approx.); cross-border assess. +19.6%</td><td class="num cb">$13.0B (18%)</td><td class="num cb">+11.6% CAGR</td><td>AXP ICS pretax 12.3%; Mastercard leads clearly</td></tr>
+      <tr><td>Services, network and merchant</td><td class="num ca">VAS $13.3B (41%, overlaps)</td><td class="num ca">+19.8% CAGR</td><td class="num cb">$7.8B (11%)</td><td class="num cb">+2.4% CAGR</td><td>AXP GMNS pretax 51.1% but falling (-10% in 2025); Mastercard leads</td></tr>
+    </table>
+    <p class="source">Mastercard by region, 2025: Americas $14.0B (+12.3% CAGR 2023-25) and Asia Pacific, Europe, Middle East and Africa $18.7B (+15.9%). AXP by region: US $56.0B (+9.0%) and EMEA, APAC and LACC together $16.5B (+10.2%), before unallocated costs (both FY2025 10-Ks, Note 22 and Note 23).</p>
+    <div class="iik"><b>Insight:</b> AXP's biggest cell is the only one where it outgrows Mastercard, and that cell is half its revenue. Mastercard's biggest and fastest cells are international, cross-border and services, and AXP is subscale or absent in all three. <b>Implication:</b> Mastercard's growth rides several independent engines. AXP's growth depends on repeatedly reinventing one US premium product. <span class="kpi">KPI: Mastercard VAS growth of 15% or more currency-neutral in FY2027 vs AXP USCS revenue growth of 10% or more in FY2027 (10-K revenue note and segment tables).</span> [Source: MA FY2025 10-K; AXP FY2025 10-K]</div>
+    <h3>Segment growth engines</h3>
+    <p><b>Mastercard value-added services (mostly organic).</b> VAS grew 23% in 2025, of which 3 points came from 2024 acquisitions, and 18% currency-neutral in Q2 2026. The drivers named were security, digital and authentication, consumer acquisition and engagement, insights, and pricing. It costs little to grow: adjusted opex is guided to low double digits against revenue at the high end of low double digits (Q2 2026 call).</p>
+    <p><b>Mastercard cross-border and international (organic, plus BVNK).</b> Cross-border volume grew 15% in local currency in 2025, while assessments grew faster through pricing. Mastercard won several hundred flips and deal expansions in H1 2026, including the renewal of Chase Freedom Flex and exclusivity at Saudi National Bank. BVNK ($1.5B, closed 3 August 2026) adds stablecoin rails for B2B and remittance flows. Its revenue contribution is ND (MA 10-Q Q2 2026; GS conference).</p>
+    <p><b>AXP US consumer (organic).</b> This is price and mix. Net card fees rose 18% in 2025 and 15% in Q2 2026 and are guided to exit 2026 in the high teens. The cost of that growth is Card Member services, up 27% in 2025 and 50% in Q2 2026. Management expects that cost growth to slow as it laps the refresh from Q4 2026 (Q2 2026 call).</p>
+    <p><b>AXP international (partly acquired from 2026).</b> ICS billed business grew 14% in 2025. Swisscard became wholly owned and consolidated on 12 January 2026, and the proposed TheFork acquisition would add 50,000 European restaurants to its dining network, so part of 2026 ICS growth is bought.</p>
+    <div class="iik"><b>Insight:</b> AXP's fastest engine grows by raising price and funding benefits to justify it. Mastercard's grows on volume plus services and pricing layered on the same rails. <b>Implication:</b> AXP needs a new round of benefits each product cycle. Mastercard needs to keep rebates from outrunning its pricing. <span class="kpi">KPI: AXP net card fee growth of 15% or more with Card Member services growing slower than revenue in 2027; Mastercard payment network net revenue growth of 8% or more currency-neutral in 2027.</span> [Source: both Q2 2026 10-Qs and calls]</div>
+    <h3>Price control and route-to-market</h3>
+    <p>AXP sets both prices, the merchant discount and the cardholder fee, because it runs a closed loop. The merchant price is slipping: the discount rate fell from 2.29% (2023) to 2.23% (Q2 2026) on mix and capped interchange elsewhere, while average fee per card rose from $92 to $131. Mastercard sells through issuers and acquirers but still realizes price. In Q2 2026 domestic assessments grew 10% on 8% GDV growth, and cross-border assessments grew 20% on 12% volume growth. It hands a rising share back, though: rebates and incentives went from $15.2B to $20.5B over 2023-25 (37.7% to 38.5% of gross revenue) and grew 22% in Q2 2026. Five customers generate 21% of net revenue (MA FY2025 10-K; 10-Q Q2 2026).</p>
+    <div class="iik"><b>Insight:</b> AXP has pricing power over its cardholders, Mastercard over the system. Mastercard pays banks for access to cardholders, and AXP pays cardholders directly. <b>Implication:</b> The June 2026 settlement lets merchants decline or surcharge premium Visa and Mastercard credit cards. AXP's cards have always been treated that way, so the settlement narrows AXP's relative disadvantage at checkout. <span class="kpi">KPI: Mastercard rebates and incentives at or below 39.5% of gross revenue in FY2027; AXP discount revenue at 2.20% of billed business or higher.</span> [Source: 10-Ks; Payments Dive, 9 June 2026]</div>
+    <h3>Supply resilience</h3>
+    <p>For payments companies the critical inputs are funding, partners and technology. AXP funds $224.8B of loans and receivables with $152.5B of customer deposits at a 10.5% CET1 ratio. Cobrand partners account for 26% of billed business and 36% of loans, and Delta alone for 13% and 21%. Mastercard needs no credit funding and runs its own switch. Its biggest input costs are people and data processing ($7.3B and $1.3B in 2025). Mastercard is clearly the more resilient; AXP's largest single input dependency is Delta.</p>
+    <h3>Competitive context</h3>
+    <p>In US premium consumer cards, AXP competes with bank issuers (Chase, Capital One, Citi) that run on Visa or Mastercard, and it is taking share there, judging by its fee and spend growth. AXP itself says Visa and Mastercard are larger than it in most countries by purchase volume (AXP FY2025 10-K). Mastercard's rivals are Visa (larger), issuer-owned networks (Capital One now owns Discover, approx., unverified), domestic and sovereign schemes, and new rails including stablecoins. Its response is to become the switch or technology layer inside those schemes, as in the UAE and South Africa (Q2 2026 call).</p>
+    <h3>Risks by segment</h3>
+    <p><b>US consumer:</b> an APR cap would hit AXP's $12.5B of USCS net interest income, while Mastercard's exposure is indirect, through issuer economics and rebates. <b>US network pricing:</b> CCCA routing (reintroduced January 2026, not voted) and the rules settlement fall on Mastercard, while AXP's three-party model sits outside the routing mandate (inferred from the bill's scope). <b>US commercial and SME:</b> AXP carries the credit and Mastercard does not. <b>International:</b> Mastercard faces domestic sovereignty schemes, and AXP faces EU and Australian rules on three-party networks and surcharging. <b>Services:</b> Mastercard's opt-out litigation (Block and Intuit, over $5B claimed, briefing through 2026).</p>
+    <div class="pull">On cells alone, Mastercard's path is more likely to hold: its fastest cells are large, international and cheap to grow. AXP's fastest cell is US premium, where growth has to be bought again with benefits every product cycle.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In card payments, whoever owns the rails sets the terms for the system, and whoever owns the cardholder sets the terms for that cardholder. Mastercard owns the first, AXP the second.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:26%">Mastercard - narrow</div></div></div><div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">AXP - narrow</div></div></div><div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker a" style="left:2%">Mastercard - clear</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Each call is argued below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Mastercard</h3><p><b>Two-sided ubiquity (High).</b> $10.6T of GDV, 175.5B switched transactions in 2025 and 3.7B cards (FY2025 10-K; Q2 2026 call). Acceptance and issuance at that scale cannot be bought. <b>Rules, tokens and switching (High, but litigated).</b> Tokens were on over 40% of switched transactions in Q2 2026 and contactless on 80% of in-person ones. The franchise rules are exactly what the MDL settlement is changing. <b>Services attached to the flows (Medium-High).</b> About 60% of VAS is network-linked.</p></div>
+      <div class="col b"><h3>American Express</h3><p><b>Premium membership brand plus closed loop (High).</b> Average fee per card rose from $92 to $131 while retention stayed flat through a $200 Platinum fee increase, and 65% of new consumer accounts come from Millennials and Gen Z (Q2 2026 call). <b>Partner and experience web (Medium).</b> Delta, Marriott, Hilton, Accor, Resy and Tock co-fund the value, but contracts are portable. <b>Credit selection (Medium-High).</b> It had the lowest projected card loss rate in the Fed's 2026 severely adverse scenario (Q2 2026 call).</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> Mastercard's moat is structural ubiquity. AXP's is a premium brand kept up partly by paying for rewards and partners. <b>Implication:</b> Mastercard's moat erodes mainly through regulation and issuer defection. AXP's erodes if a better-funded bank issuer outbids it on benefits or partners. <span class="kpi">KPI: AXP proprietary new cards of 12M or more a year with rewards + business development + Card Member services at or below 43% of revenue; Mastercard switched transaction growth of 9% or more.</span> [Source: both FY2025 10-Ks; Q2 2026 calls]</div>
+    <h3>Customers: who controls net price and access</h3>
+    <p><b>Mastercard:</b> its customers are banks. The top five are 21% of net revenue ($6.9B), and rebates are the price of keeping them. Losses do happen: Capital One moved its debit portfolio away. Mastercard also wins them, with several hundred flips in H1 2026 that management says bring "trillions of dollars in incremental volume" over a decade (Q2 2026 call). <b>AXP:</b> it faces no dominant merchant and owns its cardholders, but its partners are concentrated, with cobrands at 26% of billed business. It has exercised pricing power over cardholders, with fee per card up 12% to 14% a year. On the merchant side it is losing price, as the discount rate is down 6bp in two and a half years.</p>
+    <div class="iik"><b>Insight:</b> AXP controls its end customer. Mastercard controls the system but rents access to the end customer from banks. <b>Implication:</b> When demand softens, AXP's margin pressure lands on rewards and credit. Mastercard's lands on rebates at renewal. <span class="kpi">KPI: Mastercard rebate growth no more than 5 points above payment network gross growth in FY2027; AXP average fee per card growth of 8% or more in 2027.</span> [Source: MA FY2025 10-K and 10-Q Q2 2026; AXP 10-Q Q2 2026]</div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p><b>Mastercard:</b> its inputs are people, technology and data processing, and it needs no funding. Pass-through is strong: operating margin held at 55% to 58% through the 2023-25 inflation period, and adjusted opex is guided to grow a little slower than revenue. <b>AXP:</b> its inputs are funding, partners and technology. Interest expense was $8.2B in 2025, deposit pricing competes with banks, and partner contracts are fixed for years. Pass-through is partial, because fees reprice only as cards renew.</p>
+    <div class="iik"><b>Insight:</b> Mastercard has almost no input that can be shocked. AXP has two, the cost of funds and partner economics. <b>Implication:</b> In a rate or partner shock, Mastercard's margin barely moves and AXP's does. <span class="kpi">KPI: Delta cobrand renewal terms ahead of the end-2029 expiry; AXP net interest income growth at or above loan growth.</span> [Source: AXP FY2025 10-K]</div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>US consumer credit</td><td>AXP goes direct to cardholder and merchant; Mastercard goes through issuers</td><td>AXP well above (2.23% discount rate plus $131 fee)</td><td>AXP: partner renewals. Mastercard: settlement, CCCA, issuer-owned rails</td><td>AXP share up, margin flat as benefits absorb fees; Mastercard share flat, net price under pressure</td><td>AXP USCS billed growth vs Mastercard US credit GDV growth</td></tr>
+      <tr><td>International and cross-border</td><td>Mastercard through local issuers and domestic switches; AXP proprietary plus network partners, subscale</td><td>AXP above; Mastercard priced up in cross-border</td><td>Mastercard high; AXP exposed to EU and Australian three-party rules</td><td>Mastercard share and margin up; AXP share up from a small base, ICS pretax margin 9.3% to 12.3% (2023-25)</td><td>Mastercard cross-border assessments growth; AXP ICS pretax margin</td></tr>
+      <tr><td>Services, network and merchant</td><td>Mastercard VAS on its switched base; AXP GMNS partners</td><td>Mastercard priced for value (tokens, security); AXP discount rate falling</td><td>Mastercard high</td><td>Mastercard up / up; AXP flat / down (GMNS pretax -10% in 2025)</td><td>VAS growth; GMNS revenue</td></tr>
+    </table>
+    <p>Tension: AXP grows fastest in US premium, where its pricing power is strongest, but it also has to spend the most there to keep that power (Card Member services +50% in Q2 2026). Mastercard's growth runs the other way: it gains price at the network and pays some of it back to banks.</p>
+    <h3>The causal gap</h3>
+    <p><b>1. Balance sheet vs toll road (Major).</b> AXP carries credit and funding: provisions were 7.3% of revenue and interest expense $8.2B in 2025. Mastercard carries neither. This is the model itself and cannot be closed. <b>2. Scale (Major).</b> Mastercard's GDV is 6.3 times AXP's billed business. Money cannot close that within a decade. <b>3. Who gets the recycled value (Moderate).</b> Mastercard gives 38.5% of gross revenue to issuers, while AXP gives 42.8% of revenue to cardholders and partners, plus 7.3% in credit costs. AXP narrows this gap only if fee growth outruns benefits after the Platinum refresh is lapped, which management expects from Q4 2026.</p>
+    <div class="pull">Mastercard holds the stronger position in the payments system, and AXP holds stronger pricing power over its own customers. Mastercard's position is the more durable of the two. Early warning signs: for Mastercard, rebates at 40% or more of gross revenue; for AXP, rewards, partner and benefit costs at 44% or more of revenue for a full year.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">Mastercard runs the far leaner engine, and the gap sits almost entirely in what AXP pays cardholders, partners and credit losses to own the customer.</div>
+    <p>Mapping, with R&amp;D ND for both because neither reports it. <b>Mastercard:</b> revenue = net revenue after rebates and incentives. COGS proxy = data processing and telecommunications, a component of G&amp;A. SG&amp;A = total operating expenses less data processing and litigation provisions. EBIT = operating income. <b>AXP:</b> revenue = total revenues net of interest expense. COGS proxy = Card Member rewards + business development + Card Member services + provisions for credit losses. SG&amp;A = marketing + salaries and employee benefits + other, net. EBIT = pretax income. The two companies book customer payments differently: Mastercard nets its rebates out of revenue, while AXP books rewards and partner payments as expenses. That shrinks Mastercard's revenue base and inflates its SG&amp;A ratio, so a gross-basis check is shown below.</p>
+    <h3>Three years, five ratios</h3>
+    <table>
+      <tr><th>% of revenue, 3y avg</th><th class="num ca">Mastercard</th><th class="num cb">American Express</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS (proxy)</td><td class="num ca">4.0%</td><td class="num cb">49.6%</td><td class="num">45.6 pts</td><td>AXP pays rewards, benefits and credit losses; Mastercard's marginal cost is switching</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">ND</td><td class="num cb">ND</td><td class="num">ND</td><td>Not reported by either</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">37.8%</td><td class="num cb">31.7%</td><td class="num">6.1 pts</td><td>Revenue-base artifact: Mastercard is 22.7% on gross revenue (2025); AXP falling (33.2 to 30.8)</td></tr>
+      <tr><td>Gross margin (proxy)</td><td class="num ca">96.0%</td><td class="num cb">50.4%</td><td class="num">45.6 pts</td><td>Business model, persistent in all three years</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">56.3%</td><td class="num cb">18.7%</td><td class="num">37.6 pts</td><td>Mastercard 58.3% before litigation; both improved over the period</td></tr>
+    </table>
+    <div class="chartbox">
+      <svg viewBox="0 0 760 280" role="img" aria-label="Cost engine ratios"><line x1="30" x2="750" y1="230" y2="230" stroke="#6E675C"/><rect x="58.0" y="222.0" width="52" height="8.0" fill="#C75B39"/><text x="84.0" y="216.0" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">4.0%</text><rect x="116.0" y="130.8" width="52" height="99.2" fill="#3C6E8F"/><text x="142.0" y="124.8" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">49.6%</text><text x="115.0" y="252" font-size="14" fill="#2B2B2B" text-anchor="middle">COGS proxy</text><text x="261.0" y="216" font-size="14" fill="#6E675C" text-anchor="middle">ND for both</text><text x="261.0" y="252" font-size="14" fill="#2B2B2B" text-anchor="middle">R&amp;D</text><rect x="350.0" y="154.4" width="52" height="75.6" fill="#C75B39"/><text x="376.0" y="148.4" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">37.8%</text><rect x="408.0" y="166.6" width="52" height="63.4" fill="#3C6E8F"/><text x="434.0" y="160.6" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">31.7%</text><text x="407.0" y="252" font-size="14" fill="#2B2B2B" text-anchor="middle">SG&amp;A</text><rect x="496.0" y="38.0" width="52" height="192.0" fill="#C75B39"/><text x="522.0" y="32.0" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">96.0%</text><rect x="554.0" y="129.2" width="52" height="100.8" fill="#3C6E8F"/><text x="580.0" y="123.2" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">50.4%</text><text x="553.0" y="252" font-size="14" fill="#2B2B2B" text-anchor="middle">Gross margin</text><rect x="642.0" y="117.4" width="52" height="112.6" fill="#C75B39"/><text x="668.0" y="111.4" font-size="14" font-weight="700" fill="#C75B39" text-anchor="middle">56.3%</text><rect x="700.0" y="192.6" width="52" height="37.4" fill="#3C6E8F"/><text x="726.0" y="186.6" font-size="14" font-weight="700" fill="#3C6E8F" text-anchor="middle">18.7%</text><text x="699.0" y="252" font-size="14" fill="#2B2B2B" text-anchor="middle">EBIT margin</text></svg>
+      <div class="cap">Three-year averages, FY2023 to FY2025, Mastercard in terracotta and AXP in blue. Computed from both FY2025 10-K income statements and Mastercard's G&amp;A component table.</div>
+    </div>
+    <table>
+      <tr><th>Year</th><th class="num ca">MA rev $M</th><th class="num ca">COGS p.</th><th class="num ca">SG&amp;A</th><th class="num ca">EBIT (ex-lit.)</th><th class="num cb">AXP rev $M</th><th class="num cb">COGS p.</th><th class="num cb">SG&amp;A</th><th class="num cb">EBIT</th></tr>
+      <tr><td>FY2023</td><td class="num ca">25,098</td><td class="num ca">4.0%</td><td class="num ca">38.0%</td><td class="num ca">55.8% (58.0%)</td><td class="num cb">60,515</td><td class="num cb">49.4%</td><td class="num cb">33.2%</td><td class="num cb">17.4%</td></tr>
+      <tr><td>FY2024</td><td class="num ca">28,167</td><td class="num ca">4.0%</td><td class="num ca">38.3%</td><td class="num ca">55.3% (57.7%)</td><td class="num cb">65,949</td><td class="num cb">49.2%</td><td class="num cb">31.2%</td><td class="num cb">19.6%</td></tr>
+      <tr><td>FY2025</td><td class="num ca">32,791</td><td class="num ca">3.9%</td><td class="num ca">37.0%</td><td class="num ca">57.6% (59.2%)</td><td class="num cb">72,229</td><td class="num cb">50.1%</td><td class="num cb">30.8%</td><td class="num cb">19.1%</td></tr>
+    </table>
+    <p class="source">Gross-basis check, FY2025: Mastercard handed back rebates of $20.5B, 38.5% of $53.3B gross revenue. Its SG&amp;A was 22.7% of gross revenue and its operating income 35.4%. AXP's rewards, business development and Card Member services were 42.8% of revenue, plus 7.3% in provisions. Profit per dollar of volume: Mastercard 0.18% of GDV (operating income), AXP 0.83% of billed business (pretax). H1 2026: Mastercard operating margin 59.4%, AXP pretax margin 20.4% (both 10-Qs, computed).</p>
+    <h3>The structural gap</h3>
+    <p>The most persistent difference is the gross-margin proxy: about 46 points in every year from 2023 to 2025. The Step 1 and Step 2 mechanisms drive it, not one-offs. AXP owns the cardholder, the credit line and the reward liability. Mastercard rents its rails to banks that carry all three and pays them rebates to stay. The SG&amp;A line looks like a contradiction, since Mastercard is higher at 37.8% vs 31.7%, but it is an artifact of the revenue base: on gross revenue Mastercard's overhead is about 23%, so this is not a discipline gap. The cost data confirm the power map in both directions. Mastercard's power over the system shows up as a 56% margin. AXP's power over its customers shows up as 4.6 times Mastercard's profit per spend dollar, earned with a regulated bank balance sheet. The one line to watch at AXP is the rewards, partner and benefits ratio, which was 44.7% in H1 2026 against 42.3% a year earlier. At Mastercard it is rebates as a share of gross revenue.</p>
+    <div class="pull">Mastercard runs the leaner engine by construction. AXP's cost story comes down to whether card fees outgrow benefits once the Platinum refresh is lapped.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li><b>US network repricing lands on Mastercard, not AXP.</b> Final approval of the rules settlement (hearing November 2026), merchants declining premium Mastercard credit cards, and CCCA routing would together cut Mastercard's US net price. AXP's three-party model sits outside the routing mandate (inferred from the bill's scope). <span style="color:var(--good);font-weight:700;">Early warning: Mastercard US GDV growth below 4% for FY2027, excluding portfolio migrations (Mastercard earnings releases).</span></li>
+      <li><b>Rebates outrun pricing.</b> Issuers, wallets and issuer-owned networks extract a growing share of the network's price, so payment network net revenue decouples from volume. <span style="color:var(--good);font-weight:700;">Early warning: Mastercard payment network net revenue growth below 7% currency-neutral for four straight quarters, or rebates at 40% or more of gross revenue (10-Q revenue discussion).</span></li>
+      <li><b>The Platinum payback arrives and AXP's international business scales.</b> If fee growth outpaces benefits after the refresh is lapped and ICS margins keep rising, AXP's pretax margin moves into the low 20s. That would make AXP the better converter of growth into profit per unit of risk. <span style="color:var(--good);font-weight:700;">Early warning: AXP rewards + business development + Card Member services at or below 41.5% of revenue with pretax margin at 22% or more in FY2027 (AXP 10-K).</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12-24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>Mastercard VAS net revenue growth, currency-neutral</td><td>15% or more</td><td>FY2027 (Feb 2028)</td><td>Mastercard</td><td>MA 10-K MD&amp;A</td></tr>
+    <tr><td>Mastercard rebates and incentives as % of gross revenue</td><td>40% or above (vs 38.5% in 2025)</td><td>FY2027</td><td>AXP</td><td>MA 10-K MD&amp;A (rebates disclosed in text)</td></tr>
+    <tr><td>Mastercard US GDV growth, local currency</td><td>Below 4%</td><td>FY2027</td><td>AXP</td><td>MA quarterly earnings releases</td></tr>
+    <tr><td>AXP rewards + business development + Card Member services as % of revenue</td><td>41.5% or below (vs 42.8% in 2025, 44.7% in H1 2026)</td><td>FY2027 (Feb 2028)</td><td>AXP</td><td>AXP 10-K income statement</td></tr>
+    <tr><td>AXP consumer and small-business net write-off rate (principal only)</td><td>Above 2.5% in any quarter</td><td>Through Q2 2028</td><td>Mastercard</td><td>AXP 10-Q credit statistics</td></tr>
+    <tr><td>Rules settlement final approval and any appeal</td><td>Final approval without change (hearing November 2026)</td><td>Q4 2026 to 2027</td><td>AXP (narrows its checkout disadvantage)</td><td>MA 10-Q legal note; Payments Dive</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the next deep-dive hours on Mastercard. The FY2026 10-K (due February 2027) should answer one question: are rebates and incentives rising faster than pricing? Read it together with the litigation note (settlement final approval, the Block and Intuit claims). AXP's open question is narrower and dated: whether Platinum card fees outgrow benefits in the Q4 2026 and 2027 results.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> The duel runs three lenses: a growth map by product x geography cell, a power map of moats, customers and suppliers, and a cost engine of five ratios over three years. Cells were filtered 80/20 and labels normalized. Mastercard does not disclose revenue by product or by US versus international below a rounded US share, so its cell sizes are approximate (computed) or use GDV, and they are marked ND where nothing is reported. Figures are USD as reported. "Computed" means derived here from reported lines, "approx., unverified" means not checked against a primary filing, and ND means not disclosed. This compares business strength only. It is not a valuation and says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Mastercard Incorporated, Form 10-K FY2025 (filed 11 Feb 2026), FY2024 (12 Feb 2025) and FY2023 (13 Feb 2024): key metrics, net revenue components, G&amp;A components, Note 3 revenue, Note 22 segment. Local: MA_Mastercard_Inc/sources/Annual_Reports.</li>
+      <li>Mastercard, Form 10-Q Q2 2026 (filed 30 Jul 2026): Note 2 (BVNK), Note 3, Note 14 legal proceedings; Q2 2026 earnings call (30 Jul 2026); Goldman Sachs Communacopia conference transcript (10 Sep 2026); 8-Ks of 2 Jun 2026 (CFO transition) and 17 Jun 2026 (AGM).</li>
+      <li>American Express Company, Form 10-K FY2025 (filed 6 Feb 2026) and FY2023 (9 Feb 2024): Tables 1-14, segment results, Note 23 geography, risk factors. Local: AXP_AMERICAN_EXPRESS_CO/sources/Annual_Reports.</li>
+      <li>American Express, Form 10-Q Q2 2026 (filed 24 Jul 2026); Q2 2026 earnings call (24 Jul 2026); 8-Ks of 5 and 12 Aug 2026 (Series E preferred, Series D redemption).</li>
+      <li>Yahoo Finance, "American Express Sees Strong Spending, Raises Revenue Outlook at Conference", 16 Sep 2026: https://finance.yahoo.com/markets/stocks/articles/american-express-sees-strong-spending-150205858.html</li>
+      <li>Payments Dive, "Court approves Visa-Mastercard settlement", 9 Jun 2026: https://www.paymentsdive.com/news/court-approves-visa-mastercard-settlement/822440/</li>
+      <li>PYMNTS, "Credit Card Competition Act Gains New Senate Support", 10 Aug 2026: https://www.pymnts.com/credit-cards/2026/credit-card-competition-act-gains-new-senate-support/</li>
+      <li>Congress.gov, S.381, 10 Percent Credit Card Interest Rate Cap Act (119th Congress): https://www.congress.gov/bill/119th-congress/senate-bill/381</li>
+    </ul>
+  </div>
+
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
