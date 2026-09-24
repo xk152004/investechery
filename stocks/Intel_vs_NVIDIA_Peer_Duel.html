@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intel vs NVIDIA Duel</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.08);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.08);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:15px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+
+  .tw{overflow-x:auto;}
+  td.ca,td.cb{white-space:nowrap;} td.ca .pips,td.cb .pips{margin-right:5px;}
+  @media(max-width:600px){.leanrow{grid-template-columns:1fr;}.leanrow .lbl{text-align:left;}h1{font-size:30px;}.wrap{padding:28px 16px 60px;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>Intel vs NVIDIA: who wins the next decade?</h1>
+  <p class="source">Semiconductors: processors and data-center AI compute. INTC / NVDA. Run 23 September 2026. Built from the research folder: Intel 10-Ks FY2021 and FY2023-FY2025 and 10-Q Q2 2026 (quarter ended 27 Jun 2026); NVIDIA 10-Ks FY2022 and FY2024-FY2026, 10-Q Q2 FY2027 (quarter ended 26 Jul 2026) and the Q2 FY2027 earnings call (26 Aug 2026); web sources for market share and events as cited. Events swept through 23 Sep 2026; most recent checked: Intel, 16 Sep 2026 reported SK hynix talks over Intel's Ohio fab (not finalized); NVIDIA, 10 Sep 2026 reported DOJ antitrust inquiry into the Groq licence deal. US dollars as reported. Fiscal years are offset by about four weeks (Intel ends December, NVIDIA late January), so Intel FY2025 is paired with NVIDIA FY2026. NVIDIA's latest quarter is six times Intel's, so the duel compares ratios, not absolutes. Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">Intel</span><span class="chip b">NVIDIA</span></div>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">NVIDIA is the stronger business for the next decade, and it is not close.</div>
+    <div class="why">NVIDIA owns the platform the fastest-growing workload is written for and prices whole systems against it; Intel defends a mature CPU franchise whose margin is set by how full its factories are.</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>NVIDIA's two largest cells, AI compute ($162.4B) and data-center networking ($31.4B), are 90% of its revenue, and revenue per gigawatt of customer capacity rises from about $25B (Blackwell) to about $40B (Vera Rubin) (FY2026 10-K; Q2 FY2027 call). Intel's two product cells were flat over two years (FY2025 10-K).</div>
+    <div class="col"><span class="n">2</span><br>NVIDIA raises prices to absorb a memory cost shock: "executed price increases take effect in Q1" of FY2028 (Q2 FY2027 call). Intel cut server prices 4% in FY2025, when supply was adequate and AMD competed (FY2025 10-K).</div>
+    <div class="col"><span class="n">3</span><br>NVIDIA now outspends Intel on R&amp;D in dollars, $13.4B against $6.7B in the latest half-year, at a third of the share of sales (10-Qs). Intel's gross margin averaged 35.8% over three years against NVIDIA's 72.9%.</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">NVIDIA - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">NVIDIA - clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">NVIDIA - narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors Intel, right lean favors NVIDIA; marker position shows how decisive.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip b">NVIDIA, clearly</span></div>
+    <p>Three NVIDIA cells carry the next five years. AI compute sold as rack-scale systems grows with customer capacity and with content per gigawatt, which management puts at about $18B for Hopper, $25B for Blackwell and $40B for Vera Rubin; its top five customers alone expect to spend nearly $800B of capex in 2026 and $1.3T in 2027 (Q2 FY2027 call). Demand is also widening: AI clouds, industrial and enterprise (ACIE) revenue grew 138% year on year against 102% for hyperscale (Q2 FY2027 10-Q). Networking (Spectrum-X up 2.6x) and CPUs (Grace and Vera above $5B trailing, expected to more than double in FY2028) ride the same racks (Q2 FY2027 call). Intel's 2026 rebound is price in a shortage: client ASPs rose 27% while units fell 8%, and server ASPs rose 48% on units up 9% (Q2 2026 10-Q), while AMD took 7.3 points of x86 server unit share in a year (Mercury Research via HotHardware, Aug 2026). Intel's one structural new engine, external foundry, billed $293M in Q2 2026 (Q2 2026 10-Q).</p>
+    <div class="chartbox"><svg viewBox="0 0 860 260" role="img" aria-label="Indexed revenue paths"><line x1="60" x2="700" y1="201.5" y2="201.5" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="206.5" text-anchor="end" font-size="14" fill="#6E675C">100</text><line x1="60" x2="700" y1="130.9" y2="130.9" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="135.9" text-anchor="end" font-size="14" fill="#6E675C">400</text><line x1="60" x2="700" y1="36.8" y2="36.8" stroke="#E5DDD0" stroke-width="1"/><text x="52" y="41.8" text-anchor="end" font-size="14" fill="#6E675C">800</text><text x="60.0" y="254" text-anchor="middle" font-size="14" fill="#6E675C">CY21</text><text x="220.0" y="254" text-anchor="middle" font-size="14" fill="#6E675C">CY22</text><text x="380.0" y="254" text-anchor="middle" font-size="14" fill="#6E675C">CY23</text><text x="540.0" y="254" text-anchor="middle" font-size="14" fill="#6E675C">CY24</text><text x="700.0" y="254" text-anchor="middle" font-size="14" fill="#6E675C">CY25</text><polyline points="60.0,201.5 220.0,206.2 380.0,208.8 540.0,209.2 700.0,209.2" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="60.0" cy="201.5" r="4" fill="#C75B39"/><circle cx="220.0" cy="206.2" r="4" fill="#C75B39"/><circle cx="380.0" cy="208.8" r="4" fill="#C75B39"/><circle cx="540.0" cy="209.2" r="4" fill="#C75B39"/><circle cx="700.0" cy="209.2" r="4" fill="#C75B39"/><text x="712.0" y="214.2" font-size="16" font-weight="700" fill="#C75B39">Intel 67</text><polyline points="60.0,201.5 220.0,201.5 380.0,171.8 540.0,110.9 700.0,36.3" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="60.0" cy="201.5" r="4" fill="#3C6E8F"/><circle cx="220.0" cy="201.5" r="4" fill="#3C6E8F"/><circle cx="380.0" cy="171.8" r="4" fill="#3C6E8F"/><circle cx="540.0" cy="110.9" r="4" fill="#3C6E8F"/><circle cx="700.0" cy="36.3" r="4" fill="#3C6E8F"/><text x="712.0" y="41.3" font-size="16" font-weight="700" fill="#3C6E8F">NVIDIA 802</text><text x="60.0" y="191.5" font-size="14" fill="#6E675C">both = 100</text></svg>
+      <div class="cap">Revenue indexed to 100 at the first common fiscal year. Intel FY2021-FY2025 ($79.0B to $52.9B); NVIDIA FY2022-FY2026 ($26.9B to $215.9B), each fiscal year labeled by the calendar year it mostly covers. Sources: Intel 10-Ks FY2021, FY2023, FY2025; NVIDIA 10-Ks FY2022, FY2024, FY2026.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip b">NVIDIA, clearly</span></div>
+    <p>NVIDIA prices a system against the value of the compute it delivers and buys wafer capacity from TSMC, so its costs flex with volume; the Compute &amp; Networking segment earned 67.3% operating margin in FY2026 and 71.0% in Q2 FY2027 (FY2026 10-K; Q2 FY2027 10-Q). Intel's designer arm earned 25.9% in FY2025, and then its factory, which bills about 98% of its revenue to Intel itself, lost 57.9 cents per dollar (FY2025 10-K, Note 3). The same company wins growth and margin, so the tension in this duel is direction, not level: NVIDIA guides gross margin down to a 71-72% trough in Q4 FY2027 on memory costs before 72-73% in FY2028, while Intel guides Q3 2026 to 41.0% from 34.8% in FY2025 (Q2 FY2027 call; Intel Q2 2026 release, 23 Jul 2026). That narrows a 37-point gap by a few points; it does not close it.</p>
+    <div class="chartbox"><svg viewBox="0 0 860 190" role="img" aria-label="Margin dumbbells"><text x="134" y="60" text-anchor="end" font-size="16" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">Gross margin</text><line x1="150" x2="800" y1="55" y2="55" stroke="#E5DDD0" stroke-width="2"/><line x1="312.5" x2="312.5" y1="47" y2="63" stroke="#6E675C" stroke-width="1"/><line x1="506.4" x2="707.4" y1="55" y2="55" stroke="#2B2B2B" stroke-width="2"/><circle cx="506.4" cy="55" r="8" fill="#C75B39"/><circle cx="707.4" cy="55" r="8" fill="#3C6E8F"/><text x="506.4" y="83" text-anchor="middle" font-size="15" fill="#C75B39" font-weight="700">Intel 35.8%</text><text x="707.4" y="83" text-anchor="middle" font-size="15" fill="#3C6E8F" font-weight="700">NVIDIA 72.9%</text><text x="606.9" y="41" text-anchor="middle" font-size="15" fill="#2B2B2B">gap 37.1 pts</text><text x="134" y="145" text-anchor="end" font-size="16" font-weight="700" fill="#2B2B2B" font-family="Georgia,serif">EBIT margin</text><line x1="150" x2="800" y1="140" y2="140" stroke="#E5DDD0" stroke-width="2"/><line x1="312.5" x2="312.5" y1="132" y2="148" stroke="#6E675C" stroke-width="1"/><line x1="265.4" x2="632.1" y1="140" y2="140" stroke="#2B2B2B" stroke-width="2"/><circle cx="265.4" cy="140" r="8" fill="#C75B39"/><circle cx="632.1" cy="140" r="8" fill="#3C6E8F"/><text x="265.4" y="168" text-anchor="middle" font-size="15" fill="#C75B39" font-weight="700">Intel -8.7%</text><text x="632.1" y="168" text-anchor="middle" font-size="15" fill="#3C6E8F" font-weight="700">NVIDIA 59.0%</text><text x="448.7" y="126" text-anchor="middle" font-size="15" fill="#2B2B2B">gap 67.7 pts</text><text x="150" y="186" font-size="13" fill="#6E675C">-30%</text><text x="312.5" y="186" text-anchor="middle" font-size="13" fill="#6E675C">0%</text><text x="800" y="186" text-anchor="end" font-size="13" fill="#6E675C">90%</text></svg>
+      <div class="cap">Three-year averages of reported ratios: Intel FY2023-FY2025, NVIDIA FY2024-FY2026. Intel EBIT includes itemized restructuring ($7.0B in FY2024); excluding it the average is -3.0%. Latest half-year gross margin: Intel 39.9%, NVIDIA 75.0%. Sources: Intel FY2025 10-K and Q2 2026 10-Q; NVIDIA FY2026 10-K and Q2 FY2027 10-Q.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip a">Intel breaks first</span> <span class="chip b">NVIDIA breaks harder</span></div>
+    <p>Intel's exposure is cost rigidity under borrowed pricing. Its 2026 margin recovery rests on shortage-era ASPs and on substrate and memory constraints it expects to persist "into next year" (Q2 2026 10-Q); when supply normalizes, AMD and Arm designers buy more TSMC capacity, prices reset as they did in FY2025, and fixed fab cost turns every price cut into lost margin. It starts from a thin cushion: FY2025 operating cash flow of $9.7B against $14.6B of capex (FY2025 10-K), bridged by a $20B equity raise in August 2026 (Intel release, 11 Aug 2026). NVIDIA's exposure is a commitment asymmetry: supply and capacity commitments rose from $119B to $279B in one quarter, plus up to $105B of lease guarantees for OpenAI's Ohio campus, while customers can cancel purchase orders "without penalty" (Q2 FY2027 10-Q; FY2026 10-K). Three direct customers took 44% of first-half revenue and design competing chips. Intel breaks first because it has almost no margin to lose; NVIDIA, with a 60% operating margin, can absorb a slowdown but not a pause that strands $279B of commitments (inferred).</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>The first four cells carry 96% of the two companies' combined latest-year revenue; the fifth is Intel's $17.8B internal factory, which decides its margins. Neither company discloses a product x geography cross-tab, so the dominant region is named from each company's geographic note (inferred).</p>
+  <div class="tw"><table>
+    <tr><th>Cell (product x region)</th><th class="ca">Intel</th><th class="cb">NVIDIA</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>AI accelerated compute, US hyperscalers and AI clouds</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>NVIDIA $162.4B, +104% a year, prices raised into a cost shock; Intel "unsuccessful to date in becoming a meaningful participant" (FY2026 10-K; FY2025 10-K).</td></tr>
+    <tr><td>PC client, OEMs and ODMs billed in China and Asia</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td>Intel holds 69.7% of x86 client units at a 28.9% segment margin but ceded about 6 points in a year; NVIDIA Gaming grew 24% a year to $16.0B (Mercury via HotHardware; 10-Ks).</td></tr>
+    <tr><td>Data-center networking, global</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td>NVIDIA $31.4B, +91% a year, number one in data-center Ethernet switching; Intel's networking no longer reported separately (IDC 1Q26; 10-Ks).</td></tr>
+    <tr><td>Server CPUs, US cloud and enterprise</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td>Intel holds 65.5% of units on legacy installed base after FY2025 discounting; NVIDIA's Grace drives Arm's record 13.6% but standalone Vera is unproven (Mercury; 10-K; Q2 FY2027 call).</td></tr>
+    <tr><td>Leading-edge manufacturing, US</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td>Intel is the only US leading-edge logic manufacturer but external revenue was $293M in Q2 2026; NVIDIA is fabless by design (FY2025 10-K; Q2 2026 10-Q).</td></tr>
+  </table></div>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are anchored to the exhibits in the three tabs and are not summed; the three lenses get their verdicts in the Three Answers above. NVIDIA's PC score of 4 is inferred from Gaming growth outpacing a shrinking PC market; no discrete-GPU share tracker was checked.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">The two engines barely touch: NVIDIA's revenue sits in AI systems growing at triple digits, Intel's in PC and server CPUs that are flat over two years.</div>
+    <p>Neither filing crosses product with geography, and the geography bases differ: Intel reports revenue by customer billing location, NVIDIA by customer headquarters (changed in Q3 FY2026). The cells below are therefore product cells with a regional overlay. NVIDIA's revenue is 69% US-headquartered customers, 20% Taiwan (76% of whose data-center revenue NVIDIA attributes to US and European end customers) and 9% China (FY2026 10-K). Intel's is 30% US, 24% China, 18% Singapore and 15% Taiwan, largely where PC makers are invoiced (FY2025 10-K).</p>
+    <p>Normalized labels: Intel CCPG (formerly CCG, with networking folded in from Q1 2025) and NVIDIA Gaming are both "PC client", although Intel sells the processor and NVIDIA the graphics chip. Intel DCAI includes custom ASICs. Intel does not disclose AI accelerator or networking revenue, so those cells read ND on its side.</p>
+    <div class="chartbox"><svg viewBox="0 0 900 286" role="img" aria-label="Butterfly chart of cells"><text x="352.0" y="24" text-anchor="end" font-size="17" font-weight="700" fill="#C75B39" font-family="Georgia,serif">Intel (FY2025)</text><text x="548.0" y="24" font-size="17" font-weight="700" fill="#3C6E8F" font-family="Georgia,serif">NVIDIA (FY2026)</text><text x="450" y="74.0" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">AI accelerated compute</text><text x="354.0" y="74.0" text-anchor="end" font-size="15" fill="#6E675C">ND: not disclosed</text><rect x="540.0" y="56" width="240.0" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="786.0" y="68.0" font-size="15" font-weight="700" fill="#3C6E8F">$162.4B</text><text x="786.0" y="84.0" font-size="13" fill="#6E675C">+104%/yr</text><text x="450" y="120.0" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">PC client</text><rect x="312.4" y="102" width="47.6" height="26" fill="#C75B39"/><text x="306.4" y="114.0" text-anchor="end" font-size="15" font-weight="700" fill="#C75B39">$32.2B</text><text x="306.4" y="130.0" text-anchor="end" font-size="13" fill="#6E675C">-0.1%/yr</text><rect x="540.0" y="102" width="23.6" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="569.6" y="114.0" font-size="15" font-weight="700" fill="#3C6E8F">$16.0B</text><text x="569.6" y="130.0" font-size="13" fill="#6E675C">+24%/yr</text><text x="450" y="166.0" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Data-center networking</text><text x="354.0" y="166.0" text-anchor="end" font-size="15" fill="#6E675C">ND: not disclosed</text><rect x="540.0" y="148" width="46.4" height="26" fill="#3C6E8F" fill-opacity="1"/><text x="592.4" y="160.0" font-size="15" font-weight="700" fill="#3C6E8F">$31.4B</text><text x="592.4" y="176.0" font-size="13" fill="#6E675C">+91%/yr</text><text x="450" y="212.0" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Server CPU</text><rect x="335.0" y="194" width="25.0" height="26" fill="#C75B39"/><text x="329.0" y="206.0" text-anchor="end" font-size="15" font-weight="700" fill="#C75B39">$16.9B</text><text x="329.0" y="222.0" text-anchor="end" font-size="13" fill="#6E675C">+2.9%/yr</text><rect x="540.0" y="194" width="7.4" height="26" fill="#3C6E8F" fill-opacity="0.55"/><text x="553.4" y="206.0" font-size="15" font-weight="700" fill="#3C6E8F">>$5B TTM</text><text x="553.4" y="222.0" font-size="13" fill="#6E675C">ND (inferred)</text><text x="450" y="258.0" text-anchor="middle" font-size="15" font-weight="700" fill="#2B2B2B">Foundry, external</text><rect x="358.0" y="240" width="2.0" height="26" fill="#C75B39"/><text x="352.0" y="252.0" text-anchor="end" font-size="15" font-weight="700" fill="#C75B39">$0.3B</text><text x="352.0" y="268.0" text-anchor="end" font-size="13" fill="#6E675C">ND</text><text x="546.0" y="258.0" font-size="15" fill="#6E675C">none (fabless)</text></svg>
+      <div class="cap">Latest fiscal-year revenue on one shared scale (US$B); growth is the FY2023-FY2025 (Intel) or FY2024-FY2026 (NVIDIA) compound annual rate. NVIDIA's server-CPU bar is the "exceeding $5 billion" trailing figure from the Q2 FY2027 call, drawn lighter because it is a floor, not a disclosed segment. Sources: Intel FY2025 10-K Note 3; NVIDIA FY2026 10-K revenue by market platform.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <div class="tw"><table>
+      <tr><th>Cell</th><th class="num ca">Intel rev (% of total)</th><th class="num ca">Intel growth</th><th class="num cb">NVIDIA rev (% of total)</th><th class="num cb">NVIDIA growth</th><th>Margin signal / leader</th></tr>
+      <tr><td>AI accelerated compute</td><td class="num ca">ND</td><td class="num ca">ND</td><td class="num cb">$162.4B (75%)</td><td class="num cb">+104%/yr</td><td>NVIDIA; Compute &amp; Networking segment margin 67.3%</td></tr>
+      <tr><td>PC client</td><td class="num ca">$32.2B (61%)</td><td class="num ca">-0.1%/yr</td><td class="num cb">$16.0B (7%)</td><td class="num cb">+24%/yr</td><td>Split; Intel CCPG margin 28.9%, NVIDIA Graphics segment 40.8%</td></tr>
+      <tr><td>Data-center networking</td><td class="num ca">ND</td><td class="num ca">ND</td><td class="num cb">$31.4B (15%)</td><td class="num cb">+91%/yr</td><td>NVIDIA; inside the 67.3% segment</td></tr>
+      <tr><td>Server CPU</td><td class="num ca">$16.9B (32%)</td><td class="num ca">+2.9%/yr</td><td class="num cb">&gt;$5B TTM</td><td class="num cb">ND</td><td>Intel by scale; DCAI margin 20.2% FY2025, 35.5% 1H 2026</td></tr>
+      <tr><td>Foundry</td><td class="num ca">$17.8B, ~98% internal</td><td class="num ca">ND</td><td class="num cb">none</td><td class="num cb">n/a</td><td>Intel Foundry margin -57.9%</td></tr>
+      <tr><td>All other</td><td class="num ca">$3.6B (7%)</td><td class="num ca">n/m</td><td class="num cb">$6.2B (3%)</td><td class="num cb">n/m</td><td>Mobileye and Altera (to Sep 2025) vs pro visualization, automotive, OEM</td></tr>
+    </table></div>
+    <p class="source">Sources: Intel FY2025 10-K Note 3 (FY2023-FY2025 recast) and Q2 2026 10-Q Note 2; NVIDIA FY2026 10-K revenue by market platform and segment note; Q2 FY2027 call for CPU revenue. Percent of total uses each company's consolidated revenue; Intel's segments sum above 100% before intersegment eliminations.</p>
+    <div class="iik"><b>Insight:</b> NVIDIA's two largest cells compound at roughly 90-100% a year on rising content per gigawatt; Intel's two largest were flat over two years and its 2026 lift is ASP in a shortage. <b>Implication:</b> NVIDIA's engine is pointed at the growing profit pool and Intel's at a mature one, so the gap in absolute size widens even if NVIDIA slows sharply. <span class="kpi">KPI: Intel CCPG plus DCAI year-on-year growth once shortages ease (1H 2027) against NVIDIA Data Center growth; 10-Qs.</span> <span class="source">[Intel FY2025 10-K, Q2 2026 10-Q; NVIDIA FY2026 10-K, Q2 FY2027 10-Q and call]</span></div>
+    <h3>Segment growth engines</h3>
+    <p>AI compute (NVIDIA): volume of gigawatts deployed multiplied by revenue per gigawatt, which rises each generation because NVIDIA adds CPU, networking and now Groq inference hardware to the rack (Q2 FY2027 call). Management's preliminary FY2028 view is revenue growth of about 70%, with supply the bottleneck "at least through the end of fiscal year 2028" (Q2 FY2027 call). Growth is organic: the December 2025 Groq agreement bought a licence and staff, not revenue, and the $11.9B Hugging Face deal has not closed (FY2026 10-K; 8-K 3 Sep 2026).</p>
+    <p>Server CPU (both): this is the only cell where the two meet head on. Intel's DCAI revenue rose 59% in Q2 2026, mostly on ASP (Q2 2026 10-Q), and Intel is co-developing custom x86 data-center CPUs with NVLink for NVIDIA, which invested $5B in Intel at $23.28 a share in December 2025 (NVIDIA release, 18 Sep 2025; closing reported by Quartz). NVIDIA meanwhile sells its own Grace and Vera CPUs and says it sees about $20B of server-CPU demand (Q2 FY2027 call). Intel's fastest-growing cell increasingly lives inside a platform NVIDIA defines.</p>
+    <p>PC client (both): Intel ships about seven in ten x86 PC processors but AMD's client unit share rose to 30.3% and Arm-based chips to 15.3% (Mercury Research via HotHardware and The Register, Aug 2026). NVIDIA enters PC processors this fall with RTX Spark, an Arm chip co-designed with MediaTek, through Dell, HP, Lenovo and others (NVIDIA release, 31 May 2026).</p>
+    <div class="iik"><b>Insight:</b> The overlap cells, server and PC CPUs, are where Intel is largest and where NVIDIA is now entering with Arm designs. <b>Implication:</b> Intel's best growth cell faces a new entrant that also controls the accelerator the CPU must attach to. <span class="kpi">KPI: NVIDIA CPU revenue more than doubling in FY2028 (call guide) against Intel DCAI growth; Mercury Arm server share above 20% by 2Q 2027.</span> <span class="source">[Q2 FY2027 call; Q2 2026 10-Q; Mercury Research via The Register]</span></div>
+    <h3>Price control and route-to-market</h3>
+    <p>Both sell on cancellable purchase orders through OEMs, ODMs and cloud providers, and both net rebates and channel incentives from revenue (FY2025 10-K; FY2026 10-K). The difference is who sets the price. NVIDIA is passing a memory cost spike through, with price increases executed for Q1 FY2028, and still guides gross margin to 72-73% (Q2 FY2027 call). Intel raised ASPs in 2026 only while "market demand exceeded our available product supply", and says pricing contributed "to a lesser extent" than mix (Q2 2026 10-Q); in FY2025, with supply adequate, server ASPs fell 4% "driven by a competitive environment" (FY2025 10-K).</p>
+    <div class="iik"><b>Insight:</b> NVIDIA realizes price through a cost shock; Intel realizes price only in a shortage. <b>Implication:</b> When supply normalizes, Intel's net price falls toward FY2025 levels while NVIDIA's holds within a few margin points. <span class="kpi">KPI: Intel server ASP change in the first quarter after Intel says shortages have eased; NVIDIA gross margin at or above 72% in FY2028.</span> <span class="source">[Q2 2026 10-Q; FY2025 10-K; Q2 FY2027 call]</span></div>
+    <h3>Supply resilience</h3>
+    <div class="tw"><table>
+      <tr><th>Input</th><th class="ca">Intel</th><th class="cb">NVIDIA</th></tr>
+      <tr><td>Wafers</td><td class="ca">Own fabs (Intel 7, 3, 18A); some leading products made "exclusively" at TSMC with no long-term contract</td><td class="cb">TSMC and Samsung; secured via $279B of supply and capacity commitments</td></tr>
+      <tr><td>Memory and substrates</td><td class="ca">Industry shortages expected to persist into 2027</td><td class="cb">HBM from SK hynix, Micron, Samsung; "extreme pricing conditions" cut the margin guide</td></tr>
+      <tr><td>Packaging and assembly</td><td class="ca">In-house, plus EMIB/Foveros offered externally</td><td class="cb">CoWoS; Hon Hai, Wistron, Fabrinet</td></tr>
+      <tr><td>Capex (latest FY)</td><td class="ca">$14.6B plus $3.0B vendor-financed; 2026 "more than $20B"</td><td class="cb">$6.0B</td></tr>
+    </table></div>
+    <p class="source">Sources: Intel FY2025 10-K (cash-flow statement, risk factors), Q2 2026 10-Q, Q2 2026 prepared remarks; NVIDIA FY2026 10-K (Business; cash-flow statement), Q2 FY2027 10-Q Note 10 and call.</p>
+    <div class="iik"><b>Insight:</b> Intel owns continuity but carries the fixed cost; NVIDIA rents capacity and pays suppliers' pricing power. <b>Implication:</b> Intel's integration protects volume in a shortage and punishes it in a glut; NVIDIA's commitments secure the ramp and become a liability in a pause. <span class="kpi">KPI: NVIDIA supply commitments growing slower than trailing revenue by Q4 FY2027; Intel capex against operating cash flow in FY2026.</span> <span class="source">[10-Qs and 10-Ks as above]</span></div>
+    <h3>Competitive context</h3>
+    <p>AI accelerators: GPUs are expected to be 69.7% of 2026 AI-server shipments and custom ASICs 27.8%, the highest ASIC share since 2023 (TrendForce, Jan 2026). Broadcom's AI semiconductor revenue was $16.7B in its latest quarter, up 221%, and AMD's data-center segment $6.7B, against NVIDIA's $89.0B of Data Center revenue (company releases, Aug-Sep 2026). NVIDIA is the incumbent, and custom silicon is the share-taker. x86 CPUs: AMD holds 34.5% of server and 30.3% of client units and 46.2% of server revenue in Q1 2026; Intel is the share donor (Mercury Research). Foundry: TSMC took 72.5% of top-10 foundry revenue in 2Q 2026; Intel Foundry is not ranked (TrendForce, Sep 2026).</p>
+    <h3>Risks by segment</h3>
+    <p>AI compute (NVIDIA exposed): hyperscale was 55% of Q2 FY2027 Data Center revenue, and those buyers are named competitors building their own chips (Q2 FY2027 10-Q; FY2026 10-K). Inference is the natural first workload to move, and every ASIC generation that clears "good enough" moves hyperscale volume off NVIDIA at the margin (inferred). PC and server CPUs (Intel exposed): each design win AMD or an Arm licensee takes is usually built at TSMC, so it removes Intel product revenue and fab loading at once, raising unit cost on what remains (inferred). Foundry (Intel exposed): 14A proceeds without a committed external customer; Intel said in January 2026 it expected customer decisions from the second half of 2026 (Tom's Hardware, Jan 2026).</p>
+    <div class="pull">NVIDIA has the higher-probability growth and margin path: its biggest cells sit in the fastest-growing profit pool and grow on content per gigawatt, while Intel's grow only when shortages let it raise price.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In compute, whoever owns the software the workload is written for sets the terms; NVIDIA owns it for AI, Intel for a shrinking share of general-purpose work.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">NVIDIA - clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">NVIDIA - clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">NVIDIA - narrow</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever; each call is argued below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>Intel</h3><p>x86 licence duopoly with AMD and the Windows and enterprise installed base: High durability in PCs and on-premise servers, Medium and eroding in cloud, where Arm reached 13.6% of server units (Mercury, Q2 2026). The only US company running leading-edge logic R&amp;D and volume manufacturing, with the US government holding about 10%: Medium, a policy asset that does not yet earn a return (FY2025 10-K; 8-K 25 Aug 2025).</p></div>
+      <div class="col b"><h3>NVIDIA</h3><p>CUDA plus "hundreds of" libraries and SDKs, built on more than $76.7B of cumulative R&amp;D: High, since a rival needs years of developer adoption, not money (FY2026 10-K). Rack-scale co-design of GPU, CPU, NVLink and networking on an annual cadence, now in a third NVL72 generation: High (Q2 FY2027 call). Scale in networking, number one in data-center Ethernet switching: Medium-High (IDC 1Q26).</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> NVIDIA's moat protects the growing pool; Intel's protects a maturing one and is being bypassed by Arm in the cloud. <b>Implication:</b> Intel can defend PC and on-premise share but cannot use x86 to enter AI compute, as its own 10-K concedes. <span class="kpi">KPI: Arm server unit share (Mercury) above 20% by 2Q 2027 erodes Intel; ASIC share of AI-server shipments (TrendForce) above 35% in 2027 erodes NVIDIA.</span> <span class="source">[FY2025 10-K; FY2026 10-K; Mercury; TrendForce]</span></div>
+    <h3>Customers: who controls net price and access</h3>
+    <p>Both depend on a few buyers. Intel's three largest customers took 43% of FY2025 revenue (19%, 12%, 12%) (FY2025 10-K); NVIDIA's three largest direct customers took 44% of first-half FY2027 revenue (16%, 15%, 13%), down from one customer alone at 22% in FY2026 (Q2 FY2027 10-Q; FY2026 10-K). The difference is in exercised pricing power: NVIDIA's buyers accept price increases while supply is short through FY2028; Intel's buyers are OEMs who can switch to AMD on the same socket economics, and did so as supply allowed. NVIDIA's weakness is that its biggest buyers are also named competitors.</p>
+    <div class="iik"><b>Insight:</b> Concentration is equal; price-setting is not. <b>Implication:</b> Margin pressure lands on Intel first when demand softens, and on NVIDIA only if the hyperscalers' own chips reach parity. <span class="kpi">KPI: NVIDIA largest direct customer share below 12% (diversifying) by FY2028; Intel top-three share of revenue and server ASP after the shortage.</span> <span class="source">[FY2025 10-K; FY2026 10-K; Q2 FY2027 10-Q]</span></div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Intel's integration gives it continuity on its own nodes but not on its best products, which rely on TSMC without a long-term contract, and its Intel 7 output in Israel is flagged as uninsured war exposure (FY2025 10-K; Q2 2026 10-Q). NVIDIA depends on three memory makers and on TSMC's CoWoS, and memory pricing has just cost it about three points of guided gross margin; its answer is scale, with $279B of commitments that make it the priority buyer (Q2 FY2027 10-Q and call). Pass-through is partial for both: Intel raised ASPs "in part to offset higher input costs", NVIDIA executed price increases. NVIDIA's floor after pass-through is a 71-72% gross margin; Intel's ceiling in a shortage is about 41%.</p>
+    <div class="iik"><b>Insight:</b> Both pass input costs through partially; NVIDIA does it from a far higher margin and with priority access bought by commitments. <b>Implication:</b> In a supply shock NVIDIA keeps shipping at stable net price; Intel keeps its own nodes running but not its TSMC-built products. <span class="kpi">KPI: NVIDIA gross margin versus its 71-72% Q4 FY2027 trough guide; Intel gross margin versus its 41% Q3 2026 guide.</span> <span class="source">[Q2 FY2027 call; Intel Q2 2026 release]</span></div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <div class="tw"><table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>AI compute</td><td>NVIDIA direct and via ODMs/CSPs; Intel absent</td><td>NVIDIA far above ASIC alternatives, holding</td><td>NVIDIA via commitments</td><td>NVIDIA share flat to slightly down vs ASICs; margin down 2-3 pts in FY2028, then stable</td><td>NVIDIA Hyperscale growth vs Broadcom AI semiconductor growth</td></tr>
+      <tr><td>PC client</td><td>Intel via OEMs; NVIDIA via add-in boards and now Arm PCs</td><td>Intel at or above AMD while supply is short</td><td>Intel own fabs; NVIDIA TSMC</td><td>Intel share down, margin up near term then down; NVIDIA share up</td><td>Mercury client share; Intel CCPG margin</td></tr>
+      <tr><td>Server CPU</td><td>Intel via OEMs/CSPs; NVIDIA inside its own racks</td><td>Intel shortage premium (ASP +48%); NVIDIA bundled</td><td>Intel constrained on Intel 7 and 3</td><td>Intel share down; NVIDIA share up from a small base</td><td>NVIDIA CPU revenue vs Intel DCAI revenue</td></tr>
+    </table></div>
+    <p>The tension is in the third row: Intel's fastest-growing cell, DCAI at +59% in Q2 2026, is exactly where it has the least pricing power once supply normalizes and where NVIDIA controls the attach point through NVLink (Q2 2026 10-Q; Q2 FY2027 call).</p>
+    <h3>The causal gap</h3>
+    <p>Three causes explain most of the difference. First, platform ownership: CUDA against x86 in a maturing market (Major); Intel cannot close it, as the failure of its AI accelerators so far shows (FY2025 10-K). Second, asset-light versus fixed-cost manufacturing (Major); Intel can close it only by filling its fabs with outside customers, a 14A story whose volume ramp Intel itself dates to 2028 (Q2 2026 prepared remarks). Third, customer price-setting (Moderate); this flips only if hyperscaler ASICs reach parity. None of the three can be closed with money in 18 months.</p>
+    <div class="pull">NVIDIA holds the stronger power position on all three levers; the early warnings are NVIDIA gross margin below 70% without a mix reason, and Intel server unit share below 60%.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">NVIDIA keeps twice the gross margin on four times the revenue; the gap is made of pricing power and a cost base that flexes, against a factory that does not.</div>
+    <p>Both report by function under US GAAP, so the mapping is clean. Intel's "marketing, general and administrative" is treated as SG&amp;A. Intel itemizes restructuring ($7.0B in FY2024, $2.2B in FY2025); it is excluded from the functional lines and included in reported EBIT, with the ex-restructuring figure shown. Intel's cost of sales carries fab depreciation plus $3.3B (FY2024) and $950M (FY2025) of impairments and accelerated depreciation; NVIDIA's carries TSMC's margin and a $4.5B H20 export charge in FY2026 (FY2025 10-K; FY2026 10-K). Fiscal years are offset by about four weeks.</p>
+    <h3>Three years, five ratios</h3>
+    <div class="tw"><table>
+      <tr><th>% of sales, 3y avg</th><th class="num ca">Intel FY23-25</th><th class="num cb">NVIDIA FY24-26</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS</td><td class="num ca">64.2</td><td class="num cb">27.1</td><td class="num">37.1</td><td>System pricing and variable wafer cost vs fixed fab cost on under-loaded nodes</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">29.0</td><td class="num cb">10.9</td><td class="num">18.1</td><td>Scale: NVIDIA spends more dollars on a far larger base</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">9.8</td><td class="num cb">3.1</td><td class="num">6.7</td><td>Few, very large system orders vs a broad OEM channel</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">35.8</td><td class="num cb">72.9</td><td class="num">37.1</td><td>Pricing power and asset-light model</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">-8.7 (ex-restr. -3.0)</td><td class="num cb">59.0</td><td class="num">67.7</td><td>All of the above plus Intel Foundry losses</td></tr>
+    </table></div>
+    <div class="chartbox"><svg viewBox="0 0 860 300" role="img" aria-label="Cost engine grouped bars"><line x1="40" x2="850" y1="230" y2="230" stroke="#6E675C" stroke-width="1"/><rect x="70" y="82.3" width="50" height="147.7" fill="#C75B39"/><text x="95.0" y="76.3" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">64.2%</text><rect x="128" y="167.7" width="50" height="62.3" fill="#3C6E8F"/><text x="153.0" y="161.7" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">27.1%</text><text x="124" y="292" text-anchor="middle" font-size="15" fill="#2B2B2B">COGS</text><rect x="230" y="163.3" width="50" height="66.7" fill="#C75B39"/><text x="255.0" y="157.3" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">29.0%</text><rect x="288" y="204.9" width="50" height="25.1" fill="#3C6E8F"/><text x="313.0" y="198.9" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">10.9%</text><text x="284" y="292" text-anchor="middle" font-size="15" fill="#2B2B2B">R&amp;D</text><rect x="390" y="207.5" width="50" height="22.5" fill="#C75B39"/><text x="415.0" y="201.5" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">9.8%</text><rect x="448" y="222.9" width="50" height="7.1" fill="#3C6E8F"/><text x="473.0" y="216.9" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">3.1%</text><text x="444" y="292" text-anchor="middle" font-size="15" fill="#2B2B2B">SG&amp;A</text><rect x="550" y="147.7" width="50" height="82.3" fill="#C75B39"/><text x="575.0" y="141.7" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">35.8%</text><rect x="608" y="62.3" width="50" height="167.7" fill="#3C6E8F"/><text x="633.0" y="56.3" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">72.9%</text><text x="604" y="292" text-anchor="middle" font-size="15" fill="#2B2B2B">Gross margin</text><rect x="710" y="230.0" width="50" height="20.0" fill="#C75B39"/><text x="735.0" y="266.0" text-anchor="middle" font-size="15" font-weight="700" fill="#C75B39">-8.7%</text><rect x="768" y="94.3" width="50" height="135.7" fill="#3C6E8F"/><text x="793.0" y="88.3" text-anchor="middle" font-size="15" font-weight="700" fill="#3C6E8F">59.0%</text><text x="764" y="292" text-anchor="middle" font-size="15" fill="#2B2B2B">EBIT margin</text></svg>
+      <div class="cap">Three-year averages, % of revenue. Sources: Intel FY2025 and FY2023 10-K consolidated statements of operations; NVIDIA FY2026 10-K consolidated statements of income.</div>
+    </div>
+    <div class="tw"><table>
+      <tr><th>Year</th><th class="num">COGS</th><th class="num">R&amp;D</th><th class="num">SG&amp;A</th><th class="num">Gross margin</th><th class="num">EBIT margin</th></tr>
+      <tr><td class="ca">Intel FY2023</td><td class="num">60.0</td><td class="num">29.6</td><td class="num">10.4</td><td class="num">40.0</td><td class="num">0.2</td></tr>
+      <tr><td class="ca">Intel FY2024</td><td class="num">67.3</td><td class="num">31.2</td><td class="num">10.4</td><td class="num">32.7</td><td class="num">-22.0</td></tr>
+      <tr><td class="ca">Intel FY2025</td><td class="num">65.2</td><td class="num">26.1</td><td class="num">8.7</td><td class="num">34.8</td><td class="num">-4.2</td></tr>
+      <tr><td class="cb">NVIDIA FY2024</td><td class="num">27.3</td><td class="num">14.2</td><td class="num">4.4</td><td class="num">72.7</td><td class="num">54.1</td></tr>
+      <tr><td class="cb">NVIDIA FY2025</td><td class="num">25.0</td><td class="num">9.9</td><td class="num">2.7</td><td class="num">75.0</td><td class="num">62.4</td></tr>
+      <tr><td class="cb">NVIDIA FY2026</td><td class="num">28.9</td><td class="num">8.6</td><td class="num">2.1</td><td class="num">71.1</td><td class="num">60.4</td></tr>
+    </table></div>
+    <p class="source">Raw values (US$M): Intel revenue 54,228 / 53,101 / 52,853; COGS 32,517 / 35,756 / 34,478; R&amp;D 16,046 / 16,546 / 13,774; MG&amp;A 5,634 / 5,507 / 4,624; EBIT 93 / (11,678) / (2,214). NVIDIA revenue 60,922 / 130,497 / 215,938; COGS 16,621 / 32,639 / 62,475; R&amp;D 8,675 / 12,914 / 18,497; SG&amp;A 2,654 / 3,491 / 4,579; EBIT 32,972 / 81,453 / 130,387.</p>
+    <h3>The structural gap</h3>
+    <p>Gross margin carries the most persistent gap: 32.7, 42.3 and 36.3 points across the three paired years, never below 30. The mechanism comes from both earlier lenses: NVIDIA prices a system against the value of AI compute and buys wafers as it needs them, while Intel prices CPUs against AMD in maturing markets and carries factory cost whether or not the nodes are full. That confirms the power map; the company with pricing power shows it in gross margin. The second gap is quieter and matters more for the next decade: NVIDIA's R&amp;D is now larger in dollars ($18.5B vs $13.8B in the last full year, $13.4B vs $6.7B in the last half-year), so the roadmap budget runs against Intel, whose 17% R&amp;D cut in FY2025 lifted margins by shrinking it (10-Ks; 10-Qs). Intel's opex cuts are real self-help, visible in a Q2 2026 operating margin of 11.1%, but they cannot touch a gap that sits in cost of sales.</p>
+    <div class="pull">NVIDIA runs the leaner engine by a wide and persistent margin, and the gap is structural, in cost of sales, not in overhead Intel could cut.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li>Hyperscaler custom silicon takes inference. Hyperscale was 55% of NVIDIA's Q2 FY2027 Data Center revenue and those buyers design their own accelerators; Broadcom's AI revenue grew 221%. If ASIC share keeps rising, NVIDIA loses volume and then price in its biggest cell. <span style="color:var(--good);font-weight:700;">Early warning: NVIDIA Hyperscale growth below Broadcom AI semiconductor growth for three straight quarters, with gross margin below 70% and no mix explanation (10-Qs; Broadcom releases).</span></li>
+      <li>A capex pause meets the commitment book. $279B of supply commitments ($92B due in the rest of FY2027) and up to $105B of OpenAI lease guarantees sit against cancellable orders; the $4.5B H20 charge showed how fast inventory turns into loss. <span style="color:var(--good);font-weight:700;">Early warning: inventory provisions above 3% of revenue for two quarters, or any sequential Data Center decline (NVIDIA 10-Q).</span></li>
+      <li>Intel's foundry finds anchors and its fixed cost turns into leverage. A committed external 14A customer plus Apple and Microsoft ramps at 18A-P (both reported, neither confirmed) would give Intel the one physically scarce asset NVIDIA rents. <span style="color:var(--good);font-weight:700;">Early warning: a named 14A customer by 30 Jun 2027 and an Intel Foundry quarterly operating loss below $1B (from $2.1B in Q2 2026) by Q4 2027 (Intel 8-K and 10-Q).</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12-24 months</h2>
+  <div class="tw"><table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>NVIDIA gross margin</td><td>At or above 72% in each FY2028 quarter</td><td>Q1-Q2 FY2028 (Apr-Jul 2027)</td><td>NVIDIA; below 70% narrows the gap</td><td>NVIDIA 10-Q</td></tr>
+    <tr><td>NVIDIA Hyperscale growth vs Broadcom AI semiconductor growth</td><td>Hyperscale year-on-year growth at or above Broadcom's</td><td>Through Q2 FY2028 (Jul 2027)</td><td>NVIDIA</td><td>NVIDIA 10-Q; Broadcom release</td></tr>
+    <tr><td>Intel gross margin after shortages ease</td><td>At or above 40% GAAP</td><td>Q2 2027 (Jul 2027)</td><td>Intel (pricing proves structural); below 37% confirms borrowed pricing</td><td>Intel 10-Q</td></tr>
+    <tr><td>Intel Foundry external revenue and 14A customer</td><td>Named 14A customer; external revenue above $1B a quarter</td><td>Mid-2027; Q4 2027</td><td>Intel</td><td>Intel 8-K, 10-Q</td></tr>
+    <tr><td>Intel x86 server unit share</td><td>At or above 60%</td><td>2Q 2027</td><td>Intel; below 60% confirms erosion</td><td>Mercury Research via trade press</td></tr>
+  </table></div>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the first hours on NVIDIA, not to confirm it is the stronger business, which the filings settle, but to stress-test the two things that could break it: the $279B commitment book and hyperscaler ASIC substitution. A skeptical read of the Q2 FY2027 commitments and guarantees note is the next piece of work. Intel earns deep-dive time when a 14A customer is named.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> Three lenses, growth map, power map and cost engine, run on both companies and forced into the same tables, then synthesized into three answers and a cells-only scorecard. Cells were filtered 80/20 by combined revenue; labels, fiscal years and geography bases were normalized and the mismatches stated; all figures are US dollars as reported. ND means not disclosed or not found, and (inferred) marks a conclusion reasoned from sourced facts. This is a comparison of business strength, not a valuation, and it says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>Intel: Form 10-K FY2025 (filed 23 Jan 2026), FY2023 (26 Jan 2024), FY2021 (27 Jan 2022); Form 10-Q Q2 2026 (24 Jul 2026). Research folder, sources/.</li>
+      <li>NVIDIA: Form 10-K FY2026 (25 Feb 2026), FY2024 (21 Feb 2024), FY2022 (18 Mar 2022); Form 10-Q Q2 FY2027 (26 Aug 2026); Q2 FY2027 earnings call transcript (26 Aug 2026). Research folder, sources/.</li>
+      <li>Intel, Q2 2026 results release and guidance, 23 Jul 2026, intc.com/news-events/press-releases/detail/1776</li>
+      <li>Intel, $20B common stock offering priced at $95, 11 Aug 2026, intc.com/news-events/press-releases/detail/1779</li>
+      <li>Intel, Q2 2026 prepared remarks (18A, 14A, capex), 23 Jul 2026, intc.com investor site</li>
+      <li>NVIDIA, Q2 FY2027 results and outlook, 26 Aug 2026, nvidianews.nvidia.com</li>
+      <li>NVIDIA and Intel collaboration and $5B investment, 18 Sep 2025, nvidianews.nvidia.com; closing reported by Quartz, Dec 2025</li>
+      <li>NVIDIA, RTX Spark Windows PC chip, 31 May 2026, nvidianews.nvidia.com</li>
+      <li>NVIDIA 8-K, Hugging Face agreement, 3 Sep 2026, sec.gov</li>
+      <li>Mercury Research x86 share, Q2 2026, via HotHardware and The Register (21 Aug 2026); Q1 2026 revenue share via Tom's Hardware</li>
+      <li>TrendForce, AI server GPU vs ASIC shipments 2026 (20 Jan 2026); foundry ranking 2Q26 (9 Sep 2026), trendforce.com</li>
+      <li>IDC, data-center Ethernet switching 1Q26, idc.com</li>
+      <li>Broadcom Q3 FY2026 results (2 Sep 2026); AMD Q2 2026 results (4 Aug 2026), company IR sites</li>
+      <li>Tom's Hardware, Intel 14A prospective customers, Jan 2026; TechSpot, SK hynix and Intel Ohio, 16 Sep 2026; Bloomberg, DOJ inquiry into NVIDIA-Groq, 10 Sep 2026</li>
+    </ul>
+  </div>
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+
+</body>
+</html>

@@ -1,3 +1,7 @@
+- [AKAM Business Overview](https://xk152004.github.io/investechery/stocks/AKAM-Business-Overview.html)
+- [Intel vs NVIDIA Peer Duel](https://xk152004.github.io/investechery/stocks/Intel_vs_NVIDIA_Peer_Duel.html)
+- [AMD vs NVIDIA Peer Duel](https://xk152004.github.io/investechery/stocks/AMD-vs-NVIDIA-Peer-Duel.html)
+- [INTC vs AMD Peer Duel](https://xk152004.github.io/investechery/stocks/INTC-vs-AMD-Peer-Duel.html)
 - [Intel Business Overview](https://xk152004.github.io/investechery/stocks/Intel-Business-Overview.html)
 - [AMD Business Overview](https://xk152004.github.io/investechery/stocks/AMD-Business-Overview.html)
 - [COHR vs LITE Peer Duel](https://xk152004.github.io/investechery/stocks/COHR-vs-LITE-Peer-Duel.html)

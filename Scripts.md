@@ -5,7 +5,7 @@ cd ~/Documents/Research/Equity
 
 Batch collect company filings 
 ```
-bash code/collect_filings.sh ADBE --years 10 -o . --transcripts-only
+bash code/collect_filings.sh AKAM --years 10 -o . --transcripts-only
 bash collect_filings.sh -f tickers.txt --years 10
 python3 code/european_filing_collector.py ADYEN --dry-run
 ```

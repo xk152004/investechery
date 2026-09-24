@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMD vs NVIDIA: who wins the next decade? | Compound With AI</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --ink:#2B2B2B; --terracotta:#C75B39; --terracotta-soft:#F3E2DA;
+    --line:#E5DDD0; --muted:#6E675C; --good:#3E6B4F; --gold:#C79A3A; --blue:#3C6E8F;
+    --blue-soft:#E3ECF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:19px;line-height:1.58;}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px;}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;}
+  h1{font-size:38px;line-height:1.15;margin-bottom:10px;}
+  h2{font-size:27px;margin:46px 0 14px;}
+  h3{font-size:21px;margin:28px 0 8px;}
+  p{margin-bottom:15px;}
+  .kicker{color:var(--terracotta);font-size:16px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .source{color:var(--muted);font-size:16px;}
+  .chips{margin:14px 0 4px;font-size:17px;}
+  .chip{display:inline-block;padding:4px 14px;border-radius:16px;color:#fff;font-weight:700;margin-right:10px;}
+  .chip.a{background:var(--terracotta);} .chip.b{background:var(--blue);}
+  .verdict-banner{background:var(--ink);color:var(--cream);border-radius:10px;padding:26px 30px;margin:30px 0 10px;}
+  .verdict-banner .label{color:var(--terracotta-soft);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .verdict-banner .verdict{font-family:Georgia,serif;font-size:28px;line-height:1.28;}
+  .verdict-banner .why{color:#D8D2C6;font-size:18px;margin-top:10px;}
+  .reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:760px){.reasons{grid-template-columns:1fr;}}
+  .reasons .col{background:#fff;border:1px solid var(--line);border-top:4px solid var(--terracotta);border-radius:10px;padding:16px 18px;font-size:17px;}
+  .reasons .col .n{font-family:Georgia,serif;color:var(--terracotta);font-size:22px;font-weight:700;}
+  .tabs{display:flex;gap:8px;margin:34px 0 6px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+  .tabs button{font-family:Georgia,serif;font-size:20px;padding:12px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+  .tabs button.on{color:var(--terracotta);border-bottom-color:var(--terracotta);font-weight:700;}
+  .view{display:none;} .view.on{display:block;}
+  .frame{font-family:Georgia,serif;font-size:22px;line-height:1.45;border-left:5px solid var(--terracotta);padding:6px 0 6px 18px;margin:22px 0 14px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:16px;margin:8px 0 2px;}
+  th{font-family:Georgia,serif;text-align:left;padding:9px 11px;border-bottom:2px solid var(--ink);font-size:15px;}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.ca,td.ca{color:var(--terracotta);} th.cb,td.cb{color:var(--blue);}
+  .iik{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:6px 0 24px;font-size:16px;}
+  .iik b{color:var(--ink);}
+  .iik .kpi{color:var(--good);font-weight:700;}
+  .pull{background:var(--terracotta-soft);border-radius:10px;padding:20px 26px;margin:22px 0;font-family:Georgia,serif;font-size:21px;line-height:1.45;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+  @media(max-width:700px){.duo{grid-template-columns:1fr;}}
+  .duo .col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;}
+  .duo .col.a{border-top:4px solid var(--terracotta);} .duo .col.b{border-top:4px solid var(--blue);}
+  .duo .col h3{margin-top:0;font-size:19px;}
+  .flip{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:20px 24px;margin:26px 0;}
+  .flip h3{margin-top:0;}
+  .flip li{margin-bottom:10px;font-size:18px;}
+  .flip ul{padding-left:20px;}
+  .timeverdict{background:var(--ink);color:var(--cream);border-radius:10px;padding:22px 28px;margin:30px 0;font-family:Georgia,serif;font-size:22px;line-height:1.4;}
+  .timeverdict .label{color:var(--terracotta-soft);font-size:15px;letter-spacing:2px;text-transform:uppercase;font-family:Calibri,Arial,sans-serif;margin-bottom:6px;}
+  .score-note{font-size:15px;color:var(--muted);margin-top:4px;}
+  .answer{background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:0 10px 10px 0;padding:18px 24px;margin:16px 0;}
+  .answer .q{font-family:Georgia,serif;font-size:21px;font-weight:700;margin-bottom:8px;}
+  .answer .w{margin-bottom:10px;}
+  .answer p{font-size:18px;margin-bottom:0;}
+  .rubric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin:10px 0 4px;font-size:15px;color:var(--muted);}
+  .rubric span{display:inline-block;margin-right:16px;white-space:nowrap;line-height:1.9;}
+  .rubric b{color:var(--ink);}
+  /* Duel strip / power balance: a lean-bar per dimension, marker pushed toward the winner */
+  .leanrow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;margin:10px 0;}
+  .leanrow .lbl{font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;}
+  .lean{position:relative;height:30px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;}
+  .lean .half{position:absolute;top:0;bottom:0;width:50%;}
+  .lean .half.a{left:0;background:rgba(199,91,57,0.10);}
+  .lean .half.b{right:0;background:rgba(60,110,143,0.10);}
+  .lean .mid{position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:var(--line);}
+  .lean .marker{position:absolute;top:2px;height:26px;border-radius:13px;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;padding:0 12px;white-space:nowrap;}
+  .lean .marker.a{background:var(--terracotta);}  .lean .marker.b{background:var(--blue);}
+  /* position with inline style: clear win -> left:2% or right:2%; narrow -> left:26% or right:26% */
+  .duelwrap{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0;}
+  .duelwrap .cap{font-size:15px;color:var(--muted);margin-top:6px;}
+  /* Score pips: five dots filled to the score, in the company color, numeral beside */
+  .pips{display:inline-flex;gap:3px;vertical-align:middle;margin-right:7px;}
+  .pips i{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:#fff;}
+  .pips.a i.f{background:var(--terracotta);border-color:var(--terracotta);}
+  .pips.b i.f{background:var(--blue);border-color:var(--blue);}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;}
+  .chartbox .cap,.duelwrap .cap{font-size:14px;color:var(--muted);margin-top:8px;}
+  .chartbox svg{width:100%;height:auto;display:block;}
+  .chartbox svg text{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-variant-numeric:tabular-nums;}
+  .footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:16px;}
+  .sources{font-size:16px;color:var(--muted);} .sources li{margin-bottom:6px;} .sources ul{padding-left:20px;}
+
+  .tag{font-size:15px;color:var(--muted);}
+  .small{font-size:16px;}
+  .sources li{overflow-wrap:anywhere;}
+  td .pips{margin-right:6px;}
+  @media(max-width:700px){table{display:block;overflow-x:auto;} .leanrow{grid-template-columns:1fr;} .leanrow .lbl{text-align:left;} .rubric span{white-space:normal;} .verdict-banner .verdict{font-size:23px;} h1{font-size:30px;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="kicker">Peer Duel, Compound With AI</div>
+  <h1>AMD vs NVIDIA: who wins the next decade?</h1>
+  <p class="source">AI and data center semiconductors. AMD / NVDA. Run 23 September 2026. Built from AMD 10-Ks FY2021, FY2023, FY2025, 10-Qs Q1 and Q2 2026 and 8-Ks through 17 Aug 2026; NVIDIA 10-Ks FY2022, FY2024, FY2026, 10-Qs Q1 and Q2 FY2027, 8-K 17 Aug 2026 and the Q2 FY2027 earnings call (26 Aug 2026); plus cited web sources. Events swept through 23 Sep 2026; most recent events checked: NVIDIA Q2 FY2027 call and outlook (26 Aug 2026), NVIDIA SB Energy / OpenAI guarantees and AMD $4.75bn notes (both 17 Aug 2026). Figures in USD; AMD fiscal year = calendar year, NVIDIA fiscal year ends late January (about one month offset, treated as comparable). Not a valuation and not a recommendation.</p>
+  <div class="chips"><span class="chip a">AMD</span><span class="chip b">NVIDIA</span></div>
+  <p class="tag">Scale note: NVIDIA's last fiscal year revenue ($215.9bn) is 6.2x AMD's ($34.6bn), so the page compares ratios and mix, not absolutes, wherever size would decide the answer by itself.</p>
+
+  <div class="verdict-banner">
+    <div class="label">The Call</div>
+    <div class="verdict">NVIDIA is the stronger business for the next five to ten years; AMD is the faster-improving challenger, and the only lens it can win is growth rate, and only if MI450 ships on time.</div>
+    <div class="why">NVIDIA's gross margin has sat about 25 points above AMD's in every one of the last three years while it spends 2.3x AMD's R&amp;D dollars, so its lead funds itself (FY2026 and FY2025 10-Ks).</div>
+  </div>
+
+  <div class="reasons">
+    <div class="col"><span class="n">1</span><br>NVIDIA sells the whole AI factory: GPU, CPU, networking ($31.4bn FY26, +142%) and CUDA software with 7.5m+ developers. AMD sells chips and licenses a rack design it does not build (NVIDIA FY26 10-K; AMD Q2 2026 10-Q).</div>
+    <div class="col"><span class="n">2</span><br>Both are paying for demand. NVIDIA pays from its cash flow: $99bn of equity investments, $25bn more committed, plus lease guarantees. AMD pays in shares: up to 320m warrant shares to OpenAI and Meta, 19.6% of its share count (Q2 FY27 10-Q; AMD 8-Ks).</div>
+    <div class="col"><span class="n">3</span><br>AMD's real moat is in server CPUs (46.2% revenue share, Mercury Q1 2026). That is where it has pricing power, and it is the cell NVIDIA is now entering with Vera.</div>
+  </div>
+
+  <div class="duelwrap">
+    <div class="leanrow"><div class="lbl">Growth profile</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">NVIDIA, narrow</div></div></div>
+    <div class="leanrow"><div class="lbl">Margin conversion</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">NVIDIA, clear</div></div></div>
+    <div class="leanrow"><div class="lbl">Resilience</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">NVIDIA breaks last, narrow</div></div></div>
+    <div class="cap">The three answers, argued below. Left lean favors AMD, right lean favors NVIDIA; marker position shows how decisive.</div>
+  </div>
+
+  <h2>The Three Answers</h2>
+  <div class="answer">
+    <div class="q">1. Who has the stronger growth profile, by product x geography?</div>
+    <div class="w"><span class="chip b">NVIDIA, narrow</span></div>
+    <p>Three cells carry NVIDIA's next five years. First, hyperscale AI systems, where each generation lifts the dollars per gigawatt (management puts Grace Blackwell near $25bn and Vera Rubin near $40bn per gigawatt, a company claim) and Rubin already makes up about 20% of Q3 FY27 data center revenue. Second, the AI clouds, sovereign and enterprise cell (+138% in Q2 FY27), made of buyers who do not design their own chips and whom AMD barely reaches. Third, networking attached to every rack. The FY2028 guide of about +70% is limited by supply, and $279bn of supply and capacity commitments stand behind it (Q2 FY27 10-Q and call). AMD's case is real but conditional. Server CPUs are guided to grow more than 80% in H2 2026 and more than 70% in 2027. Helios racks with MI450 start shipping late in Q3 2026 into commitments of 6GW from OpenAI, 6GW from Meta and up to 2GW from Anthropic, of which only the first gigawatt from OpenAI and Meta is binding (8-Ks; Q2 2026 call summary). If MI450 lands on time, AMD's growth rate in 2027 could beat NVIDIA's. That is why this answer is narrow.</p>
+    <div class="chartbox"><svg viewBox="0 0 900 300" role="img" aria-label="Revenue indexed to 100, log scale"><line x1="70" x2="750" y1="242.1" y2="242.1" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="247.1" font-size="14" fill="#6E675C" text-anchor="end">100</text><line x1="70" x2="750" y1="186.6" y2="186.6" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="191.6" font-size="14" fill="#6E675C" text-anchor="end">200</text><line x1="70" x2="750" y1="113.2" y2="113.2" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="118.2" font-size="14" fill="#6E675C" text-anchor="end">500</text><line x1="70" x2="750" y1="57.7" y2="57.7" stroke="#E5DDD0" stroke-width="1"/><text x="60" y="62.7" font-size="14" fill="#6E675C" text-anchor="end">1000</text><text x="70.0" y="288" font-size="14" fill="#6E675C" text-anchor="middle">2020</text><text x="206.0" y="288" font-size="14" fill="#6E675C" text-anchor="middle">2021</text><text x="342.0" y="288" font-size="14" fill="#6E675C" text-anchor="middle">2022</text><text x="478.0" y="288" font-size="14" fill="#6E675C" text-anchor="middle">2023</text><text x="614.0" y="288" font-size="14" fill="#6E675C" text-anchor="middle">2024</text><text x="750.0" y="288" font-size="14" fill="#6E675C" text-anchor="middle">2025</text><polyline points="70.0,242.1 206.0,200.6 342.0,171.3 478.0,174.7 614.0,164.4 750.0,140.6" fill="none" stroke="#C75B39" stroke-width="3"/><circle cx="70.0" cy="242.1" r="4" fill="#C75B39"/><circle cx="206.0" cy="200.6" r="4" fill="#C75B39"/><circle cx="342.0" cy="171.3" r="4" fill="#C75B39"/><circle cx="478.0" cy="174.7" r="4" fill="#C75B39"/><circle cx="614.0" cy="164.4" r="4" fill="#C75B39"/><circle cx="750.0" cy="140.6" r="4" fill="#C75B39"/><text x="762.0" y="145.6" font-size="16" font-weight="700" fill="#C75B39">AMD 355</text><polyline points="70.0,242.1 206.0,204.0 342.0,203.5 478.0,138.4 614.0,77.3 750.0,36.9" fill="none" stroke="#3C6E8F" stroke-width="3"/><circle cx="70.0" cy="242.1" r="4" fill="#3C6E8F"/><circle cx="206.0" cy="204.0" r="4" fill="#3C6E8F"/><circle cx="342.0" cy="203.5" r="4" fill="#3C6E8F"/><circle cx="478.0" cy="138.4" r="4" fill="#3C6E8F"/><circle cx="614.0" cy="77.3" r="4" fill="#3C6E8F"/><circle cx="750.0" cy="36.9" r="4" fill="#3C6E8F"/><text x="762.0" y="41.9" font-size="16" font-weight="700" fill="#3C6E8F">NVIDIA 1295</text></svg>
+      <div class="cap">Revenue indexed to 100 in 2020, log scale. AMD calendar FY2020-FY2025: $9.8bn, 16.4, 23.6, 22.7, 25.8, 34.6. NVIDIA FY2021-FY2026 (years ending January 2021-2026, plotted at the prior calendar year): $16.7bn, 26.9, 27.0, 60.9, 130.5, 215.9. Sources: AMD 10-Ks FY2021, FY2023, FY2025; NVIDIA 10-Ks FY2022, FY2024, FY2026. Five-year CAGR: AMD 28.8%, NVIDIA 66.9%.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">2. Who converts that growth into superior margins?</div>
+    <div class="w"><span class="chip b">NVIDIA, clear</span></div>
+    <p>NVIDIA's growth engine is also its highest-margin line: the Compute &amp; Networking segment earned a 71.0% operating margin in Q2 FY27, on price-setting for full systems and networking sold with every rack. AMD's growth engine is its lowest-margin line. Management says AI GPU gross margins will sit below the corporate average during the MI450 ramp, so the server CPU business has to hold the mix up (Q2 2026 call summary). AMD is improving: GAAP gross margin rose from 46.1% to 49.5% over three years and data center segment margin reached 31.3% in Q2 2026. But the gap in points is not closing. The test is NVIDIA's memory reset: it guides gross margin down to 71-72% in Q4 FY27, then back to 72-73% in FY28 once announced price increases take effect. A supplier that can do that sets the price.</p>
+    <div class="chartbox"><svg viewBox="0 0 900 270" role="img" aria-label="Margin dumbbells"><text x="214" y="43" font-size="15" fill="#2B2B2B" text-anchor="end" font-weight="700">Gross margin, 3y avg</text><line x1="230.0" x2="860.0" y1="38" y2="38" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/><line x1="610.4" x2="804.1" y1="38" y2="38" stroke="#2B2B2B" stroke-width="2"/><circle cx="610.4" cy="38" r="9" fill="#C75B39"/><circle cx="804.1" cy="38" r="9" fill="#3C6E8F"/><text x="610.4" y="23" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">AMD 48.3%</text><text x="804.1" y="23" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">NVIDIA 72.9%</text><text x="707.2" y="62" font-size="14" fill="#6E675C" text-anchor="middle">gap 24.6 pts</text><text x="214" y="103" font-size="15" fill="#2B2B2B" text-anchor="end" font-weight="700">Gross margin, latest quarter</text><line x1="230.0" x2="860.0" y1="98" y2="98" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/><line x1="653.7" x2="820.6" y1="98" y2="98" stroke="#2B2B2B" stroke-width="2"/><circle cx="653.7" cy="98" r="9" fill="#C75B39"/><circle cx="820.6" cy="98" r="9" fill="#3C6E8F"/><text x="653.7" y="83" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">AMD 53.8%</text><text x="820.6" y="83" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">NVIDIA 75.0%</text><text x="737.1" y="122" font-size="14" fill="#6E675C" text-anchor="middle">gap 21.2 pts</text><text x="214" y="163" font-size="15" fill="#2B2B2B" text-anchor="end" font-weight="700">EBIT margin, 3y avg</text><line x1="230.0" x2="860.0" y1="158" y2="158" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/><line x1="282.0" x2="694.6" y1="158" y2="158" stroke="#2B2B2B" stroke-width="2"/><circle cx="282.0" cy="158" r="9" fill="#C75B39"/><circle cx="694.6" cy="158" r="9" fill="#3C6E8F"/><text x="282.0" y="143" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">AMD 6.6%</text><text x="694.6" y="143" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">NVIDIA 59.0%</text><text x="488.3" y="182" font-size="14" fill="#6E675C" text-anchor="middle">gap 52.4 pts</text><text x="214" y="223" font-size="15" fill="#2B2B2B" text-anchor="end" font-weight="700">EBIT margin, latest quarter</text><line x1="230.0" x2="860.0" y1="218" y2="218" stroke="#E5DDD0" stroke-width="6" stroke-linecap="round"/><line x1="366.2" x2="751.3" y1="218" y2="218" stroke="#2B2B2B" stroke-width="2"/><circle cx="366.2" cy="218" r="9" fill="#C75B39"/><circle cx="751.3" cy="218" r="9" fill="#3C6E8F"/><text x="366.2" y="203" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">AMD 17.3%</text><text x="751.3" y="203" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">NVIDIA 66.2%</text><text x="558.8" y="242" font-size="14" fill="#6E675C" text-anchor="middle">gap 48.9 pts</text><text x="230.0" y="268" font-size="14" fill="#6E675C" text-anchor="middle">0%</text><text x="860.0" y="268" font-size="14" fill="#6E675C" text-anchor="middle">80%</text></svg>
+      <div class="cap">GAAP. 3y averages: AMD FY2023-25, NVIDIA FY2024-26 (10-Ks). Latest quarter: AMD Q2 2026 (to 27 Jun 2026), NVIDIA Q2 FY2027 (to 26 Jul 2026) (10-Qs). AMD EBIT carries acquired-intangible amortization, mostly from Xilinx, of 6.5-12.4% of sales; excluding it, AMD's EBIT margin was 14.2%, 16.7% and 17.2% in FY2023-25.</div>
+    </div>
+  </div>
+  <div class="answer">
+    <div class="q">3. Where do the vulnerabilities sit if the tide turns?</div>
+    <div class="w"><span class="chip a">AMD breaks first</span> <span class="tag">NVIDIA falls further in dollars</span></div>
+    <p>NVIDIA's exposure is the capex cycle and the financing loop around it. Data center is 92.5% of revenue, three direct customers took 16%, 15% and 13% of H1 FY27 revenue, and its $279bn of supply commitments are fixed while demand is not. It also holds $99bn of equity in its own ecosystem and guarantees leases for an OpenAI site of about 4.25GW, and management says AI labs it backs make up roughly a quarter of next year's business (Q2 FY27 10-Q, 8-K of 17 Aug 2026, call). AMD's exposure is its competitor. When NVIDIA's supply loosens, buyers cut the second source first. AMD's GPU commitments are staged by milestone and paired with warrants, which gives buyers option-like terms. With a 17% EBIT margin, AMD has little room to absorb a price war. NVIDIA's 60% margin does. In a digestion, AMD's AI ramp stalls first. NVIDIA's reported numbers fall harder but stay highly profitable.</p>
+  </div>
+
+  <h2>Segment-Geography Scorecard</h2>
+  <p>These eight cells cover essentially all of both companies' revenue. Neither company reports product by region, so geography enters where it changes the call (hyperscale vs. other buyers, China). Every score is argued in the tabs below.</p>
+  <table>
+    <tr><th>Cell (product x region)</th><th class="ca">AMD</th><th class="cb">NVIDIA</th><th>Why (one clause, sourced)</th></tr>
+    <tr><td>AI accelerators, hyperscale (US-HQ CSPs, global deployment)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="small">NVIDIA: hyperscale DC revenue $48.7bn in Q2 FY27, +102% (Q2 FY27 10-Q). AMD: MI350 in volume, MI450 anchor deals with OpenAI, Meta, Microsoft, Oracle, but ~6-8% share (approx., unverified) and warrants attached (8-Ks).</td></tr><tr><td>AI accelerators, AI clouds, sovereign, enterprise (NVIDIA "ACIE")</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="small">NVIDIA ACIE $40.3bn, +138% (Q2 FY27 10-Q). AMD sub-scale here; revenue ND (inferred: no rack-scale product shipped until Helios, H2 2026).</td></tr><tr><td>Data center networking (scale-up and scale-out)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span>5</td><td class="small">NVIDIA networking $31.4bn FY26, +142% (FY26 10-K). AMD Pensando revenue ND, first rack networking ships with Helios (Q2 2026 10-Q).</td></tr><tr><td>Server CPUs (global)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="small">AMD 46.2% revenue share, 33.2% units, up 6 pts in a year (Mercury Q1 2026 via Tom's Hardware). NVIDIA Grace TTM above $5bn, Vera standalone just launched (Q2 FY27 call).</td></tr><tr><td>PC client CPUs (global)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="cb"><span class="pips b"><i></i><i></i><i></i><i></i><i></i></span>0</td><td class="small">AMD client units +34%, ASP -6% in Q2 2026 (Q2 2026 10-Q); unit share 29.6% vs 24.1% (Mercury). NVIDIA no PC CPU revenue disclosed.</td></tr><tr><td>Gaming GPUs and consoles (global)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span>2</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span>4</td><td class="small">NVIDIA gaming $16.0bn FY26, +41% (FY26 10-K). AMD gaming $3.9bn FY25 then -31% in Q2 2026 on semi-custom (Q2 2026 10-Q).</td></tr><tr><td>Embedded, industrial, auto and edge (global)</td><td class="ca"><span class="pips a"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="cb"><span class="pips b"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span>3</td><td class="small">AMD embedded $3.5bn, 36% segment margin, back to +19% in Q2 2026. NVIDIA pro viz + auto + OEM $6.2bn, Edge +27% Q2 FY27 (10-K, 10-Q).</td></tr><tr><td>China data center (both)</td><td class="ca"><span class="pips a"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="cb"><span class="pips b"><i class="f"></i><i></i><i></i><i></i><i></i></span>1</td><td class="small">NVIDIA: no China DC compute in outlook, Hopper below 1% of DC revenue (Q2 FY27 call). AMD: MI308 licensed shipments only; MI325 licenses carry a 25% tariff path (Q2 2026 10-Q).</td></tr>
+  </table>
+  <div class="rubric">
+    <b>How to read the scores:</b>
+    <span><b>5</b> dominant in the cell and compounding (share + price + growth)</span>
+    <span><b>4</b> advantaged and gaining share</span>
+    <span><b>3</b> holds position; grows with the market</span>
+    <span><b>2</b> subscale or stagnant; holds only by discounting or legacy</span>
+    <span><b>1</b> weak and losing share, or exiting</span>
+    <span><b>0</b> no meaningful presence</span>
+  </div>
+  <p class="score-note">Scores are per cell and are not summed. The three lenses get their verdicts in the Three Answers above.</p>
+
+  <div class="tabs">
+    <button class="on" onclick="show(0,this)">Growth Map</button>
+    <button onclick="show(1,this)">Power Map</button>
+    <button onclick="show(2,this)">Cost Engine</button>
+  </div>
+
+  <div class="view on" id="v0">
+    <div class="frame">Both engines now run on the data center, but NVIDIA's cell is ten times AMD's and still grew faster, so the small-base argument does not yet hold.</div>
+    <p>Normalization. AMD reports Data Center (EPYC, Instinct and Pensando, not split), Client, Gaming and Embedded. NVIDIA reports Compute and Networking inside Data Center, then Gaming, Pro Visualization, Automotive and OEM. From Q1 FY2027 it regroups these into Hyperscale, AI Clouds, Industrial &amp; Enterprise (ACIE) and Edge Computing. Geography cannot be matched: AMD reports by customer billing location, NVIDIA by customer headquarters, a basis it adopted in Q3 FY2026. On those bases AMD's revenue is 32.8% United States, 22.4% China including Hong Kong, 15.0% Taiwan and 12.4% Singapore. NVIDIA's is 69.3% United States, 19.6% Taiwan and 9.1% China, and NVIDIA estimates 76% of the data center revenue from Taiwan-headquartered customers ends up in the US and Europe (FY2025 and FY2026 10-Ks). Much of AMD's China revenue is PC and gaming billed to Chinese manufacturers (inferred: Client and Gaming sold through OEMs, ODMs and distributors per the FY2025 10-K).</p>
+    <div class="chartbox"><svg viewBox="0 0 960 276" role="img" aria-label="Butterfly chart of revenue mix by cell"><text x="358.0" y="24" font-size="18" font-weight="700" fill="#C75B39" text-anchor="end">AMD FY2025, % of revenue</text><text x="602.0" y="24" font-size="18" font-weight="700" fill="#3C6E8F">NVIDIA FY2026, % of revenue</text><text x="480.0" y="66" font-size="16" fill="#2B2B2B" text-anchor="middle" font-weight="700">DC compute (GPU + CPU)</text><rect x="249.8" y="52" width="112.2" height="22" fill="#C75B39"/><text x="241.8" y="68" font-size="16" fill="#2B2B2B" text-anchor="end"><tspan font-weight="700">48.0%</tspan> <tspan fill="#6E675C">16.6bn | +32%</tspan></text><rect x="598.0" y="52" width="175.8" height="22" fill="#3C6E8F"/><text x="781.8" y="68" font-size="16" fill="#2B2B2B"><tspan font-weight="700">75.2%</tspan> <tspan fill="#6E675C">162.4bn | +59%</tspan></text><text x="480.0" y="110" font-size="16" fill="#2B2B2B" text-anchor="middle" font-weight="700">PC client CPUs</text><rect x="290.2" y="96" width="71.8" height="22" fill="#C75B39"/><text x="282.2" y="112" font-size="16" fill="#2B2B2B" text-anchor="end"><tspan font-weight="700">30.7%</tspan> <tspan fill="#6E675C">10.6bn | +51%</tspan></text><text x="606.0" y="112" font-size="16" fill="#2B2B2B"><tspan font-weight="700">0.0%</tspan> <tspan fill="#6E675C">none</tspan></text><text x="480.0" y="154" font-size="16" fill="#2B2B2B" text-anchor="middle" font-weight="700">Gaming</text><rect x="335.6" y="140" width="26.4" height="22" fill="#C75B39"/><text x="327.6" y="156" font-size="16" fill="#2B2B2B" text-anchor="end"><tspan font-weight="700">11.3%</tspan> <tspan fill="#6E675C">3.9bn | +51%</tspan></text><rect x="598.0" y="140" width="17.3" height="22" fill="#3C6E8F"/><text x="623.3" y="156" font-size="16" fill="#2B2B2B"><tspan font-weight="700">7.4%</tspan> <tspan fill="#6E675C">16.0bn | +41%</tspan></text><text x="480.0" y="198" font-size="16" fill="#2B2B2B" text-anchor="middle" font-weight="700">DC networking</text><rect x="302.0" y="184" width="60" height="22" fill="none" stroke="#C75B39" stroke-dasharray="4 3"/><text x="294.0" y="200" font-size="16" fill="#6E675C" text-anchor="end">ND, inside DC</text><rect x="598.0" y="184" width="33.9" height="22" fill="#3C6E8F"/><text x="639.9" y="200" font-size="16" fill="#2B2B2B"><tspan font-weight="700">14.5%</tspan> <tspan fill="#6E675C">31.4bn | +142%</tspan></text><text x="480.0" y="242" font-size="16" fill="#2B2B2B" text-anchor="middle" font-weight="700">Embedded and edge</text><rect x="338.6" y="228" width="23.4" height="22" fill="#C75B39"/><text x="330.6" y="244" font-size="16" fill="#2B2B2B" text-anchor="end"><tspan font-weight="700">10.0%</tspan> <tspan fill="#6E675C">3.5bn | -3%</tspan></text><rect x="598.0" y="228" width="6.8" height="22" fill="#3C6E8F"/><text x="612.8" y="244" font-size="16" fill="#2B2B2B"><tspan font-weight="700">2.9%</tspan> <tspan fill="#6E675C">6.2bn | +55%</tspan></text><line x1="362.0" x2="362.0" y1="46" y2="270" stroke="#E5DDD0"/><line x1="598.0" x2="598.0" y1="46" y2="270" stroke="#E5DDD0"/></svg>
+      <div class="cap">Bars show each company's revenue mix by cell (share of its own revenue, because of the 6.2x size gap). Labels show dollar revenue and year-on-year growth. AMD FY2025 (10-K); NVIDIA FY2026 end-market table (10-K). AMD does not disclose networking separately (dashed box, ND). NVIDIA's embedded and edge row = Pro Visualization + Automotive + OEM and Other.</div>
+    </div>
+    <h3>The cells that matter</h3>
+    <table>
+      <tr><th>Cell</th><th class="num ca">AMD rev FY25 (% of total)</th><th class="num ca">AMD 2y CAGR</th><th class="num cb">NVIDIA rev FY26 (% of total)</th><th class="num cb">NVIDIA 2y CAGR</th><th>Margin signal / leader</th></tr>
+      <tr><td>DC compute</td><td class="num ca">16,635 (48.0%)*</td><td class="num ca">+60%</td><td class="num cb">162,361 (75.2%)</td><td class="num cb">+104%</td><td>NVIDIA. Compute &amp; Networking operating margin 67.3% FY26 vs AMD DC 21.7% (24.3% before the $440m MI308 net charge)</td></tr>
+      <tr><td>DC networking</td><td class="num ca">ND</td><td class="num ca">ND</td><td class="num cb">31,376 (14.5%)</td><td class="num cb">+91%</td><td>NVIDIA. Attached to every rack; AMD's first rack ships H2 2026</td></tr>
+      <tr><td>PC client CPUs</td><td class="num ca">10,640 (30.7%)</td><td class="num ca">+51%</td><td class="num cb">0</td><td class="num cb">n/a</td><td>AMD. Client and Gaming segment margin 19.6% FY25</td></tr>
+      <tr><td>Gaming</td><td class="num ca">3,910 (11.3%)</td><td class="num ca">-21%</td><td class="num cb">16,042 (7.4%)</td><td class="num cb">+24%</td><td>NVIDIA. Graphics segment margin 40.8% FY26</td></tr>
+      <tr><td>Embedded and edge</td><td class="num ca">3,454 (10.0%)</td><td class="num ca">-19%</td><td class="num cb">6,159 (2.9%)</td><td class="num cb">+44%</td><td>Split. AMD embedded segment margin 36.0%, best in AMD</td></tr>
+    </table>
+    <p class="tag">USD m. *AMD DC includes server CPUs, Instinct GPUs and networking. 2y CAGR = FY2023 to FY2025 (AMD) and FY2024 to FY2026 (NVIDIA). Sources: AMD FY2025 10-K segment note; NVIDIA FY2026 10-K segment note and end-market table.</p>
+    <div class="iik"><b>Insight:</b> NVIDIA's core cell is 9.8x AMD's, even though AMD's figure includes all its server CPUs, and it compounded at 104% vs 60%. In the latest quarter both doubled (NVIDIA DC +117%, AMD DC +107% against a Q2 2025 base cut by an ~$800m MI308 charge). <b>Implication:</b> AMD only catches up if MI450 lifts its data center growth clearly above NVIDIA's from a much smaller base. <span class="kpi">KPI: AMD DC YoY growth above NVIDIA DC YoY growth for two straight quarters in 2027 (10-Qs).</span> [Source: 10-Ks and 10-Qs cited.]</div>
+    <h3>Segment growth engines</h3>
+    <p><b>AI accelerators.</b> NVIDIA ships on a yearly cadence: Blackwell Ultra now, and Vera Rubin, which began production shipments in Q3 FY27. It adds CPUs (Vera), five kinds of networking and the Groq-licensed LPX inference accelerator to each gigawatt (Q2 FY27 10-Q and call). AMD runs on anchor contracts. OpenAI and Meta have each committed to 1GW binding out of up to 6GW, and each holds a warrant for 160m AMD shares at $0.01 that vests with purchases and with AMD share price hurdles rising to $600 (8-Ks of 6 Oct 2025 and 24 Feb 2026). Anthropic plans up to 2GW from 1H 2027 (Q2 2026 call summary). Both are organic. From AMD's ZT Systems purchase ($3.2bn cash plus shares), it kept the design team and sold the manufacturing arm to Sanmina for $2.4bn (FY2025 10-K).</p>
+    <p><b>Server CPUs.</b> Agentic AI is lifting CPU demand. AMD's server revenue share is 46.2% against 33.2% of units, a higher selling price than Intel's (Mercury Q1 2026). Management expects server CPU revenue up more than 80% in H2 2026 and more than 70% in 2027, with supply tight this year (call summary). NVIDIA's Grace passed $5bn over the trailing twelve months and Vera is now sold standalone (Q2 FY27 call). <b>PC client.</b> AMD's gains here are cyclical: Intel's supply problems added share (client units 29.6% vs 24.1%, Mercury), but ASP fell 6% in Q2 2026 and memory prices are hurting PC demand.</p>
+    <div class="iik"><b>Insight:</b> AMD has two share-gain engines (Instinct from a small base, EPYC against Intel). NVIDIA has one platform engine that gains more revenue per gigawatt with each generation. <b>Implication:</b> AMD's growth depends on execution in two contests. NVIDIA's depends on the AI capex cycle continuing. <span class="kpi">KPI: AMD server CPU revenue share at or above 50% (FAD target) in Mercury data by Q4 2027.</span> [Source: Mercury via Tom's Hardware; AMD FAD 11 Nov 2025.]</div>
+    <h3>Price control and route-to-market</h3>
+    <p>NVIDIA sells complete systems through ODMs and OEMs to hyperscalers and AI clouds. It has announced price increases for Q1 FY28 and gives investment-grade buyers extended payment terms (DSO 60 days). AMD sells chips. It licenses the Helios rack design but "does not manufacture or sell the completed Helios rack systems" (Q2 2026 10-Q), and in the PC channel its distributor agreements include price protection (FY2025 10-K). No AMD customer reached 10% of revenue in FY2024 or FY2025.</p>
+    <div class="iik"><b>Insight:</b> NVIDIA sets price in AI compute and AMD takes it. AMD's AI GPU gross margin sits below its corporate average. <b>Implication:</b> as AI mix rises, AMD's margin depends on server CPU pricing, not on the GPU. <span class="kpi">KPI: AMD non-GAAP gross margin at or above 56% through Q2 2027 as MI450 ramps (earnings releases).</span> [Source: AMD Q2 2026 press release and call summary.]</div>
+    <h3>Supply resilience</h3>
+    <table>
+      <tr><th>Input</th><th class="ca">AMD</th><th class="cb">NVIDIA</th></tr>
+      <tr><td>Wafers / packaging</td><td class="ca">TSMC, GF for 12/14nm; limited IC package suppliers</td><td class="cb">TSMC, Samsung; CoWoS; Foxconn and others</td></tr>
+      <tr><td>Memory</td><td class="ca">Limited suppliers, industry shortage flagged</td><td class="cb">SK hynix, Micron, Samsung; "extreme pricing conditions"</td></tr>
+      <tr><td>Capacity locked</td><td class="ca">$1.0bn supply prepayments in H1 2026</td><td class="cb">$279bn supply and capacity commitments (from $119bn a quarter earlier)</td></tr>
+      <tr><td>Inventory</td><td class="ca">$8.5bn</td><td class="cb">$31.6bn</td></tr>
+    </table>
+    <p class="tag">Sources: AMD FY2025 10-K and Q2 2026 10-Q; NVIDIA FY2026 10-K, Q2 FY2027 10-Q and call.</p>
+    <h3>Competitive context</h3>
+    <p>In AI accelerators, NVIDIA holds about 81% of 2025 revenue, AMD 6-8%, and hyperscaler custom silicon (Google TPU, AWS Trainium, Microsoft Maia and Meta MTIA, largely built with Broadcom and Marvell) about 15% (siliconanalysts.com, approx., unverified). Custom silicon competes with both, but mostly inside the hyperscale cell. In server CPUs, Intel still ships about two-thirds of units (Mercury). The China data center market is effectively closed to both, and Chinese policy pushes buyers to domestic suppliers (NVIDIA Q1 FY27 10-Q).</p>
+    <h3>Risks by segment</h3>
+    <p><b>AI accelerators:</b> NVIDIA is more exposed to the financing loop: equity stakes, cloud-capacity backstops and lease guarantees tied to buyers whose growth, in management's words, outruns their balance sheets. AMD is more exposed to execution. Helios is its first rack, and supply of third-party rack components can delay it (Q2 2026 10-Q risk factors). <b>Server CPU:</b> AMD alone is exposed, to Arm designs (Graviton, Grace/Vera) capping x86 share. <b>Client:</b> AMD alone, a memory-driven PC slowdown with ASP already down.</p>
+    <div class="pull">NVIDIA has the higher-probability growth path because its largest cell is both the fastest-growing and the one it prices. AMD's path is wider but depends on a product that only starts shipping this quarter.</div>
+  </div>
+
+  <div class="view" id="v1">
+    <div class="frame">In AI compute, whoever owns the software and the system decides the price, and both companies now pay to win customers, from very different pockets.</div>
+    <div class="duelwrap">
+      <div class="leanrow"><div class="lbl">Moats</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">NVIDIA, clear</div></div></div>
+      <div class="leanrow"><div class="lbl">Customers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:26%">NVIDIA, narrow</div></div></div>
+      <div class="leanrow"><div class="lbl">Suppliers</div><div class="lean"><div class="half a"></div><div class="half b"></div><div class="mid"></div><div class="marker b" style="right:2%">NVIDIA, clear</div></div></div>
+      <div class="cap">Who sets the terms, lever by lever. Each call is argued in the sections below.</div>
+    </div>
+    <h3>Moats: what rivals cannot copy</h3>
+    <div class="duo">
+      <div class="col a"><h3>AMD</h3><p><b>x86 server franchise (High durability):</b> 46.2% server revenue share on 33.2% of units shows it prices above Intel (Mercury Q1 2026). <b>Breadth (Medium):</b> the only merchant vendor with leading CPUs, GPUs, FPGAs from Xilinx and DPUs from Pensando. <b>ROCm open software (Low-Medium):</b> improving, but no outside evidence of parity with CUDA (inferred).</p></div>
+      <div class="col b"><h3>NVIDIA</h3><p><b>CUDA ecosystem (High):</b> 7.5m+ developers and $76.7bn of cumulative R&amp;D (FY26 10-K). Replicating it takes years, not money. <b>Rack-scale system plus networking (High):</b> third generation of NVL72 and $31.4bn of networking revenue. <b>Supply priority (Medium-High):</b> $279bn of commitments that only its cash flow can fund.</p></div>
+    </div>
+    <div class="iik"><b>Insight:</b> NVIDIA's moats sit in the growth cell. AMD's strongest moat sits in CPUs, not in AI accelerators. <b>Implication:</b> AMD's AI GPU share gains have to be bought, through price, openness and equity, rather than defended. <span class="kpi">KPI: AMD share of AI accelerator revenue above 10% in 2027 third-party estimates.</span> [Source: 10-Ks; Mercury; siliconanalysts.com, approx., unverified.]</div>
+    <h3>Customers: who controls net price and access</h3>
+    <p>AMD had no customer above 10% of revenue in FY2024 or FY2025. To win its two largest AI GPU customers, it issued each a warrant for up to 160m shares at $0.01: 320m shares in total, 19.6% of the 1,632m outstanding. The warrants vest only as OpenAI and Meta buy toward 6GW each and as AMD's share price clears hurdles up to $600 (8-Ks; Q2 2026 10-Q). NVIDIA is far more concentrated: three direct customers took 16%, 15% and 13% of H1 FY27 revenue. It pays for demand from cash flow instead of shares: $99bn of equity investments plus $25bn committed, nearly $50bn of it in frontier AI labs, cloud-capacity backstops with revenue sharing, and residual value guarantees on about 4.25GW of leases for an OpenAI site (Q2 FY27 10-Q; 8-K 17 Aug 2026; call). NVIDIA still raises prices. AMD's AI GPU margins sit below its corporate average.</p>
+    <div class="iik"><b>Insight:</b> Both companies subsidize demand. NVIDIA spends a small part of its free cash flow, AMD offers up to a fifth of the company if the purchases happen. <b>Implication:</b> NVIDIA controls net price, but its customer risk is now partly on its own balance sheet. <span class="kpi">KPI: NVIDIA equity investments plus guarantees growing faster than revenue in the FY2027 10-K (Feb 2027); DSO above 70 days.</span> [Source: Q2 FY27 10-Q; AMD 8-Ks.]</div>
+    <h3>Suppliers: who absorbs shocks</h3>
+    <p>Both depend on TSMC, CoWoS packaging and three HBM makers, so single-source risk is the same. Their ability to absorb shocks is not. When the same export rule hit both in April 2025, NVIDIA took a $4.5bn H20 charge and AMD about $800m (later $440m net) for MI308, and NVIDIA still ended the year at a 60.4% EBIT margin (FY2026 and FY2025 10-Ks). On memory, NVIDIA guides gross margin to a 71-72% trough and then passes the cost through with a two-quarter lag. AMD holds its non-GAAP gross margin guide at about 56% for Q3 2026 and has not disclosed how it will pass memory costs through (ND).</p>
+    <div class="iik"><b>Insight:</b> NVIDIA passes shocks through strongly. AMD passes them through partially and discloses less. <b>Implication:</b> during component inflation NVIDIA keeps its price and AMD keeps its volume. <span class="kpi">KPI: NVIDIA gross margin at 72-73% in FY2028 as guided (Q1-Q2 FY28 10-Qs).</span> [Source: Q2 FY27 call; AMD Q2 2026 release.]</div>
+    <h3>The price/power triangle: top 3 cells</h3>
+    <table>
+      <tr><th>Cell</th><th>Route control</th><th>Pocket price</th><th>Continuity</th><th>Outcome (share / margin)</th><th>Confirming KPI</th></tr>
+      <tr><td>Hyperscale AI accelerators</td><td>NVIDIA racks via ODMs; AMD chips plus licensed Helios design</td><td>AMD below NVIDIA (inferred from the ~25 pt GM gap and management's comment)</td><td>NVIDIA shipping; AMD contingent on MI450 in late Q3 2026</td><td>NVIDIA share flat to slowly down, margin flat; AMD share up, margin below corporate average</td><td>AMD DC operating margin at or above 30% through the ramp</td></tr>
+      <tr><td>AI clouds, sovereign, enterprise</td><td>NVIDIA full stack plus financing; AMD sub-scale</td><td>NVIDIA sets the price</td><td>NVIDIA strong; AMD ND</td><td>NVIDIA share up, margin up</td><td>ACIE at or above 45% of NVIDIA DC revenue</td></tr>
+      <tr><td>Server CPUs</td><td>AMD direct to OEMs and CSPs; NVIDIA Grace/Vera mostly attached to its systems</td><td>AMD above Intel</td><td>AMD supply tight in 2026</td><td>AMD share up, margin up</td><td>AMD server revenue share at or above 50%</td></tr>
+    </table>
+    <p class="tag">Tension: AMD grows fastest exactly where it has the least pricing power (AI GPUs), and its highest-power cell (server CPUs) is the one NVIDIA is now entering.</p>
+    <h3>The causal gap</h3>
+    <p><b>1. Software ecosystem, Major.</b> CUDA vs ROCm. Closing it takes years of developer adoption, and money alone does not buy that. <b>2. System and networking attach, Major.</b> Helios is AMD's first rack. NVIDIA is on its third NVL72 generation. Realistically two to three years to reach parity, and only if Helios succeeds. <b>3. Capacity to finance customers, Moderate.</b> NVIDIA funds investments and guarantees from a 60% EBIT margin. AMD substitutes equity warrants. That gap closes only if AMD's margins rise.</p>
+    <div class="pull">NVIDIA holds the stronger power position. The warning signs to watch: for NVIDIA, the financing loop outgrowing revenue; for AMD, the Instinct ramp slipping past Q4 2026 or data center margin falling below 25%.</div>
+  </div>
+
+  <div class="view" id="v2">
+    <div class="frame">NVIDIA runs leaner on every line, and the difference comes almost entirely from price, not frugality.</div>
+    <p>Both companies report costs by function under US GAAP, so the five ratios are clean. AMD's cost of goods includes amortization of acquired intangibles booked in cost of sales. Its opex amortization ($1.9bn, $1.4bn, $1.2bn) and 2024 restructuring ($186m) sit outside R&amp;D and SG&amp;A but inside EBIT. Windows: AMD FY2023-25, NVIDIA FY2024-26. One-offs are left in: NVIDIA's $4.5bn H20 charge costs about 2.1 points of FY2026 gross margin, AMD's $440m net MI308 charge about 1.3 points of FY2025.</p>
+    <h3>Three years, five ratios</h3>
+    <table>
+      <tr><th>% of sales, 3y avg</th><th class="num ca">AMD</th><th class="num cb">NVIDIA</th><th class="num">Gap</th><th>What drives it</th></tr>
+      <tr><td>COGS</td><td class="num ca">51.7</td><td class="num cb">27.1</td><td class="num">24.6</td><td>Price per unit of silicon, not unit cost: same foundry, same memory</td></tr>
+      <tr><td>R&amp;D</td><td class="num ca">24.8</td><td class="num cb">10.9</td><td class="num">13.9</td><td>Scale: NVIDIA's $18.5bn is 2.3x AMD's $8.1bn on a 6.2x revenue base</td></tr>
+      <tr><td>SG&amp;A</td><td class="num ca">10.9</td><td class="num cb">3.1</td><td class="num">7.8</td><td>AMD sells into PC and distribution channels; NVIDIA sells big systems to a few buyers</td></tr>
+      <tr><td>Gross margin</td><td class="num ca">48.3</td><td class="num cb">72.9</td><td class="num">-24.6</td><td>Pricing power in AI systems and networking</td></tr>
+      <tr><td>EBIT margin</td><td class="num ca">6.6</td><td class="num cb">59.0</td><td class="num">-52.4</td><td>Gross margin plus operating leverage; AMD also carries Xilinx amortization</td></tr>
+    </table>
+    <div class="chartbox"><svg viewBox="0 0 900 300" role="img" aria-label="Cost engine ratios, 3-year averages"><line x1="40" x2="890" y1="256" y2="256" stroke="#2B2B2B"/><text x="46" y="18" font-size="14" fill="#C75B39" font-weight="700">AMD FY2023-25</text><text x="176" y="18" font-size="14" fill="#3C6E8F" font-weight="700">NVIDIA FY2024-26</text><text x="330" y="18" font-size="14" fill="#6E675C">% of sales, 3-year average</text><rect x="75.0" y="109.9" width="46" height="146.1" fill="#C75B39"/><text x="98.0" y="103.9" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">51.7</text><rect x="127.0" y="179.4" width="46" height="76.6" fill="#3C6E8F"/><text x="150.0" y="173.4" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">27.1</text><text x="124.0" y="278" font-size="15" fill="#2B2B2B" text-anchor="middle">COGS</text><rect x="243.0" y="185.9" width="46" height="70.1" fill="#C75B39"/><text x="266.0" y="179.9" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">24.8</text><rect x="295.0" y="225.2" width="46" height="30.8" fill="#3C6E8F"/><text x="318.0" y="219.2" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">10.9</text><text x="292.0" y="278" font-size="15" fill="#2B2B2B" text-anchor="middle">R&amp;D</text><rect x="411.0" y="225.2" width="46" height="30.8" fill="#C75B39"/><text x="434.0" y="219.2" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">10.9</text><rect x="463.0" y="247.2" width="46" height="8.8" fill="#3C6E8F"/><text x="486.0" y="241.2" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">3.1</text><text x="460.0" y="278" font-size="15" fill="#2B2B2B" text-anchor="middle">SG&amp;A</text><rect x="579.0" y="119.6" width="46" height="136.4" fill="#C75B39"/><text x="602.0" y="113.6" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">48.3</text><rect x="631.0" y="50.1" width="46" height="205.9" fill="#3C6E8F"/><text x="654.0" y="44.1" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">72.9</text><text x="628.0" y="278" font-size="15" fill="#2B2B2B" text-anchor="middle">Gross margin</text><rect x="747.0" y="237.4" width="46" height="18.6" fill="#C75B39"/><text x="770.0" y="231.4" font-size="14" fill="#C75B39" text-anchor="middle" font-weight="700">6.6</text><rect x="799.0" y="89.3" width="46" height="166.7" fill="#3C6E8F"/><text x="822.0" y="83.3" font-size="14" fill="#3C6E8F" text-anchor="middle" font-weight="700">59.0</text><text x="796.0" y="278" font-size="15" fill="#2B2B2B" text-anchor="middle">EBIT margin</text></svg>
+      <div class="cap">Three-year averages of GAAP ratios. Sources: AMD FY2025 and FY2023 10-K income statements; NVIDIA FY2026 10-K income statement.</div>
+    </div>
+    <table>
+      <tr><th>Year</th><th class="num ca">AMD COGS</th><th class="num ca">R&amp;D</th><th class="num ca">SG&amp;A</th><th class="num ca">GM</th><th class="num ca">EBIT</th><th>Year</th><th class="num cb">NVIDIA COGS</th><th class="num cb">R&amp;D</th><th class="num cb">SG&amp;A</th><th class="num cb">GM</th><th class="num cb">EBIT</th></tr>
+      <tr><td>FY23</td><td class="num ca">53.9</td><td class="num ca">25.9</td><td class="num ca">10.2</td><td class="num ca">46.1</td><td class="num ca">1.8</td><td>FY24</td><td class="num cb">27.3</td><td class="num cb">14.2</td><td class="num cb">4.4</td><td class="num cb">72.7</td><td class="num cb">54.1</td></tr>
+      <tr><td>FY24</td><td class="num ca">50.6</td><td class="num ca">25.0</td><td class="num ca">10.6</td><td class="num ca">49.4</td><td class="num ca">7.4</td><td>FY25</td><td class="num cb">25.0</td><td class="num cb">9.9</td><td class="num cb">2.7</td><td class="num cb">75.0</td><td class="num cb">62.4</td></tr>
+      <tr><td>FY25</td><td class="num ca">50.5</td><td class="num ca">23.4</td><td class="num ca">12.0</td><td class="num ca">49.5</td><td class="num ca">10.7</td><td>FY26</td><td class="num cb">28.9</td><td class="num cb">8.6</td><td class="num cb">2.1</td><td class="num cb">71.1</td><td class="num cb">60.4</td></tr>
+    </table>
+    <p class="tag">% of sales. Raw values (USD m): AMD revenue 22,680 / 25,785 / 34,639; EBIT 401 / 1,900 / 3,694. NVIDIA revenue 60,922 / 130,497 / 215,938; EBIT 32,972 / 81,453 / 130,387.</p>
+    <h3>The structural gap</h3>
+    <p>The most persistent gap is gross margin: about 25 points in every year, 24.6 on average. The mechanism is the one in the Power Map. NVIDIA sells a full system with networking and CUDA, so it prices by the work done. AMD sells into markets where it is the challenger or the second source, so it prices below the leader. The cost engine therefore confirms the power map. The pricing power NVIDIA shows in the customer section appears directly in its gross margin. The second gap looks like AMD overspending on R&amp;D (24.8% vs 10.9%), but it runs the other way: AMD spends twice the share of revenue and still less than half NVIDIA's dollars, and the dollar gap widened to 2.8x in the latest quarter. AMD has little self-inflicted cost to cut, because amortization is non-cash and the rest is structural. It is improving (gross margin +3.4 points and EBIT margin +8.9 points over three years), but not closing the gap in points.</p>
+    <div class="pull">NVIDIA runs leaner because it sets the price, and its margin buys a larger R&amp;D budget, so the gap reinforces itself.</div>
+  </div>
+
+  <div class="flip">
+    <h3>What would flip the call</h3>
+    <ul>
+      <li>MI450 and Helios ship on schedule into OpenAI, Meta and Anthropic and hold data center margins, turning AMD's second-source status into a real second platform with its own pricing. <span style="color:var(--good);font-weight:700;">Early warning: AMD DC segment operating margin at or above 30% in Q4 2026 and Q1 2027, plus the first warrant tranche vesting (10-Qs).</span></li>
+      <li>NVIDIA's customer-financing loop grows faster than its revenue, meaning part of its growth is demand it is paying for itself, and some of it reverses in a digestion. <span style="color:var(--good);font-weight:700;">Early warning: equity investments plus commitments and guarantees growing faster than revenue, or DSO above 70 days (FY2027 10-K, Feb 2027).</span></li>
+      <li>NVIDIA cannot restore gross margin after the memory reset, which would show that its pricing power is weaker than the 25-point gap suggests. <span style="color:var(--good);font-weight:700;">Early warning: FY2028 gross margin below 72% for two quarters (Q1-Q2 FY28 10-Qs).</span></li>
+    </ul>
+  </div>
+
+  <h2>The KPI pack: 12-24 months</h2>
+  <table>
+    <tr><th>Metric</th><th>Threshold</th><th>By when</th><th>If it hits, it favors</th><th>Where published</th></tr>
+    <tr><td>AMD Data Center segment operating margin during MI450 ramp</td><td>At or above 30% (31.3% in Q2 2026)</td><td>Q4 2026 and Q1 2027 prints</td><td class="ca">AMD</td><td>AMD 10-Q / 10-K segment note</td></tr>
+    <tr><td>OpenAI or Meta first warrant tranche vests (1GW shipped)</td><td>Vesting disclosed</td><td>By Q3 2027</td><td class="ca">AMD</td><td>AMD 10-Q equity note</td></tr>
+    <tr><td>AMD server CPU revenue share</td><td>At or above 50% (46.2% in Q1 2026)</td><td>Q4 2027</td><td class="ca">AMD</td><td>Mercury Research, via press</td></tr>
+    <tr><td>NVIDIA gross margin after memory reset</td><td>72-73% in FY2028 (71-72% trough in Q4 FY27)</td><td>Q1-Q2 FY2028 (May-Aug 2027)</td><td class="cb">NVIDIA</td><td>NVIDIA 10-Q</td></tr>
+    <tr><td>NVIDIA FY2028 revenue growth vs guide</td><td>About +70%, with ACIE at or above 45% of DC</td><td>FY2028 prints through Feb 2028</td><td class="cb">NVIDIA</td><td>NVIDIA 10-Q / 10-K</td></tr>
+    <tr><td>NVIDIA ecosystem exposure vs revenue</td><td>Equity investments plus guarantees growing faster than revenue</td><td>FY2027 10-K (Feb 2027)</td><td class="ca">AMD (weakens NVIDIA)</td><td>NVIDIA 10-K notes</td></tr>
+  </table>
+
+  <div class="timeverdict">
+    <div class="label">Where to spend your time</div>
+    Spend the first hours on NVIDIA, specifically the commitments, guarantees and investments notes of the Q2 FY2027 10-Q, because the call can only break there. Spend the second on AMD at its Q3 2026 print, the first quarter with Helios revenue.
+  </div>
+
+  <div class="footer">
+    <p><b>Method.</b> Three lenses, run side by side: growth and profitability by product cell (80/20 filter), power map (moats, customers, suppliers), and a three-year cost engine from the consolidated income statements. Segments are normalized to common labels and geography is shown on each company's own basis because the two bases cannot be reconciled. ND means not publicly disclosed, (inferred) marks reasoning rather than a reported figure, and "approx., unverified" marks third-party estimates. This compares the strength of the two businesses. It is not a valuation and says nothing about either stock's price.</p>
+    <p class="sources"><b>Sources.</b></p>
+    <ul class="sources">
+      <li>AMD Form 10-K FY2025 (filed 4 Feb 2026), FY2023 (31 Jan 2024), FY2021 (3 Feb 2022); Form 10-Q Q1 2026 (6 May 2026), Q2 2026 (5 Aug 2026); Forms 8-K 6 Oct 2025 (OpenAI warrant), 24 Feb 2026 (Meta warrant), 17 Aug 2026 ($4.75bn senior notes). Local filing archive.</li>
+      <li>NVIDIA Form 10-K FY2026 (25 Feb 2026), FY2024 (21 Feb 2024), FY2022 (18 Mar 2022); Form 10-Q Q1 FY2027 (20 May 2026), Q2 FY2027 (26 Aug 2026); Form 8-K 17 Aug 2026 (SB Energy / OpenAI residual value guarantees); Q2 FY2027 earnings call transcript (26 Aug 2026). Local filing archive.</li>
+      <li>AMD, "AMD Reports Second Quarter 2026 Financial Results", 4 Aug 2026, https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results</li>
+      <li>AMD, "AMD Unveils Strategy to Lead the $1 Trillion Compute Market", Financial Analyst Day, 11 Nov 2025, https://ir.amd.com/news-events/press-releases/detail/1266/amd-unveils-strategy-to-lead-the-1-trillion-compute-market-and-accelerate-next-phase-of-growth</li>
+      <li>Yahoo Finance, "Advanced Micro Devices Q2 Earnings Call Highlights", Aug 2026, https://finance.yahoo.com/markets/stocks/articles/advanced-micro-devices-q2-earnings-230400660.html</li>
+      <li>Tom's Hardware, Mercury Research Q1 2026 CPU share, https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share</li>
+      <li>The Register, "AMD takes a third of server CPU market as shipments grow", 4 Jun 2026, https://www.theregister.com/systems/2026/06/04/amd-takes-a-third-of-server-cpu-market-as-shipments-grow/5251283</li>
+      <li>Silicon Analysts, "NVIDIA AI Accelerator Market Share 2024-2026" (estimates, approx., unverified), https://siliconanalysts.com/analysis/nvidia-ai-accelerator-market-share-2024-2026</li>
+    </ul>
+  </div>
+</div>
+<script>
+function show(i,btn){
+  document.querySelectorAll('.view').forEach(function(v,j){v.classList.toggle('on',j===i);});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+</script>
+
+</body>
+</html>
