@@ -1,3 +1,5 @@
+- [NET vs PANW Peer Duel](https://xk152004.github.io/investechery/stocks/NET-vs-PANW-Peer-Duel.html)
+- [PANW Business Overview](https://xk152004.github.io/investechery/stocks/PANW-Business-Overview.html)
 - [NET vs AKAM Peer Duel](https://xk152004.github.io/investechery/stocks/NET-vs-AKAM-Peer-Duel.html)
 - [Cloudflare Business Overview](https://xk152004.github.io/investechery/stocks/Cloudflare-Business-Overview.html)
 - [AKAM Business Overview](https://xk152004.github.io/investechery/stocks/AKAM-Business-Overview.html)
